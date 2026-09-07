@@ -10,6 +10,7 @@
 4. [Bệnh Rỉ Sắt Đỏ / Tảo Đỏ (Red Rust)](#3-bệnh-rỉ-sắt-đỏ--tảo-đỏ-red-rust)
 5. [Bảng Ma Trận So Sánh & Chẩn Đoán Phân Biệt](#-bảng-ma-trận-so-sánh--chẩn-đoán-phân-biệt)
 6. [Ý Nghĩa Nhận Diện Trong Thị Giác Máy Tính (Computer Vision)](#-ý-nghĩa-nhận-diện-trong-thị-giác-máy-tính-computer-vision)
+7. [Tài Liệu Tham Khảo (References)](#-tài-liệu-tham-khảo-references)
 
 ---
 
@@ -140,3 +141,15 @@ Bản tài liệu này tổng hợp đặc điểm hình thái học, cơ chế 
 
 3. **Gợi ý tiền xử lý & Data Augmentation:**
    * Cần chú ý các phép tăng cường dữ liệu (*ColorJitter*, *RandomAffine*) để không làm biến đổi sắc thái nhận diện của lớp Red Rust (cam đỏ) và Anthracnose (nâu đen).
+
+---
+
+## 📚 TÀI LIỆU THAM KHẢO (REFERENCES)
+
+1. [BMC Việt Nam - Nhà sản xuất thuốc bảo vệ thực vật số 1 Việt Nam](https://www.bmcgroup.com.vn/en/blog/bai-viet/116/)
+2. [Anthracnose Disease: Ash, Maple, Oak Trees | Davey Tree](https://www.davey.com/insect-disease-resource-center/anthracnose/)
+3. [Anthracnose / Home and Landscape / UC Statewide IPM Program (UC IPM)](https://ipm.ucanr.edu/home-and-landscape/anthracnose/#gsc.tab=0)
+4. [How to Identify & Control Leaf Miners | Garden Design](https://www.gardendesign.com/how-to/leaf-miners.html)
+5. [(PDF) CHARACTERIZATION OF RED RUST DISEASE CAUSED BY CEPHALEUROS VIRESCENS KUNZE ON CASHEW NUT IN THE SUDANO-SAHELIAN ECOLOGICAL ZONE OF CAMEROON](https://www.researchgate.net/publication/352893525_CHARACTERIZATION_OF_RED_RUST_DISEASE_CAUSED_BY_CEPHALEUROS_VIRESCENS_KUNZE_ON_CASHEW_NUTIN_THESUDANO-SAHELIAN_ECOLOGICAL_ZONE_OF_CAMEROON)
+6. [Red rust | PPTX](https://www.slideshare.net/slideshow/red-rust/140685951)
+7. [The Trentepohliales (Ulvophyceae, Chlorophyta): An Unusual Algal Order and its Novel Plant Pathogen—Cephaleuros | Plant Disease](https://apsjournals.apsnet.org/doi/10.1094/PDIS-01-15-0029-FE)
