@@ -1,0 +1,30 @@
+# ==========================================
+# Git Ignore Configuration (Resource)
+# ==========================================
+
+# 1. Dataset & Dữ liệu
+dataset/
+datasets/
+data/
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+
+# 2. Tài liệu văn bản & Báo cáo
+*.docx
+*.doc
+~$*.doc*
+*.pdf
+*.ppt
+*.pptx
+~$*.ppt*
+
+# 3. Môi trường & OS
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+Thumbs.db
+Desktop.ini
+.DS_Store
