@@ -1,0 +1,13 @@
+filename,true_label,predicted_label,confidence,correct
+anthracnose/anthracnose597_.jpg,anthracnose,red_rust,0.9993022680282593,False
+anthracnose/anthracnose1176_.jpg,anthracnose,leaf_miner,0.9975684285163879,False
+anthracnose/anthracnose943_.jpg,anthracnose,leaf_miner,0.9975026249885559,False
+anthracnose/anthracnose1154_.jpg,anthracnose,not_cashew_leaf,0.9941022992134094,False
+leaf_miner/leaf miner677_.jpg,leaf_miner,anthracnose,0.9867541193962097,False
+anthracnose/anthracnose110_.jpg,anthracnose,not_cashew_leaf,0.9842396974563599,False
+anthracnose/anthracnose577_.jpg,anthracnose,red_rust,0.9838001132011414,False
+anthracnose/anthracnose778_.jpg,anthracnose,healthy,0.9208253026008606,False
+healthy/healthy845_.jpg,healthy,anthracnose,0.8984347581863403,False
+anthracnose/anthracnose1323_.jpg,anthracnose,leaf_miner,0.8730164170265198,False
+anthracnose/anthracnose992_.jpg,anthracnose,leaf_miner,0.8698877096176147,False
+leaf_miner/leaf miner126_.jpg,leaf_miner,not_cashew_leaf,0.8686656951904297,False

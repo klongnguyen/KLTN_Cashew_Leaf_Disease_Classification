@@ -1,0 +1,47 @@
+{
+  "experiment_id": "EXP-DENSENET121-SCRATCH-001",
+  "date_created": "2026-09-08T18:41:42.316050",
+  "dataset_path": "/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split",
+  "dataset_version": "CashewData_v01",
+  "model_name": "DenseNet121",
+  "training_mode": "Scratch",
+  "weights": null,
+  "seed": 42,
+  "img_size": 224,
+  "batch_size": 32,
+  "max_epochs": 50,
+  "optimizer": "Adam",
+  "initial_learning_rate": 0.001,
+  "loss": "SparseCategoricalCrossentropy",
+  "head_units": 512,
+  "head_dropout": 0.4,
+  "augmentation": {
+    "horizontal_flip": true,
+    "vertical_flip": false,
+    "rotation_factor": 0.04,
+    "zoom": 0.05,
+    "translation": 0.03,
+    "contrast": 0.08,
+    "brightness": "not_used",
+    "hue_shift": false
+  },
+  "callbacks": {
+    "checkpoint_monitor": "val_loss",
+    "early_stopping_patience": 8,
+    "reduce_lr_factor": 0.3,
+    "reduce_lr_patience": 3,
+    "min_lr": 1e-06
+  },
+  "class_names": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "not_cashew_leaf",
+    "red_rust"
+  ],
+  "class_weight": null,
+  "test_set_locked": true,
+  "run_final_test": false,
+  "gpu_count": 2,
+  "distribution_strategy": "MirroredStrategy"
+}

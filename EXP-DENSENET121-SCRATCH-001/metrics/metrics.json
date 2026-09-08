@@ -1,0 +1,68 @@
+{
+  "experiment": {
+    "experiment_id": "EXP-DENSENET121-SCRATCH-001",
+    "date": "2026-09-08T19:47:33.701604",
+    "dataset_version": "CashewData_v01"
+  },
+  "model": {
+    "model_name": "DenseNet121",
+    "backbone": "DenseNet121",
+    "weights": null,
+    "training_mode": "Scratch",
+    "fine_tune": false,
+    "total_parameters": 7566917,
+    "trainable_parameters": 7482245,
+    "non_trainable_parameters": 84672
+  },
+  "training_config": {
+    "seed": 42,
+    "img_size": 224,
+    "batch_size": 32,
+    "max_epochs": 50,
+    "optimizer": "Adam",
+    "initial_learning_rate": 0.001,
+    "loss": "SparseCategoricalCrossentropy",
+    "head_units": 512,
+    "head_dropout": 0.4,
+    "class_weight": null
+  },
+  "training_result": {
+    "actual_epochs": 44,
+    "best_epoch": 36,
+    "best_val_accuracy": 0.948924720287323,
+    "best_val_loss": 0.19569095969200134,
+    "training_time_seconds": 3358.4048566818237
+  },
+  "test_result": {
+    "final_test_run": true,
+    "test_loss": 0.1640140861272812,
+    "accuracy": 0.9531459170013387,
+    "macro_precision": 0.9529018310868912,
+    "macro_recall": 0.9529751894516245,
+    "macro_f1": 0.9527602101946888,
+    "balanced_accuracy": 0.9529751894516245,
+    "weighted_precision": 0.9530205859008011,
+    "weighted_recall": 0.9531459170013387,
+    "weighted_f1": 0.9528994378077154
+  },
+  "efficiency": {
+    "best_model_size_mb": 87.68048095703125,
+    "inference_time_ms_per_image": 15.023368853124452,
+    "fps": 66.5629666539158
+  },
+  "dataset": {
+    "path": "/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split",
+    "class_names": [
+      "anthracnose",
+      "healthy",
+      "leaf_miner",
+      "not_cashew_leaf",
+      "red_rust"
+    ],
+    "train_images": 5215,
+    "val_images": 1488,
+    "test_images": 747,
+    "total_images": 7450,
+    "test_set_locked": true
+  }
+}

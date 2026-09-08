@@ -1,0 +1,748 @@
+filename,true_label,predicted_label,confidence,correct
+anthracnose/anthracnose1013_.jpg,anthracnose,anthracnose,0.9936258792877197,True
+anthracnose/anthracnose1023_.jpg,anthracnose,anthracnose,0.9993832111358643,True
+anthracnose/anthracnose104_.jpg,anthracnose,anthracnose,0.9962121248245239,True
+anthracnose/anthracnose1052_.jpg,anthracnose,anthracnose,0.999297022819519,True
+anthracnose/anthracnose1059_.jpg,anthracnose,anthracnose,0.9141982197761536,True
+anthracnose/anthracnose1062_.jpg,anthracnose,anthracnose,0.9994551539421082,True
+anthracnose/anthracnose1086_.jpg,anthracnose,anthracnose,0.9997102618217468,True
+anthracnose/anthracnose1090_.jpg,anthracnose,anthracnose,0.9998471736907959,True
+anthracnose/anthracnose1093_.jpg,anthracnose,anthracnose,0.9996523857116699,True
+anthracnose/anthracnose110_.jpg,anthracnose,not_cashew_leaf,0.9842396974563599,False
+anthracnose/anthracnose1124_.jpg,anthracnose,anthracnose,0.9997169375419617,True
+anthracnose/anthracnose1129_.jpg,anthracnose,anthracnose,0.9998335838317871,True
+anthracnose/anthracnose1135_.jpg,anthracnose,anthracnose,0.9982851147651672,True
+anthracnose/anthracnose1139_.jpg,anthracnose,anthracnose,0.9990202188491821,True
+anthracnose/anthracnose1152_.jpg,anthracnose,anthracnose,0.9972705245018005,True
+anthracnose/anthracnose1154_.jpg,anthracnose,not_cashew_leaf,0.9941022992134094,False
+anthracnose/anthracnose1169_.jpg,anthracnose,anthracnose,0.9617356061935425,True
+anthracnose/anthracnose1176_.jpg,anthracnose,leaf_miner,0.9975684285163879,False
+anthracnose/anthracnose1179_.jpg,anthracnose,anthracnose,0.9983024597167969,True
+anthracnose/anthracnose1180_.jpg,anthracnose,anthracnose,0.9983218312263489,True
+anthracnose/anthracnose1189_.jpg,anthracnose,anthracnose,0.9862810373306274,True
+anthracnose/anthracnose1196_.jpg,anthracnose,anthracnose,0.97275710105896,True
+anthracnose/anthracnose1199_.jpg,anthracnose,anthracnose,0.9835521578788757,True
+anthracnose/anthracnose1212_.jpg,anthracnose,anthracnose,0.9755681157112122,True
+anthracnose/anthracnose122_.jpg,anthracnose,anthracnose,0.980742335319519,True
+anthracnose/anthracnose123_.jpg,anthracnose,anthracnose,0.9244482517242432,True
+anthracnose/anthracnose1274_.jpg,anthracnose,anthracnose,0.9746021032333374,True
+anthracnose/anthracnose130_.jpg,anthracnose,anthracnose,0.9992514252662659,True
+anthracnose/anthracnose1311_.jpg,anthracnose,anthracnose,0.9892492294311523,True
+anthracnose/anthracnose1323_.jpg,anthracnose,leaf_miner,0.8730164170265198,False
+anthracnose/anthracnose1344_.jpg,anthracnose,anthracnose,0.9953734278678894,True
+anthracnose/anthracnose1349_.jpg,anthracnose,anthracnose,0.9922760128974915,True
+anthracnose/anthracnose1356_.jpg,anthracnose,anthracnose,0.9553805589675903,True
+anthracnose/anthracnose1357_.jpg,anthracnose,anthracnose,0.979072630405426,True
+anthracnose/anthracnose1362_.jpg,anthracnose,anthracnose,0.8708065152168274,True
+anthracnose/anthracnose1363_.jpg,anthracnose,anthracnose,0.6034337878227234,True
+anthracnose/anthracnose1378_.jpg,anthracnose,anthracnose,0.9892786145210266,True
+anthracnose/anthracnose1418_.jpg,anthracnose,anthracnose,0.9774653911590576,True
+anthracnose/anthracnose1430_.jpg,anthracnose,red_rust,0.6838400363922119,False
+anthracnose/anthracnose1450_.jpg,anthracnose,anthracnose,0.6941240429878235,True
+anthracnose/anthracnose1453_.jpg,anthracnose,healthy,0.6477846503257751,False
+anthracnose/anthracnose1456_.jpg,anthracnose,anthracnose,0.6114823818206787,True
+anthracnose/anthracnose1460_.jpg,anthracnose,anthracnose,0.8316500782966614,True
+anthracnose/anthracnose1467_.jpg,anthracnose,anthracnose,0.9804460406303406,True
+anthracnose/anthracnose1469_.jpg,anthracnose,anthracnose,0.9905214309692383,True
+anthracnose/anthracnose1470_.jpg,anthracnose,red_rust,0.7296701669692993,False
+anthracnose/anthracnose1478_.jpg,anthracnose,anthracnose,0.9655340313911438,True
+anthracnose/anthracnose1486_.jpg,anthracnose,anthracnose,0.9928988218307495,True
+anthracnose/anthracnose1489_.jpg,anthracnose,anthracnose,0.8659351468086243,True
+anthracnose/anthracnose1495_.jpg,anthracnose,anthracnose,0.9994930028915405,True
+anthracnose/anthracnose151_.jpg,anthracnose,anthracnose,0.9979965090751648,True
+anthracnose/anthracnose1523_.jpg,anthracnose,healthy,0.5222656726837158,False
+anthracnose/anthracnose1531_.jpg,anthracnose,anthracnose,0.5555495619773865,True
+anthracnose/anthracnose1553_.jpg,anthracnose,anthracnose,0.7570786476135254,True
+anthracnose/anthracnose1556_.jpg,anthracnose,anthracnose,0.9867615699768066,True
+anthracnose/anthracnose1557_.jpg,anthracnose,anthracnose,0.9938706159591675,True
+anthracnose/anthracnose1560_.jpg,anthracnose,anthracnose,0.9733474254608154,True
+anthracnose/anthracnose1562_.jpg,anthracnose,red_rust,0.8496729731559753,False
+anthracnose/anthracnose1566_.jpg,anthracnose,anthracnose,0.996755063533783,True
+anthracnose/anthracnose1576_.jpg,anthracnose,anthracnose,0.9832614064216614,True
+anthracnose/anthracnose1581_.jpg,anthracnose,anthracnose,0.9991205334663391,True
+anthracnose/anthracnose1602_.jpg,anthracnose,anthracnose,0.9958809614181519,True
+anthracnose/anthracnose160_.jpg,anthracnose,anthracnose,0.9997300505638123,True
+anthracnose/anthracnose164_.jpg,anthracnose,anthracnose,0.9949066042900085,True
+anthracnose/anthracnose1651_.jpg,anthracnose,anthracnose,0.9946850538253784,True
+anthracnose/anthracnose1668_.jpg,anthracnose,anthracnose,0.9060538411140442,True
+anthracnose/anthracnose1690_.jpg,anthracnose,anthracnose,0.9983940720558167,True
+anthracnose/anthracnose1697_.jpg,anthracnose,anthracnose,0.999387264251709,True
+anthracnose/anthracnose1703_.jpg,anthracnose,anthracnose,0.9977768063545227,True
+anthracnose/anthracnose1724_.jpg,anthracnose,anthracnose,0.9998002648353577,True
+anthracnose/anthracnose177_.jpg,anthracnose,anthracnose,0.9936854243278503,True
+anthracnose/anthracnose181_.jpg,anthracnose,anthracnose,0.9854507446289062,True
+anthracnose/anthracnose182_.jpg,anthracnose,anthracnose,0.9985814094543457,True
+anthracnose/anthracnose188_.jpg,anthracnose,anthracnose,0.9924131035804749,True
+anthracnose/anthracnose198_.jpg,anthracnose,anthracnose,0.9943049550056458,True
+anthracnose/anthracnose214_.jpg,anthracnose,anthracnose,0.9989567995071411,True
+anthracnose/anthracnose216_.jpg,anthracnose,anthracnose,0.9960038065910339,True
+anthracnose/anthracnose217_.jpg,anthracnose,anthracnose,0.9999109506607056,True
+anthracnose/anthracnose21_.jpg,anthracnose,anthracnose,0.9954414367675781,True
+anthracnose/anthracnose226_.jpg,anthracnose,anthracnose,0.9999121427536011,True
+anthracnose/anthracnose246_.jpg,anthracnose,anthracnose,0.9988194108009338,True
+anthracnose/anthracnose252_.jpg,anthracnose,anthracnose,0.9996888637542725,True
+anthracnose/anthracnose256_.jpg,anthracnose,anthracnose,0.9762900471687317,True
+anthracnose/anthracnose290_.jpg,anthracnose,anthracnose,0.9494166970252991,True
+anthracnose/anthracnose295_.jpg,anthracnose,anthracnose,0.9827777743339539,True
+anthracnose/anthracnose296_.jpg,anthracnose,anthracnose,0.9983733892440796,True
+anthracnose/anthracnose307_.jpg,anthracnose,anthracnose,0.9922786951065063,True
+anthracnose/anthracnose347_.jpg,anthracnose,anthracnose,0.9999401569366455,True
+anthracnose/anthracnose355_.jpg,anthracnose,anthracnose,0.999330997467041,True
+anthracnose/anthracnose365_.jpg,anthracnose,anthracnose,0.9920686483383179,True
+anthracnose/anthracnose366_.jpg,anthracnose,anthracnose,0.9990422129631042,True
+anthracnose/anthracnose372_.jpg,anthracnose,anthracnose,0.9984941482543945,True
+anthracnose/anthracnose383_.jpg,anthracnose,anthracnose,0.9985054731369019,True
+anthracnose/anthracnose430_.jpg,anthracnose,anthracnose,0.9995768666267395,True
+anthracnose/anthracnose441_.jpg,anthracnose,anthracnose,0.9986541271209717,True
+anthracnose/anthracnose452_.jpg,anthracnose,anthracnose,0.9990122318267822,True
+anthracnose/anthracnose487_.jpg,anthracnose,anthracnose,0.998004138469696,True
+anthracnose/anthracnose525_.jpg,anthracnose,anthracnose,0.9997403025627136,True
+anthracnose/anthracnose534_.jpg,anthracnose,anthracnose,0.993403971195221,True
+anthracnose/anthracnose539_.jpg,anthracnose,anthracnose,0.9662976861000061,True
+anthracnose/anthracnose543_.jpg,anthracnose,anthracnose,0.9996034502983093,True
+anthracnose/anthracnose555_.jpg,anthracnose,anthracnose,0.9907660484313965,True
+anthracnose/anthracnose568_.jpg,anthracnose,anthracnose,0.9998420476913452,True
+anthracnose/anthracnose570_.jpg,anthracnose,anthracnose,0.9970813393592834,True
+anthracnose/anthracnose577_.jpg,anthracnose,red_rust,0.9838001132011414,False
+anthracnose/anthracnose585_.jpg,anthracnose,anthracnose,0.9953014850616455,True
+anthracnose/anthracnose597_.jpg,anthracnose,red_rust,0.9993022680282593,False
+anthracnose/anthracnose615_.jpg,anthracnose,anthracnose,0.9997790455818176,True
+anthracnose/anthracnose627_.jpg,anthracnose,anthracnose,0.9999232292175293,True
+anthracnose/anthracnose629_.jpg,anthracnose,anthracnose,0.9998335838317871,True
+anthracnose/anthracnose637_.jpg,anthracnose,anthracnose,0.9996472597122192,True
+anthracnose/anthracnose63_.jpg,anthracnose,anthracnose,0.8982066512107849,True
+anthracnose/anthracnose650_.jpg,anthracnose,anthracnose,0.9999682903289795,True
+anthracnose/anthracnose651_.jpg,anthracnose,anthracnose,0.9999064207077026,True
+anthracnose/anthracnose661_.jpg,anthracnose,anthracnose,0.9994562268257141,True
+anthracnose/anthracnose665_.jpg,anthracnose,anthracnose,0.9999043941497803,True
+anthracnose/anthracnose675_.jpg,anthracnose,anthracnose,0.9654068350791931,True
+anthracnose/anthracnose696_.jpg,anthracnose,anthracnose,0.5343055129051208,True
+anthracnose/anthracnose71_.jpg,anthracnose,anthracnose,0.9984046816825867,True
+anthracnose/anthracnose721_.jpg,anthracnose,anthracnose,0.9715539813041687,True
+anthracnose/anthracnose733_.jpg,anthracnose,anthracnose,0.9853184223175049,True
+anthracnose/anthracnose734_.jpg,anthracnose,anthracnose,0.9991574287414551,True
+anthracnose/anthracnose741_.jpg,anthracnose,anthracnose,0.9974682331085205,True
+anthracnose/anthracnose742_.jpg,anthracnose,anthracnose,0.993720531463623,True
+anthracnose/anthracnose748_.jpg,anthracnose,anthracnose,0.9851839542388916,True
+anthracnose/anthracnose763_.jpg,anthracnose,anthracnose,0.9994781613349915,True
+anthracnose/anthracnose766_.jpg,anthracnose,anthracnose,0.9105405807495117,True
+anthracnose/anthracnose778_.jpg,anthracnose,healthy,0.9208253026008606,False
+anthracnose/anthracnose78_.jpg,anthracnose,anthracnose,0.99994957447052,True
+anthracnose/anthracnose807_.jpg,anthracnose,anthracnose,0.908332109451294,True
+anthracnose/anthracnose820_.jpg,anthracnose,anthracnose,0.9903972148895264,True
+anthracnose/anthracnose828_.jpg,anthracnose,anthracnose,0.9998680353164673,True
+anthracnose/anthracnose833_.jpg,anthracnose,anthracnose,0.9750583171844482,True
+anthracnose/anthracnose838_.jpg,anthracnose,anthracnose,0.7571012377738953,True
+anthracnose/anthracnose844_.jpg,anthracnose,anthracnose,0.99664306640625,True
+anthracnose/anthracnose862_.jpg,anthracnose,anthracnose,0.9991759657859802,True
+anthracnose/anthracnose869_.jpg,anthracnose,anthracnose,0.9678586721420288,True
+anthracnose/anthracnose86_.jpg,anthracnose,anthracnose,0.9996949434280396,True
+anthracnose/anthracnose875_.jpg,anthracnose,anthracnose,0.9859617352485657,True
+anthracnose/anthracnose878_.jpg,anthracnose,anthracnose,0.9256332516670227,True
+anthracnose/anthracnose897_.jpg,anthracnose,anthracnose,0.9409146904945374,True
+anthracnose/anthracnose8_.jpg,anthracnose,anthracnose,0.9521975517272949,True
+anthracnose/anthracnose915_.jpg,anthracnose,anthracnose,0.9945300221443176,True
+anthracnose/anthracnose920_.jpg,anthracnose,anthracnose,0.9993521571159363,True
+anthracnose/anthracnose921_.jpg,anthracnose,anthracnose,0.9993712306022644,True
+anthracnose/anthracnose934_.jpg,anthracnose,anthracnose,0.6997305750846863,True
+anthracnose/anthracnose941_.jpg,anthracnose,leaf_miner,0.5439265966415405,False
+anthracnose/anthracnose943_.jpg,anthracnose,leaf_miner,0.9975026249885559,False
+anthracnose/anthracnose967_.jpg,anthracnose,anthracnose,0.9978119134902954,True
+anthracnose/anthracnose972_.jpg,anthracnose,anthracnose,0.9882795810699463,True
+anthracnose/anthracnose976_.jpg,anthracnose,anthracnose,0.9987509250640869,True
+anthracnose/anthracnose979_.jpg,anthracnose,anthracnose,0.9581561088562012,True
+anthracnose/anthracnose988_.jpg,anthracnose,healthy,0.6241005659103394,False
+anthracnose/anthracnose992_.jpg,anthracnose,leaf_miner,0.8698877096176147,False
+anthracnose/anthracnose996_.jpg,anthracnose,anthracnose,0.9352331161499023,True
+anthracnose/anthracnose997_.jpg,anthracnose,anthracnose,0.9666210412979126,True
+anthracnose/anthracnose99_.jpg,anthracnose,anthracnose,0.9999446868896484,True
+healthy/healthy-augmentation_original_healthy_original_cashew-alive-leaf-802-jpg_d6038a10-c028-42a7-a8c2-8c04e44654ec-jpg_167816b3-60ee-41f6-8067-6c24fc8f658c_jpg.rf.6503057758a1b99753d7cb568cf90a56.jpg,healthy,leaf_miner,0.43471255898475647,False
+healthy/healthy-augmentation_original_healthy_original_healthy-303-jpg_87a7d147-543b-4302-8492-67beefc0c786-jpg_11ed3528-445e-4862-8e2c-2ada1799a9cb_jpg.rf.608ad7081742a40814d69570aaeca332.jpg,healthy,healthy,0.7132431268692017,True
+healthy/healthy-augmentation_original_healthy_original_healthy-344-jpeg_66fe4b22-8c2b-41f0-8f2d-0ee77f858bc6-jpeg_69e16b86-462b-48e1-a147-f96a9e8acccb_jpeg.rf.0e12d69f48fd4dfed1fe86d4c5582a7a.jpg,healthy,healthy,0.9774846434593201,True
+healthy/healthy1014_.jpg,healthy,healthy,0.6418250203132629,True
+healthy/healthy1017_.jpg,healthy,healthy,0.9994357228279114,True
+healthy/healthy1021_.jpg,healthy,healthy,0.9952552914619446,True
+healthy/healthy1023_.jpg,healthy,healthy,0.9934024214744568,True
+healthy/healthy1048_.jpg,healthy,healthy,0.9652920365333557,True
+healthy/healthy1050_.jpg,healthy,healthy,0.9966577291488647,True
+healthy/healthy1051_.jpg,healthy,healthy,0.9986988306045532,True
+healthy/healthy1060_.jpg,healthy,healthy,0.994495689868927,True
+healthy/healthy1072_.jpg,healthy,healthy,0.9966920614242554,True
+healthy/healthy107_.jpg,healthy,healthy,0.9997397065162659,True
+healthy/healthy1083_.jpg,healthy,healthy,0.9997811913490295,True
+healthy/healthy1086_.jpg,healthy,healthy,0.9999127388000488,True
+healthy/healthy1088_.jpg,healthy,healthy,0.9996167421340942,True
+healthy/healthy1089_.jpg,healthy,healthy,0.9965324401855469,True
+healthy/healthy1090_.jpg,healthy,healthy,0.9917608499526978,True
+healthy/healthy1092_.jpg,healthy,healthy,0.9879258871078491,True
+healthy/healthy1102_.jpg,healthy,healthy,0.9790744185447693,True
+healthy/healthy1129_.jpg,healthy,healthy,0.9867563247680664,True
+healthy/healthy1132_.jpg,healthy,healthy,0.9842839241027832,True
+healthy/healthy118_.jpg,healthy,healthy,0.9999421834945679,True
+healthy/healthy1192_.jpg,healthy,healthy,0.9605331420898438,True
+healthy/healthy1197_.jpg,healthy,healthy,0.9990023970603943,True
+healthy/healthy122_.jpg,healthy,healthy,0.9990580677986145,True
+healthy/healthy1233_.jpg,healthy,healthy,0.9771547913551331,True
+healthy/healthy1242_.jpg,healthy,healthy,0.8948723077774048,True
+healthy/healthy1261_.jpg,healthy,healthy,0.9710569977760315,True
+healthy/healthy127_.jpg,healthy,healthy,0.9996106028556824,True
+healthy/healthy1298_.jpg,healthy,healthy,0.998897910118103,True
+healthy/healthy1300_.jpg,healthy,healthy,0.9989141225814819,True
+healthy/healthy1306_.jpg,healthy,healthy,0.9054796695709229,True
+healthy/healthy1307_.jpg,healthy,healthy,0.9798423647880554,True
+healthy/healthy1310_.jpg,healthy,healthy,0.9974663257598877,True
+healthy/healthy1344_.jpg,healthy,anthracnose,0.5529607534408569,False
+healthy/healthy1353_.jpg,healthy,healthy,0.9971297383308411,True
+healthy/healthy1357_.jpg,healthy,healthy,0.9459856152534485,True
+healthy/healthy1359_.jpg,healthy,healthy,0.8294026255607605,True
+healthy/healthy1363_.jpg,healthy,healthy,0.9628864526748657,True
+healthy/healthy1366_.jpg,healthy,healthy,0.9768528938293457,True
+healthy/healthy156_.jpg,healthy,healthy,0.9998263716697693,True
+healthy/healthy168_.jpg,healthy,healthy,0.995456337928772,True
+healthy/healthy175_.jpg,healthy,healthy,0.7954401969909668,True
+healthy/healthy189_.jpg,healthy,healthy,0.9993909597396851,True
+healthy/healthy203_.jpg,healthy,healthy,0.9996153116226196,True
+healthy/healthy224_.jpg,healthy,healthy,0.9997047781944275,True
+healthy/healthy242_.jpg,healthy,healthy,0.9994174242019653,True
+healthy/healthy254_.jpg,healthy,healthy,0.9987291693687439,True
+healthy/healthy269_.jpg,healthy,healthy,0.9989181756973267,True
+healthy/healthy278_.jpg,healthy,healthy,0.9930459856987,True
+healthy/healthy293_.jpg,healthy,healthy,0.9977522492408752,True
+healthy/healthy294_.jpg,healthy,healthy,0.9995884299278259,True
+healthy/healthy330_.jpg,healthy,healthy,0.9977523684501648,True
+healthy/healthy356_.jpg,healthy,healthy,0.9972463846206665,True
+healthy/healthy361_.jpg,healthy,healthy,0.9960730075836182,True
+healthy/healthy386_.jpg,healthy,healthy,0.9985697269439697,True
+healthy/healthy389_.jpg,healthy,healthy,0.9699670672416687,True
+healthy/healthy404_.jpg,healthy,healthy,0.9997820258140564,True
+healthy/healthy410_.jpg,healthy,healthy,0.9907885193824768,True
+healthy/healthy416_.jpg,healthy,healthy,0.9998873472213745,True
+healthy/healthy427_.jpg,healthy,healthy,0.9772088527679443,True
+healthy/healthy430_.jpg,healthy,healthy,0.9974730610847473,True
+healthy/healthy434_.jpg,healthy,healthy,0.9978852868080139,True
+healthy/healthy440_.jpg,healthy,healthy,0.9995361566543579,True
+healthy/healthy451_.jpg,healthy,healthy,0.9998563528060913,True
+healthy/healthy464_.jpg,healthy,healthy,0.8437578678131104,True
+healthy/healthy472_.jpg,healthy,healthy,0.9965320825576782,True
+healthy/healthy484_.jpg,healthy,healthy,0.9988172054290771,True
+healthy/healthy488_.jpg,healthy,healthy,0.9992684721946716,True
+healthy/healthy489_.jpg,healthy,healthy,0.998556911945343,True
+healthy/healthy494_.jpg,healthy,healthy,0.9987285733222961,True
+healthy/healthy510_.jpg,healthy,healthy,0.6209876537322998,True
+healthy/healthy524_.jpg,healthy,healthy,0.9896741509437561,True
+healthy/healthy546_.jpg,healthy,healthy,0.9993280172348022,True
+healthy/healthy554_.jpg,healthy,healthy,0.9956532716751099,True
+healthy/healthy575_.jpg,healthy,healthy,0.9289406538009644,True
+healthy/healthy578_.jpg,healthy,healthy,0.9751325249671936,True
+healthy/healthy584_.jpg,healthy,anthracnose,0.5124859809875488,False
+healthy/healthy592_.jpg,healthy,healthy,0.9892362952232361,True
+healthy/healthy593_.jpg,healthy,healthy,0.9750255346298218,True
+healthy/healthy658_.jpg,healthy,healthy,0.9939643740653992,True
+healthy/healthy755_.jpg,healthy,healthy,0.9670720100402832,True
+healthy/healthy759_.jpg,healthy,healthy,0.7878410220146179,True
+healthy/healthy782_.jpg,healthy,healthy,0.9971461892127991,True
+healthy/healthy783_.jpg,healthy,healthy,0.9986240863800049,True
+healthy/healthy784_.jpg,healthy,healthy,0.8668543100357056,True
+healthy/healthy790_.jpg,healthy,healthy,0.9764072895050049,True
+healthy/healthy795_.jpg,healthy,healthy,0.996507465839386,True
+healthy/healthy812_.jpg,healthy,healthy,0.9985218644142151,True
+healthy/healthy814_.jpg,healthy,healthy,0.9291112422943115,True
+healthy/healthy815_.jpg,healthy,healthy,0.9768778085708618,True
+healthy/healthy818_.jpg,healthy,healthy,0.9856160879135132,True
+healthy/healthy833_.jpg,healthy,healthy,0.9935634136199951,True
+healthy/healthy834_.jpg,healthy,healthy,0.9890079498291016,True
+healthy/healthy83_.jpg,healthy,healthy,0.9988309741020203,True
+healthy/healthy841_.jpg,healthy,healthy,0.9974907636642456,True
+healthy/healthy845_.jpg,healthy,anthracnose,0.8984347581863403,False
+healthy/healthy855_.jpg,healthy,healthy,0.9996533393859863,True
+healthy/healthy869_.jpg,healthy,healthy,0.979482889175415,True
+healthy/healthy906_.jpg,healthy,red_rust,0.6544932126998901,False
+healthy/healthy913_.jpg,healthy,healthy,0.9999065399169922,True
+healthy/healthy919_.jpg,healthy,healthy,0.9996055960655212,True
+healthy/healthy921_.jpg,healthy,healthy,0.9996404647827148,True
+healthy/healthy928_.jpg,healthy,healthy,0.9578081965446472,True
+healthy/healthy933_.jpg,healthy,healthy,0.9037365913391113,True
+healthy/healthy934_.jpg,healthy,healthy,0.9861944913864136,True
+healthy/healthy939_.jpg,healthy,healthy,0.6712504625320435,True
+healthy/healthy940_.jpg,healthy,healthy,0.9961375594139099,True
+healthy/healthy968_.jpg,healthy,healthy,0.9809088706970215,True
+healthy/healthy981_.jpg,healthy,healthy,0.999536395072937,True
+healthy/healthy985_.jpg,healthy,healthy,0.7376219630241394,True
+healthy/healthy_original_cashew-alive-leaf-378-jpeg_4cf2e5c0-f6aa-4b93-83fb-9047135d2138_jpeg.rf.5aebf33991f99faf772043253b13445f.jpg,healthy,healthy,0.9999245405197144,True
+healthy/healthy_original_cashew-alive-leaf-458-jpg_1c2cf345-62eb-47d7-b41c-ec0d5e5cb884_jpg.rf.aefc176264da27ae24e0c53295a3c363.jpg,healthy,healthy,0.9998190999031067,True
+healthy/healthy_original_cashew-alive-leaf-586-jpeg_f11620fc-d96d-4eb1-a0e6-c487a575dfa7_jpeg.rf.34bc45aa90729a36e1dcabefe16f2790.jpg,healthy,healthy,0.9993540644645691,True
+healthy/healthy_original_cashew-alive-leaf-587-jpeg_368bf056-f9c2-4721-b224-814f1704bae1_jpeg.rf.dd3c497d776aa84d0e2917e40b01ada4.jpg,healthy,healthy,0.9990869760513306,True
+healthy/healthy_original_cashew-alive-leaf-762-jpg_b00c4a7b-c980-4d70-8cc5-9f4cd2b957dc_jpg.rf.a20df8dce9c53247ede2a32cdbf4bc86.jpg,healthy,healthy,0.9596105217933655,True
+healthy/healthy_original_cashew-alive-leaf-798-jpg_8ac339f7-a750-4020-ba99-04bb33f06d58_jpg.rf.9f03fcd7ca4b120e93fd3b76b9fc3cac.jpg,healthy,healthy,0.9900168776512146,True
+healthy/healthy_original_cashew-alive-leaf-866-jpg_751780db-4c43-40b3-8279-d7d8b1191e3f_jpg.rf.99dfd77ce30a6e656cc7fad260de7eef.jpg,healthy,healthy,0.9994463324546814,True
+healthy/healthy_original_cashew-alive-leaf-911-jpg_ed08f87d-b5fb-450d-bfd3-455eaf3c5926_jpg.rf.4c9eb17b3b70aece1c55e51c5fee4fe4.jpg,healthy,healthy,0.5258458852767944,True
+healthy/healthy_original_cashew-alive-leaf-914-jpg_303dcfbd-8ea1-46fb-ab82-3582b9951181_jpg.rf.52e9a1f2b22d7334d5ab4c6f11346d8f.jpg,healthy,healthy,0.951165497303009,True
+healthy/healthy_original_healthy-1061-jpg_ac423454-c3b7-4b11-82f7-9e6cbd590fb0_jpg.rf.1b9c3533060b0216b1061c2fe60a8f1f.jpg,healthy,leaf_miner,0.5047131180763245,False
+healthy/healthy_original_healthy-1070-jpg_bcf6e100-0d4e-4dd9-bfbc-bc1d994db9bf_jpg.rf.e1c9160d1b552997dee7cd4f2d4d6f63.jpg,healthy,healthy,0.9989250302314758,True
+healthy/healthy_original_healthy-1137-jpeg_c39baeda-ac11-4cc6-a962-8d27724bf478_jpeg.rf.3d3ec01bda6fdbd3ae884db7d21d52b7.jpg,healthy,healthy,0.9997783303260803,True
+healthy/healthy_original_healthy-1201-jpeg_d42f0e87-26dd-4478-92ad-df51674ceefc_jpeg.rf.56282f206bcda94fc06c3f03769cf347.jpg,healthy,healthy,0.9985696077346802,True
+healthy/healthy_original_healthy-1255-jpg_49b54d73-cff7-4c46-8c86-26cbc16fbd4a_jpg.rf.e28d830598249a0e01ae47d544de5cdd.jpg,healthy,healthy,0.9982572197914124,True
+healthy/healthy_original_healthy-1308-jpeg_d5e2555c-c7da-4ddf-8134-7e21ee37bd8f_jpeg.rf.e27b04c49bc77afdeb4e9eabac781d9d.jpg,healthy,healthy,0.9544218182563782,True
+healthy/healthy_original_healthy-1452-jpeg_14a0b469-6e39-45b2-a194-651502a33daa_jpeg.rf.662f7ddad2946e67400b0971945a6b11.jpg,healthy,healthy,0.7554488778114319,True
+healthy/healthy_original_healthy-1496-jpg_0f94d6f8-74bf-4ccb-b2d2-1c6537430b1f_jpg.rf.1c5775c69087b71ed384c1e83567da09.jpg,healthy,healthy,0.999977707862854,True
+healthy/healthy_original_healthy-161-jpg_00370329-ee0a-4d0c-9eae-133df8b8fd9d_jpg.rf.4d3f9c597fedfcb29ed95fa298e16afa.jpg,healthy,healthy,0.9969722032546997,True
+healthy/healthy_original_healthy-1699-jpeg_cb89b46e-b31e-416e-9af3-a78c95155c5d_jpeg.rf.4007a3c101a747a35337b6ebb500cbbb.jpg,healthy,healthy,0.9967830181121826,True
+healthy/healthy_original_healthy-1703-jpeg_f3bbaff9-b7e9-4da6-9723-bc00d3a7273b_jpeg.rf.14852798fd51d771999eea546c6bcd90.jpg,healthy,healthy,0.9975912570953369,True
+healthy/healthy_original_healthy-207-jpg_f82394cf-c572-4c7e-b608-58e3856450c1_jpg.rf.f3636a12391832ee7edb45e667646da2.jpg,healthy,healthy,0.9994854927062988,True
+healthy/healthy_original_healthy-232-jpeg_c5a9a03a-1584-4fc0-8bcb-cae2d2ca30c4_jpeg.rf.b1887b3412320ffe8bccf3401f6f5cbf.jpg,healthy,healthy,0.9999845027923584,True
+healthy/healthy_original_healthy-258-jpg_9c0f54a1-fd55-4e2b-becf-ef60f1206a29_jpg.rf.e778cbda60ddd9cbe2074b274a184938.jpg,healthy,anthracnose,0.6780903339385986,False
+healthy/healthy_original_healthy-332-jpeg_665a7367-bfbc-4b3e-8d0f-1e72bb14bdfa_jpeg.rf.bd3e81b6f8c2666cc6357351cf7a07e9.jpg,healthy,healthy,0.8993769884109497,True
+healthy/healthy_original_healthy-392-jpeg_8cbede02-e546-4618-bfd2-248f9c93f9f1_jpeg.rf.e9aa0322aaa07c770e7619d7fa82661f.jpg,healthy,healthy,0.9987409710884094,True
+healthy/healthy_original_healthy-410-jpg_514ea9cc-e401-4d60-abe5-7ae67aeb153e_jpg.rf.611cb8fff2f18720d270055fd45a467d.jpg,healthy,healthy,0.9941784143447876,True
+healthy/healthy_original_healthy-671-jpeg_cde29b3f-771a-4bc0-be57-ce2767daffdd_jpeg.rf.4646cf8d29f8f40e2e87c6d2406ebcab.jpg,healthy,healthy,0.9970510005950928,True
+healthy/healthy_original_healthy-780-jpeg_e24422e7-c666-4eac-88fc-5acea003ab8f_jpeg.rf.8eb5a79e1840dce7024856f7618a4901.jpg,healthy,healthy,0.999976634979248,True
+healthy/healthy_original_healthy-917-jpg_89f95547-29ff-4a0a-b7f7-4eea4d6c19c3_jpg.rf.bc3cc61bd1f4d5c719b2d55224fa2741.jpg,healthy,healthy,0.997255265712738,True
+healthy/healthy_original_healthy-986-jpg_1b731b60-7ded-4c3b-887e-560dab06813c_jpg.rf.1c93fb6bfe747954ad7a8ea1f1a5961c.jpg,healthy,healthy,0.999940037727356,True
+leaf_miner/leaf miner100_.jpg,leaf_miner,leaf_miner,0.9962533712387085,True
+leaf_miner/leaf miner1012_.jpg,leaf_miner,leaf_miner,0.9995524287223816,True
+leaf_miner/leaf miner1023_.jpg,leaf_miner,leaf_miner,0.8488981127738953,True
+leaf_miner/leaf miner1049_.jpg,leaf_miner,leaf_miner,0.9945417046546936,True
+leaf_miner/leaf miner1050_.jpg,leaf_miner,leaf_miner,0.9975923895835876,True
+leaf_miner/leaf miner1069_.jpg,leaf_miner,leaf_miner,0.9642918109893799,True
+leaf_miner/leaf miner1126_.jpg,leaf_miner,leaf_miner,0.9955264925956726,True
+leaf_miner/leaf miner113_.jpg,leaf_miner,leaf_miner,0.559529721736908,True
+leaf_miner/leaf miner1149_.jpg,leaf_miner,leaf_miner,0.9726933836936951,True
+leaf_miner/leaf miner1154_.jpg,leaf_miner,leaf_miner,0.9944877028465271,True
+leaf_miner/leaf miner1164_.jpg,leaf_miner,leaf_miner,0.9995437264442444,True
+leaf_miner/leaf miner1169_.jpg,leaf_miner,leaf_miner,0.9511882066726685,True
+leaf_miner/leaf miner1173_.jpg,leaf_miner,red_rust,0.6620646715164185,False
+leaf_miner/leaf miner1178_.jpg,leaf_miner,leaf_miner,0.9555631279945374,True
+leaf_miner/leaf miner1181_.jpg,leaf_miner,leaf_miner,0.9904778003692627,True
+leaf_miner/leaf miner1184_.jpg,leaf_miner,leaf_miner,0.9917563199996948,True
+leaf_miner/leaf miner1200_.jpg,leaf_miner,leaf_miner,0.9850789308547974,True
+leaf_miner/leaf miner1202_.jpg,leaf_miner,leaf_miner,0.9990354776382446,True
+leaf_miner/leaf miner1209_.jpg,leaf_miner,leaf_miner,0.8054922223091125,True
+leaf_miner/leaf miner120_.jpg,leaf_miner,leaf_miner,0.44681593775749207,True
+leaf_miner/leaf miner1222_.jpg,leaf_miner,leaf_miner,0.9959374666213989,True
+leaf_miner/leaf miner1257_.jpg,leaf_miner,leaf_miner,0.9998589754104614,True
+leaf_miner/leaf miner1262_.jpg,leaf_miner,leaf_miner,0.7167007327079773,True
+leaf_miner/leaf miner1263_.jpg,leaf_miner,not_cashew_leaf,0.7869378328323364,False
+leaf_miner/leaf miner1269_.jpg,leaf_miner,leaf_miner,0.9974058270454407,True
+leaf_miner/leaf miner126_.jpg,leaf_miner,not_cashew_leaf,0.8686656951904297,False
+leaf_miner/leaf miner1281_.jpg,leaf_miner,leaf_miner,0.9991462230682373,True
+leaf_miner/leaf miner1297_.jpg,leaf_miner,leaf_miner,0.9984309077262878,True
+leaf_miner/leaf miner1320_.jpg,leaf_miner,leaf_miner,0.9989413619041443,True
+leaf_miner/leaf miner1325_.jpg,leaf_miner,leaf_miner,0.999477207660675,True
+leaf_miner/leaf miner133_.jpg,leaf_miner,leaf_miner,0.8988242149353027,True
+leaf_miner/leaf miner1344_.jpg,leaf_miner,leaf_miner,0.9890874624252319,True
+leaf_miner/leaf miner1358_.jpg,leaf_miner,leaf_miner,0.9355427622795105,True
+leaf_miner/leaf miner1373_.jpg,leaf_miner,anthracnose,0.5857556462287903,False
+leaf_miner/leaf miner139_.jpg,leaf_miner,leaf_miner,0.8469485640525818,True
+leaf_miner/leaf miner140_.jpg,leaf_miner,leaf_miner,0.9921332597732544,True
+leaf_miner/leaf miner157_.jpg,leaf_miner,leaf_miner,0.9577746391296387,True
+leaf_miner/leaf miner217_.jpg,leaf_miner,leaf_miner,0.9228094220161438,True
+leaf_miner/leaf miner218_.jpg,leaf_miner,leaf_miner,0.9969778060913086,True
+leaf_miner/leaf miner219_.jpg,leaf_miner,leaf_miner,0.9996240139007568,True
+leaf_miner/leaf miner226_.jpg,leaf_miner,leaf_miner,0.9991589784622192,True
+leaf_miner/leaf miner235_.jpg,leaf_miner,leaf_miner,0.999946117401123,True
+leaf_miner/leaf miner237_.jpg,leaf_miner,leaf_miner,0.9918085932731628,True
+leaf_miner/leaf miner265_.jpg,leaf_miner,leaf_miner,0.9993738532066345,True
+leaf_miner/leaf miner266_.jpg,leaf_miner,leaf_miner,0.9902437329292297,True
+leaf_miner/leaf miner267_.jpg,leaf_miner,leaf_miner,0.9985653758049011,True
+leaf_miner/leaf miner269_.jpg,leaf_miner,leaf_miner,0.987810492515564,True
+leaf_miner/leaf miner280_.jpg,leaf_miner,leaf_miner,0.9927103519439697,True
+leaf_miner/leaf miner289_.jpg,leaf_miner,leaf_miner,0.9678354263305664,True
+leaf_miner/leaf miner308_.jpg,leaf_miner,leaf_miner,0.9763857126235962,True
+leaf_miner/leaf miner309_.jpg,leaf_miner,leaf_miner,0.9996610879898071,True
+leaf_miner/leaf miner323_.jpg,leaf_miner,leaf_miner,0.32833540439605713,True
+leaf_miner/leaf miner325_.jpg,leaf_miner,leaf_miner,0.7859317064285278,True
+leaf_miner/leaf miner326_.jpg,leaf_miner,leaf_miner,0.7365798950195312,True
+leaf_miner/leaf miner32_.jpg,leaf_miner,leaf_miner,0.9940578937530518,True
+leaf_miner/leaf miner332_.jpg,leaf_miner,leaf_miner,0.9999784231185913,True
+leaf_miner/leaf miner33_.jpg,leaf_miner,leaf_miner,0.9990837574005127,True
+leaf_miner/leaf miner350_.jpg,leaf_miner,leaf_miner,0.9991707801818848,True
+leaf_miner/leaf miner355_.jpg,leaf_miner,leaf_miner,0.9924503564834595,True
+leaf_miner/leaf miner35_.jpg,leaf_miner,leaf_miner,0.9588384032249451,True
+leaf_miner/leaf miner362_.jpg,leaf_miner,leaf_miner,0.9982784986495972,True
+leaf_miner/leaf miner36_.jpg,leaf_miner,leaf_miner,0.996117353439331,True
+leaf_miner/leaf miner372_.jpg,leaf_miner,leaf_miner,0.994350254535675,True
+leaf_miner/leaf miner379_.jpg,leaf_miner,leaf_miner,0.9981405735015869,True
+leaf_miner/leaf miner384_.jpg,leaf_miner,leaf_miner,0.9428651332855225,True
+leaf_miner/leaf miner389_.jpg,leaf_miner,leaf_miner,0.9955620765686035,True
+leaf_miner/leaf miner423_.jpg,leaf_miner,leaf_miner,0.9580684900283813,True
+leaf_miner/leaf miner434_.jpg,leaf_miner,leaf_miner,0.9998112320899963,True
+leaf_miner/leaf miner435_.jpg,leaf_miner,leaf_miner,0.9898204803466797,True
+leaf_miner/leaf miner436_.jpg,leaf_miner,leaf_miner,0.9167311787605286,True
+leaf_miner/leaf miner437_.jpg,leaf_miner,leaf_miner,0.9990831613540649,True
+leaf_miner/leaf miner444_.jpg,leaf_miner,anthracnose,0.7285581827163696,False
+leaf_miner/leaf miner465_.jpg,leaf_miner,leaf_miner,0.8355572819709778,True
+leaf_miner/leaf miner467_.jpg,leaf_miner,leaf_miner,0.9973043203353882,True
+leaf_miner/leaf miner472_.jpg,leaf_miner,leaf_miner,0.9883220791816711,True
+leaf_miner/leaf miner473_.jpg,leaf_miner,leaf_miner,0.9759171605110168,True
+leaf_miner/leaf miner481_.jpg,leaf_miner,leaf_miner,0.9886096715927124,True
+leaf_miner/leaf miner487_.jpg,leaf_miner,leaf_miner,0.9982499480247498,True
+leaf_miner/leaf miner48_.jpg,leaf_miner,anthracnose,0.4749860465526581,False
+leaf_miner/leaf miner496_.jpg,leaf_miner,leaf_miner,0.9936259984970093,True
+leaf_miner/leaf miner500_.jpg,leaf_miner,leaf_miner,0.9981672763824463,True
+leaf_miner/leaf miner505_.jpg,leaf_miner,leaf_miner,0.9995250701904297,True
+leaf_miner/leaf miner50_.jpg,leaf_miner,leaf_miner,0.9994776844978333,True
+leaf_miner/leaf miner523_.jpg,leaf_miner,leaf_miner,0.9742246270179749,True
+leaf_miner/leaf miner525_.jpg,leaf_miner,leaf_miner,0.5558251142501831,True
+leaf_miner/leaf miner534_.jpg,leaf_miner,leaf_miner,0.9320791363716125,True
+leaf_miner/leaf miner542_.jpg,leaf_miner,leaf_miner,0.9998764991760254,True
+leaf_miner/leaf miner548_.jpg,leaf_miner,leaf_miner,0.9992961883544922,True
+leaf_miner/leaf miner551_.jpg,leaf_miner,leaf_miner,0.9992769360542297,True
+leaf_miner/leaf miner565_.jpg,leaf_miner,leaf_miner,0.9728654026985168,True
+leaf_miner/leaf miner566_.jpg,leaf_miner,leaf_miner,0.9963088631629944,True
+leaf_miner/leaf miner573_.jpg,leaf_miner,leaf_miner,0.9993929862976074,True
+leaf_miner/leaf miner57_.jpg,leaf_miner,leaf_miner,0.9751071333885193,True
+leaf_miner/leaf miner583_.jpg,leaf_miner,leaf_miner,0.99986732006073,True
+leaf_miner/leaf miner591_.jpg,leaf_miner,leaf_miner,0.9907146692276001,True
+leaf_miner/leaf miner59_.jpg,leaf_miner,leaf_miner,0.9993201494216919,True
+leaf_miner/leaf miner615_.jpg,leaf_miner,leaf_miner,0.9611390233039856,True
+leaf_miner/leaf miner622_.jpg,leaf_miner,leaf_miner,0.9960909485816956,True
+leaf_miner/leaf miner655_.jpg,leaf_miner,leaf_miner,0.9993032217025757,True
+leaf_miner/leaf miner664_.jpg,leaf_miner,leaf_miner,0.987337589263916,True
+leaf_miner/leaf miner677_.jpg,leaf_miner,anthracnose,0.9867541193962097,False
+leaf_miner/leaf miner680_.jpg,leaf_miner,leaf_miner,0.9948989748954773,True
+leaf_miner/leaf miner686_.jpg,leaf_miner,leaf_miner,0.9847641587257385,True
+leaf_miner/leaf miner692_.jpg,leaf_miner,leaf_miner,0.9594259262084961,True
+leaf_miner/leaf miner705_.jpg,leaf_miner,leaf_miner,0.9998282194137573,True
+leaf_miner/leaf miner716_.jpg,leaf_miner,leaf_miner,0.8560807108879089,True
+leaf_miner/leaf miner732_.jpg,leaf_miner,leaf_miner,0.9963933825492859,True
+leaf_miner/leaf miner757_.jpg,leaf_miner,leaf_miner,0.9993308782577515,True
+leaf_miner/leaf miner774_.jpg,leaf_miner,leaf_miner,0.9780796766281128,True
+leaf_miner/leaf miner778_.jpg,leaf_miner,leaf_miner,0.9986542463302612,True
+leaf_miner/leaf miner786_.jpg,leaf_miner,leaf_miner,0.9853391647338867,True
+leaf_miner/leaf miner794_.jpg,leaf_miner,leaf_miner,0.98912113904953,True
+leaf_miner/leaf miner795_.jpg,leaf_miner,leaf_miner,0.9980427026748657,True
+leaf_miner/leaf miner799_.jpg,leaf_miner,leaf_miner,0.9997859597206116,True
+leaf_miner/leaf miner802_.jpg,leaf_miner,leaf_miner,0.9998487234115601,True
+leaf_miner/leaf miner810_.jpg,leaf_miner,leaf_miner,0.9961203336715698,True
+leaf_miner/leaf miner826_.jpg,leaf_miner,healthy,0.7560891509056091,False
+leaf_miner/leaf miner833_.jpg,leaf_miner,leaf_miner,0.9521841406822205,True
+leaf_miner/leaf miner845_.jpg,leaf_miner,leaf_miner,0.9956633448600769,True
+leaf_miner/leaf miner863_.jpg,leaf_miner,leaf_miner,0.9990715980529785,True
+leaf_miner/leaf miner868_.jpg,leaf_miner,leaf_miner,0.9996283054351807,True
+leaf_miner/leaf miner869_.jpg,leaf_miner,leaf_miner,0.9884907007217407,True
+leaf_miner/leaf miner873_.jpg,leaf_miner,leaf_miner,0.9971344470977783,True
+leaf_miner/leaf miner875_.jpg,leaf_miner,leaf_miner,0.9975670576095581,True
+leaf_miner/leaf miner887_.jpg,leaf_miner,leaf_miner,0.9985270500183105,True
+leaf_miner/leaf miner910_.jpg,leaf_miner,leaf_miner,0.9945662021636963,True
+leaf_miner/leaf miner915_.jpg,leaf_miner,leaf_miner,0.906524121761322,True
+leaf_miner/leaf miner918_.jpg,leaf_miner,leaf_miner,0.9909378290176392,True
+leaf_miner/leaf miner91_.jpg,leaf_miner,leaf_miner,0.9748895764350891,True
+leaf_miner/leaf miner927_.jpg,leaf_miner,leaf_miner,0.9940947890281677,True
+leaf_miner/leaf miner943_.jpg,leaf_miner,leaf_miner,0.9978381991386414,True
+leaf_miner/leaf miner95_.jpg,leaf_miner,leaf_miner,0.6379417777061462,True
+leaf_miner/leaf miner970_.jpg,leaf_miner,leaf_miner,0.9838892221450806,True
+leaf_miner/leaf miner981_.jpg,leaf_miner,leaf_miner,0.7752792835235596,True
+leaf_miner/leaf miner996_.jpg,leaf_miner,leaf_miner,0.5868127346038818,True
+leaf_miner/leaf miner998_.jpg,leaf_miner,leaf_miner,0.9914345741271973,True
+leaf_miner/leaf miner999_.jpg,leaf_miner,leaf_miner,0.8785633444786072,True
+not_cashew_leaf/not_cashew_leaf_1006.jpg,not_cashew_leaf,not_cashew_leaf,0.998590886592865,True
+not_cashew_leaf/not_cashew_leaf_1011.jpg,not_cashew_leaf,not_cashew_leaf,0.9936442375183105,True
+not_cashew_leaf/not_cashew_leaf_1045.jpg,not_cashew_leaf,not_cashew_leaf,0.9531605839729309,True
+not_cashew_leaf/not_cashew_leaf_1063.jpg,not_cashew_leaf,not_cashew_leaf,0.9992272853851318,True
+not_cashew_leaf/not_cashew_leaf_1097.jpg,not_cashew_leaf,not_cashew_leaf,0.9999735355377197,True
+not_cashew_leaf/not_cashew_leaf_1098.jpg,not_cashew_leaf,not_cashew_leaf,0.9970759153366089,True
+not_cashew_leaf/not_cashew_leaf_1102.jpg,not_cashew_leaf,not_cashew_leaf,0.999514102935791,True
+not_cashew_leaf/not_cashew_leaf_1104.jpg,not_cashew_leaf,not_cashew_leaf,0.9987272620201111,True
+not_cashew_leaf/not_cashew_leaf_1115.jpg,not_cashew_leaf,not_cashew_leaf,0.9361746311187744,True
+not_cashew_leaf/not_cashew_leaf_1129.jpg,not_cashew_leaf,not_cashew_leaf,0.9999023675918579,True
+not_cashew_leaf/not_cashew_leaf_1147.jpg,not_cashew_leaf,not_cashew_leaf,0.9812207221984863,True
+not_cashew_leaf/not_cashew_leaf_1160.jpg,not_cashew_leaf,not_cashew_leaf,0.9990442395210266,True
+not_cashew_leaf/not_cashew_leaf_1162.jpg,not_cashew_leaf,not_cashew_leaf,0.9997156262397766,True
+not_cashew_leaf/not_cashew_leaf_1178.jpg,not_cashew_leaf,not_cashew_leaf,0.999075174331665,True
+not_cashew_leaf/not_cashew_leaf_1187.jpg,not_cashew_leaf,not_cashew_leaf,0.9998544454574585,True
+not_cashew_leaf/not_cashew_leaf_1198.jpg,not_cashew_leaf,not_cashew_leaf,0.9999674558639526,True
+not_cashew_leaf/not_cashew_leaf_1215.jpg,not_cashew_leaf,not_cashew_leaf,0.9999998807907104,True
+not_cashew_leaf/not_cashew_leaf_1219.jpg,not_cashew_leaf,not_cashew_leaf,0.9043816924095154,True
+not_cashew_leaf/not_cashew_leaf_1234.jpg,not_cashew_leaf,not_cashew_leaf,1.0,True
+not_cashew_leaf/not_cashew_leaf_1237.jpg,not_cashew_leaf,not_cashew_leaf,0.9999334812164307,True
+not_cashew_leaf/not_cashew_leaf_1251.jpg,not_cashew_leaf,not_cashew_leaf,0.9998868703842163,True
+not_cashew_leaf/not_cashew_leaf_1256.jpg,not_cashew_leaf,not_cashew_leaf,0.9995713829994202,True
+not_cashew_leaf/not_cashew_leaf_1262.jpg,not_cashew_leaf,not_cashew_leaf,0.9233875870704651,True
+not_cashew_leaf/not_cashew_leaf_1275.jpg,not_cashew_leaf,not_cashew_leaf,0.999990701675415,True
+not_cashew_leaf/not_cashew_leaf_1276.jpg,not_cashew_leaf,not_cashew_leaf,0.9999997615814209,True
+not_cashew_leaf/not_cashew_leaf_1290.JPG,not_cashew_leaf,not_cashew_leaf,0.9989124536514282,True
+not_cashew_leaf/not_cashew_leaf_1309.jpg,not_cashew_leaf,not_cashew_leaf,0.9999508857727051,True
+not_cashew_leaf/not_cashew_leaf_1311.jpg,not_cashew_leaf,not_cashew_leaf,0.9997484087944031,True
+not_cashew_leaf/not_cashew_leaf_1324.jpg,not_cashew_leaf,not_cashew_leaf,0.9998041987419128,True
+not_cashew_leaf/not_cashew_leaf_1330.jpg,not_cashew_leaf,not_cashew_leaf,0.9997102618217468,True
+not_cashew_leaf/not_cashew_leaf_1331.jpg,not_cashew_leaf,not_cashew_leaf,0.9996956586837769,True
+not_cashew_leaf/not_cashew_leaf_1335.jpg,not_cashew_leaf,not_cashew_leaf,0.9989005327224731,True
+not_cashew_leaf/not_cashew_leaf_1345.jpg,not_cashew_leaf,not_cashew_leaf,0.9995317459106445,True
+not_cashew_leaf/not_cashew_leaf_1348.jpg,not_cashew_leaf,not_cashew_leaf,0.9991089701652527,True
+not_cashew_leaf/not_cashew_leaf_1357.jpg,not_cashew_leaf,not_cashew_leaf,0.999984860420227,True
+not_cashew_leaf/not_cashew_leaf_1368.jpg,not_cashew_leaf,not_cashew_leaf,0.9999421834945679,True
+not_cashew_leaf/not_cashew_leaf_1384.JPG,not_cashew_leaf,not_cashew_leaf,0.9988911747932434,True
+not_cashew_leaf/not_cashew_leaf_140.jpg,not_cashew_leaf,not_cashew_leaf,0.9999922513961792,True
+not_cashew_leaf/not_cashew_leaf_1408.jpg,not_cashew_leaf,not_cashew_leaf,0.9998770952224731,True
+not_cashew_leaf/not_cashew_leaf_141.jpg,not_cashew_leaf,not_cashew_leaf,0.9999929666519165,True
+not_cashew_leaf/not_cashew_leaf_1441.JPG,not_cashew_leaf,not_cashew_leaf,0.9964331388473511,True
+not_cashew_leaf/not_cashew_leaf_1463.jpg,not_cashew_leaf,not_cashew_leaf,0.9983130693435669,True
+not_cashew_leaf/not_cashew_leaf_1475.jpg,not_cashew_leaf,not_cashew_leaf,0.9987117052078247,True
+not_cashew_leaf/not_cashew_leaf_1477.jpg,not_cashew_leaf,not_cashew_leaf,0.99998939037323,True
+not_cashew_leaf/not_cashew_leaf_1479.jpg,not_cashew_leaf,not_cashew_leaf,0.9980136156082153,True
+not_cashew_leaf/not_cashew_leaf_148.jpg,not_cashew_leaf,not_cashew_leaf,0.9999654293060303,True
+not_cashew_leaf/not_cashew_leaf_1502.jpg,not_cashew_leaf,not_cashew_leaf,0.9997168183326721,True
+not_cashew_leaf/not_cashew_leaf_1505.jpg,not_cashew_leaf,not_cashew_leaf,0.9999672174453735,True
+not_cashew_leaf/not_cashew_leaf_1508.jpg,not_cashew_leaf,not_cashew_leaf,0.9998201727867126,True
+not_cashew_leaf/not_cashew_leaf_1509.jpg,not_cashew_leaf,not_cashew_leaf,0.9999995231628418,True
+not_cashew_leaf/not_cashew_leaf_1519.JPG,not_cashew_leaf,not_cashew_leaf,0.9988561868667603,True
+not_cashew_leaf/not_cashew_leaf_154.jpg,not_cashew_leaf,not_cashew_leaf,0.9999650716781616,True
+not_cashew_leaf/not_cashew_leaf_1540.jpg,not_cashew_leaf,not_cashew_leaf,0.9999265670776367,True
+not_cashew_leaf/not_cashew_leaf_1543.jpg,not_cashew_leaf,not_cashew_leaf,0.9983383417129517,True
+not_cashew_leaf/not_cashew_leaf_1549.jpg,not_cashew_leaf,not_cashew_leaf,0.9917541742324829,True
+not_cashew_leaf/not_cashew_leaf_1551.jpg,not_cashew_leaf,not_cashew_leaf,0.9999572038650513,True
+not_cashew_leaf/not_cashew_leaf_1555.jpg,not_cashew_leaf,not_cashew_leaf,0.9911661744117737,True
+not_cashew_leaf/not_cashew_leaf_1564.jpg,not_cashew_leaf,not_cashew_leaf,0.9997841715812683,True
+not_cashew_leaf/not_cashew_leaf_160.jpg,not_cashew_leaf,not_cashew_leaf,0.9999663829803467,True
+not_cashew_leaf/not_cashew_leaf_166.jpg,not_cashew_leaf,not_cashew_leaf,0.9998358488082886,True
+not_cashew_leaf/not_cashew_leaf_172.jpg,not_cashew_leaf,not_cashew_leaf,0.999976634979248,True
+not_cashew_leaf/not_cashew_leaf_182.jpg,not_cashew_leaf,not_cashew_leaf,0.999160647392273,True
+not_cashew_leaf/not_cashew_leaf_194.jpg,not_cashew_leaf,not_cashew_leaf,0.9996857643127441,True
+not_cashew_leaf/not_cashew_leaf_197.jpg,not_cashew_leaf,not_cashew_leaf,0.9999048709869385,True
+not_cashew_leaf/not_cashew_leaf_201.jpg,not_cashew_leaf,not_cashew_leaf,0.9992856383323669,True
+not_cashew_leaf/not_cashew_leaf_202.jpg,not_cashew_leaf,not_cashew_leaf,0.9985724687576294,True
+not_cashew_leaf/not_cashew_leaf_214.jpg,not_cashew_leaf,leaf_miner,0.5650768876075745,False
+not_cashew_leaf/not_cashew_leaf_215.jpg,not_cashew_leaf,not_cashew_leaf,0.9995492100715637,True
+not_cashew_leaf/not_cashew_leaf_226.jpg,not_cashew_leaf,not_cashew_leaf,0.9986599683761597,True
+not_cashew_leaf/not_cashew_leaf_238.jpg,not_cashew_leaf,not_cashew_leaf,0.998184859752655,True
+not_cashew_leaf/not_cashew_leaf_244.jpg,not_cashew_leaf,not_cashew_leaf,0.9905078411102295,True
+not_cashew_leaf/not_cashew_leaf_269.jpg,not_cashew_leaf,not_cashew_leaf,0.9965007305145264,True
+not_cashew_leaf/not_cashew_leaf_273.jpg,not_cashew_leaf,not_cashew_leaf,0.9997273087501526,True
+not_cashew_leaf/not_cashew_leaf_278.jpg,not_cashew_leaf,not_cashew_leaf,0.9998996257781982,True
+not_cashew_leaf/not_cashew_leaf_287.jpg,not_cashew_leaf,not_cashew_leaf,0.9999977350234985,True
+not_cashew_leaf/not_cashew_leaf_3.jpg,not_cashew_leaf,not_cashew_leaf,0.9582898616790771,True
+not_cashew_leaf/not_cashew_leaf_315.jpg,not_cashew_leaf,not_cashew_leaf,0.9990457892417908,True
+not_cashew_leaf/not_cashew_leaf_327.jpg,not_cashew_leaf,not_cashew_leaf,0.999612033367157,True
+not_cashew_leaf/not_cashew_leaf_328.jpg,not_cashew_leaf,not_cashew_leaf,0.9997244477272034,True
+not_cashew_leaf/not_cashew_leaf_329.jpg,not_cashew_leaf,not_cashew_leaf,0.9998422861099243,True
+not_cashew_leaf/not_cashew_leaf_338.jpg,not_cashew_leaf,not_cashew_leaf,0.9999788999557495,True
+not_cashew_leaf/not_cashew_leaf_345.jpg,not_cashew_leaf,not_cashew_leaf,0.8895581364631653,True
+not_cashew_leaf/not_cashew_leaf_355.jpg,not_cashew_leaf,not_cashew_leaf,0.9882445335388184,True
+not_cashew_leaf/not_cashew_leaf_359.jpg,not_cashew_leaf,not_cashew_leaf,0.9999203681945801,True
+not_cashew_leaf/not_cashew_leaf_364.jpg,not_cashew_leaf,not_cashew_leaf,0.9999688863754272,True
+not_cashew_leaf/not_cashew_leaf_374.jpg,not_cashew_leaf,not_cashew_leaf,0.9983119964599609,True
+not_cashew_leaf/not_cashew_leaf_375.jpg,not_cashew_leaf,not_cashew_leaf,0.9310793876647949,True
+not_cashew_leaf/not_cashew_leaf_383.jpg,not_cashew_leaf,not_cashew_leaf,0.9998296499252319,True
+not_cashew_leaf/not_cashew_leaf_416.jpg,not_cashew_leaf,not_cashew_leaf,0.9997382760047913,True
+not_cashew_leaf/not_cashew_leaf_427.jpg,not_cashew_leaf,not_cashew_leaf,0.9999872446060181,True
+not_cashew_leaf/not_cashew_leaf_43.jpg,not_cashew_leaf,not_cashew_leaf,0.9996366500854492,True
+not_cashew_leaf/not_cashew_leaf_438.jpg,not_cashew_leaf,not_cashew_leaf,0.9999346733093262,True
+not_cashew_leaf/not_cashew_leaf_443.jpg,not_cashew_leaf,not_cashew_leaf,0.9317090511322021,True
+not_cashew_leaf/not_cashew_leaf_450.jpg,not_cashew_leaf,red_rust,0.45736414194107056,False
+not_cashew_leaf/not_cashew_leaf_451.jpg,not_cashew_leaf,not_cashew_leaf,0.9983273148536682,True
+not_cashew_leaf/not_cashew_leaf_454.jpg,not_cashew_leaf,not_cashew_leaf,0.999910831451416,True
+not_cashew_leaf/not_cashew_leaf_460.jpg,not_cashew_leaf,not_cashew_leaf,0.9997827410697937,True
+not_cashew_leaf/not_cashew_leaf_471.jpg,not_cashew_leaf,not_cashew_leaf,0.9994524121284485,True
+not_cashew_leaf/not_cashew_leaf_482.jpg,not_cashew_leaf,not_cashew_leaf,0.9992509484291077,True
+not_cashew_leaf/not_cashew_leaf_486.jpg,not_cashew_leaf,not_cashew_leaf,0.9733012318611145,True
+not_cashew_leaf/not_cashew_leaf_50.jpg,not_cashew_leaf,not_cashew_leaf,0.9999628067016602,True
+not_cashew_leaf/not_cashew_leaf_505.jpg,not_cashew_leaf,not_cashew_leaf,0.9999064207077026,True
+not_cashew_leaf/not_cashew_leaf_518.jpg,not_cashew_leaf,not_cashew_leaf,0.9986649751663208,True
+not_cashew_leaf/not_cashew_leaf_526.jpg,not_cashew_leaf,not_cashew_leaf,0.9595961570739746,True
+not_cashew_leaf/not_cashew_leaf_537.jpg,not_cashew_leaf,not_cashew_leaf,0.9452821016311646,True
+not_cashew_leaf/not_cashew_leaf_543.jpg,not_cashew_leaf,not_cashew_leaf,0.9984336495399475,True
+not_cashew_leaf/not_cashew_leaf_560.jpg,not_cashew_leaf,not_cashew_leaf,0.9996191263198853,True
+not_cashew_leaf/not_cashew_leaf_569.jpg,not_cashew_leaf,not_cashew_leaf,0.9999843835830688,True
+not_cashew_leaf/not_cashew_leaf_612.jpg,not_cashew_leaf,not_cashew_leaf,0.99806147813797,True
+not_cashew_leaf/not_cashew_leaf_613.jpg,not_cashew_leaf,not_cashew_leaf,0.9988993406295776,True
+not_cashew_leaf/not_cashew_leaf_618.jpg,not_cashew_leaf,not_cashew_leaf,0.9994766116142273,True
+not_cashew_leaf/not_cashew_leaf_633.jpg,not_cashew_leaf,not_cashew_leaf,0.8573604822158813,True
+not_cashew_leaf/not_cashew_leaf_638.jpg,not_cashew_leaf,not_cashew_leaf,0.9999994039535522,True
+not_cashew_leaf/not_cashew_leaf_646.jpg,not_cashew_leaf,anthracnose,0.7015566825866699,False
+not_cashew_leaf/not_cashew_leaf_653.jpg,not_cashew_leaf,not_cashew_leaf,0.9999191761016846,True
+not_cashew_leaf/not_cashew_leaf_659.jpg,not_cashew_leaf,not_cashew_leaf,0.9998304843902588,True
+not_cashew_leaf/not_cashew_leaf_66.jpg,not_cashew_leaf,not_cashew_leaf,0.9999103546142578,True
+not_cashew_leaf/not_cashew_leaf_661.jpg,not_cashew_leaf,not_cashew_leaf,0.9988164901733398,True
+not_cashew_leaf/not_cashew_leaf_663.jpg,not_cashew_leaf,not_cashew_leaf,0.9998331069946289,True
+not_cashew_leaf/not_cashew_leaf_679.jpg,not_cashew_leaf,not_cashew_leaf,0.999909520149231,True
+not_cashew_leaf/not_cashew_leaf_69.jpg,not_cashew_leaf,not_cashew_leaf,0.9984779953956604,True
+not_cashew_leaf/not_cashew_leaf_706.jpg,not_cashew_leaf,not_cashew_leaf,0.9999978542327881,True
+not_cashew_leaf/not_cashew_leaf_716.jpg,not_cashew_leaf,not_cashew_leaf,0.9997714161872864,True
+not_cashew_leaf/not_cashew_leaf_728.jpg,not_cashew_leaf,not_cashew_leaf,0.9999610185623169,True
+not_cashew_leaf/not_cashew_leaf_733.jpg,not_cashew_leaf,not_cashew_leaf,0.999942421913147,True
+not_cashew_leaf/not_cashew_leaf_747.jpg,not_cashew_leaf,not_cashew_leaf,0.9996902942657471,True
+not_cashew_leaf/not_cashew_leaf_751.jpg,not_cashew_leaf,not_cashew_leaf,0.9991794228553772,True
+not_cashew_leaf/not_cashew_leaf_753.jpg,not_cashew_leaf,not_cashew_leaf,0.9998319149017334,True
+not_cashew_leaf/not_cashew_leaf_760.jpg,not_cashew_leaf,not_cashew_leaf,0.999427318572998,True
+not_cashew_leaf/not_cashew_leaf_764.jpg,not_cashew_leaf,not_cashew_leaf,0.9999668598175049,True
+not_cashew_leaf/not_cashew_leaf_769.jpg,not_cashew_leaf,not_cashew_leaf,0.9999746084213257,True
+not_cashew_leaf/not_cashew_leaf_777.jpg,not_cashew_leaf,not_cashew_leaf,0.9999251365661621,True
+not_cashew_leaf/not_cashew_leaf_785.jpg,not_cashew_leaf,not_cashew_leaf,0.9999587535858154,True
+not_cashew_leaf/not_cashew_leaf_790.jpg,not_cashew_leaf,not_cashew_leaf,0.999894380569458,True
+not_cashew_leaf/not_cashew_leaf_792.jpg,not_cashew_leaf,not_cashew_leaf,0.9994290471076965,True
+not_cashew_leaf/not_cashew_leaf_793.jpg,not_cashew_leaf,not_cashew_leaf,0.981312096118927,True
+not_cashew_leaf/not_cashew_leaf_796.jpg,not_cashew_leaf,not_cashew_leaf,0.999884843826294,True
+not_cashew_leaf/not_cashew_leaf_800.jpg,not_cashew_leaf,not_cashew_leaf,0.9999167919158936,True
+not_cashew_leaf/not_cashew_leaf_804.jpg,not_cashew_leaf,not_cashew_leaf,0.9998816251754761,True
+not_cashew_leaf/not_cashew_leaf_821.jpg,not_cashew_leaf,not_cashew_leaf,0.999339759349823,True
+not_cashew_leaf/not_cashew_leaf_831.jpg,not_cashew_leaf,not_cashew_leaf,0.9999719858169556,True
+not_cashew_leaf/not_cashew_leaf_837.jpg,not_cashew_leaf,not_cashew_leaf,0.9994956254959106,True
+not_cashew_leaf/not_cashew_leaf_839.jpg,not_cashew_leaf,not_cashew_leaf,0.9985509514808655,True
+not_cashew_leaf/not_cashew_leaf_845.jpg,not_cashew_leaf,not_cashew_leaf,0.9999397993087769,True
+not_cashew_leaf/not_cashew_leaf_849.jpg,not_cashew_leaf,not_cashew_leaf,0.9998385906219482,True
+not_cashew_leaf/not_cashew_leaf_89.jpg,not_cashew_leaf,not_cashew_leaf,0.9997009038925171,True
+not_cashew_leaf/not_cashew_leaf_891.jpg,not_cashew_leaf,not_cashew_leaf,0.9995798468589783,True
+not_cashew_leaf/not_cashew_leaf_895.jpg,not_cashew_leaf,not_cashew_leaf,0.9994120597839355,True
+not_cashew_leaf/not_cashew_leaf_898.jpg,not_cashew_leaf,not_cashew_leaf,0.9994010925292969,True
+not_cashew_leaf/not_cashew_leaf_899.jpg,not_cashew_leaf,not_cashew_leaf,0.9997068047523499,True
+not_cashew_leaf/not_cashew_leaf_90.jpg,not_cashew_leaf,not_cashew_leaf,0.9988245368003845,True
+not_cashew_leaf/not_cashew_leaf_913.jpg,not_cashew_leaf,not_cashew_leaf,0.9765461087226868,True
+not_cashew_leaf/not_cashew_leaf_922.jpg,not_cashew_leaf,not_cashew_leaf,0.9977014660835266,True
+not_cashew_leaf/not_cashew_leaf_934.jpg,not_cashew_leaf,not_cashew_leaf,0.99866783618927,True
+not_cashew_leaf/not_cashew_leaf_941.jpg,not_cashew_leaf,not_cashew_leaf,0.999632716178894,True
+not_cashew_leaf/not_cashew_leaf_952.jpg,not_cashew_leaf,not_cashew_leaf,0.9998635053634644,True
+not_cashew_leaf/not_cashew_leaf_961.jpg,not_cashew_leaf,not_cashew_leaf,0.9999769926071167,True
+not_cashew_leaf/not_cashew_leaf_974.jpg,not_cashew_leaf,not_cashew_leaf,0.9981966614723206,True
+red_rust/red rust1017_.jpg,red_rust,red_rust,0.9979395270347595,True
+red_rust/red rust1019_.jpg,red_rust,red_rust,0.9917845726013184,True
+red_rust/red rust1026_.jpg,red_rust,red_rust,0.9994446635246277,True
+red_rust/red rust1030_.jpg,red_rust,red_rust,0.9925591945648193,True
+red_rust/red rust1039_.jpg,red_rust,red_rust,0.9998668432235718,True
+red_rust/red rust1042_.jpg,red_rust,red_rust,0.9990629553794861,True
+red_rust/red rust1044_.jpg,red_rust,red_rust,0.9952098727226257,True
+red_rust/red rust1061_.jpg,red_rust,red_rust,0.9954336285591125,True
+red_rust/red rust1065_.jpg,red_rust,red_rust,0.9985319375991821,True
+red_rust/red rust1076_.jpg,red_rust,red_rust,0.9986189603805542,True
+red_rust/red rust1081_.jpg,red_rust,red_rust,0.9972882270812988,True
+red_rust/red rust1095_.jpg,red_rust,red_rust,0.9989959597587585,True
+red_rust/red rust109_.jpg,red_rust,red_rust,0.9857182502746582,True
+red_rust/red rust1107_.jpg,red_rust,red_rust,0.9867755770683289,True
+red_rust/red rust1114_.jpg,red_rust,red_rust,0.9998863935470581,True
+red_rust/red rust1132_.jpg,red_rust,red_rust,0.9980910420417786,True
+red_rust/red rust1137_.jpg,red_rust,red_rust,0.9973325729370117,True
+red_rust/red rust1154_.jpg,red_rust,red_rust,0.9995046854019165,True
+red_rust/red rust1172_.jpg,red_rust,red_rust,0.9985573887825012,True
+red_rust/red rust1173_.jpg,red_rust,red_rust,0.9952449202537537,True
+red_rust/red rust1176_.jpg,red_rust,red_rust,0.9982269406318665,True
+red_rust/red rust1180_.jpg,red_rust,red_rust,0.9917717576026917,True
+red_rust/red rust1198_.jpg,red_rust,red_rust,0.9952250719070435,True
+red_rust/red rust1206_.jpg,red_rust,red_rust,0.9956296682357788,True
+red_rust/red rust1217_.jpg,red_rust,red_rust,0.9991739392280579,True
+red_rust/red rust1230_.jpg,red_rust,red_rust,0.9975796341896057,True
+red_rust/red rust1234_.jpg,red_rust,red_rust,0.9957541227340698,True
+red_rust/red rust1235_.jpg,red_rust,red_rust,0.9961748123168945,True
+red_rust/red rust1241_.jpg,red_rust,red_rust,0.9959524869918823,True
+red_rust/red rust1242_.jpg,red_rust,red_rust,0.9719234108924866,True
+red_rust/red rust1259_.jpg,red_rust,red_rust,0.9911932349205017,True
+red_rust/red rust1281_.jpg,red_rust,red_rust,0.9894513487815857,True
+red_rust/red rust128_.jpg,red_rust,red_rust,0.9996784925460815,True
+red_rust/red rust1292_.jpg,red_rust,red_rust,0.99666827917099,True
+red_rust/red rust1296_.jpg,red_rust,red_rust,0.9995049238204956,True
+red_rust/red rust1298_.jpg,red_rust,red_rust,0.9982333183288574,True
+red_rust/red rust1301_.jpg,red_rust,red_rust,0.9997722506523132,True
+red_rust/red rust1303_.jpg,red_rust,red_rust,0.9963383674621582,True
+red_rust/red rust1307_.jpg,red_rust,red_rust,0.9913049936294556,True
+red_rust/red rust1324_.jpg,red_rust,red_rust,0.9960655570030212,True
+red_rust/red rust135_.jpg,red_rust,red_rust,0.9761670827865601,True
+red_rust/red rust1371_.jpg,red_rust,red_rust,0.9884248971939087,True
+red_rust/red rust1373_.jpg,red_rust,red_rust,0.9972990155220032,True
+red_rust/red rust1375_.jpg,red_rust,red_rust,0.9831424355506897,True
+red_rust/red rust1381_.jpg,red_rust,red_rust,0.9994145631790161,True
+red_rust/red rust1388_.jpg,red_rust,red_rust,0.9971691966056824,True
+red_rust/red rust1390_.jpg,red_rust,red_rust,0.9994563460350037,True
+red_rust/red rust1404_.jpg,red_rust,red_rust,0.9843508005142212,True
+red_rust/red rust1406_.jpg,red_rust,red_rust,0.9976012110710144,True
+red_rust/red rust1424_.jpg,red_rust,red_rust,0.9103717803955078,True
+red_rust/red rust1441_.jpg,red_rust,red_rust,0.9939462542533875,True
+red_rust/red rust1446_.jpg,red_rust,red_rust,0.999630331993103,True
+red_rust/red rust1490_.jpg,red_rust,red_rust,0.9943441152572632,True
+red_rust/red rust149_.jpg,red_rust,red_rust,0.9959741234779358,True
+red_rust/red rust1512_.jpg,red_rust,red_rust,0.99863201379776,True
+red_rust/red rust1523_.jpg,red_rust,red_rust,0.9977485537528992,True
+red_rust/red rust1526_.jpg,red_rust,red_rust,0.990420937538147,True
+red_rust/red rust1529_.jpg,red_rust,red_rust,0.9904168844223022,True
+red_rust/red rust152_.jpg,red_rust,red_rust,0.9600253105163574,True
+red_rust/red rust1535_.jpg,red_rust,red_rust,0.9959378242492676,True
+red_rust/red rust1565_.jpg,red_rust,red_rust,0.9970473647117615,True
+red_rust/red rust1570_.jpg,red_rust,red_rust,0.999970555305481,True
+red_rust/red rust1578_.jpg,red_rust,red_rust,0.9989480376243591,True
+red_rust/red rust1584_.jpg,red_rust,red_rust,0.9994561076164246,True
+red_rust/red rust1588_.jpg,red_rust,red_rust,0.9994723200798035,True
+red_rust/red rust1599_.jpg,red_rust,red_rust,0.9997532963752747,True
+red_rust/red rust1628_.jpg,red_rust,red_rust,0.9986036419868469,True
+red_rust/red rust1637_.jpg,red_rust,red_rust,0.9968833327293396,True
+red_rust/red rust1662_.jpg,red_rust,red_rust,0.9985938668251038,True
+red_rust/red rust1663_.jpg,red_rust,red_rust,0.9992944002151489,True
+red_rust/red rust1678_.jpg,red_rust,red_rust,0.7228797674179077,True
+red_rust/red rust170_.jpg,red_rust,red_rust,0.9902679324150085,True
+red_rust/red rust175_.jpg,red_rust,red_rust,0.9724757671356201,True
+red_rust/red rust176_.jpg,red_rust,red_rust,0.9983175992965698,True
+red_rust/red rust178_.jpg,red_rust,red_rust,0.9990604519844055,True
+red_rust/red rust189_.jpg,red_rust,red_rust,0.9955378770828247,True
+red_rust/red rust204_.jpg,red_rust,anthracnose,0.5217861533164978,False
+red_rust/red rust210_.jpg,red_rust,red_rust,0.999113142490387,True
+red_rust/red rust221_.jpg,red_rust,red_rust,0.9942726492881775,True
+red_rust/red rust222_.jpg,red_rust,red_rust,0.9914059638977051,True
+red_rust/red rust237_.jpg,red_rust,red_rust,0.9790783524513245,True
+red_rust/red rust241_.jpg,red_rust,red_rust,0.9631178379058838,True
+red_rust/red rust246_.jpg,red_rust,red_rust,0.9962968230247498,True
+red_rust/red rust267_.jpg,red_rust,red_rust,0.9933911561965942,True
+red_rust/red rust279_.jpg,red_rust,red_rust,0.9904236197471619,True
+red_rust/red rust286_.jpg,red_rust,red_rust,0.9709882140159607,True
+red_rust/red rust294_.jpg,red_rust,red_rust,0.9898348450660706,True
+red_rust/red rust300_.jpg,red_rust,red_rust,0.9971103668212891,True
+red_rust/red rust308_.jpg,red_rust,red_rust,0.9982851147651672,True
+red_rust/red rust314_.jpg,red_rust,red_rust,0.9933925271034241,True
+red_rust/red rust362_.jpg,red_rust,red_rust,0.9961330890655518,True
+red_rust/red rust390_.jpg,red_rust,red_rust,0.8262079358100891,True
+red_rust/red rust397_.jpg,red_rust,red_rust,0.9992861151695251,True
+red_rust/red rust398_.jpg,red_rust,red_rust,0.9984225034713745,True
+red_rust/red rust399_.jpg,red_rust,red_rust,0.9962531328201294,True
+red_rust/red rust406_.jpg,red_rust,red_rust,0.9974449872970581,True
+red_rust/red rust440_.jpg,red_rust,red_rust,0.9995445609092712,True
+red_rust/red rust446_.jpg,red_rust,red_rust,0.9984204769134521,True
+red_rust/red rust455_.jpg,red_rust,red_rust,0.9993494153022766,True
+red_rust/red rust458_.jpg,red_rust,red_rust,0.9911597371101379,True
+red_rust/red rust463_.jpg,red_rust,red_rust,0.9857982993125916,True
+red_rust/red rust469_.jpg,red_rust,red_rust,0.9997979998588562,True
+red_rust/red rust481_.jpg,red_rust,red_rust,0.9989972710609436,True
+red_rust/red rust48_.jpg,red_rust,red_rust,0.998175859451294,True
+red_rust/red rust495_.jpg,red_rust,red_rust,0.9979044198989868,True
+red_rust/red rust499_.jpg,red_rust,red_rust,0.9951685667037964,True
+red_rust/red rust501_.jpg,red_rust,red_rust,0.9959914088249207,True
+red_rust/red rust504_.jpg,red_rust,red_rust,0.9941456317901611,True
+red_rust/red rust513_.jpg,red_rust,red_rust,0.994597315788269,True
+red_rust/red rust516_.jpg,red_rust,red_rust,0.9986036419868469,True
+red_rust/red rust555_.jpg,red_rust,red_rust,0.9989762306213379,True
+red_rust/red rust556_.jpg,red_rust,red_rust,0.9997654557228088,True
+red_rust/red rust574_.jpg,red_rust,red_rust,0.9993917942047119,True
+red_rust/red rust583_.jpg,red_rust,red_rust,0.9917699098587036,True
+red_rust/red rust586_.jpg,red_rust,red_rust,0.9953811168670654,True
+red_rust/red rust599_.jpg,red_rust,red_rust,0.9977622032165527,True
+red_rust/red rust59_.jpg,red_rust,red_rust,0.9995294809341431,True
+red_rust/red rust5_.jpg,red_rust,red_rust,0.9995782971382141,True
+red_rust/red rust610_.jpg,red_rust,red_rust,0.9263049960136414,True
+red_rust/red rust61_.jpg,red_rust,red_rust,0.9994333386421204,True
+red_rust/red rust627_.jpg,red_rust,red_rust,0.999799907207489,True
+red_rust/red rust628_.jpg,red_rust,red_rust,0.9933597445487976,True
+red_rust/red rust642_.jpg,red_rust,red_rust,0.9943125247955322,True
+red_rust/red rust674_.jpg,red_rust,red_rust,0.9991781115531921,True
+red_rust/red rust683_.jpg,red_rust,red_rust,0.9937835931777954,True
+red_rust/red rust705_.jpg,red_rust,red_rust,0.9991320967674255,True
+red_rust/red rust70_.jpg,red_rust,red_rust,0.8817038536071777,True
+red_rust/red rust747_.jpg,red_rust,red_rust,0.9895450472831726,True
+red_rust/red rust755_.jpg,red_rust,red_rust,0.9986827969551086,True
+red_rust/red rust75_.jpg,red_rust,red_rust,0.9962691068649292,True
+red_rust/red rust767_.jpg,red_rust,red_rust,0.9998286962509155,True
+red_rust/red rust775_.jpg,red_rust,red_rust,0.9969441294670105,True
+red_rust/red rust785_.jpg,red_rust,red_rust,0.9997125267982483,True
+red_rust/red rust799_.jpg,red_rust,red_rust,0.9970788955688477,True
+red_rust/red rust840_.jpg,red_rust,red_rust,0.9945013523101807,True
+red_rust/red rust844_.jpg,red_rust,red_rust,0.9988150596618652,True
+red_rust/red rust873_.jpg,red_rust,red_rust,0.9985539317131042,True
+red_rust/red rust881_.jpg,red_rust,red_rust,0.9983820915222168,True
+red_rust/red rust885_.jpg,red_rust,red_rust,0.9989351630210876,True
+red_rust/red rust886_.jpg,red_rust,red_rust,0.9983017444610596,True
+red_rust/red rust888_.jpg,red_rust,red_rust,0.996426522731781,True
+red_rust/red rust891_.jpg,red_rust,red_rust,0.9985778331756592,True
+red_rust/red rust89_.jpg,red_rust,red_rust,0.9699262380599976,True
+red_rust/red rust903_.jpg,red_rust,red_rust,0.9996084570884705,True
+red_rust/red rust90_.jpg,red_rust,red_rust,0.9960058331489563,True
+red_rust/red rust92_.jpg,red_rust,red_rust,0.9861759543418884,True
+red_rust/red rust939_.jpg,red_rust,red_rust,0.9984210729598999,True
+red_rust/red rust93_.jpg,red_rust,red_rust,0.9991883635520935,True
+red_rust/red rust947_.jpg,red_rust,red_rust,0.9938642978668213,True
+red_rust/red rust962_.jpg,red_rust,red_rust,0.9991233944892883,True
+red_rust/red rust966_.jpg,red_rust,red_rust,0.9989359974861145,True
+red_rust/red rust975_.jpg,red_rust,red_rust,0.9923392534255981,True
+red_rust/red rust978_.jpg,red_rust,red_rust,0.9994472861289978,True

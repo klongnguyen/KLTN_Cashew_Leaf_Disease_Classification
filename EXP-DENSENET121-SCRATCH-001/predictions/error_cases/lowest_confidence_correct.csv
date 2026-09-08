@@ -1,0 +1,13 @@
+filename,true_label,predicted_label,confidence,correct
+leaf_miner/leaf miner323_.jpg,leaf_miner,leaf_miner,0.32833540439605713,True
+leaf_miner/leaf miner120_.jpg,leaf_miner,leaf_miner,0.44681593775749207,True
+healthy/healthy_original_cashew-alive-leaf-911-jpg_ed08f87d-b5fb-450d-bfd3-455eaf3c5926_jpg.rf.4c9eb17b3b70aece1c55e51c5fee4fe4.jpg,healthy,healthy,0.5258458852767944,True
+anthracnose/anthracnose696_.jpg,anthracnose,anthracnose,0.5343055129051208,True
+anthracnose/anthracnose1531_.jpg,anthracnose,anthracnose,0.5555495619773865,True
+leaf_miner/leaf miner525_.jpg,leaf_miner,leaf_miner,0.5558251142501831,True
+leaf_miner/leaf miner113_.jpg,leaf_miner,leaf_miner,0.559529721736908,True
+leaf_miner/leaf miner996_.jpg,leaf_miner,leaf_miner,0.5868127346038818,True
+anthracnose/anthracnose1363_.jpg,anthracnose,anthracnose,0.6034337878227234,True
+anthracnose/anthracnose1456_.jpg,anthracnose,anthracnose,0.6114823818206787,True
+healthy/healthy510_.jpg,healthy,healthy,0.6209876537322998,True
+leaf_miner/leaf miner95_.jpg,leaf_miner,leaf_miner,0.6379417777061462,True
