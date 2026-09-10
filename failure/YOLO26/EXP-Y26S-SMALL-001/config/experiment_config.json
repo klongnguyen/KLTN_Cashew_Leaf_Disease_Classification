@@ -1,0 +1,31 @@
+{
+  "experiment_id": "EXP-Y26S-SMALL-001",
+  "model": "yolo26s.pt",
+  "task": "object_detection",
+  "classes": [
+    "anthracnose",
+    "leaf_miner",
+    "red_rust"
+  ],
+  "seed": 42,
+  "epochs": 50,
+  "patience": 20,
+  "imgsz": 640,
+  "batch_size": 8,
+  "optimizer": "AdamW",
+  "learning_rate": 0.001,
+  "weight_decay": 0.0005,
+  "augmentation": {
+    "mosaic": 0.5,
+    "mixup": 0.0,
+    "copy_paste": 0.0,
+    "fliplr": 0.5
+  },
+  "evaluation": {
+    "prediction_confidence_for_custom_iou": 0.25,
+    "nms_iou": 0.70,
+    "matching_iou": 0.50
+  },
+  "decision": "KEEP_AS_BASELINE_ONLY",
+  "next_experiment": "EXP-Y26S-DATAFIX-002"
+}
