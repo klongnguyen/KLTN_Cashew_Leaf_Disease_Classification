@@ -1,0 +1,748 @@
+filename,true_label,predicted_label,confidence,correct
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1013_.jpg,anthracnose,anthracnose,0.9893807172775269,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1023_.jpg,anthracnose,anthracnose,0.9986074566841125,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose104_.jpg,anthracnose,healthy,0.6893366575241089,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1052_.jpg,anthracnose,anthracnose,0.9992572665214539,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1059_.jpg,anthracnose,anthracnose,0.9238945841789246,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1062_.jpg,anthracnose,anthracnose,0.9983100891113281,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1086_.jpg,anthracnose,anthracnose,0.9954747557640076,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1090_.jpg,anthracnose,anthracnose,0.9849393367767334,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1093_.jpg,anthracnose,anthracnose,0.9995711445808411,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose110_.jpg,anthracnose,anthracnose,0.9988486766815186,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1124_.jpg,anthracnose,anthracnose,0.996743381023407,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1129_.jpg,anthracnose,anthracnose,0.9505777359008789,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1135_.jpg,anthracnose,anthracnose,0.9954853653907776,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1139_.jpg,anthracnose,anthracnose,0.8245686292648315,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1152_.jpg,anthracnose,anthracnose,0.9992044568061829,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1154_.jpg,anthracnose,not_cashew_leaf,0.9999362230300903,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1169_.jpg,anthracnose,anthracnose,0.9917680025100708,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1176_.jpg,anthracnose,leaf_miner,0.9973135590553284,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1179_.jpg,anthracnose,anthracnose,0.9941933751106262,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1180_.jpg,anthracnose,anthracnose,0.9977412223815918,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1189_.jpg,anthracnose,anthracnose,0.879524290561676,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1196_.jpg,anthracnose,leaf_miner,0.8839842081069946,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1199_.jpg,anthracnose,anthracnose,0.9878459572792053,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1212_.jpg,anthracnose,anthracnose,0.9993429780006409,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose122_.jpg,anthracnose,anthracnose,0.9971495270729065,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose123_.jpg,anthracnose,anthracnose,0.9966655373573303,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1274_.jpg,anthracnose,anthracnose,0.5511115789413452,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose130_.jpg,anthracnose,anthracnose,0.9990399479866028,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1311_.jpg,anthracnose,anthracnose,0.8639690279960632,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1323_.jpg,anthracnose,leaf_miner,0.9778865575790405,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1344_.jpg,anthracnose,anthracnose,0.9310146570205688,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1349_.jpg,anthracnose,anthracnose,0.9810286164283752,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1356_.jpg,anthracnose,anthracnose,0.7667545080184937,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1357_.jpg,anthracnose,anthracnose,0.8742321729660034,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1362_.jpg,anthracnose,anthracnose,0.983185887336731,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1363_.jpg,anthracnose,anthracnose,0.9647696018218994,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1378_.jpg,anthracnose,red_rust,0.6701288223266602,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1418_.jpg,anthracnose,not_cashew_leaf,0.6664900779724121,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1430_.jpg,anthracnose,red_rust,0.6615329384803772,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1450_.jpg,anthracnose,anthracnose,0.8893706202507019,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1453_.jpg,anthracnose,leaf_miner,0.8430890440940857,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1456_.jpg,anthracnose,healthy,0.6666898131370544,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1460_.jpg,anthracnose,leaf_miner,0.8938610553741455,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1467_.jpg,anthracnose,anthracnose,0.8647514581680298,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1469_.jpg,anthracnose,red_rust,0.6267619132995605,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1470_.jpg,anthracnose,red_rust,0.9789295792579651,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1478_.jpg,anthracnose,anthracnose,0.5677282810211182,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1486_.jpg,anthracnose,anthracnose,0.7137166261672974,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1489_.jpg,anthracnose,leaf_miner,0.7191197276115417,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1495_.jpg,anthracnose,healthy,0.8887312412261963,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose151_.jpg,anthracnose,anthracnose,0.9997301697731018,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1523_.jpg,anthracnose,anthracnose,0.7679182291030884,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1531_.jpg,anthracnose,leaf_miner,0.4674373269081116,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1553_.jpg,anthracnose,healthy,0.6493448615074158,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1556_.jpg,anthracnose,red_rust,0.9465241432189941,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1557_.jpg,anthracnose,anthracnose,0.9015439748764038,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1560_.jpg,anthracnose,anthracnose,0.8737601637840271,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1562_.jpg,anthracnose,red_rust,0.9743907451629639,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1566_.jpg,anthracnose,anthracnose,0.9754823446273804,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1576_.jpg,anthracnose,anthracnose,0.9866762757301331,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1581_.jpg,anthracnose,anthracnose,0.9737667441368103,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1602_.jpg,anthracnose,anthracnose,0.9961891770362854,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose160_.jpg,anthracnose,anthracnose,0.9994309544563293,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose164_.jpg,anthracnose,anthracnose,0.9879143834114075,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1651_.jpg,anthracnose,anthracnose,0.8514705896377563,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1668_.jpg,anthracnose,anthracnose,0.9503300189971924,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1690_.jpg,anthracnose,anthracnose,0.9985470175743103,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1697_.jpg,anthracnose,anthracnose,0.9968796968460083,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1703_.jpg,anthracnose,anthracnose,0.9937957525253296,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1724_.jpg,anthracnose,anthracnose,0.993902325630188,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose177_.jpg,anthracnose,anthracnose,0.9995102882385254,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose181_.jpg,anthracnose,anthracnose,0.9992905855178833,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose182_.jpg,anthracnose,anthracnose,0.9995884299278259,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose188_.jpg,anthracnose,anthracnose,0.998403012752533,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose198_.jpg,anthracnose,anthracnose,0.9997091889381409,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose214_.jpg,anthracnose,anthracnose,0.9995349645614624,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose216_.jpg,anthracnose,anthracnose,0.9990170001983643,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose217_.jpg,anthracnose,anthracnose,0.9997187256813049,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose21_.jpg,anthracnose,anthracnose,0.999265730381012,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose226_.jpg,anthracnose,healthy,0.6504359841346741,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose246_.jpg,anthracnose,anthracnose,0.9998088479042053,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose252_.jpg,anthracnose,anthracnose,0.9839136600494385,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose256_.jpg,anthracnose,anthracnose,0.7672238945960999,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose290_.jpg,anthracnose,anthracnose,0.9993415474891663,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose295_.jpg,anthracnose,anthracnose,0.9924374222755432,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose296_.jpg,anthracnose,anthracnose,0.9997618794441223,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose307_.jpg,anthracnose,anthracnose,0.9996030926704407,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose347_.jpg,anthracnose,anthracnose,0.9994044303894043,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose355_.jpg,anthracnose,anthracnose,0.9978735446929932,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose365_.jpg,anthracnose,anthracnose,0.9993435740470886,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose366_.jpg,anthracnose,anthracnose,0.9991476535797119,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose372_.jpg,anthracnose,anthracnose,0.9992576241493225,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose383_.jpg,anthracnose,anthracnose,0.9997935891151428,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose430_.jpg,anthracnose,anthracnose,0.9994427561759949,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose441_.jpg,anthracnose,anthracnose,0.9997759461402893,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose452_.jpg,anthracnose,anthracnose,0.9994698166847229,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose487_.jpg,anthracnose,anthracnose,0.9845912456512451,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose525_.jpg,anthracnose,anthracnose,0.999442994594574,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose534_.jpg,anthracnose,anthracnose,0.51444011926651,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose539_.jpg,anthracnose,anthracnose,0.9878860712051392,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose543_.jpg,anthracnose,anthracnose,0.9988815188407898,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose555_.jpg,anthracnose,anthracnose,0.9589250087738037,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose568_.jpg,anthracnose,anthracnose,0.9990799427032471,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose570_.jpg,anthracnose,anthracnose,0.9933472871780396,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose577_.jpg,anthracnose,red_rust,0.8961042761802673,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose585_.jpg,anthracnose,anthracnose,0.9827719330787659,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose597_.jpg,anthracnose,red_rust,0.9950547218322754,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose615_.jpg,anthracnose,anthracnose,0.982174813747406,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose627_.jpg,anthracnose,anthracnose,0.9979490637779236,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose629_.jpg,anthracnose,anthracnose,0.9991112351417542,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose637_.jpg,anthracnose,anthracnose,0.9928515553474426,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose63_.jpg,anthracnose,anthracnose,0.9993526339530945,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose650_.jpg,anthracnose,anthracnose,0.9993477463722229,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose651_.jpg,anthracnose,anthracnose,0.9997114539146423,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose661_.jpg,anthracnose,anthracnose,0.999269425868988,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose665_.jpg,anthracnose,anthracnose,0.9991301894187927,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose675_.jpg,anthracnose,not_cashew_leaf,0.6019020080566406,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose696_.jpg,anthracnose,anthracnose,0.7449648976325989,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose71_.jpg,anthracnose,anthracnose,0.9940954446792603,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose721_.jpg,anthracnose,anthracnose,0.9974305033683777,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose733_.jpg,anthracnose,anthracnose,0.9990049004554749,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose734_.jpg,anthracnose,anthracnose,0.9881305694580078,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose741_.jpg,anthracnose,anthracnose,0.9991798996925354,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose742_.jpg,anthracnose,anthracnose,0.994541585445404,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose748_.jpg,anthracnose,anthracnose,0.9964744448661804,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose763_.jpg,anthracnose,anthracnose,0.9953832030296326,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose766_.jpg,anthracnose,not_cashew_leaf,0.590412974357605,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose778_.jpg,anthracnose,healthy,0.757815420627594,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose78_.jpg,anthracnose,anthracnose,0.9991924166679382,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose807_.jpg,anthracnose,anthracnose,0.9041039943695068,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose820_.jpg,anthracnose,anthracnose,0.9989527463912964,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose828_.jpg,anthracnose,anthracnose,0.9859657883644104,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose833_.jpg,anthracnose,leaf_miner,0.9889793395996094,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose838_.jpg,anthracnose,leaf_miner,0.8438194990158081,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose844_.jpg,anthracnose,anthracnose,0.9343117475509644,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose862_.jpg,anthracnose,anthracnose,0.9982044696807861,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose869_.jpg,anthracnose,anthracnose,0.9570645689964294,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose86_.jpg,anthracnose,anthracnose,0.9978634715080261,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose875_.jpg,anthracnose,anthracnose,0.9050811529159546,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose878_.jpg,anthracnose,anthracnose,0.918204128742218,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose897_.jpg,anthracnose,anthracnose,0.577086329460144,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose8_.jpg,anthracnose,anthracnose,0.911895215511322,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose915_.jpg,anthracnose,anthracnose,0.923083484172821,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose920_.jpg,anthracnose,anthracnose,0.8330666422843933,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose921_.jpg,anthracnose,anthracnose,0.9675378203392029,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose934_.jpg,anthracnose,anthracnose,0.5494233965873718,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose941_.jpg,anthracnose,anthracnose,0.7840732336044312,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose943_.jpg,anthracnose,leaf_miner,0.9971678853034973,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose967_.jpg,anthracnose,healthy,0.5083964467048645,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose972_.jpg,anthracnose,anthracnose,0.9778895974159241,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose976_.jpg,anthracnose,anthracnose,0.9890007972717285,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose979_.jpg,anthracnose,anthracnose,0.9699981212615967,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose988_.jpg,anthracnose,anthracnose,0.9861230850219727,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose992_.jpg,anthracnose,anthracnose,0.8332226872444153,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose996_.jpg,anthracnose,leaf_miner,0.7872400283813477,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose997_.jpg,anthracnose,anthracnose,0.5814099311828613,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose99_.jpg,anthracnose,anthracnose,0.9969919919967651,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy-augmentation_original_healthy_original_cashew-alive-leaf-802-jpg_d6038a10-c028-42a7-a8c2-8c04e44654ec-jpg_167816b3-60ee-41f6-8067-6c24fc8f658c_jpg.rf.6503057758a1b99753d7cb568cf90a56.jpg,healthy,healthy,0.5213751792907715,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy-augmentation_original_healthy_original_healthy-303-jpg_87a7d147-543b-4302-8492-67beefc0c786-jpg_11ed3528-445e-4862-8e2c-2ada1799a9cb_jpg.rf.608ad7081742a40814d69570aaeca332.jpg,healthy,healthy,0.9507424831390381,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy-augmentation_original_healthy_original_healthy-344-jpeg_66fe4b22-8c2b-41f0-8f2d-0ee77f858bc6-jpeg_69e16b86-462b-48e1-a147-f96a9e8acccb_jpeg.rf.0e12d69f48fd4dfed1fe86d4c5582a7a.jpg,healthy,healthy,0.9103893637657166,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1014_.jpg,healthy,anthracnose,0.9009847640991211,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1017_.jpg,healthy,healthy,0.9900074005126953,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1021_.jpg,healthy,red_rust,0.9681320786476135,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1023_.jpg,healthy,healthy,0.8591896295547485,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1048_.jpg,healthy,healthy,0.9846960306167603,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1050_.jpg,healthy,healthy,0.9188982844352722,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1051_.jpg,healthy,healthy,0.999546468257904,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1060_.jpg,healthy,anthracnose,0.6385615468025208,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1072_.jpg,healthy,healthy,0.9739753603935242,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy107_.jpg,healthy,healthy,0.9997953772544861,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1083_.jpg,healthy,healthy,0.9983834028244019,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1086_.jpg,healthy,healthy,0.8453359603881836,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1088_.jpg,healthy,healthy,0.9883947372436523,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1089_.jpg,healthy,healthy,0.8756888508796692,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1090_.jpg,healthy,healthy,0.9650282859802246,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1092_.jpg,healthy,healthy,0.8577646613121033,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1102_.jpg,healthy,healthy,0.8707030415534973,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1129_.jpg,healthy,healthy,0.7049017548561096,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1132_.jpg,healthy,healthy,0.7357609272003174,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy118_.jpg,healthy,healthy,0.9999330043792725,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1192_.jpg,healthy,healthy,0.8820168375968933,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1197_.jpg,healthy,leaf_miner,0.533836305141449,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy122_.jpg,healthy,healthy,0.9854529500007629,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1233_.jpg,healthy,red_rust,0.42530184984207153,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1242_.jpg,healthy,healthy,0.9812806248664856,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1261_.jpg,healthy,leaf_miner,0.692488968372345,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy127_.jpg,healthy,healthy,0.9999520778656006,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1298_.jpg,healthy,healthy,0.9995899796485901,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1300_.jpg,healthy,healthy,0.9997791647911072,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1306_.jpg,healthy,healthy,0.9918033480644226,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1307_.jpg,healthy,healthy,0.9951267242431641,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1310_.jpg,healthy,anthracnose,0.5144789814949036,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1344_.jpg,healthy,anthracnose,0.8983455300331116,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1353_.jpg,healthy,healthy,0.9968255758285522,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1357_.jpg,healthy,healthy,0.8687378168106079,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1359_.jpg,healthy,healthy,0.9266387820243835,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1363_.jpg,healthy,healthy,0.9636406898498535,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1366_.jpg,healthy,healthy,0.959926187992096,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy156_.jpg,healthy,healthy,0.9999350309371948,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy168_.jpg,healthy,healthy,0.9970299005508423,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy175_.jpg,healthy,healthy,0.9996742010116577,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy189_.jpg,healthy,healthy,0.9998780488967896,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy203_.jpg,healthy,healthy,0.9999077320098877,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy224_.jpg,healthy,healthy,0.9999043941497803,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy242_.jpg,healthy,healthy,0.9999352693557739,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy254_.jpg,healthy,healthy,0.9992485642433167,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy269_.jpg,healthy,healthy,0.999958872795105,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy278_.jpg,healthy,healthy,0.9998470544815063,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy293_.jpg,healthy,healthy,0.9998284578323364,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy294_.jpg,healthy,healthy,0.9999349117279053,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy330_.jpg,healthy,healthy,0.9952437281608582,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy356_.jpg,healthy,healthy,0.9999854564666748,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy361_.jpg,healthy,healthy,0.9999850988388062,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy386_.jpg,healthy,healthy,0.9998669624328613,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy389_.jpg,healthy,healthy,0.7483125925064087,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy404_.jpg,healthy,healthy,0.999976396560669,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy410_.jpg,healthy,healthy,0.9999055862426758,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy416_.jpg,healthy,healthy,0.9999548196792603,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy427_.jpg,healthy,healthy,0.9999796152114868,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy430_.jpg,healthy,healthy,0.9948818683624268,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy434_.jpg,healthy,healthy,0.8611223697662354,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy440_.jpg,healthy,healthy,0.9998693466186523,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy451_.jpg,healthy,healthy,0.9999897480010986,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy464_.jpg,healthy,healthy,0.993198812007904,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy472_.jpg,healthy,healthy,0.992752194404602,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy484_.jpg,healthy,healthy,0.9900388121604919,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy488_.jpg,healthy,healthy,0.9999439716339111,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy489_.jpg,healthy,healthy,0.9980778694152832,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy494_.jpg,healthy,healthy,0.9993423819541931,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy510_.jpg,healthy,healthy,0.9608719348907471,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy524_.jpg,healthy,healthy,0.9999504089355469,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy546_.jpg,healthy,healthy,0.9999663829803467,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy554_.jpg,healthy,healthy,0.9999520778656006,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy575_.jpg,healthy,healthy,0.9997979998588562,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy578_.jpg,healthy,healthy,0.9877899885177612,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy584_.jpg,healthy,healthy,0.9948891401290894,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy592_.jpg,healthy,healthy,0.9523357152938843,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy593_.jpg,healthy,healthy,0.9996640682220459,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy658_.jpg,healthy,healthy,0.9994514584541321,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy755_.jpg,healthy,healthy,0.9946441650390625,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy759_.jpg,healthy,healthy,0.6785917282104492,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy782_.jpg,healthy,healthy,0.6729541420936584,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy783_.jpg,healthy,healthy,0.831111490726471,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy784_.jpg,healthy,healthy,0.5631574988365173,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy790_.jpg,healthy,healthy,0.7228158116340637,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy795_.jpg,healthy,healthy,0.9886608123779297,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy812_.jpg,healthy,healthy,0.9994679093360901,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy814_.jpg,healthy,healthy,0.9350762367248535,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy815_.jpg,healthy,healthy,0.9567909240722656,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy818_.jpg,healthy,healthy,0.9898489713668823,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy833_.jpg,healthy,healthy,0.9809143543243408,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy834_.jpg,healthy,healthy,0.996410071849823,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy83_.jpg,healthy,healthy,0.8979209065437317,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy841_.jpg,healthy,healthy,0.9998409748077393,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy845_.jpg,healthy,anthracnose,0.5326748490333557,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy855_.jpg,healthy,healthy,0.9979661703109741,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy869_.jpg,healthy,healthy,0.901832103729248,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy906_.jpg,healthy,healthy,0.8268637657165527,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy913_.jpg,healthy,healthy,0.9993792772293091,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy919_.jpg,healthy,leaf_miner,0.4614024758338928,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy921_.jpg,healthy,healthy,0.9313274621963501,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy928_.jpg,healthy,healthy,0.9743531942367554,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy933_.jpg,healthy,healthy,0.8086317777633667,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy934_.jpg,healthy,healthy,0.44977545738220215,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy939_.jpg,healthy,healthy,0.9614825248718262,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy940_.jpg,healthy,healthy,0.9955412745475769,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy968_.jpg,healthy,healthy,0.9912500381469727,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy981_.jpg,healthy,healthy,0.9458885788917542,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy985_.jpg,healthy,healthy,0.854300320148468,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_cashew-alive-leaf-378-jpeg_4cf2e5c0-f6aa-4b93-83fb-9047135d2138_jpeg.rf.5aebf33991f99faf772043253b13445f.jpg,healthy,healthy,0.9884087443351746,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_cashew-alive-leaf-458-jpg_1c2cf345-62eb-47d7-b41c-ec0d5e5cb884_jpg.rf.aefc176264da27ae24e0c53295a3c363.jpg,healthy,healthy,0.9990270137786865,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_cashew-alive-leaf-586-jpeg_f11620fc-d96d-4eb1-a0e6-c487a575dfa7_jpeg.rf.34bc45aa90729a36e1dcabefe16f2790.jpg,healthy,healthy,0.997168242931366,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_cashew-alive-leaf-587-jpeg_368bf056-f9c2-4721-b224-814f1704bae1_jpeg.rf.dd3c497d776aa84d0e2917e40b01ada4.jpg,healthy,healthy,0.9898862838745117,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_cashew-alive-leaf-762-jpg_b00c4a7b-c980-4d70-8cc5-9f4cd2b957dc_jpg.rf.a20df8dce9c53247ede2a32cdbf4bc86.jpg,healthy,healthy,0.9856186509132385,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_cashew-alive-leaf-798-jpg_8ac339f7-a750-4020-ba99-04bb33f06d58_jpg.rf.9f03fcd7ca4b120e93fd3b76b9fc3cac.jpg,healthy,healthy,0.7922849059104919,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_cashew-alive-leaf-866-jpg_751780db-4c43-40b3-8279-d7d8b1191e3f_jpg.rf.99dfd77ce30a6e656cc7fad260de7eef.jpg,healthy,healthy,0.9924216866493225,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_cashew-alive-leaf-911-jpg_ed08f87d-b5fb-450d-bfd3-455eaf3c5926_jpg.rf.4c9eb17b3b70aece1c55e51c5fee4fe4.jpg,healthy,healthy,0.9763122797012329,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_cashew-alive-leaf-914-jpg_303dcfbd-8ea1-46fb-ab82-3582b9951181_jpg.rf.52e9a1f2b22d7334d5ab4c6f11346d8f.jpg,healthy,healthy,0.9908238649368286,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-1061-jpg_ac423454-c3b7-4b11-82f7-9e6cbd590fb0_jpg.rf.1b9c3533060b0216b1061c2fe60a8f1f.jpg,healthy,healthy,0.9976166486740112,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-1070-jpg_bcf6e100-0d4e-4dd9-bfbc-bc1d994db9bf_jpg.rf.e1c9160d1b552997dee7cd4f2d4d6f63.jpg,healthy,healthy,0.9973312616348267,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-1137-jpeg_c39baeda-ac11-4cc6-a962-8d27724bf478_jpeg.rf.3d3ec01bda6fdbd3ae884db7d21d52b7.jpg,healthy,healthy,0.984207808971405,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-1201-jpeg_d42f0e87-26dd-4478-92ad-df51674ceefc_jpeg.rf.56282f206bcda94fc06c3f03769cf347.jpg,healthy,healthy,0.9490394592285156,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-1255-jpg_49b54d73-cff7-4c46-8c86-26cbc16fbd4a_jpg.rf.e28d830598249a0e01ae47d544de5cdd.jpg,healthy,healthy,0.9986041188240051,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-1308-jpeg_d5e2555c-c7da-4ddf-8134-7e21ee37bd8f_jpeg.rf.e27b04c49bc77afdeb4e9eabac781d9d.jpg,healthy,anthracnose,0.7856296896934509,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-1452-jpeg_14a0b469-6e39-45b2-a194-651502a33daa_jpeg.rf.662f7ddad2946e67400b0971945a6b11.jpg,healthy,healthy,0.974925696849823,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-1496-jpg_0f94d6f8-74bf-4ccb-b2d2-1c6537430b1f_jpg.rf.1c5775c69087b71ed384c1e83567da09.jpg,healthy,healthy,0.9428393840789795,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-161-jpg_00370329-ee0a-4d0c-9eae-133df8b8fd9d_jpg.rf.4d3f9c597fedfcb29ed95fa298e16afa.jpg,healthy,healthy,0.9970533847808838,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-1699-jpeg_cb89b46e-b31e-416e-9af3-a78c95155c5d_jpeg.rf.4007a3c101a747a35337b6ebb500cbbb.jpg,healthy,healthy,0.9714778065681458,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-1703-jpeg_f3bbaff9-b7e9-4da6-9723-bc00d3a7273b_jpeg.rf.14852798fd51d771999eea546c6bcd90.jpg,healthy,healthy,0.6358141303062439,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-207-jpg_f82394cf-c572-4c7e-b608-58e3856450c1_jpg.rf.f3636a12391832ee7edb45e667646da2.jpg,healthy,healthy,0.9873732924461365,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-232-jpeg_c5a9a03a-1584-4fc0-8bcb-cae2d2ca30c4_jpeg.rf.b1887b3412320ffe8bccf3401f6f5cbf.jpg,healthy,healthy,0.9996641874313354,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-258-jpg_9c0f54a1-fd55-4e2b-becf-ef60f1206a29_jpg.rf.e778cbda60ddd9cbe2074b274a184938.jpg,healthy,anthracnose,0.9811314344406128,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-332-jpeg_665a7367-bfbc-4b3e-8d0f-1e72bb14bdfa_jpeg.rf.bd3e81b6f8c2666cc6357351cf7a07e9.jpg,healthy,healthy,0.6862124800682068,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-392-jpeg_8cbede02-e546-4618-bfd2-248f9c93f9f1_jpeg.rf.e9aa0322aaa07c770e7619d7fa82661f.jpg,healthy,healthy,0.9938337802886963,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-410-jpg_514ea9cc-e401-4d60-abe5-7ae67aeb153e_jpg.rf.611cb8fff2f18720d270055fd45a467d.jpg,healthy,healthy,0.9994837045669556,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-671-jpeg_cde29b3f-771a-4bc0-be57-ce2767daffdd_jpeg.rf.4646cf8d29f8f40e2e87c6d2406ebcab.jpg,healthy,healthy,0.9999737739562988,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-780-jpeg_e24422e7-c666-4eac-88fc-5acea003ab8f_jpeg.rf.8eb5a79e1840dce7024856f7618a4901.jpg,healthy,healthy,0.9997168183326721,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-917-jpg_89f95547-29ff-4a0a-b7f7-4eea4d6c19c3_jpg.rf.bc3cc61bd1f4d5c719b2d55224fa2741.jpg,healthy,healthy,0.995486319065094,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-986-jpg_1b731b60-7ded-4c3b-887e-560dab06813c_jpg.rf.1c93fb6bfe747954ad7a8ea1f1a5961c.jpg,healthy,healthy,0.9932820796966553,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner100_.jpg,leaf_miner,leaf_miner,0.9990768432617188,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1012_.jpg,leaf_miner,leaf_miner,0.9991818070411682,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1023_.jpg,leaf_miner,leaf_miner,0.9971323013305664,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1049_.jpg,leaf_miner,leaf_miner,0.991597592830658,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1050_.jpg,leaf_miner,leaf_miner,0.9983282685279846,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1069_.jpg,leaf_miner,leaf_miner,0.46177518367767334,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1126_.jpg,leaf_miner,leaf_miner,0.9745794534683228,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner113_.jpg,leaf_miner,leaf_miner,0.8163326978683472,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1149_.jpg,leaf_miner,leaf_miner,0.9800106287002563,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1154_.jpg,leaf_miner,leaf_miner,0.992046594619751,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1164_.jpg,leaf_miner,leaf_miner,0.9928128123283386,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1169_.jpg,leaf_miner,leaf_miner,0.9980965256690979,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1173_.jpg,leaf_miner,leaf_miner,0.996410071849823,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1178_.jpg,leaf_miner,leaf_miner,0.9645359516143799,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1181_.jpg,leaf_miner,leaf_miner,0.9970581531524658,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1184_.jpg,leaf_miner,leaf_miner,0.7492840886116028,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1200_.jpg,leaf_miner,healthy,0.5746282935142517,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1202_.jpg,leaf_miner,healthy,0.6638829708099365,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1209_.jpg,leaf_miner,anthracnose,0.747011125087738,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner120_.jpg,leaf_miner,leaf_miner,0.7130131125450134,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1222_.jpg,leaf_miner,leaf_miner,0.7370731830596924,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1257_.jpg,leaf_miner,leaf_miner,0.9638931751251221,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1262_.jpg,leaf_miner,anthracnose,0.5461626052856445,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1263_.jpg,leaf_miner,leaf_miner,0.9880833029747009,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1269_.jpg,leaf_miner,healthy,0.7999274730682373,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner126_.jpg,leaf_miner,leaf_miner,0.9907572865486145,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1281_.jpg,leaf_miner,leaf_miner,0.9489307999610901,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1297_.jpg,leaf_miner,leaf_miner,0.8892204761505127,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1320_.jpg,leaf_miner,leaf_miner,0.9786327481269836,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1325_.jpg,leaf_miner,leaf_miner,0.997617781162262,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner133_.jpg,leaf_miner,leaf_miner,0.7351011037826538,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1344_.jpg,leaf_miner,leaf_miner,0.9925096035003662,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1358_.jpg,leaf_miner,leaf_miner,0.8212849497795105,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner1373_.jpg,leaf_miner,healthy,0.782581090927124,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner139_.jpg,leaf_miner,leaf_miner,0.7714372873306274,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner140_.jpg,leaf_miner,leaf_miner,0.7938721179962158,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner157_.jpg,leaf_miner,leaf_miner,0.8408023715019226,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner217_.jpg,leaf_miner,leaf_miner,0.9777711629867554,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner218_.jpg,leaf_miner,leaf_miner,0.9935340881347656,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner219_.jpg,leaf_miner,leaf_miner,0.9905410408973694,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner226_.jpg,leaf_miner,leaf_miner,0.9956900477409363,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner235_.jpg,leaf_miner,leaf_miner,0.9985784292221069,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner237_.jpg,leaf_miner,leaf_miner,0.9961011409759521,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner265_.jpg,leaf_miner,leaf_miner,0.9991080164909363,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner266_.jpg,leaf_miner,leaf_miner,0.998021125793457,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner267_.jpg,leaf_miner,leaf_miner,0.9910874962806702,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner269_.jpg,leaf_miner,leaf_miner,0.9814793467521667,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner280_.jpg,leaf_miner,leaf_miner,0.9990076422691345,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner289_.jpg,leaf_miner,leaf_miner,0.9574241638183594,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner308_.jpg,leaf_miner,leaf_miner,0.9921437501907349,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner309_.jpg,leaf_miner,leaf_miner,0.9987034797668457,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner323_.jpg,leaf_miner,leaf_miner,0.8231592774391174,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner325_.jpg,leaf_miner,leaf_miner,0.9866037368774414,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner326_.jpg,leaf_miner,leaf_miner,0.9826585054397583,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner32_.jpg,leaf_miner,leaf_miner,0.9940159320831299,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner332_.jpg,leaf_miner,leaf_miner,0.9972956776618958,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner33_.jpg,leaf_miner,leaf_miner,0.9993990659713745,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner350_.jpg,leaf_miner,leaf_miner,0.9985070824623108,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner355_.jpg,leaf_miner,leaf_miner,0.9890797734260559,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner35_.jpg,leaf_miner,leaf_miner,0.9991918206214905,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner362_.jpg,leaf_miner,leaf_miner,0.9993103742599487,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner36_.jpg,leaf_miner,leaf_miner,0.9912905693054199,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner372_.jpg,leaf_miner,leaf_miner,0.9986785054206848,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner379_.jpg,leaf_miner,leaf_miner,0.9983071088790894,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner384_.jpg,leaf_miner,leaf_miner,0.9914065599441528,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner389_.jpg,leaf_miner,leaf_miner,0.9930022358894348,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner423_.jpg,leaf_miner,leaf_miner,0.9640213251113892,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner434_.jpg,leaf_miner,leaf_miner,0.9956798553466797,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner435_.jpg,leaf_miner,leaf_miner,0.9786521792411804,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner436_.jpg,leaf_miner,red_rust,0.9942672848701477,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner437_.jpg,leaf_miner,leaf_miner,0.977929949760437,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner444_.jpg,leaf_miner,leaf_miner,0.6623566746711731,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner465_.jpg,leaf_miner,red_rust,0.9490157961845398,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner467_.jpg,leaf_miner,leaf_miner,0.9824345707893372,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner472_.jpg,leaf_miner,leaf_miner,0.9769359230995178,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner473_.jpg,leaf_miner,leaf_miner,0.8271780014038086,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner481_.jpg,leaf_miner,leaf_miner,0.9933615922927856,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner487_.jpg,leaf_miner,leaf_miner,0.9658379554748535,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner48_.jpg,leaf_miner,leaf_miner,0.9982010126113892,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner496_.jpg,leaf_miner,leaf_miner,0.9681039452552795,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner500_.jpg,leaf_miner,leaf_miner,0.9938021898269653,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner505_.jpg,leaf_miner,leaf_miner,0.9975613355636597,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner50_.jpg,leaf_miner,leaf_miner,0.999277651309967,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner523_.jpg,leaf_miner,leaf_miner,0.9926784038543701,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner525_.jpg,leaf_miner,leaf_miner,0.9241622686386108,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner534_.jpg,leaf_miner,leaf_miner,0.5216594338417053,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner542_.jpg,leaf_miner,leaf_miner,0.9896485209465027,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner548_.jpg,leaf_miner,leaf_miner,0.9336809515953064,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner551_.jpg,leaf_miner,leaf_miner,0.9723367691040039,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner565_.jpg,leaf_miner,leaf_miner,0.8826038837432861,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner566_.jpg,leaf_miner,leaf_miner,0.9979913234710693,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner573_.jpg,leaf_miner,leaf_miner,0.9992756247520447,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner57_.jpg,leaf_miner,leaf_miner,0.9887290000915527,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner583_.jpg,leaf_miner,leaf_miner,0.9987058639526367,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner591_.jpg,leaf_miner,leaf_miner,0.9970340728759766,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner59_.jpg,leaf_miner,leaf_miner,0.6718454360961914,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner615_.jpg,leaf_miner,leaf_miner,0.9994398951530457,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner622_.jpg,leaf_miner,leaf_miner,0.9819773435592651,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner655_.jpg,leaf_miner,leaf_miner,0.994460940361023,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner664_.jpg,leaf_miner,leaf_miner,0.9990065693855286,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner677_.jpg,leaf_miner,anthracnose,0.9834258556365967,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner680_.jpg,leaf_miner,leaf_miner,0.998996913433075,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner686_.jpg,leaf_miner,leaf_miner,0.9979122281074524,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner692_.jpg,leaf_miner,leaf_miner,0.7902824282646179,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner705_.jpg,leaf_miner,anthracnose,0.43390795588493347,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner716_.jpg,leaf_miner,leaf_miner,0.9963780045509338,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner732_.jpg,leaf_miner,leaf_miner,0.9986225366592407,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner757_.jpg,leaf_miner,leaf_miner,0.9971144199371338,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner774_.jpg,leaf_miner,leaf_miner,0.9975066781044006,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner778_.jpg,leaf_miner,leaf_miner,0.9996055960655212,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner786_.jpg,leaf_miner,leaf_miner,0.9967665672302246,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner794_.jpg,leaf_miner,leaf_miner,0.9991056323051453,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner795_.jpg,leaf_miner,leaf_miner,0.9994813799858093,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner799_.jpg,leaf_miner,leaf_miner,0.9990309476852417,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner802_.jpg,leaf_miner,leaf_miner,0.999090313911438,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner810_.jpg,leaf_miner,anthracnose,0.6122530698776245,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner826_.jpg,leaf_miner,leaf_miner,0.927516520023346,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner833_.jpg,leaf_miner,leaf_miner,0.9994603991508484,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner845_.jpg,leaf_miner,leaf_miner,0.9984460473060608,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner863_.jpg,leaf_miner,leaf_miner,0.998934805393219,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner868_.jpg,leaf_miner,leaf_miner,0.8747774958610535,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner869_.jpg,leaf_miner,leaf_miner,0.9964717626571655,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner873_.jpg,leaf_miner,leaf_miner,0.9929481744766235,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner875_.jpg,leaf_miner,leaf_miner,0.9994400143623352,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner887_.jpg,leaf_miner,leaf_miner,0.9980760812759399,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner910_.jpg,leaf_miner,leaf_miner,0.9869667887687683,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner915_.jpg,leaf_miner,leaf_miner,0.9868296980857849,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner918_.jpg,leaf_miner,leaf_miner,0.9987366795539856,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner91_.jpg,leaf_miner,leaf_miner,0.9985858201980591,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner927_.jpg,leaf_miner,leaf_miner,0.998887836933136,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner943_.jpg,leaf_miner,leaf_miner,0.9966652989387512,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner95_.jpg,leaf_miner,leaf_miner,0.9810133576393127,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner970_.jpg,leaf_miner,leaf_miner,0.9776777625083923,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner981_.jpg,leaf_miner,leaf_miner,0.6977342367172241,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner996_.jpg,leaf_miner,leaf_miner,0.9948015213012695,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner998_.jpg,leaf_miner,leaf_miner,0.9917393922805786,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner999_.jpg,leaf_miner,anthracnose,0.674324095249176,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1006.jpg,not_cashew_leaf,not_cashew_leaf,0.957434892654419,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1011.jpg,not_cashew_leaf,not_cashew_leaf,0.8659831285476685,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1045.jpg,not_cashew_leaf,not_cashew_leaf,0.9976711869239807,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1063.jpg,not_cashew_leaf,not_cashew_leaf,0.9998607635498047,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1097.jpg,not_cashew_leaf,not_cashew_leaf,0.9940674304962158,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1098.jpg,not_cashew_leaf,not_cashew_leaf,0.9999818801879883,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1102.jpg,not_cashew_leaf,not_cashew_leaf,0.9999823570251465,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1104.jpg,not_cashew_leaf,not_cashew_leaf,0.9961996674537659,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1115.jpg,not_cashew_leaf,not_cashew_leaf,0.9999674558639526,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1129.jpg,not_cashew_leaf,not_cashew_leaf,0.9999973773956299,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1147.jpg,not_cashew_leaf,not_cashew_leaf,0.9977521300315857,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1160.jpg,not_cashew_leaf,not_cashew_leaf,0.9998759031295776,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1162.jpg,not_cashew_leaf,not_cashew_leaf,0.9999549388885498,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1178.jpg,not_cashew_leaf,not_cashew_leaf,0.9999620914459229,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1187.jpg,not_cashew_leaf,not_cashew_leaf,0.9999630451202393,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1198.jpg,not_cashew_leaf,not_cashew_leaf,0.9920545816421509,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1215.jpg,not_cashew_leaf,not_cashew_leaf,0.9999784231185913,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1219.jpg,not_cashew_leaf,not_cashew_leaf,0.5047980546951294,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1234.jpg,not_cashew_leaf,not_cashew_leaf,0.999976396560669,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1237.jpg,not_cashew_leaf,not_cashew_leaf,0.9997261166572571,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1251.jpg,not_cashew_leaf,not_cashew_leaf,0.9999798536300659,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1256.jpg,not_cashew_leaf,not_cashew_leaf,0.9999798536300659,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1262.jpg,not_cashew_leaf,not_cashew_leaf,0.9999796152114868,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1275.jpg,not_cashew_leaf,not_cashew_leaf,0.9999618530273438,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1276.jpg,not_cashew_leaf,not_cashew_leaf,0.9999852180480957,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1290.JPG,not_cashew_leaf,not_cashew_leaf,0.9981095790863037,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1309.jpg,not_cashew_leaf,not_cashew_leaf,0.9999971389770508,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1311.jpg,not_cashew_leaf,not_cashew_leaf,0.9999911785125732,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1324.jpg,not_cashew_leaf,not_cashew_leaf,0.9999899864196777,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1330.jpg,not_cashew_leaf,not_cashew_leaf,0.9999916553497314,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1331.jpg,not_cashew_leaf,not_cashew_leaf,0.9999659061431885,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1335.jpg,not_cashew_leaf,not_cashew_leaf,0.999994158744812,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1345.jpg,not_cashew_leaf,not_cashew_leaf,0.9999967813491821,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1348.jpg,not_cashew_leaf,not_cashew_leaf,0.9999973773956299,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1357.jpg,not_cashew_leaf,not_cashew_leaf,0.9999985694885254,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1368.jpg,not_cashew_leaf,not_cashew_leaf,0.9999901056289673,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1384.JPG,not_cashew_leaf,not_cashew_leaf,0.9942119717597961,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_140.jpg,not_cashew_leaf,not_cashew_leaf,0.9999969005584717,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1408.jpg,not_cashew_leaf,not_cashew_leaf,0.9998857975006104,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_141.jpg,not_cashew_leaf,not_cashew_leaf,0.999996542930603,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1441.JPG,not_cashew_leaf,not_cashew_leaf,0.9996299743652344,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1463.jpg,not_cashew_leaf,not_cashew_leaf,0.9999599456787109,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1475.jpg,not_cashew_leaf,not_cashew_leaf,0.9999701976776123,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1477.jpg,not_cashew_leaf,not_cashew_leaf,0.999994158744812,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1479.jpg,not_cashew_leaf,not_cashew_leaf,0.9999935626983643,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_148.jpg,not_cashew_leaf,not_cashew_leaf,0.9999775886535645,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1502.jpg,not_cashew_leaf,not_cashew_leaf,0.9999842643737793,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1505.jpg,not_cashew_leaf,not_cashew_leaf,0.9999945163726807,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1508.jpg,not_cashew_leaf,not_cashew_leaf,0.9999902248382568,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1509.jpg,not_cashew_leaf,not_cashew_leaf,0.99997878074646,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1519.JPG,not_cashew_leaf,not_cashew_leaf,0.9846795201301575,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_154.jpg,not_cashew_leaf,not_cashew_leaf,0.9999921321868896,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1540.jpg,not_cashew_leaf,not_cashew_leaf,0.9999586343765259,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1543.jpg,not_cashew_leaf,not_cashew_leaf,0.7636337280273438,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1549.jpg,not_cashew_leaf,not_cashew_leaf,0.9999909400939941,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1551.jpg,not_cashew_leaf,not_cashew_leaf,0.9999622106552124,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1555.jpg,not_cashew_leaf,healthy,0.5264623761177063,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_1564.jpg,not_cashew_leaf,not_cashew_leaf,0.9997543692588806,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_160.jpg,not_cashew_leaf,not_cashew_leaf,0.999993085861206,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_166.jpg,not_cashew_leaf,not_cashew_leaf,0.9999966621398926,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_172.jpg,not_cashew_leaf,not_cashew_leaf,0.9999979734420776,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_182.jpg,not_cashew_leaf,not_cashew_leaf,0.9999911785125732,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_194.jpg,not_cashew_leaf,not_cashew_leaf,0.9999498128890991,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_197.jpg,not_cashew_leaf,not_cashew_leaf,0.9999775886535645,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_201.jpg,not_cashew_leaf,not_cashew_leaf,0.9998282194137573,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_202.jpg,not_cashew_leaf,not_cashew_leaf,0.9990842342376709,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_214.jpg,not_cashew_leaf,leaf_miner,0.9965489506721497,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_215.jpg,not_cashew_leaf,not_cashew_leaf,0.9996466636657715,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_226.jpg,not_cashew_leaf,not_cashew_leaf,0.9996540546417236,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_238.jpg,not_cashew_leaf,not_cashew_leaf,0.9998027682304382,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_244.jpg,not_cashew_leaf,not_cashew_leaf,0.7834780216217041,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_269.jpg,not_cashew_leaf,not_cashew_leaf,0.9987515211105347,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_273.jpg,not_cashew_leaf,not_cashew_leaf,0.9997257590293884,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_278.jpg,not_cashew_leaf,not_cashew_leaf,0.999957799911499,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_287.jpg,not_cashew_leaf,not_cashew_leaf,0.9962051510810852,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_3.jpg,not_cashew_leaf,healthy,0.8688439726829529,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_315.jpg,not_cashew_leaf,not_cashew_leaf,0.9997654557228088,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_327.jpg,not_cashew_leaf,not_cashew_leaf,0.9987466335296631,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_328.jpg,not_cashew_leaf,not_cashew_leaf,0.9996016621589661,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_329.jpg,not_cashew_leaf,not_cashew_leaf,0.9784290194511414,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_338.jpg,not_cashew_leaf,not_cashew_leaf,0.9994791150093079,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_345.jpg,not_cashew_leaf,not_cashew_leaf,0.8851860165596008,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_355.jpg,not_cashew_leaf,not_cashew_leaf,0.9419155120849609,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_359.jpg,not_cashew_leaf,not_cashew_leaf,0.9996052384376526,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_364.jpg,not_cashew_leaf,not_cashew_leaf,0.9975786805152893,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_374.jpg,not_cashew_leaf,not_cashew_leaf,0.9992215633392334,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_375.jpg,not_cashew_leaf,anthracnose,0.746716320514679,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_383.jpg,not_cashew_leaf,not_cashew_leaf,0.9823898077011108,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_416.jpg,not_cashew_leaf,not_cashew_leaf,0.8653731346130371,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_427.jpg,not_cashew_leaf,not_cashew_leaf,0.9735686182975769,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_43.jpg,not_cashew_leaf,not_cashew_leaf,0.9990523457527161,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_438.jpg,not_cashew_leaf,not_cashew_leaf,0.9998220801353455,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_443.jpg,not_cashew_leaf,not_cashew_leaf,0.9859812259674072,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_450.jpg,not_cashew_leaf,not_cashew_leaf,0.98894202709198,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_451.jpg,not_cashew_leaf,not_cashew_leaf,0.9984340071678162,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_454.jpg,not_cashew_leaf,not_cashew_leaf,0.9997798800468445,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_460.jpg,not_cashew_leaf,not_cashew_leaf,0.9916987419128418,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_471.jpg,not_cashew_leaf,not_cashew_leaf,0.9898443222045898,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_482.jpg,not_cashew_leaf,not_cashew_leaf,0.9941076040267944,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_486.jpg,not_cashew_leaf,not_cashew_leaf,0.999517560005188,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_50.jpg,not_cashew_leaf,not_cashew_leaf,0.9999980926513672,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_505.jpg,not_cashew_leaf,not_cashew_leaf,0.9997240900993347,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_518.jpg,not_cashew_leaf,not_cashew_leaf,0.9995360374450684,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_526.jpg,not_cashew_leaf,not_cashew_leaf,0.5317808985710144,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_537.jpg,not_cashew_leaf,not_cashew_leaf,0.9953678846359253,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_543.jpg,not_cashew_leaf,not_cashew_leaf,0.9998992681503296,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_560.jpg,not_cashew_leaf,not_cashew_leaf,0.9994871616363525,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_569.jpg,not_cashew_leaf,not_cashew_leaf,0.9993103742599487,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_612.jpg,not_cashew_leaf,not_cashew_leaf,0.9865357279777527,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_613.jpg,not_cashew_leaf,not_cashew_leaf,0.9882835149765015,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_618.jpg,not_cashew_leaf,not_cashew_leaf,0.996889054775238,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_633.jpg,not_cashew_leaf,not_cashew_leaf,0.9996614456176758,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_638.jpg,not_cashew_leaf,not_cashew_leaf,0.9996459484100342,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_646.jpg,not_cashew_leaf,not_cashew_leaf,0.9282336235046387,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_653.jpg,not_cashew_leaf,not_cashew_leaf,0.9999409914016724,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_659.jpg,not_cashew_leaf,not_cashew_leaf,0.9996833801269531,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_66.jpg,not_cashew_leaf,not_cashew_leaf,0.9998769760131836,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_661.jpg,not_cashew_leaf,not_cashew_leaf,0.8467094302177429,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_663.jpg,not_cashew_leaf,not_cashew_leaf,0.9992341995239258,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_679.jpg,not_cashew_leaf,not_cashew_leaf,0.9998206496238708,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_69.jpg,not_cashew_leaf,not_cashew_leaf,0.9999288320541382,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_706.jpg,not_cashew_leaf,not_cashew_leaf,0.9965656399726868,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_716.jpg,not_cashew_leaf,not_cashew_leaf,0.9999730587005615,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_728.jpg,not_cashew_leaf,not_cashew_leaf,0.9998562335968018,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_733.jpg,not_cashew_leaf,not_cashew_leaf,0.9999923706054688,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_747.jpg,not_cashew_leaf,not_cashew_leaf,0.9999923706054688,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_751.jpg,not_cashew_leaf,not_cashew_leaf,0.9999910593032837,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_753.jpg,not_cashew_leaf,not_cashew_leaf,0.9999923706054688,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_760.jpg,not_cashew_leaf,not_cashew_leaf,0.9999825954437256,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_764.jpg,not_cashew_leaf,not_cashew_leaf,0.999984622001648,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_769.jpg,not_cashew_leaf,not_cashew_leaf,0.9999804496765137,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_777.jpg,not_cashew_leaf,not_cashew_leaf,0.999995231628418,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_785.jpg,not_cashew_leaf,not_cashew_leaf,0.9999911785125732,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_790.jpg,not_cashew_leaf,not_cashew_leaf,0.999996542930603,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_792.jpg,not_cashew_leaf,not_cashew_leaf,0.9999946355819702,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_793.jpg,not_cashew_leaf,not_cashew_leaf,0.9998868703842163,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_796.jpg,not_cashew_leaf,not_cashew_leaf,0.9999911785125732,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_800.jpg,not_cashew_leaf,not_cashew_leaf,0.9999949932098389,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_804.jpg,not_cashew_leaf,not_cashew_leaf,0.9999836683273315,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_821.jpg,not_cashew_leaf,not_cashew_leaf,0.9999762773513794,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_831.jpg,not_cashew_leaf,not_cashew_leaf,0.9999701976776123,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_837.jpg,not_cashew_leaf,not_cashew_leaf,0.999983549118042,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_839.jpg,not_cashew_leaf,not_cashew_leaf,0.9999806880950928,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_845.jpg,not_cashew_leaf,not_cashew_leaf,0.9997369647026062,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_849.jpg,not_cashew_leaf,not_cashew_leaf,0.9999207258224487,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_89.jpg,not_cashew_leaf,not_cashew_leaf,0.9997846484184265,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_891.jpg,not_cashew_leaf,not_cashew_leaf,0.9999912977218628,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_895.jpg,not_cashew_leaf,not_cashew_leaf,0.9999632835388184,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_898.jpg,not_cashew_leaf,not_cashew_leaf,0.9997661709785461,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_899.jpg,not_cashew_leaf,not_cashew_leaf,0.9992973804473877,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_90.jpg,not_cashew_leaf,not_cashew_leaf,0.9999984502792358,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_913.jpg,not_cashew_leaf,not_cashew_leaf,0.9998887777328491,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_922.jpg,not_cashew_leaf,not_cashew_leaf,0.9999622106552124,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_934.jpg,not_cashew_leaf,not_cashew_leaf,0.9999474287033081,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_941.jpg,not_cashew_leaf,not_cashew_leaf,0.9999828338623047,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_952.jpg,not_cashew_leaf,not_cashew_leaf,0.9999681711196899,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_961.jpg,not_cashew_leaf,not_cashew_leaf,0.9999767541885376,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_974.jpg,not_cashew_leaf,not_cashew_leaf,0.9988790154457092,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1017_.jpg,red_rust,red_rust,0.9418611526489258,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1019_.jpg,red_rust,red_rust,0.9635669589042664,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1026_.jpg,red_rust,red_rust,0.9797164797782898,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1030_.jpg,red_rust,red_rust,0.9794541001319885,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1039_.jpg,red_rust,red_rust,0.9981663823127747,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1042_.jpg,red_rust,red_rust,0.9937992691993713,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1044_.jpg,red_rust,red_rust,0.9989319443702698,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1061_.jpg,red_rust,red_rust,0.997744083404541,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1065_.jpg,red_rust,red_rust,0.9996121525764465,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1076_.jpg,red_rust,red_rust,0.9874244332313538,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1081_.jpg,red_rust,red_rust,0.9995949864387512,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1095_.jpg,red_rust,red_rust,0.9995748400688171,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust109_.jpg,red_rust,red_rust,0.6402500867843628,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1107_.jpg,red_rust,red_rust,0.9967396855354309,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1114_.jpg,red_rust,red_rust,0.997309684753418,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1132_.jpg,red_rust,red_rust,0.9917314648628235,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1137_.jpg,red_rust,red_rust,0.9995689988136292,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1154_.jpg,red_rust,red_rust,0.9674044847488403,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1172_.jpg,red_rust,red_rust,0.9965608716011047,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1173_.jpg,red_rust,red_rust,0.9847442507743835,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1176_.jpg,red_rust,red_rust,0.9988043308258057,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1180_.jpg,red_rust,red_rust,0.9700854420661926,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1198_.jpg,red_rust,red_rust,0.9659087061882019,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1206_.jpg,red_rust,red_rust,0.9992398023605347,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1217_.jpg,red_rust,red_rust,0.9997519850730896,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1230_.jpg,red_rust,red_rust,0.9996768236160278,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1234_.jpg,red_rust,red_rust,0.9901427030563354,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1235_.jpg,red_rust,red_rust,0.9994685053825378,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1241_.jpg,red_rust,red_rust,0.9985425472259521,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1242_.jpg,red_rust,red_rust,0.9790459871292114,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1259_.jpg,red_rust,red_rust,0.9992800354957581,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1281_.jpg,red_rust,red_rust,0.8859007954597473,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust128_.jpg,red_rust,red_rust,0.9973561763763428,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1292_.jpg,red_rust,red_rust,0.9995155334472656,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1296_.jpg,red_rust,red_rust,0.998138427734375,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1298_.jpg,red_rust,red_rust,0.999218225479126,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1301_.jpg,red_rust,red_rust,0.9980223178863525,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1303_.jpg,red_rust,red_rust,0.9990697503089905,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1307_.jpg,red_rust,red_rust,0.9987389445304871,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1324_.jpg,red_rust,leaf_miner,0.47627875208854675,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust135_.jpg,red_rust,red_rust,0.5983313322067261,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1371_.jpg,red_rust,red_rust,0.7765800356864929,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1373_.jpg,red_rust,red_rust,0.9963012933731079,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1375_.jpg,red_rust,red_rust,0.9771604537963867,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1381_.jpg,red_rust,red_rust,0.9877068400382996,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1388_.jpg,red_rust,red_rust,0.9983602166175842,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1390_.jpg,red_rust,red_rust,0.9989792704582214,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1404_.jpg,red_rust,anthracnose,0.9222201108932495,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1406_.jpg,red_rust,red_rust,0.9985394477844238,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1424_.jpg,red_rust,red_rust,0.9094825983047485,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1441_.jpg,red_rust,red_rust,0.8382487297058105,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1446_.jpg,red_rust,red_rust,0.9973697662353516,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1490_.jpg,red_rust,red_rust,0.9987313151359558,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust149_.jpg,red_rust,red_rust,0.9989583492279053,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1512_.jpg,red_rust,red_rust,0.9980484247207642,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1523_.jpg,red_rust,red_rust,0.9131069779396057,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1526_.jpg,red_rust,red_rust,0.9989965558052063,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1529_.jpg,red_rust,red_rust,0.8792386054992676,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust152_.jpg,red_rust,leaf_miner,0.7322101593017578,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1535_.jpg,red_rust,red_rust,0.7831690907478333,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1565_.jpg,red_rust,red_rust,0.9837766885757446,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1570_.jpg,red_rust,red_rust,0.9981794357299805,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1578_.jpg,red_rust,red_rust,0.947974443435669,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1584_.jpg,red_rust,not_cashew_leaf,0.6534700393676758,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1588_.jpg,red_rust,red_rust,0.9982033967971802,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1599_.jpg,red_rust,red_rust,0.9975370168685913,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1628_.jpg,red_rust,red_rust,0.995570957660675,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1637_.jpg,red_rust,red_rust,0.9974279999732971,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1662_.jpg,red_rust,red_rust,0.9995751976966858,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1663_.jpg,red_rust,red_rust,0.9928572177886963,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1678_.jpg,red_rust,anthracnose,0.993384063243866,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust170_.jpg,red_rust,red_rust,0.9880225658416748,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust175_.jpg,red_rust,red_rust,0.6195446252822876,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust176_.jpg,red_rust,red_rust,0.981918454170227,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust178_.jpg,red_rust,red_rust,0.9952849745750427,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust189_.jpg,red_rust,red_rust,0.8848670721054077,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust204_.jpg,red_rust,anthracnose,0.8196143507957458,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust210_.jpg,red_rust,red_rust,0.9991355538368225,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust221_.jpg,red_rust,red_rust,0.9386281371116638,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust222_.jpg,red_rust,red_rust,0.9928213953971863,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust237_.jpg,red_rust,red_rust,0.992601215839386,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust241_.jpg,red_rust,red_rust,0.9772993326187134,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust246_.jpg,red_rust,red_rust,0.9928077459335327,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust267_.jpg,red_rust,red_rust,0.9995747208595276,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust279_.jpg,red_rust,red_rust,0.998139500617981,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust286_.jpg,red_rust,red_rust,0.9989222288131714,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust294_.jpg,red_rust,red_rust,0.9984038472175598,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust300_.jpg,red_rust,red_rust,0.998640239238739,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust308_.jpg,red_rust,red_rust,0.9994103908538818,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust314_.jpg,red_rust,red_rust,0.9987505674362183,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust362_.jpg,red_rust,red_rust,0.9996616840362549,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust390_.jpg,red_rust,anthracnose,0.5225624442100525,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust397_.jpg,red_rust,red_rust,0.9927133917808533,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust398_.jpg,red_rust,red_rust,0.9996325969696045,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust399_.jpg,red_rust,red_rust,0.9940842986106873,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust406_.jpg,red_rust,red_rust,0.9646708369255066,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust440_.jpg,red_rust,red_rust,0.9986236095428467,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust446_.jpg,red_rust,red_rust,0.9994100332260132,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust455_.jpg,red_rust,red_rust,0.9967645406723022,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust458_.jpg,red_rust,red_rust,0.9995638728141785,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust463_.jpg,red_rust,red_rust,0.9903472661972046,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust469_.jpg,red_rust,red_rust,0.9988479614257812,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust481_.jpg,red_rust,red_rust,0.9969833493232727,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust48_.jpg,red_rust,red_rust,0.9994454979896545,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust495_.jpg,red_rust,red_rust,0.9996328353881836,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust499_.jpg,red_rust,red_rust,0.9985380172729492,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust501_.jpg,red_rust,red_rust,0.9996814727783203,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust504_.jpg,red_rust,red_rust,0.9963876008987427,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust513_.jpg,red_rust,red_rust,0.9323856234550476,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust516_.jpg,red_rust,red_rust,0.8267035484313965,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust555_.jpg,red_rust,red_rust,0.9168046712875366,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust556_.jpg,red_rust,red_rust,0.9997082352638245,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust574_.jpg,red_rust,red_rust,0.9990654587745667,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust583_.jpg,red_rust,red_rust,0.9983354210853577,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust586_.jpg,red_rust,red_rust,0.9940521121025085,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust599_.jpg,red_rust,red_rust,0.999164342880249,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust59_.jpg,red_rust,red_rust,0.9990307092666626,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust5_.jpg,red_rust,red_rust,0.9860590100288391,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust610_.jpg,red_rust,leaf_miner,0.6220260858535767,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust61_.jpg,red_rust,red_rust,0.9996582269668579,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust627_.jpg,red_rust,red_rust,0.9992874264717102,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust628_.jpg,red_rust,red_rust,0.9992755055427551,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust642_.jpg,red_rust,red_rust,0.9980871677398682,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust674_.jpg,red_rust,red_rust,0.9997072815895081,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust683_.jpg,red_rust,red_rust,0.9547625780105591,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust705_.jpg,red_rust,red_rust,0.9998015761375427,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust70_.jpg,red_rust,healthy,0.3700064420700073,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust747_.jpg,red_rust,red_rust,0.9069997668266296,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust755_.jpg,red_rust,red_rust,0.9645313024520874,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust75_.jpg,red_rust,red_rust,0.9156015515327454,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust767_.jpg,red_rust,red_rust,0.9388371109962463,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust775_.jpg,red_rust,red_rust,0.9973124265670776,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust785_.jpg,red_rust,red_rust,0.9992214441299438,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust799_.jpg,red_rust,red_rust,0.9991232752799988,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust840_.jpg,red_rust,red_rust,0.9795823097229004,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust844_.jpg,red_rust,red_rust,0.9962772727012634,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust873_.jpg,red_rust,red_rust,0.9988860487937927,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust881_.jpg,red_rust,red_rust,0.9995388984680176,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust885_.jpg,red_rust,red_rust,0.9987181425094604,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust886_.jpg,red_rust,red_rust,0.9991589784622192,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust888_.jpg,red_rust,red_rust,0.9986213445663452,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust891_.jpg,red_rust,red_rust,0.9995974898338318,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust89_.jpg,red_rust,red_rust,0.5158963203430176,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust903_.jpg,red_rust,red_rust,0.9993093013763428,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust90_.jpg,red_rust,red_rust,0.9955682158470154,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust92_.jpg,red_rust,red_rust,0.9981886744499207,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust939_.jpg,red_rust,red_rust,0.9991662502288818,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust93_.jpg,red_rust,red_rust,0.9988958835601807,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust947_.jpg,red_rust,red_rust,0.9993496537208557,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust962_.jpg,red_rust,red_rust,0.9993717074394226,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust966_.jpg,red_rust,red_rust,0.9997292160987854,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust975_.jpg,red_rust,red_rust,0.9991987347602844,True
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust978_.jpg,red_rust,red_rust,0.9997089505195618,True

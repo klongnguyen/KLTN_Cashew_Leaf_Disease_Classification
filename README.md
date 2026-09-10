@@ -1,6 +1,7 @@
 # 🍃 BẢN THAM KHẢO & NHẬN DIỆN CÁC LOẠI BỆNH TRÊN LÁ ĐIỀU
 > **Tài liệu tham khảo chuyên sâu phục vụ nghiên cứu Khóa Luận Tốt Nghiệp: Phân loại bệnh trên lá điều (*Cashew Leaf Disease Classification*)**  
-> 🔬 **Báo cáo thực nghiệm:** Xem chi tiết kết quả mô hình DenseNet-121 Scratch tại [EXP-DENSENET121-SCRATCH-001](./EXP-DENSENET121-SCRATCH-001/README.md).
+> 🔬 **Báo cáo thực nghiệm:** Xem chi tiết kết quả mô hình DenseNet-121 Scratch tại [EXP-DENSENET121-SCRATCH-001](./EXP-DENSENET121-SCRATCH-001/README.md).  
+> 📦 **Quy chuẩn Bounding Box:** Xem hướng dẫn gán nhãn cho team tại [CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md](./CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md).
 
 ---
 
@@ -10,7 +11,7 @@
 3. [Bệnh Sâu Vẽ Bùa / Ruồi Đục Lá (Leaf Miner)](#2-bệnh-sâu-vẽ-bùa--ruồi-đục-lá-leaf-miner)
 4. [Bệnh Rỉ Sắt Đỏ / Tảo Đỏ (Red Rust)](#3-bệnh-rỉ-sắt-đỏ--tảo-đỏ-red-rust)
 5. [Bảng Ma Trận So Sánh & Chẩn Đoán Phân Biệt](#-bảng-ma-trận-so-sánh--chẩn-đoán-phân-biệt)
-6. [Ý Nghĩa Nhận Diện Trong Thị Giác Máy Tính (Computer Vision)](#-ý-nghĩa-nhận-diện-trong-thị-giác-máy-tính-computer-vision)
+6. [Hướng Dẫn Gán Nhãn Bounding Box Cho Team (Annotation Guideline)](./CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md)
 7. [Tài Liệu Tham Khảo (References)](#-tài-liệu-tham-khảo-references)
 
 ---
@@ -126,22 +127,15 @@ Bản tài liệu này tổng hợp đặc điểm hình thái học, cơ chế 
 
 ---
 
-## 🤖 Ý NGHĨA NHẬN DIỆN TRONG THỊ GIÁC MÁY TÍNH (COMPUTER VISION)
+## 📦 HƯỚNG DẪN GÁN NHÃN BOUNDING BOX CHO TEAM (ANNOTATION GUIDELINE)
 
-Đối với bài toán huấn luyện mô hình phân loại hình ảnh (như ResNet, EfficientNet, MobileNet, Vision Transformer):
+Tài liệu quy định chi tiết **phương pháp gán nhãn Bounding Box thống nhất cho toàn bộ team** trong dự án phát hiện và phân loại bệnh trên lá cây điều (xây dựng Master Object Detection Dataset cho YOLO):
 
-1. **Đặc trưng màu sắc (Color Features):**
-   * *Anthracnose:* Tương phản cao giữa màu xanh tự nhiên của lá và mảng hoại tử màu nâu đen sẫm.
-   * *Leaf Miner:* Dải màu trắng bạc tương phản trên nền xanh diệp lục của lá.
-   * *Red Rust:* Sắc tố carotenoid màu cam đỏ tươi / đỏ gạch rất đặc thù, dễ tách biệt trong không gian màu HSV hoặc LAB.
+* **3 lớp bệnh cần gán nhãn:** `anthracnose` (thán thư), `leaf_miner` (sâu vẽ bùa), `red_rust` (rỉ sắt đỏ).
+* **2 nhóm không tạo box:** `healthy` (lá khỏe mạnh), `not_cashew_leaf` (ngoại lai / không phải lá điều).
+* **Nguyên tắc chính:** Khoanh chính xác vùng tổn thương, ôm sát viền bệnh, bao gồm quầng vàng (halo), áp dụng quy tắc gộp các cụm đốm bệnh nhỏ sát nhau và tách rời tổn thương độc lập.
 
-2. **Đặc trưng hình khối và cấu trúc bề mặt (Texture & Spatial Features):**
-   * *Anthracnose:* Gradient màu dạng vòng đồng tâm (concentric rings), vùng viền biên lồi lõm không đều.
-   * *Leaf Miner:* Các đường biên nét mảnh (edges) liên tục dạng đường cong uốn lượn (linear continuous tracks).
-   * *Red Rust:* Cấu trúc kết cấu nổi hạt nhung mịn (velvety texture) tập trung thành các khối tròn độc lập rải rác.
-
-3. **Gợi ý tiền xử lý & Data Augmentation:**
-   * Cần chú ý các phép tăng cường dữ liệu (*ColorJitter*, *RandomAffine*) để không làm biến đổi sắc thái nhận diện của lớp Red Rust (cam đỏ) và Anthracnose (nâu đen).
+👉 **Xem toàn văn tài liệu hướng dẫn quy chuẩn gán nhãn chi tiết:** [CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md](./CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md)
 
 ---
 

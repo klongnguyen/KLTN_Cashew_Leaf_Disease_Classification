@@ -1,0 +1,21 @@
+filename,true_label,predicted_label,confidence,correct
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1154_.jpg,anthracnose,not_cashew_leaf,0.9999362230300903,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1176_.jpg,anthracnose,leaf_miner,0.9973135590553284,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose943_.jpg,anthracnose,leaf_miner,0.9971678853034973,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/not_cashew_leaf/not_cashew_leaf_214.jpg,not_cashew_leaf,leaf_miner,0.9965489506721497,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose597_.jpg,anthracnose,red_rust,0.9950547218322754,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner436_.jpg,leaf_miner,red_rust,0.9942672848701477,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1678_.jpg,red_rust,anthracnose,0.993384063243866,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose833_.jpg,anthracnose,leaf_miner,0.9889793395996094,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner677_.jpg,leaf_miner,anthracnose,0.9834258556365967,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy_original_healthy-258-jpg_9c0f54a1-fd55-4e2b-becf-ef60f1206a29_jpg.rf.e778cbda60ddd9cbe2074b274a184938.jpg,healthy,anthracnose,0.9811314344406128,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1470_.jpg,anthracnose,red_rust,0.9789295792579651,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1323_.jpg,anthracnose,leaf_miner,0.9778865575790405,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1562_.jpg,anthracnose,red_rust,0.9743907451629639,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1021_.jpg,healthy,red_rust,0.9681320786476135,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/leaf_miner/leaf miner465_.jpg,leaf_miner,red_rust,0.9490157961845398,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose1556_.jpg,anthracnose,red_rust,0.9465241432189941,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/red_rust/red rust1404_.jpg,red_rust,anthracnose,0.9222201108932495,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1014_.jpg,healthy,anthracnose,0.9009847640991211,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/healthy/healthy1344_.jpg,healthy,anthracnose,0.8983455300331116,False
+/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split/test/anthracnose/anthracnose577_.jpg,anthracnose,red_rust,0.8961042761802673,False

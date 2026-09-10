@@ -1,0 +1,64 @@
+{
+  "experiment": {
+    "experiment_id": "EXP-VIT-SCRATCH-001",
+    "date": "2026-09-09T01:48:55.502192"
+  },
+  "model": {
+    "name": "Vision Transformer",
+    "training_mode": "Scratch",
+    "total_parameters": 347589,
+    "trainable_parameters": 347589
+  },
+  "training_config": {
+    "seed": 42,
+    "img_size": 224,
+    "batch_size": 32,
+    "max_epochs": 60,
+    "optimizer": "AdamW",
+    "initial_lr": 0.0003,
+    "weight_decay": 0.0001,
+    "patch_size": 16,
+    "projection_dim": 64,
+    "num_heads": 4,
+    "transformer_layers": 8,
+    "mlp_dim": 128
+  },
+  "training_result": {
+    "actual_epochs": 43,
+    "best_epoch": 33,
+    "best_val_accuracy": 0.8985214829444885,
+    "best_val_loss": 0.31322652101516724,
+    "training_time_seconds": 956.5882341861725
+  },
+  "test_result": {
+    "final_test_run": true,
+    "test_loss": 0.3082815408706665,
+    "accuracy": 0.9103078982597055,
+    "macro_precision": 0.908879220613118,
+    "macro_recall": 0.9105357858429658,
+    "macro_f1": 0.9093310644712173,
+    "balanced_accuracy": 0.9105357858429658,
+    "weighted_f1": 0.9097387317394924
+  },
+  "dataset": {
+    "path": "/kaggle/input/datasets/kimlonkkk/cashewdata-v02/CashewData_Split",
+    "valid_images": 7450,
+    "invalid_images": 0,
+    "train_images": 5215,
+    "val_images": 1488,
+    "test_images": 747,
+    "test_set_locked": true
+  },
+  "efficiency": {
+    "best_model_size_mb": 4.460737228393555,
+    "inference_time_ms_per_image": 5.107981039062537,
+    "fps": 195.7720657834566
+  },
+  "classes": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "not_cashew_leaf",
+    "red_rust"
+  ]
+}
