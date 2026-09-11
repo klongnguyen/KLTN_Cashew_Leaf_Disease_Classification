@@ -4,7 +4,20 @@ Thư mục `failure/` dùng để lưu các experiment **đã chạy được nh
 
 Mục tiêu của thư mục này là giữ lại bằng chứng thực nghiệm, tránh lặp lại các cấu hình đã thất bại và phục vụ phần **Failure Analysis / Discussion** của khóa luận.
 
-## Cấu trúc đề xuất
+---
+
+## Failure Index
+
+| Take | Model | Experiment | Thay đổi chính | Kết luận | Báo cáo |
+|---|---|---|---|---|---|
+| 01 | YOLO26s | `EXP-Y26S-SMALL-001` | Baseline dataset nhỏ | Model học được nhưng Recall thấp, nhiều lesion bị bỏ sót | [failure_take01.md](./YOLO26/EXP-Y26S-SMALL-001/failure_take01.md) |
+| 02 | YOLO26s | `EXP-Y26S-SMALL-002` | Resize dataset lên `640×640` | Localization tăng nhẹ nhưng Precision/Recall/mAP50 không cải thiện; ablation chưa sạch | [failure_take02.md](./YOLO26/EXP-Y26S-SMALL-002/failure_take02.md) |
+
+> `EXP-Y26S-SMALL-002` là tên archive bên ngoài. Artifact bên trong vẫn ghi nhầm `EXP-Y26S-SMALL-001`; lỗi traceability này được ghi rõ trong Take 02.
+
+---
+
+## Cấu trúc thư mục
 
 ```text
 failure/
@@ -13,22 +26,23 @@ failure/
 │   └── failure_report_template.md
 │
 ├── YOLO26/
-│   └── EXP-Y26S-SMALL-001/
-│       ├── failure_take01.md
+│   ├── README.md
+│   ├── EXP-Y26S-SMALL-001/
+│   │   ├── failure_take01.md
+│   │   ├── config/
+│   │   │   └── experiment_config.json
+│   │   └── metrics/
+│   │       └── metrics_summary.json
+│   │
+│   └── EXP-Y26S-SMALL-002/
+│       ├── failure_take02.md
 │       ├── config/
 │       │   └── experiment_config.json
-│       ├── metrics/
-│       │   └── metrics_summary.json
-│       ├── figures/
-│       │   ├── results.png
-│       │   ├── confusion_matrix.png
-│       │   ├── confusion_matrix_normalized.png
-│       │   ├── BoxPR_curve.png
-│       │   └── BoxF1_curve.png
-│       ├── predictions/
-│       │   └── sample_predictions/
-│       └── checkpoints/
-│           └── best.pt          # optional
+│       └── metrics/
+│           ├── metrics_summary.json
+│           ├── final_summary.csv
+│           ├── per_class_metrics.csv
+│           └── dataset_statistics.csv
 │
 ├── CNN/
 ├── RESNET50/
@@ -38,6 +52,38 @@ failure/
 
 > Git không lưu thư mục rỗng. Các thư mục `figures/`, `predictions/`, `checkpoints/` chỉ cần tạo khi thực sự có artifact tương ứng.
 
+---
+
+## Cấu trúc chuẩn cho một failed experiment
+
+```text
+EXP-.../
+├── failure_takeXX.md
+├── config/
+│   └── experiment_config.json
+├── metrics/
+│   ├── metrics_summary.json
+│   ├── final_summary.csv
+│   ├── per_class_metrics.csv
+│   └── dataset_statistics.csv
+├── figures/                  # optional
+│   ├── results.png
+│   ├── confusion_matrix.png
+│   ├── confusion_matrix_normalized.png
+│   ├── BoxPR_curve.png
+│   └── BoxF1_curve.png
+├── predictions/              # optional
+│   └── sample_predictions/
+└── checkpoints/              # optional
+    └── best.pt
+```
+
+Không cần lưu toàn bộ dataset trong `failure/`.
+
+Checkpoint chỉ nên lưu khi cần tái kiểm tra. Với file lớn, cân nhắc Git LFS hoặc lưu trên Drive và ghi link/tham chiếu trong report thay vì làm repository quá nặng.
+
+---
+
 ## Quy tắc đặt tên
 
 Mỗi failed experiment phải giữ nguyên `Experiment ID` đã dùng khi train.
@@ -46,7 +92,8 @@ Ví dụ:
 
 ```text
 EXP-Y26S-SMALL-001
-EXP-Y26S-DATAFIX-002
+EXP-Y26S-SMALL-002
+EXP-Y26S-DATAFIX-003
 EXP-VIT-SCRATCH-001
 ```
 
@@ -60,9 +107,9 @@ failure_take03.md
 
 Nếu cùng một experiment được phân tích lại nhiều lần, tăng số `take` thay vì ghi đè báo cáo cũ.
 
-## Phân loại failure
+---
 
-Có thể ghi một hoặc nhiều loại trong báo cáo:
+## Phân loại failure
 
 | Failure Type | Ý nghĩa |
 |---|---|
@@ -72,6 +119,8 @@ Có thể ghi một hoặc nhiều loại trong báo cáo:
 | `PERFORMANCE_FAILURE` | Train thành công nhưng metric chưa đủ tốt để chọn làm final model |
 | `GENERALIZATION_FAILURE` | Validation/Test/Real Holdout giảm mạnh |
 | `DEPLOYMENT_FAILURE` | Mô hình quá chậm, quá lớn hoặc không phù hợp triển khai |
+
+---
 
 ## Artifact bắt buộc nên giữ
 
@@ -87,9 +136,9 @@ PR/F1 curves nếu là detection
 một số prediction đúng/sai đại diện
 ```
 
-Không cần lưu lại toàn bộ dataset trong `failure/`.
+Trong giai đoạn đầu có thể chỉ commit `report + config + metrics` để repository gọn. Figure hoặc checkpoint lớn có thể bổ sung khi cần trình bày báo cáo.
 
-Checkpoint chỉ nên lưu khi cần tái kiểm tra. Với file lớn, cân nhắc Git LFS hoặc lưu trên Drive và ghi link/tham chiếu trong report thay vì làm repository quá nặng.
+---
 
 ## Nguyên tắc đánh giá
 
@@ -103,6 +152,8 @@ Một experiment nằm trong `failure/` không có nghĩa là vô ích. Nó đư
 - Resolution có ảnh hưởng không?
 - Có dấu hiệu overfitting hay không?
 - Cần thay đổi gì ở experiment tiếp theo?
+
+---
 
 ## Quy trình sau một failed experiment
 
@@ -125,3 +176,21 @@ So sánh với failed baseline
 ```
 
 Không nên thay đồng thời quá nhiều yếu tố ở experiment tiếp theo vì sẽ khó xác định yếu tố nào thực sự tạo ra cải thiện.
+
+---
+
+## Quy tắc quan trọng cho ablation
+
+Khi muốn chứng minh ảnh hưởng của một yếu tố như resolution, augmentation hoặc learning rate, phải giữ cố định các yếu tố còn lại:
+
+```text
+same dataset
+same split
+same labels
+same boxes
+same seed
+same model
+same hyperparameters
+```
+
+Chỉ thay **một biến đang khảo sát**. Nếu dataset hoặc annotation thay đổi đồng thời, experiment phải được đánh dấu là `INCONCLUSIVE` thay vì dùng để kết luận nguyên nhân - kết quả.

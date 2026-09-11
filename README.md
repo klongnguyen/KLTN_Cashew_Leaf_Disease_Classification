@@ -1,7 +1,8 @@
 # 🍃 BẢN THAM KHẢO & NHẬN DIỆN CÁC LOẠI BỆNH TRÊN LÁ ĐIỀU
 > **Tài liệu tham khảo chuyên sâu phục vụ nghiên cứu Khóa Luận Tốt Nghiệp: Phân loại bệnh trên lá điều (*Cashew Leaf Disease Classification*)**  
 > 🔬 **Báo cáo thực nghiệm:** Xem chi tiết kết quả mô hình DenseNet-121 Scratch tại [EXP-DENSENET121-SCRATCH-001](./EXP-DENSENET121-SCRATCH-001/README.md).  
-> 📦 **Quy chuẩn Bounding Box:** Xem hướng dẫn gán nhãn cho team tại [CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md](./CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md).
+> 📦 **Quy chuẩn Bounding Box:** Xem hướng dẫn gán nhãn cho team tại [CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md](./CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md).  
+> ⚠️ **Failure Experiments:** Xem các lần huấn luyện chưa đạt, phân tích nguyên nhân và hướng cải thiện tại [failure/README.md](./failure/README.md).
 
 ---
 
@@ -12,7 +13,8 @@
 4. [Bệnh Rỉ Sắt Đỏ / Tảo Đỏ (Red Rust)](#3-bệnh-rỉ-sắt-đỏ--tảo-đỏ-red-rust)
 5. [Bảng Ma Trận So Sánh & Chẩn Đoán Phân Biệt](#-bảng-ma-trận-so-sánh--chẩn-đoán-phân-biệt)
 6. [Hướng Dẫn Gán Nhãn Bounding Box Cho Team (Annotation Guideline)](./CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md)
-7. [Tài Liệu Tham Khảo (References)](#-tài-liệu-tham-khảo-references)
+7. [Failure Experiment Archive](#-failure-experiment-archive)
+8. [Tài Liệu Tham Khảo (References)](#-tài-liệu-tham-khảo-references)
 
 ---
 
@@ -136,6 +138,26 @@ Tài liệu quy định chi tiết **phương pháp gán nhãn Bounding Box th�
 * **Nguyên tắc chính:** Khoanh chính xác vùng tổn thương, ôm sát viền bệnh, bao gồm quầng vàng (halo), áp dụng quy tắc gộp các cụm đốm bệnh nhỏ sát nhau và tách rời tổn thương độc lập.
 
 👉 **Xem toàn văn tài liệu hướng dẫn quy chuẩn gán nhãn chi tiết:** [CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md](./CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md)
+
+---
+
+## ⚠️ FAILURE EXPERIMENT ARCHIVE
+
+Các experiment không đạt yêu cầu final vẫn được lưu lại để:
+
+- theo dõi lịch sử thử nghiệm;
+- tránh lặp lại cấu hình không hiệu quả;
+- phân tích False Positive / False Negative;
+- đánh giá ảnh hưởng của dataset, annotation và resolution;
+- phục vụ phần **Failure Analysis / Discussion** trong khóa luận.
+
+### Truy cập nhanh
+
+- 📁 **Failure Archive:** [failure/README.md](./failure/README.md)
+- YOLO26 Take 01 — Baseline nhỏ: [failure_take01.md](./failure/YOLO26/EXP-Y26S-SMALL-001/failure_take01.md)
+- YOLO26 Take 02 — Resize 640×640: [failure_take02.md](./failure/YOLO26/EXP-Y26S-SMALL-002/failure_take02.md)
+
+Take 02 cho thấy tăng resolution có tín hiệu cải thiện nhẹ về localization nhưng chưa cải thiện Precision/Recall/mAP50 tổng thể. Đồng thời Train set giữa hai take không hoàn toàn giống nhau, nên kết quả được đánh dấu **Mixed / Inconclusive** thay vì dùng để kết luận resolution 640 tốt hơn.
 
 ---
 
