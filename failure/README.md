@@ -10,11 +10,14 @@ Mục tiêu là giữ lại bằng chứng thực nghiệm, tránh lặp lại c
 |---|---|---|---|---|---|
 | 01 | YOLO26s | `EXP-Y26S-SMALL-001` | Baseline dataset nhỏ | Recall thấp, nhiều lesion bị bỏ sót | [failure_take01.md](./YOLO26/EXP-Y26S-SMALL-001/failure_take01.md) |
 | 02 | YOLO26s | `EXP-Y26S-SMALL-002` | Resize dataset lên `640×640` | Localization tăng nhẹ nhưng Precision/Recall/mAP50 không cải thiện; ablation chưa sạch | [failure_take02.md](./YOLO26/EXP-Y26S-SMALL-002/failure_take02.md) |
-| 03 | YOLO26s | `EXP-Y26S-SMALL-003` | Giảm box nhỏ/chồng đè/mờ + Horizontal Flip + Rotate 90° | Mean IoU TP tăng mạnh nhưng detection tổng thể còn yếu; annotation policy thay đổi nên không so sánh trực tiếp với Take 01/02 | [failure_take03.md](./YOLO26/EXP-Y26S-SMALL-003/failure_take03.md) |
+| 03 | YOLO26s | `EXP-Y26S-SMALL-003` | Giảm box nhỏ/chồng đè/mờ + Horizontal Flip + Rotate 90° | Mean IoU TP tăng mạnh nhưng detection tổng thể còn yếu; annotation policy thay đổi | [failure_take03.md](./YOLO26/EXP-Y26S-SMALL-003/failure_take03.md) |
+| 04 | YOLO26s | `EXP-Y26S-SMALL-004` | Bounding thêm lesion nhỏ có ý nghĩa + tăng ảnh annotation | Precision/Recall/mAP phục hồi rõ so với Take 03; FP và imbalance vẫn lớn | [failure_take04.md](./YOLO26/EXP-Y26S-SMALL-004/failure_take04.md) |
 
 > Take 02 có lỗi traceability: archive bên ngoài là `EXP-Y26S-SMALL-002` nhưng artifact bên trong vẫn ghi `EXP-Y26S-SMALL-001`.
 
-> Take 03 đã sửa đúng traceability: archive, metadata và checkpoint đều dùng `EXP-Y26S-SMALL-003`.
+> Take 03 dùng đúng `EXP-Y26S-SMALL-003`.
+
+> Take 04 lại có lỗi traceability: archive bên ngoài là `EXP-Y26S-SMALL-004` nhưng metadata/checkpoint bên trong vẫn ghi `EXP-Y26S-SMALL-003`.
 
 ## Cấu trúc hiện tại
 
@@ -33,8 +36,12 @@ failure/
     │   ├── failure_take02.md
     │   ├── config/
     │   └── metrics/
-    └── EXP-Y26S-SMALL-003/
-        ├── failure_take03.md
+    ├── EXP-Y26S-SMALL-003/
+    │   ├── failure_take03.md
+    │   ├── config/
+    │   └── metrics/
+    └── EXP-Y26S-SMALL-004/
+        ├── failure_take04.md
         ├── config/
         │   └── experiment_config.json
         └── metrics/
@@ -78,7 +85,7 @@ Không cần lưu toàn bộ dataset trong `failure/`. Checkpoint lớn chỉ n�
 
 ## Quy tắc experiment
 
-1. Mỗi experiment có `Experiment ID` riêng.
+1. Mỗi experiment có `Experiment ID` riêng và phải đồng nhất giữa notebook, archive, config, metrics, `args.yaml` và checkpoint.
 2. Không ghi đè `failure_takeXX.md` cũ.
 3. Giữ config, metrics và các figure quan trọng nếu cần.
 4. Test set không dùng để tuning.
