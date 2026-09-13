@@ -1,0 +1,19 @@
+{
+  "experiment_id": "EXP-Y26S-SMALL-003",
+  "model": "yolo26s.pt",
+  "seed": 42,
+  "epochs": 50,
+  "patience": 20,
+  "imgsz": 640,
+  "batch_size": 8,
+  "optimizer": "AdamW",
+  "learning_rate": 0.001,
+  "weight_decay": 0.0005,
+  "mosaic": 0.5,
+  "mixup": 0.0,
+  "copy_paste": 0.0,
+  "fliplr": 0.5,
+  "pred_conf": 0.25,
+  "nms_iou": 0.7,
+  "match_iou": 0.5
+}
