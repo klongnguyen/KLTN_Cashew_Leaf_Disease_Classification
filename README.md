@@ -25,7 +25,7 @@ Cây điều (*Anacardium occidentale*) là một trong những cây công nghi�
 Bản tài liệu này tổng hợp đặc điểm hình thái học, cơ chế phát sinh và hình ảnh thực địa mẫu của 3 loại tổn thương phổ biến nhất:
 - **Anthracnose (Bệnh thán thư)** do nấm *Colletotrichum gloeosporioides*.
 - **Leaf Miner (Sâu vẽ bùa / Ruồi đục lá)** do côn trùng gây hại (*Acrocercops syngramma* / sâu bướm, ruồi đục lá).
-- **Red Rust (Bệnh rỉ sắt đỏ / Bệnh tảo đỏ)** do tảo ký sinh *Cephaleuros virescens*.
+- **Red Rust (Bệnh rỉ sắt đỏ / Tảo đỏ)** do tảo ký sinh *Cephaleuros virescens*.
 
 ---
 
@@ -156,8 +156,10 @@ Các experiment không đạt yêu cầu final vẫn được lưu lại để:
 - 📁 **Failure Archive:** [failure/README.md](./failure/README.md)
 - YOLO26 Take 01 — Baseline nhỏ: [failure_take01.md](./failure/YOLO26/EXP-Y26S-SMALL-001/failure_take01.md)
 - YOLO26 Take 02 — Resize 640×640: [failure_take02.md](./failure/YOLO26/EXP-Y26S-SMALL-002/failure_take02.md)
+- YOLO26 Take 03 — Clean annotation / sparse supervision: [failure_take03.md](./failure/YOLO26/EXP-Y26S-SMALL-003/failure_take03.md)
+- YOLO26 Take 04 — Small-lesion annotation + expanded dataset: [failure_take04.md](./failure/YOLO26/EXP-Y26S-SMALL-004/failure_take04.md)
 
-Take 02 cho thấy tăng resolution có tín hiệu cải thiện nhẹ về localization nhưng chưa cải thiện Precision/Recall/mAP50 tổng thể. Đồng thời Train set giữa hai take không hoàn toàn giống nhau, nên kết quả được đánh dấu **Mixed / Inconclusive** thay vì dùng để kết luận resolution 640 tốt hơn.
+Take 04 là bước cải thiện rõ so với Take 03: Precision, Recall, F1 và mAP tăng đáng kể trong khi Mean IoU của matched TP vẫn giữ khoảng `0.79`. Tuy nhiên số False Positive còn cao, Leaf Miner bị thiếu dữ liệu và dataset detection hiện chưa có negative image rõ ràng, nên Take 04 vẫn được lưu trong Failure Archive thay vì chọn làm final detector.
 
 ---
 
