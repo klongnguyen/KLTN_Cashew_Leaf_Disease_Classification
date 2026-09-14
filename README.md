@@ -1,6 +1,6 @@
 # 🍃 BẢN THAM KHẢO & NHẬN DIỆN CÁC LOẠI BỆNH TRÊN LÁ ĐIỀU
 > **Tài liệu tham khảo chuyên sâu phục vụ nghiên cứu Khóa Luận Tốt Nghiệp: Phân loại bệnh trên lá điều (*Cashew Leaf Disease Classification*)**  
-> 🔬 **Báo cáo thực nghiệm:** Xem chi tiết kết quả mô hình DenseNet-121 Scratch tại [EXP-DENSENET121-SCRATCH-001](./EXP-DENSENET121-SCRATCH-001/README.md).  
+> 🧪 **Kết quả huấn luyện:** Xem cấu trúc experiment hiện tại và archive dataset cũ tại [training_results/README.md](./training_results/README.md).  
 > 📦 **Quy chuẩn Bounding Box:** Xem hướng dẫn gán nhãn cho team tại [CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md](./CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md).  
 > ⚠️ **Failure Experiments:** Xem các lần huấn luyện chưa đạt, phân tích nguyên nhân và hướng cải thiện tại [failure/README.md](./failure/README.md).
 
@@ -13,8 +13,9 @@
 4. [Bệnh Rỉ Sắt Đỏ / Tảo Đỏ (Red Rust)](#3-bệnh-rỉ-sắt-đỏ--tảo-đỏ-red-rust)
 5. [Bảng Ma Trận So Sánh & Chẩn Đoán Phân Biệt](#-bảng-ma-trận-so-sánh--chẩn-đoán-phân-biệt)
 6. [Hướng Dẫn Gán Nhãn Bounding Box Cho Team (Annotation Guideline)](./CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md)
-7. [Failure Experiment Archive](#-failure-experiment-archive)
-8. [Tài Liệu Tham Khảo (References)](#-tài-liệu-tham-khảo-references)
+7. [Training Results](#-training-results)
+8. [Failure Experiment Archive](#-failure-experiment-archive)
+9. [Tài Liệu Tham Khảo (References)](#-tài-liệu-tham-khảo-references)
 
 ---
 
@@ -138,6 +139,18 @@ Tài liệu quy định chi tiết **phương pháp gán nhãn Bounding Box th�
 * **Nguyên tắc chính:** Khoanh chính xác vùng tổn thương, ôm sát viền bệnh, bao gồm quầng vàng (halo), áp dụng quy tắc gộp các cụm đốm bệnh nhỏ sát nhau và tách rời tổn thương độc lập.
 
 👉 **Xem toàn văn tài liệu hướng dẫn quy chuẩn gán nhãn chi tiết:** [CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md](./CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md)
+
+---
+
+## 🧪 TRAINING RESULTS
+
+Kết quả huấn luyện được tách theo phiên bản dataset để tránh so sánh sai giữa dataset cũ và Master Dataset hiện tại.
+
+- 📁 **Kết quả dataset hiện tại:** [training_results/current_dataset/](./training_results/current_dataset/)
+- 🗄️ **Archive dataset cũ:** [training_results/archive_legacy_dataset/](./training_results/archive_legacy_dataset/)
+- 📘 **Quy ước quản lý experiment:** [training_results/README.md](./training_results/README.md)
+
+Hai experiment `EXP-DENSENET121-SCRATCH-001` và `EXP-VIT-SCRATCH-001` đã được chuyển vào archive vì được huấn luyện trên dataset cũ. Chúng chỉ còn giá trị tham khảo và không được dùng để so sánh trực tiếp với các experiment mới.
 
 ---
 
