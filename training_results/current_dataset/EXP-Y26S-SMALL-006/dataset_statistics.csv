@@ -1,0 +1,4 @@
+,images,images_with_boxes,boxes,anthracnose,leaf_miner,red_rust
+train,441,441,12781,3169,643,8969
+val,42,40,1108,236,65,807
+test,20,20,491,79,25,387
