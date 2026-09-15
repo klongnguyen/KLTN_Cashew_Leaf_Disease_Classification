@@ -144,9 +144,44 @@ Tài liệu quy định chi tiết **phương pháp gán nhãn Bounding Box th�
 
 ## 🧪 TRAINING RESULTS
 
-Kết quả huấn luyện được tách theo phiên bản dataset để tránh so sánh sai giữa dataset cũ và Master Dataset hiện tại.
+### Master Dataset hiện tại
+
+Classification dataset hiện tại (`Cashew_dataV03`) có **7,213 ảnh / 5 lớp** với split cố định và Test Set đã khóa.
+
+| Class | Train | Validation | Test | Total |
+|---|---:|---:|---:|---:|
+| `anthracnose` | 1,096 | 313 | 156 | 1,565 |
+| `healthy` | 818 | 225 | 128 | 1,171 |
+| `leaf_miner` | 919 | 262 | 131 | 1,312 |
+| `not_cashew_leaf` | 1,101 | 314 | 157 | 1,572 |
+| `red_rust` | 1,115 | 319 | 159 | 1,593 |
+| **TOTAL** | **5,049** | **1,433** | **731** | **7,213** |
+
+📊 File Excel phân bố dataset: [`dataset_cashew.xlsx`](./dataset_cashew.xlsx)
+
+### Baseline chính thức hiện tại
+
+| Experiment | Model | Seeds | Test Accuracy | Macro F1 |
+|---|---|---:|---:|---:|
+| [`EXP-RESNET50-SCRATCH-5SEEDS-002`](./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-002/) | ResNet50 Scratch | 5 | **90.10 ± 1.82%** | **90.12 ± 1.81%** |
+
+Seed 42 được dùng làm hình minh họa vì đây là seed cố định đầu tiên trong protocol; kết luận chính thức luôn dựa trên **Mean ± Std của cả 5 seeds**.
+
+<table>
+<tr>
+<th>Training / Validation Accuracy — Seed 42</th>
+<th>Normalized Test Confusion Matrix — Seed 42</th>
+</tr>
+<tr>
+<td width="50%"><img src="./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-002/5_seed_resnet50_v02/5_seed_resnet50_v02/42/accuracy_curve.png" width="100%" alt="Seed 42 Accuracy Curve"></td>
+<td width="50%"><img src="./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-002/5_seed_resnet50_v02/5_seed_resnet50_v02/42/confusion_matrix_normalized.png" width="100%" alt="Seed 42 Normalized Test Confusion Matrix"></td>
+</tr>
+</table>
+
+### Truy cập kết quả
 
 - 📁 **Kết quả dataset hiện tại:** [training_results/current_dataset/](./training_results/current_dataset/)
+- 📘 **ResNet50 5-seed visual report:** [EXP-RESNET50-SCRATCH-5SEEDS-002/README.md](./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-002/README.md)
 - 🗄️ **Archive dataset cũ:** [training_results/archive_legacy_dataset/](./training_results/archive_legacy_dataset/)
 - 📘 **Quy ước quản lý experiment:** [training_results/README.md](./training_results/README.md)
 
