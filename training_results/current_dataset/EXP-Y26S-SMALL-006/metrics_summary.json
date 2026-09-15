@@ -1,0 +1,50 @@
+{
+  "experiment": {
+    "experiment_id": "EXP-Y26S-SMALL-005",
+    "model": "yolo26s.pt",
+    "seed": 42
+  },
+  "training_config": {
+    "epochs": 50,
+    "patience": 20,
+    "imgsz": 640,
+    "batch_size": 8,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0005,
+    "mosaic": 0.5,
+    "mixup": 0.0,
+    "copy_paste": 0.0,
+    "fliplr": 0.5
+  },
+  "dataset": {
+    "classes": ["anthracnose", "leaf_miner", "red_rust"],
+    "statistics": {
+      "train": {"images": 441, "images_with_boxes": 441, "boxes": 12781, "anthracnose": 3169, "leaf_miner": 643, "red_rust": 8969},
+      "val": {"images": 42, "images_with_boxes": 40, "boxes": 1108, "anthracnose": 236, "leaf_miner": 65, "red_rust": 807},
+      "test": {"images": 20, "images_with_boxes": 20, "boxes": 491, "anthracnose": 79, "leaf_miner": 25, "red_rust": 387}
+    }
+  },
+  "test_yolo_metrics": {
+    "precision": 0.7473442583848549,
+    "recall": 0.6647722399267243,
+    "f1": 0.703644093439243,
+    "mAP50": 0.7297647986223849,
+    "mAP75": 0.35772086026165567,
+    "mAP50_95": 0.3876542073492677
+  },
+  "custom_iou_analysis": {
+    "prediction_confidence_threshold": 0.25,
+    "nms_iou": 0.7,
+    "matching_iou_threshold": 0.5,
+    "tp": 356,
+    "fp": 230,
+    "fn": 135,
+    "precision": 0.6075085324232071,
+    "recall": 0.7250509164969435,
+    "f1": 0.6610956360255008,
+    "mean_iou_tp": 0.7602977955589232,
+    "median_iou_tp": 0.7719659356442543
+  },
+  "efficiency": {"training_time_seconds": 593.3962643146515}
+}
