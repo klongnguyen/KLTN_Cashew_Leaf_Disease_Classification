@@ -58,6 +58,22 @@ Các đường Accuracy của 5 seed được đặt trong cùng một panel đ�
 
 Xem chi tiết tại [`EXP-DENSENET121-SCRATCH-5SEEDS-002/README.md`](./EXP-DENSENET121-SCRATCH-5SEEDS-002/README.md).
 
+## YOLO26 detection experiment hiện tại
+
+| Experiment | Model | Input | Precision | Recall | F1 | mAP50 | mAP50-95 | Status |
+|---|---|---:|---:|---:|---:|---:|---:|---|
+| [`EXP-Y26S-SMALL-005`](./EXP-Y26S-SMALL-005/) | YOLO26s | 640 | **0.6929** | **0.6506** | **0.6711** | **0.6609** | **0.3405** | ⚠️ Experimental — cần chuẩn hóa annotation policy |
+
+Take 005 dùng dense small-lesion annotation. Kết quả tăng rõ so với các take cũ, nhưng chưa chọn làm final detector vì:
+
+- Custom evaluation tại `conf=0.25`, `IoU≥0.5`: **357 TP / 246 FP / 174 FN**;
+- `leaf_miner` chỉ chiếm khoảng **3.7%** số box Train;
+- `red_rust` chiếm khoảng **64.5%** box Train;
+- toàn bộ ảnh detection hiện đều có box, chưa có negative images rõ ràng;
+- annotation giữa Anthracnose và Red Rust chưa có cùng mức độ exhaustive.
+
+Xem phân tích chi tiết tại [`EXP-Y26S-SMALL-005/README.md`](./EXP-Y26S-SMALL-005/README.md).
+
 ## Protocol đánh giá
 
 - Cùng một Train / Validation / Test split cho tất cả seed.
@@ -65,6 +81,7 @@ Xem chi tiết tại [`EXP-DENSENET121-SCRATCH-5SEEDS-002/README.md`](./EXP-DENS
 - Validation dùng cho checkpoint, EarlyStopping, learning-rate scheduling và lựa chọn deployment seed.
 - Test Set không dùng để tuning hoặc chọn seed tốt nhất.
 - Báo cáo kết quả theo **Mean ± sample Standard Deviation (ddof=1)**.
+- Với YOLO, threshold vận hành cuối phải được chọn trên Validation rồi khóa trước khi đánh giá Test.
 
 ## Quy tắc lưu experiment
 
@@ -82,4 +99,4 @@ Không sử dụng kết quả trong `../archive_legacy_dataset/` để so sánh
 
 ## Lưu ý dung lượng
 
-Checkpoint `.weights.h5` và model `.keras` dung lượng lớn không commit trực tiếp vào GitHub. Repo ưu tiên lưu config, metrics, CSV và figures. FULL archive được giữ riêng để phục vụ tái sử dụng model và kết hợp YOLO sau này.
+Checkpoint `.weights.h5`, `.keras`, `.pt` và full ZIP dung lượng lớn không commit trực tiếp vào GitHub. Repo ưu tiên lưu config, metrics, CSV và figures. FULL archive được giữ riêng để phục vụ tái sử dụng model và kết hợp YOLO sau này.
