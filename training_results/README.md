@@ -14,17 +14,18 @@ training_results/
 
 Master Dataset hiện tại có **7,213 ảnh / 5 lớp**, được chia cố định thành **5,049 Train / 1,433 Validation / 731 Test**. Test Set được khóa và chỉ dùng cho đánh giá cuối cùng.
 
-| Experiment | Model | Mode | Seeds | Test Accuracy | Macro F1 | Status |
-|---|---|---|---:|---:|---:|---|
-| [`EXP-RESNET50-SCRATCH-5SEEDS-002`](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-002/) | ResNet50 | Scratch | 5 | **90.10 ± 1.82%** | **90.12 ± 1.81%** | ✅ Baseline hợp lệ |
+| Experiment | Model | Mode | Seeds | Test Accuracy | Macro F1 | Params | Status |
+|---|---|---|---:|---:|---:|---:|---|
+| [`EXP-RESNET50-SCRATCH-5SEEDS-002`](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-002/) | ResNet50 | Scratch | 5 | **90.10 ± 1.82%** | **90.12 ± 1.81%** | 24.64M | ✅ Baseline hợp lệ |
+| [`EXP-DENSENET121-SCRATCH-5SEEDS-002`](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-002/) | DenseNet121 | Scratch | 5 | **89.00 ± 3.27%** | **89.22 ± 2.92%** | **7.57M** | ✅ Baseline hợp lệ |
 
-### Representative training curve — Seed 42
-
-> Seed 42 được dùng làm hình minh họa vì đây là seed cố định đầu tiên trong protocol; kết luận chính thức luôn dựa trên **Mean ± Std của cả 5 seeds**, không chọn seed tốt nhất theo Test.
+### DenseNet121 — 5-seed training curves
 
 <p align="center">
-  <img src="./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-002/5_seed_resnet50_v02/5_seed_resnet50_v02/42/accuracy_curve.png" width="760" alt="ResNet50 Seed 42 Accuracy Curve">
+  <img src="./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-002/figures/training_curves_5seeds_panel.svg" width="100%" alt="DenseNet121 5-seed training curves">
 </p>
+
+ResNet50 hiện đạt hiệu năng trung bình và độ ổn định tốt hơn, trong khi DenseNet121 có lợi thế rõ về số tham số. Các kết luận chính thức luôn dựa trên **Mean ± Std của cả 5 seeds**.
 
 ➡️ Xem dataset, bảng benchmark và hình trực quan chi tiết tại [`current_dataset/README.md`](./current_dataset/README.md).
 
