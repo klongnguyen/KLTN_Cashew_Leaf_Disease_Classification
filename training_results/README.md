@@ -1,14 +1,16 @@
 # Training Results
 
-Thư mục này quản lý toàn bộ kết quả huấn luyện của dự án theo **phiên bản dataset** để tránh so sánh sai giữa các experiment dùng dữ liệu khác nhau.
+Thư mục này quản lý các kết quả huấn luyện **được xem là candidate/benchmark chính thức** theo phiên bản dataset để tránh so sánh sai giữa các experiment dùng dữ liệu khác nhau.
 
 ## Cấu trúc
 
 ```text
 training_results/
-├── current_dataset/          # Experiment dùng Master Dataset hiện tại
+├── current_dataset/          # Baseline/candidate dùng Master Dataset hiện tại
 └── archive_legacy_dataset/   # Experiment dùng dataset cũ, chỉ tham khảo
 ```
+
+> Các lần train YOLO26 đang ở giai đoạn phát triển/iteration được lưu riêng tại [`../failure/YOLO26/`](../failure/YOLO26/), không nằm trong `current_dataset/` cho đến khi một detector cuối được chốt.
 
 ## Current Dataset — Quick Snapshot
 
@@ -29,10 +31,19 @@ ResNet50 hiện đạt hiệu năng trung bình và độ ổn định tốt hơ
 
 ➡️ Xem dataset, bảng benchmark và hình trực quan chi tiết tại [`current_dataset/README.md`](./current_dataset/README.md).
 
+## YOLO26 Development Archive
+
+Toàn bộ các take YOLO26 hiện tại (`EXP-Y26S-SMALL-001` → `EXP-Y26S-SMALL-006`) được quản lý tại:
+
+[`../failure/YOLO26/README.md`](../failure/YOLO26/README.md)
+
+Các take này vẫn có giá trị cho Failure Analysis / Discussion và nghiên cứu annotation strategy, nhưng **chưa được xem là final detector**.
+
 ## Quy ước quản lý experiment
 
-- `current_dataset/`: chỉ lưu các experiment được huấn luyện bằng dataset hiện tại và được phép đưa vào bảng so sánh chính thức của khóa luận.
+- `current_dataset/`: chỉ lưu các experiment dùng dataset hiện tại và được phép đưa vào bảng so sánh chính thức của khóa luận.
 - `archive_legacy_dataset/`: lưu các experiment đã chạy bằng dataset cũ. Các kết quả này **không dùng để so sánh trực tiếp** với experiment mới.
+- `failure/`: lưu các thử nghiệm chưa đạt final, data iteration, annotation-policy iteration hoặc các cấu hình chưa đủ điều kiện chốt.
 - Mỗi experiment mới dùng ID duy nhất theo format `EXP-{MODEL}-{MODE}-{NO}` và nên lưu config, metrics, figures, predictions hoặc file tổng hợp tương đương.
 - Không ghi đè experiment cũ; mọi thay đổi cấu hình đáng kể phải tạo experiment mới.
 - Kết quả nhiều seed được báo cáo theo **Mean ± sample Standard Deviation (ddof=1)**.
@@ -45,4 +56,4 @@ Dataset hiện tại đã thay đổi so với dataset dùng cho các experiment
 - `EXP-DENSENET121-SCRATCH-001`
 - `EXP-VIT-SCRATCH-001`
 
-> Thư mục `failure/` ở root repo vẫn được giữ riêng làm Failure Experiment Archive. Các kết quả trong đó không được xem là benchmark chính thức của dataset hiện tại trừ khi README của experiment ghi rõ điều ngược lại.
+Các lần YOLO26 được quản lý riêng trong Failure Experiment Archive cho đến khi có detector cuối được xác nhận.
