@@ -58,30 +58,42 @@ Các đường Accuracy của 5 seed được đặt trong cùng một panel đ�
 
 Xem chi tiết tại [`EXP-DENSENET121-SCRATCH-5SEEDS-002/README.md`](./EXP-DENSENET121-SCRATCH-5SEEDS-002/README.md).
 
-## YOLO26 detection experiment hiện tại
+## YOLO26 detection experiments hiện tại
 
 | Experiment | Model | Input | Precision | Recall | F1 | mAP50 | mAP50-95 | Status |
 |---|---|---:|---:|---:|---:|---:|---:|---|
-| [`EXP-Y26S-SMALL-005`](./EXP-Y26S-SMALL-005/) | YOLO26s | 640 | **0.6929** | **0.6506** | **0.6711** | **0.6609** | **0.3405** | ⚠️ Experimental — cần chuẩn hóa annotation policy |
+| [`EXP-Y26S-SMALL-005`](./EXP-Y26S-SMALL-005/) | YOLO26s | 640 | 0.6929 | 0.6506 | 0.6711 | 0.6609 | 0.3405 | ⚠️ Dense small-lesion annotation |
+| [`EXP-Y26S-SMALL-006`](./EXP-Y26S-SMALL-006/) | YOLO26s | 640 | **0.7473** | **0.6648** | **0.7036** | **0.7298** | **0.3877** | ✅ Tốt hơn Take 005 — selective clear-lesion annotation |
 
-Take 005 dùng dense small-lesion annotation. Kết quả tăng rõ so với các take cũ, nhưng chưa chọn làm final detector vì:
+### Take 006 so với Take 005
 
-- Custom evaluation tại `conf=0.25`, `IoU≥0.5`: **357 TP / 246 FP / 174 FN**;
-- `leaf_miner` chỉ chiếm khoảng **3.7%** số box Train;
-- `red_rust` chiếm khoảng **64.5%** box Train;
-- toàn bộ ảnh detection hiện đều có box, chưa có negative images rõ ràng;
-- annotation giữa Anthracnose và Red Rust chưa có cùng mức độ exhaustive.
+Take 006 không cố bounding mọi chấm bệnh quá nhỏ mà ưu tiên lesion rõ và đủ lớn. Kết quả tổng thể tăng rõ:
 
-Xem phân tích chi tiết tại [`EXP-Y26S-SMALL-005/README.md`](./EXP-Y26S-SMALL-005/README.md).
+- Precision: `0.6929 → 0.7473`;
+- F1: `0.6711 → 0.7036`;
+- mAP50: `0.6609 → 0.7298`;
+- mAP50-95: `0.3405 → 0.3877`;
+- Mean IoU gần như giữ nguyên quanh `0.76`.
+
+Per-class đáng chú ý:
+
+- Anthracnose: Recall và mAP tăng, Precision giảm nhẹ;
+- Leaf Miner: tăng mạnh nhưng Test chỉ có 25 GT boxes nên cần thận trọng;
+- Red Rust: Precision tăng mạnh nhưng Recall giảm từ `0.8094 → 0.6796`, thể hiện precision–recall trade-off của annotation chọn lọc hơn.
+
+Take 006 hiện là **YOLO candidate tốt nhất trong dataset hiện tại**, nhưng chưa xem là final detector vì class imbalance còn lớn, Train chưa có negative images, split Take 005/006 chưa hoàn toàn cố định và metadata trong archive Take 006 vẫn ghi nhầm ID `EXP-Y26S-SMALL-005`.
+
+Xem phân tích chi tiết tại [`EXP-Y26S-SMALL-006/README.md`](./EXP-Y26S-SMALL-006/README.md).
 
 ## Protocol đánh giá
 
-- Cùng một Train / Validation / Test split cho tất cả seed.
-- Mỗi configuration chạy trên 5 seed: `42, 123, 2026, 3407, 7777`.
+- Cùng một Train / Validation / Test split cho tất cả seed ở các baseline classification.
+- Mỗi configuration classification chạy trên 5 seed: `42, 123, 2026, 3407, 7777`.
 - Validation dùng cho checkpoint, EarlyStopping, learning-rate scheduling và lựa chọn deployment seed.
 - Test Set không dùng để tuning hoặc chọn seed tốt nhất.
 - Báo cáo kết quả theo **Mean ± sample Standard Deviation (ddof=1)**.
 - Với YOLO, threshold vận hành cuối phải được chọn trên Validation rồi khóa trước khi đánh giá Test.
+- Các Take YOLO chỉ được xem là controlled ablation khi split và annotation scope được khóa giống nhau.
 
 ## Quy tắc lưu experiment
 
