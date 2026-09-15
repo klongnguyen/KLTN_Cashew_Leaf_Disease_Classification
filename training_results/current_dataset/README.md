@@ -21,40 +21,48 @@ Dataset classification hiện tại có **7,213 ảnh thuộc 5 lớp** và sử
 
 ## Baseline hiện tại
 
-| Experiment | Model | Mode | Seeds | Validation Accuracy | Test Accuracy | Macro F1 | Status |
-|---|---|---|---:|---:|---:|---:|---|
-| [`EXP-RESNET50-SCRATCH-5SEEDS-002`](./EXP-RESNET50-SCRATCH-5SEEDS-002/) | ResNet50 | Scratch | 5 | **86.76 ± 0.74%** | **90.10 ± 1.82%** | **90.12 ± 1.81%** | ✅ Baseline hợp lệ |
+| Experiment | Model | Mode | Seeds | Validation Accuracy | Test Accuracy | Macro F1 | Params | Status |
+|---|---|---|---:|---:|---:|---:|---:|---|
+| [`EXP-RESNET50-SCRATCH-5SEEDS-002`](./EXP-RESNET50-SCRATCH-5SEEDS-002/) | ResNet50 | Scratch | 5 | **86.76 ± 0.74%** | **90.10 ± 1.82%** | **90.12 ± 1.81%** | 24.64M | ✅ Baseline hợp lệ |
+| [`EXP-DENSENET121-SCRATCH-5SEEDS-002`](./EXP-DENSENET121-SCRATCH-5SEEDS-002/) | DenseNet121 | Scratch | 5 | **86.62 ± 3.04%** | **89.00 ± 3.27%** | **89.22 ± 2.92%** | **7.57M** | ✅ Baseline hợp lệ |
+
+## So sánh nhanh
+
+- **ResNet50** hiện mạnh hơn về Accuracy/Macro-F1 và ổn định hơn giữa các seed.
+- **DenseNet121** nhẹ hơn đáng kể về số tham số nhưng biến thiên seed lớn hơn.
+- `anthracnose` tiếp tục là lớp khó nhất ở cả hai baseline.
+- `red_rust` là lớp ổn định nhất.
 
 ## Kết quả trực quan
 
-Seed 42 được dùng làm **representative seed** cho hình minh họa vì đây là seed cố định đầu tiên trong protocol. Kết luận chính thức vẫn dựa trên **Mean ± Std của cả 5 seeds**.
+### ResNet50 — representative seed 42
 
 <table>
 <tr>
-<th>Training / Validation Accuracy — Seed 42</th>
-<th>Normalized Test Confusion Matrix — Seed 42</th>
+<th>Training / Validation Accuracy</th>
+<th>Normalized Test Confusion Matrix</th>
 </tr>
 <tr>
-<td width="50%"><img src="./EXP-RESNET50-SCRATCH-5SEEDS-002/5_seed_resnet50_v02/5_seed_resnet50_v02/42/accuracy_curve.png" width="100%" alt="Seed 42 Accuracy Curve"></td>
-<td width="50%"><img src="./EXP-RESNET50-SCRATCH-5SEEDS-002/5_seed_resnet50_v02/5_seed_resnet50_v02/42/confusion_matrix_normalized.png" width="100%" alt="Seed 42 Normalized Test Confusion Matrix"></td>
+<td width="50%"><img src="./EXP-RESNET50-SCRATCH-5SEEDS-002/5_seed_resnet50_v02/5_seed_resnet50_v02/42/accuracy_curve.png" width="100%" alt="ResNet50 Seed 42 Accuracy Curve"></td>
+<td width="50%"><img src="./EXP-RESNET50-SCRATCH-5SEEDS-002/5_seed_resnet50_v02/5_seed_resnet50_v02/42/confusion_matrix_normalized.png" width="100%" alt="ResNet50 Seed 42 Normalized Test Confusion Matrix"></td>
 </tr>
 </table>
 
-### Insight chính từ baseline ResNet50
+### DenseNet121 — 5 seeds side-by-side
 
-- `red_rust` là lớp ổn định nhất với **F1 = 94.86 ± 1.03%**.
-- `not_cashew_leaf` đạt **F1 = 93.27 ± 3.11%**.
-- `leaf_miner` đạt **F1 = 90.36 ± 1.30%**.
-- `healthy` đạt **F1 = 89.85 ± 4.75%**.
-- `anthracnose` là lớp khó nhất với **F1 = 82.26 ± 2.55%**, cần ưu tiên phân tích nhầm lẫn trong các experiment cải tiến.
+Các đường Accuracy của 5 seed được đặt trong cùng một panel để so sánh trực tiếp sự thay đổi giữa các lần chạy.
 
-Xem đầy đủ 5 seed, learning curves, confusion matrices và các file CSV tại README của experiment: [`EXP-RESNET50-SCRATCH-5SEEDS-002`](./EXP-RESNET50-SCRATCH-5SEEDS-002/README.md).
+<p align="center">
+  <img src="./EXP-DENSENET121-SCRATCH-5SEEDS-002/figures/training_curves_5seeds_panel.svg" width="100%" alt="DenseNet121 5-seed accuracy curves">
+</p>
+
+Xem chi tiết tại [`EXP-DENSENET121-SCRATCH-5SEEDS-002/README.md`](./EXP-DENSENET121-SCRATCH-5SEEDS-002/README.md).
 
 ## Protocol đánh giá
 
 - Cùng một Train / Validation / Test split cho tất cả seed.
 - Mỗi configuration chạy trên 5 seed: `42, 123, 2026, 3407, 7777`.
-- Validation dùng cho checkpoint, EarlyStopping và learning-rate scheduling.
+- Validation dùng cho checkpoint, EarlyStopping, learning-rate scheduling và lựa chọn deployment seed.
 - Test Set không dùng để tuning hoặc chọn seed tốt nhất.
 - Báo cáo kết quả theo **Mean ± sample Standard Deviation (ddof=1)**.
 
@@ -74,4 +82,4 @@ Không sử dụng kết quả trong `../archive_legacy_dataset/` để so sánh
 
 ## Lưu ý dung lượng
 
-Checkpoint `.weights.h5` dung lượng lớn không commit trực tiếp vào GitHub. Repo ưu tiên lưu config, metrics, CSV và figures để bảo đảm khả năng kiểm tra experiment mà không làm repository quá nặng.
+Checkpoint `.weights.h5` và model `.keras` dung lượng lớn không commit trực tiếp vào GitHub. Repo ưu tiên lưu config, metrics, CSV và figures. FULL archive được giữ riêng để phục vụ tái sử dụng model và kết hợp YOLO sau này.
