@@ -25,13 +25,15 @@ Dataset classification hiện tại có **7,213 ảnh thuộc 5 lớp** và sử
 |---|---|---|---:|---:|---:|---:|---:|---|
 | [`EXP-RESNET50-SCRATCH-5SEEDS-002`](./EXP-RESNET50-SCRATCH-5SEEDS-002/) | ResNet50 | Scratch | 5 | **86.76 ± 0.74%** | **90.10 ± 1.82%** | **90.12 ± 1.81%** | 24.64M | ✅ Baseline hợp lệ |
 | [`EXP-DENSENET121-SCRATCH-5SEEDS-002`](./EXP-DENSENET121-SCRATCH-5SEEDS-002/) | DenseNet121 | Scratch | 5 | **86.62 ± 3.04%** | **89.00 ± 3.27%** | **89.22 ± 2.92%** | **7.57M** | ✅ Baseline hợp lệ |
+| [`EXP-VIT-SCRATCH-5SEEDS-002`](./EXP-VIT-SCRATCH-5SEEDS-002/) | Vision Transformer | Scratch | 5 | **81.55 ± 5.21%** | **85.94 ± 1.22%** | **85.68 ± 1.18%** | **0.35M** | ✅ Baseline hợp lệ |
 
 ## So sánh nhanh
 
-- **ResNet50** hiện mạnh hơn về Accuracy/Macro-F1 và ổn định hơn giữa các seed.
-- **DenseNet121** nhẹ hơn đáng kể về số tham số nhưng biến thiên seed lớn hơn.
-- `anthracnose` tiếp tục là lớp khó nhất ở cả hai baseline.
-- `red_rust` là lớp ổn định nhất.
+- **ResNet50** hiện có Accuracy/Macro-F1 trung bình cao nhất và độ ổn định Validation tốt nhất.
+- **DenseNet121** thấp hơn ResNet50 khoảng 1 điểm %, nhưng chỉ có 7.57M tham số.
+- **ViT Scratch** nhẹ nhất rõ rệt với khoảng **0.35M tham số** và Test variance thấp, nhưng hiệu năng trung bình thấp hơn hai CNN baseline; Validation variance của ViT khá lớn.
+- `anthracnose` là lớp khó nhất ở cả ba baseline; với ViT, F1 chỉ **75.61 ± 1.67%**.
+- ViT nhận diện `not_cashew_leaf` rất tốt: **F1 = 96.07 ± 1.53%**.
 
 ## Kết quả trực quan
 
@@ -50,21 +52,19 @@ Dataset classification hiện tại có **7,213 ảnh thuộc 5 lớp** và sử
 
 ### DenseNet121 — 5 seeds side-by-side
 
-Các đường Accuracy của 5 seed được đặt trong cùng một panel để so sánh trực tiếp sự thay đổi giữa các lần chạy.
-
 <p align="center">
   <img src="./EXP-DENSENET121-SCRATCH-5SEEDS-002/figures/training_curves_5seeds_panel.svg" width="100%" alt="DenseNet121 5-seed accuracy curves">
 </p>
 
-Xem chi tiết tại [`EXP-DENSENET121-SCRATCH-5SEEDS-002/README.md`](./EXP-DENSENET121-SCRATCH-5SEEDS-002/README.md).
+### Vision Transformer — 5-seed results
+
+ViT sử dụng 5 seed giống các baseline CNN. Kết quả đầy đủ theo seed, validation/test Mean ± Std và per-class metrics được lưu tại [`EXP-VIT-SCRATCH-5SEEDS-002/README.md`](./EXP-VIT-SCRATCH-5SEEDS-002/README.md).
 
 ## YOLO26 detection experiments
 
 Các lần train YOLO26 hiện được xem là **failure / data-iteration experiments** và được lưu riêng tại:
 
 [`../../failure/YOLO26/README.md`](../../failure/YOLO26/README.md)
-
-Trong đó có toàn bộ Take 01 → Take 06. Kết quả YOLO không còn nằm trong `current_dataset/` để tránh nhầm với các baseline classification hợp lệ dùng cho bảng so sánh chính thức.
 
 ## Protocol đánh giá
 
