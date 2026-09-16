@@ -19,25 +19,21 @@ Master Dataset hiện tại có **7,213 ảnh / 5 lớp**, được chia cố đ
 | Experiment | Model | Mode | Seeds | Test Accuracy | Macro F1 | Params | Status |
 |---|---|---|---:|---:|---:|---:|---|
 | [`EXP-RESNET50-SCRATCH-5SEEDS-002`](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-002/) | ResNet50 | Scratch | 5 | **90.10 ± 1.82%** | **90.12 ± 1.81%** | 24.64M | ✅ Baseline hợp lệ |
-| [`EXP-DENSENET121-SCRATCH-5SEEDS-002`](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-002/) | DenseNet121 | Scratch | 5 | **89.00 ± 3.27%** | **89.22 ± 2.92%** | **7.57M** | ✅ Baseline hợp lệ |
+| [`EXP-DENSENET121-SCRATCH-5SEEDS-002`](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-002/) | DenseNet121 | Scratch | 5 | **89.00 ± 3.27%** | **89.22 ± 2.92%** | 7.57M | ✅ Baseline hợp lệ |
+| [`EXP-VIT-SCRATCH-5SEEDS-002`](./current_dataset/EXP-VIT-SCRATCH-5SEEDS-002/) | Vision Transformer | Scratch | 5 | **85.94 ± 1.22%** | **85.68 ± 1.18%** | **0.35M** | ✅ Baseline hợp lệ |
 
-### DenseNet121 — 5-seed training curves
+### Current baseline comparison
 
-<p align="center">
-  <img src="./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-002/figures/training_curves_5seeds_panel.svg" width="100%" alt="DenseNet121 5-seed training curves">
-</p>
+- ResNet50 hiện có hiệu năng trung bình cao nhất.
+- DenseNet121 giảm mạnh số tham số nhưng hiệu năng chỉ thấp hơn khoảng 1 điểm %.
+- ViT Scratch nhẹ nhất, Test variance thấp, nhưng Accuracy/Macro-F1 thấp hơn hai CNN baseline và Validation variance lớn hơn đáng kể.
+- `anthracnose` tiếp tục là class khó nhất trong cả ba baseline.
 
-ResNet50 hiện đạt hiệu năng trung bình và độ ổn định tốt hơn, trong khi DenseNet121 có lợi thế rõ về số tham số. Các kết luận chính thức luôn dựa trên **Mean ± Std của cả 5 seeds**.
-
-➡️ Xem dataset, bảng benchmark và hình trực quan chi tiết tại [`current_dataset/README.md`](./current_dataset/README.md).
+➡️ Xem dataset, bảng benchmark và phân tích chi tiết tại [`current_dataset/README.md`](./current_dataset/README.md).
 
 ## YOLO26 Development Archive
 
-Toàn bộ các take YOLO26 hiện tại (`EXP-Y26S-SMALL-001` → `EXP-Y26S-SMALL-006`) được quản lý tại:
-
-[`../failure/YOLO26/README.md`](../failure/YOLO26/README.md)
-
-Các take này vẫn có giá trị cho Failure Analysis / Discussion và nghiên cứu annotation strategy, nhưng **chưa được xem là final detector**.
+Toàn bộ các take YOLO26 hiện tại được quản lý tại [`../failure/YOLO26/README.md`](../failure/YOLO26/README.md). Các take này vẫn có giá trị cho Failure Analysis / Discussion và nghiên cứu annotation strategy, nhưng **chưa được xem là final detector**.
 
 ## Quy ước quản lý experiment
 
@@ -51,9 +47,4 @@ Các take này vẫn có giá trị cho Failure Analysis / Discussion và nghiê
 
 ## Dataset transition
 
-Dataset hiện tại đã thay đổi so với dataset dùng cho các experiment cũ. Vì vậy hai experiment sau đã được chuyển vào archive:
-
-- `EXP-DENSENET121-SCRATCH-001`
-- `EXP-VIT-SCRATCH-001`
-
-Các lần YOLO26 được quản lý riêng trong Failure Experiment Archive cho đến khi có detector cuối được xác nhận.
+Các experiment dùng dataset cũ được chuyển vào archive và không so sánh trực tiếp với các baseline hiện tại.
