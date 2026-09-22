@@ -1,94 +1,66 @@
 # EXP-VIT-SCRATCH-5SEEDS-003
 
-**Model:** Vision Transformer (ViT) from scratch  
-**Dataset:** Cashew_dataV04  
-**Seeds:** `[42, 123, 2026, 3407, 7777]`
+**Model:** Vision Transformer Scratch  
+**Training mode:** From scratch  
+**Dataset:** `Cashew_dataV04`  
+**Seeds:** `42, 123, 2026, 3407, 7777`
 
 ## Dataset
 
-| Class | Train | Val | Test | Total |
+| Class | Train | Validation | Test | Total |
 |---|---:|---:|---:|---:|
-| anthracnose | 945 | 294 | 122 | 1361 |
-| healthy | 806 | 225 | 118 | 1149 |
-| leaf_miner | 893 | 249 | 132 | 1274 |
-| not_cashew_leaf | 1101 | 314 | 157 | 1572 |
-| red_rust | 1077 | 320 | 158 | 1555 |
-| **TOTAL** | **4822** | **1402** | **687** | **6911** |
+| `anthracnose` | 945 | 294 | 122 | 1,361 |
+| `healthy` | 806 | 225 | 118 | 1,149 |
+| `leaf_miner` | 893 | 249 | 132 | 1,274 |
+| `not_cashew_leaf` | 1,101 | 314 | 157 | 1,572 |
+| `red_rust` | 1,077 | 320 | 158 | 1,555 |
+| **TOTAL** | **4,822** | **1,402** | **687** | **6,911** |
+
+V04 được tạo sau khi tiếp tục loại ảnh mờ/chất lượng thấp và xử lý các trường hợp có nguy cơ data leakage. Split được khóa cho toàn bộ baseline V04.
 
 ## Configuration
 
-- Input: `224×224`
-- Patch size: `16`
-- Number of patches: `196`
-- Projection dim: `64`
-- Heads: `4`
-- Transformer blocks: `8`
-- Transformer MLP: `128`
-- Batch size: `32`
-- Initial LR: `0.0003`
-- Weight decay: `0.0001`
-- Max epochs: `60`
-- Optimizer: AdamW
-- Checkpoint: minimum val_loss
+- **Input:** `224×224`
+- **Patch size:** `16×16`
+- **Projection dim:** `64`
+- **Attention heads:** `4`
+- **Transformer blocks:** `8`
+- **Transformer MLP:** `128`
+- **Batch size:** `32`
+- **Optimizer:** `AdamW`
+- **Initial LR:** `3e-4`
+- **Weight decay:** `1e-4`
+- **Max epochs:** `60`
+- **Parameters:** `347,717`
+- **Checkpoint:** minimum `val_loss`
+- **Test:** locked; không dùng để tuning hoặc chọn seed
 
-## Training curves — 5 seeds side-by-side
+## 5-seed results
 
-![Training curves](./figures/training_curves_5seeds_panel.svg)
+| Seed | Val Accuracy | Val Macro F1 | Test Accuracy | Test Macro F1 | Best epoch |
+|---:|---:|---:|---:|---:|---:|
+| 42 | 83.59% | 82.97% | 83.55% | 82.87% | 20 |
+| 123 | 86.02% | 85.40% | 86.17% | 85.39% | 32 |
+| 2026 | 85.38% | 84.63% | 86.75% | 85.79% | 25 |
+| 3407 | 84.52% | 83.86% | 86.61% | 85.76% | 35 |
+| 7777 | 86.88% | 86.54% | 83.41% | 82.25% | 28 |
 
-## Validation Mean ± Std
+### Aggregate
 
-| Metric | Result |
+| Metric | Mean ± sample SD |
 |---|---:|
-| val_accuracy | **85.28 ± 1.28%** |
-| val_macro_precision | **85.20 ± 0.88%** |
-| val_macro_recall | **84.46 ± 1.66%** |
-| val_macro_f1 | **84.68 ± 1.38%** |
-| val_balanced_accuracy | **84.46 ± 1.66%** |
+| Validation Accuracy | **85.28 ± 1.28%** |
+| Validation Macro F1 | **84.68 ± 1.38%** |
+| Test Accuracy | **85.30 ± 1.68%** |
+| Test Macro Precision | **85.04 ± 1.29%** |
+| Test Macro Recall | **84.65 ± 1.69%** |
+| Test Macro F1 | **84.41 ± 1.71%** |
+| Balanced Accuracy | **84.65 ± 1.69%** |
+| Weighted F1 | **85.38 ± 1.61%** |
 
-## Final Test Mean ± Std
+## Per-class Test classification report — 5-seed mean
 
-| Metric | Result |
-|---|---:|
-| accuracy | **85.30 ± 1.68%** |
-| macro_precision | **85.04 ± 1.29%** |
-| macro_recall | **84.65 ± 1.69%** |
-| macro_f1 | **84.41 ± 1.71%** |
-| balanced_accuracy | **84.65 ± 1.69%** |
-| weighted_f1 | **85.38 ± 1.61%** |
-
-## Deployment / YOLO integration
-
-Deployment seed selected from Validation only: **7777**.
-
-Reusable files trong FULL archive:
-- `model_package/deployment_model.keras`
-- `model_package/vit_token_feature_extractor.keras`
-- `model_package/vit_embedding_model.keras`
-- `code/vit_model_builder.py`
-- `code/yolo_vit_classifier_adapter.py`
-- `code/continue_training_example.py`
-
-## Scientific rules
-
-- Same Train/Val/Test split for all seeds.
-- Same hyperparameters for all seeds.
-- Test is not used for tuning.
-- Deployment seed is selected from Validation only.
-- Mean ± sample standard deviation (`ddof=1`).
-
-## Per-seed summary
-
-| Seed | Val Accuracy | Val Macro F1 | Test Accuracy | Test Macro F1 |
-|---:|---:|---:|---:|---:|
-| 42 | 83.59% | 82.97% | 83.55% | 82.87% |
-| 123 | 86.02% | 85.40% | 86.17% | 85.39% |
-| 2026 | 85.38% | 84.63% | 86.75% | 85.79% |
-| 3407 | 84.52% | 83.86% | 86.61% | 85.76% |
-| 7777 | 86.88% | 86.54% | 83.41% | 82.25% |
-
-## Per-class Test results (5-seed mean ± SD)
-
-| Class | Precision | Recall | F1 |
+| Class | Precision | Recall | F1 ± SD |
 |---|---:|---:|---:|
 | `anthracnose` | 74.41% | 67.87% | **70.43 ± 4.44%** |
 | `healthy` | 73.13% | 88.14% | **79.72 ± 2.22%** |
@@ -96,8 +68,24 @@ Reusable files trong FULL archive:
 | `not_cashew_leaf` | 98.69% | 95.92% | **97.28 ± 1.37%** |
 | `red_rust` | 93.78% | 86.33% | **89.81 ± 1.90%** |
 
-Total parameters: **347,717**.
+## Training curves — 5 seeds
 
-## GitHub package
+![Training curves](./figures/training_curves_5seeds_panel.svg)
 
-Repository chỉ lưu README, config, per-seed aggregate metrics và figure nhẹ. Các confusion-matrix panel đầy đủ, checkpoint `.weights.h5`, model `.keras` và FULL ZIP được giữ trong experiment archive thay vì commit trực tiếp lên GitHub.
+Các confusion-matrix panel đầy đủ được giữ trong ANALYSIS/FULL archive nếu chưa được commit vào GitHub.
+
+## Deployment selection
+
+Deployment seed: **7777**, được chọn bằng **Validation Macro-F1** với tie-break là Validation Loss thấp hơn. Test không tham gia lựa chọn.
+
+Các model/checkpoint nặng không lưu trực tiếp trong GitHub; FULL archive được giữ riêng để tái sử dụng và tích hợp YOLO.
+
+## Reproducibility
+
+- Cùng Train/Validation/Test split cho toàn bộ seed.
+- Cùng hyperparameters giữa 5 seed.
+- Checkpoint chọn theo Validation.
+- Test chỉ dùng sau khi cấu hình đã khóa.
+- Báo cáo `Mean ± sample Standard Deviation (ddof=1)`.
+
+Machine-readable metrics nằm trong [`aggregate/`](./aggregate/).
