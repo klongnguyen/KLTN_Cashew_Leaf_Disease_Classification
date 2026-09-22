@@ -25,17 +25,29 @@ Sau lần làm sạch gần nhất, các ảnh mờ/chất lượng thấp và c
 | Experiment | Model | Mode | Seeds | Validation Accuracy | Test Accuracy | Macro F1 | Params | Status |
 |---|---|---|---:|---:|---:|---:|---:|---|
 | [`EXP-DENSENET121-SCRATCH-5SEEDS-003`](./EXP-DENSENET121-SCRATCH-5SEEDS-003/) | DenseNet121 | Scratch | 5 | **89.87 ± 1.85%** | **91.82 ± 0.86%** | **91.37 ± 0.79%** | 7.57M | ✅ V04 baseline |
+| [`EXP-RESNET50-SCRATCH-5SEEDS-003`](./EXP-RESNET50-SCRATCH-5SEEDS-003/) | ResNet50 | Scratch | 5 | **88.22 ± 2.49%** | **90.63 ± 2.11%** | **90.17 ± 2.04%** | 24.64M | ✅ V04 baseline |
 | [`EXP-VIT-SCRATCH-5SEEDS-003`](./EXP-VIT-SCRATCH-5SEEDS-003/) | Vision Transformer | Scratch | 5 | **85.28 ± 1.28%** | **85.30 ± 1.68%** | **84.41 ± 1.71%** | **0.35M** | ✅ V04 baseline |
-| ResNet50 V04 | — | — | — | — | — | — | — | ⏳ Chưa retrain trên V04 |
 
 ## Nhận xét nhanh
 
-- DenseNet121 hiện là baseline mạnh nhất đã được retrain trên V04.
-- So với ViT compact, DenseNet121 cao hơn khoảng **6.52 điểm % Test Accuracy** và **6.96 điểm % Macro F1**.
-- ViT chỉ có khoảng **0.35M tham số**, nhỏ hơn đáng kể so với DenseNet121 7.57M.
-- DenseNet121 có độ ổn định tốt giữa các seed (`Test Accuracy Std = 0.86%`).
-- Với ViT, Validation và Test Accuracy gần như trùng nhau (`85.28%` và `85.30%`), nhất quán hơn đáng kể so với experiment V03.
-- `anthracnose` tiếp tục là lớp khó nhất ở cả hai model.
+- **DenseNet121** hiện có kết quả tốt nhất trên V04: `91.82 ± 0.86%` Test Accuracy và `91.37 ± 0.79%` Macro F1.
+- **ResNet50** đứng thứ hai với `90.63 ± 2.11%` Accuracy và `90.17 ± 2.04%` Macro F1. Hai seed `123` và `2026` yếu hơn rõ so với ba seed còn lại nên độ lệch chuẩn cao hơn DenseNet121.
+- **ViT compact** thấp hơn hai CNN về Accuracy/F1 nhưng chỉ có khoảng `0.35M` tham số.
+- DenseNet121 cao hơn ResNet50 khoảng **1.19 điểm % Test Accuracy** và **1.20 điểm % Macro F1**, đồng thời chỉ dùng khoảng 31% số tham số của ResNet50.
+- `anthracnose` tiếp tục là lớp khó nhất ở cả ba baseline. Với ResNet50 V04, F1 của Anthracnose là **79.35 ± 3.84%**.
+- `red_rust` là lớp mạnh nhất của ResNet50 V04 với **F1 = 95.99 ± 1.56%**.
+
+### ResNet50 — per-seed Validation/Test Accuracy
+
+<p align="center">
+  <img src="./EXP-RESNET50-SCRATCH-5SEEDS-003/figures/per_seed_accuracy.svg" width="95%" alt="ResNet50 V04 per-seed accuracy">
+</p>
+
+### ResNet50 — per-class Test F1
+
+<p align="center">
+  <img src="./EXP-RESNET50-SCRATCH-5SEEDS-003/figures/per_class_f1.svg" width="90%" alt="ResNet50 V04 per-class F1">
+</p>
 
 ### DenseNet121 — 5-seed training curves
 
