@@ -1,8 +1,8 @@
 # ==========================================
-# Git Ignore Configuration (Resource)
+# Git Ignore Configuration
 # ==========================================
 
-# 1. Dataset & Dữ liệu
+# Dataset / archives
 dataset/
 datasets/
 data/
@@ -12,7 +12,21 @@ data/
 *.rar
 *.7z
 
-# 2. Tài liệu văn bản & Báo cáo
+# Large model / checkpoint artifacts
+*.keras
+*.h5
+*.pt
+*.pth
+*.onnx
+*.tflite
+*.ckpt
+*.pb
+*.weights
+runs/
+wandb/
+mlruns/
+
+# Documents / reports generated outside repo
 *.docx
 *.doc
 ~$*.doc*
@@ -21,10 +35,21 @@ data/
 *.pptx
 ~$*.ppt*
 
-# 3. Môi trường & OS
+# Python / notebook
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+
+# Temporary logs / caches
+*.tmp
+*.temp
+*.log
+
+# OS / IDE
 Thumbs.db
 Desktop.ini
 .DS_Store
+.vscode/
+.idea/

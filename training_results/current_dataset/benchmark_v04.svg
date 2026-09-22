@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="460" viewBox="0 0 1000 460">
+<rect width="100%" height="100%" fill="white"/>
+<text x="500" y="30" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700">Cashew_dataV04 — Classification Benchmark</text>
+<text x="500" y="54" text-anchor="middle" font-family="Arial,sans-serif" font-size="12">5-seed mean; error bars reported in experiment tables</text>
+<line x1="80" y1="370" x2="620" y2="370" stroke="#888"/>
+<line x1="80" y1="90" x2="80" y2="370" stroke="#888"/>
+<g stroke="#e5e5e5"><line x1="80" y1="300" x2="620" y2="300"/><line x1="80" y1="230" x2="620" y2="230"/><line x1="80" y1="160" x2="620" y2="160"/><line x1="80" y1="90" x2="620" y2="90"/></g>
+<g font-family="Arial" font-size="10" text-anchor="end"><text x="72" y="374">0%</text><text x="72" y="304">25%</text><text x="72" y="234">50%</text><text x="72" y="164">75%</text><text x="72" y="94">100%</text></g>
+<rect x="142" y="112.9" width="32" height="257.1" fill="#1f77b4"/><rect x="186" y="114.2" width="32" height="255.8" fill="#ff7f0e"/>
+<rect x="312" y="116.2" width="32" height="253.8" fill="#1f77b4"/><rect x="356" y="117.5" width="32" height="252.5" fill="#ff7f0e"/>
+<rect x="482" y="131.2" width="32" height="238.8" fill="#1f77b4"/><rect x="526" y="133.7" width="32" height="236.3" fill="#ff7f0e"/>
+<g font-family="Arial" font-size="10" text-anchor="middle"><text x="158" y="106">91.82%</text><text x="202" y="108">91.37%</text><text x="328" y="110">90.63%</text><text x="372" y="111">90.17%</text><text x="498" y="125">85.30%</text><text x="542" y="128">84.41%</text></g>
+<g font-family="Arial" font-size="11" font-weight="600" text-anchor="middle"><text x="180" y="392">DenseNet121</text><text x="350" y="392">ResNet50</text><text x="520" y="392">Compact ViT</text></g>
+<rect x="220" y="65" width="14" height="14" fill="#1f77b4"/><text x="240" y="77" font-family="Arial" font-size="11">Test Accuracy</text><rect x="340" y="65" width="14" height="14" fill="#ff7f0e"/><text x="360" y="77" font-family="Arial" font-size="11">Macro F1</text>
+<text x="790" y="95" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700">Model size / inference*</text>
+<g font-family="Arial" font-size="11"><text x="690" y="135" font-weight="700">DenseNet121</text><text x="690" y="154">7.57M params · 13.20 ms/img</text><text x="690" y="200" font-weight="700">ResNet50</text><text x="690" y="219">24.64M params · 8.07 ms/img</text><text x="690" y="265" font-weight="700">Compact ViT</text><text x="690" y="284">0.35M params · 6.08 ms/img</text><text x="690" y="335" font-size="10">* Kaggle T4×2 experiment environment</text></g>
+</svg>

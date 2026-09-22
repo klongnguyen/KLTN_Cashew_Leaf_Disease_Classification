@@ -4,13 +4,7 @@
   "dataset": {
     "version": "Cashew_dataV04",
     "path": "/kaggle/input/datasets/kimlonkkk/cashew-datav04/CashewData_Split",
-    "classes": [
-      "anthracnose",
-      "healthy",
-      "leaf_miner",
-      "not_cashew_leaf",
-      "red_rust"
-    ],
+    "classes": ["anthracnose", "healthy", "leaf_miner", "not_cashew_leaf", "red_rust"],
     "train_images": 4822,
     "val_images": 1402,
     "test_images": 687,
@@ -74,12 +68,13 @@
     "selection_source": "validation only",
     "selection_metric": "val_macro_f1",
     "tie_break": "lower val_loss",
-    "test_used_for_deployment_seed_selection": false
+    "deployment_seed": 7777,
+    "test_used_for_selection": false
   },
   "figure_protocol": {
-    "seed_comparison_layout": "paper-style panel",
-    "training_curves": "2 rows x 5 columns",
-    "confusion_matrices": "1 row x 5 columns",
+    "comparison_layout": "paper-style panel",
+    "training_curves": "2 rows x 5 seed columns",
+    "confusion_matrices": "1 row x 5 seed columns",
     "colormap": "Blues"
   },
   "hardware": {

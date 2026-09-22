@@ -1,222 +1,164 @@
-# 🍃 BẢN THAM KHẢO & NHẬN DIỆN CÁC LOẠI BỆNH TRÊN LÁ ĐIỀU
-> **Tài liệu tham khảo chuyên sâu phục vụ nghiên cứu Khóa Luận Tốt Nghiệp: Phân loại bệnh trên lá điều (*Cashew Leaf Disease Classification*)**  
-> 🧪 **Kết quả huấn luyện:** Xem cấu trúc experiment hiện tại và archive dataset cũ tại [training_results/README.md](./training_results/README.md).  
-> 📦 **Quy chuẩn Bounding Box:** Xem hướng dẫn gán nhãn cho team tại [CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md](./CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md).  
-> ⚠️ **Failure Experiments:** Xem các lần huấn luyện chưa đạt, phân tích nguyên nhân và hướng cải thiện tại [failure/README.md](./failure/README.md).
+# KLTN — Cashew Leaf Disease Classification & Detection
+
+Khóa luận xây dựng hệ thống thị giác máy tính cho **phân loại bệnh trên lá cây điều** và hướng mở rộng sang **phát hiện vùng tổn thương bằng bounding box**.
+
+## Project status
+
+### Classification — current benchmark
+
+Current dataset: **`Cashew_dataV04` — 6,911 images / 5 classes**
+
+| Model | Test Accuracy | Macro F1 | Params |
+|---|---:|---:|---:|
+| **DenseNet121 Scratch** | **91.82 ± 0.86%** | **91.37 ± 0.79%** | 7.57M |
+| **ResNet50 Scratch** | **90.63 ± 2.11%** | **90.17 ± 2.04%** | 24.64M |
+| **Compact ViT Scratch** | **85.30 ± 1.68%** | **84.41 ± 1.71%** | **0.35M** |
+
+➡️ Chi tiết: [`training_results/current_dataset/README.md`](./training_results/current_dataset/README.md)
+
+### Object detection — development
+
+YOLO26s đã được thử nghiệm qua **Take 01 → Take 06** để nghiên cứu annotation policy và chất lượng bounding box.
+
+Take 006 hiện là iteration tốt nhất:
+
+```text
+Precision     0.7473
+Recall        0.6648
+F1            0.7036
+mAP@0.50      0.7298
+mAP@0.50:0.95 0.3877
+Mean IoU      0.7603
+```
+
+Take 006 vẫn được giữ trong Failure Archive vì detector cuối chưa khóa split/threshold/protocol và detection dataset còn class imbalance + thiếu negative supervision.
+
+➡️ Chi tiết: [`failure/YOLO26/README.md`](./failure/YOLO26/README.md)
 
 ---
 
-## 📌 MỤC LỤC
-1. [Tổng quan hệ thống bệnh hại lá điều](#-tổng-quan-hệ-thống-bệnh-hại-lá-điều)
-2. [Bệnh Thán Thư (Anthracnose)](#1-bệnh-thán-thư-anthracnose)
-3. [Bệnh Sâu Vẽ Bùa / Ruồi Đục Lá (Leaf Miner)](#2-bệnh-sâu-vẽ-bùa--ruồi-đục-lá-leaf-miner)
-4. [Bệnh Rỉ Sắt Đỏ / Tảo Đỏ (Red Rust)](#3-bệnh-rỉ-sắt-đỏ--tảo-đỏ-red-rust)
-5. [Bảng Ma Trận So Sánh & Chẩn Đoán Phân Biệt](#-bảng-ma-trận-so-sánh--chẩn-đoán-phân-biệt)
-6. [Hướng Dẫn Gán Nhãn Bounding Box Cho Team (Annotation Guideline)](./CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md)
-7. [Training Results](#-training-results)
-8. [Failure Experiment Archive](#-failure-experiment-archive)
-9. [Tài Liệu Tham Khảo (References)](#-tài-liệu-tham-khảo-references)
+## Current dataset — Cashew_dataV04
 
----
-
-## 🌿 TỔNG QUAN HỆ THỐNG BỆNH HẠI LÁ ĐIỀU
-
-Cây điều (*Anacardium occidentale*) là một trong những cây công nghiệp có giá trị kinh tế xuất khẩu cao. Tuy nhiên, năng suất và sức sống của vườn điều thường xuyên bị đe dọa bởi các tác nhân gây bệnh hại lá. Việc nhận diện sớm và chính xác các loại tổn thương trên phiến lá là cơ sở tối quan trọng để xây dựng các mô hình thị giác máy tính hỗ trợ nông nghiệp chính xác.
-
-Bản tài liệu này tổng hợp đặc điểm hình thái học, cơ chế phát sinh và hình ảnh thực địa mẫu của 3 loại tổn thương phổ biến nhất:
-- **Anthracnose (Bệnh thán thư)** do nấm *Colletotrichum gloeosporioides*.
-- **Leaf Miner (Sâu vẽ bùa / Ruồi đục lá)** do côn trùng gây hại (*Acrocercops syngramma* / sâu bướm, ruồi đục lá).
-- **Red Rust (Bệnh rỉ sắt đỏ / Tảo đỏ)** do tảo ký sinh *Cephaleuros virescens*.
-
----
-
-## 1. BỆNH THÁN THƯ (ANTHRACNOSE)
-
-* **Tác nhân chính:** Nấm *Colletotrichum gloeosporioides* (Penz.) Penz. & Sacc.
-* **Đối tượng mẫn cảm:** Cơi đọt non, lá non mới bung, hoa và chùm quả non.
-
-### 🔍 Triệu chứng & Đặc điểm nhận diện
-* **Khởi phát đốm nhỏ ở mép hoặc chóp lá:**
-  * Bệnh thường bắt đầu tấn công từ mép lá hoặc chóp lá (đặc biệt mẫn cảm ở các cơi đọt non, lá còn mỏng).
-  * Biểu hiện ban đầu dưới dạng các đốm tròn nhỏ, hơi lõm xuống, có màu nâu nhạt đến nâu đậm.
-* **Vết cháy xém lớn và các vòng đồng tâm:**
-  * Vết bệnh nhanh chóng lan rộng vào bên trong phiến lá, liên kết lại với nhau thành những mảng hoại tử khô xám hoặc màu nâu đen giống như bị lửa táp.
-  * **Đặc điểm nhận diện điển hình nhất:** Sự xuất hiện của các **vòng tròn đồng tâm** hoặc đường vân gợn sóng nhô lên trên bề mặt vết bệnh.
-  * Khi thời tiết ẩm ướt (mùa mưa, sương mù nhiều), vết bệnh sẽ tiết dịch nhầy dính hoặc mọc lên các khối chấm nhỏ li ti màu đen / hồng cam chứa vô số bào tử nấm.
-* **Lá nhăn nheo và rụng hàng loạt:**
-  * Lá bị bệnh nặng sẽ khô giòn, vặn xoắn, nhăn nheo, rách nát và rụng tơi tả.
-  * Cành non bị mất toàn bộ lá sẽ khô quắt, chuyển sang màu nâu xám, trơ trọi và dẫn đến hiện tượng khô chết ngọn (*dieback*).
-
-### 📸 Hình ảnh minh họa thực địa (Anthracnose)
-
-| Mẫu 01: Đốm thán thư khởi phát hoại tử | Mẫu 02: Vết cháy xém lớn dạng táp lửa |
-| :---: | :---: |
-| ![Anthracnose Sample 01](./img_check/ath_01.png) | ![Anthracnose Sample 02](./img_check/ath_02.png) |
-| *Đốm hoại tử viền sẫm tròn nhỏ bắt đầu lan rộng và làm thủng mô lá* | *Vết cháy xém khô nâu lớn lan từ chóp và mép lá vào trung tâm phiến lá* |
-
-| Mẫu 03: Vết hoại tử xám khô & vân đồng tâm | Mẫu 04: Đốm bệnh rải rác dọc gân lá |
-| :---: | :---: |
-| ![Anthracnose Sample 03](./img_check/ath_03.png) | ![Anthracnose Sample 04](./img_check/ath_04.png) |
-| *Vết bệnh khô xám có viền ranh giới màu nâu sẫm, thể hiện rõ vòng đồng tâm* | *Khởi phát các đốm nâu sẫm rải rác trên phiến lá non dọc theo hệ gân lá* |
-
----
-
-## 2. BỆNH SÂU VẼ BÙA / RUỒI ĐỤC LÁ (LEAF MINER)
-
-* **Tác nhân chính:** Ấu trùng sâu vẽ bùa (*Acrocercops syngramma*) hoặc các loài ruồi đục lá (*Liriomyza spp.*).
-* **Đối tượng mẫn cảm:** Các cơi lá non, lá bánh tẻ trong giai đoạn sinh trưởng mạnh.
-
-### 🔍 Triệu chứng & Đặc điểm nhận diện
-* **Đường đục ngoằn ngoèo dưới lớp biểu bì (Mines):**
-  * Sau khi trứng nở, ấu trùng bắt đầu ăn phần mô mềm/thịt lá nằm giữa lớp biểu bì trên và biểu bì dưới của lá.
-  * Khi ấu trùng di chuyển đến đâu sẽ để lại các **đường hầm nhỏ ngoằn ngoèo, uốn lượn liên tục** có màu trắng xám hoặc sáng bạc dưới lớp biểu bì.
-* **Các vết châm chích hút nhựa:**
-  * Ruồi trưởng thành cái dùng gai đẻ trứng đâm thủng lớp biểu bì lá để hút nhựa hoặc đẻ trứng vào bên trong.
-  * Các vết đâm này để lại những đốm nhỏ màu trắng hoặc vàng nhạt, hơi nhô lên, phân bố rải rác trên bề mặt lá.
-  * Ruồi đực cũng tận dụng các lỗ châm chích này để tiếp tục hút nhựa cây.
-* **Biến dạng và rụng lá:**
-  * Khi bị phá hoại nặng nề với mật độ ấu trùng cao, lá cây bị biến dạng, co rúm, gãy gập, khô xơ xác và héo úa.
-  * Lá rụng sớm hàng loạt, trực tiếp làm suy giảm nghiêm trọng khả năng quang hợp khiến cây non bị còi cọc, chậm phát triển cành tán mới.
-
-### 📸 Hình ảnh minh họa thực địa (Leaf Miner)
-
-| Mẫu 01: Đường đục mật độ dày gây khô xơ lá | Mẫu 02: Đường đục sáng bạc ngoằn ngoèo |
-| :---: | :---: |
-| ![Leaf Miner Sample 01](./img_check/mine01.png) | ![Leaf Miner Sample 02](./img_check/mine02.png) |
-| *Lá bị tổn thương diện rộng: các đường đục liên kết làm cháy khô và biến dạng mép lá* | *Đường hầm sáng bạc uốn lượn rõ nét dưới lớp biểu bì kèm các vết châm chích* |
-
----
-
-## 3. BỆNH RỈ SẮT ĐỎ / TẢO ĐỎ (RED RUST)
-
-* **Tác nhân chính:** Tảo xanh ký sinh *Cephaleuros virescens* Kunze.
-* **Môi trường thuận lợi:** Tầng tán thấp rậm rạp, thiếu ánh sáng thông thoáng, độ ẩm không khí cao (mùa mưa ẩm).
-
-### 🔍 Triệu chứng & Đặc điểm nhận diện
-* **Vết bệnh nổi gồ, phủ lớp nhung màu cam / đỏ rỉ sắt:**
-  * Tảo đỏ phát triển mạnh mẽ ở những tán cây rậm rạp, ẩm ướt.
-  * Ban đầu, mặt trên của lá già hoặc lá bánh tẻ xuất hiện các đốm tròn nhỏ (kích thước khoảng 3–5 mm) màu xanh nhạt hoặc vàng nhạt.
-  * Vết bệnh sau đó lan rộng (đạt đường kính từ 1 đến 2 cm) và **hơi nổi gồ lên** so với bề mặt lá.
-  * Bề mặt vết bệnh được bao phủ bởi một **lớp nhung mịn như nỉ có màu vàng cam, đỏ nâu hoặc đỏ gạch tươi sáng** do sự tích lũy sắc tố carotenoid của tảo.
-* **Hóa xám nâu khi già:**
-  * Khi vết bệnh cũ đi hoặc khi khuẩn lạc tảo già đi, các mảng đốm nhung mịn này mất dần sắc tố cam đỏ, chuyển dần sang màu xám tro hoặc xám nâu.
-* **Dấu hiệu hoại tử ở mặt dưới lá:**
-  * Tại vị trí đốm bệnh ở mặt trên, nếu lật mặt dưới lá lên sẽ thấy phần mô lá bị hoại tử chuyển sang màu nâu sẫm đến đen.
-  * Có thể quan sát thấy rõ các sợi tảo hoặc chùm cuống bào tử màu đỏ nâu mọc xuyên qua phiến lá từ mặt trên xuống mặt dưới.
-* **Vàng lá và rụng sớm:**
-  * Lớp tảo dày đặc che chắn ánh sáng mặt trời và hút kiệt chất dinh dưỡng tại mô tế bào lá.
-  * Làm suy giảm nghiêm trọng hiệu suất quang hợp, làm phiến lá vàng úa và rụng sớm.
-
-### 📸 Hình ảnh minh họa thực địa (Red Rust)
-
-| Mẫu 01: Các đốm nhung màu cam nổi gồ | Mẫu 02: Dấu vết tảo đỏ phát triển trên phiến lá | Mẫu 03: Vết bệnh tảo đỏ thoái hóa sang xám nâu |
-| :---: | :---: | :---: |
-| ![Red Rust Sample 01](./img_check/red01.png) | ![Red Rust Sample 02](./img_check/red02.png) | ![Red Rust Sample 03](./img_check/red03.png) |
-| *Các đốm tròn nổi gồ màu vàng cam / đỏ gạch phủ nhung nỉ đặc trưng* | *Các đốm tảo đỏ phân bố rộng trên bề mặt phiến lá kèm hoại tử mô* | *Lớp tảo già hóa xám bạc, lá bạc màu và suy giảm diệp lục mạnh* |
-
----
-
-## 📊 BẢNG MA TRẬN SO SÁNH & CHẨN ĐOÁN PHÂN BIỆT
-
-| Tiêu Chí Phân Biệt | Bệnh Thán Thư (Anthracnose) | Bệnh Sâu Vẽ Bùa (Leaf Miner) | Bệnh Rỉ Sắt Đỏ / Tảo Đỏ (Red Rust) |
-| :--- | :--- | :--- | :--- |
-| **Bản chất tác nhân** | Nấm bệnh (*C. gloeosporioides*) | Ấu trùng côn trùng (*A. syngramma*) | Tảo ký sinh (*C. virescens*) |
-| **Vị trí khởi phát** | Mép lá, chóp lá, cơi đọt non | Thịt lá bánh tẻ, phiến lá non | Tầng tán thấp, lá bánh tẻ và lá già |
-| **Hình thái tổn thương** | Đốm hoại tử tròn/bất định, mảng cháy xém | Đường hầm ngoằn ngoèo, uốn lượn | Đốm tròn nổi gồ, có lông nhung mịn |
-| **Màu sắc chủ đạo** | Nâu đậm, đen xám, có dịch hồng cam | Trắng xám, sáng bạc, khô nâu nhạt | Vàng cam, đỏ gạch, đỏ rỉ sắt (về già xám) |
-| **Hoa văn đặc trưng** | **Các vòng tròn đồng tâm** | **Đường rãnh zíc-zắc dạng mê lộ** | **Lớp lông nhung mịn như nỉ** |
-| **Tác động lên mặt dưới** | Mô lá thâm đen, khô giòn | Thấy đường rãnh mỏng dưới lớp biểu bì | Mô hoại tử thâm nâu, thấy chùm sợi tảo |
-| **Hậu quả nghiêm trọng** | Cháy rụng lá non, khô quắt đọt non | Lá co rúm, biến dạng, giảm quang hợp | Vàng lá, kiệt dinh dưỡng, rụng lá già |
-
----
-
-## 📦 HƯỚNG DẪN GÁN NHÃN BOUNDING BOX CHO TEAM (ANNOTATION GUIDELINE)
-
-Tài liệu quy định chi tiết **phương pháp gán nhãn Bounding Box thống nhất cho toàn bộ team** trong dự án phát hiện và phân loại bệnh trên lá cây điều (xây dựng Master Object Detection Dataset cho YOLO):
-
-* **3 lớp bệnh cần gán nhãn:** `anthracnose` (thán thư), `leaf_miner` (sâu vẽ bùa), `red_rust` (rỉ sắt đỏ).
-* **2 nhóm không tạo box:** `healthy` (lá khỏe mạnh), `not_cashew_leaf` (ngoại lai / không phải lá điều).
-* **Nguyên tắc chính:** Khoanh chính xác vùng tổn thương, ôm sát viền bệnh, bao gồm quầng vàng (halo), áp dụng quy tắc gộp các cụm đốm bệnh nhỏ sát nhau và tách rời tổn thương độc lập.
-
-👉 **Xem toàn văn tài liệu hướng dẫn quy chuẩn gán nhãn chi tiết:** [CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md](./CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md)
-
----
-
-## 🧪 TRAINING RESULTS
-
-### Master Dataset hiện tại
-
-Classification dataset hiện tại (`Cashew_dataV03`) có **7,213 ảnh / 5 lớp** với split cố định và Test Set đã khóa.
+V04 được tạo sau lần làm sạch bổ sung:
+- loại ảnh mờ/chất lượng thấp;
+- xử lý các trường hợp có nguy cơ data leakage;
+- giữ split cố định cho benchmark V04.
 
 | Class | Train | Validation | Test | Total |
 |---|---:|---:|---:|---:|
-| `anthracnose` | 1,096 | 313 | 156 | 1,565 |
-| `healthy` | 818 | 225 | 128 | 1,171 |
-| `leaf_miner` | 919 | 262 | 131 | 1,312 |
+| `anthracnose` | 945 | 294 | 122 | 1,361 |
+| `healthy` | 806 | 225 | 118 | 1,149 |
+| `leaf_miner` | 893 | 249 | 132 | 1,274 |
 | `not_cashew_leaf` | 1,101 | 314 | 157 | 1,572 |
-| `red_rust` | 1,115 | 319 | 159 | 1,593 |
-| **TOTAL** | **5,049** | **1,433** | **731** | **7,213** |
+| `red_rust` | 1,077 | 320 | 158 | 1,555 |
+| **TOTAL** | **4,822** | **1,402** | **687** | **6,911** |
 
-📊 File Excel phân bố dataset: [`dataset_cashew.xlsx`](./dataset_cashew.xlsx)
+Files:
+- [`dataset_cashew_v04.csv`](./dataset_cashew_v04.csv) — machine-readable snapshot hiện tại;
+- [`DATASET_CHANGELOG.md`](./DATASET_CHANGELOG.md) — lịch sử V03 → V04.
 
-### Baseline chính thức hiện tại
-
-| Experiment | Model | Seeds | Test Accuracy | Macro F1 |
-|---|---|---:|---:|---:|
-| [`EXP-RESNET50-SCRATCH-5SEEDS-002`](./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-002/) | ResNet50 Scratch | 5 | **90.10 ± 1.82%** | **90.12 ± 1.81%** |
-
-Seed 42 được dùng làm hình minh họa vì đây là seed cố định đầu tiên trong protocol; kết luận chính thức luôn dựa trên **Mean ± Std của cả 5 seeds**.
-
-<table>
-<tr>
-<th>Training / Validation Accuracy — Seed 42</th>
-<th>Normalized Test Confusion Matrix — Seed 42</th>
-</tr>
-<tr>
-<td width="50%"><img src="./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-002/5_seed_resnet50_v02/5_seed_resnet50_v02/42/accuracy_curve.png" width="100%" alt="Seed 42 Accuracy Curve"></td>
-<td width="50%"><img src="./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-002/5_seed_resnet50_v02/5_seed_resnet50_v02/42/confusion_matrix_normalized.png" width="100%" alt="Seed 42 Normalized Test Confusion Matrix"></td>
-</tr>
-</table>
-
-### Truy cập kết quả
-
-- 📁 **Kết quả dataset hiện tại:** [training_results/current_dataset/](./training_results/current_dataset/)
-- 📘 **ResNet50 5-seed visual report:** [EXP-RESNET50-SCRATCH-5SEEDS-002/README.md](./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-002/README.md)
-- 🗄️ **Archive dataset cũ:** [training_results/archive_legacy_dataset/](./training_results/archive_legacy_dataset/)
-- 📘 **Quy ước quản lý experiment:** [training_results/README.md](./training_results/README.md)
-
-Hai experiment `EXP-DENSENET121-SCRATCH-001` và `EXP-VIT-SCRATCH-001` đã được chuyển vào archive vì được huấn luyện trên dataset cũ. Chúng chỉ còn giá trị tham khảo và không được dùng để so sánh trực tiếp với các experiment mới.
+> File Excel V03 cũ đã được loại khỏi root để tránh nhầm với current dataset. Git history vẫn giữ bản cũ.
 
 ---
 
-## ⚠️ FAILURE EXPERIMENT ARCHIVE
+## Classification protocol
 
-Các experiment không đạt yêu cầu final vẫn được lưu lại để:
+Mỗi baseline current:
+- dùng cùng fixed split V04;
+- train 5 seeds: `42, 123, 2026, 3407, 7777`;
+- checkpoint chọn theo Validation;
+- Test không dùng để tuning hoặc chọn seed;
+- báo cáo `Mean ± sample Standard Deviation (ddof=1)`.
 
-- theo dõi lịch sử thử nghiệm;
-- tránh lặp lại cấu hình không hiệu quả;
-- phân tích False Positive / False Negative;
-- đánh giá ảnh hưởng của dataset, annotation và resolution;
-- phục vụ phần **Failure Analysis / Discussion** trong khóa luận.
+Current experiments:
 
-### Truy cập nhanh
+- [`EXP-DENSENET121-SCRATCH-5SEEDS-003`](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-003/)
+- [`EXP-RESNET50-SCRATCH-5SEEDS-003`](./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-003/)
+- [`EXP-VIT-SCRATCH-5SEEDS-003`](./training_results/current_dataset/EXP-VIT-SCRATCH-5SEEDS-003/)
 
-- 📁 **Failure Archive:** [failure/README.md](./failure/README.md)
-- YOLO26 Take 01 — Baseline nhỏ: [failure_take01.md](./failure/YOLO26/EXP-Y26S-SMALL-001/failure_take01.md)
-- YOLO26 Take 02 — Resize 640×640: [failure_take02.md](./failure/YOLO26/EXP-Y26S-SMALL-002/failure_take02.md)
-- YOLO26 Take 03 — Clean annotation / sparse supervision: [failure_take03.md](./failure/YOLO26/EXP-Y26S-SMALL-003/failure_take03.md)
-- YOLO26 Take 04 — Small-lesion annotation + expanded dataset: [failure_take04.md](./failure/YOLO26/EXP-Y26S-SMALL-004/failure_take04.md)
-
-Take 04 là bước cải thiện rõ so với Take 03: Precision, Recall, F1 và mAP tăng đáng kể trong khi Mean IoU của matched TP vẫn giữ khoảng `0.79`. Tuy nhiên số False Positive còn cao, Leaf Miner bị thiếu dữ liệu và dataset detection hiện chưa có negative image rõ ràng, nên Take 04 vẫn được lưu trong Failure Archive thay vì chọn làm final detector.
+`anthracnose` hiện là class khó nhất nhất quán qua cả ba kiến trúc.
 
 ---
 
-## 📚 TÀI LIỆU THAM KHẢO (REFERENCES)
+## Bounding-box annotation policy
 
-1. [BMC Việt Nam - Nhà sản xuất thuốc bảo vệ thực vật số 1 Việt Nam](https://www.bmcgroup.com.vn/en/blog/bai-viet/116/)
-2. [Anthracnose Disease: Ash, Maple, Oak Trees | Davey Tree](https://www.davey.com/insect-disease-resource-center/anthracnose/)
-3. [Anthracnose / Home and Landscape / UC Statewide IPM Program (UC IPM)](https://ipm.ucanr.edu/home-and-landscape/anthracnose/#gsc.tab=0)
-4. [How to Identify & Control Leaf Miners | Garden Design](https://www.gardendesign.com/how-to/leaf-miners.html)
-5. [(PDF) CHARACTERIZATION OF RED RUST DISEASE CAUSED BY CEPHALEUROS VIRESCENS KUNZE ON CASHEW NUT IN THE SUDANO-SAHELIAN ECOLOGICAL ZONE OF CAMEROON](https://www.researchgate.net/publication/352893525_CHARACTERIZATION_OF_RED_RUST_DISEASE_CAUSED_BY_CEPHALEUROS_VIRESCENS_KUNZE_ON_CASHEW_NUTIN_THESUDANO-SAHELIAN_ECOLOGICAL_ZONE_OF_CAMEROON)
-6. [Red rust | PPTX](https://www.slideshare.net/slideshow/red-rust/140685951)
-7. [The Trentepohliales (Ulvophyceae, Chlorophyta): An Unusual Algal Order and its Novel Plant Pathogen—Cephaleuros | Plant Disease](https://apsjournals.apsnet.org/doi/10.1094/PDIS-01-15-0029-FE)
+Detection dùng 3 box classes:
+
+```text
+anthracnose
+leaf_miner
+red_rust
+```
+
+`healthy` và `not_cashew_leaf` là **0-box negative images**.
+
+Policy hiện tại là **selective clear-lesion annotation**:
+- ưu tiên lesion rõ, đủ lớn và có ý nghĩa thị giác;
+- gom cluster hợp lý;
+- không cố bounding mọi chấm cực nhỏ;
+- giữ cùng annotation policy giữa Train/Validation/Test.
+
+➡️ Guideline hiện tại: [`CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md`](./CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md)
+
+---
+
+## Repository structure
+
+```text
+.
+├── README.md
+├── DATASET_CHANGELOG.md
+├── dataset_cashew_v04.csv
+├── CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md
+├── DISEASE_REFERENCE.md
+├── img_check/
+├── training_results/
+│   ├── README.md
+│   ├── current_dataset/
+│   └── archive_legacy_dataset/
+└── failure/
+    ├── README.md
+    └── YOLO26/
+```
+
+### Result management
+
+- `training_results/current_dataset/`: benchmark V04 chính thức.
+- `training_results/archive_legacy_dataset/`: experiment rất cũ.
+- `failure/YOLO26/`: detection iteration/failure analysis.
+- Checkpoint/model/FULL ZIP lớn **không commit trực tiếp**; repo chỉ giữ config, metrics, summaries và figures nhẹ.
+
+---
+
+## Dataset versioning
+
+`Cashew_dataV03` có 7,213 ảnh. Sau cleaning bổ sung, V04 còn 6,911 ảnh.
+
+V03 và V04 có Train/Validation/Test khác nhau, vì vậy **không dùng metric V03 ↔ V04 như một controlled model comparison**.
+
+Git history vẫn giữ toàn bộ phiên bản cũ.
+
+---
+
+## Tài liệu chính
+
+- [Classification training results](./training_results/README.md)
+- [Current V04 benchmark](./training_results/current_dataset/README.md)
+- [Dataset changelog](./DATASET_CHANGELOG.md)
+- [Bounding-box annotation guideline](./CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md)
+- [YOLO failure/development archive](./failure/YOLO26/README.md)
+- [Failure archive index](./failure/README.md)
+- [Disease reference](./DISEASE_REFERENCE.md)
+
+---
+
+## Disease reference samples
+
+Ảnh tham khảo nhận diện bệnh thực địa được lưu trong [`img_check/`](./img_check/).
+
+Ba nhóm tổn thương chính:
+- **Anthracnose**
+- **Leaf Miner**
+- **Red Rust**
+
+Phần mô tả bệnh chi tiết không được dùng thay cho ground-truth review chuyên môn; annotation/model evaluation tuân theo dataset guideline và protocol của project.
