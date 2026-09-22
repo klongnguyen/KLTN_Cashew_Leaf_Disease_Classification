@@ -1,0 +1,64 @@
+{
+  "experiment_id": "EXP-RESNET50-SCRATCH-5SEEDS-003",
+  "created_at": "2026-09-22T13:37:31.032518",
+  "dataset": {
+    "version": "Cashew_dataV04",
+    "path": "/kaggle/input/datasets/kimlonkkk/cashew-datav04/CashewData_Split",
+    "classes": ["anthracnose", "healthy", "leaf_miner", "not_cashew_leaf", "red_rust"],
+    "train_images": 4822,
+    "val_images": 1402,
+    "test_images": 687,
+    "total_images": 6911,
+    "test_set_locked": true
+  },
+  "model": {
+    "name": "ResNet50",
+    "training_mode": "Scratch",
+    "weights": null,
+    "include_top": false,
+    "input_size": [224, 224, 3],
+    "head_units": 512,
+    "head_dropout": 0.4,
+    "backbone_call": "x = backbone(x)",
+    "forced_training_true": false
+  },
+  "training": {
+    "seeds": [42, 123, 2026, 3407, 7777],
+    "batch_size": 32,
+    "max_epochs": 50,
+    "optimizer": "Adam",
+    "initial_learning_rate": 0.001,
+    "loss": "SparseCategoricalCrossentropy",
+    "class_weight": null
+  },
+  "augmentation": {
+    "horizontal_flip": true,
+    "vertical_flip": false,
+    "rotation_factor": 0.04,
+    "zoom_factor": 0.05,
+    "translation_factor": 0.03,
+    "contrast_factor": 0.08,
+    "brightness": false,
+    "hue_shift": false
+  },
+  "callbacks": {
+    "checkpoint_monitor": "val_loss",
+    "checkpoint_mode": "min",
+    "checkpoint_type": "weights_only",
+    "early_stopping_patience": 8,
+    "reduce_lr_patience": 3,
+    "reduce_lr_factor": 0.3,
+    "min_lr": 1e-06
+  },
+  "test_protocol": {
+    "run_final_test": true,
+    "same_locked_test_for_all_seeds": true,
+    "do_not_select_best_seed_on_test": true,
+    "summary": "mean ± sample standard deviation (ddof=1)"
+  },
+  "hardware": {
+    "gpu_count": 2,
+    "strategy": "MirroredStrategy",
+    "replicas": 2
+  }
+}
