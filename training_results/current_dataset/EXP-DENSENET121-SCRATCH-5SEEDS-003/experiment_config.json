@@ -1,0 +1,82 @@
+{
+  "experiment_id": "EXP-DENSENET121-SCRATCH-5SEEDS-003",
+  "created_at": "2026-09-22T02:51:05.265769",
+  "dataset": {
+    "version": "Cashew_dataV04",
+    "path": "/kaggle/input/datasets/kimlonkkk/cashew-datav04/CashewData_Split",
+    "classes": [
+      "anthracnose",
+      "healthy",
+      "leaf_miner",
+      "not_cashew_leaf",
+      "red_rust"
+    ],
+    "train_images": 4822,
+    "val_images": 1402,
+    "test_images": 687,
+    "total_images": 6911,
+    "test_set_locked": true
+  },
+  "model": {
+    "name": "DenseNet121",
+    "training_mode": "Scratch",
+    "weights": null,
+    "include_top": false,
+    "input_size": [224, 224, 3],
+    "head_units": 512,
+    "head_dropout": 0.4,
+    "backbone_call": "x = backbone(x)",
+    "forced_training_true": false
+  },
+  "training": {
+    "seeds": [42, 123, 2026, 3407, 7777],
+    "batch_size": 32,
+    "max_epochs": 50,
+    "optimizer": "Adam",
+    "initial_learning_rate": 0.001,
+    "loss": "SparseCategoricalCrossentropy",
+    "class_weight": null
+  },
+  "augmentation": {
+    "horizontal_flip": true,
+    "vertical_flip": false,
+    "rotation_factor": 0.04,
+    "zoom_factor": 0.05,
+    "translation_factor": 0.03,
+    "contrast_factor": 0.08,
+    "brightness": false,
+    "hue_shift": false
+  },
+  "callbacks": {
+    "checkpoint_monitor": "val_loss",
+    "checkpoint_mode": "min",
+    "checkpoint_type": "weights_only",
+    "early_stopping_patience": 8,
+    "reduce_lr_patience": 3,
+    "reduce_lr_factor": 0.3,
+    "min_lr": 1e-06
+  },
+  "test_protocol": {
+    "run_final_test": true,
+    "final_test_completed": true,
+    "same_locked_test_for_all_seeds": true,
+    "do_not_select_best_seed_on_test": true,
+    "summary": "mean ± sample standard deviation (ddof=1)"
+  },
+  "deployment_protocol": {
+    "selection_source": "validation only",
+    "selection_metric": "val_macro_f1",
+    "tie_break": "lower val_loss",
+    "test_used_for_selection": false
+  },
+  "figure_protocol": {
+    "comparison_layout": "panel",
+    "training_curves": "2 rows x 5 seed columns",
+    "confusion_matrices": "1 row x 5 seed columns"
+  },
+  "hardware": {
+    "gpu_count": 2,
+    "strategy": "MirroredStrategy",
+    "replicas": 2
+  }
+}
