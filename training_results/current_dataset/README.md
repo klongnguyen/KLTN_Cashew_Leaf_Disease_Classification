@@ -1,10 +1,10 @@
-# Current Dataset Experiments
+# Current Dataset Experiments — Cashew_dataV04
 
-Thư mục này quản lý các baseline classification được huấn luyện trên **Master Dataset hiện tại — Cashew_dataV04**.
+Thư mục này quản lý các **classification baseline chính thức** trên Master Dataset hiện tại `Cashew_dataV04`.
 
-## Dataset hiện tại — Cashew_dataV04
+## Dataset snapshot
 
-Sau lần làm sạch gần nhất, các ảnh mờ/chất lượng thấp và các trường hợp có nguy cơ **data leakage** đã được loại khỏi bộ dữ liệu. Dataset hiện tại có **6,911 ảnh / 5 lớp**, với split cố định dùng chung cho các baseline mới.
+V04 được tạo sau lần làm sạch bổ sung: loại ảnh mờ/chất lượng thấp và xử lý các trường hợp có nguy cơ **data leakage** giữa các split.
 
 | Class | Train | Validation | Test | Total |
 |---|---:|---:|---:|---:|
@@ -15,60 +15,58 @@ Sau lần làm sạch gần nhất, các ảnh mờ/chất lượng thấp và c
 | `red_rust` | 1,077 | 320 | 158 | 1,555 |
 | **TOTAL** | **4,822** | **1,402** | **687** | **6,911** |
 
-- Test Set được khóa và không dùng để tuning hoặc chọn seed.
-- Mỗi cấu hình chạy trên 5 seed: `42, 123, 2026, 3407, 7777`.
-- Kết quả được báo cáo theo **Mean ± sample Standard Deviation (ddof=1)**.
-- Các kết quả V03 được giữ lại như lịch sử thực nghiệm nhưng **không so sánh trực tiếp** với V04.
+![Dataset distribution](./dataset_distribution_v04.svg)
 
-## Baseline V04 hiện có
+## Benchmark V04
 
-| Experiment | Model | Mode | Seeds | Validation Accuracy | Test Accuracy | Macro F1 | Params | Status |
-|---|---|---|---:|---:|---:|---:|---:|---|
-| [`EXP-DENSENET121-SCRATCH-5SEEDS-003`](./EXP-DENSENET121-SCRATCH-5SEEDS-003/) | DenseNet121 | Scratch | 5 | **89.87 ± 1.85%** | **91.82 ± 0.86%** | **91.37 ± 0.79%** | 7.57M | ✅ V04 baseline |
-| [`EXP-RESNET50-SCRATCH-5SEEDS-003`](./EXP-RESNET50-SCRATCH-5SEEDS-003/) | ResNet50 | Scratch | 5 | **88.22 ± 2.49%** | **90.63 ± 2.11%** | **90.17 ± 2.04%** | 24.64M | ✅ V04 baseline |
-| [`EXP-VIT-SCRATCH-5SEEDS-003`](./EXP-VIT-SCRATCH-5SEEDS-003/) | Vision Transformer | Scratch | 5 | **85.28 ± 1.28%** | **85.30 ± 1.68%** | **84.41 ± 1.71%** | **0.35M** | ✅ V04 baseline |
+| Experiment | Model | Val Accuracy | Test Accuracy | Macro F1 | Params | Inference* |
+|---|---|---:|---:|---:|---:|---:|
+| [`EXP-DENSENET121-SCRATCH-5SEEDS-003`](./EXP-DENSENET121-SCRATCH-5SEEDS-003/) | DenseNet121 | **89.87 ± 1.85%** | **91.82 ± 0.86%** | **91.37 ± 0.79%** | 7.57M | 13.20 ms/img |
+| [`EXP-RESNET50-SCRATCH-5SEEDS-003`](./EXP-RESNET50-SCRATCH-5SEEDS-003/) | ResNet50 | **88.22 ± 2.49%** | **90.63 ± 2.11%** | **90.17 ± 2.04%** | 24.64M | 8.07 ms/img |
+| [`EXP-VIT-SCRATCH-5SEEDS-003`](./EXP-VIT-SCRATCH-5SEEDS-003/) | Compact ViT | **85.28 ± 1.28%** | **85.30 ± 1.68%** | **84.41 ± 1.71%** | **0.35M** | **6.08 ms/img** |
 
-## Nhận xét nhanh
+\* Inference benchmark được đo trong môi trường Kaggle T4×2/MirroredStrategy của từng experiment; không xem là tốc độ deployment trên web/mobile.
 
-- **DenseNet121** hiện có kết quả tốt nhất trên V04: `91.82 ± 0.86%` Test Accuracy và `91.37 ± 0.79%` Macro F1.
-- **ResNet50** đứng thứ hai với `90.63 ± 2.11%` Accuracy và `90.17 ± 2.04%` Macro F1. Hai seed `123` và `2026` yếu hơn rõ so với ba seed còn lại nên độ lệch chuẩn cao hơn DenseNet121.
-- **ViT compact** thấp hơn hai CNN về Accuracy/F1 nhưng chỉ có khoảng `0.35M` tham số.
-- DenseNet121 cao hơn ResNet50 khoảng **1.19 điểm % Test Accuracy** và **1.20 điểm % Macro F1**, đồng thời chỉ dùng khoảng 31% số tham số của ResNet50.
-- `anthracnose` tiếp tục là lớp khó nhất ở cả ba baseline. Với ResNet50 V04, F1 của Anthracnose là **79.35 ± 3.84%**.
-- `red_rust` là lớp mạnh nhất của ResNet50 V04 với **F1 = 95.99 ± 1.56%**.
+![V04 benchmark](./benchmark_v04.svg)
 
-### ResNet50 — per-seed Validation/Test Accuracy
+### Kết luận benchmark hiện tại
 
-<p align="center">
-  <img src="./EXP-RESNET50-SCRATCH-5SEEDS-003/figures/per_seed_accuracy.svg" width="95%" alt="ResNet50 V04 per-seed accuracy">
-</p>
+- **DenseNet121** có hiệu năng tổng thể cao nhất và độ ổn định tốt nhất: Test Accuracy Std chỉ **0.86%**.
+- **ResNet50** đứng thứ hai về Accuracy/Macro-F1 nhưng có 24.64M tham số và biến thiên seed lớn hơn DenseNet121.
+- **Compact ViT** nhẹ nhất rõ rệt và nhanh nhất trong benchmark GPU hiện tại, nhưng hiệu năng thấp hơn hai CNN.
+- `anthracnose` tiếp tục là lớp khó nhất ở cả ba kiến trúc.
 
-### ResNet50 — per-class Test F1
+## Per-class Macro comparison
 
-<p align="center">
-  <img src="./EXP-RESNET50-SCRATCH-5SEEDS-003/figures/per_class_f1.svg" width="90%" alt="ResNet50 V04 per-class F1">
-</p>
+| Class | DenseNet121 F1 | ResNet50 F1 | ViT F1 |
+|---|---:|---:|---:|
+| `anthracnose` | 81.30 ± 2.00% | 79.35 ± 3.84% | 70.43 ± 4.44% |
+| `healthy` | 91.68 ± 1.51% | 90.69 ± 2.05% | 79.72 ± 2.22% |
+| `leaf_miner` | 91.29 ± 1.37% | 90.75 ± 1.06% | 84.81 ± 2.45% |
+| `not_cashew_leaf` | 96.02 ± 1.35% | 94.06 ± 2.48% | 97.28 ± 1.37% |
+| `red_rust` | 96.58 ± 0.42% | 95.99 ± 1.56% | 89.81 ± 1.90% |
 
-### DenseNet121 — 5-seed training curves
+## Protocol
 
-<p align="center">
-  <img src="./EXP-DENSENET121-SCRATCH-5SEEDS-003/figures/training_curves_5seeds_panel.svg" width="100%" alt="DenseNet121 V04 5-seed training curves">
-</p>
+- Fixed split trong toàn bộ `Cashew_dataV04`.
+- Seeds: `42, 123, 2026, 3407, 7777`.
+- Validation dùng cho checkpoint, EarlyStopping/LR scheduling và deployment-seed selection.
+- Test Set không dùng để tuning hoặc chọn seed.
+- Kết quả báo cáo theo **Mean ± sample Standard Deviation (`ddof=1`)**.
+- Các figure so sánh seed phải dùng panel chung để tránh chọn hình đẹp nhất.
 
-### Vision Transformer — 5-seed training curves
+## Machine-readable summaries
 
-<p align="center">
-  <img src="./EXP-VIT-SCRATCH-5SEEDS-003/figures/training_curves_5seeds_panel.svg" width="100%" alt="ViT V04 5-seed training curves">
-</p>
+- [`benchmark_v04.csv`](./benchmark_v04.csv)
+- [`class_f1_comparison_v04.csv`](./class_f1_comparison_v04.csv)
+- [`dataset_cashew_v04.csv`](../../dataset_cashew_v04.csv)
 
-## Previous dataset snapshot — V03
+## Dataset versioning
 
-Các experiment `*-002` trong thư mục này được huấn luyện trên **Cashew_dataV03 (7,213 ảnh)** trước lần làm sạch mới. Chúng được giữ để theo dõi lịch sử thay đổi dataset nhưng không được đưa vào bảng benchmark trực tiếp với V04.
+Các experiment `*-002` dùng `Cashew_dataV03` vẫn còn trong thư mục này để giữ tương thích với các đường dẫn cũ, nhưng **không còn là current benchmark**. Không so sánh trực tiếp V03 với V04 như một controlled model comparison vì Train/Validation/Test đã thay đổi.
 
-## YOLO26 detection experiments
+Các experiment rất cũ hơn nữa được lưu tại [`../archive_legacy_dataset/`](../archive_legacy_dataset/).
 
-Các lần train YOLO26 đang ở giai đoạn annotation/data iteration được lưu tại [`../../failure/YOLO26/README.md`](../../failure/YOLO26/README.md).
+## Object detection
 
-## Lưu ý dung lượng
-
-GitHub chỉ lưu config, metrics, CSV và figures nhẹ. Checkpoint `.weights.h5`, `.keras` và FULL ZIP được quản lý riêng để phục vụ tái sử dụng model và pipeline YOLO.
+Các YOLO26 take đang ở giai đoạn annotation/data iteration được quản lý riêng tại [`../../failure/YOLO26/README.md`](../../failure/YOLO26/README.md). Take 006 là iteration tốt nhất hiện tại nhưng chưa được khóa làm final detector.
