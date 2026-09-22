@@ -1,93 +1,62 @@
 # Current Dataset Experiments
 
-Thư mục này dành riêng cho các kết quả huấn luyện sử dụng **Master Dataset hiện tại** sau khi dataset được cập nhật. Chỉ các experiment trong thư mục này mới được xem là ứng viên cho bảng so sánh chính thức của khóa luận, trừ khi có ghi chú khác.
+Thư mục này quản lý các baseline classification được huấn luyện trên **Master Dataset hiện tại — Cashew_dataV04**.
 
-## Dataset hiện tại — Cashew_dataV03
+## Dataset hiện tại — Cashew_dataV04
 
-Dataset classification hiện tại có **7,213 ảnh thuộc 5 lớp** và sử dụng một split cố định cho toàn bộ baseline.
+Sau lần làm sạch gần nhất, các ảnh mờ/chất lượng thấp và các trường hợp có nguy cơ **data leakage** đã được loại khỏi bộ dữ liệu. Dataset hiện tại có **6,911 ảnh / 5 lớp**, với split cố định dùng chung cho các baseline mới.
 
 | Class | Train | Validation | Test | Total |
 |---|---:|---:|---:|---:|
-| `anthracnose` | 1,096 | 313 | 156 | 1,565 |
-| `healthy` | 818 | 225 | 128 | 1,171 |
-| `leaf_miner` | 919 | 262 | 131 | 1,312 |
+| `anthracnose` | 945 | 294 | 122 | 1,361 |
+| `healthy` | 806 | 225 | 118 | 1,149 |
+| `leaf_miner` | 893 | 249 | 132 | 1,274 |
 | `not_cashew_leaf` | 1,101 | 314 | 157 | 1,572 |
-| `red_rust` | 1,115 | 319 | 159 | 1,593 |
-| **TOTAL** | **5,049** | **1,433** | **731** | **7,213** |
+| `red_rust` | 1,077 | 320 | 158 | 1,555 |
+| **TOTAL** | **4,822** | **1,402** | **687** | **6,911** |
 
-- Tỉ lệ split xấp xỉ **70% / 20% / 10%**.
-- **Test Set đã khóa** và giữ nguyên giữa các model / seed.
-- File Excel mô tả phân bố dataset: [`dataset_cashew.xlsx`](../../dataset_cashew.xlsx).
+- Test Set được khóa và không dùng để tuning hoặc chọn seed.
+- Mỗi cấu hình chạy trên 5 seed: `42, 123, 2026, 3407, 7777`.
+- Kết quả được báo cáo theo **Mean ± sample Standard Deviation (ddof=1)**.
+- Các kết quả V03 được giữ lại như lịch sử thực nghiệm nhưng **không so sánh trực tiếp** với V04.
 
-## Baseline hiện tại
+## Baseline V04 hiện có
 
 | Experiment | Model | Mode | Seeds | Validation Accuracy | Test Accuracy | Macro F1 | Params | Status |
 |---|---|---|---:|---:|---:|---:|---:|---|
-| [`EXP-RESNET50-SCRATCH-5SEEDS-002`](./EXP-RESNET50-SCRATCH-5SEEDS-002/) | ResNet50 | Scratch | 5 | **86.76 ± 0.74%** | **90.10 ± 1.82%** | **90.12 ± 1.81%** | 24.64M | ✅ Baseline hợp lệ |
-| [`EXP-DENSENET121-SCRATCH-5SEEDS-002`](./EXP-DENSENET121-SCRATCH-5SEEDS-002/) | DenseNet121 | Scratch | 5 | **86.62 ± 3.04%** | **89.00 ± 3.27%** | **89.22 ± 2.92%** | **7.57M** | ✅ Baseline hợp lệ |
-| [`EXP-VIT-SCRATCH-5SEEDS-002`](./EXP-VIT-SCRATCH-5SEEDS-002/) | Vision Transformer | Scratch | 5 | **81.55 ± 5.21%** | **85.94 ± 1.22%** | **85.68 ± 1.18%** | **0.35M** | ✅ Baseline hợp lệ |
+| [`EXP-DENSENET121-SCRATCH-5SEEDS-003`](./EXP-DENSENET121-SCRATCH-5SEEDS-003/) | DenseNet121 | Scratch | 5 | **89.87 ± 1.85%** | **91.82 ± 0.86%** | **91.37 ± 0.79%** | 7.57M | ✅ V04 baseline |
+| [`EXP-VIT-SCRATCH-5SEEDS-003`](./EXP-VIT-SCRATCH-5SEEDS-003/) | Vision Transformer | Scratch | 5 | **85.28 ± 1.28%** | **85.30 ± 1.68%** | **84.41 ± 1.71%** | **0.35M** | ✅ V04 baseline |
+| ResNet50 V04 | — | — | — | — | — | — | — | ⏳ Chưa retrain trên V04 |
 
-## So sánh nhanh
+## Nhận xét nhanh
 
-- **ResNet50** hiện có Accuracy/Macro-F1 trung bình cao nhất và độ ổn định Validation tốt nhất.
-- **DenseNet121** thấp hơn ResNet50 khoảng 1 điểm %, nhưng chỉ có 7.57M tham số.
-- **ViT Scratch** nhẹ nhất rõ rệt với khoảng **0.35M tham số** và Test variance thấp, nhưng hiệu năng trung bình thấp hơn hai CNN baseline; Validation variance của ViT khá lớn.
-- `anthracnose` là lớp khó nhất ở cả ba baseline; với ViT, F1 chỉ **75.61 ± 1.67%**.
-- ViT nhận diện `not_cashew_leaf` rất tốt: **F1 = 96.07 ± 1.53%**.
+- DenseNet121 hiện là baseline mạnh nhất đã được retrain trên V04.
+- So với ViT compact, DenseNet121 cao hơn khoảng **6.52 điểm % Test Accuracy** và **6.96 điểm % Macro F1**.
+- ViT chỉ có khoảng **0.35M tham số**, nhỏ hơn đáng kể so với DenseNet121 7.57M.
+- DenseNet121 có độ ổn định tốt giữa các seed (`Test Accuracy Std = 0.86%`).
+- Với ViT, Validation và Test Accuracy gần như trùng nhau (`85.28%` và `85.30%`), nhất quán hơn đáng kể so với experiment V03.
+- `anthracnose` tiếp tục là lớp khó nhất ở cả hai model.
 
-## Kết quả trực quan
-
-### ResNet50 — representative seed 42
-
-<table>
-<tr>
-<th>Training / Validation Accuracy</th>
-<th>Normalized Test Confusion Matrix</th>
-</tr>
-<tr>
-<td width="50%"><img src="./EXP-RESNET50-SCRATCH-5SEEDS-002/5_seed_resnet50_v02/5_seed_resnet50_v02/42/accuracy_curve.png" width="100%" alt="ResNet50 Seed 42 Accuracy Curve"></td>
-<td width="50%"><img src="./EXP-RESNET50-SCRATCH-5SEEDS-002/5_seed_resnet50_v02/5_seed_resnet50_v02/42/confusion_matrix_normalized.png" width="100%" alt="ResNet50 Seed 42 Normalized Test Confusion Matrix"></td>
-</tr>
-</table>
-
-### DenseNet121 — 5 seeds side-by-side
+### DenseNet121 — 5-seed training curves
 
 <p align="center">
-  <img src="./EXP-DENSENET121-SCRATCH-5SEEDS-002/figures/training_curves_5seeds_panel.svg" width="100%" alt="DenseNet121 5-seed accuracy curves">
+  <img src="./EXP-DENSENET121-SCRATCH-5SEEDS-003/figures/training_curves_5seeds_panel.svg" width="100%" alt="DenseNet121 V04 5-seed training curves">
 </p>
 
-### Vision Transformer — 5-seed results
+### Vision Transformer — 5-seed training curves
 
-ViT sử dụng 5 seed giống các baseline CNN. Kết quả đầy đủ theo seed, validation/test Mean ± Std và per-class metrics được lưu tại [`EXP-VIT-SCRATCH-5SEEDS-002/README.md`](./EXP-VIT-SCRATCH-5SEEDS-002/README.md).
+<p align="center">
+  <img src="./EXP-VIT-SCRATCH-5SEEDS-003/figures/training_curves_5seeds_panel.svg" width="100%" alt="ViT V04 5-seed training curves">
+</p>
+
+## Previous dataset snapshot — V03
+
+Các experiment `*-002` trong thư mục này được huấn luyện trên **Cashew_dataV03 (7,213 ảnh)** trước lần làm sạch mới. Chúng được giữ để theo dõi lịch sử thay đổi dataset nhưng không được đưa vào bảng benchmark trực tiếp với V04.
 
 ## YOLO26 detection experiments
 
-Các lần train YOLO26 hiện được xem là **failure / data-iteration experiments** và được lưu riêng tại:
-
-[`../../failure/YOLO26/README.md`](../../failure/YOLO26/README.md)
-
-## Protocol đánh giá
-
-- Cùng một Train / Validation / Test split cho tất cả seed ở các baseline classification.
-- Mỗi configuration classification chạy trên 5 seed: `42, 123, 2026, 3407, 7777`.
-- Validation dùng cho checkpoint, EarlyStopping, learning-rate scheduling và lựa chọn deployment seed.
-- Test Set không dùng để tuning hoặc chọn seed tốt nhất.
-- Báo cáo kết quả theo **Mean ± sample Standard Deviation (ddof=1)**.
-
-## Quy tắc lưu experiment
-
-Mỗi experiment nên có cấu trúc tối thiểu:
-
-```text
-EXP-{MODEL}-{MODE}-{NO}/
-├── README.md
-├── experiment_config.json
-├── aggregate/
-└── figures / per-seed artifacts
-```
-
-Không sử dụng kết quả trong `../archive_legacy_dataset/` để so sánh trực tiếp với các experiment mới vì chúng được huấn luyện trên dataset cũ.
+Các lần train YOLO26 đang ở giai đoạn annotation/data iteration được lưu tại [`../../failure/YOLO26/README.md`](../../failure/YOLO26/README.md).
 
 ## Lưu ý dung lượng
 
-Checkpoint `.weights.h5`, `.keras`, `.pt` và full ZIP dung lượng lớn không commit trực tiếp vào GitHub. Repo ưu tiên lưu config, metrics, CSV và figures. FULL archive được giữ riêng để phục vụ tái sử dụng model và kết hợp YOLO sau này.
+GitHub chỉ lưu config, metrics, CSV và figures nhẹ. Checkpoint `.weights.h5`, `.keras` và FULL ZIP được quản lý riêng để phục vụ tái sử dụng model và pipeline YOLO.
