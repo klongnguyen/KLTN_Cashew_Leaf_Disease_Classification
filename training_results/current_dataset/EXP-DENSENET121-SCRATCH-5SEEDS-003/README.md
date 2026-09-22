@@ -50,26 +50,16 @@
 | balanced_accuracy | **91.40 ± 0.80%** |
 | weighted_f1 | **91.88 ± 0.76%** |
 
-## Normalized Test confusion matrices — 5 seeds side-by-side
-
-![Normalized Test CM](./figures/test_confusion_matrices_normalized_5seeds_panel.svg)
-
 ## Deployment / YOLO integration
 
 Deployment seed selected from Validation only: **7777**.
 
-Reusable files:
+Reusable files trong FULL archive:
 - `model_package/deployment_model.keras`
 - `model_package/densenet121_feature_extractor.keras`
 - `model_package/densenet121_embedding_model.keras`
 - `code/yolo_classifier_adapter.py`
 - `code/continue_training_example.py`
-
-## Google Drive archive
-
-Full ZIP destination: https://drive.google.com/drive/folders/1it9ayE473c0lLgxhiNnguqIkKtceI5zf?usp=sharing
-
-Archive name: `EXP-DENSENET121-SCRATCH-5SEEDS-003_FULL.zip`
 
 ## Scientific rules
 
@@ -103,4 +93,4 @@ Total parameters: **7,566,917**.
 
 ## GitHub package
 
-Repository chỉ lưu README, config, per-seed aggregate metrics và figure nhẹ. Checkpoint `.weights.h5`, model `.keras` và FULL ZIP không commit trực tiếp để tránh làm repository quá nặng.
+Repository chỉ lưu README, config, per-seed aggregate metrics và figure nhẹ. Các confusion-matrix panel đầy đủ, checkpoint `.weights.h5`, model `.keras` và FULL ZIP được giữ trong experiment archive thay vì commit trực tiếp lên GitHub.
