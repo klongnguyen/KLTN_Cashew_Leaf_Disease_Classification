@@ -1,50 +1,31 @@
 # Training Results
 
-Thư mục này quản lý các kết quả huấn luyện **được xem là candidate/benchmark chính thức** theo phiên bản dataset để tránh so sánh sai giữa các experiment dùng dữ liệu khác nhau.
+Thư mục này quản lý các kết quả huấn luyện classification theo **phiên bản dataset** để tránh so sánh sai giữa các experiment dùng dữ liệu khác nhau.
 
-## Cấu trúc
+## Current Dataset — Cashew_dataV04
 
-```text
-training_results/
-├── current_dataset/          # Baseline/candidate dùng Master Dataset hiện tại
-└── archive_legacy_dataset/   # Experiment dùng dataset cũ, chỉ tham khảo
-```
+Dataset hiện tại có **6,911 ảnh / 5 lớp**, được chia thành **4,822 Train / 1,402 Validation / 687 Test**. Phiên bản V04 được tạo sau khi tiếp tục loại ảnh mờ/chất lượng thấp và xử lý các trường hợp có nguy cơ data leakage.
 
-> Các lần train YOLO26 đang ở giai đoạn phát triển/iteration được lưu riêng tại [`../failure/YOLO26/`](../failure/YOLO26/), không nằm trong `current_dataset/` cho đến khi một detector cuối được chốt.
+| Experiment | Model | Seeds | Test Accuracy | Macro F1 | Params | Status |
+|---|---|---:|---:|---:|---:|---|
+| [`EXP-DENSENET121-SCRATCH-5SEEDS-003`](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-003/) | DenseNet121 Scratch | 5 | **91.82 ± 0.86%** | **91.37 ± 0.79%** | 7.57M | ✅ V04 baseline |
+| [`EXP-VIT-SCRATCH-5SEEDS-003`](./current_dataset/EXP-VIT-SCRATCH-5SEEDS-003/) | ViT Scratch | 5 | **85.30 ± 1.68%** | **84.41 ± 1.71%** | **0.35M** | ✅ V04 baseline |
+| ResNet50 V04 | — | — | — | — | — | ⏳ Pending |
 
-## Current Dataset — Quick Snapshot
+➡️ Xem dataset, figures và phân tích chi tiết tại [`current_dataset/README.md`](./current_dataset/README.md).
 
-Master Dataset hiện tại có **7,213 ảnh / 5 lớp**, được chia cố định thành **5,049 Train / 1,433 Validation / 731 Test**. Test Set được khóa và chỉ dùng cho đánh giá cuối cùng.
+## Dataset versioning
 
-| Experiment | Model | Mode | Seeds | Test Accuracy | Macro F1 | Params | Status |
-|---|---|---|---:|---:|---:|---:|---|
-| [`EXP-RESNET50-SCRATCH-5SEEDS-002`](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-002/) | ResNet50 | Scratch | 5 | **90.10 ± 1.82%** | **90.12 ± 1.81%** | 24.64M | ✅ Baseline hợp lệ |
-| [`EXP-DENSENET121-SCRATCH-5SEEDS-002`](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-002/) | DenseNet121 | Scratch | 5 | **89.00 ± 3.27%** | **89.22 ± 2.92%** | 7.57M | ✅ Baseline hợp lệ |
-| [`EXP-VIT-SCRATCH-5SEEDS-002`](./current_dataset/EXP-VIT-SCRATCH-5SEEDS-002/) | Vision Transformer | Scratch | 5 | **85.94 ± 1.22%** | **85.68 ± 1.18%** | **0.35M** | ✅ Baseline hợp lệ |
+Các experiment `*-002` dùng `Cashew_dataV03` được giữ lại làm lịch sử thực nghiệm. Do Train/Validation/Test đã thay đổi sau quá trình làm sạch, **không so sánh trực tiếp metric V03 với V04 như một controlled model comparison**.
 
-### Current baseline comparison
+## Protocol classification
 
-- ResNet50 hiện có hiệu năng trung bình cao nhất.
-- DenseNet121 giảm mạnh số tham số nhưng hiệu năng chỉ thấp hơn khoảng 1 điểm %.
-- ViT Scratch nhẹ nhất, Test variance thấp, nhưng Accuracy/Macro-F1 thấp hơn hai CNN baseline và Validation variance lớn hơn đáng kể.
-- `anthracnose` tiếp tục là class khó nhất trong cả ba baseline.
-
-➡️ Xem dataset, bảng benchmark và phân tích chi tiết tại [`current_dataset/README.md`](./current_dataset/README.md).
+- Fixed Train / Validation / Test split trong từng dataset version.
+- Seeds: `42, 123, 2026, 3407, 7777`.
+- Validation dùng cho checkpoint, EarlyStopping, LR scheduling và deployment-seed selection.
+- Test Set không dùng để tuning hoặc chọn seed.
+- Báo cáo **Mean ± sample Standard Deviation (`ddof=1`)**.
 
 ## YOLO26 Development Archive
 
-Toàn bộ các take YOLO26 hiện tại được quản lý tại [`../failure/YOLO26/README.md`](../failure/YOLO26/README.md). Các take này vẫn có giá trị cho Failure Analysis / Discussion và nghiên cứu annotation strategy, nhưng **chưa được xem là final detector**.
-
-## Quy ước quản lý experiment
-
-- `current_dataset/`: chỉ lưu các experiment dùng dataset hiện tại và được phép đưa vào bảng so sánh chính thức của khóa luận.
-- `archive_legacy_dataset/`: lưu các experiment đã chạy bằng dataset cũ. Các kết quả này **không dùng để so sánh trực tiếp** với experiment mới.
-- `failure/`: lưu các thử nghiệm chưa đạt final, data iteration, annotation-policy iteration hoặc các cấu hình chưa đủ điều kiện chốt.
-- Mỗi experiment mới dùng ID duy nhất theo format `EXP-{MODEL}-{MODE}-{NO}` và nên lưu config, metrics, figures, predictions hoặc file tổng hợp tương đương.
-- Không ghi đè experiment cũ; mọi thay đổi cấu hình đáng kể phải tạo experiment mới.
-- Kết quả nhiều seed được báo cáo theo **Mean ± sample Standard Deviation (ddof=1)**.
-- Test Set không dùng để tuning hyperparameter hoặc chọn seed.
-
-## Dataset transition
-
-Các experiment dùng dataset cũ được chuyển vào archive và không so sánh trực tiếp với các baseline hiện tại.
+Các experiment object detection hiện được quản lý tại [`../failure/YOLO26/README.md`](../failure/YOLO26/README.md) cho đến khi detector cuối được khóa.
