@@ -1,0 +1,5 @@
+{
+  "train": {"images": 496, "images_with_boxes": 494, "boxes": 14261, "anthracnose": 3465, "leaf_miner": 732, "red_rust": 10064},
+  "val": {"images": 80, "images_with_boxes": 80, "boxes": 2178, "anthracnose": 676, "leaf_miner": 109, "red_rust": 1393},
+  "test": {"images": 39, "images_with_boxes": 39, "boxes": 1335, "anthracnose": 420, "leaf_miner": 91, "red_rust": 824}
+}
