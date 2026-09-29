@@ -79,12 +79,37 @@ Per-class Validation F1 của EXP-004:
 
 Chi tiết: [`EXP-RESNET50-SCRATCH-5SEEDS-004/ANALYSIS.md`](./EXP-RESNET50-SCRATCH-5SEEDS-004/ANALYSIS.md)
 
+### Latest validation rerun — Compact ViT EXP-004
+
+[`EXP-VIT-SCRATCH-5SEEDS-004`](./EXP-VIT-SCRATCH-5SEEDS-004/) là rerun mới nhất của Compact ViT trên V04, chạy single-GPU `OneDeviceStrategy`. Archive nguồn tái sử dụng ID `...-003`; repository đổi thành `...-004` để không ghi đè official ViT experiment cũ.
+
+| Metric | Official EXP-003 | Rerun EXP-004 | Change |
+|---|---:|---:|---:|
+| Validation Accuracy | 85.28 ± 1.28% | **87.13 ± 0.62%** | **+1.85 pp mean** |
+| Validation Macro F1 | 84.68 ± 1.38% | **86.68 ± 0.70%** | **+2.00 pp mean** |
+
+Per-class Validation F1 của ViT EXP-004:
+
+| Class | F1 ± SD |
+|---|---:|
+| `anthracnose` | **80.28 ± 1.68%** |
+| `healthy` | **83.15 ± 3.31%** |
+| `leaf_miner` | **85.37 ± 2.13%** |
+| `not_cashew_leaf` | **91.84 ± 1.82%** |
+| `red_rust` | **92.74 ± 0.96%** |
+
+Cả 5 seed đều cải thiện Validation Accuracy và Macro-F1 so với official EXP-003; seed `42` là candidate checkpoint với Validation Macro-F1 **87.73%**. Seed variability cũng giảm rõ rệt.
+
+> ViT EXP-004 **chưa thay thế** official EXP-003 trong Test benchmark vì `run_final_test=false`. Cần freeze 5 checkpoint và chạy locked Test trước khi cập nhật `benchmark_v04.csv`.
+
+Chi tiết: [`EXP-VIT-SCRATCH-5SEEDS-004/ANALYSIS.md`](./EXP-VIT-SCRATCH-5SEEDS-004/ANALYSIS.md)
+
 ### Kết luận benchmark hiện tại
 
 - **DenseNet121 EXP-003** vẫn có official Test performance tổng thể cao nhất và Test Accuracy Std thấp nhất (**0.86%**); EXP-004 có validation mạnh/ổn định hơn nhưng Test còn pending.
 - **ResNet50 EXP-003** vẫn là official Test row cho ResNet50; EXP-004 mới chỉ hoàn thành validation.
-- **Compact ViT** nhẹ nhất rõ rệt và nhanh nhất trong benchmark GPU hiện tại, nhưng hiệu năng thấp hơn hai CNN.
-- `anthracnose` tiếp tục là lớp khó nhất ở các kiến trúc classification hiện tại.
+- **Compact ViT EXP-003** vẫn là official Test row cho ViT; EXP-004 cải thiện validation mean và seed stability nhưng final Test còn pending.
+- `anthracnose` tiếp tục là lớp khó nhất ở cả ba kiến trúc và cả ba validation rerun mới.
 
 ## Per-class Macro comparison — official Test benchmark
 
@@ -114,6 +139,7 @@ Chi tiết: [`EXP-RESNET50-SCRATCH-5SEEDS-004/ANALYSIS.md`](./EXP-RESNET50-SCRAT
 - [`dataset_cashew_v04.csv`](../../dataset_cashew_v04.csv)
 - [`EXP-DENSENET121-SCRATCH-5SEEDS-004/aggregate/validation_mean_std_summary.csv`](./EXP-DENSENET121-SCRATCH-5SEEDS-004/aggregate/validation_mean_std_summary.csv)
 - [`EXP-RESNET50-SCRATCH-5SEEDS-004/aggregate/validation_mean_std_summary.csv`](./EXP-RESNET50-SCRATCH-5SEEDS-004/aggregate/validation_mean_std_summary.csv)
+- [`EXP-VIT-SCRATCH-5SEEDS-004/aggregate/validation_mean_std_summary.csv`](./EXP-VIT-SCRATCH-5SEEDS-004/aggregate/validation_mean_std_summary.csv)
 
 ## Dataset versioning
 
