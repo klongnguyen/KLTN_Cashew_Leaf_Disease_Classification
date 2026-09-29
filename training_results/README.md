@@ -20,7 +20,22 @@ Test         687
 
 ➡️ Chi tiết dataset, class-level metrics và figures: [`current_dataset/README.md`](./current_dataset/README.md)
 
-## Latest validation-only rerun
+## Latest validation-only reruns
+
+### DenseNet121 EXP-004
+
+[`EXP-DENSENET121-SCRATCH-5SEEDS-004`](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-004/) đã hoàn tất 5-seed training/validation trên V04:
+
+- Validation Accuracy: **92.13 ± 1.31%**
+- Validation Macro-F1: **91.90 ± 1.37%**
+- Per-class F1 thấp nhất: `anthracnose` — **86.47 ± 2.66%**
+- Highest validation Macro-F1 seed: `42` — **93.11%**
+- Final locked Test: **chưa chạy**
+- Source archive tự ghi ID `...-003`; repository lưu thành `...-004` để không ghi đè official EXP-003.
+
+So với DenseNet121 official EXP-003, rerun mới tăng Validation Accuracy **+2.26 pp** và Macro-F1 **+2.37 pp**, đồng thời giảm seed SD. Tuy nhiên môi trường chạy khác nên đây được xem là rerun result, chưa phải bằng chứng về model improvement.
+
+### ResNet50 EXP-004
 
 [`EXP-RESNET50-SCRATCH-5SEEDS-004`](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-004/) đã hoàn tất 5-seed training/validation trên Colab NVIDIA L4:
 
@@ -30,7 +45,7 @@ Test         687
 - Highest validation Macro-F1 seed: `7777` — **91.59%**
 - Final locked Test: **chưa chạy**
 
-Do đó EXP-004 hiện có status **Validation complete — Test pending** và chưa thay thế ResNet50 EXP-003 trong bảng official Test benchmark.
+Cả hai EXP-004 hiện có status **Validation complete — Test pending** và chưa thay thế các official EXP-003 trong bảng Test benchmark.
 
 ## Quy tắc benchmark
 
@@ -39,7 +54,7 @@ Do đó EXP-004 hiện có status **Validation complete — Test pending** và c
 - Validation dùng cho model selection/tuning.
 - Test không dùng để tuning hoặc chọn seed.
 - Báo cáo `Mean ± sample Standard Deviation (ddof=1)`.
-- Không ghi đè experiment cũ; thay dataset/config quan trọng phải tạo ID mới.
+- Không ghi đè experiment cũ; thay dataset/config quan trọng hoặc ID trùng phải tạo ID mới.
 - Chỉ so sánh model trực tiếp khi chúng dùng **cùng dataset version và cùng evaluation protocol**.
 - Validation-only experiment không được ghi vào official Test benchmark cho tới khi Test khóa được chạy trên cấu hình đã freeze.
 
