@@ -14,12 +14,15 @@ Mục tiêu là giữ lại bằng chứng thực nghiệm, tránh lặp lại c
 | 04 | YOLO26s | `EXP-Y26S-SMALL-004` | Bounding thêm lesion nhỏ có ý nghĩa + tăng ảnh annotation | Precision/Recall/mAP phục hồi rõ so với Take 03; FP và imbalance vẫn lớn | [failure_take04.md](./YOLO26/EXP-Y26S-SMALL-004/failure_take04.md) |
 | 05 | YOLO26s | `EXP-Y26S-SMALL-005` | Dense small-lesion annotation, bounding nhiều chi tiết nhỏ | Metric tăng mạnh nhưng annotation quá dày, class imbalance và thiếu negative images vẫn rõ | [README.md](./YOLO26/EXP-Y26S-SMALL-005/README.md) |
 | 06 | YOLO26s | `EXP-Y26S-SMALL-006` | Selective clear-lesion annotation, ưu tiên lesion rõ và đủ lớn | Tốt hơn Take 005 về Precision/F1/mAP nhưng vẫn chưa đạt final detector; còn imbalance, thiếu negative images và traceability issue | [README.md](./YOLO26/EXP-Y26S-SMALL-006/README.md) |
+| 07 | YOLO26s | `EXP-Y26S-SMALL-007` | Bounding khá chi tiết nhưng bỏ chi tiết quá nhỏ/mờ; mở rộng dataset và test set | Không vượt Take 006 trên metric tổng thể; custom Precision tăng nhưng Recall giảm; split/Test thay đổi nên chưa phải ablation sạch | [README.md](./YOLO26/EXP-Y26S-SMALL-007/README.md) |
 
 > Take 02 có lỗi traceability: archive bên ngoài là `EXP-Y26S-SMALL-002` nhưng artifact bên trong vẫn ghi `EXP-Y26S-SMALL-001`.
 
 > Take 04 có lỗi traceability: archive bên ngoài là `EXP-Y26S-SMALL-004` nhưng metadata/checkpoint bên trong vẫn ghi `EXP-Y26S-SMALL-003`.
 
 > Take 06 có lỗi traceability: archive bên ngoài là `EXP-Y26S-SMALL-006` nhưng một số metadata/checkpoint bên trong vẫn ghi `EXP-Y26S-SMALL-005`.
+
+> Take 07 đã sửa được traceability: metadata bên trong ghi đúng `EXP-Y26S-SMALL-007`.
 
 ## Cấu trúc hiện tại
 
@@ -35,7 +38,8 @@ failure/
     ├── EXP-Y26S-SMALL-003/
     ├── EXP-Y26S-SMALL-004/
     ├── EXP-Y26S-SMALL-005/
-    └── EXP-Y26S-SMALL-006/
+    ├── EXP-Y26S-SMALL-006/
+    └── EXP-Y26S-SMALL-007/
 ```
 
 ## Cấu trúc chuẩn cho failed experiment
