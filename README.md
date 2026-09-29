@@ -16,6 +16,28 @@ Current dataset: **`Cashew_dataV04` — 6,911 images / 5 classes**
 
 ➡️ Chi tiết: [`training_results/current_dataset/README.md`](./training_results/current_dataset/README.md)
 
+#### Latest DenseNet121 rerun — EXP-004
+
+[`EXP-DENSENET121-SCRATCH-5SEEDS-004`](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-004/) đã hoàn tất 5-seed training/validation:
+
+- Validation Accuracy: **92.13 ± 1.31%**
+- Validation Macro-F1: **91.90 ± 1.37%**
+- cao hơn official EXP-003 ở validation mean và ổn định hơn theo seed;
+- cả 5 seed đều cải thiện validation so với lần chạy trước;
+- final locked Test **chưa chạy**.
+
+Archive nguồn vô tình tái sử dụng ID `EXP-DENSENET121-SCRATCH-5SEEDS-003`; repository lưu rerun này thành **EXP-004** để không ghi đè official experiment cũ. Bảng benchmark Test phía trên vẫn giữ DenseNet121 EXP-003 cho tới khi EXP-004 hoàn tất locked Test.
+
+#### Latest ResNet50 rerun — EXP-004
+
+[`EXP-RESNET50-SCRATCH-5SEEDS-004`](./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-004/) đã hoàn tất 5-seed training/validation trên Colab NVIDIA L4:
+
+- Validation Accuracy: **90.23 ± 1.45%**
+- Validation Macro-F1: **90.03 ± 1.44%**
+- tốt hơn EXP-003 ở validation mean và ổn định seed, nhưng **final locked Test chưa chạy**.
+
+Vì vậy bảng benchmark Test phía trên vẫn giữ EXP-003 cho ResNet50 cho tới khi EXP-004 hoàn tất Test theo protocol.
+
 ### Object detection — development
 
 YOLO26s đã được thử nghiệm qua **Take 01 → Take 06** để nghiên cứu annotation policy và chất lượng bounding box.
@@ -72,11 +94,13 @@ Mỗi baseline current:
 
 Current experiments:
 
-- [`EXP-DENSENET121-SCRATCH-5SEEDS-003`](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-003/)
-- [`EXP-RESNET50-SCRATCH-5SEEDS-003`](./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-003/)
+- [`EXP-DENSENET121-SCRATCH-5SEEDS-003`](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-003/) — current official Test benchmark
+- [`EXP-DENSENET121-SCRATCH-5SEEDS-004`](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-004/) — latest validation rerun; Test pending
+- [`EXP-RESNET50-SCRATCH-5SEEDS-003`](./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-003/) — current official Test benchmark
+- [`EXP-RESNET50-SCRATCH-5SEEDS-004`](./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-004/) — latest validation rerun; Test pending
 - [`EXP-VIT-SCRATCH-5SEEDS-003`](./training_results/current_dataset/EXP-VIT-SCRATCH-5SEEDS-003/)
 
-`anthracnose` hiện là class khó nhất nhất quán qua cả ba kiến trúc.
+`anthracnose` hiện là class khó nhất nhất quán qua các baseline classification và tiếp tục là class yếu nhất trong các validation rerun mới.
 
 ---
 
@@ -123,7 +147,7 @@ Policy hiện tại là **selective clear-lesion annotation**:
 
 ### Result management
 
-- `training_results/current_dataset/`: benchmark V04 chính thức.
+- `training_results/current_dataset/`: benchmark V04 chính thức và các validation rerun đang chờ final Test.
 - `training_results/archive_legacy_dataset/`: experiment rất cũ.
 - `failure/YOLO26/`: detection iteration/failure analysis.
 - Checkpoint/model/FULL ZIP lớn **không commit trực tiếp**; repo chỉ giữ config, metrics, summaries và figures nhẹ.
@@ -144,6 +168,8 @@ Git history vẫn giữ toàn bộ phiên bản cũ.
 
 - [Classification training results](./training_results/README.md)
 - [Current V04 benchmark](./training_results/current_dataset/README.md)
+- [Latest DenseNet121 EXP-004 analysis](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-004/ANALYSIS.md)
+- [Latest ResNet50 EXP-004 analysis](./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-004/ANALYSIS.md)
 - [Dataset changelog](./DATASET_CHANGELOG.md)
 - [Bounding-box annotation guideline](./CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md)
 - [YOLO failure/development archive](./failure/YOLO26/README.md)

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="430" viewBox="0 0 1000 430">
+<rect width="1000" height="430" fill="white"/>
+<text x="500" y="32" text-anchor="middle" font-size="22" font-weight="700">ResNet50 V04 EXP-004 - Per-class Validation F1 (5-seed mean)</text>
+<line x1="95" y1="355" x2="950" y2="355" stroke="#555"/><line x1="95" y1="60" x2="95" y2="355" stroke="#555"/>
+<text x="70" y="360" text-anchor="end" font-size="12">80%</text><line x1="95" y1="355" x2="950" y2="355" stroke="#ddd"/>
+<text x="70" y="262" text-anchor="end" font-size="12">86%</text><line x1="95" y1="257" x2="950" y2="257" stroke="#ddd"/>
+<text x="70" y="163" text-anchor="end" font-size="12">92%</text><line x1="95" y1="158" x2="950" y2="158" stroke="#ddd"/>
+<text x="70" y="65" text-anchor="end" font-size="12">98%</text><line x1="95" y1="60" x2="950" y2="60" stroke="#ddd"/>
+<rect x="135" y="298.3" width="110" height="56.7" fill="#6f9fd1"/><text x="190" y="287.3" text-anchor="middle" font-size="13" font-weight="700">83.46 ± 2.87%</text><text x="190" y="383" text-anchor="middle" font-size="12">Anthracnose</text>
+<rect x="305" y="201.2" width="110" height="153.8" fill="#6f9fd1"/><text x="360" y="190.2" text-anchor="middle" font-size="13" font-weight="700">89.38 ± 2.83%</text><text x="360" y="383" text-anchor="middle" font-size="12">Healthy</text>
+<rect x="475" y="198.5" width="110" height="156.5" fill="#6f9fd1"/><text x="530" y="187.5" text-anchor="middle" font-size="13" font-weight="700">89.55 ± 0.95%</text><text x="530" y="383" text-anchor="middle" font-size="12">Leaf Miner</text>
+<rect x="645" y="153.8" width="110" height="201.2" fill="#6f9fd1"/><text x="700" y="142.8" text-anchor="middle" font-size="13" font-weight="700">92.28 ± 2.35%</text><text x="700" y="383" text-anchor="middle" font-size="12">Not Cashew</text>
+<rect x="815" y="100.9" width="110" height="254.1" fill="#6f9fd1"/><text x="870" y="89.9" text-anchor="middle" font-size="13" font-weight="700">95.50 ± 0.95%</text><text x="870" y="383" text-anchor="middle" font-size="12">Red Rust</text>
+</svg>

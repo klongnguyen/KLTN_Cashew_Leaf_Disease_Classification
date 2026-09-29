@@ -20,6 +20,33 @@ Test         687
 
 ➡️ Chi tiết dataset, class-level metrics và figures: [`current_dataset/README.md`](./current_dataset/README.md)
 
+## Latest validation-only reruns
+
+### DenseNet121 EXP-004
+
+[`EXP-DENSENET121-SCRATCH-5SEEDS-004`](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-004/) đã hoàn tất 5-seed training/validation trên V04:
+
+- Validation Accuracy: **92.13 ± 1.31%**
+- Validation Macro-F1: **91.90 ± 1.37%**
+- Per-class F1 thấp nhất: `anthracnose` — **86.47 ± 2.66%**
+- Highest validation Macro-F1 seed: `42` — **93.11%**
+- Final locked Test: **chưa chạy**
+- Source archive tự ghi ID `...-003`; repository lưu thành `...-004` để không ghi đè official EXP-003.
+
+So với DenseNet121 official EXP-003, rerun mới tăng Validation Accuracy **+2.26 pp** và Macro-F1 **+2.37 pp**, đồng thời giảm seed SD. Tuy nhiên môi trường chạy khác nên đây được xem là rerun result, chưa phải bằng chứng về model improvement.
+
+### ResNet50 EXP-004
+
+[`EXP-RESNET50-SCRATCH-5SEEDS-004`](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-004/) đã hoàn tất 5-seed training/validation trên Colab NVIDIA L4:
+
+- Validation Accuracy: **90.23 ± 1.45%**
+- Validation Macro-F1: **90.03 ± 1.44%**
+- Per-class F1 thấp nhất: `anthracnose` — **83.46 ± 2.87%**
+- Highest validation Macro-F1 seed: `7777` — **91.59%**
+- Final locked Test: **chưa chạy**
+
+Cả hai EXP-004 hiện có status **Validation complete — Test pending** và chưa thay thế các official EXP-003 trong bảng Test benchmark.
+
 ## Quy tắc benchmark
 
 - Mỗi dataset version phải có fixed Train/Validation/Test split.
@@ -27,8 +54,9 @@ Test         687
 - Validation dùng cho model selection/tuning.
 - Test không dùng để tuning hoặc chọn seed.
 - Báo cáo `Mean ± sample Standard Deviation (ddof=1)`.
-- Không ghi đè experiment cũ; thay dataset/config quan trọng phải tạo ID mới.
+- Không ghi đè experiment cũ; thay dataset/config quan trọng hoặc ID trùng phải tạo ID mới.
 - Chỉ so sánh model trực tiếp khi chúng dùng **cùng dataset version và cùng evaluation protocol**.
+- Validation-only experiment không được ghi vào official Test benchmark cho tới khi Test khóa được chạy trên cấu hình đã freeze.
 
 ## Dataset history
 
@@ -45,7 +73,7 @@ Xem [`../DATASET_CHANGELOG.md`](../DATASET_CHANGELOG.md).
 
 ```text
 training_results/
-├── current_dataset/            # V04 benchmark + historical V03 paths kept for compatibility
+├── current_dataset/            # V04 benchmark + validation reruns + historical V03 paths kept for compatibility
 └── archive_legacy_dataset/     # experiments cũ hơn V03
 ```
 

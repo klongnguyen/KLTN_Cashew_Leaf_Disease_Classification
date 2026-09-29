@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="430" viewBox="0 0 1000 430">
+<rect width="1000" height="430" fill="white"/>
+<text x="500" y="32" text-anchor="middle" font-size="22" font-weight="700">DenseNet121 V04 Rerun - Per-class Validation F1</text>
+<line x1="95" y1="355" x2="950" y2="355" stroke="#555"/>
+<line x1="95" y1="60" x2="95" y2="355" stroke="#555"/>
+<text x="70" y="360" text-anchor="end" font-size="12">80%</text><line x1="95" y1="355" x2="950" y2="355" stroke="#ddd"/>
+<text x="70" y="286" text-anchor="end" font-size="12">85%</text><line x1="95" y1="281" x2="950" y2="281" stroke="#ddd"/>
+<text x="70" y="212" text-anchor="end" font-size="12">90%</text><line x1="95" y1="208" x2="950" y2="208" stroke="#ddd"/>
+<text x="70" y="139" text-anchor="end" font-size="12">95%</text><line x1="95" y1="134" x2="950" y2="134" stroke="#ddd"/>
+<text x="70" y="65" text-anchor="end" font-size="12">100%</text><line x1="95" y1="60" x2="950" y2="60" stroke="#ddd"/>
+<rect x="135" y="260" width="110" height="95" fill="#6f9fd1"/><text x="190" y="249" text-anchor="middle" font-size="13" font-weight="700">86.47 ± 2.66%</text><text x="190" y="383" text-anchor="middle" font-size="12">Anthracnose</text>
+<rect x="305" y="200" width="110" height="155" fill="#6f9fd1"/><text x="360" y="189" text-anchor="middle" font-size="13" font-weight="700">90.54 ± 2.45%</text><text x="360" y="383" text-anchor="middle" font-size="12">Healthy</text>
+<rect x="475" y="194" width="110" height="161" fill="#6f9fd1"/><text x="530" y="183" text-anchor="middle" font-size="13" font-weight="700">90.94 ± 1.36%</text><text x="530" y="383" text-anchor="middle" font-size="12">Leaf Miner</text>
+<rect x="645" y="146" width="110" height="209" fill="#6f9fd1"/><text x="700" y="135" text-anchor="middle" font-size="13" font-weight="700">94.18 ± 0.71%</text><text x="700" y="383" text-anchor="middle" font-size="12">Not Cashew</text>
+<rect x="815" y="98" width="110" height="257" fill="#6f9fd1"/><text x="870" y="87" text-anchor="middle" font-size="13" font-weight="700">97.39 ± 0.35%</text><text x="870" y="383" text-anchor="middle" font-size="12">Red Rust</text>
+</svg>
