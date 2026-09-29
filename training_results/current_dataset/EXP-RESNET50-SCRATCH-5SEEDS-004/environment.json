@@ -1,0 +1,14 @@
+{
+  "date": "2026-09-29T06:16:34.644586",
+  "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
+  "tensorflow": "2.20.0",
+  "keras": "3.13.2",
+  "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+  "runtime": "Colab",
+  "cuda": "12.5.1",
+  "cudnn": "9",
+  "gpu_devices": ["NVIDIA L4"],
+  "gpu_count": 1,
+  "strategy": "OneDeviceStrategy",
+  "replicas": 1
+}
