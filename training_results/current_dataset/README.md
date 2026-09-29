@@ -29,14 +29,39 @@ V04 được tạo sau lần làm sạch bổ sung: loại ảnh mờ/chất lư
 
 ![V04 benchmark](./benchmark_v04.svg)
 
+### Latest validation rerun — ResNet50 EXP-004
+
+[`EXP-RESNET50-SCRATCH-5SEEDS-004`](./EXP-RESNET50-SCRATCH-5SEEDS-004/) là lần chạy mới nhất trên **Google Colab / NVIDIA L4 / OneDeviceStrategy**. Experiment đã hoàn thành training + validation cho 5 seed nhưng **chưa chạy locked Test**.
+
+| Metric | EXP-003 | EXP-004 | Change |
+|---|---:|---:|---:|
+| Validation Accuracy | 88.22 ± 2.49% | **90.23 ± 1.45%** | +2.01 pp mean |
+| Validation Macro F1 | 88.06 ± 2.52% | **90.03 ± 1.44%** | +1.97 pp mean |
+
+Per-class Validation F1 của EXP-004:
+
+| Class | F1 ± SD |
+|---|---:|
+| `anthracnose` | **83.46 ± 2.87%** |
+| `healthy` | **89.38 ± 2.83%** |
+| `leaf_miner` | **89.55 ± 0.95%** |
+| `not_cashew_leaf` | **92.28 ± 2.35%** |
+| `red_rust` | **95.50 ± 0.95%** |
+
+`anthracnose` tiếp tục là class khó nhất. Seed `7777` có Validation Macro-F1 cao nhất (**91.59%**) và hiện là candidate checkpoint nếu selection rule vẫn là Validation Macro-F1.
+
+> EXP-004 **chưa thay thế** EXP-003 trong official Test benchmark. Cần giữ nguyên 5 checkpoint hiện tại, chạy Test khóa trên cả 5 seed và chỉ sau đó mới cập nhật `benchmark_v04.csv`.
+
+Chi tiết: [`EXP-RESNET50-SCRATCH-5SEEDS-004/ANALYSIS.md`](./EXP-RESNET50-SCRATCH-5SEEDS-004/ANALYSIS.md)
+
 ### Kết luận benchmark hiện tại
 
-- **DenseNet121** có hiệu năng tổng thể cao nhất và độ ổn định tốt nhất: Test Accuracy Std chỉ **0.86%**.
-- **ResNet50** đứng thứ hai về Accuracy/Macro-F1 nhưng có 24.64M tham số và biến thiên seed lớn hơn DenseNet121.
+- **DenseNet121** vẫn có official Test performance tổng thể cao nhất trong bảng benchmark hiện tại và Test Accuracy Std thấp nhất (**0.86%**).
+- **ResNet50 EXP-003** vẫn là official Test row cho ResNet50; EXP-004 mới chỉ hoàn thành validation nhưng có validation mean/stability tốt hơn.
 - **Compact ViT** nhẹ nhất rõ rệt và nhanh nhất trong benchmark GPU hiện tại, nhưng hiệu năng thấp hơn hai CNN.
-- `anthracnose` tiếp tục là lớp khó nhất ở cả ba kiến trúc.
+- `anthracnose` tiếp tục là lớp khó nhất ở các kiến trúc classification hiện tại.
 
-## Per-class Macro comparison
+## Per-class Macro comparison — official Test benchmark
 
 | Class | DenseNet121 F1 | ResNet50 F1 | ViT F1 |
 |---|---:|---:|---:|
@@ -54,12 +79,14 @@ V04 được tạo sau lần làm sạch bổ sung: loại ảnh mờ/chất lư
 - Test Set không dùng để tuning hoặc chọn seed.
 - Kết quả báo cáo theo **Mean ± sample Standard Deviation (`ddof=1`)**.
 - Các figure so sánh seed phải dùng panel chung để tránh chọn hình đẹp nhất.
+- Validation-only rerun không được thay thế official Test benchmark cho tới khi final Test được chạy đúng protocol.
 
 ## Machine-readable summaries
 
 - [`benchmark_v04.csv`](./benchmark_v04.csv)
 - [`class_f1_comparison_v04.csv`](./class_f1_comparison_v04.csv)
 - [`dataset_cashew_v04.csv`](../../dataset_cashew_v04.csv)
+- [`EXP-RESNET50-SCRATCH-5SEEDS-004/aggregate/validation_mean_std_summary.csv`](./EXP-RESNET50-SCRATCH-5SEEDS-004/aggregate/validation_mean_std_summary.csv)
 
 ## Dataset versioning
 
