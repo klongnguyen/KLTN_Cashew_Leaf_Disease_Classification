@@ -45,7 +45,20 @@ So với DenseNet121 official EXP-003, rerun mới tăng Validation Accuracy **+
 - Highest validation Macro-F1 seed: `7777` — **91.59%**
 - Final locked Test: **chưa chạy**
 
-Cả hai EXP-004 hiện có status **Validation complete — Test pending** và chưa thay thế các official EXP-003 trong bảng Test benchmark.
+### Compact ViT EXP-004
+
+[`EXP-VIT-SCRATCH-5SEEDS-004`](./current_dataset/EXP-VIT-SCRATCH-5SEEDS-004/) đã hoàn tất 5-seed training/validation trên single-GPU `OneDeviceStrategy`:
+
+- Validation Accuracy: **87.13 ± 0.62%**
+- Validation Macro-F1: **86.68 ± 0.70%**
+- Per-class F1 thấp nhất: `anthracnose` — **80.28 ± 1.68%**
+- Highest validation Macro-F1 seed: `42` — **87.73%**
+- Final locked Test: **chưa chạy**
+- Source archive tự ghi ID `...-003`; repository lưu thành `...-004` để không ghi đè official EXP-003.
+
+So với ViT official EXP-003, rerun mới tăng Validation Accuracy **+1.85 pp** và Macro-F1 **+2.00 pp**, đồng thời giảm seed SD gần một nửa. Cả 5 seed đều cải thiện trên Validation, nhưng do execution strategy khác nên chưa xem đây là bằng chứng một thay đổi kiến trúc gây ra cải thiện.
+
+Cả ba EXP-004 hiện có status **Validation complete — Test pending** và chưa thay thế các official EXP-003 trong bảng Test benchmark.
 
 ## Quy tắc benchmark
 
