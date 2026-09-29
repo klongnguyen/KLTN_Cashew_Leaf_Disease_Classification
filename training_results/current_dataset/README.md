@@ -29,6 +29,31 @@ V04 được tạo sau lần làm sạch bổ sung: loại ảnh mờ/chất lư
 
 ![V04 benchmark](./benchmark_v04.svg)
 
+### Latest validation rerun — DenseNet121 EXP-004
+
+[`EXP-DENSENET121-SCRATCH-5SEEDS-004`](./EXP-DENSENET121-SCRATCH-5SEEDS-004/) là rerun mới nhất của DenseNet121 trên V04, chạy single-GPU `OneDeviceStrategy`. Archive gốc vô tình tái sử dụng ID `...-003`; repository đổi thành `...-004` để không ghi đè official experiment cũ.
+
+| Metric | Official EXP-003 | Rerun EXP-004 | Change |
+|---|---:|---:|---:|
+| Validation Accuracy | 89.87 ± 1.85% | **92.13 ± 1.31%** | +2.26 pp mean |
+| Validation Macro F1 | 89.53 ± 1.96% | **91.90 ± 1.37%** | +2.37 pp mean |
+
+Per-class Validation F1 của DenseNet121 EXP-004:
+
+| Class | F1 ± SD |
+|---|---:|
+| `anthracnose` | **86.47 ± 2.66%** |
+| `healthy` | **90.54 ± 2.45%** |
+| `leaf_miner` | **90.94 ± 1.36%** |
+| `not_cashew_leaf` | **94.18 ± 0.71%** |
+| `red_rust` | **97.39 ± 0.35%** |
+
+Cả 5 seed đều có Validation Accuracy và Macro-F1 cao hơn lần chạy EXP-003 trước. Seed `42` có Validation Macro-F1 cao nhất (**93.11%**) và là candidate checkpoint theo rule Validation-only hiện tại.
+
+> DenseNet121 EXP-004 **chưa thay thế** official EXP-003 trong Test benchmark vì archive mới có `run_final_test=false`. Cần freeze checkpoint và chạy locked Test trên cả 5 seed trước khi cập nhật `benchmark_v04.csv`.
+
+Chi tiết: [`EXP-DENSENET121-SCRATCH-5SEEDS-004/ANALYSIS.md`](./EXP-DENSENET121-SCRATCH-5SEEDS-004/ANALYSIS.md)
+
 ### Latest validation rerun — ResNet50 EXP-004
 
 [`EXP-RESNET50-SCRATCH-5SEEDS-004`](./EXP-RESNET50-SCRATCH-5SEEDS-004/) là lần chạy mới nhất trên **Google Colab / NVIDIA L4 / OneDeviceStrategy**. Experiment đã hoàn thành training + validation cho 5 seed nhưng **chưa chạy locked Test**.
@@ -50,14 +75,14 @@ Per-class Validation F1 của EXP-004:
 
 `anthracnose` tiếp tục là class khó nhất. Seed `7777` có Validation Macro-F1 cao nhất (**91.59%**) và hiện là candidate checkpoint nếu selection rule vẫn là Validation Macro-F1.
 
-> EXP-004 **chưa thay thế** EXP-003 trong official Test benchmark. Cần giữ nguyên 5 checkpoint hiện tại, chạy Test khóa trên cả 5 seed và chỉ sau đó mới cập nhật `benchmark_v04.csv`.
+> ResNet50 EXP-004 **chưa thay thế** EXP-003 trong official Test benchmark. Cần giữ nguyên 5 checkpoint hiện tại, chạy Test khóa trên cả 5 seed và chỉ sau đó mới cập nhật `benchmark_v04.csv`.
 
 Chi tiết: [`EXP-RESNET50-SCRATCH-5SEEDS-004/ANALYSIS.md`](./EXP-RESNET50-SCRATCH-5SEEDS-004/ANALYSIS.md)
 
 ### Kết luận benchmark hiện tại
 
-- **DenseNet121** vẫn có official Test performance tổng thể cao nhất trong bảng benchmark hiện tại và Test Accuracy Std thấp nhất (**0.86%**).
-- **ResNet50 EXP-003** vẫn là official Test row cho ResNet50; EXP-004 mới chỉ hoàn thành validation nhưng có validation mean/stability tốt hơn.
+- **DenseNet121 EXP-003** vẫn có official Test performance tổng thể cao nhất và Test Accuracy Std thấp nhất (**0.86%**); EXP-004 có validation mạnh/ổn định hơn nhưng Test còn pending.
+- **ResNet50 EXP-003** vẫn là official Test row cho ResNet50; EXP-004 mới chỉ hoàn thành validation.
 - **Compact ViT** nhẹ nhất rõ rệt và nhanh nhất trong benchmark GPU hiện tại, nhưng hiệu năng thấp hơn hai CNN.
 - `anthracnose` tiếp tục là lớp khó nhất ở các kiến trúc classification hiện tại.
 
@@ -80,12 +105,14 @@ Chi tiết: [`EXP-RESNET50-SCRATCH-5SEEDS-004/ANALYSIS.md`](./EXP-RESNET50-SCRAT
 - Kết quả báo cáo theo **Mean ± sample Standard Deviation (`ddof=1`)**.
 - Các figure so sánh seed phải dùng panel chung để tránh chọn hình đẹp nhất.
 - Validation-only rerun không được thay thế official Test benchmark cho tới khi final Test được chạy đúng protocol.
+- Không ghi đè experiment cũ; ID trùng phải được version hóa thành experiment mới.
 
 ## Machine-readable summaries
 
 - [`benchmark_v04.csv`](./benchmark_v04.csv)
 - [`class_f1_comparison_v04.csv`](./class_f1_comparison_v04.csv)
 - [`dataset_cashew_v04.csv`](../../dataset_cashew_v04.csv)
+- [`EXP-DENSENET121-SCRATCH-5SEEDS-004/aggregate/validation_mean_std_summary.csv`](./EXP-DENSENET121-SCRATCH-5SEEDS-004/aggregate/validation_mean_std_summary.csv)
 - [`EXP-RESNET50-SCRATCH-5SEEDS-004/aggregate/validation_mean_std_summary.csv`](./EXP-RESNET50-SCRATCH-5SEEDS-004/aggregate/validation_mean_std_summary.csv)
 
 ## Dataset versioning
