@@ -16,6 +16,18 @@ Current dataset: **`Cashew_dataV04` — 6,911 images / 5 classes**
 
 ➡️ Chi tiết: [`training_results/current_dataset/README.md`](./training_results/current_dataset/README.md)
 
+#### Latest DenseNet121 rerun — EXP-004
+
+[`EXP-DENSENET121-SCRATCH-5SEEDS-004`](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-004/) đã hoàn tất 5-seed training/validation:
+
+- Validation Accuracy: **92.13 ± 1.31%**
+- Validation Macro-F1: **91.90 ± 1.37%**
+- cao hơn official EXP-003 ở validation mean và ổn định hơn theo seed;
+- cả 5 seed đều cải thiện validation so với lần chạy trước;
+- final locked Test **chưa chạy**.
+
+Archive nguồn vô tình tái sử dụng ID `EXP-DENSENET121-SCRATCH-5SEEDS-003`; repository lưu rerun này thành **EXP-004** để không ghi đè official experiment cũ. Bảng benchmark Test phía trên vẫn giữ DenseNet121 EXP-003 cho tới khi EXP-004 hoàn tất locked Test.
+
 #### Latest ResNet50 rerun — EXP-004
 
 [`EXP-RESNET50-SCRATCH-5SEEDS-004`](./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-004/) đã hoàn tất 5-seed training/validation trên Colab NVIDIA L4:
@@ -82,12 +94,13 @@ Mỗi baseline current:
 
 Current experiments:
 
-- [`EXP-DENSENET121-SCRATCH-5SEEDS-003`](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-003/)
+- [`EXP-DENSENET121-SCRATCH-5SEEDS-003`](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-003/) — current official Test benchmark
+- [`EXP-DENSENET121-SCRATCH-5SEEDS-004`](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-004/) — latest validation rerun; Test pending
 - [`EXP-RESNET50-SCRATCH-5SEEDS-003`](./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-003/) — current official Test benchmark
 - [`EXP-RESNET50-SCRATCH-5SEEDS-004`](./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-004/) — latest validation rerun; Test pending
 - [`EXP-VIT-SCRATCH-5SEEDS-003`](./training_results/current_dataset/EXP-VIT-SCRATCH-5SEEDS-003/)
 
-`anthracnose` hiện là class khó nhất nhất quán qua các baseline classification và tiếp tục là class yếu nhất trong validation của ResNet50 EXP-004.
+`anthracnose` hiện là class khó nhất nhất quán qua các baseline classification và tiếp tục là class yếu nhất trong các validation rerun mới.
 
 ---
 
@@ -155,6 +168,7 @@ Git history vẫn giữ toàn bộ phiên bản cũ.
 
 - [Classification training results](./training_results/README.md)
 - [Current V04 benchmark](./training_results/current_dataset/README.md)
+- [Latest DenseNet121 EXP-004 analysis](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-004/ANALYSIS.md)
 - [Latest ResNet50 EXP-004 analysis](./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-004/ANALYSIS.md)
 - [Dataset changelog](./DATASET_CHANGELOG.md)
 - [Bounding-box annotation guideline](./CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md)
