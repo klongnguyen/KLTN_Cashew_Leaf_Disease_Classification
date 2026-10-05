@@ -51,7 +51,7 @@ V04 được tạo sau lần làm sạch bổ sung: loại ảnh mờ/chất lư
 
 ![V04 benchmark](./benchmark_v04.svg)
 
-### Latest validation rerun — DenseNet121 EXP-004
+### Previous V04 validation rerun — DenseNet121 EXP-004
 
 [`EXP-DENSENET121-SCRATCH-5SEEDS-004`](./EXP-DENSENET121-SCRATCH-5SEEDS-004/) là rerun mới nhất của DenseNet121 trên V04, chạy single-GPU `OneDeviceStrategy`. Archive gốc vô tình tái sử dụng ID `...-003`; repository đổi thành `...-004` để không ghi đè official experiment cũ.
 
@@ -76,7 +76,7 @@ Cả 5 seed đều có Validation Accuracy và Macro-F1 cao hơn lần chạy EX
 
 Chi tiết: [`EXP-DENSENET121-SCRATCH-5SEEDS-004/ANALYSIS.md`](./EXP-DENSENET121-SCRATCH-5SEEDS-004/ANALYSIS.md)
 
-### Latest validation rerun — ResNet50 EXP-004
+### Previous V04 validation rerun — ResNet50 EXP-004
 
 [`EXP-RESNET50-SCRATCH-5SEEDS-004`](./EXP-RESNET50-SCRATCH-5SEEDS-004/) là lần chạy mới nhất trên **Google Colab / NVIDIA L4 / OneDeviceStrategy**. Experiment đã hoàn thành training + validation cho 5 seed nhưng **chưa chạy locked Test**.
 
@@ -101,7 +101,7 @@ Per-class Validation F1 của EXP-004:
 
 Chi tiết: [`EXP-RESNET50-SCRATCH-5SEEDS-004/ANALYSIS.md`](./EXP-RESNET50-SCRATCH-5SEEDS-004/ANALYSIS.md)
 
-### Latest validation rerun — Compact ViT EXP-004
+### Previous V04 validation rerun — Compact ViT EXP-004
 
 [`EXP-VIT-SCRATCH-5SEEDS-004`](./EXP-VIT-SCRATCH-5SEEDS-004/) là rerun mới nhất của Compact ViT trên V04, chạy single-GPU `OneDeviceStrategy`. Archive nguồn tái sử dụng ID `...-003`; repository đổi thành `...-004` để không ghi đè official ViT experiment cũ.
 
