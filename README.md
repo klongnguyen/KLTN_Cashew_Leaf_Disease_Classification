@@ -100,7 +100,7 @@ V05 giữ nguyên class counts của V04 nhưng split fingerprints ghi trong Res
 Files:
 - [`dataset_cashew_v04.csv`](./dataset_cashew_v04.csv) — previous V04 count snapshot;
 - [`training_results/current_dataset/dataset_consistency_v05.json`](./training_results/current_dataset/dataset_consistency_v05.json) — V05 manifest/fingerprint traceability;
-- [`DATASET_CHANGELOG.md`](./DATASET_CHANGELOG.md) — lịch sử V03 → V04.
+- [`DATASET_CHANGELOG.md`](./DATASET_CHANGELOG.md) — lịch sử V03 → V04 → V05.
 
 > File Excel V03 cũ đã được loại khỏi root để tránh nhầm với current dataset. Git history vẫn giữ bản cũ.
 
