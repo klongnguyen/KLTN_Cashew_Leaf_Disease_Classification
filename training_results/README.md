@@ -2,7 +2,22 @@
 
 Thư mục này quản lý kết quả huấn luyện theo **phiên bản dataset** để tránh so sánh sai giữa các experiment sử dụng dữ liệu khác nhau.
 
-## Current benchmark — Cashew_dataV04
+## Current development dataset — Cashew_dataV05
+
+Ba scratch baseline mới nhất đã hoàn tất 5-seed Training + Validation:
+
+| Model | Experiment | Validation Accuracy | Validation Macro F1 | Status |
+|---|---|---:|---:|---|
+| DenseNet121 | [EXP-005](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-005/) | **94.58 ± 0.95%** | **94.43 ± 0.93%** | Test pending |
+| ResNet50 | [EXP-005](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-005/) | **92.43 ± 1.94%** | **92.30 ± 1.98%** | Test pending |
+| Compact ViT | [EXP-005](./current_dataset/EXP-VIT-SCRATCH-5SEEDS-005/) | **88.33 ± 1.44%** | **87.81 ± 1.52%** | Test pending |
+
+Detailed analysis: [current_dataset/V05_VALIDATION_ANALYSIS.md](./current_dataset/V05_VALIDATION_ANALYSIS.md).
+
+V05 has the same counts as V04. The ResNet notebook-recorded split fingerprints differ for Train/Validation but match for Test, so V05 is treated as a new development snapshot while preserving the locked Test reference.
+
+
+## Latest completed locked-Test benchmark — Cashew_dataV04
 
 Dataset hiện tại có **6,911 ảnh / 5 lớp**:
 
@@ -75,7 +90,8 @@ Cả ba EXP-004 hiện có status **Validation complete — Test pending** và c
 
 | Version | Total | Train | Val | Test | Status |
 |---|---:|---:|---:|---:|---|
-| `Cashew_dataV04` | **6,911** | 4,822 | 1,402 | 687 | **Current** |
+| `Cashew_dataV05` | **6,911** | 4,822 | 1,402 | 687 | **Current development; Test pending** |
+| `Cashew_dataV04` | **6,911** | 4,822 | 1,402 | 687 | Latest completed Test benchmark |
 | `Cashew_dataV03` | 7,213 | 5,049 | 1,433 | 731 | Historical |
 
 V04 được tạo sau khi tiếp tục loại ảnh mờ/chất lượng thấp và xử lý các trường hợp có nguy cơ data leakage.
