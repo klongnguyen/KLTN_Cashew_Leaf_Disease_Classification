@@ -2,7 +2,34 @@
 
 Tài liệu này theo dõi các phiên bản classification dataset để tránh trộn lẫn kết quả giữa những split khác nhau.
 
-## Current — Cashew_dataV04
+## Current development — Cashew_dataV05
+
+**First recorded experiments:** 2026-10-03 → 2026-10-04
+
+V05 giữ nguyên tổng số ảnh và class counts của V04:
+
+```text
+Train      4,822
+Validation 1,402
+Test         687
+Total      6,911
+```
+
+Tuy nhiên, ResNet50 experiment metadata ghi split fingerprints khác V04 ở Train và Validation:
+
+- Train V04: `45a124724d96084add52d3781ff28c0d93adabc6adf4d67067327aab16ea92c7`
+- Train V05: `7443257702dbba7a392a28b497a49933f5cfac7e187e991043007f8e309a795f`
+- Val V04: `7529e4e0c07af37e1a9c4a366f05846cf72dea530d5f2121da5acb83c64782a0`
+- Val V05: `ea4bba016c9f3abb69c0bf6f7deb3d502929707edfbeafa89f36898b7747e279`
+
+The Test fingerprint is unchanged across V04 and V05:
+
+`ee49ef59c791a7519c172316afd48554f92fbb1b4f47d11b57c82d6ae1624dc4`
+
+All three latest V05 archives have identical normalized split/class/filename manifests. This version is currently **Validation complete — locked Test pending**.
+
+
+## Previous completed benchmark — Cashew_dataV04
 
 **Ngày khóa phiên bản:** 2026-09-22
 
@@ -48,5 +75,5 @@ V04 có ít hơn **302 ảnh**. Mức giảm không được diễn giải là m
 
 - Không so sánh trực tiếp metric V03 với V04 như một controlled architecture comparison.
 - So sánh model chính thức phải dùng cùng dataset version.
-- V04 hiện là dataset dùng cho benchmark ResNet50 / DenseNet121 / ViT.
+- V05 is the current development dataset; V04 remains the latest completed locked-Test benchmark until V05 Test evaluation is finished.
 - Test Set của từng version được khóa sau khi version đó được chốt.

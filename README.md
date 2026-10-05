@@ -4,11 +4,21 @@ Khóa luận xây dựng hệ thống thị giác máy tính cho **phân loại 
 
 ## Project status
 
-### Classification — current benchmark
+### Classification — latest results
 
-Current dataset: **`Cashew_dataV04` — 6,911 images / 5 classes**
+Current development dataset: **`Cashew_dataV05` — 6,911 images / 5 classes**. The latest V05 experiments have completed Training + Validation; locked Test is still pending.
 
-| Model | Test Accuracy | Macro F1 | Params |
+| Model | V05 Validation Accuracy | V05 Validation Macro F1 | Candidate seed | Params |
+|---|---:|---:|---:|---:|
+| **DenseNet121 Scratch** | **94.58 ± 0.95%** | **94.43 ± 0.93%** | 2026 | 7.57M |
+| **ResNet50 Scratch** | **92.43 ± 1.94%** | **92.30 ± 1.98%** | 3407 | 24.64M |
+| **Compact ViT Scratch** | **88.33 ± 1.44%** | **87.81 ± 1.52%** | 3407 | **0.35M** |
+
+Detailed V05 analysis: [`training_results/current_dataset/V05_VALIDATION_ANALYSIS.md`](./training_results/current_dataset/V05_VALIDATION_ANALYSIS.md).
+
+The latest **completed locked-Test benchmark** remains Cashew_dataV04 until V05 Test evaluation is finished.
+
+| Model | V04 Test Accuracy | V04 Macro F1 | Params |
 |---|---:|---:|---:|
 | **DenseNet121 Scratch** | **91.82 ± 0.86%** | **91.37 ± 0.79%** | 7.57M |
 | **ResNet50 Scratch** | **90.63 ± 2.11%** | **90.17 ± 2.04%** | 24.64M |
@@ -16,7 +26,7 @@ Current dataset: **`Cashew_dataV04` — 6,911 images / 5 classes**
 
 ➡️ Chi tiết: [`training_results/current_dataset/README.md`](./training_results/current_dataset/README.md)
 
-#### Latest DenseNet121 rerun — EXP-004
+#### Previous V04 DenseNet121 validation rerun — EXP-004
 
 [`EXP-DENSENET121-SCRATCH-5SEEDS-004`](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-004/) đã hoàn tất 5-seed training/validation:
 
@@ -28,7 +38,7 @@ Current dataset: **`Cashew_dataV04` — 6,911 images / 5 classes**
 
 Archive nguồn vô tình tái sử dụng ID `EXP-DENSENET121-SCRATCH-5SEEDS-003`; repository lưu rerun này thành **EXP-004** để không ghi đè official experiment cũ. Bảng benchmark Test phía trên vẫn giữ DenseNet121 EXP-003 cho tới khi EXP-004 hoàn tất locked Test.
 
-#### Latest ResNet50 rerun — EXP-004
+#### Previous V04 ResNet50 validation rerun — EXP-004
 
 [`EXP-RESNET50-SCRATCH-5SEEDS-004`](./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-004/) đã hoàn tất 5-seed training/validation trên Colab NVIDIA L4:
 
@@ -36,7 +46,7 @@ Archive nguồn vô tình tái sử dụng ID `EXP-DENSENET121-SCRATCH-5SEEDS-00
 - Validation Macro-F1: **90.03 ± 1.44%**
 - tốt hơn EXP-003 ở validation mean và ổn định seed, nhưng **final locked Test chưa chạy**.
 
-#### Latest Compact ViT rerun — EXP-004
+#### Previous V04 Compact ViT validation rerun — EXP-004
 
 [`EXP-VIT-SCRATCH-5SEEDS-004`](./training_results/current_dataset/EXP-VIT-SCRATCH-5SEEDS-004/) đã hoàn tất 5-seed training/validation trên single-GPU `OneDeviceStrategy`:
 
@@ -71,9 +81,9 @@ Take 006 vẫn được giữ trong Failure Archive vì detector cuối chưa kh
 
 ---
 
-## Current dataset — Cashew_dataV04
+## Current development dataset — Cashew_dataV05
 
-V04 được tạo sau lần làm sạch bổ sung:
+V05 giữ nguyên class counts của V04 nhưng split fingerprints ghi trong ResNet50 metadata đã thay đổi ở Train/Validation; Test fingerprint vẫn giữ nguyên. V04 trước đó được tạo sau lần làm sạch bổ sung:
 - loại ảnh mờ/chất lượng thấp;
 - xử lý các trường hợp có nguy cơ data leakage;
 - giữ split cố định cho benchmark V04.
@@ -88,8 +98,9 @@ V04 được tạo sau lần làm sạch bổ sung:
 | **TOTAL** | **4,822** | **1,402** | **687** | **6,911** |
 
 Files:
-- [`dataset_cashew_v04.csv`](./dataset_cashew_v04.csv) — machine-readable snapshot hiện tại;
-- [`DATASET_CHANGELOG.md`](./DATASET_CHANGELOG.md) — lịch sử V03 → V04.
+- [`dataset_cashew_v04.csv`](./dataset_cashew_v04.csv) — previous V04 count snapshot;
+- [`training_results/current_dataset/dataset_consistency_v05.json`](./training_results/current_dataset/dataset_consistency_v05.json) — V05 manifest/fingerprint traceability;
+- [`DATASET_CHANGELOG.md`](./DATASET_CHANGELOG.md) — lịch sử V03 → V04 → V05.
 
 > File Excel V03 cũ đã được loại khỏi root để tránh nhầm với current dataset. Git history vẫn giữ bản cũ.
 
@@ -97,14 +108,20 @@ Files:
 
 ## Classification protocol
 
-Mỗi baseline current:
-- dùng cùng fixed split V04;
+Latest V05 scratch baselines:
+- dùng cùng fixed V05 manifest;
 - train 5 seeds: `42, 123, 2026, 3407, 7777`;
 - checkpoint chọn theo Validation;
 - Test không dùng để tuning hoặc chọn seed;
 - báo cáo `Mean ± sample Standard Deviation (ddof=1)`.
 
 Current experiments:
+
+- [`EXP-DENSENET121-SCRATCH-5SEEDS-005`](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-005/) — V05 validation complete; Test pending
+- [`EXP-RESNET50-SCRATCH-5SEEDS-005`](./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-005/) — V05 validation complete; Test pending
+- [`EXP-VIT-SCRATCH-5SEEDS-005`](./training_results/current_dataset/EXP-VIT-SCRATCH-5SEEDS-005/) — V05 validation complete; Test pending; source archive ID was EXP-004
+
+Previous V04 benchmark/reruns:
 
 - [`EXP-DENSENET121-SCRATCH-5SEEDS-003`](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-003/) — current official Test benchmark
 - [`EXP-DENSENET121-SCRATCH-5SEEDS-004`](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-004/) — latest validation rerun; Test pending

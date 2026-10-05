@@ -1,0 +1,22 @@
+{
+  "dataset_version": "Cashew_dataV05",
+  "counts": {"train": 4822, "val": 1402, "test": 687, "total": 6911},
+  "classes": ["anthracnose", "healthy", "leaf_miner", "not_cashew_leaf", "red_rust"],
+  "normalized_manifest_hash_sha256": "0712a1b61789ab7d55d025589174c59eabb9d01532cd09ff5f673f5bb39f939b",
+  "manifest_normalization": "split,class,label,filename sorted by split,class,filename",
+  "all_three_manifests_identical": true,
+  "invalid_images_all_archives": 0,
+  "unknown_files_all_archives": 0,
+  "resnet_recorded_split_sha256_v05": {
+    "train": "7443257702dbba7a392a28b497a49933f5cfac7e187e991043007f8e309a795f",
+    "val": "ea4bba016c9f3abb69c0bf6f7deb3d502929707edfbeafa89f36898b7747e279",
+    "test": "ee49ef59c791a7519c172316afd48554f92fbb1b4f47d11b57c82d6ae1624dc4"
+  },
+  "resnet_recorded_split_sha256_v04": {
+    "train": "45a124724d96084add52d3781ff28c0d93adabc6adf4d67067327aab16ea92c7",
+    "val": "7529e4e0c07af37e1a9c4a366f05846cf72dea530d5f2121da5acb83c64782a0",
+    "test": "ee49ef59c791a7519c172316afd48554f92fbb1b4f47d11b57c82d6ae1624dc4"
+  },
+  "split_fingerprint_comparison": {"train":"different","val":"different","test":"same"},
+  "note": "V04/V05 comparison uses notebook-recorded sha256_by_split fields from ResNet50 configs."
+}

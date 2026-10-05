@@ -1,8 +1,30 @@
-# Current Dataset Experiments — Cashew_dataV04
+# Current Dataset Experiments
 
-Thư mục này quản lý các **classification baseline chính thức** trên Master Dataset hiện tại `Cashew_dataV04`.
+Thư mục này quản lý các classification experiment theo dataset version. **Cashew_dataV05** là snapshot phát triển hiện tại; **Cashew_dataV04** vẫn là phiên bản gần nhất đã có locked-Test benchmark hoàn chỉnh.
 
-## Dataset snapshot
+## Current development snapshot — Cashew_dataV05
+
+V05 giữ nguyên số lượng 6,911 ảnh nhưng có fingerprint Train/Validation khác V04; fingerprint Test ghi trong ResNet50 config vẫn giữ nguyên.
+
+| Model | Latest experiment | Validation Accuracy | Validation Macro F1 | Candidate seed | Test |
+|---|---|---:|---:|---:|---|
+| **DenseNet121** | [EXP-005](./EXP-DENSENET121-SCRATCH-5SEEDS-005/) | **94.58 ± 0.95%** | **94.43 ± 0.93%** | 2026 | Pending |
+| **ResNet50** | [EXP-005](./EXP-RESNET50-SCRATCH-5SEEDS-005/) | **92.43 ± 1.94%** | **92.30 ± 1.98%** | 3407 | Pending |
+| **Compact ViT** | [EXP-005](./EXP-VIT-SCRATCH-5SEEDS-005/) | **88.33 ± 1.44%** | **87.81 ± 1.52%** | 3407 | Pending |
+
+> Source ViT archive self-reports `EXP-VIT-SCRATCH-5SEEDS-004`; repository normalizes it to `EXP-VIT-SCRATCH-5SEEDS-005` because the V04 EXP-004 path already exists.
+
+All three V05 archives have identical normalized split/class/filename manifests, with 0 invalid images and 0 unknown files. Detailed cross-model analysis: [V05_VALIDATION_ANALYSIS.md](./V05_VALIDATION_ANALYSIS.md).
+
+Machine-readable summaries:
+- [benchmark_v05_validation.csv](./benchmark_v05_validation.csv)
+- [class_f1_validation_v05.csv](./class_f1_validation_v05.csv)
+- [dataset_consistency_v05.json](./dataset_consistency_v05.json)
+
+**V05 is validation-complete but not final.** Freeze the current checkpoints and run the locked Test on all five seeds before promoting V05 to the official Test benchmark.
+
+
+## Previous completed Test benchmark snapshot — Cashew_dataV04
 
 V04 được tạo sau lần làm sạch bổ sung: loại ảnh mờ/chất lượng thấp và xử lý các trường hợp có nguy cơ **data leakage** giữa các split.
 
@@ -29,7 +51,7 @@ V04 được tạo sau lần làm sạch bổ sung: loại ảnh mờ/chất lư
 
 ![V04 benchmark](./benchmark_v04.svg)
 
-### Latest validation rerun — DenseNet121 EXP-004
+### Previous V04 validation rerun — DenseNet121 EXP-004
 
 [`EXP-DENSENET121-SCRATCH-5SEEDS-004`](./EXP-DENSENET121-SCRATCH-5SEEDS-004/) là rerun mới nhất của DenseNet121 trên V04, chạy single-GPU `OneDeviceStrategy`. Archive gốc vô tình tái sử dụng ID `...-003`; repository đổi thành `...-004` để không ghi đè official experiment cũ.
 
@@ -54,7 +76,7 @@ Cả 5 seed đều có Validation Accuracy và Macro-F1 cao hơn lần chạy EX
 
 Chi tiết: [`EXP-DENSENET121-SCRATCH-5SEEDS-004/ANALYSIS.md`](./EXP-DENSENET121-SCRATCH-5SEEDS-004/ANALYSIS.md)
 
-### Latest validation rerun — ResNet50 EXP-004
+### Previous V04 validation rerun — ResNet50 EXP-004
 
 [`EXP-RESNET50-SCRATCH-5SEEDS-004`](./EXP-RESNET50-SCRATCH-5SEEDS-004/) là lần chạy mới nhất trên **Google Colab / NVIDIA L4 / OneDeviceStrategy**. Experiment đã hoàn thành training + validation cho 5 seed nhưng **chưa chạy locked Test**.
 
@@ -79,7 +101,7 @@ Per-class Validation F1 của EXP-004:
 
 Chi tiết: [`EXP-RESNET50-SCRATCH-5SEEDS-004/ANALYSIS.md`](./EXP-RESNET50-SCRATCH-5SEEDS-004/ANALYSIS.md)
 
-### Latest validation rerun — Compact ViT EXP-004
+### Previous V04 validation rerun — Compact ViT EXP-004
 
 [`EXP-VIT-SCRATCH-5SEEDS-004`](./EXP-VIT-SCRATCH-5SEEDS-004/) là rerun mới nhất của Compact ViT trên V04, chạy single-GPU `OneDeviceStrategy`. Archive nguồn tái sử dụng ID `...-003`; repository đổi thành `...-004` để không ghi đè official ViT experiment cũ.
 
