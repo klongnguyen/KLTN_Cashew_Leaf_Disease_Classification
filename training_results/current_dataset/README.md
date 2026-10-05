@@ -1,8 +1,30 @@
-# Current Dataset Experiments — Cashew_dataV04
+# Current Dataset Experiments
 
-Thư mục này quản lý các **classification baseline chính thức** trên Master Dataset hiện tại `Cashew_dataV04`.
+Thư mục này quản lý các classification experiment theo dataset version. **Cashew_dataV05** là snapshot phát triển hiện tại; **Cashew_dataV04** vẫn là phiên bản gần nhất đã có locked-Test benchmark hoàn chỉnh.
 
-## Dataset snapshot
+## Current development snapshot — Cashew_dataV05
+
+V05 giữ nguyên số lượng 6,911 ảnh nhưng có fingerprint Train/Validation khác V04; fingerprint Test ghi trong ResNet50 config vẫn giữ nguyên.
+
+| Model | Latest experiment | Validation Accuracy | Validation Macro F1 | Candidate seed | Test |
+|---|---|---:|---:|---:|---|
+| **DenseNet121** | [EXP-005](./EXP-DENSENET121-SCRATCH-5SEEDS-005/) | **94.58 ± 0.95%** | **94.43 ± 0.93%** | 2026 | Pending |
+| **ResNet50** | [EXP-005](./EXP-RESNET50-SCRATCH-5SEEDS-005/) | **92.43 ± 1.94%** | **92.30 ± 1.98%** | 3407 | Pending |
+| **Compact ViT** | [EXP-005](./EXP-VIT-SCRATCH-5SEEDS-005/) | **88.33 ± 1.44%** | **87.81 ± 1.52%** | 3407 | Pending |
+
+> Source ViT archive self-reports `EXP-VIT-SCRATCH-5SEEDS-004`; repository normalizes it to `EXP-VIT-SCRATCH-5SEEDS-005` because the V04 EXP-004 path already exists.
+
+All three V05 archives have identical normalized split/class/filename manifests, with 0 invalid images and 0 unknown files. Detailed cross-model analysis: [V05_VALIDATION_ANALYSIS.md](./V05_VALIDATION_ANALYSIS.md).
+
+Machine-readable summaries:
+- [benchmark_v05_validation.csv](./benchmark_v05_validation.csv)
+- [class_f1_validation_v05.csv](./class_f1_validation_v05.csv)
+- [dataset_consistency_v05.json](./dataset_consistency_v05.json)
+
+**V05 is validation-complete but not final.** Freeze the current checkpoints and run the locked Test on all five seeds before promoting V05 to the official Test benchmark.
+
+
+## Previous completed Test benchmark snapshot — Cashew_dataV04
 
 V04 được tạo sau lần làm sạch bổ sung: loại ảnh mờ/chất lượng thấp và xử lý các trường hợp có nguy cơ **data leakage** giữa các split.
 
