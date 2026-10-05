@@ -34,11 +34,14 @@ mlruns/
 *.ppt
 *.pptx
 ~$*.ppt*
-
+*.xlsx
 # Python / notebook
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
+.venv/
+.uv-python/
+.deit_v05_dataset/
 .pytest_cache/
 .mypy_cache/
 
