@@ -35,7 +35,7 @@ Test         687
 
 ➡️ Chi tiết dataset, class-level metrics và figures: [`current_dataset/README.md`](./current_dataset/README.md)
 
-## Latest validation-only reruns
+## Previous V04 validation-only reruns
 
 ### DenseNet121 EXP-004
 
