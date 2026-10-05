@@ -1,0 +1,6 @@
+metric,mean,std,report
+val_accuracy,0.945792,0.009463,94.58 ± 0.95%
+val_macro_precision,0.947059,0.008127,94.71 ± 0.81%
+val_macro_recall,0.942438,0.010169,94.24 ± 1.02%
+val_macro_f1,0.944316,0.009325,94.43 ± 0.93%
+val_balanced_accuracy,0.942438,0.010169,94.24 ± 1.02%
