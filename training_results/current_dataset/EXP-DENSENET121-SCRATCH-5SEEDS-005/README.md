@@ -3,7 +3,7 @@
 **Model:** DenseNet121 Scratch  
 **Dataset:** `Cashew_dataV05`  
 **Seeds:** `42, 123, 2026, 3407, 7777`  
-**Status:** 🟡 **Validation complete — locked Test pending**
+**Status:** 🟢 **Training/Validation complete; locked Test executed separately. Test metrics are not contained in this ANALYSIS archive.**
 
 ## Validation results
 
@@ -36,4 +36,4 @@ Main recurring errors: `healthy → anthracnose` (5.60%), `leaf_miner → anthra
 
 Compared with the latest V04 validation rerun, mean Validation Accuracy increases **+2.45 pp** and Macro F1 **+2.53 pp**. Because the dataset version changed, this is a V05 result rather than proof of an architecture improvement.
 
-**Final Test has not been evaluated in this archive.**
+**The locked Test was run separately after/independently of this ANALYSIS archive export. This archive itself does not contain the Test outputs, so its stale `run_final_test=false` field must not be interpreted as the actual project status.**
