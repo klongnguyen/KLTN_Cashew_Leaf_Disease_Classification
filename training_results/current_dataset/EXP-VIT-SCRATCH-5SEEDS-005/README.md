@@ -3,7 +3,7 @@
 **Model:** Compact Vision Transformer Scratch  
 **Dataset:** `Cashew_dataV05`  
 **Seeds:** `42, 123, 2026, 3407, 7777`  
-**Status:** 🟡 **Validation complete — locked Test pending**
+**Status:** 🟢 **Training/Validation complete; locked Test executed separately. Test metrics are not contained in this ANALYSIS archive.**
 
 > Source archive self-reports `EXP-VIT-SCRATCH-5SEEDS-004`. That repository ID already belongs to the V04 ViT rerun, so this V05 result is normalized to **EXP-005** to preserve history.
 
@@ -38,4 +38,4 @@ Main recurring errors: `healthy → anthracnose` (12.98%), `leaf_miner → anthr
 
 Compared with the V04 ViT rerun, mean Validation Accuracy increases **+1.20 pp** and Macro F1 **+1.13 pp**, but seed variability increases. ViT remains much lighter than both CNN baselines.
 
-**Final Test has not been evaluated in this archive.**
+**The locked Test was run separately after/independently of this ANALYSIS archive export. This archive itself does not contain the Test outputs, so its stale `run_final_test=false` field must not be interpreted as the actual project status.**

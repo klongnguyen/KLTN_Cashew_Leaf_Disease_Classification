@@ -4,7 +4,7 @@
 **Dataset:** `Cashew_dataV05`  
 **Seeds:** `42, 123, 2026, 3407, 7777`  
 **Runtime:** Google Colab / NVIDIA L4 / OneDeviceStrategy  
-**Status:** 🟡 **Validation complete — locked Test pending**
+**Status:** 🟢 **Training/Validation complete; locked Test executed separately. Test metrics are not contained in this ANALYSIS archive.**
 
 ## Validation results
 
@@ -37,4 +37,4 @@ Main recurring errors: `healthy → anthracnose` (9.24%), `leaf_miner → anthra
 
 Seed 2026 is notably weaker and increases the between-seed variance. Compared with the latest V04 validation rerun, mean Validation Accuracy increases **+2.20 pp** and Macro F1 **+2.27 pp**, but standard deviation increases.
 
-**Final Test has not been evaluated in this archive.**
+**The locked Test was run separately after/independently of this ANALYSIS archive export. This archive itself does not contain the Test outputs, so its stale `run_final_test=false` field must not be interpreted as the actual project status.**

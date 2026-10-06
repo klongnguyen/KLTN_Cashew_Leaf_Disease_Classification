@@ -1,6 +1,6 @@
 # Cashew_dataV05 — Latest 5-seed Validation Benchmark
 
-**Status:** Training + Validation complete for all three scratch baselines. **Locked Test is still pending.**
+**Status correction (2026-10-06):** Training + Validation are complete, and the user confirms the locked V05 Test has also been run for all three models. The three ANALYSIS archives used to build this document were exported without Test artifacts and still contain stale `run_final_test=false` metadata, so this file currently documents Validation only until the separate Test outputs are imported.
 
 ## Dataset consistency
 
@@ -75,4 +75,4 @@ At the **Validation stage**, the latest V05 ranking is:
 2. **ResNet50** — strong performance but more seed-sensitive.
 3. **Compact ViT** — lower Accuracy/F1 but dramatically smaller and faster to train.
 
-This is **not yet the final benchmark**. Freeze the current five checkpoints for each model and evaluate the same locked Test Set once per seed, without any additional tuning, before promoting V05 to the official Test benchmark.
+The locked V05 Test has already been run according to the user. The remaining repository task is to import the separate Test result artifacts/metrics so the final V05 benchmark can be reproduced from repository evidence.
