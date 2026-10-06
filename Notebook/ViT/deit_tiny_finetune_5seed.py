@@ -1,5 +1,5 @@
 # %% [markdown]
-# # EXP-DEIT-TINY-FINETUNE-5SEEDS-001
+# # EXP-DEIT-TINY-FINETUNE-5SEEDS-006
 #
 # DeiT-tiny ImageNet pretrained, fine-tuned on the fixed Cashew_dataV05 split.
 # Run this file in Colab, or run the generated notebook of the same name.
@@ -29,6 +29,7 @@ from pathlib import Path
 import keras
 import keras_hub
 import matplotlib.pyplot as plt
+from matplotlib.colors import LinearSegmentedColormap
 import numpy as np
 import pandas as pd
 import tensorflow as tf
@@ -42,6 +43,10 @@ from sklearn.metrics import (
     recall_score,
 )
 
+MATRIX_CMAP = LinearSegmentedColormap.from_list(
+    "readable_blues", ["#ffffff", "#dbeafe", "#93c5fd"]
+)
+
 # %% [markdown]
 # ## 1. Frozen configuration
 # V05 archive SHA-256 comes from the local CashewData_Split (5).zip. Counts
@@ -49,7 +54,8 @@ from sklearn.metrics import (
 # in 78 train/validation assignments.
 
 # %%
-EXPERIMENT_ID = "EXP-DEIT-TINY-FINETUNE-5SEEDS-001"
+NOTEBOOK_VERSION = "006"
+EXPERIMENT_ID = "EXP-DEIT-TINY-FINETUNE-5SEEDS-006"
 DATASET_VERSION = "Cashew_dataV05"
 DATASET_ARCHIVE_SHA256 = "37E76938B930025B88154D53EA56084E0828C57A0B0FB725387462C835EA8CDF"
 DATASET_ARCHIVE_NAME = "CashewData_Split (5).zip"
@@ -72,6 +78,13 @@ WEIGHT_DECAY = 1e-4
 EARLY_STOPPING_PATIENCE = 7
 RUN_TRAINING = True
 RUN_FINAL_TEST = False
+
+# External images are never used by model.fit or checkpoint/seed selection.
+RUN_REAL_HOLDOUT = True  # Effective only when RUN_FINAL_TEST=True.
+REAL_HOLDOUT_ARCHIVE_NAME = "RL_Cashew_holdout.zip"
+REAL_HOLDOUT_ARCHIVE_SHA256 = "BDDCB61CA9AF6111E0B26DB7876D0A3309C587AEAFFAEF49B7A9D2D162309165"
+REAL_HOLDOUT_EXPECTED_COUNTS = {"anthracnose": 13, "healthy": 5, "leaf_miner": 24, "red_rust": 7}
+REAL_HOLDOUT_ARCHIVE_OVERRIDE = None  # Optional mounted/local ZIP path.
 
 # %% [markdown]
 # ## 2. Runtime, archive integrity, and dataset audit
@@ -185,6 +198,16 @@ print("GPU:", gpus, "TensorFlow:", tf.__version__, "KerasHub:", keras_hub.__vers
 
 config = {
     "experiment_id": EXPERIMENT_ID,
+    "notebook_version": NOTEBOOK_VERSION,
+    "external_holdout_protocol": {
+        "archive_name": REAL_HOLDOUT_ARCHIVE_NAME,
+        "archive_sha256": REAL_HOLDOUT_ARCHIVE_SHA256,
+        "expected_counts": REAL_HOLDOUT_EXPECTED_COUNTS,
+        "gate": "RUN_FINAL_TEST and RUN_REAL_HOLDOUT",
+        "separate_from_v05_test": True,
+        "macro_scope": "true classes with holdout support; currently four",
+        "selection_source": "validation only",
+    },
     "dataset_version": DATASET_VERSION,
     "dataset_archive_sha256": DATASET_ARCHIVE_SHA256,
     "dataset_manifest_sha256": manifest_hash,
@@ -219,6 +242,343 @@ if not environment_path.exists():
         "keras_hub": keras_hub.__version__, "python": platform.python_version(),
         "gpu": [gpu.name for gpu in gpus],
     }, indent=2), encoding="utf-8")
+
+# %% [markdown]
+# ## External holdout preflight
+
+# %%
+"""Locked external classification evaluation; embedded in standalone notebooks.
+
+This file has no training code. Holdout labels never select checkpoints or seeds.
+"""
+
+import hashlib
+import json
+import os
+import stat
+import time
+import zipfile
+from datetime import datetime, timezone
+from pathlib import Path
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from matplotlib.colors import LinearSegmentedColormap
+from PIL import Image
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+from sklearn.metrics import f1_score, precision_score, recall_score
+
+
+REAL_HOLDOUT_HELPER_VERSION = "006.1"
+REAL_HOLDOUT_CMAP = LinearSegmentedColormap.from_list(
+    "real_holdout_readable_blues", ["#ffffff", "#dbeafe", "#93c5fd"]
+)
+
+
+def holdout_sha256(path):
+    digest = hashlib.sha256()
+    with Path(path).open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest().upper()
+
+
+def resolve_holdout_archive(archive_name, override=None):
+    if override is not None:
+        candidate = Path(override)
+        if not candidate.is_file():
+            raise FileNotFoundError(candidate)
+        return candidate
+    if Path("/content/drive/MyDrive").is_dir():
+        candidate = Path("/content/drive/MyDrive/Cashew_Leaf_model_result/Dataset") / archive_name
+        if candidate.is_file():
+            return candidate
+    if os.name == "nt":
+        candidate = Path(r"D:\Study\KhoaLuanTotNghiep\Dataset") / archive_name
+        if candidate.is_file():
+            return candidate
+    if Path("/kaggle/input").is_dir():
+        candidates = sorted(Path("/kaggle/input").rglob(archive_name))
+        if len(candidates) == 1:
+            return candidates[0]
+    raise FileNotFoundError(
+        f"Cannot uniquely locate {archive_name}. Set REAL_HOLDOUT_ARCHIVE_OVERRIDE "
+        "to the mounted ZIP path; on Colab add the supplied Dataset folder to My Drive."
+    )
+
+
+def prepare_real_holdout(archive_path, extraction_dir, class_names, expected_sha256,
+                         expected_counts, reference_rows, audit_dir):
+    """Verify the frozen archive, labels, decoding and byte overlap with V05.
+
+    reference_rows: dictionaries with path/split and optional existing sha256.
+    Exact-byte checking does not establish independence of near-duplicate photos.
+    """
+    archive_path, extraction_dir, audit_dir = map(Path, (archive_path, extraction_dir, audit_dir))
+    actual_hash = holdout_sha256(archive_path)
+    if actual_hash != expected_sha256.upper():
+        raise ValueError(f"Holdout archive changed: {actual_hash}; expected {expected_sha256}.")
+    marker = extraction_dir / ".archive_sha256"
+    if extraction_dir.exists():
+        if not marker.is_file() or marker.read_text(encoding="utf-8").strip() != actual_hash:
+            raise FileExistsError(f"Unverified extraction: {extraction_dir}; choose a new directory.")
+    else:
+        with zipfile.ZipFile(archive_path) as archive:
+            resolved_root = extraction_dir.resolve()
+            for member in archive.infolist():
+                target = (extraction_dir / member.filename.replace("\\", "/")).resolve()
+                is_symlink = stat.S_ISLNK(member.external_attr >> 16)
+                if is_symlink or (target != resolved_root and resolved_root not in target.parents):
+                    raise ValueError(f"Unsafe ZIP member: {member.filename}")
+            extraction_dir.mkdir(parents=True)
+            archive.extractall(extraction_dir)
+        marker.write_text(actual_hash, encoding="utf-8")
+
+    dataset_root = extraction_dir / "RL_Cashew_holdout"
+    if not dataset_root.is_dir():
+        raise FileNotFoundError(dataset_root)
+    found_classes = sorted(p.name for p in dataset_root.iterdir() if p.is_dir())
+    if found_classes != sorted(expected_counts) or not set(found_classes).issubset(class_names):
+        raise ValueError(f"Unexpected holdout class folders: {found_classes}")
+    rows = []
+    for label, name in enumerate(class_names):
+        class_dir = dataset_root / name
+        files = sorted(p for p in class_dir.rglob("*") if p.is_file()) if class_dir.is_dir() else []
+        if len(files) != expected_counts.get(name, 0):
+            raise ValueError(f"Unexpected holdout count for {name}: {len(files)}")
+        for image_path in files:
+            if image_path.suffix.lower() not in {".jpg", ".jpeg", ".png", ".bmp", ".webp"}:
+                raise ValueError(f"Unsupported holdout image: {image_path}")
+            with Image.open(image_path) as image:
+                image.verify()
+            with Image.open(image_path) as image:
+                image.convert("RGB").load()
+            rows.append({"path": str(image_path), "relative_path": image_path.relative_to(dataset_root).as_posix(),
+                         "class": name, "label": label, "sha256": holdout_sha256(image_path)})
+    manifest = pd.DataFrame(rows)
+    if manifest.empty or manifest["sha256"].duplicated().any():
+        raise ValueError("Holdout is empty or contains duplicate image bytes.")
+    # A marker alone is insufficient: verify cached extraction bytes against the ZIP.
+    with zipfile.ZipFile(archive_path) as frozen_archive:
+        for row in rows:
+            digest = hashlib.sha256()
+            with frozen_archive.open("RL_Cashew_holdout/" + row["relative_path"]) as stream:
+                for block in iter(lambda: stream.read(1024 * 1024), b""):
+                    digest.update(block)
+            if digest.hexdigest().upper() != row["sha256"]:
+                raise ValueError(f"Cached holdout extraction changed: {row['relative_path']}")
+    audit_dir.mkdir(parents=True, exist_ok=True)
+    manifest.to_csv(audit_dir / "dataset_manifest.csv", index=False)
+
+    references = list(reference_rows)
+    if not references or not {"train", "val", "test"}.issubset({r["split"] for r in references}):
+        raise ValueError("Overlap audit needs the full train/val/test V05 reference manifest.")
+    holdout_hashes = set(manifest["sha256"])
+    overlaps = []
+    reference_digest = hashlib.sha256()
+    for row in references:
+        digest = row.get("sha256") or holdout_sha256(row["path"])
+        digest = digest.upper()
+        identity = row.get("relative_path", str(row["path"]))
+        reference_digest.update(f"{row['split']}\0{identity}\0{digest}\n".encode("utf-8"))
+        if digest in holdout_hashes:
+            overlaps.append({"reference_path": str(row["path"]), "split": row["split"], "sha256": digest})
+    present = [name for name in class_names if expected_counts.get(name, 0) > 0]
+    audit = {"archive_sha256": actual_hash, "archive_name": archive_path.name,
+             "manifest_sha256": hashlib.sha256(manifest[["relative_path", "class", "label", "sha256"]]
+                 .to_csv(index=False).encode()).hexdigest(),
+             "counts": {name: expected_counts.get(name, 0) for name in class_names},
+             "images": len(manifest), "present_classes": present,
+             "unsupported_classes": [name for name in class_names if name not in present],
+             "reference_images_checked": len(references), "reference_fingerprint": reference_digest.hexdigest(),
+             "byte_overlap_count": len(overlaps), "byte_overlaps": overlaps,
+             "limitation": "Byte audit only; near-duplicate photos and shared trees/sessions need a separate audit."}
+    (audit_dir / "dataset_audit.json").write_text(json.dumps(audit, indent=2), encoding="utf-8")
+    if overlaps:
+        raise ValueError("Real holdout overlaps V05 by exact bytes; inspect dataset_audit.json before evaluation.")
+    print("Real holdout:", len(manifest), "images; present classes:", present)
+    print("Not evaluated (no true examples):", audit["unsupported_classes"])
+    return manifest, audit
+
+
+def save_real_holdout_seed(manifest, probabilities, class_names, output_dir):
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    probabilities = np.asarray(probabilities, dtype=np.float64)
+    if probabilities.shape != (len(manifest), len(class_names)) or not np.isfinite(probabilities).all():
+        raise ValueError("Holdout predictions have invalid shape or non-finite values.")
+    if (probabilities < 0).any() or not np.allclose(probabilities.sum(axis=1), 1, atol=1e-5):
+        raise ValueError("Holdout evaluator expects probabilities, not logits.")
+    y_true = manifest["label"].to_numpy(dtype=np.int32)
+    y_pred = probabilities.argmax(axis=1)
+    present_ids = sorted(set(y_true.tolist()))
+    all_ids = list(range(len(class_names)))
+    result = {
+        "accuracy": float(accuracy_score(y_true, y_pred)),
+        "macro_precision_present_classes": float(precision_score(y_true, y_pred, labels=present_ids, average="macro", zero_division=0)),
+        "macro_recall_present_classes": float(recall_score(y_true, y_pred, labels=present_ids, average="macro", zero_division=0)),
+        "macro_f1_present_classes": float(f1_score(y_true, y_pred, labels=present_ids, average="macro", zero_division=0)),
+        "balanced_accuracy_present_classes": float(recall_score(y_true, y_pred, labels=present_ids, average="macro", zero_division=0)),
+        "images": len(manifest), "macro_class_count": len(present_ids),
+    }
+    report = pd.DataFrame(classification_report(y_true, y_pred, labels=all_ids,
+        target_names=class_names, output_dict=True, zero_division=0)).transpose()
+    per_class = report.loc[class_names, ["precision", "recall", "f1-score", "support"]].copy()
+    per_class["evaluated"] = per_class["support"] > 0
+    # No evidence for unsupported true classes: don't present placeholder zeros as performance.
+    per_class.loc[~per_class["evaluated"], ["precision", "recall", "f1-score"]] = np.nan
+    per_class.to_csv(output_dir / "per_class_metrics.csv", index_label="class")
+    readable_report = per_class.copy()
+    readable_report["scope"] = np.where(readable_report["evaluated"], "true class present", "not evaluated: zero true support")
+    readable_report.loc["macro avg (present classes)"] = [
+        result["macro_precision_present_classes"], result["macro_recall_present_classes"],
+        result["macro_f1_present_classes"], len(manifest), True,
+        f"{len(present_ids)} supported true classes only",
+    ]
+    readable_report.loc["weighted avg"] = [
+        report.loc["weighted avg", "precision"], report.loc["weighted avg", "recall"],
+        report.loc["weighted avg", "f1-score"], len(manifest), True, "weighted by true support",
+    ]
+    readable_report.to_csv(output_dir / "classification_report.csv", index_label="class")
+    predictions = manifest[["relative_path", "class", "label"]].copy()
+    predictions["predicted_label"] = y_pred
+    predictions["predicted_class"] = [class_names[i] for i in y_pred]
+    predictions["confidence"] = probabilities.max(axis=1)
+    predictions["correct"] = y_true == y_pred
+    for label, name in enumerate(class_names):
+        predictions[f"probability_{name}"] = probabilities[:, label]
+    predictions.to_csv(output_dir / "predictions.csv", index=False)
+    matrix = confusion_matrix(y_true, y_pred, labels=all_ids)
+    for normalized, suffix in ((False, ""), (True, "_normalized")):
+        values = matrix / np.maximum(matrix.sum(axis=1, keepdims=True), 1) if normalized else matrix
+        pd.DataFrame(values, index=class_names, columns=class_names).to_csv(output_dir / f"confusion_matrix{suffix}.csv")
+        fig, ax = plt.subplots(figsize=(9, 8), facecolor="white")
+        ax.set_facecolor("white")
+        ax.imshow(values, cmap=REAL_HOLDOUT_CMAP, vmin=0,
+                  vmax=1 if normalized else max(int(matrix.max()), 1))
+        ax.set_xticks(all_ids, class_names, rotation=40, ha="right", color="black")
+        ax.set_yticks(all_ids, class_names, color="black")
+        ax.set_xlabel("Predicted class", color="black")
+        ax.set_ylabel("True class", color="black")
+        ax.set_title("Real holdout" + (" (row normalized)" if normalized else ""), color="black")
+        for row in all_ids:
+            for col in all_ids:
+                text = f"{values[row, col]:.2f}" if normalized else str(int(values[row, col]))
+                if normalized and row not in present_ids:
+                    text = "N/A"
+                ax.text(col, row, text, ha="center", va="center", color="black")
+        fig.tight_layout()
+        fig.savefig(output_dir / f"confusion_matrix{suffix}.png", dpi=180)
+        plt.close(fig)
+    (output_dir / "metrics.json").write_text(json.dumps(result, indent=2), encoding="utf-8")
+    return result
+
+
+def evaluate_real_holdout(manifest, audit, class_names, seeds, validation_results,
+                          checkpoints, load_model, make_dataset, clear_session,
+                          output_dir, outputs_are_logits=False):
+    """Freeze all checkpoints and validation selection BEFORE any prediction.
+
+    Completed evaluations are read back, not repeated. Interrupted evaluations
+    may resume only with the same checkpoint, validation and archive fingerprints.
+    """
+    output_dir = Path(output_dir)
+    seeds = [int(seed) for seed in seeds]
+    validation_results = validation_results.copy()
+    if validation_results["seed"].tolist() != seeds:
+        raise ValueError("Holdout evaluation requires completed, ordered validation for every seed.")
+    if not np.isfinite(validation_results[["val_macro_f1", "val_loss"]].to_numpy()).all():
+        raise ValueError("Validation selection metrics are incomplete.")
+    ranked = validation_results.sort_values(["val_macro_f1", "val_loss", "seed"], ascending=[False, True, True])
+    deployment_seed = int(ranked.iloc[0]["seed"])
+    checkpoint_hashes = {str(seed): holdout_sha256(checkpoints[seed]) for seed in seeds}
+    lock = {"helper_version": REAL_HOLDOUT_HELPER_VERSION, "archive_sha256": audit["archive_sha256"],
+            "manifest_sha256": audit["manifest_sha256"],
+            "reference_fingerprint": audit["reference_fingerprint"], "seeds": seeds,
+            "checkpoint_sha256": checkpoint_hashes, "deployment_seed": deployment_seed,
+            # Canonical float precision avoids false lock changes on CSV reload.
+            "validation_sha256": hashlib.sha256(validation_results.to_csv(index=False, float_format="%.12g").encode()).hexdigest(),
+            "model_classes": class_names, "macro_classes": audit["present_classes"],
+            "selection_source": "validation only; macro F1, val_loss, seed tie-break",
+            "outputs_are_logits": outputs_are_logits}
+    lock_path = output_dir / "evaluation_lock.json"
+    if lock_path.exists():
+        if json.loads(lock_path.read_text(encoding="utf-8")) != lock:
+            raise ValueError("Holdout lock changed. Do not retune using holdout or overwrite its results.")
+    else:
+        output_dir.mkdir(parents=True, exist_ok=True)
+        lock_path.write_text(json.dumps(lock, indent=2), encoding="utf-8")
+    aggregate_dir = output_dir / "aggregate"
+    aggregate_dir.mkdir(exist_ok=True)
+    results_path = aggregate_dir / "real_holdout_results_5seeds.csv"
+    if (output_dir / "evaluation_completed.json").exists():
+        print("Real holdout already completed; reading frozen results, not running predictions again.")
+        return pd.read_csv(results_path)
+    result_rows = []
+    for seed in seeds:
+        seed_dir = output_dir / f"seed_{seed}"
+        completed_path = seed_dir / "evaluation_completed.json"
+        if completed_path.exists():
+            row = json.loads(completed_path.read_text(encoding="utf-8"))
+        else:
+            clear_session()
+            model = load_model(seed)
+            dataset = make_dataset(manifest)
+            start = time.perf_counter()
+            scores = np.asarray(model.predict(dataset, verbose=0))
+            prediction_seconds = time.perf_counter() - start
+            if outputs_are_logits:
+                exponentials = np.exp(scores - scores.max(axis=1, keepdims=True))
+                scores = exponentials / exponentials.sum(axis=1, keepdims=True)
+            row = {"seed": seed, **save_real_holdout_seed(manifest, scores, class_names, seed_dir),
+                   "prediction_seconds_including_input_pipeline": prediction_seconds}
+            completed_path.write_text(json.dumps(row, indent=2), encoding="utf-8")
+            del model, scores, dataset
+            clear_session()
+        result_rows.append(row)
+    results = pd.DataFrame(result_rows)
+    results.to_csv(results_path, index=False)
+    metric_columns = [c for c in results if c not in {"seed", "images", "macro_class_count"}]
+    results[metric_columns].agg(["mean", "std"]).transpose().to_csv(aggregate_dir / "real_holdout_mean_std.csv")
+    per_class = pd.concat([pd.read_csv(output_dir / f"seed_{seed}" / "per_class_metrics.csv")
+                          .assign(seed=seed) for seed in seeds], ignore_index=True)
+    per_class.groupby("class")[["precision", "recall", "f1-score"]].agg(["mean", "std"]).to_csv(
+        aggregate_dir / "per_class_real_holdout_mean_std.csv")
+    deployment_result = next(row for row in result_rows if row["seed"] == deployment_seed)
+    (aggregate_dir / "deployment_seed_result.json").write_text(json.dumps({
+        "selection_source": "validation only, fixed before holdout", "result": deployment_result,
+    }, indent=2), encoding="utf-8")
+    (output_dir / "evaluation_completed.json").write_text(json.dumps({
+        "completed_at_utc": datetime.now(timezone.utc).isoformat(),
+        "note": "No model or seed selection on holdout. SD measures training-seed variability, not sampling uncertainty.",
+    }, indent=2), encoding="utf-8")
+    print("Real holdout results (macro metrics over supported true classes only):")
+    print(results)
+    return results
+
+# --- Notebook-specific real holdout preflight (no prediction/training here) ---
+if RUN_FINAL_TEST and RUN_REAL_HOLDOUT:
+    holdout_archive = resolve_holdout_archive(REAL_HOLDOUT_ARCHIVE_NAME, REAL_HOLDOUT_ARCHIVE_OVERRIDE)
+    holdout_reference_rows = manifest.assign(
+        path=manifest["relative_path"].map(lambda relative: str(dataset_root / relative))
+    ).to_dict("records")
+    holdout_out_dir = out_dir / "real_holdout"
+    # Use runtime-local storage, not the Drive result directory, for images.
+    if Path("/content").is_dir():
+        holdout_extract_dir = Path("/content/real_holdout_006") / REAL_HOLDOUT_ARCHIVE_SHA256[:12]
+    elif Path("/kaggle/working").is_dir():
+        holdout_extract_dir = Path("/kaggle/working/real_holdout_006") / REAL_HOLDOUT_ARCHIVE_SHA256[:12]
+    else:
+        import tempfile
+        holdout_extract_dir = Path(tempfile.gettempdir()) / "cashew_real_holdout_006" / REAL_HOLDOUT_ARCHIVE_SHA256[:12]
+    real_holdout_manifest, real_holdout_audit = prepare_real_holdout(
+        holdout_archive, holdout_extract_dir, CLASS_NAMES,
+        REAL_HOLDOUT_ARCHIVE_SHA256, REAL_HOLDOUT_EXPECTED_COUNTS,
+        holdout_reference_rows, holdout_out_dir,
+    )
+else:
+    print("Real-world holdout remains locked; no holdout extraction/evaluation runs.")
 
 # %% [markdown]
 # ## 3. Input pipeline and pretrained model
@@ -350,7 +710,7 @@ if RUN_TRAINING:
         total_params = int(model.count_params())
         classifier.backbone.trainable = False
         compile_model(model, HEAD_LR)
-        start = time.time()
+        head_start = time.perf_counter()
         h1 = model.fit(
             train_ds, validation_data=val_ds, epochs=HEAD_EPOCHS, verbose=1,
             callbacks=[keras.callbacks.ModelCheckpoint(
@@ -358,11 +718,13 @@ if RUN_TRAINING:
                 save_best_only=True, save_weights_only=True,
             )],
         )
+        head_training_seconds = time.perf_counter() - head_start
         model.load_weights(head_path)
         head_best_loss = float(min(h1.history["val_loss"]))
 
         classifier.backbone.trainable = True
         compile_model(model, BACKBONE_LR)
+        finetune_start = time.perf_counter()
         h2 = model.fit(
             train_ds, validation_data=val_ds, epochs=FINETUNE_EPOCHS, verbose=1,
             callbacks=[
@@ -377,6 +739,7 @@ if RUN_TRAINING:
                 ),
             ],
         )
+        finetune_training_seconds = time.perf_counter() - finetune_start
         ft_best_loss = float(min(h2.history["val_loss"]))
         selected_stage = "finetune" if ft_best_loss < head_best_loss else "head"
         model.load_weights(ft_path if selected_stage == "finetune" else head_path)
@@ -423,7 +786,10 @@ if RUN_TRAINING:
             "actual_epochs": len(h1.history["loss"]) + len(h2.history["loss"]),
             "train_clean_loss": float(train_clean_loss),
             "train_clean_accuracy": float(train_clean_acc),
-            "training_seconds": float(time.time() - start),
+            "head_training_seconds": float(head_training_seconds),
+            "finetune_training_seconds": float(finetune_training_seconds),
+            "training_seconds": float(head_training_seconds + finetune_training_seconds),
+            "training_time_scope": "model.fit including epoch validation and callbacks",
             "total_parameters": total_params,
             "checkpoint": str(model_path),
         })
@@ -444,6 +810,18 @@ validation_df = pd.DataFrame(validation_rows)
 training_df = pd.DataFrame(training_rows)
 if validation_df["seed"].tolist() != SEEDS or training_df["seed"].tolist() != SEEDS:
     raise ValueError("Five-seed results are incomplete or out of order.")
+time_columns = [
+    c for c in ("head_training_seconds", "finetune_training_seconds", "training_seconds")
+    if c in training_df.columns
+]
+timing_scope = "model.fit including epoch validation and callbacks"
+if "head_training_seconds" not in training_df.columns:
+    timing_scope = "legacy: fit plus post-fit evaluation and artifact saving"
+    print("WARNING: Loaded legacy timings include post-fit work; fit-only time cannot be recovered.")
+time_summary = training_df[time_columns].agg(["mean", "std"]).transpose()
+time_summary["measurement_scope"] = timing_scope
+time_summary.to_csv(aggregate_dir / "training_time_mean_std_seconds.csv")
+print("\nTraining time mean and sample SD (seconds):\n", time_summary)
 metric_columns = [c for c in validation_df if c.startswith("val_") and c != "val_loss"]
 summary = validation_df[metric_columns].agg(["mean", "std"]).transpose()
 summary.to_csv(aggregate_dir / "validation_mean_std.csv")
@@ -519,13 +897,13 @@ for col, seed in enumerate(SEEDS):
         out_dir / f"seed_{seed}" / "validation_confusion_matrix.csv", index_col=0
     ).to_numpy(dtype=np.float64)
     normalized = cm / np.maximum(cm.sum(axis=1, keepdims=True), 1)
-    axes[col].imshow(normalized, cmap="Blues", vmin=0, vmax=1)
+    axes[col].imshow(normalized, cmap=MATRIX_CMAP, vmin=0, vmax=1)
     axes[col].set_title(f"Seed {seed}")
     axes[col].set_xticks(range(len(CLASS_NAMES)), CLASS_NAMES, rotation=45, ha="right", fontsize=8)
     axes[col].set_yticks(range(len(CLASS_NAMES)), CLASS_NAMES, fontsize=8)
     for i in range(len(CLASS_NAMES)):
         for j in range(len(CLASS_NAMES)):
-            axes[col].text(j, i, f"{normalized[i, j]:.2f}", ha="center", va="center", fontsize=7)
+            axes[col].text(j, i, f"{normalized[i, j]:.2f}", ha="center", va="center", fontsize=7, color="black")
 fig.tight_layout()
 fig.savefig(aggregate_dir / "validation_confusion_5seeds.png", dpi=180)
 plt.close(fig)
@@ -579,3 +957,38 @@ if RUN_FINAL_TEST:
     print(test_df.drop(columns="seed").agg(["mean", "std"]).transpose())
 else:
     print("Final Test remains locked. RUN_FINAL_TEST=False.")
+
+# %% [markdown]
+# ## 7. Locked external holdout results
+
+# %%
+# External evaluation is separate from the internal V05 Test driver above.
+def make_real_holdout_dataset(holdout_manifest):
+    dataset = tf.data.Dataset.from_tensor_slices((
+        holdout_manifest["path"].tolist(),
+        holdout_manifest["label"].to_numpy(dtype=np.int32),
+    ))
+    return dataset.map(decode_image, num_parallel_calls=tf.data.AUTOTUNE).batch(
+        BATCH_SIZE, drop_remainder=False
+    ).prefetch(tf.data.AUTOTUNE)  # No shuffle or augmentation; same input decoding.
+
+
+def load_real_holdout_model(seed):
+    return keras.models.load_model(holdout_checkpoints[seed], compile=False)
+
+
+def clear_real_holdout_session():
+    tf.keras.backend.clear_session()
+    gc.collect()
+
+
+if RUN_FINAL_TEST and RUN_REAL_HOLDOUT:
+    holdout_checkpoints = {seed: out_dir / f"seed_{seed}" / "best_model.keras" for seed in SEEDS}
+    real_holdout_results_df = evaluate_real_holdout(
+        real_holdout_manifest, real_holdout_audit, CLASS_NAMES, SEEDS, validation_df,
+        holdout_checkpoints, load_real_holdout_model, make_real_holdout_dataset,
+        clear_real_holdout_session, out_dir / "real_holdout", outputs_are_logits=True,
+    )
+    print(real_holdout_results_df)
+else:
+    print("External holdout evaluation skipped. Enable RUN_FINAL_TEST after validation is frozen.")

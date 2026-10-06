@@ -1,0 +1,28 @@
+{
+  "notebook_version": "006",
+  "audited_at_utc": "2026-10-05T08:56:33.116678+00:00",
+  "holdout_archive_name": "RL_Cashew_holdout.zip",
+  "holdout_archive_sha256": "BDDCB61CA9AF6111E0B26DB7876D0A3309C587AEAFFAEF49B7A9D2D162309165",
+  "holdout_archive_size_bytes": 150455582,
+  "drive_source": "https://drive.google.com/file/d/1PBry_y2bMsvd5_YdmEUy9erSFarS3O52/view",
+  "source_verification": "Authenticated Drive download and local ZIP have identical SHA-256.",
+  "counts": {
+    "anthracnose": 13,
+    "healthy": 5,
+    "leaf_miner": 24,
+    "red_rust": 7,
+    "not_cashew_leaf": 0
+  },
+  "holdout_images": 49,
+  "decode_errors": 0,
+  "within_holdout_byte_duplicates": 0,
+  "v05_archive_sha256": "37E76938B930025B88154D53EA56084E0828C57A0B0FB725387462C835EA8CDF",
+  "reference_images_checked": 6911,
+  "cross_dataset_byte_overlaps": [
+    {
+      "holdout": "RL_Cashew_holdout/red_rust/IMG_3244.jpg",
+      "v05": "CashewData_Split/test/red_rust/real_red_rust_029.jpg"
+    }
+  ],
+  "limitation": "Exact bytes only. Near-duplicates, shared leaves/trees and capture sessions are not audited."
+}
