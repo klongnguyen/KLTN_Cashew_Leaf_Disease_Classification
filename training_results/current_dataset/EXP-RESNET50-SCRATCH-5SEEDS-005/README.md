@@ -4,7 +4,7 @@
 **Dataset:** `Cashew_dataV05`  
 **Seeds:** `42, 123, 2026, 3407, 7777`  
 **Runtime:** Google Colab / NVIDIA L4 / OneDeviceStrategy  
-**Status:** 🟢 **Training/Validation complete; locked Test executed separately. Test metrics are not contained in this ANALYSIS archive.**
+**Status:** ✅ **Final locked Test complete**
 
 ## Validation results
 
@@ -23,6 +23,18 @@ Aggregate:
 - Mean training time: **25.45 min/seed**
 - Parameters: **24,641,413**
 
+## Final locked Test — 5 seeds
+
+| Metric | Mean ± sample SD |
+|---|---:|
+| Test Accuracy | **89.78 ± 2.50%** |
+| Macro Precision | **89.72 ± 2.08%** |
+| Macro Recall | **89.37 ± 2.56%** |
+| Macro F1 | **89.36 ± 2.47%** |
+| Balanced Accuracy | **89.37 ± 2.56%** |
+
+ResNet50 shows the largest seed variability of the three V05 baselines. Test Accuracy ranges from **86.61%** to **93.16%**. `anthracnose` remains the weakest class (**79.32 ± 4.40% F1**).
+
 ## Per-class Validation F1
 
 | Class | F1 ± SD |
@@ -37,4 +49,4 @@ Main recurring errors: `healthy → anthracnose` (9.24%), `leaf_miner → anthra
 
 Seed 2026 is notably weaker and increases the between-seed variance. Compared with the latest V04 validation rerun, mean Validation Accuracy increases **+2.20 pp** and Macro F1 **+2.27 pp**, but standard deviation increases.
 
-**The locked Test was run separately after/independently of this ANALYSIS archive export. This archive itself does not contain the Test outputs, so its stale `run_final_test=false` field must not be interpreted as the actual project status.**
+**The final locked Test results are now included in this repository experiment.**
