@@ -3,7 +3,7 @@
 **Model:** DenseNet121 Scratch  
 **Dataset:** `Cashew_dataV05`  
 **Seeds:** `42, 123, 2026, 3407, 7777`  
-**Status:** 🟡 **Validation complete — locked Test pending**
+**Status:** ✅ **Final locked Test complete**
 
 ## Validation results
 
@@ -22,6 +22,18 @@ Aggregate:
 - Mean training time: **33.37 min/seed**
 - Parameters: **7,566,917**
 
+## Final locked Test — 5 seeds
+
+| Metric | Mean ± sample SD |
+|---|---:|
+| Test Accuracy | **91.97 ± 1.11%** |
+| Macro Precision | **91.48 ± 1.13%** |
+| Macro Recall | **91.42 ± 1.15%** |
+| Macro F1 | **91.41 ± 1.13%** |
+| Balanced Accuracy | **91.42 ± 1.15%** |
+
+Per-seed Test Accuracy ranges from **90.10%** to **93.01%**. On Test, `anthracnose` remains the weakest class (**81.17 ± 1.66% F1**), while `red_rust` reaches **96.40 ± 1.41% F1**.
+
 ## Per-class Validation F1
 
 | Class | F1 ± SD |
@@ -36,4 +48,4 @@ Main recurring errors: `healthy → anthracnose` (5.60%), `leaf_miner → anthra
 
 Compared with the latest V04 validation rerun, mean Validation Accuracy increases **+2.45 pp** and Macro F1 **+2.53 pp**. Because the dataset version changed, this is a V05 result rather than proof of an architecture improvement.
 
-**Final Test has not been evaluated in this archive.**
+**The final locked Test results are now included in this repository experiment.**

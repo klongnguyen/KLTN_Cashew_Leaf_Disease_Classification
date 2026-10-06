@@ -6,7 +6,7 @@ Khóa luận xây dựng hệ thống thị giác máy tính cho **phân loại 
 
 ### Classification — latest results
 
-Current development dataset: **`Cashew_dataV05` — 6,911 images / 5 classes**. The latest V05 experiments have completed Training + Validation; locked Test is still pending.
+Current dataset: **`Cashew_dataV05` — 6,911 images / 5 classes**. Training, Validation, and the locked Test are complete for all three scratch baselines.
 
 | Model | V05 Validation Accuracy | V05 Validation Macro F1 | Candidate seed | Params |
 |---|---:|---:|---:|---:|
@@ -16,7 +16,17 @@ Current development dataset: **`Cashew_dataV05` — 6,911 images / 5 classes**. 
 
 Detailed V05 analysis: [`training_results/current_dataset/V05_VALIDATION_ANALYSIS.md`](./training_results/current_dataset/V05_VALIDATION_ANALYSIS.md).
 
-The latest **completed locked-Test benchmark** remains Cashew_dataV04 until V05 Test evaluation is finished.
+### Final V05 locked-Test benchmark
+
+| Model | Test Accuracy | Macro Precision | Macro Recall | Macro F1 | Balanced Accuracy | Params |
+|---|---:|---:|---:|---:|---:|---:|
+| **DenseNet121 Scratch** | **91.97 ± 1.11%** | **91.48 ± 1.13%** | **91.42 ± 1.15%** | **91.41 ± 1.13%** | **91.42 ± 1.15%** | 7.57M |
+| **ResNet50 Scratch** | 89.78 ± 2.50% | 89.72 ± 2.08% | 89.37 ± 2.56% | 89.36 ± 2.47% | 89.37 ± 2.56% | 24.64M |
+| **Compact ViT Scratch** | 85.04 ± 0.44% | 84.35 ± 0.30% | 84.12 ± 0.35% | 83.93 ± 0.37% | 84.12 ± 0.35% | **0.35M** |
+
+DenseNet121 is the strongest final V05 classifier by both Test Accuracy and Macro F1.
+
+For historical comparison, the previous V04 Test benchmark is retained below.
 
 | Model | V04 Test Accuracy | V04 Macro F1 | Params |
 |---|---:|---:|---:|
@@ -81,7 +91,7 @@ Take 006 vẫn được giữ trong Failure Archive vì detector cuối chưa kh
 
 ---
 
-## Current development dataset — Cashew_dataV05
+## Current dataset — Cashew_dataV05
 
 V05 giữ nguyên class counts của V04 nhưng split fingerprints ghi trong ResNet50 metadata đã thay đổi ở Train/Validation; Test fingerprint vẫn giữ nguyên. V04 trước đó được tạo sau lần làm sạch bổ sung:
 - loại ảnh mờ/chất lượng thấp;

@@ -1,11 +1,11 @@
 # Source ID notice
 
-The uploaded archive is named and internally identified as:
+The uploaded ViT archive is named and internally identified as:
 
 `EXP-VIT-SCRATCH-5SEEDS-004_ANALYSIS.zip`
 
-The repository already contains `EXP-VIT-SCRATCH-5SEEDS-004` for the V04 validation rerun. To avoid overwriting that historical experiment, this V05 run is stored as:
+The user confirms this is a **naming typo**: the run belongs to **Cashew_dataV05**. The repository therefore stores it as:
 
 `EXP-VIT-SCRATCH-5SEEDS-005`
 
-The model configuration itself is unchanged by this repository-only renaming.
+This avoids collision with the existing V04 `EXP-VIT-SCRATCH-5SEEDS-004` path and reflects the actual dataset version. The model configuration itself is unchanged by this repository-only correction.

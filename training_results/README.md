@@ -14,7 +14,19 @@ Ba scratch baseline mới nhất đã hoàn tất 5-seed Training + Validation:
 
 Detailed analysis: [current_dataset/V05_VALIDATION_ANALYSIS.md](./current_dataset/V05_VALIDATION_ANALYSIS.md).
 
-V05 has the same counts as V04. The ResNet notebook-recorded split fingerprints differ for Train/Validation but match for Test, so V05 is treated as a new development snapshot while preserving the locked Test reference.
+### Final V05 locked-Test benchmark
+
+| Model | Test Accuracy | Macro Precision | Macro Recall | Macro F1 | Balanced Accuracy | Params |
+|---|---:|---:|---:|---:|---:|---:|
+| **DenseNet121** | **91.97 ± 1.11%** | **91.48 ± 1.13%** | **91.42 ± 1.15%** | **91.41 ± 1.13%** | **91.42 ± 1.15%** | 7.57M |
+| **ResNet50** | 89.78 ± 2.50% | 89.72 ± 2.08% | 89.37 ± 2.56% | 89.36 ± 2.47% | 89.37 ± 2.56% | 24.64M |
+| **Compact ViT** | 85.04 ± 0.44% | 84.35 ± 0.30% | 84.12 ± 0.35% | 83.93 ± 0.37% | 84.12 ± 0.35% | **0.35M** |
+
+
+
+V05 has the same counts as V04. The ResNet notebook-recorded split fingerprints differ for Train/Validation but match for Test, so V05 is treated as a new dataset snapshot while preserving the locked Test reference.
+
+**Status:** V05 locked Test is complete for all three models and the final aggregate metrics are now imported into the repository.
 
 
 ## Latest completed locked-Test benchmark — Cashew_dataV04
@@ -90,7 +102,7 @@ Cả ba EXP-004 hiện có status **Validation complete — Test pending** và c
 
 | Version | Total | Train | Val | Test | Status |
 |---|---:|---:|---:|---:|---|
-| `Cashew_dataV05` | **6,911** | 4,822 | 1,402 | 687 | **Current development; Test pending** |
+| `Cashew_dataV05` | **6,911** | 4,822 | 1,402 | 687 | **Current final benchmark** |
 | `Cashew_dataV04` | **6,911** | 4,822 | 1,402 | 687 | Latest completed Test benchmark |
 | `Cashew_dataV03` | 7,213 | 5,049 | 1,433 | 731 | Historical |
 

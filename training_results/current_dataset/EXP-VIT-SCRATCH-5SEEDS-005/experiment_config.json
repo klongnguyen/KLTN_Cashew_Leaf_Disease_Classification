@@ -3,7 +3,13 @@
   "source_experiment_id": "EXP-VIT-SCRATCH-5SEEDS-004",
   "dataset": {
     "version": "Cashew_dataV05",
-    "classes": ["anthracnose", "healthy", "leaf_miner", "not_cashew_leaf", "red_rust"],
+    "classes": [
+      "anthracnose",
+      "healthy",
+      "leaf_miner",
+      "not_cashew_leaf",
+      "red_rust"
+    ],
     "train_images": 4822,
     "val_images": 1402,
     "test_images": 687,
@@ -14,7 +20,11 @@
     "name": "VisionTransformer",
     "training_mode": "Scratch",
     "pretrained_weights": null,
-    "input_size": [224,224,3],
+    "input_size": [
+      224,
+      224,
+      3
+    ],
     "patch_size": 16,
     "num_patches": 196,
     "sequence_length": 197,
@@ -28,7 +38,13 @@
     "head_dropout": 0.4
   },
   "training": {
-    "seeds": [42,123,2026,3407,7777],
+    "seeds": [
+      42,
+      123,
+      2026,
+      3407,
+      7777
+    ],
     "batch_size": 32,
     "max_epochs": 60,
     "optimizer": "AdamW",
@@ -44,11 +60,11 @@
     "early_stopping_patience": 10,
     "reduce_lr_patience": 4,
     "reduce_lr_factor": 0.3,
-    "min_lr": 1e-6
+    "min_lr": 0.000001
   },
   "test_protocol": {
-    "run_final_test": false,
-    "final_test_completed": false,
+    "run_final_test": true,
+    "final_test_completed": true,
     "do_not_select_best_seed_on_test": true,
     "summary": "mean ± sample standard deviation (ddof=1)"
   },
@@ -57,7 +73,11 @@
     "selection_metric": "val_macro_f1",
     "tie_break": "lower val_loss"
   },
-  "hardware": {"gpu_count":1,"strategy":"OneDeviceStrategy","replicas":1},
+  "hardware": {
+    "gpu_count": 1,
+    "strategy": "OneDeviceStrategy",
+    "replicas": 1
+  },
   "repository_normalization": {
     "renamed": true,
     "reason": "Source EXP-VIT-SCRATCH-5SEEDS-004 collides with the existing V04 repository experiment.",
