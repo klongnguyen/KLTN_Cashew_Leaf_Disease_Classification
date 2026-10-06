@@ -2,7 +2,13 @@
   "experiment_id": "EXP-DENSENET121-SCRATCH-5SEEDS-005",
   "dataset": {
     "version": "Cashew_dataV05",
-    "classes": ["anthracnose", "healthy", "leaf_miner", "not_cashew_leaf", "red_rust"],
+    "classes": [
+      "anthracnose",
+      "healthy",
+      "leaf_miner",
+      "not_cashew_leaf",
+      "red_rust"
+    ],
     "train_images": 4822,
     "val_images": 1402,
     "test_images": 687,
@@ -14,12 +20,22 @@
     "training_mode": "Scratch",
     "weights": null,
     "include_top": false,
-    "input_size": [224,224,3],
+    "input_size": [
+      224,
+      224,
+      3
+    ],
     "head_units": 512,
     "head_dropout": 0.4
   },
   "training": {
-    "seeds": [42,123,2026,3407,7777],
+    "seeds": [
+      42,
+      123,
+      2026,
+      3407,
+      7777
+    ],
     "batch_size": 32,
     "max_epochs": 50,
     "optimizer": "Adam",
@@ -34,11 +50,11 @@
     "early_stopping_patience": 8,
     "reduce_lr_patience": 3,
     "reduce_lr_factor": 0.3,
-    "min_lr": 1e-6
+    "min_lr": 0.000001
   },
   "test_protocol": {
-    "run_final_test": false,
-    "final_test_completed": false,
+    "run_final_test": true,
+    "final_test_completed": true,
     "do_not_select_best_seed_on_test": true,
     "summary": "mean ± sample standard deviation (ddof=1)"
   },
@@ -47,6 +63,10 @@
     "selection_metric": "val_macro_f1",
     "tie_break": "lower val_loss"
   },
-  "hardware": {"gpu_count":1,"strategy":"OneDeviceStrategy","replicas":1},
+  "hardware": {
+    "gpu_count": 1,
+    "strategy": "OneDeviceStrategy",
+    "replicas": 1
+  },
   "source_archive": "EXP-DENSENET121-SCRATCH-5SEEDS-005_ANALYSIS.zip"
 }

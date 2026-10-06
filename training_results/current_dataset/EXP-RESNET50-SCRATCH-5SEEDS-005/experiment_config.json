@@ -2,7 +2,13 @@
   "experiment_id": "EXP-RESNET50-SCRATCH-5SEEDS-005",
   "dataset": {
     "version": "Cashew_dataV05",
-    "classes": ["anthracnose", "healthy", "leaf_miner", "not_cashew_leaf", "red_rust"],
+    "classes": [
+      "anthracnose",
+      "healthy",
+      "leaf_miner",
+      "not_cashew_leaf",
+      "red_rust"
+    ],
     "train_images": 4822,
     "val_images": 1402,
     "test_images": 687,
@@ -19,15 +25,28 @@
     "training_mode": "Scratch",
     "weights": null,
     "include_top": false,
-    "input_size": [224,224,3],
+    "input_size": [
+      224,
+      224,
+      3
+    ],
     "head_units": 512,
     "head_dropout": 0.4,
     "backbone_call": "x = backbone(x)",
     "backbone_trainable": true,
-    "preprocessing": {"resize":"bilinear","rescale_factor":0.00392156862745098}
+    "preprocessing": {
+      "resize": "bilinear",
+      "rescale_factor": 0.00392156862745098
+    }
   },
   "training": {
-    "seeds": [42,123,2026,3407,7777],
+    "seeds": [
+      42,
+      123,
+      2026,
+      3407,
+      7777
+    ],
     "batch_size": 32,
     "max_epochs": 50,
     "optimizer": "Adam",
@@ -42,12 +61,15 @@
     "early_stopping_patience": 8,
     "reduce_lr_patience": 3,
     "reduce_lr_factor": 0.3,
-    "min_lr": 1e-6
+    "min_lr": 0.000001
   },
   "test_protocol": {
-    "run_final_test": false,
+    "run_final_test": true,
     "do_not_select_best_seed_on_test": true,
-    "summary": "mean ± sample standard deviation (ddof=1)"
+    "summary": "mean ± sample standard deviation (ddof=1)",
+    "source_run_final_test_field": false,
+    "metadata_note": "Source config retained run_final_test=false although final Test artifacts are present in the exported ANALYSIS archive; repository status normalized from the actual Test outputs.",
+    "final_test_completed": true
   },
   "hardware": {
     "gpu_count": 1,

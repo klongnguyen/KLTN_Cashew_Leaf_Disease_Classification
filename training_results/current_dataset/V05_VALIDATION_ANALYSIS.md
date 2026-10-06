@@ -67,6 +67,36 @@ These gains are **not architecture-improvement claims** because the dataset vers
 
 The CNN curves show large transient Validation-loss spikes in early epochs but recover before the selected checkpoints. This does not indicate a failed run, but it shows scratch CNN optimization remains sensitive early in training. ViT converges more smoothly.
 
+## Final locked Test benchmark — V05
+
+All three models have completed evaluation on the same locked Test set (687 images), across all five seeds. Results are reported as mean ± sample standard deviation (ddof=1).
+
+| Model | Test Accuracy | Macro Precision | Macro Recall | Macro F1 | Balanced Accuracy | Params |
+|---|---:|---:|---:|---:|---:|---:|
+| **DenseNet121** | **91.97 ± 1.11%** | **91.48 ± 1.13%** | **91.42 ± 1.15%** | **91.41 ± 1.13%** | **91.42 ± 1.15%** | 7,566,917 |
+| **ResNet50** | **89.78 ± 2.50%** | **89.72 ± 2.08%** | **89.37 ± 2.56%** | **89.36 ± 2.47%** | **89.37 ± 2.56%** | 24,641,413 |
+| **Compact ViT** | **85.04 ± 0.44%** | **84.35 ± 0.30%** | **84.12 ± 0.35%** | **83.93 ± 0.37%** | **84.12 ± 0.35%** | **347,717** |
+
+### Final ranking
+
+1. **DenseNet121** — best overall Test Accuracy and Macro F1.
+2. **ResNet50** — second-best mean performance, but highest seed variability.
+3. **Compact ViT** — lower predictive performance but by far the smallest model and the most stable Test Accuracy among the three.
+
+DenseNet121 leads ResNet50 by **2.19 percentage points** in Test Accuracy and **2.05 pp** in Macro F1. It leads Compact ViT by **6.93 pp** in Accuracy and **7.48 pp** in Macro F1.
+
+### Per-class Test F1
+
+| Class | DenseNet121 | ResNet50 | Compact ViT |
+|---|---:|---:|---:|
+| `anthracnose` | **81.17 ± 1.66%** | 79.32 ± 4.40% | 68.33 ± 2.22% |
+| `healthy` | **91.71 ± 1.40%** | 88.77 ± 4.28% | 79.53 ± 2.61% |
+| `leaf_miner` | **91.50 ± 1.83%** | 90.12 ± 1.95% | 85.23 ± 0.97% |
+| `not_cashew_leaf` | 96.27 ± 0.87% | 94.54 ± 1.69% | **96.95 ± 1.18%** |
+| `red_rust` | **96.40 ± 1.41%** | 94.04 ± 2.28% | 89.62 ± 2.09% |
+
+`anthracnose` remains the hardest Test class for all three models. Compact ViT remains unusually strong on `not_cashew_leaf` despite lower overall performance.
+
 ## Conclusion
 
 At the **Validation stage**, the latest V05 ranking is:
@@ -75,4 +105,4 @@ At the **Validation stage**, the latest V05 ranking is:
 2. **ResNet50** — strong performance but more seed-sensitive.
 3. **Compact ViT** — lower Accuracy/F1 but dramatically smaller and faster to train.
 
-The locked V05 Test has already been run according to the user. The remaining repository task is to import the separate Test result artifacts/metrics so the final V05 benchmark can be reproduced from repository evidence.
+The locked V05 Test is now imported and documented in this repository. The benchmark above is the final V05 Test comparison.

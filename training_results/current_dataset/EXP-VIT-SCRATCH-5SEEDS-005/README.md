@@ -3,7 +3,7 @@
 **Model:** Compact Vision Transformer Scratch  
 **Dataset:** `Cashew_dataV05`  
 **Seeds:** `42, 123, 2026, 3407, 7777`  
-**Status:** 🟢 **Training/Validation complete; locked Test executed separately. Test metrics are not contained in this ANALYSIS archive.**
+**Status:** ✅ **Final locked Test complete**
 
 > Source archive self-reports `EXP-VIT-SCRATCH-5SEEDS-004`. That repository ID already belongs to the V04 ViT rerun, so this V05 result is normalized to **EXP-005** to preserve history.
 
@@ -24,6 +24,18 @@ Aggregate:
 - Mean training time: **6.20 min/seed**
 - Parameters: **347,717**
 
+## Final locked Test — 5 seeds
+
+| Metric | Mean ± sample SD |
+|---|---:|
+| Test Accuracy | **85.04 ± 0.44%** |
+| Macro Precision | **84.35 ± 0.30%** |
+| Macro Recall | **84.12 ± 0.35%** |
+| Macro F1 | **83.93 ± 0.37%** |
+| Balanced Accuracy | **84.12 ± 0.35%** |
+
+Compact ViT has the lowest overall Test performance but the lowest seed variability in Test Accuracy. `not_cashew_leaf` remains its strongest class (**96.95 ± 1.18% F1**), while `anthracnose` is the main weakness (**68.33 ± 2.22% F1**).
+
 ## Per-class Validation F1
 
 | Class | F1 ± SD |
@@ -38,4 +50,4 @@ Main recurring errors: `healthy → anthracnose` (12.98%), `leaf_miner → anthr
 
 Compared with the V04 ViT rerun, mean Validation Accuracy increases **+1.20 pp** and Macro F1 **+1.13 pp**, but seed variability increases. ViT remains much lighter than both CNN baselines.
 
-**The locked Test was run separately after/independently of this ANALYSIS archive export. This archive itself does not contain the Test outputs, so its stale `run_final_test=false` field must not be interpreted as the actual project status.**
+**The final locked Test results are now included in this repository experiment.**
