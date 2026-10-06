@@ -14,7 +14,9 @@ Ba scratch baseline mới nhất đã hoàn tất 5-seed Training + Validation:
 
 Detailed analysis: [current_dataset/V05_VALIDATION_ANALYSIS.md](./current_dataset/V05_VALIDATION_ANALYSIS.md).
 
-V05 has the same counts as V04. The ResNet notebook-recorded split fingerprints differ for Train/Validation but match for Test, so V05 is treated as a new development snapshot while preserving the locked Test reference.
+V05 has the same counts as V04. The ResNet notebook-recorded split fingerprints differ for Train/Validation but match for Test, so V05 is treated as a new dataset snapshot while preserving the locked Test reference.
+
+**Status correction:** the user confirms the locked V05 Test has already been executed for DenseNet121, ResNet50 and ViT. The ANALYSIS archives currently imported into the repository do not contain those Test outputs and still show `run_final_test=false`, so the exact Test metrics must be imported from the separate Test artifacts before they are shown here.
 
 
 ## Latest completed locked-Test benchmark — Cashew_dataV04
@@ -90,7 +92,7 @@ Cả ba EXP-004 hiện có status **Validation complete — Test pending** và c
 
 | Version | Total | Train | Val | Test | Status |
 |---|---:|---:|---:|---:|---|
-| `Cashew_dataV05` | **6,911** | 4,822 | 1,402 | 687 | **Current development; Test pending** |
+| `Cashew_dataV05` | **6,911** | 4,822 | 1,402 | 687 | **Current; Test executed, metrics import pending** |
 | `Cashew_dataV04` | **6,911** | 4,822 | 1,402 | 687 | Latest completed Test benchmark |
 | `Cashew_dataV03` | 7,213 | 5,049 | 1,433 | 731 | Historical |
 
