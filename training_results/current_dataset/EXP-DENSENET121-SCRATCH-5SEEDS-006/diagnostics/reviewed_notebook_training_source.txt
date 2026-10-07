@@ -1,0 +1,1203 @@
+### NOTEBOOK CELL 4 (zero-based)
+
+# ============================================================
+# 03. CONFIGURATION
+# ============================================================
+
+NOTEBOOK_VERSION = "006"
+EXPERIMENT_ID = "EXP-DENSENET121-SCRATCH-5SEEDS-006"
+DATASET_VERSION = "Cashew_dataV05"
+
+
+DRIVE_TARGET_URL = (
+    "https://drive.google.com/drive/folders/"
+    "1it9ayE473c0lLgxhiNnguqIkKtceI5zf?usp=sharing"
+)
+DRIVE_TARGET_FOLDER_ID = "1it9ayE473c0lLgxhiNnguqIkKtceI5zf"
+
+EXPECTED_CLASSES = [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "not_cashew_leaf",
+    "red_rust",
+]
+
+EXPECTED_COUNTS = {
+    "anthracnose": {
+        "train": 945,
+        "val": 294,
+        "test": 122,
+        "total": 1361,
+    },
+
+    "healthy": {
+        "train": 806,
+        "val": 225,
+        "test": 118,
+        "total": 1149,
+    },
+
+    "leaf_miner": {
+        "train": 893,
+        "val": 249,
+        "test": 132,
+        "total": 1274,
+    },
+
+    "not_cashew_leaf": {
+        "train": 1101,
+        "val": 314,
+        "test": 157,
+        "total": 1572,
+    },
+
+    "red_rust": {
+        "train": 1077,
+        "val": 320,
+        "test": 158,
+        "total": 1555,
+    },
+}
+
+EXPECTED_TOTALS = {
+    "train": 4822,
+    "val": 1402,
+    "test": 687,
+    "total": 6911,
+}
+
+STRICT_DATASET_CHECK = True
+
+# ------------------------------------------------------------
+# 5-SEED PROTOCOL
+# ------------------------------------------------------------
+
+SEEDS = [42, 123, 2026, 3407, 7777]
+DEMO_SEED = None  # set later from Validation-only deployment selection
+
+# ------------------------------------------------------------
+# TRAINING
+# ------------------------------------------------------------
+
+IMG_SIZE = 224
+BATCH_SIZE = 32
+MAX_EPOCHS = 50
+INITIAL_LR = 3e-4
+
+MODEL_NAME = "DenseNet121"
+TRAINING_MODE = "Scratch"
+PRETRAINED_WEIGHTS = None
+
+HEAD_UNITS = 512
+HEAD_DROPOUT = 0.40
+
+EARLY_STOPPING_PATIENCE = 8
+REDUCE_LR_PATIENCE = 3
+REDUCE_LR_FACTOR = 0.3
+MIN_LR = 1e-6
+
+# ------------------------------------------------------------
+# LOCKED TEST
+# ------------------------------------------------------------
+
+RUN_FINAL_TEST =  True  # Enable only after the EXP-006 configuration is frozen.
+
+# External images are never used by model.fit or checkpoint/seed selection.
+RUN_REAL_HOLDOUT = False  # External holdout remains disabled for this training experiment.
+REAL_HOLDOUT_ARCHIVE_NAME = "RL_Cashew_holdout.zip"
+REAL_HOLDOUT_ARCHIVE_SHA256 = "BDDCB61CA9AF6111E0B26DB7876D0A3309C587AEAFFAEF49B7A9D2D162309165"
+REAL_HOLDOUT_EXPECTED_COUNTS = {"anthracnose": 13, "healthy": 5, "leaf_miner": 24, "red_rust": 7}
+REAL_HOLDOUT_ARCHIVE_OVERRIDE = None  # Optional mounted/local ZIP path.
+RUN_TRAINING = True  # Train a new EXP-006 run; preserve previous results.
+
+if RUN_REAL_HOLDOUT:
+    raise RuntimeError("Real Holdout is disabled for this EXP-006 training experiment.")
+
+# ------------------------------------------------------------
+# STORAGE
+# ------------------------------------------------------------
+
+# Chỉ lưu best weights để giảm mạnh dung lượng.
+# Không lưu last.keras.
+SAVE_BEST_WEIGHTS_ONLY = True
+
+if RUNTIME == "Windows":
+    PROJECT_ROOT = Path(r"D:\Study\KhoaLuanTotNghiep\Resource")
+    RESULTS_ROOT = PROJECT_ROOT / "training_results" / "current_dataset"
+elif RUNTIME == "Kaggle":
+    PROJECT_ROOT = Path("/kaggle/working")
+    RESULTS_ROOT = PROJECT_ROOT / "training_results" / "current_dataset"
+elif RUNTIME == "Colab":
+    from google.colab import drive
+    drive.mount("/content/drive")
+    PROJECT_ROOT = Path("/content")
+    DRIVE_PROJECT_DIR = Path("/content/drive/MyDrive/Cashew_Leaf_model_result")
+    DRIVE_DATASET_DIR = DRIVE_PROJECT_DIR / "Dataset"
+    DRIVE_DATASET_ARCHIVE = DRIVE_DATASET_DIR / "CashewData_Split (5).zip"
+    if not DRIVE_PROJECT_DIR.is_dir():
+        raise FileNotFoundError(
+            f"Results folder not found: {DRIVE_PROJECT_DIR}. Add a shortcut to My Drive or change DRIVE_PROJECT_DIR."
+        )
+    RESULTS_ROOT = DRIVE_PROJECT_DIR / "training_results" / "current_dataset"
+else:
+    raise RuntimeError(f"Unsupported runtime: {RUNTIME}. Use Windows, Kaggle or Colab.")
+OUT_DIR = RESULTS_ROOT / EXPERIMENT_ID
+AGGREGATE_DIR = OUT_DIR / "aggregate"
+PANEL_DIR = OUT_DIR / "figures" / "panels"
+MODEL_PACKAGE_DIR = OUT_DIR / "model_package"
+CODE_PACKAGE_DIR = OUT_DIR / "code"
+ENV_DIR = OUT_DIR / "environment"
+
+existing_seed_files = [
+    path for seed in SEEDS
+    for path in (OUT_DIR / f"seed_{seed}").rglob("*")
+    if path.is_file()
+] if OUT_DIR.exists() else []
+if RUN_TRAINING and existing_seed_files:
+    raise FileExistsError(
+        f"Training artifacts already exist in {OUT_DIR}; first file: {existing_seed_files[0]}. "
+        "Use a new experiment ID or RUN_TRAINING=False to preserve them."
+    )
+if not RUN_TRAINING and not (OUT_DIR / "experiment_config.json").exists():
+    raise FileNotFoundError("Evaluation-only mode requires saved training results.")
+
+for folder in [
+    OUT_DIR,
+    AGGREGATE_DIR,
+    PANEL_DIR,
+    MODEL_PACKAGE_DIR,
+    CODE_PACKAGE_DIR,
+    ENV_DIR,
+]:
+    folder.mkdir(parents=True, exist_ok=True)
+
+if not RUN_TRAINING:
+    resume_required = [
+        OUT_DIR / "experiment_config.json",
+        AGGREGATE_DIR / "training_summary_5seeds.csv",
+        AGGREGATE_DIR / "validation_results_5seeds.csv",
+        *[
+            OUT_DIR / f"seed_{seed}" / "checkpoints" /
+            f"DENSENET121_SCRATCH_seed_{seed}_best.weights.h5"
+            for seed in SEEDS
+        ],
+    ]
+    missing_resume_files = [path for path in resume_required if not path.is_file()]
+    if missing_resume_files:
+        raise FileNotFoundError(
+            "EXP-006 cannot resume Final Test; missing:\n" +
+            "\n".join(str(path) for path in missing_resume_files)
+        )
+    print("Resume check passed: five EXP-006 checkpoints and Validation summaries found.")
+
+print("Experiment ID    :", EXPERIMENT_ID)
+print("Dataset version  :", DATASET_VERSION)
+print("Seeds            :", SEEDS)
+print("Image size       :", IMG_SIZE)
+print("Batch size       :", BATCH_SIZE)
+print("Max epochs       :", MAX_EPOCHS)
+print("Initial LR       :", INITIAL_LR)
+print("RUN_FINAL_TEST   :", RUN_FINAL_TEST)
+print("RUN_REAL_HOLDOUT :", RUN_REAL_HOLDOUT)
+print("RUN_TRAINING     :", RUN_TRAINING)
+
+print("Drive target     :", DRIVE_TARGET_URL)
+
+
+### NOTEBOOK CELL 5 (zero-based)
+
+# ============================================================
+# 04. REPRODUCIBILITY
+# ============================================================
+
+def set_global_seed(seed: int):
+    os.environ["PYTHONHASHSEED"] = str(seed)
+
+    random.seed(seed)
+    np.random.seed(seed)
+    tf.random.set_seed(seed)
+
+    # Đồng bộ Python / NumPy / TensorFlow theo Keras.
+    try:
+        keras.utils.set_random_seed(seed)
+    except Exception:
+        pass
+
+    print(f"Global seed set to: {seed}")
+
+
+try:
+    tf.config.experimental.enable_op_determinism()
+    print("Deterministic operations: ENABLED")
+except Exception as e:
+    print("Deterministic operations: unavailable")
+    print("Reason:", e)
+
+
+### NOTEBOOK CELL 8 (zero-based)
+
+# ============================================================
+# 06. DATASET AUDIT + EXACT COUNTS
+# ============================================================
+
+VALID_EXTENSIONS = {
+    ".jpg", ".jpeg", ".png", ".bmp", ".gif", ".webp"
+}
+
+
+def audit_split(split_name, split_dir):
+    valid_rows = []
+    bad_rows = []
+    unknown_rows = []
+
+    found_classes = sorted([
+        p.name for p in split_dir.iterdir()
+        if p.is_dir()
+    ])
+
+    if found_classes != sorted(EXPECTED_CLASSES):
+        raise ValueError(
+            f"Class folders của {split_name} không đúng.\n"
+            f"Expected: {sorted(EXPECTED_CLASSES)}\n"
+            f"Found   : {found_classes}"
+        )
+
+    for label, class_name in enumerate(EXPECTED_CLASSES):
+        class_dir = split_dir / class_name
+
+        for path in sorted(class_dir.rglob("*")):
+            if not path.is_file():
+                continue
+
+            ext = path.suffix.lower()
+
+            if ext not in VALID_EXTENSIONS:
+                unknown_rows.append({
+                    "split": split_name,
+                    "class": class_name,
+                    "path": str(path),
+                    "extension": ext,
+                })
+                continue
+
+            try:
+                with Image.open(path) as img:
+                    img.verify()
+
+                with Image.open(path) as img:
+                    img.convert("RGB").load()
+
+                valid_rows.append({
+                    "split": split_name,
+                    "class": class_name,
+                    "label": label,
+                    "path": str(path),
+                })
+
+            except Exception as e:
+                bad_rows.append({
+                    "split": split_name,
+                    "class": class_name,
+                    "path": str(path),
+                    "error": str(e),
+                })
+
+    return valid_rows, bad_rows, unknown_rows
+
+
+all_valid = []
+all_bad = []
+all_unknown = []
+
+for split_name, split_dir in {
+    "train": TRAIN_DIR,
+    "val": VAL_DIR,
+    "test": TEST_DIR,
+}.items():
+
+    print(f"Checking {split_name}...")
+
+    valid_rows, bad_rows, unknown_rows = audit_split(
+        split_name,
+        split_dir
+    )
+
+    all_valid.extend(valid_rows)
+    all_bad.extend(bad_rows)
+    all_unknown.extend(unknown_rows)
+
+
+valid_df = pd.DataFrame(all_valid)
+bad_df = pd.DataFrame(all_bad)
+unknown_df = pd.DataFrame(all_unknown)
+
+print("\n" + "=" * 70)
+print("VALID IMAGES   :", len(valid_df))
+print("INVALID IMAGES :", len(bad_df))
+print("UNKNOWN FILES  :", len(unknown_df))
+print("=" * 70)
+
+if len(bad_df):
+    display(bad_df)
+
+if len(unknown_df):
+    display(unknown_df)
+
+bad_df.to_csv(OUT_DIR / "invalid_images.csv", index=False)
+unknown_df.to_csv(OUT_DIR / "unknown_files.csv", index=False)
+
+if len(bad_df):
+    raise ValueError("Dataset còn ảnh lỗi. Hãy clean dataset trước khi train.")
+
+if len(unknown_df):
+    raise ValueError("Dataset có file extension lạ. Hãy kiểm tra trước khi train.")
+
+
+stats_df = (
+    valid_df.groupby(["class", "split"])
+    .size()
+    .unstack(fill_value=0)
+    .reindex(EXPECTED_CLASSES)
+)
+
+for col in ["train", "val", "test"]:
+    if col not in stats_df.columns:
+        stats_df[col] = 0
+
+stats_df = stats_df[["train", "val", "test"]]
+stats_df["total"] = stats_df.sum(axis=1)
+
+display(stats_df)
+
+actual_totals = {
+    "train": int(stats_df["train"].sum()),
+    "val": int(stats_df["val"].sum()),
+    "test": int(stats_df["test"].sum()),
+    "total": int(stats_df["total"].sum()),
+}
+
+mismatches = []
+
+for class_name in EXPECTED_CLASSES:
+    for split_name in ["train", "val", "test", "total"]:
+
+        actual = int(stats_df.loc[class_name, split_name])
+        expected = int(EXPECTED_COUNTS[class_name][split_name])
+
+        if actual != expected:
+            mismatches.append({
+                "class": class_name,
+                "split": split_name,
+                "actual": actual,
+                "expected": expected,
+            })
+
+for split_name in ["train", "val", "test", "total"]:
+    if actual_totals[split_name] != EXPECTED_TOTALS[split_name]:
+        mismatches.append({
+            "class": "TOTAL",
+            "split": split_name,
+            "actual": actual_totals[split_name],
+            "expected": EXPECTED_TOTALS[split_name],
+        })
+
+if mismatches:
+    mismatch_df = pd.DataFrame(mismatches)
+    display(mismatch_df)
+
+    if STRICT_DATASET_CHECK:
+        raise ValueError(
+            "Dataset count không khớp Cashew_dataV05 đã chốt."
+        )
+else:
+    print("Dataset counts match Cashew_dataV05 exactly.")
+    print(actual_totals)
+
+
+# Save manifest để biết chính xác file nào thuộc split nào.
+valid_df.to_csv(
+    OUT_DIR / "dataset_manifest.csv",
+    index=False
+)
+
+
+### NOTEBOOK CELL 10 (zero-based)
+
+# ============================================================
+# 08. FIXED FILE LISTS + TF.DATA
+# ============================================================
+
+CLASS_NAMES = EXPECTED_CLASSES
+NUM_CLASSES = len(CLASS_NAMES)
+AUTOTUNE = tf.data.AUTOTUNE
+
+
+def split_arrays(split_name):
+    df = (
+        valid_df[valid_df["split"] == split_name]
+        .copy()
+        .reset_index(drop=True)
+    )
+
+    return (
+        df["path"].to_numpy(),
+        df["label"].to_numpy(dtype=np.int32),
+        df
+    )
+
+
+train_paths, train_labels, train_meta = split_arrays("train")
+val_paths, val_labels, val_meta = split_arrays("val")
+test_paths, test_labels, test_meta = split_arrays("test")
+
+
+def decode_image(path, label):
+    image_bytes = tf.io.read_file(path)
+
+    image = tf.io.decode_image(
+        image_bytes,
+        channels=3,
+        expand_animations=False
+    )
+
+    image.set_shape([None, None, 3])
+
+    image = tf.image.resize(
+        image,
+        [IMG_SIZE, IMG_SIZE],
+        method="bilinear"
+    )
+
+    return tf.cast(image, tf.float32), label
+
+
+def make_dataset(paths, labels, seed, training=False):
+    ds = tf.data.Dataset.from_tensor_slices(
+        (paths, labels)
+    )
+
+    if training:
+        ds = ds.shuffle(
+            buffer_size=len(paths),
+            seed=seed,
+            reshuffle_each_iteration=True
+        )
+
+    ds = ds.map(
+        decode_image,
+        num_parallel_calls=AUTOTUNE
+    )
+
+    ds = ds.batch(
+        BATCH_SIZE,
+        drop_remainder=False
+    )
+
+    ds = ds.prefetch(AUTOTUNE)
+
+    return ds
+
+
+print("Fixed split:")
+print("Train :", len(train_paths))
+print("Val   :", len(val_paths))
+print("Test  :", len(test_paths))
+
+print("\nClass mapping:")
+for idx, class_name in enumerate(CLASS_NAMES):
+    print(f"{idx}: {class_name}")
+
+
+### NOTEBOOK CELL 12 (zero-based)
+
+# ============================================================
+# 09. DATA AUGMENTATION + DENSENET121 MODEL BUILDER
+# ============================================================
+
+AUGMENTATION_CONFIG = {
+    "horizontal_flip": True,
+    "vertical_flip": False,
+    "rotation_factor": 0.04,
+    "zoom_factor": 0.05,
+    "translation_factor": 0.03,
+    "contrast_factor": 0.08,
+    "brightness": False,
+    "hue_shift": False,
+}
+
+
+def build_data_augmentation(seed):
+    return keras.Sequential(
+        [
+            layers.RandomFlip(
+                "horizontal",
+                seed=seed + 1
+            ),
+
+            layers.RandomRotation(
+                factor=0.04,
+                seed=seed + 2
+            ),
+
+            layers.RandomZoom(
+                height_factor=(-0.05, 0.05),
+                width_factor=(-0.05, 0.05),
+                seed=seed + 3
+            ),
+
+            layers.RandomTranslation(
+                height_factor=0.03,
+                width_factor=0.03,
+                seed=seed + 4
+            ),
+
+            layers.RandomContrast(
+                factor=0.08,
+                seed=seed + 5
+            ),
+        ],
+        name=f"data_augmentation_seed_{seed}"
+    )
+
+
+def build_densenet121_model(seed):
+
+    set_global_seed(seed)
+
+    augmentation = build_data_augmentation(seed)
+
+    inputs = keras.Input(
+        shape=(IMG_SIZE, IMG_SIZE, 3),
+        name="image"
+    )
+
+    # Augmentation chỉ hoạt động khi model ở training mode.
+    x = augmentation(inputs)
+
+    # Scratch training: normalize ảnh về [0,1].
+    x = layers.Rescaling(
+        1.0 / 255.0,
+        name="rescale_0_1"
+    )(x)
+
+    backbone = tf.keras.applications.DenseNet121(
+        include_top=False,
+        weights=None,
+        input_shape=(IMG_SIZE, IMG_SIZE, 3)
+    )
+
+    backbone.trainable = True
+
+    # ========================================================
+    # QUAN TRỌNG:
+    # Không ép training=True.
+    # ========================================================
+    x = backbone(x)
+
+    x = layers.GlobalAveragePooling2D(
+        name="global_average_pooling"
+    )(x)
+
+    x = layers.Dense(
+        HEAD_UNITS,
+        activation="relu",
+        name="classifier_dense"
+    )(x)
+
+    x = layers.BatchNormalization(
+        name="classifier_bn"
+    )(x)
+
+    x = layers.Dropout(
+        HEAD_DROPOUT,
+        seed=seed + 6,
+        name="classifier_dropout"
+    )(x)
+
+    outputs = layers.Dense(
+        NUM_CLASSES,
+        activation="softmax",
+        name="predictions"
+    )(x)
+
+    return keras.Model(
+        inputs=inputs,
+        outputs=outputs,
+        name=f"DenseNet121_Scratch_seed_{seed}"
+    )
+
+
+print("Defined:")
+print("- build_data_augmentation(seed)")
+print("- build_densenet121_model(seed)")
+
+
+### NOTEBOOK CELL 13 (zero-based)
+
+# ============================================================
+# 10. MODEL BUILDER SANITY CHECK
+# ============================================================
+
+# Cell này giúp phát hiện lỗi function trước khi mất hàng giờ train.
+
+tf.keras.backend.clear_session()
+gc.collect()
+
+sanity_seed = SEEDS[0]
+
+with strategy.scope():
+    sanity_model = build_densenet121_model(sanity_seed)
+
+expected_output_shape = (None, NUM_CLASSES)
+
+print("Model name        :", sanity_model.name)
+print("Output shape      :", sanity_model.output_shape)
+print("Total parameters  :", sanity_model.count_params())
+
+assert sanity_model.output_shape == expected_output_shape
+assert any(layer.name == "densenet121" for layer in sanity_model.layers)
+
+print("\nSANITY CHECK PASSED.")
+print("Training cell sẽ gọi đúng build_densenet121_model(seed).")
+
+del sanity_model
+tf.keras.backend.clear_session()
+gc.collect()
+
+
+### NOTEBOOK CELL 19 (zero-based)
+
+# ============================================================
+# 13. TRAIN ALL 5 SEEDS
+# ============================================================
+
+training_rows = []
+validation_rows = []
+
+for run_index, seed in enumerate(SEEDS if RUN_TRAINING else [], start=1):
+
+    print("\n" + "=" * 80)
+    print(f"RUN {run_index}/{len(SEEDS)} - SEED {seed}")
+    print("=" * 80)
+
+    tf.keras.backend.clear_session()
+    gc.collect()
+    set_global_seed(seed)
+
+    # --------------------------------------------------------
+    # Folders
+    # --------------------------------------------------------
+
+    seed_dir = OUT_DIR / f"seed_{seed}"
+
+    checkpoint_dir = seed_dir / "checkpoints"
+    log_dir = seed_dir / "logs"
+    figure_dir = seed_dir / "figures"
+    validation_dir = seed_dir / "validation"
+
+    for folder in [
+        checkpoint_dir,
+        log_dir,
+        figure_dir,
+        validation_dir,
+    ]:
+        folder.mkdir(parents=True, exist_ok=True)
+
+    best_weights_path = (
+        checkpoint_dir /
+        f"DENSENET121_SCRATCH_seed_{seed}_best.weights.h5"
+    )
+    if best_weights_path.exists() or (log_dir / "history.csv").exists():
+        raise FileExistsError(f"Refusing to overwrite training outputs for seed {seed}.")
+
+    # --------------------------------------------------------
+    # Datasets
+    # --------------------------------------------------------
+
+    train_ds = make_dataset(
+        train_paths,
+        train_labels,
+        seed=seed,
+        training=True
+    )
+
+    val_ds = make_dataset(
+        val_paths,
+        val_labels,
+        seed=seed,
+        training=False
+    )
+
+    # --------------------------------------------------------
+    # Build + compile
+    # --------------------------------------------------------
+
+    with strategy.scope():
+
+        # CHỈ dùng function này.
+        model = build_densenet121_model(seed)
+
+        model.compile(
+            optimizer=tf.keras.optimizers.Adam(
+                learning_rate=INITIAL_LR
+            ),
+            loss=tf.keras.losses.SparseCategoricalCrossentropy(),
+            metrics=["accuracy"],
+        )
+
+    # --------------------------------------------------------
+    # Model summary
+    # --------------------------------------------------------
+
+    summary_lines = []
+
+    model.summary(
+        print_fn=lambda line: summary_lines.append(line)
+    )
+
+    (
+        seed_dir /
+        "model_summary.txt"
+    ).write_text(
+        "\n".join(summary_lines),
+        encoding="utf-8"
+    )
+
+    total_params = int(model.count_params())
+
+    trainable_params = int(
+        np.sum([
+            np.prod(v.shape)
+            for v in model.trainable_weights
+        ])
+    )
+
+    non_trainable_params = int(
+        total_params - trainable_params
+    )
+
+    # --------------------------------------------------------
+    # Callbacks
+    # --------------------------------------------------------
+
+    callbacks = [
+
+        tf.keras.callbacks.ModelCheckpoint(
+            filepath=str(best_weights_path),
+            monitor="val_loss",
+            mode="min",
+            save_best_only=True,
+            save_weights_only=True,
+            verbose=1,
+        ),
+
+        tf.keras.callbacks.EarlyStopping(
+            monitor="val_loss",
+            mode="min",
+            patience=EARLY_STOPPING_PATIENCE,
+            restore_best_weights=True,
+            verbose=1,
+        ),
+
+        tf.keras.callbacks.ReduceLROnPlateau(
+            monitor="val_loss",
+            mode="min",
+            factor=REDUCE_LR_FACTOR,
+            patience=REDUCE_LR_PATIENCE,
+            min_lr=MIN_LR,
+            verbose=1,
+        ),
+
+        tf.keras.callbacks.CSVLogger(
+            str(log_dir / "training_log.csv")
+        ),
+    ]
+
+    # --------------------------------------------------------
+    # Train
+    # --------------------------------------------------------
+
+    start_time = time.perf_counter()
+
+    history = model.fit(
+        train_ds,
+        validation_data=val_ds,
+        epochs=MAX_EPOCHS,
+        callbacks=callbacks,
+        verbose=1,
+    )
+
+    training_time_seconds = time.perf_counter() - start_time
+
+    # --------------------------------------------------------
+    # History
+    # --------------------------------------------------------
+
+    history_df = pd.DataFrame(history.history)
+
+    history_df.insert(
+        0,
+        "epoch",
+        np.arange(1, len(history_df) + 1)
+    )
+
+    history_df.to_csv(
+        log_dir / "history.csv",
+        index=False
+    )
+
+    actual_epochs = len(history_df)
+
+    best_epoch = int(
+        np.argmin(history.history["val_loss"])
+    ) + 1
+
+    best_val_loss_history = float(
+        np.min(history.history["val_loss"])
+    )
+
+    best_val_accuracy_history = float(
+        history.history["val_accuracy"][best_epoch - 1]
+    )
+
+    # --------------------------------------------------------
+    # Curves
+    # --------------------------------------------------------
+
+    plt.figure(figsize=(8, 5))
+
+    plt.plot(
+        history_df["epoch"],
+        history_df["accuracy"],
+        label="Train"
+    )
+
+    plt.plot(
+        history_df["epoch"],
+        history_df["val_accuracy"],
+        label="Validation"
+    )
+
+    plt.axvline(
+        best_epoch,
+        linestyle="--",
+        label=f"Best epoch = {best_epoch}"
+    )
+
+    plt.xlabel("Epoch")
+    plt.ylabel("Accuracy")
+    plt.title(f"DenseNet121 Scratch - Seed {seed} - Accuracy")
+    plt.legend()
+    plt.grid(alpha=0.3)
+    plt.tight_layout()
+
+    plt.savefig(
+        figure_dir / "accuracy_curve.png",
+        dpi=200,
+        bbox_inches="tight"
+    )
+
+    plt.close()
+
+    plt.figure(figsize=(8, 5))
+
+    plt.plot(
+        history_df["epoch"],
+        history_df["loss"],
+        label="Train"
+    )
+
+    plt.plot(
+        history_df["epoch"],
+        history_df["val_loss"],
+        label="Validation"
+    )
+
+    plt.axvline(
+        best_epoch,
+        linestyle="--",
+        label=f"Best epoch = {best_epoch}"
+    )
+
+    plt.xlabel("Epoch")
+    plt.ylabel("Loss")
+    plt.title(f"DenseNet121 Scratch - Seed {seed} - Loss")
+    plt.legend()
+    plt.grid(alpha=0.3)
+    plt.tight_layout()
+
+    plt.savefig(
+        figure_dir / "loss_curve.png",
+        dpi=200,
+        bbox_inches="tight"
+    )
+
+    plt.close()
+
+    # --------------------------------------------------------
+    # IMPORTANT:
+    # Reload exactly the checkpoint chosen by minimum val_loss.
+    # --------------------------------------------------------
+
+    model.load_weights(best_weights_path)
+
+    # --------------------------------------------------------
+    # Validation evaluation
+    # --------------------------------------------------------
+
+    val_loss, val_accuracy = model.evaluate(
+        val_ds,
+        verbose=0
+    )
+
+    y_val_true = []
+    y_val_prob = []
+
+    for images, labels in val_ds:
+
+        probs = model.predict(
+            images,
+            verbose=0
+        )
+
+        y_val_prob.append(probs)
+        y_val_true.append(labels.numpy())
+
+    y_val_true = np.concatenate(y_val_true)
+    y_val_prob = np.concatenate(y_val_prob)
+    y_val_pred = np.argmax(y_val_prob, axis=1)
+    y_val_conf = np.max(y_val_prob, axis=1)
+
+    val_metrics = {
+        "seed": seed,
+        "val_loss": float(val_loss),
+        "val_accuracy": float(
+            accuracy_score(y_val_true, y_val_pred)
+        ),
+        "val_macro_precision": float(
+            precision_score(
+                y_val_true,
+                y_val_pred,
+                average="macro",
+                zero_division=0
+            )
+        ),
+        "val_macro_recall": float(
+            recall_score(
+                y_val_true,
+                y_val_pred,
+                average="macro",
+                zero_division=0
+            )
+        ),
+        "val_macro_f1": float(
+            f1_score(
+                y_val_true,
+                y_val_pred,
+                average="macro",
+                zero_division=0
+            )
+        ),
+        "val_balanced_accuracy": float(
+            balanced_accuracy_score(
+                y_val_true,
+                y_val_pred
+            )
+        ),
+    }
+
+    validation_rows.append(val_metrics)
+
+    # --------------------------------------------------------
+    # Validation classification report
+    # --------------------------------------------------------
+
+    val_report_df = pd.DataFrame(
+        classification_report(
+            y_val_true,
+            y_val_pred,
+            target_names=CLASS_NAMES,
+            output_dict=True,
+            zero_division=0,
+        )
+    ).transpose()
+
+    val_report_df.to_csv(
+        validation_dir /
+        "classification_report.csv"
+    )
+
+    # --------------------------------------------------------
+    # Validation confusion matrix
+    # --------------------------------------------------------
+
+    val_cm = confusion_matrix(
+        y_val_true,
+        y_val_pred
+    )
+
+    val_cm_norm = confusion_matrix(
+        y_val_true,
+        y_val_pred,
+        normalize="true"
+    )
+
+    pd.DataFrame(
+        val_cm,
+        index=CLASS_NAMES,
+        columns=CLASS_NAMES
+    ).to_csv(
+        validation_dir /
+        "confusion_matrix.csv"
+    )
+
+    pd.DataFrame(
+        val_cm_norm,
+        index=CLASS_NAMES,
+        columns=CLASS_NAMES
+    ).to_csv(
+        validation_dir /
+        "confusion_matrix_normalized.csv"
+    )
+
+    fig, ax = plt.subplots(figsize=(8, 7))
+
+    matrix_display = ConfusionMatrixDisplay(
+        confusion_matrix=val_cm,
+        display_labels=CLASS_NAMES
+    ).plot(
+        ax=ax,
+        cmap=MATRIX_CMAP,
+        values_format="d",
+        colorbar=False
+    )
+    for label in matrix_display.text_.ravel():
+        label.set_color("black")
+
+    plt.title(
+        f"Validation Confusion Matrix - Seed {seed}"
+    )
+
+    plt.xticks(rotation=30, ha="right")
+    plt.tight_layout()
+
+    plt.savefig(
+        validation_dir /
+        "confusion_matrix.png",
+        dpi=200,
+        bbox_inches="tight"
+    )
+
+    plt.close()
+
+    # --------------------------------------------------------
+    # Validation predictions
+    # --------------------------------------------------------
+
+    val_predictions_df = pd.DataFrame({
+        "filename": val_meta["path"],
+        "true_label": [
+            CLASS_NAMES[int(i)]
+            for i in y_val_true
+        ],
+        "predicted_label": [
+            CLASS_NAMES[int(i)]
+            for i in y_val_pred
+        ],
+        "confidence": y_val_conf,
+        "correct": y_val_true == y_val_pred,
+    })
+
+    val_predictions_df.to_csv(
+        validation_dir /
+        "predictions.csv",
+        index=False
+    )
+
+    # --------------------------------------------------------
+    # Training summary
+    # --------------------------------------------------------
+
+    row = {
+        "seed": seed,
+        "actual_epochs": actual_epochs,
+        "best_epoch": best_epoch,
+        "best_val_loss_history": best_val_loss_history,
+        "best_val_accuracy_history": best_val_accuracy_history,
+        "checkpoint_val_loss": float(val_loss),
+        "checkpoint_val_accuracy": float(val_metrics["val_accuracy"]),
+        "checkpoint_val_macro_f1": float(val_metrics["val_macro_f1"]),
+        "checkpoint_val_balanced_accuracy": float(
+            val_metrics["val_balanced_accuracy"]
+        ),
+        "training_time_seconds": float(training_time_seconds),
+        "total_parameters": total_params,
+        "trainable_parameters": trainable_params,
+        "non_trainable_parameters": non_trainable_params,
+        "best_weights_path": str(best_weights_path),
+        "best_weights_size_mb": float(
+            best_weights_path.stat().st_size /
+            (1024 ** 2)
+        ),
+    }
+
+    training_rows.append(row)
+
+    (
+        seed_dir /
+        "training_summary.json"
+    ).write_text(
+        json.dumps(
+            row,
+            indent=2
+        ),
+        encoding="utf-8"
+    )
+
+    print("\nSeed summary:")
+    print(json.dumps(row, indent=2))
+
+    # --------------------------------------------------------
+    # Cleanup
+    # --------------------------------------------------------
+
+    del model
+    del train_ds
+    del val_ds
+    del history
+
+    tf.keras.backend.clear_session()
+    gc.collect()
+
+
+if RUN_TRAINING:
+    training_summary_df = pd.DataFrame(training_rows)
+    validation_results_df = pd.DataFrame(validation_rows)
+else:
+    training_summary_df = pd.read_csv(AGGREGATE_DIR / "training_summary_5seeds.csv")
+    validation_results_df = pd.read_csv(AGGREGATE_DIR / "validation_results_5seeds.csv")
+    if training_summary_df["seed"].tolist() != SEEDS or validation_results_df["seed"].tolist() != SEEDS:
+        raise ValueError("Saved training/validation results must contain all configured seeds.")
+
+if RUN_TRAINING:
+    training_summary_df.to_csv(AGGREGATE_DIR / "training_summary_5seeds.csv", index=False)
+    validation_results_df.to_csv(AGGREGATE_DIR / "validation_results_5seeds.csv", index=False)
+
+# Wall time around model.fit includes epoch validation and callbacks.
+training_times = training_summary_df["training_time_seconds"]
+training_time_summary = pd.DataFrame({
+    "metric": ["training_time_seconds", "training_time_minutes"],
+    "mean": [training_times.mean(), training_times.mean() / 60],
+    "std": [training_times.std(ddof=1), training_times.std(ddof=1) / 60],
+    "total": [training_times.sum(), training_times.sum() / 60],
+})
+training_time_summary.to_csv(AGGREGATE_DIR / "training_time_mean_std_summary.csv", index=False)
+print("\nTraining time across seeds:")
+display(training_time_summary)
+
+print("\nTraining summary:")
+display(training_summary_df)
+
+print("\nValidation metrics:")
+display(validation_results_df)

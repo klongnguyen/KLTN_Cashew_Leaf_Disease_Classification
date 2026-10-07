@@ -1,0 +1,127 @@
+{
+  "experiment_id": "EXP-DENSENET121-SCRATCH-5SEEDS-006",
+  "model": "DenseNet121",
+  "training_mode": "Scratch",
+  "dataset": "Cashew_dataV05",
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "num_seeds": 5,
+  "std_definition": "sample standard deviation (ddof=1)",
+  "test_set_locked": true,
+  "per_seed_results": [
+    {
+      "seed": 42,
+      "test_loss": 0.35101082921028137,
+      "accuracy": 0.8981077147016011,
+      "macro_precision": 0.895826117123765,
+      "macro_recall": 0.8931949769001053,
+      "macro_f1": 0.8933420043900849,
+      "balanced_accuracy": 0.8931949769001053,
+      "weighted_precision": 0.9018964940218671,
+      "weighted_recall": 0.8981077147016011,
+      "weighted_f1": 0.8987143798247064,
+      "weights_size_mb": 87.29659271240234,
+      "inference_time_ms_per_image": 7.596734353710934,
+      "fps": 131.63550987030493
+    },
+    {
+      "seed": 123,
+      "test_loss": 0.3699171543121338,
+      "accuracy": 0.8791848617176128,
+      "macro_precision": 0.8766149821326135,
+      "macro_recall": 0.8729448823322814,
+      "macro_f1": 0.8735728632878713,
+      "balanced_accuracy": 0.8729448823322814,
+      "weighted_precision": 0.8847193784001831,
+      "weighted_recall": 0.8791848617176128,
+      "weighted_f1": 0.8807429729980285,
+      "weights_size_mb": 87.29659271240234,
+      "inference_time_ms_per_image": 7.541979433770147,
+      "fps": 132.5911862769575
+    },
+    {
+      "seed": 2026,
+      "test_loss": 0.3582628071308136,
+      "accuracy": 0.8791848617176128,
+      "macro_precision": 0.8846347388921929,
+      "macro_recall": 0.8760109263685198,
+      "macro_f1": 0.8767352754256299,
+      "balanced_accuracy": 0.8760109263685198,
+      "weighted_precision": 0.8945454905189593,
+      "weighted_recall": 0.8791848617176128,
+      "weighted_f1": 0.8835273366864229,
+      "weights_size_mb": 87.29659271240234,
+      "inference_time_ms_per_image": 7.50883266957563,
+      "fps": 133.17649280584064
+    },
+    {
+      "seed": 3407,
+      "test_loss": 0.2557417154312134,
+      "accuracy": 0.925764192139738,
+      "macro_precision": 0.9223396420852508,
+      "macro_recall": 0.9188299768429896,
+      "macro_f1": 0.9200695552566923,
+      "balanced_accuracy": 0.9188299768429896,
+      "weighted_precision": 0.9266620657189825,
+      "weighted_recall": 0.925764192139738,
+      "weighted_f1": 0.9256937781230254,
+      "weights_size_mb": 87.29659271240234,
+      "inference_time_ms_per_image": 7.445525227073592,
+      "fps": 134.30885928151537
+    },
+    {
+      "seed": 7777,
+      "test_loss": 0.4820690453052521,
+      "accuracy": 0.8398835516739447,
+      "macro_precision": 0.844940372362984,
+      "macro_recall": 0.8306983088681443,
+      "macro_f1": 0.8340281951272361,
+      "balanced_accuracy": 0.8306983088681443,
+      "weighted_precision": 0.854303422262279,
+      "weighted_recall": 0.8398835516739447,
+      "weighted_f1": 0.8434419379868622,
+      "weights_size_mb": 87.29659271240234,
+      "inference_time_ms_per_image": 7.551483056769855,
+      "fps": 132.4243188367491
+    }
+  ],
+  "summary": {
+    "accuracy": {
+      "mean": 0.8844250363901018,
+      "std": 0.031364805936689236
+    },
+    "macro_precision": {
+      "mean": 0.8848711705193611,
+      "std": 0.028224928718184314
+    },
+    "macro_recall": {
+      "mean": 0.8783358142624081,
+      "std": 0.03226596925701684
+    },
+    "macro_f1": {
+      "mean": 0.8795495786975028,
+      "std": 0.03141630666941856
+    },
+    "balanced_accuracy": {
+      "mean": 0.8783358142624081,
+      "std": 0.03226596925701684
+    },
+    "weighted_f1": {
+      "mean": 0.8864240811238091,
+      "std": 0.02992194550444903
+    },
+    "inference_time_ms_per_image": {
+      "mean": 7.528910948180031,
+      "std": 0.0562063508328374
+    },
+    "fps": {
+      "mean": 132.8272734142735,
+      "std": 0.9944170073645927
+    }
+  }
+}

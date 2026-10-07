@@ -1,0 +1,15 @@
+{
+  "seed": 123,
+  "test_loss": 0.3699171543121338,
+  "accuracy": 0.8791848617176128,
+  "macro_precision": 0.8766149821326135,
+  "macro_recall": 0.8729448823322814,
+  "macro_f1": 0.8735728632878713,
+  "balanced_accuracy": 0.8729448823322814,
+  "weighted_precision": 0.8847193784001831,
+  "weighted_recall": 0.8791848617176128,
+  "weighted_f1": 0.8807429729980285,
+  "weights_size_mb": 87.29659271240234,
+  "inference_time_ms_per_image": 7.541979433770147,
+  "fps": 132.5911862769575
+}

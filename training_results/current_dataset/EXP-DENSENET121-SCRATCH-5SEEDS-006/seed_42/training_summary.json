@@ -1,0 +1,17 @@
+{
+  "seed": 42,
+  "actual_epochs": 32,
+  "best_epoch": 24,
+  "best_val_loss_history": 0.2744373679161072,
+  "best_val_accuracy_history": 0.9201140999794006,
+  "checkpoint_val_loss": 0.2744373679161072,
+  "checkpoint_val_accuracy": 0.920114122681883,
+  "checkpoint_val_macro_f1": 0.9186726747780423,
+  "checkpoint_val_balanced_accuracy": 0.9151817516610923,
+  "training_time_seconds": 2114.5774377840003,
+  "total_parameters": 7566917,
+  "trainable_parameters": 7482245,
+  "non_trainable_parameters": 84672,
+  "best_weights_path": "/content/drive/MyDrive/Cashew_Leaf_model_result/training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-006/seed_42/checkpoints/DENSENET121_SCRATCH_seed_42_best.weights.h5",
+  "best_weights_size_mb": 87.29659271240234
+}
