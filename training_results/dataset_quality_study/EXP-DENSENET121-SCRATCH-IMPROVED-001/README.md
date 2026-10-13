@@ -27,3 +27,7 @@ Xem [kế hoạch điều tra WP0–WP7](../INVESTIGATION_PLAN.md) và [quy trì
 ### Review WP2
 
 [39 cặp nghi gần trùng đã được người dùng đánh dấu không trùng](../WP2_DUPLICATE_REVIEW_RESULTS.md); kết quả không loại trừ khả năng leakage ở cấp lá/cây/phiên chụp của ảnh thực địa.
+
+### Quan sát 28 ảnh Real Test (WP1)
+
+[WP1 manual review 28/28 — kết quả và giới hạn](../WP1_REAL_REVIEW_COMPLETE.md): 6 nhãn ambiguous cần xác minh; chưa có ablation hoặc thay đổi kết quả Test.

@@ -22,6 +22,16 @@ Vì vậy 39 cảnh báo này không còn là các cặp chưa được review. 
 
 ---
 
+## Phụ lục cập nhật WP1 — Review thủ công đầy đủ 28/28 ảnh Real Test
+
+Bản review lần hai `REAL_DATA_INVESTIGATION_WP1_001_ANALYSIS (2).zip` hoàn tất **28/28** ảnh. Reviewer chọn **22 confirmed / 6 ambiguous**; **5/6 ảnh Red Rust** ambiguous và **6/6 Red Rust** được đánh dấu `multiple_symptoms=yes`. Sau khi ghép 9 tên ảnh sai từ báo cáo IMPROVED001 (WP1 ZIP không có predictions), ảnh nền `high` chiếm **5/9** ảnh sai so với **11/19** ảnh đúng, không thể quy background cao là nguyên nhân đơn lẻ. Ở 21 ảnh có bệnh, `clear→weak` sau resize không xuất hiện trong review; vẫn chưa có đối chứng hiệu năng.
+
+**Giới hạn:** đây là reviewer self-report, chưa có chuyên gia xác minh 6 nhãn; ROI gần như dùng tọa độ mặc định; không thay đổi Test hoặc kiến trúc dựa trên phân tích hậu nghiệm.
+
+➡️ [Báo cáo WP1 đầy đủ 28/28](../WP1_REAL_REVIEW_COMPLETE.md).
+
+---
+
 ## 1. Mục tiêu, câu hỏi đánh giá
 
 1. Dataset cải tiến có giảm các vấn đề về trùng ảnh, xung đột nhãn, ảnh nghi chất lượng thấp so với Kaggle base không?

@@ -2,7 +2,7 @@
 
 **Mã kế hoạch:** `DATASET-INVESTIGATION-001`  
 **Ngày lập:** 13/10/2026  
-**Trạng thái:** **IN PROGRESS — WP2 đã hoàn tất review 39/39 cặp pHash (0 trùng theo người dùng), các WP còn lại chưa hoàn tất**  
+**Trạng thái:** **IN PROGRESS — WP1 hoàn thành quan sát thủ công 28/28 (6 nhãn ambiguous chờ xác minh chuyên môn); WP2 hoàn thành 39/39 cặp pHash; WP3–WP7 chưa triển khai**  
 **Phạm vi:** `CashewData_base` (Kaggle, 4 lớp) ↔ `CashewData_Split (7)` (5 lớp) — nghiên cứu chuyên sâu nguyên nhân suy giảm trên ảnh `real_`.  
 **Liên quan:** [Báo cáo IMPROVED001](./EXP-DENSENET121-SCRATCH-IMPROVED-001/ANALYSIS.md) · [Review protocol](./REVIEW_GUIDELINE.md).
 
@@ -93,7 +93,7 @@ BASE001 + IMPROVED001 (giữ nguyên benchmark đã chạy)
 
 **Đầu ra:** `protocol_lock.md`, `dataset_manifest.csv` (metadata, không chứa ảnh gốc trên GitHub).
 
-### WP1 — Điều tra 28 ảnh Real Test (P0)
+### WP1 — Điều tra 28 ảnh Real Test (P0) — MANUAL REVIEW COMPLETE; EXPERT LABEL REVIEW PENDING
 
 **Làm thế nào:**
 - Review **cả 9 ảnh sai và 19 ảnh đúng**. Reviewer kiểm nhãn **trước khi** xem dự đoán/confidence; reviewer thứ hai (nếu có) kiểm độc lập; bất đồng chuyển cho chuyên môn bệnh cây.
@@ -105,7 +105,9 @@ BASE001 + IMPROVED001 (giữ nguyên benchmark đã chạy)
 
 **Phải kết luận:** Bao nhiêu ảnh **được chuyên gia xác nhận nhãn đúng/sai/không chắc**; bao nhiêu ảnh có nền phức tạp nhưng đúng/sai; bao nhiêu ảnh mất khả năng quan sát lesion sau resize; xác định giả thuyết kiểm chứng tiếp. Không sửa dữ liệu Test đã khóa để báo điểm mới.
 
-**Đầu ra:** [Protocol review](./REVIEW_GUIDELINE.md), [mẫu CSV review ảnh](./templates/real_image_review.csv), `real_review_summary.md`; chú ý các lỗi Healthy→Leaf Miner, Red Rust→Anthracnose và Real→Not Cashew.
+**Kết quả cập nhật 13/10/2026:** đã review **28/28 ảnh**; **22 confirmed, 6 ambiguous** theo reviewer, trong đó **5/6 Red Rust** ambiguous; **6/6 Red Rust** có multiple symptoms. Nền `high` là 5/9 ảnh sai và 11/19 ảnh đúng theo ghép filename với IMPROVED001; không chứng minh tác động của background. [Báo cáo hoàn tất manual review WP1](./WP1_REAL_REVIEW_COMPLETE.md). **6 nhãn vẫn chờ xác minh chuyên môn**, không sửa Test hoặc tuning bằng Test.
+
+**Đầu ra:** [Báo cáo WP1 28/28](./WP1_REAL_REVIEW_COMPLETE.md), [protocol review](./REVIEW_GUIDELINE.md), [mẫu CSV](./templates/real_image_review.csv).
 
 ### WP2 — Review 39 cặp nghi gần trùng xuyên split (P0) — REVIEW COMPLETED
 
@@ -190,7 +192,7 @@ BASE001 + IMPROVED001 (giữ nguyên benchmark đã chạy)
 | WP | Ưu tiên | Đầu vào bắt buộc | Hoàn thành khi |
 |---|---|---|---|
 | WP0 | P0 | 2 source archive, metadata, split | Có manifest/checksum, protocol khóa |
-| WP1 | P0 | 28 ảnh Real + predictions | **28/28** được review; nhãn và mức bất định rõ |
+| WP1 | P0 | 28 ảnh Real + predictions | **ĐÃ REVIEW 28/28**; 6 nhãn ambiguous đang chờ xác minh chuyên gia |
 | WP2 | P0 | 39 pHash cross-split pairs | **COMPLETED (39/39 theo reviewer): 0 cặp trùng**, còn cần kiểm tra provenance nếu kết luận toàn dataset |
 | WP3 | P1 | WP0, WP2, Real Train/ảnh mới | Real Val độc lập, report counts/groups |
 | WP4 | P1 | WP3 | Có A0/A1/A2/B1, so sánh Real Val |
@@ -198,7 +200,7 @@ BASE001 + IMPROVED001 (giữ nguyên benchmark đã chạy)
 | WP6 | P2 | WP4/WP5 freeze, Holdout mới | Hai nhánh 4 lớp chấm cùng Holdout |
 | WP7 | P2 | WP0–WP6 | Có báo cáo kết luận kèm mức độ bằng chứng |
 
-**Phạm vi thực thi hiện tại:** WP2 đã review 39/39 cảnh báo pHash (0 cặp trùng theo người dùng). Chưa review chuyên môn đủ 28 ảnh Real Test, chưa tạo Real Val, chưa chạy các ablation trong tài liệu này.
+**Phạm vi thực thi hiện tại:** WP1 **manual review 28/28 completed** (6 nhãn ambiguous, expert review pending); WP2 **39/39 cặp pHash đã review, 0 trùng theo người dùng**. Chưa tạo Real Validation hoặc chạy ablation. Đọc [tổng kết WP1](./WP1_REAL_REVIEW_COMPLETE.md).
 
 ## 5. Rủi ro và biện pháp giảm thiểu
 
