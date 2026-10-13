@@ -36,3 +36,7 @@ Do không cặp nào thuộc nhóm `real_`, bước review này **chưa xác nh�
 - Không huấn luyện lại hay cập nhật Test metrics chỉ vì kết quả review này.
 
 [Kế hoạch tổng thể](./INVESTIGATION_PLAN.md) · [Báo cáo IMPROVED001](./EXP-DENSENET121-SCRATCH-IMPROVED-001/ANALYSIS.md).
+
+## Addendum — thay đổi dataset V8 sau WP2
+
+Người tạo dataset đã xóa `test/not_cashew_leaf/not_cashew_leaf_1514.JPG` do nghi trùng. Điều này **khác với nhãn review `False` trước đó** ở cặp pHash=0, vì vậy phải lưu cả hai mốc và chưa gọi là ảnh trùng đã được kiểm chứng độc lập. Dataset V8 còn **38** cảnh báo pHash cross-split, và **cả 38 đều nằm trong danh sách 39** của V7, không phát sinh cặp mới. Xem [IMPROVED002](./EXP-DENSENET121-SCRATCH-IMPROVED-002/ANALYSIS.md).

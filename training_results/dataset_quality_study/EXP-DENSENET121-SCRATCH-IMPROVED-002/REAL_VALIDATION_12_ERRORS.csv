@@ -1,0 +1,13 @@
+image,true_label,predicted_label,confidence,review_status
+real_anthracnose_036.jpg,anthracnose,red_rust,0.982219,pending
+real_anthracnose_021.jpg,anthracnose,leaf_miner,0.974035,pending
+real_anthracnose_006.jpg,anthracnose,leaf_miner,0.969682,pending
+real_anthracnose_014.jpg,anthracnose,leaf_miner,0.930526,pending
+real_red_rust_013.jpg,red_rust,anthracnose,0.902309,pending
+real_red_rust_001.jpg,red_rust,anthracnose,0.715019,pending
+real_leaf_miner_059.jpg,leaf_miner,anthracnose,0.707866,pending
+real_leaf_miner_001.jpg,leaf_miner,anthracnose,0.641897,pending
+real_leaf_miner_002.jpg,leaf_miner,anthracnose,0.564378,pending
+real_leaf_miner_089.jpg,leaf_miner,anthracnose,0.532195,pending
+real_leaf_miner_057.jpg,leaf_miner,anthracnose,0.507906,pending
+real_anthracnose_020.jpg,anthracnose,red_rust,0.469333,pending

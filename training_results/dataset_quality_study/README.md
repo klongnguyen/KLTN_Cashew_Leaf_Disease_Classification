@@ -13,7 +13,7 @@ Báo cáo IMPROVED001: [ANALYSIS.md](./EXP-DENSENET121-SCRATCH-IMPROVED-001/ANAL
 
 ## Kế hoạch điều tra tiếp theo
 
-**Kế hoạch điều tra tiếp theo (WP0–WP7):** [INVESTIGATION_PLAN.md](./INVESTIGATION_PLAN.md). Kèm [quy trình review ảnh](./REVIEW_GUIDELINE.md) và [mẫu ghi nhận ảnh Real](./templates/real_image_review.csv) / [nghi trùng](./templates/duplicate_pair_review.csv). **Trạng thái:** WP1 đã review thủ công 28/28 ảnh (6 nhãn ambiguous còn cần chuyên môn); WP2 đã review 39/39 cảnh báo pHash (0 cặp trùng theo người dùng). WP3–WP7 chưa triển khai.
+**Kế hoạch điều tra tiếp theo (WP0–WP7):** [INVESTIGATION_PLAN.md](./INVESTIGATION_PLAN.md). Kèm [quy trình review ảnh](./REVIEW_GUIDELINE.md) và [mẫu ghi nhận ảnh Real](./templates/real_image_review.csv) / [nghi trùng](./templates/duplicate_pair_review.csv). **Trạng thái:** WP1 đã review thủ công 28/28 ảnh (6 nhãn ambiguous còn cần chuyên môn); WP2 đã review 39/39 cảnh báo pHash (0 cặp trùng theo người dùng). WP3 đã tạo 35 Real Val và train IMPROVED002; WP4–WP7 chưa triển khai.
 
 ## Review nghi trùng — WP2
 
@@ -22,3 +22,7 @@ Báo cáo IMPROVED001: [ANALYSIS.md](./EXP-DENSENET121-SCRATCH-IMPROVED-001/ANAL
 ## WP1 — Đánh giá ảnh Real Test 28/28
 
 [Báo cáo hoàn thành quan sát WP1](./WP1_REAL_REVIEW_COMPLETE.md): 22 confirmed và 6 ambiguous theo reviewer, nổi bật 5/6 Red Rust ambiguous và 6/6 Red Rust multiple symptoms. Đây là đánh giá hậu nghiệm, **chưa chứng minh nguyên nhân**, cũng chưa thay thế xác minh nhãn chuyên môn.
+
+## WP3 — IMPROVED002 (35 Real Validation)
+
+[Đánh giá DenseNet121 Scratch trên dataset V8](./EXP-DENSENET121-SCRATCH-IMPROVED-002/ANALYSIS.md): **Real Val 23/35 (65,71%), Macro F1 69,12%; Test V8 625/686 (91,11%); Real Test 20/28 (71,43%)**. Kết quả chỉ 1 seed và Test đã được review hậu nghiệm; **không thay thế benchmark V05**.

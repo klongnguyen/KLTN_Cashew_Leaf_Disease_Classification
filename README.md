@@ -9,6 +9,8 @@ Báo cáo thực nghiệm 1 seed DenseNet121 Scratch riêng biệt nhằm đánh
 
 ➡️ [Kế hoạch điều tra nguyên nhân sai trên ảnh Real (WP0–WP7)](./training_results/dataset_quality_study/INVESTIGATION_PLAN.md)
 
+➡️ [Báo cáo WP3 — IMPROVED002 có 35 ảnh Real Validation](./training_results/dataset_quality_study/EXP-DENSENET121-SCRATCH-IMPROVED-002/ANALYSIS.md)
+
 ➡️ [Báo cáo dataset IMPROVED001](./training_results/dataset_quality_study/EXP-DENSENET121-SCRATCH-IMPROVED-001/ANALYSIS.md)
 
 ---

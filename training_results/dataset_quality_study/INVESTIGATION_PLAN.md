@@ -2,7 +2,7 @@
 
 **Mã kế hoạch:** `DATASET-INVESTIGATION-001`  
 **Ngày lập:** 13/10/2026  
-**Trạng thái:** **IN PROGRESS — WP1 hoàn thành quan sát thủ công 28/28 (6 nhãn ambiguous chờ xác minh chuyên môn); WP2 hoàn thành 39/39 cặp pHash; WP3–WP7 chưa triển khai**  
+**Trạng thái:** **IN PROGRESS — WP1 hoàn thành quan sát thủ công 28/28 (6 nhãn ambiguous chờ xác minh chuyên môn); WP2 hoàn thành 39/39 cặp pHash; WP3 đã chạy DenseNet121 IMPROVED002 có 35 Real Validation; WP4–WP7 chưa triển khai**  
 **Phạm vi:** `CashewData_base` (Kaggle, 4 lớp) ↔ `CashewData_Split (7)` (5 lớp) — nghiên cứu chuyên sâu nguyên nhân suy giảm trên ảnh `real_`.  
 **Liên quan:** [Báo cáo IMPROVED001](./EXP-DENSENET121-SCRATCH-IMPROVED-001/ANALYSIS.md) · [Review protocol](./REVIEW_GUIDELINE.md).
 
@@ -121,13 +121,15 @@ BASE001 + IMPROVED001 (giữ nguyên benchmark đã chạy)
 
 **Đầu ra:** [Biên bản kết quả WP2](./WP2_DUPLICATE_REVIEW_RESULTS.md) và [mẫu review bổ sung](./templates/duplicate_pair_review.csv).
 
-### WP3 — Tạo Real Validation độc lập (P1, sau WP1–WP2)
+### WP3 — Tạo Real Validation độc lập (P1, sau WP1–WP2) — IMPLEMENTED (GROUP AUDIT PENDING)
 
 **Làm thế nào:** Chỉ chọn từ **170 Real Train** hiện tại hoặc thu thêm ảnh mới **chưa ở Test**, group-aware theo lá/cây/session; giữ 28 Real Test và 687 Test không đổi. Phân tầng 4 lớp, ưu tiên bổ sung Healthy (Real Train 14), Red Rust (23), Anthracnose (44); báo thiếu mẫu nếu không thể có nhóm độc lập. Phiên bản dataset mới cần manifest/hash riêng.
 
 **Mục tiêu:** Có Validation đại diện domain thật để so checkpoint/preprocessing, vì Real Validation trong IMPROVED001 = **0**.
 
 **Phải kết luận:** Mỗi lớp có bao nhiêu ảnh và **bao nhiêu nhóm độc lập** ở Real Train/Real Val; phân bố điều kiện ánh sáng/nền; class imbalance còn mức nào. Chọn checkpoint bằng Val đã định trước, không dựa Test.
+
+**Cập nhật 13/10/2026:** V8 có 35 Real Validation (Anthracnose 9, Healthy 3, Leaf Miner 18, Red Rust 5); DenseNet121 Scratch seed42 đạt **Real Val 65,71%, Macro F1 69,12%**. 686 ảnh Test còn lại khớp V7; file Not Cashew bị loại có chủ đích. Độ độc lập theo leaf/tree/session vẫn cần xác minh. [Báo cáo IMPROVED002](./EXP-DENSENET121-SCRATCH-IMPROVED-002/ANALYSIS.md).
 
 **Đầu ra:** `real_val_manifest.csv`, `split_audit.json`, `dataset_vNext_changelog.md`.
 
@@ -194,13 +196,13 @@ BASE001 + IMPROVED001 (giữ nguyên benchmark đã chạy)
 | WP0 | P0 | 2 source archive, metadata, split | Có manifest/checksum, protocol khóa |
 | WP1 | P0 | 28 ảnh Real + predictions | **ĐÃ REVIEW 28/28**; 6 nhãn ambiguous đang chờ xác minh chuyên gia |
 | WP2 | P0 | 39 pHash cross-split pairs | **COMPLETED (39/39 theo reviewer): 0 cặp trùng**, còn cần kiểm tra provenance nếu kết luận toàn dataset |
-| WP3 | P1 | WP0, WP2, Real Train/ảnh mới | Real Val độc lập, report counts/groups |
+| WP3 | P1 | WP0, WP2, Real Train/ảnh mới | **35 Real Val / WP3 implemented**; group-level independence cần xác minh |
 | WP4 | P1 | WP3 | Có A0/A1/A2/B1, so sánh Real Val |
 | WP5 | P1–P2 | WP3, WP4 và ảnh bổ sung | Có collection log + mean±SD nhiều seed |
 | WP6 | P2 | WP4/WP5 freeze, Holdout mới | Hai nhánh 4 lớp chấm cùng Holdout |
 | WP7 | P2 | WP0–WP6 | Có báo cáo kết luận kèm mức độ bằng chứng |
 
-**Phạm vi thực thi hiện tại:** WP1 **manual review 28/28 completed** (6 nhãn ambiguous, expert review pending); WP2 **39/39 cặp pHash đã review, 0 trùng theo người dùng**. Chưa tạo Real Validation hoặc chạy ablation. Đọc [tổng kết WP1](./WP1_REAL_REVIEW_COMPLETE.md).
+**Phạm vi thực thi hiện tại:** WP1 **manual review 28/28 completed** (6 nhãn ambiguous, expert review pending); WP2 **39/39 cặp pHash đã review, 0 trùng theo người dùng**. Đã có Real Validation 35 ảnh, chưa chạy WP4 ablation. Đọc [tổng kết WP1](./WP1_REAL_REVIEW_COMPLETE.md).
 
 ## 5. Rủi ro và biện pháp giảm thiểu
 

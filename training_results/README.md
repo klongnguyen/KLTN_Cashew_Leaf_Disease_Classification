@@ -11,6 +11,8 @@ Báo cáo độc lập: [IMPROVED001 — DenseNet121 Scratch, 1 seed, 5 lớp](.
 
 ---
 
+Báo cáo WP3: [IMPROVED002 — Real Validation 35 ảnh, DenseNet121 Scratch](./dataset_quality_study/EXP-DENSENET121-SCRATCH-IMPROVED-002/ANALYSIS.md). Real Val **65,71% (23/35)**; Test V8 **91,11% (625/686)**. Đây là nhánh dataset quality, không nhập vào V05 benchmark.
+
 ## Current development dataset — Cashew_dataV05
 
 Ba scratch baseline mới nhất đã hoàn tất 5-seed Training + Validation:
