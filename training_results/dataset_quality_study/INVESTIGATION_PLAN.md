@@ -2,7 +2,7 @@
 
 **Mã kế hoạch:** `DATASET-INVESTIGATION-001`  
 **Ngày lập:** 13/10/2026  
-**Trạng thái:** **PLANNED — chưa thực hiện các thí nghiệm đề xuất**  
+**Trạng thái:** **IN PROGRESS — WP2 đã hoàn tất review 39/39 cặp pHash (0 trùng theo người dùng), các WP còn lại chưa hoàn tất**  
 **Phạm vi:** `CashewData_base` (Kaggle, 4 lớp) ↔ `CashewData_Split (7)` (5 lớp) — nghiên cứu chuyên sâu nguyên nhân suy giảm trên ảnh `real_`.  
 **Liên quan:** [Báo cáo IMPROVED001](./EXP-DENSENET121-SCRATCH-IMPROVED-001/ANALYSIS.md) · [Review protocol](./REVIEW_GUIDELINE.md).
 
@@ -107,7 +107,7 @@ BASE001 + IMPROVED001 (giữ nguyên benchmark đã chạy)
 
 **Đầu ra:** [Protocol review](./REVIEW_GUIDELINE.md), [mẫu CSV review ảnh](./templates/real_image_review.csv), `real_review_summary.md`; chú ý các lỗi Healthy→Leaf Miner, Red Rust→Anthracnose và Real→Not Cashew.
 
-### WP2 — Review 39 cặp nghi gần trùng xuyên split (P0)
+### WP2 — Review 39 cặp nghi gần trùng xuyên split (P0) — REVIEW COMPLETED
 
 **Làm thế nào:** Từ `near_duplicates_cross_split_review.csv`, hiển thị từng cặp side-by-side, kiểm SHA256, pHash, hình dạng lá, vân lá, vết bệnh, góc chụp, nền, EXIF/source nếu có. Đánh dấu `same_file_variant` / `same_leaf_or_session` / `different_subject` / `uncertain`; ưu tiên 15 cặp khác nhãn và 16 nhóm similarity liên-split (các tập này có thể chồng lên nhau, không cộng thành số cặp độc lập).
 
@@ -115,7 +115,9 @@ BASE001 + IMPROVED001 (giữ nguyên benchmark đã chạy)
 
 **Phải kết luận:** Tổng cặp đã kiểm, số xác nhận cùng lá/biến thể, số không trùng, số không chắc; các split bị ảnh hưởng. Nếu có leakage, tạo `dataset_vNext` và benchmark mới sau khi group split lại từ dữ liệu phát triển, giữ rõ lịch sử benchmark cũ.
 
-**Đầu ra:** [CSV review các cặp](./templates/duplicate_pair_review.csv) và `duplicate_audit_report.md`.
+**Kết quả WP2 cập nhật 13/10/2026:** 39/39 cặp pHash xuyên split được đánh dấu `Check duplicate=False` trong Excel do người dùng cung cấp; 0 cặp xác nhận trùng. Phân bố: 13 Train–Val, 20 Train–Test, 6 Val–Test. Không cặp nào có ảnh `real_`; không thể kết luận không có leakage ở cấp lá/cây trên toàn dataset. [Biên bản review WP2](./WP2_DUPLICATE_REVIEW_RESULTS.md).
+
+**Đầu ra:** [Biên bản kết quả WP2](./WP2_DUPLICATE_REVIEW_RESULTS.md) và [mẫu review bổ sung](./templates/duplicate_pair_review.csv).
 
 ### WP3 — Tạo Real Validation độc lập (P1, sau WP1–WP2)
 
@@ -189,14 +191,14 @@ BASE001 + IMPROVED001 (giữ nguyên benchmark đã chạy)
 |---|---|---|---|
 | WP0 | P0 | 2 source archive, metadata, split | Có manifest/checksum, protocol khóa |
 | WP1 | P0 | 28 ảnh Real + predictions | **28/28** được review; nhãn và mức bất định rõ |
-| WP2 | P0 | 39 pHash cross-split pairs | **39/39** cặp đã được xác minh/phân loại |
+| WP2 | P0 | 39 pHash cross-split pairs | **COMPLETED (39/39 theo reviewer): 0 cặp trùng**, còn cần kiểm tra provenance nếu kết luận toàn dataset |
 | WP3 | P1 | WP0, WP2, Real Train/ảnh mới | Real Val độc lập, report counts/groups |
 | WP4 | P1 | WP3 | Có A0/A1/A2/B1, so sánh Real Val |
 | WP5 | P1–P2 | WP3, WP4 và ảnh bổ sung | Có collection log + mean±SD nhiều seed |
 | WP6 | P2 | WP4/WP5 freeze, Holdout mới | Hai nhánh 4 lớp chấm cùng Holdout |
 | WP7 | P2 | WP0–WP6 | Có báo cáo kết luận kèm mức độ bằng chứng |
 
-**Phạm vi thực thi hiện tại:** mới **lập kế hoạch**; chưa review chuyên môn 28 ảnh, chưa xác minh 39 cặp, chưa tạo Real Val và chưa chạy các ablation trong tài liệu này.
+**Phạm vi thực thi hiện tại:** WP2 đã review 39/39 cảnh báo pHash (0 cặp trùng theo người dùng). Chưa review chuyên môn đủ 28 ảnh Real Test, chưa tạo Real Val, chưa chạy các ablation trong tài liệu này.
 
 ## 5. Rủi ro và biện pháp giảm thiểu
 

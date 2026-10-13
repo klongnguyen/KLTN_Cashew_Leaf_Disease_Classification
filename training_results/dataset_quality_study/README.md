@@ -13,4 +13,8 @@ Báo cáo IMPROVED001: [ANALYSIS.md](./EXP-DENSENET121-SCRATCH-IMPROVED-001/ANAL
 
 ## Kế hoạch điều tra tiếp theo
 
-**Kế hoạch điều tra tiếp theo (WP0–WP7):** [INVESTIGATION_PLAN.md](./INVESTIGATION_PLAN.md). Kèm [quy trình review ảnh](./REVIEW_GUIDELINE.md) và [mẫu ghi nhận ảnh Real](./templates/real_image_review.csv) / [nghi trùng](./templates/duplicate_pair_review.csv). **Trạng thái: Planned, chưa chạy các bước xác minh.**
+**Kế hoạch điều tra tiếp theo (WP0–WP7):** [INVESTIGATION_PLAN.md](./INVESTIGATION_PLAN.md). Kèm [quy trình review ảnh](./REVIEW_GUIDELINE.md) và [mẫu ghi nhận ảnh Real](./templates/real_image_review.csv) / [nghi trùng](./templates/duplicate_pair_review.csv). **Trạng thái: WP2 hoàn tất review 39/39 cảnh báo pHash (0 trùng theo người dùng); các giai đoạn khác vẫn đang chờ.**
+
+## Review nghi trùng — WP2
+
+[Biên bản WP2](./WP2_DUPLICATE_REVIEW_RESULTS.md): cả 39 cặp được đánh dấu không trùng, gồm 13 Train–Val, 20 Train–Test và 6 Val–Test. Không có cặp nào liên quan `real_`; không suy ra toàn bộ dataset không thể có leakage.

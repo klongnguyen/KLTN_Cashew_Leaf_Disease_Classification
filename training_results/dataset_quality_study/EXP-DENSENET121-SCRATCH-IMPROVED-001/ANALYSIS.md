@@ -12,6 +12,16 @@ Huấn luyện **DenseNet121 từ đầu** (`weights=None`, 1 seed) trên 5 lớ
 
 Dataset cải tiến **không còn nhóm file trùng byte SHA256/xung đột nhãn trực tiếp** mà phương pháp audit phát hiện ở BASE001. Dẫu vậy vẫn còn **39 cặp nghi gần trùng pHash xuyên split**, và **Validation không có ảnh `real_`**, làm yếu khả năng chọn mô hình phù hợp với ảnh thực địa. Kết quả chưa chứng minh dataset hiện tại tốt hơn bản gốc: hai lần train có khác số lớp, số ảnh và tập Test.
 
+## Cập nhật sau review thủ công WP2 — 13/10/2026
+
+File Excel `near_duplicates_cross_split_review.xlsx` do người dùng gửi ghi nhận **39/39 cặp nghi gần trùng xuyên split là `Check duplicate=False`** (13 Train–Val, 20 Train–Test, 6 Val–Test). Cặp pHash distance 0 cũng được đánh dấu không trùng. **Đây là kết quả reviewer cung cấp, không phải trợ lý kiểm tra lại ảnh nguồn.**
+
+Vì vậy 39 cảnh báo này không còn là các cặp chưa được review. Tuy nhiên, cả 39 cặp đều không chứa ảnh `real_`, và pHash không thể bảo đảm phát hiện ảnh cùng lá chụp nhiều góc. Kết luận chỉ giới hạn ở 39 cặp, **không chứng minh toàn bộ split không có data leakage**.
+
+[Xem biên bản đầy đủ WP2](../WP2_DUPLICATE_REVIEW_RESULTS.md).
+
+---
+
 ## 1. Mục tiêu, câu hỏi đánh giá
 
 1. Dataset cải tiến có giảm các vấn đề về trùng ảnh, xung đột nhãn, ảnh nghi chất lượng thấp so với Kaggle base không?

@@ -16,10 +16,14 @@
 | Real Test Accuracy | **67,86% (19/28)** |
 | Non-real Test Accuracy | **94,08% (620/659)** |
 | SHA256 trùng byte | **0 nhóm** |
-| pHash nghi gần trùng xuyên split | **39 cặp — chưa xác nhận leakage** |
+| pHash nghi gần trùng xuyên split | **39 cặp, 0 trùng theo review thủ công WP2** |
 
 **Lưu trữ:** Mô hình `.keras`, FULL ZIP và file dữ liệu ảnh không commit lên GitHub. Dữ liệu nguồn được định danh bằng SHA256 trong báo cáo.
 
 ## Kế hoạch xác minh nguyên nhân
 
 Xem [kế hoạch điều tra WP0–WP7](../INVESTIGATION_PLAN.md) và [quy trình review ảnh Real/near-duplicate](../REVIEW_GUIDELINE.md). Chưa có kết quả ablation; các lý do background/resize hiện là giả thuyết.
+
+### Review WP2
+
+[39 cặp nghi gần trùng đã được người dùng đánh dấu không trùng](../WP2_DUPLICATE_REVIEW_RESULTS.md); kết quả không loại trừ khả năng leakage ở cấp lá/cây/phiên chụp của ảnh thực địa.
