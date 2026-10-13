@@ -10,3 +10,7 @@ Nhánh nghiên cứu độc lập nhằm kiểm tra dữ liệu Kaggle gốc và
 **Không so sánh trực tiếp hai Accuracy:** khác số lớp, Test, phân phối ảnh. Mục tiêu tiếp theo: xác thực nguồn/split và cùng Real Holdout 4 lớp, độc lập với cả hai tập Train/Val.
 
 Báo cáo IMPROVED001: [ANALYSIS.md](./EXP-DENSENET121-SCRATCH-IMPROVED-001/ANALYSIS.md).
+
+## Kế hoạch điều tra tiếp theo
+
+**Kế hoạch điều tra tiếp theo (WP0–WP7):** [INVESTIGATION_PLAN.md](./INVESTIGATION_PLAN.md). Kèm [quy trình review ảnh](./REVIEW_GUIDELINE.md) và [mẫu ghi nhận ảnh Real](./templates/real_image_review.csv) / [nghi trùng](./templates/duplicate_pair_review.csv). **Trạng thái: Planned, chưa chạy các bước xác minh.**

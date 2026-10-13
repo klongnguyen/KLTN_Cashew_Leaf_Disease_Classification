@@ -5,6 +5,8 @@ Thư mục này quản lý kết quả huấn luyện theo **phiên bản datase
 
 ## Dataset quality audit — kiểm tra Kaggle base / Split (7)
 
+[Kế hoạch kiểm chứng nguyên nhân: Real review → leakage → Real Val → ablation → Holdout](./dataset_quality_study/INVESTIGATION_PLAN.md)
+
 Báo cáo độc lập: [IMPROVED001 — DenseNet121 Scratch, 1 seed, 5 lớp](./dataset_quality_study/EXP-DENSENET121-SCRATCH-IMPROVED-001/ANALYSIS.md). Dataset 6.907 ảnh (khác V05 6.911 ảnh); Real Test 67,86% (19/28), Non-real Test 94,08% (620/659). Đã phát hiện **39 cặp pHash nghi gần trùng khác split**, chưa được xác nhận bằng thủ công. **Không đưa vào benchmark chính thức hoặc so trực tiếp với BASE001 (4 lớp).**
 
 ---

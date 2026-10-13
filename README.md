@@ -7,6 +7,8 @@ Khóa luận xây dựng hệ thống thị giác máy tính cho **phân loại 
 
 Báo cáo thực nghiệm 1 seed DenseNet121 Scratch riêng biệt nhằm đánh giá cải thiện dữ liệu và generalization ảnh thực địa: **IMPROVED001 Test Accuracy 93,01%; Real Test 67,86% (19/28); phát hiện 39 cặp nghi gần trùng pHash xuyên split**. Không nhập kết quả này vào benchmark V05 vì ZIP có 6.907 ảnh và giao thức thí nghiệm khác.
 
+➡️ [Kế hoạch điều tra nguyên nhân sai trên ảnh Real (WP0–WP7)](./training_results/dataset_quality_study/INVESTIGATION_PLAN.md)
+
 ➡️ [Báo cáo dataset IMPROVED001](./training_results/dataset_quality_study/EXP-DENSENET121-SCRATCH-IMPROVED-001/ANALYSIS.md)
 
 ---

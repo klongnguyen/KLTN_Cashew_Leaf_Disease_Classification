@@ -19,3 +19,7 @@
 | pHash nghi gần trùng xuyên split | **39 cặp — chưa xác nhận leakage** |
 
 **Lưu trữ:** Mô hình `.keras`, FULL ZIP và file dữ liệu ảnh không commit lên GitHub. Dữ liệu nguồn được định danh bằng SHA256 trong báo cáo.
+
+## Kế hoạch xác minh nguyên nhân
+
+Xem [kế hoạch điều tra WP0–WP7](../INVESTIGATION_PLAN.md) và [quy trình review ảnh Real/near-duplicate](../REVIEW_GUIDELINE.md). Chưa có kết quả ablation; các lý do background/resize hiện là giả thuyết.
