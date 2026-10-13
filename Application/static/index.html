@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chuẩn Đoán Bệnh Lá Cây Điều</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+  <!-- Header gọn gàng -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-logo">
+          <i class="fa-solid fa-leaf"></i>
+        </div>
+        <div class="brand-info">
+          <h1 class="brand-title">Chuẩn Đoán Bệnh Lá Cây Điều</h1>
+          <p class="brand-subtitle">Hệ thống nhận diện và đánh giá bệnh trên lá điều</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-layout">
+    <div class="app-grid">
+      
+      <!-- ================= LEFT COLUMN: DIAGNOSIS RESULTS ================= -->
+      <section class="result-column" id="diagnosis-result-column">
+        
+        <div class="panel-card main-result-panel">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <span class="panel-icon"><i class="fa-solid fa-microscope"></i></span>
+              <h2 class="panel-title">Kết Quả Chuẩn Đoán</h2>
+            </div>
+            <div class="panel-status-tag" id="panel-status-tag">
+              <span class="status-dot-sm" id="status-dot-indicator"></span>
+              <span id="status-text">Chờ tải ảnh</span>
+            </div>
+          </div>
+
+          <!-- Empty State -->
+          <div class="empty-state-view" id="empty-state-view">
+            <i class="fa-solid fa-cloud-arrow-up empty-icon"></i>
+            <h3 class="empty-title">Chưa Có Ảnh Chuẩn Đoán</h3>
+            <p class="empty-text">Vui lòng chọn hoặc kéo thả ảnh lá điều vào khung bên phải để xem kết quả.</p>
+          </div>
+
+          <!-- Active Result View -->
+          <div class="active-result-view hidden" id="active-result-view">
+            
+            <div class="diagnosis-top-grid">
+              
+              <!-- 1. Uploaded Image Display -->
+              <div class="image-preview-card">
+                <div class="sub-header">
+                  <span class="sub-title"><i class="fa-solid fa-image"></i> Ảnh đã tải lên</span>
+                  <span class="meta-tag" id="image-dim-badge">224 x 224</span>
+                </div>
+                
+                <div class="preview-img-wrapper" id="preview-img-wrapper">
+                  <img id="diagnosis-preview-img" src="" alt="Hình ảnh lá điều">
+                  <div class="img-overlay-info" id="img-overlay-info">
+                    <span id="img-file-name">image.jpg</span>
+                    <span id="img-file-size">1.2 MB</span>
+                  </div>
+                </div>
+
+                <div class="preview-footer-actions">
+                  <button type="button" class="btn-ghost-sm" id="btn-zoom-image">
+                    <i class="fa-solid fa-magnifying-glass-plus"></i> Xem ảnh lớn
+                  </button>
+                  <button type="button" class="btn-ghost-sm" id="btn-reupload-trigger">
+                    <i class="fa-solid fa-arrow-rotate-right"></i> Chọn ảnh khác
+                  </button>
+                </div>
+              </div>
+
+              <!-- 2. Primary Conclusion (Nhãn cao nhất đặt trên đầu) -->
+              <div class="conclusion-card" id="conclusion-card">
+                <div class="conclusion-eyebrow">
+                  <span class="badge-conclusion-tag">
+                    <i class="fa-solid fa-check"></i> KẾT LUẬN CAO NHẤT
+                  </span>
+                </div>
+
+                <div class="conclusion-main-body">
+                  <div class="disease-icon-box" id="disease-icon-box">
+                    <i class="fa-solid fa-biohazard" id="conclusion-icon"></i>
+                  </div>
+                  <div class="conclusion-text-wrap">
+                    <h3 class="conclusion-disease-name" id="conclusion-disease-name">Bệnh Thán Thư</h3>
+                    <p class="conclusion-latin" id="conclusion-latin">Colletotrichum gloeosporioides</p>
+                  </div>
+                </div>
+
+                <!-- Highlighted Confidence Box -->
+                <div class="confidence-summary-box">
+                  <div class="confidence-label-row">
+                    <span class="conf-title">Độ tin cậy:</span>
+                    <span class="conf-percent-big" id="conclusion-confidence-value">99.86%</span>
+                  </div>
+                  <div class="progress-bar-track">
+                    <div class="progress-bar-fill top-score-fill" id="conclusion-progress-fill" style="width: 99.86%;"></div>
+                  </div>
+                </div>
+
+                <!-- Advisory Excerpt -->
+                <div class="advisory-box">
+                  <div class="advisory-title">
+                    <i class="fa-solid fa-notes-medical"></i> Khuyến nghị xử lý:
+                  </div>
+                  <p class="advisory-text" id="conclusion-advisory-text"></p>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- ================= 3. ALL LABELS CONFIDENCE ================= -->
+            <div class="confidence-breakdown-section">
+              <div class="breakdown-header">
+                <div class="breakdown-title-wrap">
+                  <span class="sort-icon-box"><i class="fa-solid fa-arrow-down-wide-short"></i></span>
+                  <h4 class="breakdown-title">Bảng Độ Tin Cậy Các Loại Bệnh</h4>
+                </div>
+              </div>
+
+              <!-- List sorted from HIGHEST to LOWEST -->
+              <div class="confidence-list" id="confidence-list"></div>
+            </div>
+
+            <!-- Detailed Disease Guide Accordion -->
+            <div class="disease-guide-section" id="disease-guide-section">
+              <div class="guide-card-header">
+                <i class="fa-solid fa-book-open"></i>
+                <span>Chi tiết triệu chứng &amp; biện pháp phòng trừ</span>
+              </div>
+              <div class="guide-content">
+                <div class="guide-item">
+                  <strong>Dấu hiệu nhận diện:</strong>
+                  <p id="guide-symptoms-text"></p>
+                </div>
+                <div class="guide-item">
+                  <strong>Biện pháp can thiệp:</strong>
+                  <ul class="guide-list" id="guide-management-list"></ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Loading Overlay -->
+          <div class="analyzing-overlay hidden" id="analyzing-overlay">
+            <div class="spinner-core">
+              <div class="radar-spin"></div>
+              <i class="fa-solid fa-leaf analyze-leaf-icon"></i>
+            </div>
+            <h4 class="analyzing-title">Đang Phân Tích Hình Ảnh...</h4>
+            <div class="analyzing-step-bar">
+              <div class="step-indeterminate"></div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ================= RIGHT COLUMN: UPLOAD ================= -->
+      <section class="upload-column" id="upload-column">
+        
+        <!-- Upload Card -->
+        <div class="panel-card upload-panel">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <span class="panel-icon"><i class="fa-solid fa-upload"></i></span>
+              <h2 class="panel-title">Tải Hình Ảnh Lên</h2>
+            </div>
+          </div>
+
+          <!-- Drag and Drop Zone -->
+          <div class="dropzone-box" id="dropzone-box">
+            <input 
+              type="file" 
+              id="file-input" 
+              accept="image/png,image/jpeg,image/jpg,image/webp" 
+              class="hidden-file-input"
+            >
+
+            <div class="dropzone-inner">
+              <div class="upload-icon-pulse">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+              </div>
+              <h3 class="dropzone-title">Kéo &amp; thả tệp hình ảnh vào đây</h3>
+              <p class="dropzone-desc">hoặc bấm vào ô để duyệt tệp từ máy tính</p>
+              
+              <div class="format-chips">
+                <span class="chip">PNG</span>
+                <span class="chip">JPG</span>
+                <span class="chip">JPEG</span>
+                <span class="chip">WEBP</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Selected File Status Tray -->
+          <div class="file-status-tray hidden" id="file-status-tray">
+            <div class="file-tray-left">
+              <div class="file-icon-thumb" id="tray-thumb-container">
+                <img id="tray-thumb-img" src="" alt="Thumbnail">
+              </div>
+              <div class="file-tray-meta">
+                <div class="file-name-line" id="tray-file-name">anh_la_dieu.jpg</div>
+                <div class="file-size-line">
+                  <span id="tray-file-size">1.4 MB</span> &bull; 
+                  <span class="valid-tag">Hợp lệ</span>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn-tray-remove" id="btn-tray-remove" title="Hủy chọn">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <!-- Upload Actions -->
+          <div class="upload-actions">
+            <button type="button" class="btn-primary-action" id="btn-predict" disabled>
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span>Chuẩn Đoán Ngay</span>
+            </button>
+            <button type="button" class="btn-secondary-action" id="btn-clear-selection">
+              <i class="fa-solid fa-rotate-left"></i>
+              <span>Làm mới</span>
+            </button>
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Image Lightbox Modal -->
+  <div class="modal-backdrop hidden" id="image-modal">
+    <div class="modal-box">
+      <div class="modal-top">
+        <h4 class="modal-title" id="modal-img-title">Hình Ảnh Chuẩn Đoán</h4>
+        <button type="button" class="btn-close-modal" id="btn-close-modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img id="modal-full-img" src="" alt="Chi tiết ảnh">
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-stack" id="toast-stack"></div>
+
+  <!-- Footer gọn gàng -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <p>Hệ Thống Chuẩn Đoán Bệnh Lá Cây Điều &bull; 2026</p>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript Application Logic -->
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
