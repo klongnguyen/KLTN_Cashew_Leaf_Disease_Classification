@@ -1,0 +1,297 @@
+relative_path,reason,value
+test/anthracnose/anthracnose_376.jpg,blur_laplacian_var: low,30.120391845703125
+test/anthracnose/anthracnose_435.jpg,blur_laplacian_var: low,37.462249755859375
+test/anthracnose/anthracnose_351.jpg,blur_laplacian_var: low,41.76705932617188
+test/anthracnose/anthracnose_393.jpg,brightness: low,0.408094584941864
+test/anthracnose/anthracnose_331.jpg,brightness: low,0.4140953421592712
+test/anthracnose/anthracnose_417.jpg,brightness: low,0.4205328226089477
+test/anthracnose/anthracnose_404.jpg,brightness: high,0.7036060690879822
+test/anthracnose/anthracnose_427.jpg,brightness: high,0.6891968250274658
+test/anthracnose/anthracnose_436.jpg,brightness: high,0.6759722828865051
+test/anthracnose/real_anthracnose_049.jpg,dark_fraction: high,0.000213623046875
+test/anthracnose/real_anthracnose_048.jpg,dark_fraction: high,7.62939453125e-05
+test/anthracnose/real_anthracnose_050.jpg,dark_fraction: high,7.62939453125e-05
+test/anthracnose/anthracnose_401.jpg,bright_fraction: high,0.142486572265625
+test/anthracnose/anthracnose_337.jpg,random control,
+test/anthracnose/anthracnose_374.jpg,random control,
+test/healthy/healthy_922.jpg,blur_laplacian_var: low,17.952178955078125
+test/healthy/healthy_872.jpg,blur_laplacian_var: low,29.506591796875
+test/healthy/healthy_897.jpg,blur_laplacian_var: low,37.04962158203125
+test/healthy/healthy_856.jpg,brightness: low,0.3277935087680816
+test/healthy/healthy_857.jpg,brightness: low,0.3391256332397461
+test/healthy/healthy_855.jpg,brightness: low,0.3684823513031006
+test/healthy/healthy_900.jpg,brightness: high,0.6059080362319946
+test/healthy/healthy_844.jpg,brightness: high,0.6018036007881165
+test/healthy/healthy_852.jpg,brightness: high,0.6017975211143494
+test/healthy/real_healthy_019.jpg,dark_fraction: high,0.0003662109375
+test/healthy/real_healthy_016.jpg,dark_fraction: high,0.0002899169921875
+test/healthy/real_healthy_017.jpg,dark_fraction: high,4.57763671875e-05
+test/healthy/healthy_860.jpg,bright_fraction: high,0.1723480224609375
+test/healthy/healthy_835.jpg,bright_fraction: high,0.081787109375
+test/healthy/healthy_823.jpg,bright_fraction: high,0.0569610595703125
+test/healthy/healthy_865.jpg,random control,
+test/healthy/healthy_901.jpg,random control,
+test/healthy/healthy_808.jpg,random control,
+test/leaf_miner/leaf_miner_889.jpg,blur_laplacian_var: low,39.874420166015625
+test/leaf_miner/leaf_miner_863.jpg,blur_laplacian_var: low,47.630218505859375
+test/leaf_miner/leaf_miner_852.jpg,blur_laplacian_var: low,50.585723876953125
+test/leaf_miner/leaf_miner_894.jpg,brightness: low,0.4032848179340362
+test/leaf_miner/leaf_miner_878.jpg,brightness: low,0.424395740032196
+test/leaf_miner/leaf_miner_871.jpg,brightness: low,0.42626953125
+test/leaf_miner/leaf_miner_917.jpg,brightness: high,0.7601003646850586
+test/leaf_miner/leaf_miner_950.jpg,brightness: high,0.7392850518226624
+test/leaf_miner/leaf_miner_940.jpg,brightness: high,0.7217679023742676
+test/leaf_miner/real_leaf_miner_095.jpg,dark_fraction: high,0.00372314453125
+test/leaf_miner/real_leaf_miner_092.jpg,dark_fraction: high,0.002288818359375
+test/leaf_miner/real_leaf_miner_094.jpg,dark_fraction: high,0.000701904296875
+test/leaf_miner/leaf_miner_947.jpg,bright_fraction: high,0.354339599609375
+test/leaf_miner/leaf_miner_887.jpg,bright_fraction: high,0.2622528076171875
+test/leaf_miner/leaf_miner_886.jpg,bright_fraction: high,0.2453765869140625
+test/leaf_miner/leaf_miner_913.jpg,random control,
+test/leaf_miner/leaf_miner_849.jpg,random control,
+test/not_cashew_leaf/not_cashew_leaf_1511.jpg,blur_laplacian_var: low,20.505615234375
+test/not_cashew_leaf/not_cashew_leaf_1508.jpg,blur_laplacian_var: low,50.381103515625
+test/not_cashew_leaf/not_cashew_leaf_1420.JPG,blur_laplacian_var: low,151.63272094726562
+test/not_cashew_leaf/not_cashew_leaf_1521.JPG,brightness: low,0.2612709105014801
+test/not_cashew_leaf/not_cashew_leaf_1509.jpg,brightness: low,0.2955164313316345
+test/not_cashew_leaf/not_cashew_leaf_1519.JPG,brightness: low,0.3360278606414795
+test/not_cashew_leaf/not_cashew_leaf_1512.jpg,brightness: high,0.6042113304138184
+test/not_cashew_leaf/not_cashew_leaf_1526.JPG,brightness: high,0.6027907729148865
+test/not_cashew_leaf/not_cashew_leaf_1418.jpg,brightness: high,0.6018053293228149
+test/not_cashew_leaf/not_cashew_leaf_1459.jpg,dark_fraction: high,0.0630645751953125
+test/not_cashew_leaf/not_cashew_leaf_1478.jpg,dark_fraction: high,0.052703857421875
+test/not_cashew_leaf/not_cashew_leaf_1510.jpg,bright_fraction: high,0.126739501953125
+test/not_cashew_leaf/not_cashew_leaf_1542.jpg,random control,
+test/not_cashew_leaf/not_cashew_leaf_1461.jpg,random control,
+test/not_cashew_leaf/not_cashew_leaf_1549.jpg,random control,
+test/red_rust/red_rust_1120.jpg,blur_laplacian_var: low,66.7789306640625
+test/red_rust/red_rust_1195.jpg,blur_laplacian_var: low,76.94500732421875
+test/red_rust/red_rust_1104.jpg,blur_laplacian_var: low,99.0870361328125
+test/red_rust/red_rust_1171.jpg,brightness: low,0.4077490568161011
+test/red_rust/red_rust_1233.jpg,brightness: low,0.4115872383117676
+test/red_rust/red_rust_1141.jpg,brightness: low,0.420856237411499
+test/red_rust/red_rust_1163.jpg,brightness: high,0.6710155010223389
+test/red_rust/red_rust_1244.jpg,brightness: high,0.6585999131202698
+test/red_rust/red_rust_1199.jpg,brightness: high,0.6387308239936829
+test/red_rust/real_red_rust_025.jpg,dark_fraction: high,0.0005950927734375
+test/red_rust/real_red_rust_028.jpg,dark_fraction: high,0.00054931640625
+test/red_rust/real_red_rust_029.jpg,dark_fraction: high,0.000274658203125
+test/red_rust/red_rust_1168.jpg,bright_fraction: high,0.348663330078125
+test/red_rust/red_rust_1216.jpg,random control,
+test/red_rust/red_rust_1132.jpg,random control,
+test/red_rust/red_rust_1222.jpg,random control,
+train/anthracnose/anthracnose_1483.jpg,blur_laplacian_var: low,16.3643798828125
+train/anthracnose/anthracnose_659.jpg,blur_laplacian_var: low,18.94580078125
+train/anthracnose/anthracnose_1436.jpg,blur_laplacian_var: low,22.981964111328125
+train/anthracnose/anthracnose_1202.jpg,brightness: low,0.2750279307365417
+train/anthracnose/anthracnose_1168.jpg,brightness: low,0.3030141294002533
+train/anthracnose/anthracnose_672.jpg,brightness: low,0.33408322930336
+train/anthracnose/anthracnose_782.jpg,brightness: high,0.7484577298164368
+train/anthracnose/anthracnose_990.jpg,brightness: high,0.7163779139518738
+train/anthracnose/anthracnose_922.jpg,brightness: high,0.7122527360916138
+train/anthracnose/anthracnose_718.jpg,dark_fraction: high,0.078948974609375
+train/anthracnose/anthracnose_713.jpg,dark_fraction: high,0.0615997314453125
+train/anthracnose/anthracnose_724.jpg,dark_fraction: high,0.0482330322265625
+train/anthracnose/anthracnose_662.jpg,bright_fraction: high,0.2847900390625
+train/anthracnose/anthracnose_481.jpg,bright_fraction: high,0.1922607421875
+train/anthracnose/anthracnose_678.jpg,bright_fraction: high,0.16351318359375
+train/anthracnose/anthracnose_635.jpg,random control,
+train/anthracnose/real_anthracnose_030.jpg,random control,
+train/anthracnose/anthracnose_1210.jpg,random control,
+train/healthy/healthy_16.jpg,blur_laplacian_var: low,16.062957763671875
+train/healthy/healthy_6.jpg,blur_laplacian_var: low,21.499053955078125
+train/healthy/healthy_129.jpg,blur_laplacian_var: low,23.181549072265625
+train/healthy/healthy_193.jpg,brightness: low,0.3154370486736297
+train/healthy/healthy_195.jpg,brightness: low,0.3355797231197357
+train/healthy/healthy_245.jpg,brightness: low,0.3467631042003631
+train/healthy/healthy_312.jpg,brightness: high,0.7087729573249817
+train/healthy/healthy_303.jpg,brightness: high,0.6699561476707458
+train/healthy/healthy_279.jpg,brightness: high,0.6608225107192993
+train/healthy/healthy_115.jpg,dark_fraction: high,0.0208740234375
+train/healthy/healthy_168.jpg,dark_fraction: high,0.0125274658203125
+train/healthy/healthy_165.jpg,dark_fraction: high,0.0080413818359375
+train/healthy/healthy_687.jpg,bright_fraction: high,0.232513427734375
+train/healthy/healthy_293.jpg,bright_fraction: high,0.1990966796875
+train/healthy/healthy_453.jpg,bright_fraction: high,0.178497314453125
+train/healthy/healthy_733.jpg,random control,
+train/healthy/healthy_364.jpg,random control,
+train/healthy/healthy_301.jpg,random control,
+train/leaf_miner/leaf_miner_683.jpg,blur_laplacian_var: low,19.03045654296875
+train/leaf_miner/leaf_miner_704.jpg,blur_laplacian_var: low,31.311920166015625
+train/leaf_miner/leaf_miner_132.jpg,blur_laplacian_var: low,32.735626220703125
+train/leaf_miner/leaf_miner_661.jpg,brightness: low,0.3282604813575744
+train/leaf_miner/leaf_miner_85.jpg,brightness: low,0.3543399572372436
+train/leaf_miner/leaf_miner_599.jpg,brightness: low,0.3588551878929138
+train/leaf_miner/leaf_miner_667.jpg,brightness: high,0.858905017375946
+train/leaf_miner/leaf_miner_518.jpg,brightness: high,0.8405683040618896
+train/leaf_miner/leaf_miner_668.jpg,brightness: high,0.8109796643257141
+train/leaf_miner/real_leaf_miner_014.jpg,dark_fraction: high,0.0186309814453125
+train/leaf_miner/real_leaf_miner_027.jpg,dark_fraction: high,0.0158233642578125
+train/leaf_miner/real_leaf_miner_013.jpg,dark_fraction: high,0.0156707763671875
+train/leaf_miner/leaf_miner_752.jpg,bright_fraction: high,0.4695892333984375
+train/leaf_miner/leaf_miner_75.jpg,random control,
+train/leaf_miner/leaf_miner_502.jpg,random control,
+train/leaf_miner/leaf_miner_58.jpg,random control,
+train/not_cashew_leaf/not_cashew_leaf_855.jpg,blur_laplacian_var: low,27.862060546875
+train/not_cashew_leaf/not_cashew_leaf_258.jpg,blur_laplacian_var: low,28.154296875
+train/not_cashew_leaf/not_cashew_leaf_939.jpg,blur_laplacian_var: low,28.52215576171875
+train/not_cashew_leaf/not_cashew_leaf_1038.jpg,brightness: low,0.1455319821834564
+train/not_cashew_leaf/not_cashew_leaf_1041.jpg,brightness: low,0.1628321558237075
+train/not_cashew_leaf/not_cashew_leaf_1063.jpg,brightness: low,0.1957223266363144
+train/not_cashew_leaf/not_cashew_leaf_1080.jpg,brightness: high,0.9373841881752014
+train/not_cashew_leaf/not_cashew_leaf_1090.jpg,brightness: high,0.9314705729484558
+train/not_cashew_leaf/not_cashew_leaf_685.jpg,brightness: high,0.859733521938324
+train/not_cashew_leaf/not_cashew_leaf_255.jpg,dark_fraction: high,0.35101318359375
+train/not_cashew_leaf/not_cashew_leaf_1101.jpg,bright_fraction: high,0.5540313720703125
+train/not_cashew_leaf/not_cashew_leaf_302.jpg,random control,
+train/not_cashew_leaf/not_cashew_leaf_628.jpg,random control,
+train/not_cashew_leaf/not_cashew_leaf_38.jpg,random control,
+train/red_rust/red_rust_1056.jpg,blur_laplacian_var: low,60.491729736328125
+train/red_rust/red_rust_473.jpg,blur_laplacian_var: low,69.80984497070312
+train/red_rust/red_rust_1059.jpg,blur_laplacian_var: low,72.07101440429688
+train/red_rust/red_rust_931.jpg,brightness: low,0.2829999029636383
+train/red_rust/red_rust_645.jpg,brightness: low,0.3117874562740326
+train/red_rust/red_rust_524.jpg,brightness: low,0.3147964775562286
+train/red_rust/red_rust_1023.jpg,brightness: high,0.7726855278015137
+train/red_rust/red_rust_255.jpg,brightness: high,0.7553620934486389
+train/red_rust/red_rust_107.jpg,brightness: high,0.7505795359611511
+train/red_rust/red_rust_393.jpg,dark_fraction: high,0.054473876953125
+train/red_rust/red_rust_200.jpg,dark_fraction: high,0.028839111328125
+train/red_rust/red_rust_199.jpg,dark_fraction: high,0.0278167724609375
+train/red_rust/red_rust_175.jpg,bright_fraction: high,0.413818359375
+train/red_rust/red_rust_936.jpg,bright_fraction: high,0.409027099609375
+train/red_rust/red_rust_392.jpg,random control,
+train/red_rust/red_rust_505.jpg,random control,
+train/red_rust/red_rust_889.jpg,random control,
+val/anthracnose/anthracnose_114.jpg,blur_laplacian_var: low,25.739776611328125
+val/anthracnose/anthracnose_236.jpg,blur_laplacian_var: low,39.76971435546875
+val/anthracnose/anthracnose_213.jpg,blur_laplacian_var: low,44.43820190429688
+val/anthracnose/anthracnose_1238.jpg,brightness: low,0.3808664381504059
+val/anthracnose/anthracnose_100.jpg,brightness: low,0.3863667249679565
+val/anthracnose/anthracnose_1486.jpg,brightness: low,0.3869438767433166
+val/anthracnose/anthracnose_239.jpg,brightness: high,0.7274494171142578
+val/anthracnose/anthracnose_47.jpg,brightness: high,0.7244471907615662
+val/anthracnose/anthracnose_130.jpg,brightness: high,0.6909087300300598
+val/anthracnose/anthracnose_712.jpg,dark_fraction: high,0.041015625
+val/anthracnose/anthracnose_228.jpg,dark_fraction: high,0.0006561279296875
+val/anthracnose/anthracnose_229.jpg,dark_fraction: high,0.00054931640625
+val/anthracnose/anthracnose_1484.jpg,bright_fraction: high,0.21185302734375
+val/anthracnose/anthracnose_1281.jpg,bright_fraction: high,0.14459228515625
+val/anthracnose/anthracnose_860.jpg,random control,
+val/anthracnose/anthracnose_70.jpg,random control,
+val/anthracnose/anthracnose_241.jpg,random control,
+val/healthy/healthy_941.jpg,blur_laplacian_var: low,25.13397216796875
+val/healthy/healthy_1146.jpg,blur_laplacian_var: low,32.085662841796875
+val/healthy/healthy_1029.jpg,blur_laplacian_var: low,38.37774658203125
+val/healthy/healthy_940.jpg,brightness: low,0.4204796850681305
+val/healthy/healthy_1051.jpg,brightness: low,0.4225721061229706
+val/healthy/healthy_1055.jpg,brightness: low,0.4268354773521423
+val/healthy/healthy_1089.jpg,brightness: high,0.7385876178741455
+val/healthy/healthy_997.jpg,brightness: high,0.7326057553291321
+val/healthy/healthy_1140.jpg,brightness: high,0.7139108180999756
+val/healthy/healthy_1034.jpg,dark_fraction: high,0.000244140625
+val/healthy/healthy_1054.jpg,dark_fraction: high,1.52587890625e-05
+val/healthy/healthy_1002.jpg,dark_fraction: high,0.0
+val/healthy/healthy_990.jpg,bright_fraction: high,0.2063446044921875
+val/healthy/healthy_1057.jpg,bright_fraction: high,0.1843719482421875
+val/healthy/healthy_1032.jpg,bright_fraction: high,0.1711883544921875
+val/healthy/healthy_1010.jpg,random control,
+val/healthy/healthy_982.jpg,random control,
+val/healthy/healthy_1069.jpg,random control,
+val/leaf_miner/leaf_miner_1126.jpg,blur_laplacian_var: low,37.22747802734375
+val/leaf_miner/leaf_miner_1066.jpg,blur_laplacian_var: low,39.99774169921875
+val/leaf_miner/leaf_miner_1157.jpg,blur_laplacian_var: low,40.91183471679688
+val/leaf_miner/leaf_miner_1202.jpg,brightness: low,0.3861265182495117
+val/leaf_miner/leaf_miner_1151.jpg,brightness: low,0.4122955203056335
+val/leaf_miner/leaf_miner_1050.jpg,brightness: low,0.4167039394378662
+val/leaf_miner/leaf_miner_955.jpg,brightness: high,0.7817398905754089
+val/leaf_miner/leaf_miner_788.jpg,brightness: high,0.7313669919967651
+val/leaf_miner/leaf_miner_998.jpg,brightness: high,0.7250086069107056
+val/leaf_miner/leaf_miner_1000.jpg,dark_fraction: high,0.0
+val/leaf_miner/leaf_miner_1001.jpg,dark_fraction: high,0.0
+val/leaf_miner/leaf_miner_1002.jpg,dark_fraction: high,0.0
+val/leaf_miner/leaf_miner_1191.jpg,bright_fraction: high,0.31787109375
+val/leaf_miner/leaf_miner_780.jpg,bright_fraction: high,0.3003387451171875
+val/leaf_miner/leaf_miner_973.jpg,bright_fraction: high,0.263580322265625
+val/leaf_miner/leaf_miner_1039.jpg,random control,
+val/leaf_miner/leaf_miner_1007.jpg,random control,
+val/leaf_miner/leaf_miner_1213.jpg,random control,
+val/not_cashew_leaf/not_cashew_leaf_1220.jpg,blur_laplacian_var: low,2.499603271484375
+val/not_cashew_leaf/not_cashew_leaf_1144.jpg,blur_laplacian_var: low,13.570068359375
+val/not_cashew_leaf/not_cashew_leaf_1238.jpg,blur_laplacian_var: low,26.335174560546875
+val/not_cashew_leaf/not_cashew_leaf_1148.jpg,brightness: low,0.2479418516159057
+val/not_cashew_leaf/not_cashew_leaf_1123.jpg,brightness: low,0.2568332552909851
+val/not_cashew_leaf/not_cashew_leaf_1186.jpg,brightness: low,0.2741433084011078
+val/not_cashew_leaf/not_cashew_leaf_1248.jpg,brightness: high,0.9258522391319276
+val/not_cashew_leaf/not_cashew_leaf_1110.jpg,brightness: high,0.9014284014701844
+val/not_cashew_leaf/not_cashew_leaf_1131.jpg,brightness: high,0.8944844603538513
+val/not_cashew_leaf/not_cashew_leaf_1204.jpg,dark_fraction: high,0.1613006591796875
+val/not_cashew_leaf/not_cashew_leaf_1260.jpg,bright_fraction: high,0.77545166015625
+val/not_cashew_leaf/not_cashew_leaf_1234.jpg,random control,
+val/not_cashew_leaf/not_cashew_leaf_1135.JPG,random control,
+val/not_cashew_leaf/not_cashew_leaf_1324.jpg,random control,
+val/red_rust/red_rust_1374.jpg,blur_laplacian_var: low,35.658905029296875
+val/red_rust/red_rust_1309.jpg,blur_laplacian_var: low,47.860260009765625
+val/red_rust/red_rust_1496.jpg,blur_laplacian_var: low,50.935577392578125
+val/red_rust/red_rust_1406.jpg,brightness: low,0.3991876244544983
+val/red_rust/red_rust_1419.jpg,brightness: low,0.403658390045166
+val/red_rust/red_rust_1318.jpg,brightness: low,0.4058950245380401
+val/red_rust/red_rust_1339.jpg,brightness: high,0.7314387559890747
+val/red_rust/red_rust_1333.jpg,brightness: high,0.7089357376098633
+val/red_rust/red_rust_1250.jpg,brightness: high,0.7047209143638611
+val/red_rust/leaf_miner_1067.jpg,dark_fraction: high,0.0
+val/red_rust/red_rust_1246.jpg,dark_fraction: high,0.0
+val/red_rust/red_rust_1247.jpg,dark_fraction: high,0.0
+val/red_rust/red_rust_1469.jpg,bright_fraction: high,0.403411865234375
+val/red_rust/red_rust_1418.jpg,random control,
+val/red_rust/red_rust_1377.jpg,random control,
+val/red_rust/red_rust_1442.jpg,random control,
+test/not_cashew_leaf/not_cashew_leaf_1514.JPG,near pair train/not_cashew_leaf/not_cashew_leaf_42.jpg,0.0
+train/not_cashew_leaf/not_cashew_leaf_42.jpg,near pair test/not_cashew_leaf/not_cashew_leaf_1514.JPG,0.0
+test/healthy/healthy_830.jpg,near pair train/healthy/healthy_785.jpg,6.0
+train/healthy/healthy_785.jpg,near pair test/healthy/healthy_830.jpg,6.0
+test/healthy/healthy_848.jpg,near pair train/healthy/healthy_791.jpg,4.0
+train/healthy/healthy_791.jpg,near pair test/healthy/healthy_848.jpg,4.0
+train/healthy/healthy_802.jpg,near pair test/healthy/healthy_808.jpg,6.0
+test/healthy/healthy_915.jpg,near pair train/healthy/healthy_732.jpg,6.0
+train/healthy/healthy_732.jpg,near pair test/healthy/healthy_915.jpg,6.0
+test/healthy/healthy_821.jpg,near pair train/healthy/healthy_726.jpg,6.0
+train/healthy/healthy_726.jpg,near pair test/healthy/healthy_821.jpg,6.0
+test/healthy/healthy_813.jpg,near pair train/healthy/healthy_791.jpg,6.0
+test/healthy/healthy_854.jpg,near pair train/healthy/healthy_778.jpg,6.0
+train/healthy/healthy_778.jpg,near pair test/healthy/healthy_854.jpg,6.0
+test/healthy/healthy_805.jpg,near pair train/healthy/healthy_764.jpg,6.0
+train/healthy/healthy_764.jpg,near pair test/healthy/healthy_805.jpg,6.0
+test/anthracnose/anthracnose_346.jpg,near pair train/anthracnose/anthracnose_1508.jpg,6.0
+train/anthracnose/anthracnose_1508.jpg,near pair test/anthracnose/anthracnose_346.jpg,6.0
+test/healthy/healthy_899.jpg,near pair train/healthy/healthy_785.jpg,6.0
+test/healthy/healthy_879.jpg,near pair train/healthy/healthy_745.jpg,4.0
+train/healthy/healthy_745.jpg,near pair test/healthy/healthy_879.jpg,4.0
+test/healthy/healthy_905.jpg,near pair train/healthy/healthy_764.jpg,6.0
+test/healthy/healthy_826.jpg,near pair train/healthy/healthy_791.jpg,6.0
+train/healthy/healthy_716.jpg,near pair test/healthy/healthy_905.jpg,6.0
+train/healthy/healthy_800.jpg,near pair test/healthy/healthy_854.jpg,4.0
+test/healthy/healthy_841.jpg,near pair train/healthy/healthy_756.jpg,6.0
+train/healthy/healthy_756.jpg,near pair test/healthy/healthy_841.jpg,6.0
+train/healthy/healthy_779.jpg,near pair test/healthy/healthy_899.jpg,6.0
+test/healthy/healthy_911.jpg,near pair train/healthy/healthy_781.jpg,6.0
+train/healthy/healthy_781.jpg,near pair test/healthy/healthy_911.jpg,6.0
+test/healthy/healthy_914.jpg,near pair train/healthy/healthy_754.jpg,4.0
+train/healthy/healthy_754.jpg,near pair test/healthy/healthy_914.jpg,4.0
+train/red_rust/red_rust_1050.jpg,near pair val/red_rust/red_rust_1277.jpg,4.0
+val/red_rust/red_rust_1277.jpg,near pair train/red_rust/red_rust_1050.jpg,4.0
+test/healthy/healthy_831.jpg,near pair train/healthy/healthy_788.jpg,4.0
+train/healthy/healthy_788.jpg,near pair test/healthy/healthy_831.jpg,4.0
+test/healthy/healthy_828.jpg,near pair train/healthy/healthy_788.jpg,4.0
+test/healthy/healthy_912.jpg,near pair train/healthy/healthy_785.jpg,6.0
+test/healthy/healthy_839.jpg,near pair train/healthy/healthy_791.jpg,6.0
+test/healthy/healthy_883.jpg,near pair train/healthy/healthy_743.jpg,6.0
+train/healthy/healthy_743.jpg,near pair test/healthy/healthy_883.jpg,6.0
+test/healthy/healthy_881.jpg,near pair train/healthy/healthy_744.jpg,6.0
+train/healthy/healthy_744.jpg,near pair test/healthy/healthy_881.jpg,6.0
+train/healthy/healthy_728.jpg,near pair test/healthy/healthy_899.jpg,6.0
+train/healthy/healthy_782.jpg,near pair test/healthy/healthy_848.jpg,6.0
+train/healthy/healthy_789.jpg,near pair test/healthy/healthy_912.jpg,6.0
+test/healthy/healthy_838.jpg,near pair train/healthy/healthy_778.jpg,4.0
+val/healthy/healthy_1145.jpg,near pair val/leaf_miner/leaf_miner_1169.jpg,6.0
+val/leaf_miner/leaf_miner_1169.jpg,near pair val/healthy/healthy_1145.jpg,6.0

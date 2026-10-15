@@ -1,0 +1,132 @@
+{
+  "experiment_id": "EXP-DENSENET121-SCRATCH-5SEEDS-009",
+  "notebook_version": "009",
+  "external_holdout_protocol": {
+    "archive_name": "RL_Cashew_holdout.zip",
+    "archive_sha256": "BDDCB61CA9AF6111E0B26DB7876D0A3309C587AEAFFAEF49B7A9D2D162309165",
+    "expected_counts": {
+      "anthracnose": 13,
+      "healthy": 5,
+      "leaf_miner": 24,
+      "red_rust": 7
+    },
+    "gate": "RUN_FINAL_TEST and RUN_REAL_HOLDOUT",
+    "separate_from_v06_test": true,
+    "macro_scope": "true classes with holdout support; currently four",
+    "selection_source": "validation only"
+  },
+  "created_at": "2026-10-13T13:02:35.505121",
+  "dataset": {
+    "version": "Cashew_dataV07_clean_val",
+    "archive_name": "CashewData_Split (7).zip",
+    "archive_file_id": null,
+    "path": "/content/CashewData_Split",
+    "classes": [
+      "anthracnose",
+      "healthy",
+      "leaf_miner",
+      "red_rust",
+      "not_cashew_leaf"
+    ],
+    "train_images": 4825,
+    "val_images": 1395,
+    "test_images": 687,
+    "total_images": 6907,
+    "test_set_locked": true,
+    "manifest_sha256": "f9e7d9a39f33bd631b3133a77d0260055bcdfbcd79cbebbb4d87877b893c6d74",
+    "zip_sha256": "6983b9ab8339489f18edb00f773b319ee6c62c2a3076c199b078ef52b464a3bf",
+    "real_filename_counts": {
+      "train": 170,
+      "val": 0,
+      "test": 28
+    },
+    "near_duplicate_candidates": 52,
+    "required_absent_images": [
+      "val/leaf_miner/leaf_miner_1056.jpg",
+      "val/leaf_miner/leaf_miner_1091.jpg"
+    ]
+  },
+  "model": {
+    "name": "DenseNet121",
+    "training_mode": "Scratch",
+    "weights": null,
+    "include_top": false,
+    "input_size": [
+      224,
+      224,
+      3
+    ],
+    "head_dropout": 0.3,
+    "backbone_call": "x = backbone(x)",
+    "forced_training_true": false,
+    "batch_norm_momentum": "keras_default_0.99",
+    "preprocessing": "densenet.preprocess_input_equivalent_inside_model"
+  },
+  "training": {
+    "seeds": [
+      42,
+      123,
+      2026,
+      3407,
+      7777
+    ],
+    "batch_size": 16,
+    "max_epochs": 50,
+    "optimizer": "Adam",
+    "initial_learning_rate": 0.0001,
+    "minimum_learning_rate": 1e-07,
+    "schedule": "ReduceLROnPlateau_val_loss",
+    "reduce_lr_factor": 0.5,
+    "reduce_lr_patience": 4,
+    "maximum_epochs": 50,
+    "loss": "SparseCategoricalCrossentropy",
+    "class_weight": null
+  },
+  "augmentation": {
+    "horizontal_flip": true,
+    "rotation_factor": 0.04,
+    "zoom_factor": 0.05,
+    "brightness": false,
+    "contrast": false
+  },
+  "callbacks": {
+    "checkpoint_selection": "val_loss_asc_epoch_asc",
+    "checkpoint_type": "weights_only",
+    "early_stopping": true,
+    "early_stopping_monitor": "val_loss",
+    "early_stopping_mode": "min",
+    "early_stopping_patience": 10,
+    "restore_best_weights": false,
+    "reduce_lr_on_plateau": true,
+    "lr_logged_per_epoch": true
+  },
+  "test_protocol": {
+    "run_final_test": false,
+    "final_test_completed": false,
+    "same_locked_test_for_all_seeds": true,
+    "do_not_select_best_seed_on_test": true,
+    "summary": "mean ± sample standard deviation (ddof=1)"
+  },
+  "deployment_protocol": {
+    "selection_source": "validation only",
+    "selection_metric": "val_loss",
+    "tie_break": "higher val_macro_f1, then lower seed",
+    "test_used_for_selection": false
+  },
+  "figure_protocol": {
+    "comparison_layout": "panel",
+    "training_curves": "2 rows x 5 seed columns",
+    "confusion_matrices": "1 row x 5 seed columns"
+  },
+  "archive": {
+    "full_archive": "EXP-DENSENET121-SCRATCH-5SEEDS-009_FULL.zip",
+    "analysis_archive": "EXP-DENSENET121-SCRATCH-5SEEDS-009_ANALYSIS.zip",
+    "google_drive_target_url": "https://drive.google.com/drive/folders/1-Mrqs8Y9dwLexSKIVKBvyYvvQ8X8fXti?usp=sharing",
+    "google_drive_target_folder_id": "1-Mrqs8Y9dwLexSKIVKBvyYvvQ8X8fXti"
+  },
+  "hardware": {
+    "gpu_count": 1,
+    "strategy": "OneDeviceStrategy",
+    "replicas": 1
+  }
+}

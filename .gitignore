@@ -40,6 +40,7 @@ __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
 .venv/
+.uv-cache/
 .uv-python/
 .deit_v05_dataset/
 .pytest_cache/

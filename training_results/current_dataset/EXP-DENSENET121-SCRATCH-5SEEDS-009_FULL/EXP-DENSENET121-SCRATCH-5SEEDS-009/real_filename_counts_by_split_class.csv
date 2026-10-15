@@ -1,0 +1,16 @@
+split,class,sum,count
+test,anthracnose,6,122
+test,healthy,7,118
+test,leaf_miner,9,132
+test,not_cashew_leaf,0,157
+test,red_rust,6,158
+train,anthracnose,44,948
+train,healthy,14,806
+train,leaf_miner,89,893
+train,not_cashew_leaf,0,1101
+train,red_rust,23,1077
+val,anthracnose,0,299
+val,healthy,0,213
+val,leaf_miner,0,246
+val,not_cashew_leaf,0,314
+val,red_rust,0,323

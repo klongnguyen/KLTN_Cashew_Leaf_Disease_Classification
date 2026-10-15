@@ -1,0 +1,2 @@
+filename,is_real_filename,true_label,predicted_label,confidence,correct
+D:\Study\KhoaLuanTotNghiep\Dataset\CashewData_Split\test\not_cashew_leaf\not_cashew_leaf_1416.jpg,False,not_cashew_leaf,not_cashew_leaf,0.20625556,True

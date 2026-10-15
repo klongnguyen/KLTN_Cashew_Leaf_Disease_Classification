@@ -1,0 +1,2 @@
+seed,selected_epoch,selection_metric,val_loss,val_accuracy,val_macro_precision,val_macro_recall,val_macro_f1,val_balanced_accuracy
+42,1,val_loss,1.6042039394378662,0.2,0.04,0.2,0.06666666666666667,0.2

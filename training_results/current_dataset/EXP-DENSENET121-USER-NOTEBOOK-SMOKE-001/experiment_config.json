@@ -1,0 +1,54 @@
+{
+  "experiment_id": "EXP-DENSENET121-USER-NOTEBOOK-SMOKE-001",
+  "dataset_version": "CashewData_Split7_5class_original_presplit",
+  "source_file": "CashewData_Split (7).zip",
+  "source_drive_file_id": "1uMJcy84ctqsqkef4bWZra1swCScZKzBJ",
+  "zip_sha256": "6983b9ab8339489f18edb00f773b319ee6c62c2a3076c199b078ef52b464a3bf",
+  "model_name": "DenseNet121",
+  "backbone": "DenseNet121",
+  "weights": null,
+  "training_mode": "scratch",
+  "fine_tune": false,
+  "all_layers_trainable": true,
+  "seed": 42,
+  "img_size": 224,
+  "batch_size": 16,
+  "max_epochs": 50,
+  "optimizer": "Adam",
+  "learning_rate": 0.0001,
+  "loss": "sparse_categorical_crossentropy",
+  "preprocessing": "keras.applications.densenet.preprocess_input",
+  "augmentation": {
+    "enabled": true,
+    "horizontal_flip": true,
+    "rotation": 0.04,
+    "zoom": 0.05,
+    "brightness": false,
+    "contrast": false
+  },
+  "split_method": "preserved_existing_train_val_test",
+  "split_recreated": false,
+  "num_classes": 5,
+  "class_names": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "red_rust",
+    "not_cashew_leaf"
+  ],
+  "real_definition": "filename.lower().startswith(\"real_\")",
+  "parameters_total": 7042629,
+  "parameters_trainable": 6958981,
+  "callbacks": {
+    "checkpoint": "val_loss/min",
+    "early_stopping_patience": 10,
+    "reduce_lr_factor": 0.5,
+    "reduce_lr_patience": 4,
+    "min_lr": 1e-07
+  },
+  "environment": {
+    "tensorflow": "2.21.0",
+    "gpu": [],
+    "smoke": true
+  }
+}

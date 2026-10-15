@@ -1,0 +1,11 @@
+filename,true_label,predicted_label,confidence,correct,prob_anthracnose,prob_healthy,prob_leaf_miner,prob_not_cashew_leaf,prob_red_rust
+D:\Study\KhoaLuanTotNghiep\Dataset\CashewData_Split\val\anthracnose\anthracnose_1.jpg,anthracnose,not_cashew_leaf,0.20785436,False,0.2029376,0.19461322,0.1980685,0.20785436,0.19652638
+D:\Study\KhoaLuanTotNghiep\Dataset\CashewData_Split\val\anthracnose\anthracnose_100.jpg,anthracnose,not_cashew_leaf,0.20818336,False,0.20549385,0.19162215,0.19293605,0.20818336,0.20176455
+D:\Study\KhoaLuanTotNghiep\Dataset\CashewData_Split\val\healthy\healthy_1000.jpg,healthy,not_cashew_leaf,0.20746376,False,0.20242359,0.19493982,0.19837439,0.20746376,0.19679835
+D:\Study\KhoaLuanTotNghiep\Dataset\CashewData_Split\val\healthy\healthy_1001.jpg,healthy,not_cashew_leaf,0.20836946,False,0.20541734,0.19165412,0.19723752,0.20836946,0.19732156
+D:\Study\KhoaLuanTotNghiep\Dataset\CashewData_Split\val\leaf_miner\leaf_miner_1000.jpg,leaf_miner,not_cashew_leaf,0.20718755,False,0.20584406,0.19305027,0.19723722,0.20718755,0.19668086
+D:\Study\KhoaLuanTotNghiep\Dataset\CashewData_Split\val\leaf_miner\leaf_miner_1001.jpg,leaf_miner,not_cashew_leaf,0.2062635,False,0.20240922,0.19464532,0.19728164,0.2062635,0.19940023
+D:\Study\KhoaLuanTotNghiep\Dataset\CashewData_Split\val\not_cashew_leaf\not_cashew_leaf_1102.jpg,not_cashew_leaf,not_cashew_leaf,0.20725173,True,0.20409228,0.19484702,0.19897825,0.20725173,0.19483067
+D:\Study\KhoaLuanTotNghiep\Dataset\CashewData_Split\val\not_cashew_leaf\not_cashew_leaf_1103.jpg,not_cashew_leaf,not_cashew_leaf,0.21539289,True,0.20606849,0.19119416,0.1992088,0.21539289,0.18813564
+D:\Study\KhoaLuanTotNghiep\Dataset\CashewData_Split\val\red_rust\leaf_miner_1067.jpg,red_rust,not_cashew_leaf,0.20627478,False,0.20461722,0.19275238,0.19781928,0.20627478,0.19853635
+D:\Study\KhoaLuanTotNghiep\Dataset\CashewData_Split\val\red_rust\red_rust_1246.jpg,red_rust,not_cashew_leaf,0.20535554,False,0.2040483,0.19281101,0.1969658,0.20535554,0.20081927

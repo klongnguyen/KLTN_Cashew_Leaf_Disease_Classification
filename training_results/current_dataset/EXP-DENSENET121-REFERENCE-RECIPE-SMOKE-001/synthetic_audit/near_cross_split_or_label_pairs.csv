@@ -1,0 +1,2 @@
+a,b,a_split,b_split,a_class,b_class,phash_hamming,mad_64_gray,thumbnail_match_candidate
+test/not_cashew_leaf/test_not_cashew_leaf.jpg,train/not_cashew_leaf/train_not_cashew_leaf.jpg,test,train,not_cashew_leaf,not_cashew_leaf,0,0.0,True

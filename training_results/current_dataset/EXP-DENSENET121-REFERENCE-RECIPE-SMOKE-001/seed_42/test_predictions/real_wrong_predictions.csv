@@ -1,0 +1,6 @@
+filename,is_real_filename,true_label,predicted_label,confidence,correct
+D:\Study\KhoaLuanTotNghiep\Dataset\CashewData_Split\test\anthracnose\real_anthracnose_045.jpg,True,anthracnose,not_cashew_leaf,0.20704661,False
+D:\Study\KhoaLuanTotNghiep\Dataset\CashewData_Split\test\healthy\real_healthy_015.jpg,True,healthy,not_cashew_leaf,0.20528422,False
+D:\Study\KhoaLuanTotNghiep\Dataset\CashewData_Split\test\leaf_miner\real_leaf_miner_090.jpg,True,leaf_miner,not_cashew_leaf,0.20930988,False
+D:\Study\KhoaLuanTotNghiep\Dataset\CashewData_Split\test\red_rust\real_red_rust_024.jpg,True,red_rust,not_cashew_leaf,0.20752186,False
+D:\Study\KhoaLuanTotNghiep\Dataset\CashewData_Split\test\red_rust\real_red_rust_024.jpg,True,red_rust,not_cashew_leaf,0.20752186,False

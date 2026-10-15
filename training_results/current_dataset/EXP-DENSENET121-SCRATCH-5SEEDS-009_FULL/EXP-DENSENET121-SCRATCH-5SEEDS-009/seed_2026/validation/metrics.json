@@ -1,0 +1,11 @@
+{
+  "seed": 2026,
+  "selected_epoch": 34,
+  "selection_metric": "val_loss",
+  "val_loss": 0.14165714383125305,
+  "val_accuracy": 0.953405017921147,
+  "val_macro_precision": 0.9545284392502854,
+  "val_macro_recall": 0.9505885841026247,
+  "val_macro_f1": 0.9521395134791121,
+  "val_balanced_accuracy": 0.9505885841026247
+}

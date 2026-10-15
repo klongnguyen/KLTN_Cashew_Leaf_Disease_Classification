@@ -1,0 +1,20 @@
+{
+  "seed": 42,
+  "test_loss": 1.6161737442016602,
+  "accuracy": 0.1111111111111111,
+  "macro_precision": 0.02222222222222222,
+  "macro_recall": 0.2,
+  "macro_f1": 0.04,
+  "real_filename_n": 5,
+  "real_filename_accuracy": 0.0,
+  "real_filename_macro_f1_present": 0.0,
+  "other_filename_n": 4,
+  "other_filename_accuracy": 0.25,
+  "balanced_accuracy": 0.2,
+  "weighted_precision": 0.012345679012345678,
+  "weighted_recall": 0.1111111111111111,
+  "weighted_f1": 0.022222222222222223,
+  "weights_size_mb": 81.29349517822266,
+  "inference_time_ms_per_image": 49.30342222926103,
+  "fps": 20.282567716090732
+}

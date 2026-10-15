@@ -1,0 +1,2 @@
+seed,test_loss,accuracy,macro_precision,macro_recall,macro_f1,real_filename_n,real_filename_accuracy,real_filename_macro_f1_present,other_filename_n,other_filename_accuracy,balanced_accuracy,weighted_precision,weighted_recall,weighted_f1,weights_size_mb,inference_time_ms_per_image,fps
+42,1.6161737442016602,0.1111111111111111,0.02222222222222222,0.2,0.04,5,0.0,0.0,4,0.25,0.2,0.012345679012345678,0.1111111111111111,0.022222222222222223,81.29349517822266,49.30342222926103,20.282567716090732

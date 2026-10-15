@@ -1,0 +1,11 @@
+{
+  "seed": 3407,
+  "selected_epoch": 39,
+  "selection_metric": "val_loss",
+  "val_loss": 0.14097732305526733,
+  "val_accuracy": 0.9562724014336917,
+  "val_macro_precision": 0.9561259776341646,
+  "val_macro_recall": 0.9542479509046695,
+  "val_macro_f1": 0.9550610113446802,
+  "val_balanced_accuracy": 0.9542479509046695
+}

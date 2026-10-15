@@ -1,0 +1,35 @@
+{
+  "created_at": "2026-10-13T10:50:12",
+  "dataset_root": "D:\\Study\\KhoaLuanTotNghiep\\Dataset\\CashewData_Split",
+  "total_decodable": 6907,
+  "invalid_count": 0,
+  "unknown_count": 0,
+  "class_folder_issues": [],
+  "counts_match_v06": true,
+  "fingerprints": {
+    "train": "3c25479ef5208b94f10de638ace73b7f6f850e3a78664a52262d067e1b9e53c8",
+    "val": "3d7672f83c20797b5a569faa39be7fa1f8976fcf6b8c0c8d862eff7004fdb442",
+    "test": "eeb8b3079cce49b792ec50c375cc2d2ab4748fa6a435c3be29ebedea4caef735"
+  },
+  "matches_known_a4_fingerprints": {
+    "train": true,
+    "val": true,
+    "test": true
+  },
+  "known_old_val_copies_present": [],
+  "exact_duplicate_pairs": 0,
+  "cross_split_or_cross_label_phash_candidates": 283,
+  "within_split_same_class_phash_candidates_retained": 266,
+  "thumbnail_match_candidates": [
+    {
+      "a": "test/not_cashew_leaf/not_cashew_leaf_1514.JPG",
+      "b": "train/not_cashew_leaf/not_cashew_leaf_42.jpg",
+      "mad_64_gray": 0.0
+    }
+  ],
+  "real_filename_counts_by_split": {
+    "train": 170,
+    "val": 0,
+    "test": 28
+  }
+}

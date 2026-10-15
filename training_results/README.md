@@ -13,7 +13,22 @@ Báo cáo độc lập: [IMPROVED001 — DenseNet121 Scratch, 1 seed, 5 lớp](.
 
 Báo cáo WP3: [IMPROVED002 — Real Validation 35 ảnh, DenseNet121 Scratch](./dataset_quality_study/EXP-DENSENET121-SCRATCH-IMPROVED-002/ANALYSIS.md). Real Val **65,71% (23/35)**; Test V8 **91,11% (625/686)**. Đây là nhánh dataset quality, không nhập vào V05 benchmark.
 
-## Current development dataset — Cashew_dataV05
+---
+
+## Latest Experiment & Deployment — EXP-DENSENET121-SCRATCH-5SEEDS-009
+
+- **Model:** DenseNet121 from scratch (5 seeds: `[42, 123, 2026, 3407, 7777]`)
+- **Dataset:** `Cashew_dataV07_clean_val` (6,907 images)
+- **Validation Results:**
+  - Accuracy: **94.55 ± 1.11%** (Best Seed 3407: **95.63%**)
+  - Macro F1: **94.38 ± 1.13%** (Best Seed 3407: **95.51%**)
+  - Macro Precision: **94.69 ± 1.01%**
+  - Macro Recall: **94.20 ± 1.18%**
+- **Deployment:** Seed 3407 được đóng gói trọn vẹn trong `model_package` (`deployment_model.keras`, embeddings, feature extractor) và triển khai vào [Web Application](../Application/README.md).
+- ➡️ [Báo cáo chi tiết EXP-009](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-009_FULL/EXP-DENSENET121-SCRATCH-5SEEDS-009/README.md)
+- ➡️ [Kiểm định dữ liệu toàn diện EXP-DATASET-AUDIT-001](./current_dataset/EXP-DENSENET121-DATASET-AUDIT-001/)
+
+---
 
 Ba scratch baseline mới nhất đã hoàn tất 5-seed Training + Validation:
 

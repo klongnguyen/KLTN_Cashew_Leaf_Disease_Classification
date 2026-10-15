@@ -1,0 +1,49 @@
+{
+  "notebook_source": "C:\\Users\\KIM LONG\\Downloads\\densenet121_scratch_cashewdata_split7_5class_001 (1).ipynb",
+  "dataset_root": "D:\\Study\\KhoaLuanTotNghiep\\Dataset\\CashewData_Split",
+  "dataset_counts": {
+    "train": {
+      "anthracnose": 948,
+      "healthy": 806,
+      "leaf_miner": 893,
+      "red_rust": 1077,
+      "not_cashew_leaf": 1101
+    },
+    "val": {
+      "anthracnose": 299,
+      "healthy": 213,
+      "leaf_miner": 246,
+      "red_rust": 323,
+      "not_cashew_leaf": 314
+    },
+    "test": {
+      "anthracnose": 122,
+      "healthy": 118,
+      "leaf_miner": 132,
+      "red_rust": 158,
+      "not_cashew_leaf": 156
+    }
+  },
+  "train_val_counts_match_zip": true,
+  "runtime_gpu": [],
+  "batches_train": 2,
+  "batches_val": 1,
+  "params": 7042629,
+  "first_train_batch_shape": [
+    16,
+    224,
+    224,
+    3
+  ],
+  "fit_seconds": 65.23,
+  "history": {
+    "accuracy": 0.21875,
+    "loss": 1.9054934978485107,
+    "val_accuracy": 0.0625,
+    "val_loss": 1.5954384803771973,
+    "learning_rate": 9.999999747378752e-05
+  },
+  "inference_max_abs_difference": 0.0,
+  "best_checkpoint_exists": true,
+  "status": "passed"
+}

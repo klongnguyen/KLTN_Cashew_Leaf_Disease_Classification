@@ -1,0 +1,16 @@
+split,class,non_real_filename,real_filename
+test,anthracnose,116,6
+test,healthy,111,7
+test,leaf_miner,123,9
+test,not_cashew_leaf,157,0
+test,red_rust,152,6
+train,anthracnose,904,44
+train,healthy,792,14
+train,leaf_miner,804,89
+train,not_cashew_leaf,1101,0
+train,red_rust,1054,23
+val,anthracnose,299,0
+val,healthy,213,0
+val,leaf_miner,246,0
+val,not_cashew_leaf,314,0
+val,red_rust,323,0
