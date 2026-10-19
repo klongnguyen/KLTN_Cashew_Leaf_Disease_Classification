@@ -1,0 +1,69 @@
+{
+  "experiment_id": "EXP-RESNET50-SCRATCH-5SEEDS-006",
+  "source_archive_sha256": "d1654999d1003f131c25153b705d49798c94c4e2737a15f156f3c7cbb32555e4",
+  "source_created_at": "2026-10-06T14:26:04.922055",
+  "dataset": {
+    "name": "Cashew_dataV05",
+    "counts": {
+      "train": 4822,
+      "val": 1402,
+      "test": 687,
+      "total": 6911
+    },
+    "class_names": [
+      "anthracnose",
+      "healthy",
+      "leaf_miner",
+      "not_cashew_leaf",
+      "red_rust"
+    ],
+    "split_sha256": {
+      "train": "7443257702dbba7a392a28b497a49933f5cfac7e187e991043007f8e309a795f",
+      "val": "ea4bba016c9f3abb69c0bf6f7deb3d502929707edfbeafa89f36898b7747e279",
+      "test": "ee49ef59c791a7519c172316afd48554f92fbb1b4f47d11b57c82d6ae1624dc4"
+    }
+  },
+  "model": {
+    "name": "ResNet50",
+    "training_mode": "Scratch",
+    "weights": null,
+    "include_top": false,
+    "head_units": 512,
+    "dropout": 0.4,
+    "input_size": [
+      224,
+      224,
+      3
+    ],
+    "preprocessing": "rescale /255 inside model",
+    "total_parameters": 24641413
+  },
+  "training": {
+    "seeds": [
+      42,
+      123,
+      2026,
+      3407,
+      7777
+    ],
+    "batch_size": 32,
+    "max_epochs": 50,
+    "optimizer": "Adam",
+    "lr": 0.0003,
+    "early_stopping_patience": 8,
+    "lr_plateau_patience": 3,
+    "lr_plateau_factor": 0.3,
+    "min_lr": 0.000001,
+    "augmentation": {
+      "hflip": true,
+      "rotation": 0.04,
+      "zoom": 0.05,
+      "translation": 0.03,
+      "contrast": 0.08
+    }
+  },
+  "test_protocol": {
+    "run_final_test": false
+  },
+  "note": "Curated snapshot, not byte-identical to original config JSON."
+}

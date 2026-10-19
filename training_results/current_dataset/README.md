@@ -1,5 +1,8 @@
 # Current Dataset Experiments
 
+> **ResNet50 Scratch (new archived reports):** [EXP-006/V05](./EXP-RESNET50-SCRATCH-5SEEDS-006/README.md) Val **86.46 ± 2.27%**; [EXP-007/V07](./EXP-RESNET50-SCRATCH-5SEEDS-007/README.md) Val **89.20 ± 2.04%**; [EXP-008/V07](./EXP-RESNET50-SCRATCH-5SEEDS-008/README.md) có **5-seed metrics và predictions trùng EXP-007**, không chứng minh run độc lập. **Không có Test của 006–008**; [audit](./RESNET50_SCRATCH_006_008_AUDIT_2026_10.md). Không trộn với DenseNet121 Transfer V08 hoặc official ResNet50 V05 EXP-005 Test.
+
+
 > **Mới nhất trên V08 (19/10/2026):** [EXP-014 huấn luyện DenseNet121 ImageNet Transfer Learning](./EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md) đạt **97.10 ± 0.20% Val Accuracy**, **96.96 ± 0.21% Val F1**; [EXP-015 đánh giá checkpoint EXP-014](./EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md) đạt **80.83 ± 0.93% Accuracy / 80.80 ± 0.19% Macro F1** trên **48 ảnh Real Holdout lịch sử đã được xem trước đó**. EXP-015 **không huấn luyện**; seed deploy **123** chọn trước bằng Val Loss; Test 686 ảnh **chưa chạy**. [Theo dõi phiên bản](./EXPERIMENT_PROGRESS_2026_10.md).
 
 

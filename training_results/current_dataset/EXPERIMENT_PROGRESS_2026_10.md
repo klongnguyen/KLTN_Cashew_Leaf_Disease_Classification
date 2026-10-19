@@ -1,5 +1,8 @@
 # Tiến độ huấn luyện và đối chiếu phiên bản (19/10/2026)
 
+> **Bổ sung ResNet50 Scratch EXP-006/007/008 (19/10/2026):** 006 trên V05: Val Acc **86.46 ± 2.27%**, Macro F1 **86.12 ± 2.56%**; 007/008 trên V07: **89.20 ± 2.04%**, Macro F1 **88.61 ± 2.19%**; 007 và 008 có predictions/history/aggregate Validation **trùng byte**, chưa có bằng chứng 008 retrain độc lập. **Final Test cả ba pending**. [Audit/Changelog](./RESNET50_SCRATCH_006_008_AUDIT_2026_10.md).
+
+
 > **Cập nhật 19/10/2026 (EXP-014/015):** V08 đã có **huấn luyện 5 seed DenseNet121 ImageNet Transfer Learning EXP-014** và **đánh giá 48 ảnh Real Holdout lịch sử bằng checkpoint EXP-014 trong EXP-015**. Seed triển khai **123** (khóa theo Val Loss). **Final Test V08 686 ảnh vẫn chưa chạy**. Nhóm Holdout này đã được xem trước EXP-014, nên không phải blind holdout mới.
 
 
@@ -9,6 +12,9 @@ Nguồn: cây thư mục GitHub `main` trước cập nhật, các gói ANALYSIS
 
 | Kiến trúc | Experiment | Dataset | Tình trạng | Chỉ số chính |
 |---|---|---|---|---|
+| ResNet50 Scratch | [EXP-006](./EXP-RESNET50-SCRATCH-5SEEDS-006/README.md) | V05 | 5-seed Validation xong; **Test 006 pending** | Val Acc **86.46 ± 2.27%**, F1 **86.12 ± 2.56%**, candidate seed 42 (min loss) |
+| ResNet50 Scratch | [EXP-007](./EXP-RESNET50-SCRATCH-5SEEDS-007/README.md) | V07 | 5-seed Validation xong; **Test pending** | Val Acc **89.20 ± 2.04%**, F1 **88.61 ± 2.19%**, candidate seed 123 (min loss) |
+| ResNet50 Scratch | [EXP-008](./EXP-RESNET50-SCRATCH-5SEEDS-008/README.md) | V07 | **Same exact 5-seed Val/predictions as 007**; Test pending | Val Acc **89.20 ± 2.04%**, F1 **88.61 ± 2.19%**; independent run not established |
 | DenseNet121 | [EXP-005](./EXP-DENSENET121-SCRATCH-5SEEDS-005/README.md) | V05 | **Final locked Test xong** | Test Acc **91.97 ± 1.11%**, F1 **91.41 ± 1.13%** |
 | ResNet50 | [EXP-005](./EXP-RESNET50-SCRATCH-5SEEDS-005/README.md) | V05 | **Final locked Test xong** | Test Acc **89.78 ± 2.50%**, F1 **89.36 ± 2.47%** |
 | Compact ViT | [EXP-005](./EXP-VIT-SCRATCH-5SEEDS-005/README.md) | V05 | **Final locked Test xong** | Test Acc **85.04 ± 0.44%**, F1 **83.93 ± 0.37%** |
@@ -34,6 +40,9 @@ Các phiên bản `002–005` của DenseNet121, ResNet50 và ViT đều có REA
 | DenseNet V05 005 → 006 | V05 | EXP-006: batch 32, LR 3e-4, Dropout 0.4 | Kết quả Test 006 thấp hơn 005, các khác biệt config cần đọc đầy đủ |
 | DenseNet EXP-006 → 009 | V05 → V07 6,907 ảnh | Batch 16, LR 1e-4, Dropout 0.3 | Val 009 cao nhưng không có Real Val |
 | DenseNet 009 → 011 | Cùng V07, cùng manifest SHA | Cấu hình chính trùng | Cả 5 hàng Val metrics **trùng chính xác**; chưa xác minh 2 lần train độc lập |
+| ResNet50 Scratch 005 → 006 | V05 giữ nguyên số ảnh/split | 006: Adam LR 3e-4, batch32, head512/Dropout0.4, rescale /255; 005 config lịch sử xem README riêng | 006 Val **86.46 ± 2.27%**, Test 006 pending; **không dùng Test 005 cho 006** |
+| ResNet50 Scratch 006 → 007 | **V05 → V07**, 6.911 → 6.907 ảnh | 007: batch16, LR1e-4, head Dropout0.3, Caffe preprocessing, bỏ augmentation contrast | Val **86.46 → 89.20%**, **không phải ablation cùng dataset** |
+| ResNet50 Scratch 007 → 008 | V07 manifest trùng | Cấu hình chính trùng; 008 bổ sung figure/notebook, predictions + history của 5 seeds trùng byte 007 | Val **89.20% → 89.20%**; **chưa chứng minh retrain độc lập** |
 | DenseNet 012 → 013 | Cùng V08 | EXP-013 Scratch AdamW, Dropout 0.4, augmentation rotation/zoom/contrast tăng; 5 seeds | Val Acc 94.17 ± 0.90%; Holdout lịch sử 51.25 ± 8.15% |
 | DenseNet 013 → 014 | **V08 không đổi**, manifest SHA trùng | **ImageNet pretrained + frozen-head stage 1 → conv5 partial fine-tune stage 2**; giữ augmentation, AdamW/batch/dropout | Val Acc **94.17 → 97.10%**, Val F1 **94.02 → 96.96%**; real_ Val **67.43 → 79.43%** |
 | DenseNet 014 → 015 | **Không thay dataset, không train** | **5 checkpoint 014 locked**; đánh giá Holdout đã phân tích trước, loại trùng byte 1 ảnh Test | Accuracy lịch sử **51.25% EXP-013 → 80.83% EXP-015** trên cùng 48 ảnh; seed 123 Val-selected 38/48 |
@@ -43,6 +52,9 @@ Các phiên bản `002–005` của DenseNet121, ResNet50 và ViT đều có REA
 
 - [x] V05 official 3-model Final Test, 5 seeds, report Mean ± sample SD.
 - [x] Hồ sơ EXP-011, EXP-012: README, CSV aggregate Validation, metadata snapshot.
+- [x] Nhập hồ sơ ResNet50 Scratch **006/007/008**: 3 README versioned, 5-seed Validation CSV, Mean ± SD, 15 confusion matrix CSV, config snapshot, audit V07, biểu đồ SVG; đánh dấu 007/008 không độc lập.
+- [ ] Kiểm tra binary checkpoint ResNet50 007/008 trong FULL ZIP để xác định thực chất retrain/re-export; kiểm tra 52 cặp pHash V07.
+- [ ] Chạy locked Test riêng cho ResNet50 Scratch 006 (V05) và 007 (V07) khi protocol cho phép; không chấm 008 như lần test độc lập nếu là bản tái đóng gói.
 - [x] Thêm EXP-014/015: README báo cáo, aggregate CSV, manifest/audit metadata, 5 confusion-matrix CSV Holdout, báo cáo chênh lệch EXP-013 vs 015.
 - [ ] Chưa commit original ANALYSIS ZIP/FULL ZIP, binary model .keras/.h5, per-image predictions đầy đủ, full notebook/PNG của 014/015; xem source archive.
 - [x] Chuẩn hóa ID nguồn ZIP `...-01` thành EXP-012; giữ mapping ID gốc.

@@ -1,0 +1,74 @@
+{
+  "experiment_id": "EXP-RESNET50-SCRATCH-5SEEDS-008",
+  "source_archive_sha256": "5bdcd4382a13afb7f805030e478a8f7bd63e0ea95355a3b35f97e1a43f43a6a9",
+  "source_created_at": "2026-10-18T11:08:22.103943",
+  "dataset": {
+    "name": "Cashew_dataV07_clean_val",
+    "counts": {
+      "train": 4825,
+      "val": 1395,
+      "test": 687,
+      "total": 6907
+    },
+    "manifest_sha256": "f9e7d9a39f33bd631b3133a77d0260055bcdfbcd79cbebbb4d87877b893c6d74",
+    "zip_sha256": "6983b9ab8339489f18edb00f773b319ee6c62c2a3076c199b078ef52b464a3bf",
+    "class_names": [
+      "anthracnose",
+      "healthy",
+      "leaf_miner",
+      "red_rust",
+      "not_cashew_leaf"
+    ],
+    "real_filename_counts": {
+      "train": 170,
+      "val": 0,
+      "test": 28
+    }
+  },
+  "model": {
+    "name": "ResNet50",
+    "training_mode": "Scratch",
+    "weights": null,
+    "include_top": false,
+    "dropout": 0.3,
+    "input_size": [
+      224,
+      224,
+      3
+    ],
+    "preprocessing": "resnet50.preprocess_input equivalent inside model (BGR/channel-centered)",
+    "total_parameters": 23597969
+  },
+  "training": {
+    "seeds": [
+      42,
+      123,
+      2026,
+      3407,
+      7777
+    ],
+    "batch_size": 16,
+    "max_epochs": 50,
+    "optimizer": "Adam",
+    "lr": 0.0001,
+    "early_stopping_patience": 10,
+    "lr_plateau_patience": 4,
+    "lr_plateau_factor": 0.5,
+    "min_lr": 1e-7,
+    "augmentation": {
+      "hflip": true,
+      "rotation": 0.04,
+      "zoom": 0.05,
+      "contrast": false
+    }
+  },
+  "deployment_protocol": {
+    "selection_metric": "val_loss",
+    "deployment_seed": 123
+  },
+  "test_protocol": {
+    "run_final_test": false
+  },
+  "note": "Curated snapshot, not byte-identical to original config JSON.",
+  "additional_note": "Same five validation rows/predictions/training histories as 007; not demonstrated independent run."
+}
