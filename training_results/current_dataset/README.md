@@ -1,5 +1,8 @@
 # Current Dataset Experiments
 
+> **ResNet50 Transfer 008 (20/10/2026):** [Báo cáo 5 seeds](./EXP-RESNET50-TRANSFER-5SEEDS-008/README.md) (V08 cùng manifest với DenseNet121-014); Val Acc **95.09 ± 0.22%**, Final Test **93.24 ± 0.24%**, historical Real Holdout **77.08 ± 2.55%**. **EXP-008 này dùng ResNet50 ImageNet frozen ở cả Stage 1/2, chỉ học head**; tên `TRANSFER` không có nghĩa đã partial fine-tune. Đừng nhầm với [ResNet50 Scratch EXP-008 V07](./EXP-RESNET50-SCRATCH-5SEEDS-008/README.md). [Progress](./EXPERIMENT_PROGRESS_2026_10.md).
+
+
 > **ResNet50 Scratch (new archived reports):** [EXP-006/V05](./EXP-RESNET50-SCRATCH-5SEEDS-006/README.md) Val **86.46 ± 2.27%**; [EXP-007/V07](./EXP-RESNET50-SCRATCH-5SEEDS-007/README.md) Val **89.20 ± 2.04%**; [EXP-008/V07](./EXP-RESNET50-SCRATCH-5SEEDS-008/README.md) có **5-seed metrics và predictions trùng EXP-007**, không chứng minh run độc lập. **Không có Test của 006–008**; [audit](./RESNET50_SCRATCH_006_008_AUDIT_2026_10.md). Không trộn với DenseNet121 Transfer V08 hoặc official ResNet50 V05 EXP-005 Test.
 
 

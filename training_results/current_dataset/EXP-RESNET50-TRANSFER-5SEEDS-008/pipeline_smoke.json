@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "preprocess_max_abs_error": 0,
+  "stage1_backbone_trainable_params": 0,
+  "stage2_backbone_trainable_params": 0,
+  "backbone_batchnorm_layers": 53,
+  "weights_and_model_reload": "PASS",
+  "imagenet_initialization": "PASS",
+  "clean_process_max_abs_error": 0,
+  "clean_process_same_top1": true,
+  "clean_process_atol": 0.0005,
+  "clean_process_rtol": 0.001
+}

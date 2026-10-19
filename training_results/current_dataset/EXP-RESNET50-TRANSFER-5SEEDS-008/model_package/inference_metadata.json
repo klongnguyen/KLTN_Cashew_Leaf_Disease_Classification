@@ -1,0 +1,18 @@
+{
+  "experiment_id": "EXP-RESNET50-TRANSFER-5SEEDS-008",
+  "deployment_seed": 3407,
+  "selection_source": "Validation only",
+  "source_checkpoint_sha256": "9341e46b402c1fe053a927f7354e9e29aac8a3bee19ab95f1752ac1d1d8b5c5c",
+  "input": "RGB float32 raw 0..255, 224x224, bilinear resize",
+  "preprocessing": "contained inside deployment_model.keras",
+  "external_divide_by_255": false,
+  "class_names": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "red_rust",
+    "not_cashew_leaf"
+  ],
+  "historical_holdout_exposed": true,
+  "holdout_true_classes": 4
+}

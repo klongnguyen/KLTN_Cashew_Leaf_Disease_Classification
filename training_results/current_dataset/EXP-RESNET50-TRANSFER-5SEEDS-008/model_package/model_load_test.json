@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "safe_mode": true,
+  "prediction_parity_atol": 0.00001,
+  "input_count": 2,
+  "checkpoint_selection": "Validation lock"
+}
