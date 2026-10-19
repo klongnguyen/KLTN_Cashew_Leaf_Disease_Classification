@@ -32,3 +32,10 @@ Vision Transformer - Scratch
 
 ## Manual Demo
 Upload Image -> Predict included.
+
+## Version trace / tiến độ (đồng bộ 19/10/2026)
+
+- **Experiment 001 – Compact ViT Scratch**, dataset đầu tiên 7,450 ảnh: Train 5,215, Val 1,488, Test 747.
+- **Config:** Patch 16, dim 64, 4 heads, 8 transformer layers, MLP 128, batch 32, 60 max epochs, AdamW LR 3e-4, weight decay 1e-4 (theo mục Config phía trên).
+- **Kết quả có nguồn trong README:** best Val Accuracy `0.898521`, best val_loss `0.313227`; **README chưa cung cấp Final Test metrics** nên không suy đoán chúng.
+- **Tiến độ:** archived (1 seed), không so trực tiếp với V04/V05 năm seeds hoặc V08; xem [bảng tiến độ](../../current_dataset/EXPERIMENT_PROGRESS_2026_10.md).

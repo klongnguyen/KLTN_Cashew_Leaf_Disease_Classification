@@ -24,3 +24,10 @@ Các experiment `*-002` sử dụng `Cashew_dataV03` vẫn được giữ tại 
 Benchmark hiện tại xem tại:
 
 [`../current_dataset/README.md`](../current_dataset/README.md)
+
+## Đối chiếu theo mốc 19/10/2026
+
+- DenseNet121 001: 1 seed, CashewData_v01, Test Acc 95.31% trên **747 ảnh**, khác locked Test V05/V08.
+- ViT 001: 1 seed, V01, có Validation nhưng chưa có Test metrics trong README nguồn.
+- Các file README của từng thí nghiệm ghi rõ lịch sử, config, dataset, kết quả cùng các giới hạn so sánh.
+- [Bảng tiến độ đầy đủ tại current_dataset](../current_dataset/EXPERIMENT_PROGRESS_2026_10.md).
