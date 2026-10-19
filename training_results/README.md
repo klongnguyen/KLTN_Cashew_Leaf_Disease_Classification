@@ -1,5 +1,8 @@
 # Training Results
 
+> **Kết quả mới 19/10/2026:** [EXP-014 — ImageNet Transfer Learning (5 seeds, Val V08)](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md): **97.10 ± 0.20% Val Accuracy**, **96.96 ± 0.21% Val Macro F1**. [EXP-015 — đánh giá lại checkpoint 014, không retrain](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md): **80.83 ± 0.93% Accuracy** trên **48 ảnh Real Holdout lịch sử**; deployment seed 123: **38/48**. **Final Test V08 vẫn pending**. [Progress](./current_dataset/EXPERIMENT_PROGRESS_2026_10.md).
+
+
 > **Cập nhật 19/10/2026:** [Tiến độ tổng hợp](./current_dataset/EXPERIMENT_PROGRESS_2026_10.md) · [EXP-011 V07](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-011/README.md) · [EXP-012 V08](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-012/README.md). EXP-012 mới hoàn tất **Validation 5 seeds (93.99 ± 1.05% Accuracy; 93.81 ± 1.13% Macro F1)**, **Test pending**; seed 42 đạt **22/35** ảnh `real_`. EXP-011 có metrics trùng EXP-009.
 
 Thư mục này quản lý kết quả huấn luyện theo **phiên bản dataset** để tránh so sánh sai giữa các experiment sử dụng dữ liệu khác nhau.

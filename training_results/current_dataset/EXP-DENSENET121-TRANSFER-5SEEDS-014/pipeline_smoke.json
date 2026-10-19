@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "preprocess_max_abs_error": 7.152557373046875e-7,
+  "stage1_backbone_trainable_params": 0,
+  "stage2_backbone_trainable_params": 2129920,
+  "backbone_batchnorm_layers": 121,
+  "weights_and_model_reload": "PASS",
+  "imagenet_initialization": "PASS"
+}

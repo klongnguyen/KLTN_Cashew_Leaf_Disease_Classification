@@ -1,0 +1,10 @@
+{
+  "experiment_id": "EXP-DENSENET121-TRANSFER-5SEEDS-014",
+  "pipeline_smoke": "PASS",
+  "five_seed_training": "COMPLETED",
+  "final_test": "PENDING",
+  "real_holdout": "PENDING",
+  "deployment_seed": 123,
+  "dataset_archive_sha256": "75c5928b2f6432aca901bc16831e91f9aa4bdacc1e2ff536753d71da60c147e7",
+  "dataset_manifest_sha256": "1810d7e654fede9c8f6a9d08a4078be7882492db2d2d842a19b5320b9aae356b"
+}
