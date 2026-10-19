@@ -97,3 +97,11 @@ The FULL long-term archive contains all five best checkpoints, deployment model,
 - Validation is used for checkpointing and deployment-seed selection.
 - Test is never used for hyperparameter tuning or seed selection.
 - Results are reported as **Mean ± sample standard deviation (`ddof=1`)**.
+
+## Nhật ký thay đổi / tiến độ — đồng bộ 19/10/2026
+
+- **Dataset và thay đổi version:** **Dataset V03**, tập dữ liệu lịch sử có 7,213 ảnh (5,049 Train / 1,433 Val / 731 Test). Vì khác split so với V04/V05, không so chéo trực tiếp để kết luận cải tiến mô hình. Chi tiết cấu hình và metric giữ nguyên trong các mục phía trên; chưa có cơ sở để khẳng định hiệu quả riêng từng thay đổi.
+- **Cấu hình:** thông số cụ thể của phiên bản được ghi trong phần `Configuration` và `experiment_config.json` (nếu tệp tồn tại). Không tự suy đoán khác biệt chưa có bằng chứng từ source.
+- **Kết quả:** xem bảng Training/Validation/Test đã ghi ở trên; phân biệt rõ Validation với Test và report Mean ± sample SD (`ddof=1`).
+- **Cảnh báo so sánh:** test split hoặc protocol thay đổi phải ghi rõ; checkpoint/seed không được lựa chọn bằng Test. 
+- **Trạng thái và bước tiếp theo:** [Bảng tiến độ toàn dự án](../EXPERIMENT_PROGRESS_2026_10.md). Kết quả mới hoặc sửa dataset/config phải tạo experiment ID mới thay vì ghi đè.

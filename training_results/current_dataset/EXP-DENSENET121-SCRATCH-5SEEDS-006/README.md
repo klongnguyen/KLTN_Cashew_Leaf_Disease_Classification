@@ -86,3 +86,11 @@ Archive name: `EXP-DENSENET121-SCRATCH-5SEEDS-006_FULL.zip`
 - Test is not used for tuning.
 - Deployment seed is selected from Validation only.
 - Mean ± sample standard deviation (`ddof=1`).
+
+## Nhật ký thay đổi / tiến độ — đồng bộ 19/10/2026
+
+- **Dataset và thay đổi version:** V05 giữ nguyên, nhưng dùng recipe **batch 32, LR 3e-4, head Dropout0.40, min val_loss** (xem experiment_config.json). Val Acc **89.97 ± 2.90%**, Test Acc **88.44 ± 3.14%**, Macro F1 Test **87.95 ± 3.14%**. Kết quả thấp hơn 005, nhưng nhiều yếu tố cùng đổi; không xác định nhân quả riêng.
+- **Cấu hình:** thông số cụ thể của phiên bản được ghi trong phần `Configuration` và `experiment_config.json` (nếu tệp tồn tại). Không tự suy đoán khác biệt chưa có bằng chứng từ source.
+- **Kết quả:** xem bảng Training/Validation/Test đã ghi ở trên; phân biệt rõ Validation với Test và report Mean ± sample SD (`ddof=1`).
+- **Cảnh báo so sánh:** test split hoặc protocol thay đổi phải ghi rõ; checkpoint/seed không được lựa chọn bằng Test. 
+- **Trạng thái và bước tiếp theo:** [Bảng tiến độ toàn dự án](../EXPERIMENT_PROGRESS_2026_10.md). Kết quả mới hoặc sửa dataset/config phải tạo experiment ID mới thay vì ghi đè.

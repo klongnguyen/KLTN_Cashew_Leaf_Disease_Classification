@@ -49,3 +49,11 @@ Main recurring errors: `healthy → anthracnose` (5.60%), `leaf_miner → anthra
 Compared with the latest V04 validation rerun, mean Validation Accuracy increases **+2.45 pp** and Macro F1 **+2.53 pp**. Because the dataset version changed, this is a V05 result rather than proof of an architecture improvement.
 
 **The final locked Test results are now included in this repository experiment.**
+
+## Nhật ký thay đổi / tiến độ — đồng bộ 19/10/2026
+
+- **Dataset và thay đổi version:** V04→**V05**: tổng vẫn 6,911 nhưng fingerprint Train/Validation đổi, Test giữ nguyên fingerprint. Val Acc **94.58 ± 0.95%** và Final locked Test Acc **91.97 ± 1.11%**, Macro F1 **91.41 ± 1.13%**. Không gộp kết quả với V07/V08; chuẩn comparator 3 kiến trúc V05.
+- **Cấu hình:** thông số cụ thể của phiên bản được ghi trong phần `Configuration` và `experiment_config.json` (nếu tệp tồn tại). Không tự suy đoán khác biệt chưa có bằng chứng từ source.
+- **Kết quả:** xem bảng Training/Validation/Test đã ghi ở trên; phân biệt rõ Validation với Test và report Mean ± sample SD (`ddof=1`).
+- **Cảnh báo so sánh:** test split hoặc protocol thay đổi phải ghi rõ; checkpoint/seed không được lựa chọn bằng Test. 
+- **Trạng thái và bước tiếp theo:** [Bảng tiến độ toàn dự án](../EXPERIMENT_PROGRESS_2026_10.md). Kết quả mới hoặc sửa dataset/config phải tạo experiment ID mới thay vì ghi đè.

@@ -85,3 +85,11 @@ Các model/checkpoint nặng không lưu trực tiếp trong GitHub; FULL archiv
 - Báo cáo `Mean ± sample Standard Deviation (ddof=1)`.
 
 Machine-readable metrics nằm trong [`aggregate/`](./aggregate/).
+
+## Nhật ký thay đổi / tiến độ — đồng bộ 19/10/2026
+
+- **Dataset và thay đổi version:** **Dataset V04** sau loại ảnh chất lượng thấp, 6,911 ảnh (4,822/1,402/687). Đây là official V04 locked-Test DenseNet121. Cấu hình đầu vào 224x224, batch 32, LR 1e-3, head Dense512/Dropout0.4; Test Accuracy **91.82 ± 0.86%**, Macro F1 **91.37 ± 0.79%**.
+- **Cấu hình:** thông số cụ thể của phiên bản được ghi trong phần `Configuration` và `experiment_config.json` (nếu tệp tồn tại). Không tự suy đoán khác biệt chưa có bằng chứng từ source.
+- **Kết quả:** xem bảng Training/Validation/Test đã ghi ở trên; phân biệt rõ Validation với Test và report Mean ± sample SD (`ddof=1`).
+- **Cảnh báo so sánh:** test split hoặc protocol thay đổi phải ghi rõ; checkpoint/seed không được lựa chọn bằng Test. 
+- **Trạng thái và bước tiếp theo:** [Bảng tiến độ toàn dự án](../EXPERIMENT_PROGRESS_2026_10.md). Kết quả mới hoặc sửa dataset/config phải tạo experiment ID mới thay vì ghi đè.

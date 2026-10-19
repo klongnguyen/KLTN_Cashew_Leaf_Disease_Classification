@@ -143,3 +143,11 @@ Detailed discussion: [`ANALYSIS.md`](./ANALYSIS.md)
 - [`aggregate/comparison_vs_densenet121_003.csv`](./aggregate/comparison_vs_densenet121_003.csv)
 
 Large checkpoints, predictions and the FULL archive remain outside GitHub.
+
+## Nhật ký thay đổi / tiến độ — đồng bộ 19/10/2026
+
+- **Dataset và thay đổi version:** V04 không đổi counts; **rerun 1 GPU OneDeviceStrategy** thay cho EXP-003 2 GPU MirroredStrategy. Các thông số core tương tự; Validation Acc **92.13 ± 1.31%**, Macro F1 **91.90 ± 1.37%**, nhưng **Final Test của 004 chưa chạy**. Không quy chênh lệch do thay model architecture.
+- **Cấu hình:** thông số cụ thể của phiên bản được ghi trong phần `Configuration` và `experiment_config.json` (nếu tệp tồn tại). Không tự suy đoán khác biệt chưa có bằng chứng từ source.
+- **Kết quả:** xem bảng Training/Validation/Test đã ghi ở trên; phân biệt rõ Validation với Test và report Mean ± sample SD (`ddof=1`).
+- **Cảnh báo so sánh:** test split hoặc protocol thay đổi phải ghi rõ; checkpoint/seed không được lựa chọn bằng Test. 
+- **Trạng thái và bước tiếp theo:** [Bảng tiến độ toàn dự án](../EXPERIMENT_PROGRESS_2026_10.md). Kết quả mới hoặc sửa dataset/config phải tạo experiment ID mới thay vì ghi đè.
