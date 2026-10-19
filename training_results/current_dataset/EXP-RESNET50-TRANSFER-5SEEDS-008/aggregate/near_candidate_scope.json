@@ -1,0 +1,16 @@
+{
+  "val_train_candidate_paths": [
+    "val/healthy/healthy_927.jpg",
+    "val/healthy/healthy_953.jpg",
+    "val/healthy/healthy_956.jpg",
+    "val/healthy/healthy_998.jpg",
+    "val/leaf_miner/leaf_miner_1208.jpg",
+    "val/leaf_miner/leaf_miner_965.jpg",
+    "val/red_rust/red_rust_1248.jpg",
+    "val/red_rust/red_rust_1261.jpg",
+    "val/red_rust/red_rust_1277.jpg",
+    "val/red_rust/red_rust_1438.jpg"
+  ],
+  "candidate_count": 10,
+  "meaning": "pHash screening candidates only; no automatic leakage claim or split change"
+}

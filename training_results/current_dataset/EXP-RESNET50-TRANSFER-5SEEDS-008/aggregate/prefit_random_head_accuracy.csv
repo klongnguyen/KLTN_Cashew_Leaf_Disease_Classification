@@ -1,0 +1,6 @@
+seed,validation_pre_fit_accuracy,training_head_state
+42,0.23916083916083916,random_head_imagenet_frozen_backbone
+123,0.18951048951048952,random_head_imagenet_frozen_backbone
+2026,0.18951048951048952,random_head_imagenet_frozen_backbone
+3407,0.27062937062937065,random_head_imagenet_frozen_backbone
+7777,0.09230769230769231,random_head_imagenet_frozen_backbone

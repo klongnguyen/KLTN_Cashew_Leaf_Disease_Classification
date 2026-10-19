@@ -1,0 +1,57 @@
+{
+  "experiment_id": "EXP-RESNET50-TRANSFER-5SEEDS-008",
+  "note": "Excerpted/curated selection summary, not byte-identical to full lock JSON",
+  "source_validation_selection_lock_sha256": "aabd917cb021e6591b45350083ff763b6cf26234451d87a7034b28322a1daece",
+  "config_sha256": "167a748a76308806849a5c7dfe9f64e903c766751ca03cd22b9cea3a084debcc",
+  "dataset_sha256": "75c5928b2f6432aca901bc16831e91f9aa4bdacc1e2ff536753d71da60c147e7",
+  "manifest_sha256": "1810d7e654fede9c8f6a9d08a4078be7882492db2d2d842a19b5320b9aae356b",
+  "class_names": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "red_rust",
+    "not_cashew_leaf"
+  ],
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "selection_rule": "val_loss tolerance 1e-6; higher macro-F1; Stage 1 on tie",
+  "deployment_rule": "val_loss tolerance 1e-6; higher macro-F1; lower seed on tie",
+  "deployment_seed": 3407,
+  "per_seed_selection": {
+    "42": {
+      "stage": "stage2",
+      "epoch": 4,
+      "val_loss": 0.14461015164852142,
+      "checkpoint_sha256": "3d8bffd7f4f48d32d361f32aa29c303cbd84fdf8b07c68828b83ba23c5fa2937"
+    },
+    "123": {
+      "stage": "stage2",
+      "epoch": 1,
+      "val_loss": 0.14943985641002655,
+      "checkpoint_sha256": "ab2779134c4553878999e236496a10b1c16c89bf41f1c4c73e35d8a4eccf7ae1"
+    },
+    "2026": {
+      "stage": "stage2",
+      "epoch": 2,
+      "val_loss": 0.14468957483768463,
+      "checkpoint_sha256": "40fd87518a614722b0df42cedc4c1f5e5b7478ccf30e58ed29b64e70ac06dac7"
+    },
+    "3407": {
+      "stage": "stage1",
+      "epoch": 10,
+      "val_loss": 0.14258112013339996,
+      "checkpoint_sha256": "9341e46b402c1fe053a927f7354e9e29aac8a3bee19ab95f1752ac1d1d8b5c5c"
+    },
+    "7777": {
+      "stage": "stage2",
+      "epoch": 2,
+      "val_loss": 0.1497250497341156,
+      "checkpoint_sha256": "0661d9d005f5b21d0c4f60207166c521c6421cbfb0accb68f9cb65a7ee5aa68b"
+    }
+  }
+}

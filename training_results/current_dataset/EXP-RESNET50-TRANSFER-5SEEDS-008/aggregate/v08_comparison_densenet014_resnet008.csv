@@ -1,0 +1,6 @@
+metric,resnet50_transfer_008,densenet121_transfer_014,delta_densenet_minus_resnet_pp,note
+validation_accuracy_mean,0.9509090909090909,0.9710489510489511,2.013986013986025,same_dataset_V08_different_training_methods
+validation_macro_f1_mean,0.9491012259735025,0.9695786398311224,2.047741385761987,same_dataset_V08_different_training_methods
+real_filename_validation_accuracy_mean,0.7142857142857143,0.7942857142857143,8.0,35_validation_images_small_subgroup
+historical_real_holdout_accuracy_mean,0.7708333333333333,0.8083333333333332,3.75,48_previously_exposed_images
+final_test_accuracy_mean,0.9323615160349853,,,"DenseNet121-014 Final Test not run"

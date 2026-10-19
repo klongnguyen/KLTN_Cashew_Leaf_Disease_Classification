@@ -1,0 +1,23 @@
+{
+  "note": "Curated excerpt; original evaluation_lock.json hash is not claimed for this snapshot",
+  "helper_version": "008.1",
+  "archive_sha256": "BDDCB61CA9AF6111E0B26DB7876D0A3309C587AEAFFAEF49B7A9D2D162309165",
+  "manifest_sha256": "8b99e13d574ee915fcbe008b7403a53adadcf55fef5520455b4e1920bec0d750",
+  "reference_fingerprint": "a26ac28e1f51cf9dad536a214ac8c698ec176c86b7f6a360b3640081afa9c9cd",
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "deployment_seed": 3407,
+  "selection_source": "validation only; lowest val_loss, then macro F1 and seed",
+  "macro_classes": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "red_rust"
+  ],
+  "outputs_are_logits": false
+}

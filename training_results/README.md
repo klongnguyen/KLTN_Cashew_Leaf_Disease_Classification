@@ -1,5 +1,8 @@
 # Training Results
 
+> **Mới 20/10/2026 — [ResNet50 ImageNet EXP-008](./current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-008/README.md)** trên V08: 5 seeds Val **95.09 ± 0.22% Accuracy / 94.91 ± 0.23% Macro F1**; **Final Test xong 93.24 ± 0.24% Accuracy / 92.72 ± 0.25% F1**; **historical Real Holdout 48 ảnh 77.08 ± 2.55% Accuracy / 72.97 ± 4.07% F1**. **Backbone vẫn frozen cả hai stage**, không nhầm với Scratch-008 V07. Deployment checkpoint candidate **seed 3407 chọn theo Validation Loss**; **không thay mô hình web**. [Audit kỹ thuật](./current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-008/ANALYSIS_AND_PROTOCOL_AUDIT.md).
+
+
 > **ResNet50 Scratch 006–008 (19/10/2026):** [006 V05](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-006/README.md) Val Acc **86.46 ± 2.27%**, Macro F1 **86.12 ± 2.56%**; [007 V07](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-007/README.md) **89.20 ± 2.04%**, F1 **88.61 ± 2.19%**; [008 V07](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-008/README.md) có metrics/predictions/logs **trùng 007** (chưa có bằng chứng train mới). **Chưa có Test riêng 006–008**; là ResNet50 **Scratch**, không phải Transfer. [Audit 006–008](./current_dataset/RESNET50_SCRATCH_006_008_AUDIT_2026_10.md).
 
 
