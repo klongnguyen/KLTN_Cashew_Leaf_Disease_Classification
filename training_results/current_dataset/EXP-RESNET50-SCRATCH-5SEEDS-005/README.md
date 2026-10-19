@@ -50,3 +50,10 @@ Main recurring errors: `healthy → anthracnose` (9.24%), `leaf_miner → anthra
 Seed 2026 is notably weaker and increases the between-seed variance. Compared with the latest V04 validation rerun, mean Validation Accuracy increases **+2.20 pp** and Macro F1 **+2.27 pp**, but standard deviation increases.
 
 **The final locked Test results are now included in this repository experiment.**
+
+## Nhật ký thay đổi / tiến độ — đồng bộ 19/10/2026
+
+- **Thay đổi dataset, cấu hình hoặc môi trường:** **V05**, counts giữ nguyên V04 nhưng fingerprint Train/Val thay đổi, Test giữ nguyên fingerprint. Official locked Test ResNet50: **89.78 ± 2.50% Accuracy**, **89.36 ± 2.47% Macro F1**; khác EXP-004 Validation-only và không so trực tiếp với V07/V08 DenseNet.
+- **Config của chính thí nghiệm:** các mục `Configuration` và tệp config (khi hiện diện) ở phía trên là nguồn thông số; các khác biệt chưa có tài liệu chứng minh được đánh dấu **chưa xác minh**.
+- **Metrics:** tra bảng 5-seed Validation/Test của README này; không trộn hai tập đánh giá hoặc lấy best seed theo Test.
+- **Tiến độ và bước kế tiếp:** xem [chỉ mục tiến độ](../EXPERIMENT_PROGRESS_2026_10.md); thí nghiệm mới/sửa manifest cần cấp experiment ID mới; không ghi đè kết quả lịch sử.

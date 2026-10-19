@@ -150,3 +150,10 @@ Detailed analysis: [`ANALYSIS.md`](./ANALYSIS.md)
 - [`aggregate/comparison_vs_resnet50_003.csv`](./aggregate/comparison_vs_resnet50_003.csv)
 
 Large checkpoints and the full analysis archive remain outside GitHub.
+
+## Nhật ký thay đổi / tiến độ — đồng bộ 19/10/2026
+
+- **Thay đổi dataset, cấu hình hoặc môi trường:** **V04** cùng count/split, là **single NVIDIA L4 OneDeviceStrategy rerun** thay cho 2 GPU ở 003. Val Acc **90.23 ± 1.45%**, Val Macro F1 **90.03 ± 1.44%**, nhưng **Final Test rerun 004 chưa chạy**. Không diễn giải như bằng chứng kiến trúc được cải thiện.
+- **Config của chính thí nghiệm:** các mục `Configuration` và tệp config (khi hiện diện) ở phía trên là nguồn thông số; các khác biệt chưa có tài liệu chứng minh được đánh dấu **chưa xác minh**.
+- **Metrics:** tra bảng 5-seed Validation/Test của README này; không trộn hai tập đánh giá hoặc lấy best seed theo Test.
+- **Tiến độ và bước kế tiếp:** xem [chỉ mục tiến độ](../EXPERIMENT_PROGRESS_2026_10.md); thí nghiệm mới/sửa manifest cần cấp experiment ID mới; không ghi đè kết quả lịch sử.
