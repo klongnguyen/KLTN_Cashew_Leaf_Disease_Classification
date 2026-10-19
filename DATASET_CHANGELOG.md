@@ -1,5 +1,8 @@
 # Dataset Changelog
 
+> **ResNet50 Scratch EXP-006/007/008 dùng dataset hiện có, không tạo V09:** EXP-006 trên **V05 (4.822/1.402/687)**; EXP-007 và 008 trên **V07 (4.825/1.395/687)**, cùng manifest `f9e7d9a3...`. Không đối chiếu Val V05 và V07 như ablation một biến; 007/008 có source predictions/histories trùng nhau. **52 pHash candidates V07** cần xác minh. [Audit](./training_results/current_dataset/RESNET50_SCRATCH_006_008_AUDIT_2026_10.md).
+
+
 > **EXP-014/015 dùng nguyên V08, không tạo phiên bản dataset mới:** EXP-014 ImageNet Transfer 5 seeds (Train 4.790 / Val 1.430 / Test 686, manifest `1810d7e6...`); EXP-015 chỉ đánh giá 5 checkpoint EXP-014 trên Real Holdout 49 ảnh gốc, **loại 1 ảnh trùng byte với Test**, còn **48 ảnh thuộc 4 lớp có ground truth**. Holdout này đã được kiểm tra trong EXP-013 nên là **historical exposed**, không phải blind test. Chi tiết: [014](./training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md) · [015](./training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md). 51 cặp pHash nghi trùng trong V08 vẫn cần audit thủ công.
 
 

@@ -1,5 +1,8 @@
 # Training Results
 
+> **ResNet50 Scratch 006–008 (19/10/2026):** [006 V05](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-006/README.md) Val Acc **86.46 ± 2.27%**, Macro F1 **86.12 ± 2.56%**; [007 V07](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-007/README.md) **89.20 ± 2.04%**, F1 **88.61 ± 2.19%**; [008 V07](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-008/README.md) có metrics/predictions/logs **trùng 007** (chưa có bằng chứng train mới). **Chưa có Test riêng 006–008**; là ResNet50 **Scratch**, không phải Transfer. [Audit 006–008](./current_dataset/RESNET50_SCRATCH_006_008_AUDIT_2026_10.md).
+
+
 > **Kết quả mới 19/10/2026:** [EXP-014 — ImageNet Transfer Learning (5 seeds, Val V08)](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md): **97.10 ± 0.20% Val Accuracy**, **96.96 ± 0.21% Val Macro F1**. [EXP-015 — đánh giá lại checkpoint 014, không retrain](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md): **80.83 ± 0.93% Accuracy** trên **48 ảnh Real Holdout lịch sử**; deployment seed 123: **38/48**. **Final Test V08 vẫn pending**. [Progress](./current_dataset/EXPERIMENT_PROGRESS_2026_10.md).
 
 
