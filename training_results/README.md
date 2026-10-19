@@ -1,5 +1,7 @@
 # Training Results
 
+> **Cập nhật 19/10/2026:** [Tiến độ tổng hợp](./current_dataset/EXPERIMENT_PROGRESS_2026_10.md) · [EXP-011 V07](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-011/README.md) · [EXP-012 V08](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-012/README.md). EXP-012 mới hoàn tất **Validation 5 seeds (93.99 ± 1.05% Accuracy; 93.81 ± 1.13% Macro F1)**, **Test pending**; seed 42 đạt **22/35** ảnh `real_`. EXP-011 có metrics trùng EXP-009.
+
 Thư mục này quản lý kết quả huấn luyện theo **phiên bản dataset** để tránh so sánh sai giữa các experiment sử dụng dữ liệu khác nhau.
 
 
@@ -34,9 +36,9 @@ Ba scratch baseline mới nhất đã hoàn tất 5-seed Training + Validation:
 
 | Model | Experiment | Validation Accuracy | Validation Macro F1 | Status |
 |---|---|---:|---:|---|
-| DenseNet121 | [EXP-005](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-005/) | **94.58 ± 0.95%** | **94.43 ± 0.93%** | Test pending |
-| ResNet50 | [EXP-005](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-005/) | **92.43 ± 1.94%** | **92.30 ± 1.98%** | Test pending |
-| Compact ViT | [EXP-005](./current_dataset/EXP-VIT-SCRATCH-5SEEDS-005/) | **88.33 ± 1.44%** | **87.81 ± 1.52%** | Test pending |
+| DenseNet121 | [EXP-005](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-005/) | **94.58 ± 0.95%** | **94.43 ± 0.93%** | Final Test complete |
+| ResNet50 | [EXP-005](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-005/) | **92.43 ± 1.94%** | **92.30 ± 1.98%** | Final Test complete |
+| Compact ViT | [EXP-005](./current_dataset/EXP-VIT-SCRATCH-5SEEDS-005/) | **88.33 ± 1.44%** | **87.81 ± 1.52%** | Final Test complete |
 
 Detailed analysis: [current_dataset/V05_VALIDATION_ANALYSIS.md](./current_dataset/V05_VALIDATION_ANALYSIS.md).
 

@@ -1,5 +1,7 @@
 # KLTN — Cashew Leaf Disease Classification & Detection
 
+> **Cập nhật 19/10/2026:** [Bảng tiến độ và thay đổi từng EXP](./training_results/current_dataset/EXPERIMENT_PROGRESS_2026_10.md). **DenseNet121 EXP-012 (V08)** là bản mới nhất được phân tích, đạt **93.99 ± 1.05% Val Accuracy**, **93.81 ± 1.13% Val Macro F1**; **Final Test chưa có**. Seed 42 chỉ đúng **22/35** ảnh `real_` trong Validation, cho thấy cần xử lý domain shift. [Chi tiết EXP-012](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-012/README.md). EXP-011 **trùng 5 seed metrics** với EXP-009, chưa xác minh là run độc lập. **Ứng dụng Web hiện được repo mô tả sử dụng EXP-009**, chưa nâng lên EXP-012.
+
 Khóa luận xây dựng hệ thống thị giác máy tính cho **phân loại bệnh trên lá cây điều** và hướng mở rộng sang **phát hiện vùng tổn thương bằng bounding box**.
 
 ---
@@ -26,7 +28,7 @@ Khóa luận xây dựng hệ thống thị giác máy tính cho **phân loại 
   ```
 - ➡️ [Chi tiết tài liệu ứng dụng web](./Application/README.md)
 
-### 2. 🔬 Thực nghiệm DenseNet121 Scratch 5-Seed v009 (`EXP-DENSENET121-SCRATCH-5SEEDS-009`)
+### 2. 🔬 DenseNet121 v009 đang chạy trên web (có EXP-012 V08 mới hơn để đánh giá) (`EXP-DENSENET121-SCRATCH-5SEEDS-009`)
 - Huấn luyện từ đầu (Scratch) với 5 seeds cố định `[42, 123, 2026, 3407, 7777]` trên tập dữ liệu đã làm sạch `Cashew_dataV07_clean_val` (6.907 ảnh).
 - Kết quả Validation 5 seeds:
   - **Val Accuracy**: **94.55 ± 1.11%** (Tối ưu: Seed 3407 đạt **95.63%**)
@@ -63,7 +65,7 @@ Báo cáo thực nghiệm 1 seed DenseNet121 Scratch riêng biệt nhằm đánh
 
 ## Project status
 
-### Classification — latest results
+### Classification — official V05 benchmark (historical cross-model comparison)
 
 Current dataset: **`Cashew_dataV05` — 6,911 images / 5 classes**. Training, Validation, and the locked Test are complete for all three scratch baselines.
 
@@ -186,9 +188,9 @@ Latest V05 scratch baselines:
 
 Current experiments:
 
-- [`EXP-DENSENET121-SCRATCH-5SEEDS-005`](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-005/) — V05 validation complete; Test pending
-- [`EXP-RESNET50-SCRATCH-5SEEDS-005`](./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-005/) — V05 validation complete; Test pending
-- [`EXP-VIT-SCRATCH-5SEEDS-005`](./training_results/current_dataset/EXP-VIT-SCRATCH-5SEEDS-005/) — V05 validation complete; Test pending; source archive ID was EXP-004
+- [`EXP-DENSENET121-SCRATCH-5SEEDS-005`](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-005/) — V05 validation + locked Test completed
+- [`EXP-RESNET50-SCRATCH-5SEEDS-005`](./training_results/current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-005/) — V05 validation + locked Test completed
+- [`EXP-VIT-SCRATCH-5SEEDS-005`](./training_results/current_dataset/EXP-VIT-SCRATCH-5SEEDS-005/) — V05 validation + locked Test completed; source archive ID was EXP-004
 
 Previous V04 benchmark/reruns:
 

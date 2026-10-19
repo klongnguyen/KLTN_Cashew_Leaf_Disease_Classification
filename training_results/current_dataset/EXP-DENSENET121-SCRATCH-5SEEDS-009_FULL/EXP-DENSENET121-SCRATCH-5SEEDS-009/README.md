@@ -71,3 +71,10 @@ Archive name: `EXP-DENSENET121-SCRATCH-5SEEDS-009_FULL.zip`
 - Test is not used for tuning.
 - Deployment seed is selected from Validation only.
 - Mean ± sample standard deviation (`ddof=1`).
+
+## Theo dõi phiên bản — 19/10/2026
+
+- **Thay đổi so với 006:** V05 → **V07**; Train 4,825 / Val 1,395 / Test 687; batch size 32 → **16**, LR 3e-4 → **1e-4**, head dropout 0.4 → **0.3**, preprocessing/recipe có khác. Không quy khác biệt metric cho một biến duy nhất khi dataset và nhiều thiết lập cùng đổi.
+- **Kết quả:** Val Acc **94.55 ± 1.11%**, Macro F1 **94.38 ± 1.13%**; seed 3407 theo minimum val_loss; chưa có Final Test của EXP-009 trong hồ sơ.
+- **Trùng EXP-011:** [EXP-011](../../EXP-DENSENET121-SCRATCH-5SEEDS-011/README.md) có cùng manifest và cùng toàn bộ 5 dòng Validation metrics; chưa xác minh chạy độc lập.
+- **Tiếp theo:** [EXP-012/V08](../../EXP-DENSENET121-SCRATCH-5SEEDS-012/README.md) đánh giá thêm 35 ảnh `real_` trong Validation; Final Test và real holdout còn pending.

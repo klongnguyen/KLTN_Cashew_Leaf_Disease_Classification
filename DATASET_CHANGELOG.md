@@ -1,5 +1,7 @@
 # Dataset Changelog
 
+> **Cập nhật V07/V08 ngày 19/10/2026:** xem [experiment progress](./training_results/current_dataset/EXPERIMENT_PROGRESS_2026_10.md). V05 là official Test đa mô hình; V07/V08 là các dataset DenseNet mới hơn.
+
 Tài liệu này theo dõi các phiên bản classification dataset để tránh trộn lẫn kết quả giữa những split khác nhau.
 
 ## Current development — Cashew_dataV05
@@ -26,8 +28,26 @@ The Test fingerprint is unchanged across V04 and V05:
 
 `ee49ef59c791a7519c172316afd48554f92fbb1b4f47d11b57c82d6ae1624dc4`
 
-All three latest V05 archives have identical normalized split/class/filename manifests. This version is currently **Validation complete — locked Test pending**.
+All three latest V05 archives have identical normalized split/class/filename manifests. V05 đã hoàn tất locked Test chính thức cho cả ba mô hình.
 
+
+## V07 — Cashew_dataV07_clean_val (DenseNet EXP-009/011)
+
+- 6,907 ảnh: Train **4,825**, Val **1,395**, Test **687**.
+- Tên file `real_` theo split: Train 170, Validation 0, Test 28.
+- SHA-256 manifest: `f9e7d9a39f33bd631b3133a77d0260055bcdfbcd79cbebbb4d87877b893c6d74`.
+- 009/011 có kết quả 5 seeds Validation trùng nhau; không khẳng định 2 run độc lập khi chưa xác minh checkpoint.
+- Không có Real Validation tách riêng để đo domain shift.
+
+## V08 — Cashew_dataV08_real_val (DenseNet EXP-012)
+
+- 6,906 ảnh: Train **4,790**, Val **1,430**, Test **686**.
+- So với V07, 35 ảnh tên `real_` chuyển từ Train sang Validation, và loại 1 ảnh Test `not_cashew_leaf_1514.JPG` được liệt kê trong source config.
+- Tên file `real_`: Train 135, Val 35, Test 28.
+- SHA-256 manifest: `1810d7e654fede9c8f6a9d08a4078be7882492db2d2d842a19b5320b9aae356b`.
+- Audit có 51 cặp pHash nghi tương tự chưa xác nhận thủ công. Final Test EXP-012 `run_final_test=false`.
+- Validation Accuracy seed 42 trên nhóm real_: **22/35 = 62.86%**, nhóm còn lại **1331/1395 = 95.41%**. Đây là dấu hiệu domain shift, không chứng minh nguyên nhân chỉ do ánh sáng/nền.
+- Test V08 đã thay đổi một ảnh so với V07, nên không được quy so sánh là cố định 100% cùng Test.
 
 ## Previous completed benchmark — Cashew_dataV04
 
@@ -75,5 +95,5 @@ V04 có ít hơn **302 ảnh**. Mức giảm không được diễn giải là m
 
 - Không so sánh trực tiếp metric V03 với V04 như một controlled architecture comparison.
 - So sánh model chính thức phải dùng cùng dataset version.
-- V05 is the current development dataset; V04 remains the latest completed locked-Test benchmark until V05 Test evaluation is finished.
+- V05 is an official completed multi-model locked-Test benchmark; DenseNet V07/V08 are later development snapshots.
 - Test Set của từng version được khóa sau khi version đó được chốt.
