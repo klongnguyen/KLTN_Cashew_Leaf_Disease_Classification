@@ -15,7 +15,7 @@ Nguồn: cây thư mục GitHub `main` trước cập nhật, các gói ANALYSIS
 | DenseNet121 | [EXP-006](./EXP-DENSENET121-SCRATCH-5SEEDS-006/README.md) | V05 | Test xong | Test Acc **88.44 ± 3.14%**, F1 **87.95 ± 3.14%** |
 | DenseNet121 | [EXP-009](./EXP-DENSENET121-SCRATCH-5SEEDS-009_FULL/EXP-DENSENET121-SCRATCH-5SEEDS-009/README.md) | V07 | Validation xong; Test pending | Val Acc **94.55 ± 1.11%**, F1 **94.38 ± 1.13%** |
 | DenseNet121 | [EXP-011](./EXP-DENSENET121-SCRATCH-5SEEDS-011/README.md) | V07 | Validation xong; **số liệu trùng 009** | Val Acc **94.55 ± 1.11%**, F1 **94.38 ± 1.13%** |
-| DenseNet121 | [EXP-013 (chưa có directory chuẩn trên repo)](./) | V08 | 5-seed Scratch; Val/Test/Real Holdout lịch sử | Val Acc **94.17 ± 0.90%**, Val F1 **94.02 ± 0.98%**; Holdout Acc **51.25 ± 8.15%** |
+| DenseNet121 | EXP-013 (chưa có directory chuẩn trên repo) | V08 | 5-seed Scratch; Val/Test/Real Holdout lịch sử | Val Acc **94.17 ± 0.90%**, Val F1 **94.02 ± 0.98%**; Holdout Acc **51.25 ± 8.15%** |
 | **DenseNet121 Transfer** | **[EXP-014](./EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md)** | **V08** | **5-seed training + Validation xong; Final Test pending** | **Val Acc 97.10 ± 0.20%; Macro F1 96.96 ± 0.21%; Real Val 79.43 ± 1.28%** |
 | **DenseNet121 Transfer evaluation** | **[EXP-015](./EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md)** | **V08 checkpoints + historical holdout** | **Không retrain; đã chấm 48 ảnh holdout; Test pending** | **Holdout Acc 80.83 ± 0.93%; Macro F1 80.80 ± 0.19%; seed 123 đúng 38/48** |
 | **DenseNet121** | **[EXP-012](./EXP-DENSENET121-SCRATCH-5SEEDS-012/README.md)** | **V08** | **Validation xong; Test pending** | Val Acc **93.99 ± 1.05%**, F1 **93.81 ± 1.13%** |

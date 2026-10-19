@@ -60,15 +60,15 @@
     "max_epochs": 12,
     "early_patience": 4,
     "reduce_patience": 2,
-    "min_lr": 0.000001,
+    "min_lr": 1e-06,
     "trainable_backbone": "none"
   },
   "stage2": {
-    "lr": 0.00001,
+    "lr": 1e-05,
     "max_epochs": 30,
     "early_patience": 8,
     "reduce_patience": 4,
-    "min_lr": 1e-7,
+    "min_lr": 1e-07,
     "trainable_backbone": "conv5_* non-BatchNorm only"
   },
   "selection_rule": "lowest Validation loss, higher Validation macro-F1, Stage 1 on tie",
