@@ -89,3 +89,10 @@ Các model/checkpoint nặng không lưu trực tiếp trong GitHub; FULL archiv
 - Báo cáo `Mean ± sample Standard Deviation (ddof=1)`.
 
 Machine-readable metrics nằm trong [`aggregate/`](./aggregate/).
+
+## Nhật ký thay đổi / tiến độ — đồng bộ 19/10/2026
+
+- **Thay đổi theo phiên bản:** **V04** sau cleaning 6,911 ảnh, dùng làm official V04 Compact ViT Test benchmark. Test Acc **85.30 ± 1.68%**, Macro F1 **84.41 ± 1.71%**; kiến trúc ViT nhỏ khoảng 347,717 tham số.
+- **Config:** lấy chính xác từ `Configuration`/tệp config của experiment; thông số nào chưa có nguồn sẽ không suy diễn. So sánh đổi dataset và môi trường phải kiểm soát các yếu tố nhiễu.
+- **Kết quả:** xem Validation/Test theo seed trong README ở trên, tổng hợp Mean ± sample SD khi có; không chọn seed theo Test.
+- **Tiến độ / tiếp nối:** [Chỉ mục theo thời gian](../EXPERIMENT_PROGRESS_2026_10.md). Giữ thí nghiệm lịch sử độc lập, không ghi đè ID.

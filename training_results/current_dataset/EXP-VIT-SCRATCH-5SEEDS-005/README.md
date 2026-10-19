@@ -51,3 +51,10 @@ Main recurring errors: `healthy → anthracnose` (12.98%), `leaf_miner → anthr
 Compared with the V04 ViT rerun, mean Validation Accuracy increases **+1.20 pp** and Macro F1 **+1.13 pp**, but seed variability increases. ViT remains much lighter than both CNN baselines.
 
 **The final locked Test results are now included in this repository experiment.**
+
+## Nhật ký thay đổi / tiến độ — đồng bộ 19/10/2026
+
+- **Thay đổi theo phiên bản:** **V05** có cùng class counts V04 nhưng fingerprint Train/Val khác; Test khóa giữ fingerprint. Archive gốc ghi nhầm ID 004, repo chuẩn hóa thành 005. Official V05 Test Acc **85.04 ± 0.44%**, Macro F1 **83.93 ± 0.37%**.
+- **Config:** lấy chính xác từ `Configuration`/tệp config của experiment; thông số nào chưa có nguồn sẽ không suy diễn. So sánh đổi dataset và môi trường phải kiểm soát các yếu tố nhiễu.
+- **Kết quả:** xem Validation/Test theo seed trong README ở trên, tổng hợp Mean ± sample SD khi có; không chọn seed theo Test.
+- **Tiến độ / tiếp nối:** [Chỉ mục theo thời gian](../EXPERIMENT_PROGRESS_2026_10.md). Giữ thí nghiệm lịch sử độc lập, không ghi đè ID.

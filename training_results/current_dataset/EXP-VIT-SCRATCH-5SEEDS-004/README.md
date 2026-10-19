@@ -150,3 +150,10 @@ Detailed discussion: [`ANALYSIS.md`](./ANALYSIS.md)
 - [`aggregate/comparison_vs_vit_003.csv`](./aggregate/comparison_vs_vit_003.csv)
 
 Large checkpoints, predictions, deployment models and the FULL archive remain outside GitHub.
+
+## Nhật ký thay đổi / tiến độ — đồng bộ 19/10/2026
+
+- **Thay đổi theo phiên bản:** **V04** validation rerun chạy **OneDeviceStrategy** thay 2 GPU. Archive gốc có ID 003 trùng với benchmark lịch sử, repo đã chuẩn hóa thành EXP-004. Val Acc **87.13 ± 0.62%**, Macro F1 **86.68 ± 0.70%**; **Test riêng 004 chưa chạy**.
+- **Config:** lấy chính xác từ `Configuration`/tệp config của experiment; thông số nào chưa có nguồn sẽ không suy diễn. So sánh đổi dataset và môi trường phải kiểm soát các yếu tố nhiễu.
+- **Kết quả:** xem Validation/Test theo seed trong README ở trên, tổng hợp Mean ± sample SD khi có; không chọn seed theo Test.
+- **Tiến độ / tiếp nối:** [Chỉ mục theo thời gian](../EXPERIMENT_PROGRESS_2026_10.md). Giữ thí nghiệm lịch sử độc lập, không ghi đè ID.
