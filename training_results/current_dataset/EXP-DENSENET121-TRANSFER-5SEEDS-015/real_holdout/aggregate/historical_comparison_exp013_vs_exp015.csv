@@ -1,0 +1,4 @@
+metric,exp013_scratch,exp015_transfer,delta_pp,comparison_type
+five_seed_holdout_accuracy_mean,0.5125,0.8083333333333332,29.58333333333333,same_48_images_historical
+five_seed_holdout_macro_f1_mean,0.4962,0.8080307455025852,31.18307455025852,same_48_images_historical
+validation_locked_deployment_accuracy,0.4583333333333333,0.7916666666666666,33.33333333333333,exp013_seed3407_vs_exp014_seed123

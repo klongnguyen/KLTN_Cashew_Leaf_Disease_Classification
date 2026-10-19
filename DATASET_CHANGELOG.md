@@ -1,5 +1,8 @@
 # Dataset Changelog
 
+> **EXP-014/015 dùng nguyên V08, không tạo phiên bản dataset mới:** EXP-014 ImageNet Transfer 5 seeds (Train 4.790 / Val 1.430 / Test 686, manifest `1810d7e6...`); EXP-015 chỉ đánh giá 5 checkpoint EXP-014 trên Real Holdout 49 ảnh gốc, **loại 1 ảnh trùng byte với Test**, còn **48 ảnh thuộc 4 lớp có ground truth**. Holdout này đã được kiểm tra trong EXP-013 nên là **historical exposed**, không phải blind test. Chi tiết: [014](./training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md) · [015](./training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md). 51 cặp pHash nghi trùng trong V08 vẫn cần audit thủ công.
+
+
 > **Cập nhật V07/V08 ngày 19/10/2026:** xem [experiment progress](./training_results/current_dataset/EXPERIMENT_PROGRESS_2026_10.md). V05 là official Test đa mô hình; V07/V08 là các dataset DenseNet mới hơn.
 
 Tài liệu này theo dõi các phiên bản classification dataset để tránh trộn lẫn kết quả giữa những split khác nhau.

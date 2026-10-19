@@ -1,5 +1,8 @@
 # Báo cáo mô hình DenseNet121 014 và kế hoạch đánh giá holdout 015
 
+> **Bổ sung sau khi EXP-015 chạy xong (19/10/2026):** Đây là **bản kế hoạch và báo cáo trước khi thực thi**, nên các dòng "Holdout chưa chạy" phía dưới là **trạng thái lịch sử tại thời điểm soạn**. EXP-015 hiện đã đánh giá 5 checkpoint EXP-014 trên 48 ảnh holdout lịch sử: **Accuracy 80.83 ± 0.93%**, **Macro F1 80.80 ± 0.19%**; seed 123 **38/48**. Báo cáo chính thức hậu thực thi tại [training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md](../../training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md). **Không retrain, Test V08 chưa chạy**.
+
+
 **Mô hình được huấn luyện:** `EXP-DENSENET121-TRANSFER-5SEEDS-014`  
 **Notebook đánh giá:** `densenet121_transfer_5seed_015.ipynb`  
 **Trạng thái:** 014 đã hoàn tất huấn luyện 5 seed; 015 dùng lại đúng checkpoint đã khóa bằng Validation. Kết quả real holdout của 015 **chưa chạy** tại thời điểm lập báo cáo này.

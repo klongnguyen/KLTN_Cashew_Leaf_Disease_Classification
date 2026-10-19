@@ -1,0 +1,78 @@
+{
+  "experiment_id": "EXP-DENSENET121-TRANSFER-5SEEDS-014",
+  "notebook_version": "014",
+  "baseline_source": "EXP-DENSENET121-SCRATCH-5SEEDS-013 source notebook",
+  "comparison_scope": "method comparison; ImageNet + two stages versus scratch",
+  "dataset": {
+    "name": "Cashew_dataV08_real_val",
+    "archive": "CashewData_Split (8).zip",
+    "archive_sha256": "75c5928b2f6432aca901bc16831e91f9aa4bdacc1e2ff536753d71da60c147e7",
+    "manifest_sha256": "1810d7e654fede9c8f6a9d08a4078be7882492db2d2d842a19b5320b9aae356b",
+    "counts": {
+      "train": 4790,
+      "val": 1430,
+      "test": 686,
+      "total": 6906
+    },
+    "class_names": [
+      "anthracnose",
+      "healthy",
+      "leaf_miner",
+      "red_rust",
+      "not_cashew_leaf"
+    ],
+    "real_filename_counts": {
+      "train": 135,
+      "val": 35,
+      "test": 28
+    }
+  },
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "input": "raw RGB float32 0..255, bilinear resize 224x224",
+  "model": {
+    "backbone": "DenseNet121",
+    "weights": "imagenet",
+    "include_top": false,
+    "pooling": "avg",
+    "head_dropout": 0.4,
+    "preprocessing": "inside model: /255 then ImageNet mean/std",
+    "augmentation": {
+      "horizontal_flip": true,
+      "rotation_factor": 0.08,
+      "zoom_factor": 0.1,
+      "contrast_factor": 0.1,
+      "brightness": false
+    },
+    "backbone_call": "backbone(x, training=False)"
+  },
+  "optimizer": "AdamW",
+  "weight_decay": 0.0001,
+  "batch_size": 16,
+  "loss": "SparseCategoricalCrossentropy",
+  "stage1": {
+    "lr": 0.0003,
+    "max_epochs": 12,
+    "early_patience": 4,
+    "reduce_patience": 2,
+    "min_lr": 0.000001,
+    "trainable_backbone": "none"
+  },
+  "stage2": {
+    "lr": 0.00001,
+    "max_epochs": 30,
+    "early_patience": 8,
+    "reduce_patience": 4,
+    "min_lr": 1e-7,
+    "trainable_backbone": "conv5_* non-BatchNorm only"
+  },
+  "selection_rule": "lowest Validation loss, higher Validation macro-F1, Stage 1 on tie",
+  "deployment_rule": "lowest Validation loss, higher macro-F1, lower seed on tie",
+  "test_protocol": "disabled by default; evaluate only after Validation lock",
+  "holdout_protocol": "previously exposed 48-image historical comparison only"
+}
