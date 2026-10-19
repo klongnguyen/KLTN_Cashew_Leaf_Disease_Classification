@@ -211,3 +211,10 @@ Repo lưu các artifact nhẹ phục vụ tái lập, kiểm tra và viết khó
 ## Main Takeaway
 
 ResNet50 scratch đạt **90.10 ± 1.82% Test Accuracy** và **90.12 ± 1.81% Macro F1** trên 5 seeds. Model có khả năng phân loại tốt trên `red_rust`, `not_cashew_leaf` và `leaf_miner`, trong khi `anthracnose` vẫn là lớp khó nhất. Baseline này được giữ cố định để làm mốc so sánh cho các experiment tiếp theo, đặc biệt các thử nghiệm thay đổi learning rate, batch size hoặc regularization.
+
+## Nhật ký thay đổi / tiến độ — đồng bộ 19/10/2026
+
+- **Thay đổi dataset, cấu hình hoặc môi trường:** **Cashew_dataV03**, tập lịch sử có 7,213 ảnh, split 5,049/1,433/731; bản này không so trực tiếp với V04/V05 như đối chứng cùng dữ liệu. Không có đủ bằng chứng để quy kết thay đổi kết quả cho riêng 1 hyperparameter.
+- **Config của chính thí nghiệm:** các mục `Configuration` và tệp config (khi hiện diện) ở phía trên là nguồn thông số; các khác biệt chưa có tài liệu chứng minh được đánh dấu **chưa xác minh**.
+- **Metrics:** tra bảng 5-seed Validation/Test của README này; không trộn hai tập đánh giá hoặc lấy best seed theo Test.
+- **Tiến độ và bước kế tiếp:** xem [chỉ mục tiến độ](../EXPERIMENT_PROGRESS_2026_10.md); thí nghiệm mới/sửa manifest cần cấp experiment ID mới; không ghi đè kết quả lịch sử.

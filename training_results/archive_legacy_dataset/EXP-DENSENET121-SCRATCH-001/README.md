@@ -147,3 +147,11 @@ Mô hình tốt nhất tại Epoch 36 được đánh giá trên tập **747 ả
 * **Thời gian suy luận trung bình:** **15.02 ms / ảnh**
 * **Tốc độ xử lý khung hình:** **66.56 FPS**
 * **Khả năng triển khai:** Tốc độ 66.56 FPS hoàn toàn đáp ứng các ứng dụng thời gian thực (Real-time Vision) trên thiết bị biên hoặc tích hợp camera giám sát vườn điều.
+
+## Version trace / tiến độ (đồng bộ 19/10/2026)
+
+- Đây là **experiment Scratch 001, 1 seed**, chạy trên **CashewData_v01: 7,450 ảnh** (Train 5,215 / Val 1,488 / Test 747), không phải official 5-seed V05 benchmark.
+- **Config** đã ghi ở trên: DenseNet121, 224×224, Adam LR 1e-3, batch 32, head 512 + Dropout 0.4.
+- **Kết quả:** Test Accuracy **95.3146% (712/747)**, Macro F1 **95.2760%**, chỉ là phép đo trên Test của **dataset v01** và 1 seed. Không lấy 95.31% so trực tiếp với V05 hoặc V08 có test khác.
+- **Dòng phát triển:** V01 → V03/V04 làm sạch/thay split và mở rộng sang 5 seeds. Thông tin chi tiết các thay đổi trung gian khi chưa có manifest không được tự suy diễn.
+- **Tiến độ hiện tại:** archived; xem [chỉ mục EXP mới](../../current_dataset/EXPERIMENT_PROGRESS_2026_10.md). Giữ nguyên báo cáo gốc để truy xuất.

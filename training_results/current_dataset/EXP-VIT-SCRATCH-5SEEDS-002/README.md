@@ -110,3 +110,10 @@ Checkpoint/model nặng **không commit vào GitHub**. GitHub chỉ lưu config 
 - Validation dùng cho checkpoint và chọn deployment seed.
 - Test không dùng để tuning hoặc chọn seed.
 - Kết quả báo cáo bằng **Mean ± sample Standard Deviation (`ddof=1`)**.
+
+## Nhật ký thay đổi / tiến độ — đồng bộ 19/10/2026
+
+- **Thay đổi theo phiên bản:** **Cashew_dataV03**, phiên bản lịch sử 7,213 ảnh, không dùng làm so sánh architecture có đối chứng với V04/V05 nếu split khác. Chỉ xem metrics/recipe đã được xác minh trong chính README này.
+- **Config:** lấy chính xác từ `Configuration`/tệp config của experiment; thông số nào chưa có nguồn sẽ không suy diễn. So sánh đổi dataset và môi trường phải kiểm soát các yếu tố nhiễu.
+- **Kết quả:** xem Validation/Test theo seed trong README ở trên, tổng hợp Mean ± sample SD khi có; không chọn seed theo Test.
+- **Tiến độ / tiếp nối:** [Chỉ mục theo thời gian](../EXPERIMENT_PROGRESS_2026_10.md). Giữ thí nghiệm lịch sử độc lập, không ghi đè ID.

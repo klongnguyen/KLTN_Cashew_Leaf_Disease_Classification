@@ -1,0 +1,57 @@
+{
+  "experiment_id": "EXP-DENSENET121-SCRATCH-5SEEDS-011",
+  "source_experiment_id": "EXP-DENSENET121-SCRATCH-5SEEDS-011",
+  "source_archive": "EXP-DENSENET121-SCRATCH-5SEEDS-011_ANALYSIS.zip",
+  "scope": "selected verified fields from analysis archive, not complete original experiment_config",
+  "dataset": {
+    "version": "Cashew_dataV07_clean_val",
+    "train": 4825,
+    "val": 1395,
+    "test": 687,
+    "manifest_sha256": "f9e7d9a39f33bd631b3133a77d0260055bcdfbcd79cbebbb4d87877b893c6d74",
+    "real_file_counts": {
+      "train": 170,
+      "val": 0,
+      "test": 28
+    }
+  },
+  "model": {
+    "name": "DenseNet121",
+    "weights": null,
+    "input_size": [
+      224,
+      224,
+      3
+    ],
+    "head_dropout": 0.3
+  },
+  "training": {
+    "seeds": [
+      42,
+      123,
+      2026,
+      3407,
+      7777
+    ],
+    "batch_size": 16,
+    "optimizer": "Adam",
+    "initial_learning_rate": 0.0001,
+    "max_epochs": 50,
+    "augmentation": {
+      "horizontal_flip": true,
+      "rotation_factor": 0.04,
+      "zoom_factor": 0.05,
+      "brightness": false,
+      "contrast": false
+    }
+  },
+  "test_protocol": {
+    "run_final_test": false,
+    "final_test_completed": false
+  },
+  "deployment": {
+    "selection_metric": "val_loss",
+    "seed": 3407
+  },
+  "warning": "same per-seed validation numbers and dataset manifest as EXP-009; independent checkpoints unverified"
+}

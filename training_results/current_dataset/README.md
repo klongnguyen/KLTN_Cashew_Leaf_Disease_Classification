@@ -1,6 +1,8 @@
 # Current Dataset Experiments
 
-Thư mục này quản lý các classification experiment theo dataset version. **Cashew_dataV05** là snapshot hiện tại. Người dùng xác nhận locked Test V05 đã được chạy cho cả ba model; tuy nhiên ba ANALYSIS archive đang lưu trong phiên làm việc này không chứa Test artifacts, nên bảng bên dưới vẫn chỉ hiển thị Validation cho tới khi Test outputs được import.
+> **Bản mới nhất đã gửi — EXP-012/V08**: 5-seed Validation Accuracy **93.99 ± 1.05%**, Macro F1 **93.81 ± 1.13%**; chưa có Final Test. [EXP-012](./EXP-DENSENET121-SCRATCH-5SEEDS-012/README.md) · [EXP-011](./EXP-DENSENET121-SCRATCH-5SEEDS-011/README.md) · [Tiến độ theo phiên bản](./EXPERIMENT_PROGRESS_2026_10.md). V05 là **benchmark Test đa kiến trúc** đã hoàn thành, còn V07/V08 là các snapshot DenseNet mới hơn.
+
+Thư mục này quản lý các classification experiment theo dataset version. **Cashew_dataV05** là snapshot benchmark đã hoàn thành của ba kiến trúc; DenseNet có V07/V08 mới hơn. Người dùng xác nhận locked Test V05 đã được chạy cho cả ba model; tuy nhiên ba ANALYSIS archive đang lưu trong phiên làm việc này không chứa Test artifacts, nên bảng bên dưới vẫn chỉ hiển thị Validation cho tới khi Test outputs được import.
 
 ## Current development snapshot — Cashew_dataV05
 
