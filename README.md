@@ -3,7 +3,7 @@
 > **Cập nhật kết quả 19/10/2026 — DenseNet121 Transfer EXP-014/015 (V08):** [EXP-014 training + Validation](./training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md) đạt **97.10 ± 0.20% Accuracy, 96.96 ± 0.21% Macro F1** (5 seeds); [EXP-015 evaluation-only](./training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md) dùng **checkpoint 014 đã khóa**, đạt **80.83 ± 0.93% Accuracy / 80.80 ± 0.19% Macro F1** trên **48 ảnh Holdout thực địa lịch sử** (4 lớp có nhãn), so với **51.25 ± 8.15% Accuracy EXP-013 Scratch** trên cùng 48 ảnh. **Seed triển khai chọn bằng Validation = 123 (38/48 ảnh trên Holdout)**; **Final Test V08 686 ảnh vẫn chưa chạy**. Holdout đã được xem trước đó nên **không phải blind evaluation mới**. **Ứng dụng Web trong repo vẫn dùng EXP-009 seed 3407**, không tự động đổi checkpoint. [Bảng tiến độ](./training_results/current_dataset/EXPERIMENT_PROGRESS_2026_10.md).
 
 
-> **Cập nhật 19/10/2026:** [Bảng tiến độ và thay đổi từng EXP](./training_results/current_dataset/EXPERIMENT_PROGRESS_2026_10.md). **DenseNet121 EXP-012 (V08)** là bản mới nhất được phân tích, đạt **93.99 ± 1.05% Val Accuracy**, **93.81 ± 1.13% Val Macro F1**; **Final Test chưa có**. Seed 42 chỉ đúng **22/35** ảnh `real_` trong Validation, cho thấy cần xử lý domain shift. [Chi tiết EXP-012](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-012/README.md). EXP-011 **trùng 5 seed metrics** với EXP-009, chưa xác minh là run độc lập. **Ứng dụng Web hiện được repo mô tả sử dụng EXP-009**, chưa nâng lên EXP-012.
+> **Mốc lịch sử EXP-011/012 (trước EXP-014/015):** [Bảng tiến độ và thay đổi từng EXP](./training_results/current_dataset/EXPERIMENT_PROGRESS_2026_10.md). **DenseNet121 EXP-012 (V08)** lúc đó là bản mới nhất được phân tích, đạt **93.99 ± 1.05% Val Accuracy**, **93.81 ± 1.13% Val Macro F1**; **Final Test chưa có**. Seed 42 chỉ đúng **22/35** ảnh `real_` trong Validation, cho thấy cần xử lý domain shift. [Chi tiết EXP-012](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-012/README.md). EXP-011 **trùng 5 seed metrics** với EXP-009, chưa xác minh là run độc lập. **Ứng dụng Web hiện được repo mô tả sử dụng EXP-009**, chưa nâng lên EXP-012.
 
 Khóa luận xây dựng hệ thống thị giác máy tính cho **phân loại bệnh trên lá cây điều** và hướng mở rộng sang **phát hiện vùng tổn thương bằng bounding box**.
 
@@ -31,7 +31,7 @@ Khóa luận xây dựng hệ thống thị giác máy tính cho **phân loại 
   ```
 - ➡️ [Chi tiết tài liệu ứng dụng web](./Application/README.md)
 
-### 2. 🔬 DenseNet121 v009 đang chạy trên web (có EXP-012 V08 mới hơn để đánh giá) (`EXP-DENSENET121-SCRATCH-5SEEDS-009`)
+### 2. 🔬 DenseNet121 v009 đang chạy trên web (EXP-014 Transfer V08 mới hơn đang được đánh giá) (`EXP-DENSENET121-SCRATCH-5SEEDS-009`)
 - Huấn luyện từ đầu (Scratch) với 5 seeds cố định `[42, 123, 2026, 3407, 7777]` trên tập dữ liệu đã làm sạch `Cashew_dataV07_clean_val` (6.907 ảnh).
 - Kết quả Validation 5 seeds:
   - **Val Accuracy**: **94.55 ± 1.11%** (Tối ưu: Seed 3407 đạt **95.63%**)
