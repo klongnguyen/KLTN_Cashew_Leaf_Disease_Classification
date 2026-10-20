@@ -1,0 +1,97 @@
+{
+  "experiment_id": "EXP-RESNET50-TRANSFER-5SEEDS-009",
+  "source_archive_sha256": "65b77db413d3b9e0c559686116f023c4d299a666e6533fe905d8d2246ec03762",
+  "source_experiment_config_sha256": "9df924d67da096cdcd74922c4dcd6278680f80e77eec22eca2b0b586b2dd8cf2",
+  "note": "Curated research snapshot, NOT a byte-identical copy of original experiment_config.json",
+  "dataset": {
+    "name": "Cashew_dataV08_real_val",
+    "archive": "CashewData_Split (8).zip",
+    "archive_sha256": "75c5928b2f6432aca901bc16831e91f9aa4bdacc1e2ff536753d71da60c147e7",
+    "manifest_sha256": "1810d7e654fede9c8f6a9d08a4078be7882492db2d2d842a19b5320b9aae356b",
+    "counts": {
+      "train": 4790,
+      "val": 1430,
+      "test": 686,
+      "total": 6906
+    },
+    "class_names": [
+      "anthracnose",
+      "healthy",
+      "leaf_miner",
+      "red_rust",
+      "not_cashew_leaf"
+    ],
+    "real_filename_counts": {
+      "train": 135,
+      "val": 35,
+      "test": 28
+    }
+  },
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "model": {
+    "backbone": "ResNet50",
+    "pretrained": "imagenet",
+    "include_top": false,
+    "pooling": "avg",
+    "head_dropout": 0.4,
+    "total_parameters": 23597957,
+    "preprocess": "inside model RGB to BGR subtract Caffe channel means; input RGB float32 0-255; no external /255",
+    "input_shape": [
+      224,
+      224,
+      3
+    ],
+    "augmentation": {
+      "horizontal_flip": true,
+      "rotation_factor": 0.08,
+      "zoom_factor": 0.1,
+      "contrast_factor": 0.1,
+      "brightness": false
+    },
+    "backbone_call": "backbone(x, training=False)"
+  },
+  "optimizer": "AdamW",
+  "weight_decay": 0.0001,
+  "batch_size": 16,
+  "loss": "SparseCategoricalCrossentropy",
+  "stage1": {
+    "lr": 0.0001,
+    "max_epochs": 18,
+    "early_patience": 5,
+    "reduce_patience": 2,
+    "min_lr": 0.000001,
+    "trainable_backbone_params": 0
+  },
+  "stage2": {
+    "lr": 0.000003,
+    "max_epochs": 8,
+    "early_patience": 3,
+    "reduce_patience": 2,
+    "min_lr": 1e-7,
+    "trainable_backbone": "conv5_block3_* non-BatchNorm only",
+    "trainable_backbone_params": 4459520
+  },
+  "selection": {
+    "monitor": "val_loss",
+    "tolerance": 0.000001,
+    "tie_break": [
+      "higher val macro-F1",
+      "Stage 1"
+    ],
+    "seed_selection": [
+      "lowest val_loss",
+      "higher macro-F1",
+      "lower seed"
+    ],
+    "deployment_seed": 2026
+  },
+  "run_final_test": true,
+  "run_real_holdout": true,
+  "holdout_protocol": "previously exposed historical 48 images/4 ground truth classes; not a blind field test"
+}

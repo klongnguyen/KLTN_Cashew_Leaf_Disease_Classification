@@ -1,5 +1,8 @@
 # Current Dataset Experiments
 
+> **Mới nhất ResNet50 trên V08 (20/10/2026):** [TRANSFER EXP-009 Partial Fine-tuning](./EXP-RESNET50-TRANSFER-5SEEDS-009/README.md) đạt Val **95,23 ± 0,35%**, Test **92,89 ± 0,51%**, historical Holdout **75,83 ± 2,80% Accuracy**, seed triển khai ứng viên **2026 theo min Val Loss**. Stage 2 **đã mở `conv5_block3_*` non-BN**, khác [TRANSFER EXP-008 frozen](./EXP-RESNET50-TRANSFER-5SEEDS-008/README.md). V08 manifest giữ nguyên; **Validation cao không chứng minh chất lượng thực địa**, và chỉ số Test/Holdout không cải thiện trung bình so với frozen EXP-008. [Progress](./EXPERIMENT_PROGRESS_2026_10.md).
+
+
 > **ResNet50 Transfer 008 (20/10/2026):** [Báo cáo 5 seeds](./EXP-RESNET50-TRANSFER-5SEEDS-008/README.md) (V08 cùng manifest với DenseNet121-014); Val Acc **95.09 ± 0.22%**, Final Test **93.24 ± 0.24%**, historical Real Holdout **77.08 ± 2.55%**. **EXP-008 này dùng ResNet50 ImageNet frozen ở cả Stage 1/2, chỉ học head**; tên `TRANSFER` không có nghĩa đã partial fine-tune. Đừng nhầm với [ResNet50 Scratch EXP-008 V07](./EXP-RESNET50-SCRATCH-5SEEDS-008/README.md). [Progress](./EXPERIMENT_PROGRESS_2026_10.md).
 
 

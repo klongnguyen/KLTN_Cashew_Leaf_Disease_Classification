@@ -1,0 +1,41 @@
+{
+  "experiment_id": "EXP-RESNET50-TRANSFER-5SEEDS-009",
+  "note": "Curated summary; checksum of full original lock is below and NOT a checksum for this JSON snapshot",
+  "original_lock_sha256": "97ae74b7645b9cb66a535b34d888a5d2b0d312cd7595bb3fe4eefbe3b728be80",
+  "original_config_sha256": "9df924d67da096cdcd74922c4dcd6278680f80e77eec22eca2b0b586b2dd8cf2",
+  "deployment_seed": 2026,
+  "selected_by": "minimum Validation Loss, then Validation macro F1, then lower seed",
+  "selection_tolerance": 0.000001,
+  "per_seed_selection": {
+    "42": {
+      "stage": "stage2",
+      "epoch": 1,
+      "val_loss": 0.15020492672920227,
+      "checkpoint_sha256": "32f7e00b4fbf7216526e7e3e0b7515e65f17e83120e31af36783a3c972306472"
+    },
+    "123": {
+      "stage": "stage2",
+      "epoch": 7,
+      "val_loss": 0.14958563446998596,
+      "checkpoint_sha256": "8d17c4e327282724172ac287b1be06e6c7532947e6467faacc47240b6e22fc0c"
+    },
+    "2026": {
+      "stage": "stage2",
+      "epoch": 7,
+      "val_loss": 0.14278186857700348,
+      "checkpoint_sha256": "30b7d57647f3298842f6b3e64725d1d6fc4f4e86abe31404ac898a3907160848"
+    },
+    "3407": {
+      "stage": "stage2",
+      "epoch": 6,
+      "val_loss": 0.14329808950424194,
+      "checkpoint_sha256": "2a9b51bc332fde22961622823d6d72184074bb3f9e18505c7aa7e193cbc3c196"
+    },
+    "7777": {
+      "stage": "stage2",
+      "epoch": 6,
+      "val_loss": 0.1516263484954834,
+      "checkpoint_sha256": "b07c450503faacf5cd9fbe3568ec325c64d8b36b0414ee17cc1d222420f256e8"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "archive_sha256": "BDDCB61CA9AF6111E0B26DB7876D0A3309C587AEAFFAEF49B7A9D2D162309165",
+  "archive_name": "RL_Cashew_holdout.zip",
+  "archive_manifest_sha256": "98d5ed4005ce5ae162d5343f44a7c3984ccff820c952ee290a67d843292a7dc9",
+  "manifest_sha256": "8b99e13d574ee915fcbe008b7403a53adadcf55fef5520455b4e1920bec0d750",
+  "counts": {
+    "anthracnose": 13,
+    "healthy": 5,
+    "leaf_miner": 24,
+    "red_rust": 7,
+    "not_cashew_leaf": 0
+  },
+  "images": 48,
+  "archive_images": 49,
+  "excluded_overlap_images": 1,
+  "evaluated_counts": {
+    "leaf_miner": 24,
+    "anthracnose": 13,
+    "red_rust": 6,
+    "healthy": 5
+  },
+  "present_classes": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "red_rust"
+  ],
+  "unsupported_classes": [
+    "not_cashew_leaf"
+  ],
+  "reference_images_checked": 6906,
+  "reference_fingerprint": "a26ac28e1f51cf9dad536a214ac8c698ec176c86b7f6a360b3640081afa9c9cd",
+  "byte_overlap_count": 1,
+  "byte_overlaps": [
+    {
+      "reference_path": "test/red_rust/real_red_rust_029.jpg",
+      "holdout_relative_path": "red_rust/IMG_3244.jpg",
+      "sha256": "3908CB5CA6BAC91E50D1221AD1C4A2BD79F25101190E76299DB2ABD26E1CB2E1"
+    }
+  ],
+  "limitation": "Byte audit cannot rule out same leaf/session or near duplicates."
+}

@@ -1,5 +1,8 @@
 # Training Results
 
+> **ResNet50 Transfer EXP-009 (20/10/2026)** — [README kết quả](./current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-009/README.md), [method/leakage audit](./current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-009/METHOD_AND_LEAKAGE_REVIEW.md). **ImageNet pretrained + mở conv5_block3 non-BN Stage 2** (4.459.520 trainable backbone params). V08: Val **95,23 ± 0,35%**; Final Test **92,89 ± 0,51%**; historical Real Holdout **75,83 ± 2,80% Accuracy** (4 true classes). **Seed 2026 được chọn theo Val Loss trước khi xem Test/Holdout**, khác EXP-008 frozen (Val **95,09%**, Test **93,24%**, holdout **77,08%**). No updated web deployment, no new blind holdout.
+
+
 > **Mới 20/10/2026 — [ResNet50 ImageNet EXP-008](./current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-008/README.md)** trên V08: 5 seeds Val **95.09 ± 0.22% Accuracy / 94.91 ± 0.23% Macro F1**; **Final Test xong 93.24 ± 0.24% Accuracy / 92.72 ± 0.25% F1**; **historical Real Holdout 48 ảnh 77.08 ± 2.55% Accuracy / 72.97 ± 4.07% F1**. **Backbone vẫn frozen cả hai stage**, không nhầm với Scratch-008 V07. Deployment checkpoint candidate **seed 3407 chọn theo Validation Loss**; **không thay mô hình web**. [Audit kỹ thuật](./current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-008/ANALYSIS_AND_PROTOCOL_AUDIT.md).
 
 

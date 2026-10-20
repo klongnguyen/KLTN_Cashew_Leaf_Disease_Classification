@@ -1,4 +1,7 @@
-# Tiến độ huấn luyện và đối chiếu phiên bản (19/10/2026)
+# Tiến độ huấn luyện và đối chiếu phiên bản (cập nhật 20/10/2026)
+
+> **ResNet50 TRANSFER EXP-009 — 20/10/2026:** V08, 5-seed fine-tuning backbone thật `conv5_block3_*` non-BN **4.459.520 params**; Val Accuracy **95,23 ± 0,35%**, Macro F1 **95,05 ± 0,39%**; Test Accuracy **92,89 ± 0,51%**, Macro F1 **92,32 ± 0,53%**; historical Holdout 48 ảnh Accuracy **75,83 ± 2,80%**, Macro F1 **70,85 ± 3,94%**; deployment seed **2026** theo min Val Loss. **EXP-008 frozen V08 vẫn tốt hơn trung bình trên Test/Holdout**, không kết luận mở backbone chắc chắn hữu ích. [README](./EXP-RESNET50-TRANSFER-5SEEDS-009/README.md) · [Method review](./EXP-RESNET50-TRANSFER-5SEEDS-009/METHOD_AND_LEAKAGE_REVIEW.md).
+
 
 > **EXP-RESNET50-TRANSFER-5SEEDS-008 đã hoàn thành (20/10/2026):** 5-seed Validation + **Final Test V08 686 ảnh** + **Real Holdout lịch sử 48 ảnh**. Val Accuracy **95.09 ± 0.22%**; Test Accuracy **93.24 ± 0.24%**; historical Holdout Accuracy **77.08 ± 2.55%**. **ImageNet pretrained nhưng frozen backbone ở cả Stage 1/2** (chỉ refinement head). **Seed 3407 chọn theo min Val Loss**; [README](./EXP-RESNET50-TRANSFER-5SEEDS-008/README.md) · [Audit](./EXP-RESNET50-TRANSFER-5SEEDS-008/ANALYSIS_AND_PROTOCOL_AUDIT.md).
 
@@ -15,6 +18,7 @@ Nguồn: cây thư mục GitHub `main` trước cập nhật, các gói ANALYSIS
 
 | Kiến trúc | Experiment | Dataset | Tình trạng | Chỉ số chính |
 |---|---|---|---|---|
+| **ResNet50 ImageNet partial fine-tune** | **[TRANSFER EXP-009](./EXP-RESNET50-TRANSFER-5SEEDS-009/README.md)** | **V08** | **5 seeds Val + Final Test + historical Holdout complete**; **Stage 2 conv5_block3 non-BN trainable** | Val **95,23 ± 0,35%**, Test **92,89 ± 0,51%**, Holdout historical **75,83 ± 2,80%** |
 | **ResNet50 ImageNet frozen** | **[TRANSFER EXP-008](./EXP-RESNET50-TRANSFER-5SEEDS-008/README.md)** | **V08** | **5 seeds Val + Final Test + historical Holdout xong**; **không fine-tune backbone** | Val Acc **95.09 ± 0.22%**, Test Acc **93.24 ± 0.24%**, historical Holdout Acc **77.08 ± 2.55%** |
 | ResNet50 Scratch | [EXP-006](./EXP-RESNET50-SCRATCH-5SEEDS-006/README.md) | V05 | 5-seed Validation xong; **Test 006 pending** | Val Acc **86.46 ± 2.27%**, F1 **86.12 ± 2.56%**, candidate seed 42 (min loss) |
 | ResNet50 Scratch | [EXP-007](./EXP-RESNET50-SCRATCH-5SEEDS-007/README.md) | V07 | 5-seed Validation xong; **Test pending** | Val Acc **89.20 ± 2.04%**, F1 **88.61 ± 2.19%**, candidate seed 123 (min loss) |
@@ -45,7 +49,8 @@ Các phiên bản `002–005` của DenseNet121, ResNet50 và ViT đều có REA
 | DenseNet EXP-006 → 009 | V05 → V07 6,907 ảnh | Batch 16, LR 1e-4, Dropout 0.3 | Val 009 cao nhưng không có Real Val |
 | DenseNet 009 → 011 | Cùng V07, cùng manifest SHA | Cấu hình chính trùng | Cả 5 hàng Val metrics **trùng chính xác**; chưa xác minh 2 lần train độc lập |
 | ResNet50 Scratch-008 → ImageNet Transfer-008 | **V07 → V08** (manifest khác) | Scratch weights=None → **ImageNet pretrained frozen features**; 2 stages head-only | Val **89.20 ± 2.04% V07 → 95.09 ± 0.22% V08**, **không phải controlled pretrained ablation**; Transfer-008 đã chạy Test V08 **93.24 ± 0.24%** |
-| ResNet50 Transfer-008 → proposed partial FT | V08 dự kiến giữ nguyên | 008: **0 trainable backbone params cả 2 stages**; cần experiment ID mới nếu mở conv5 | Chưa chạy, không tự tạo kết quả/không chọn theo Holdout |
+| ResNet50 ImageNet TRANSFER-008 → 009 | **Cùng V08 + 5 seeds + manifest** | 008 backbone frozen cả Stage1/2, Stage2 chỉ head; 009 **unfreeze conv5_block3 non-BN**, Stage1 LR và số epochs cũng khác | Val **95,09 → 95,23%**; Test **93,24 → 92,89%**; exposed Holdout **77,08 → 75,83%**. **Chưa cô lập effect của fine-tuning**, cần matched Stage1 ablation |
+| ResNet50 Transfer-008 → planned partial FT (historical plan) | V08 | Kế hoạch trước khi EXP-009 chạy; **đã triển khai mở conv5 trong EXP-009** nhưng không phải one-factor ablation | Xem EXP-009 ở trên; cần ablation kiểm soát tiếp, giữ nguyên lịch sử 008 và 009 |
 | ResNet50 Scratch 005 → 006 | V05 giữ nguyên số ảnh/split | 006: Adam LR 3e-4, batch32, head512/Dropout0.4, rescale /255; 005 config lịch sử xem README riêng | 006 Val **86.46 ± 2.27%**, Test 006 pending; **không dùng Test 005 cho 006** |
 | ResNet50 Scratch 006 → 007 | **V05 → V07**, 6.911 → 6.907 ảnh | 007: batch16, LR1e-4, head Dropout0.3, Caffe preprocessing, bỏ augmentation contrast | Val **86.46 → 89.20%**, **không phải ablation cùng dataset** |
 | ResNet50 Scratch 007 → 008 | V07 manifest trùng | Cấu hình chính trùng; 008 bổ sung figure/notebook, predictions + history của 5 seeds trùng byte 007 | Val **89.20% → 89.20%**; **chưa chứng minh retrain độc lập** |
@@ -58,6 +63,9 @@ Các phiên bản `002–005` của DenseNet121, ResNet50 và ViT đều có REA
 
 - [x] V05 official 3-model Final Test, 5 seeds, report Mean ± sample SD.
 - [x] Hồ sơ EXP-011, EXP-012: README, CSV aggregate Validation, metadata snapshot.
+- [x] Đưa **ResNet50 TRANSFER-009** vào repo: 5-seed Val/Test/Holdout CSV, 15 confusion matrices, chọn seed bằng Val, Stage2 unfreeze, kiểm toán pHash/domain shift, báo cáo error cases và figures SVG.
+- [ ] Giữ EXP-009 nguyên vẹn; cần **new blind field set 5 lớp**, kiểm toán 51 pHash candidates và calibrated class-wise error analysis.
+- [ ] Thử **matched Stage1 frozen-vs-unfreeze ablation** với đúng một biến trainable layers, không chọn hyperparameters bằng Test/Holdout đã mở.
 - [x] Nhập báo cáo ResNet50 **TRANSFER-008**: Validation, Final Test, historical Holdout đầy đủ, confusion matrix 5 seeds, metadata frozen/preprocessing/selection, audit và bảng tiến độ.
 - [ ] Audit 51 V08 pHash candidates + nguồn cùng lá/cùng phiên chụp và thu thập **fresh blind field test** đủ 5 true classes.
 - [ ] Thiết kế **experiment ID mới ResNet50 partial fine-tuning thực** (mở conv5 non-BN), không ghi đè Transfer-008, chọn bằng Validation.

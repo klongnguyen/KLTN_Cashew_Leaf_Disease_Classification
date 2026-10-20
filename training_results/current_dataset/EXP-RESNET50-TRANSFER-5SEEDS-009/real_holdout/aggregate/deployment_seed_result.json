@@ -1,0 +1,16 @@
+{
+  "selection_source": "validation only, fixed before holdout",
+  "result": {
+    "seed": 2026,
+    "accuracy": 0.7291666666666666,
+    "macro_precision_present_classes": 0.6727272727272727,
+    "macro_recall_present_classes": 0.7012820512820513,
+    "macro_f1_present_classes": 0.6701648841354724,
+    "balanced_accuracy_present_classes": 0.7012820512820513,
+    "images": 48,
+    "macro_class_count": 4,
+    "prediction_seconds_including_input_pipeline": 2.742657820000204,
+    "inference_time_ms_per_image": 57.138704583337585,
+    "fps_including_input_pipeline": 17.501271813775308
+  }
+}

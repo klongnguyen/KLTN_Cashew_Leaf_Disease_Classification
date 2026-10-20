@@ -1,0 +1,11 @@
+seed,group,correct,total,accuracy
+42,phash_candidate,10,10,1.0
+42,other_val,1350,1420,0.9507042253521126
+123,phash_candidate,10,10,1.0
+123,other_val,1344,1420,0.9464788732394366
+2026,phash_candidate,10,10,1.0
+2026,other_val,1355,1420,0.954225352112676
+3407,phash_candidate,10,10,1.0
+3407,other_val,1357,1420,0.9556338028169014
+7777,phash_candidate,10,10,1.0
+7777,other_val,1353,1420,0.9528169014084507

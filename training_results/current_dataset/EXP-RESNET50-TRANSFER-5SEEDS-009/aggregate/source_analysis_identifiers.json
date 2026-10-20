@@ -1,0 +1,12 @@
+{
+  "archive_filename": "EXP-RESNET50-TRANSFER-5SEEDS-009_ANALYSIS.zip",
+  "archive_bytes": 3785100,
+  "archive_sha256": "65b77db413d3b9e0c559686116f023c4d299a666e6533fe905d8d2246ec03762",
+  "original_zip_member_count": 247,
+  "original_config_sha256": "9df924d67da096cdcd74922c4dcd6278680f80e77eec22eca2b0b586b2dd8cf2",
+  "original_validation_lock_sha256": "97ae74b7645b9cb66a535b34d888a5d2b0d312cd7595bb3fe4eefbe3b728be80",
+  "original_notebook_sha256": "b61ec2b89b0b2a3c0bed7f9383c44e612cc6903402bff75ed1491e4cfb7faddb",
+  "original_full_zip_absent_from_import": true,
+  "original_binary_checkpoints_absent_from_import": true,
+  "note": "Source ZIP hashes apply to original source bytes. Curated GitHub files can differ."
+}
