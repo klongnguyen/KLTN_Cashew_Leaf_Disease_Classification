@@ -1,0 +1,11 @@
+seed,relative_path,true_label,predicted_label,confidence
+2026,val/red_rust/red_rust_1346.jpg,red_rust,anthracnose,0.99700016
+3407,val/anthracnose/anthracnose_1486.jpg,anthracnose,healthy,0.9955382
+123,val/anthracnose/anthracnose_1486.jpg,anthracnose,healthy,0.9955291
+123,val/leaf_miner/leaf_miner_1216.jpg,leaf_miner,anthracnose,0.9953909
+2026,val/leaf_miner/leaf_miner_1216.jpg,leaf_miner,anthracnose,0.9946801
+7777,val/anthracnose/anthracnose_1486.jpg,anthracnose,healthy,0.99461293
+123,val/red_rust/red_rust_1346.jpg,red_rust,anthracnose,0.9944079
+2026,val/anthracnose/anthracnose_1482.jpg,anthracnose,healthy,0.9943441
+3407,val/anthracnose/anthracnose_1480.jpg,anthracnose,healthy,0.9942624
+3407,val/leaf_miner/leaf_miner_1216.jpg,leaf_miner,anthracnose,0.99391866

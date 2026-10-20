@@ -1,5 +1,8 @@
 # Dataset Changelog
 
+> **ResNet50 TRANSFER-009 (20/10/2026) tiếp tục sử dụng V08 không chỉnh sửa:** Train **4.790**, Validation **1.430**, Test **686**, cùng dataset ZIP SHA256 `75c5928b...` và manifest SHA256 `1810d7e6...` với DenseNet121-014 và ResNet50-008. **Không tạo V09**. 51 pHash candidate pairs vẫn cần review; real Holdout 49 ảnh đã loại 1 ảnh trùng Test, còn 48 ảnh, 4 lớp có ground truth. [EXP-009](./training_results/current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-009/README.md). So sánh với 008 là **method comparison**, không phải dataset update hay one-factor fine-tuning ablation.
+
+
 > **ResNet50 TRANSFER-008 (20/10/2026) dùng nguyên V08, không chỉnh dataset:** `Cashew_dataV08_real_val` Train **4.790**, Validation **1.430**, Test **686**; cùng manifest SHA256 `1810d7e6...` với DenseNet121-014. 51 pHash candidate pairs V08 vẫn chưa được xác minh; 35 ảnh `real_` Val chỉ là proxy. Historical Holdout (49 ảnh gốc) loại **1 ảnh trùng byte với Test** còn 48 ảnh, **thiếu true not_cashew_leaf**. [Báo cáo Transfer-008](./training_results/current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-008/README.md). **Không nhầm với ResNet50 SCRATCH-008 (V07)**.
 
 

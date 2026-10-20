@@ -1,0 +1,13 @@
+{
+  "status": "HISTORICAL_EXPOSED",
+  "evaluated_images": 48,
+  "excluded_exact_test_duplicate": 1,
+  "use": "descriptive comparison only; not new blind field validation",
+  "selection_source": "Validation only",
+  "true_classes": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "red_rust"
+  ]
+}

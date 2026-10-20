@@ -1,0 +1,19 @@
+{
+  "dataset_zip_sha256": "75c5928b2f6432aca901bc16831e91f9aa4bdacc1e2ff536753d71da60c147e7",
+  "total_images": 6906,
+  "split_counts": {
+    "train": 4790,
+    "val": 1430,
+    "test": 686,
+    "total": 6906
+  },
+  "real_filename_counts": {
+    "train": 135,
+    "val": 35,
+    "test": 28
+  },
+  "exact_cross_split_or_label_pairs": 0,
+  "phash_cross_split_or_label_candidates": 51,
+  "thumbnail_match_candidates": 0,
+  "limitation": "No manual verification of 51 pHash candidates; group-wise leaf/session leakage not ruled out."
+}

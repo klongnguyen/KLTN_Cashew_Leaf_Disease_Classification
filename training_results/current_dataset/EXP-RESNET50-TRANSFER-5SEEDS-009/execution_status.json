@@ -1,0 +1,13 @@
+{
+  "experiment_id": "EXP-RESNET50-TRANSFER-5SEEDS-009",
+  "pipeline_smoke": "PASS",
+  "five_seed_training": "COMPLETED",
+  "validation": "COMPLETED",
+  "final_test": "COMPLETED",
+  "historical_holdout": "COMPLETED",
+  "fresh_real_holdout": "NOT_RUN",
+  "deployment_seed": 2026,
+  "historical_holdout_protocol": "previously exposed, four true classes",
+  "dataset_archive_sha256": "75c5928b2f6432aca901bc16831e91f9aa4bdacc1e2ff536753d71da60c147e7",
+  "dataset_manifest_sha256": "1810d7e654fede9c8f6a9d08a4078be7882492db2d2d842a19b5320b9aae356b"
+}
