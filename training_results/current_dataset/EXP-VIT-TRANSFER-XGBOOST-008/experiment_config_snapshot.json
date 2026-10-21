@@ -1,0 +1,168 @@
+{
+  "note": "CURATED snapshot; source experiment_config.json SHA is included for provenance, but content is not byte-identical",
+  "source_config_sha256": "FD5410BAF1D5129B0570584F654FA93113BF9620798666EB1260324EAB20B9FC",
+  "EXPERIMENT_ID": "EXP-VIT-TRANSFER-XGBOOST-008",
+  "SOURCE_ID": "EXP-VIT-TRANSFER-5SEEDS-007",
+  "SEEDS": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "DEPLOYMENT_SEED": 123,
+  "CLASSES": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "red_rust",
+    "not_cashew_leaf"
+  ],
+  "EXPECTED_COUNTS": {
+    "train": [
+      939,
+      803,
+      875,
+      1072,
+      1101
+    ],
+    "val": [
+      308,
+      216,
+      264,
+      328,
+      314
+    ],
+    "test": [
+      122,
+      118,
+      132,
+      158,
+      156
+    ]
+  },
+  "DATASET_SHA256": "75C5928B2F6432ACA901BC16831E91F9AA4BDACC1E2FF536753D71DA60C147E7",
+  "SOURCE_MANIFEST_SHA256": "C699A9ACA707DA25F143DB1FC3C9B5133EA2858BCDC468A158E5644E500EC715",
+  "BATCH_SIZE": 16,
+  "CV_FOLDS": 3,
+  "LINEAR_C": [
+    0.01,
+    0.1,
+    1,
+    10
+  ],
+  "XGB_CANDIDATES": [
+    [
+      150,
+      2,
+      0.03,
+      0.8,
+      0.8,
+      1,
+      1
+    ],
+    [
+      150,
+      3,
+      0.05,
+      1,
+      0.8,
+      3,
+      3
+    ],
+    [
+      150,
+      4,
+      0.08,
+      0.8,
+      1,
+      5,
+      10
+    ],
+    [
+      300,
+      2,
+      0.05,
+      1,
+      1,
+      1,
+      3
+    ],
+    [
+      300,
+      3,
+      0.03,
+      0.8,
+      1,
+      3,
+      10
+    ],
+    [
+      300,
+      3,
+      0.05,
+      0.8,
+      0.8,
+      1,
+      3
+    ],
+    [
+      300,
+      4,
+      0.08,
+      1,
+      0.8,
+      5,
+      1
+    ],
+    [
+      500,
+      2,
+      0.03,
+      1,
+      0.8,
+      3,
+      1
+    ],
+    [
+      500,
+      2,
+      0.05,
+      0.8,
+      1,
+      5,
+      10
+    ],
+    [
+      500,
+      3,
+      0.05,
+      1,
+      1,
+      3,
+      3
+    ],
+    [
+      500,
+      4,
+      0.03,
+      0.8,
+      0.8,
+      1,
+      10
+    ],
+    [
+      500,
+      4,
+      0.08,
+      1,
+      1,
+      5,
+      3
+    ]
+  ],
+  "RUN_V08_TEST": false,
+  "RUN_HISTORICAL_HOLDOUT": false,
+  "RUN_FRESH_BLIND_TEST": false,
+  "ENABLE_HEALTHY_GATE": false
+}

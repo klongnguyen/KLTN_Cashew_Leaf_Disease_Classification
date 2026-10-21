@@ -1,0 +1,61 @@
+{
+  "seed": 123,
+  "classifier": "A",
+  "n": 1430,
+  "accuracy": 0.9545454545454546,
+  "balanced_accuracy": 0.9545062354833987,
+  "macro_f1": 0.9523412204202624,
+  "weighted_f1": 0.9546642390576099,
+  "macro_precision": 0.9513258508092083,
+  "macro_recall": 0.9545062354833987,
+  "log_loss": 0.14799461203843695,
+  "multiclass_brier": 0.07127954230230489,
+  "disease_to_healthy_count": 18,
+  "disease_total": 900,
+  "disease_to_healthy_rate": 0.02,
+  "healthy_true_count": 216,
+  "healthy_correct": 210,
+  "healthy_predicted_count": 237,
+  "healthy_recall": 0.9722222222222222,
+  "healthy_precision": 0.8860759493670886,
+  "not_cashew_leaf_recall": 0.9554140127388535,
+  "not_cashew_leaf_precision": 0.9966777408637874,
+  "disease_macro_recall": 0.9482983141519727,
+  "confusion_matrix": [
+    [
+      281,
+      18,
+      3,
+      6,
+      0
+    ],
+    [
+      2,
+      210,
+      4,
+      0,
+      0
+    ],
+    [
+      15,
+      0,
+      247,
+      1,
+      1
+    ],
+    [
+      1,
+      0,
+      0,
+      327,
+      0
+    ],
+    [
+      1,
+      9,
+      3,
+      1,
+      300
+    ]
+  ]
+}

@@ -1,4 +1,7 @@
-# Tiến độ huấn luyện và đối chiếu phiên bản (cập nhật 20/10/2026)
+# Tiến độ huấn luyện và đối chiếu phiên bản (cập nhật 21/10/2026)
+
+> **EXP-VIT-TRANSFER-XGBOOST-008 (21/10/2026):** 5 seed, V08 **Validation-only**, DeiT-Tiny embedding (192-D) từ EXP-007 frozen source checkpoints. A Softmax **94,41 ± 0,73%**, B Logistic **96,56 ± 0,17%**, C XGBoost **95,85 ± 0,20% Val Accuracy**. B/C cải thiện Accuracy nhưng **D2H tại seed123 xấu hơn** (A **18/900**, B **21/900**, C **23/900**), nên chọn **A Softmax** theo khóa Validation; chưa chạy Test/Holdout, chưa thay triển khai. [README](./EXP-VIT-TRANSFER-XGBOOST-008/README.md) · [Technical review](./EXP-VIT-TRANSFER-XGBOOST-008/METHOD_AND_LEAKAGE_REVIEW.md).
+
 
 > **ResNet50 TRANSFER EXP-009 — 20/10/2026:** V08, 5-seed fine-tuning backbone thật `conv5_block3_*` non-BN **4.459.520 params**; Val Accuracy **95,23 ± 0,35%**, Macro F1 **95,05 ± 0,39%**; Test Accuracy **92,89 ± 0,51%**, Macro F1 **92,32 ± 0,53%**; historical Holdout 48 ảnh Accuracy **75,83 ± 2,80%**, Macro F1 **70,85 ± 3,94%**; deployment seed **2026** theo min Val Loss. **EXP-008 frozen V08 vẫn tốt hơn trung bình trên Test/Holdout**, không kết luận mở backbone chắc chắn hữu ích. [README](./EXP-RESNET50-TRANSFER-5SEEDS-009/README.md) · [Method review](./EXP-RESNET50-TRANSFER-5SEEDS-009/METHOD_AND_LEAKAGE_REVIEW.md).
 
@@ -18,6 +21,7 @@ Nguồn: cây thư mục GitHub `main` trước cập nhật, các gói ANALYSIS
 
 | Kiến trúc | Experiment | Dataset | Tình trạng | Chỉ số chính |
 |---|---|---|---|---|
+| **DeiT-Tiny (EXP-007 embeddings) + ML classifiers** | **[EXP-VIT-TRANSFER-XGBOOST-008](./EXP-VIT-TRANSFER-XGBOOST-008/README.md)** | **V08** | **5-seed Validation A/B/C completed; Final Test / Holdout NOT_RUN**; source backbone frozen, selected A/seed123 | Val Accuracy A **94,41 ± 0,73%**, B **96,56 ± 0,17%**, C **95,85 ± 0,20%**; seed123 D2H **18/21/23** (A/B/C) |
 | **ResNet50 ImageNet partial fine-tune** | **[TRANSFER EXP-009](./EXP-RESNET50-TRANSFER-5SEEDS-009/README.md)** | **V08** | **5 seeds Val + Final Test + historical Holdout complete**; **Stage 2 conv5_block3 non-BN trainable** | Val **95,23 ± 0,35%**, Test **92,89 ± 0,51%**, Holdout historical **75,83 ± 2,80%** |
 | **ResNet50 ImageNet frozen** | **[TRANSFER EXP-008](./EXP-RESNET50-TRANSFER-5SEEDS-008/README.md)** | **V08** | **5 seeds Val + Final Test + historical Holdout xong**; **không fine-tune backbone** | Val Acc **95.09 ± 0.22%**, Test Acc **93.24 ± 0.24%**, historical Holdout Acc **77.08 ± 2.55%** |
 | ResNet50 Scratch | [EXP-006](./EXP-RESNET50-SCRATCH-5SEEDS-006/README.md) | V05 | 5-seed Validation xong; **Test 006 pending** | Val Acc **86.46 ± 2.27%**, F1 **86.12 ± 2.56%**, candidate seed 42 (min loss) |
@@ -63,6 +67,9 @@ Các phiên bản `002–005` của DenseNet121, ResNet50 và ViT đều có REA
 
 - [x] V05 official 3-model Final Test, 5 seeds, report Mean ± sample SD.
 - [x] Hồ sơ EXP-011, EXP-012: README, CSV aggregate Validation, metadata snapshot.
+- [x] Lưu báo cáo **EXP-VIT-TRANSFER-XGBOOST-008**: metrics 5-seed, Mean ± SD, 15 confusion matrices, paired error deltas, classifier CV configs, Source EXP-007 checkpoint SHA references, audit/leakage/protocol & charts SVG. **Giữ A seed123 theo guardrails**.
+- [ ] EXP-VIT-TRANSFER-XGBOOST-008 mới chạy Validation: **Final Test/Historical Holdout/Fresh blind test NOT_RUN**, không dùng kết quả EXP-007 thay thế.
+- [ ] Review dHash candidate và kiểm tra ảnh cùng lá/cây/session; thử decision threshold với Validation guardrails, xác nhận trên fresh field test mới.
 - [x] Đưa **ResNet50 TRANSFER-009** vào repo: 5-seed Val/Test/Holdout CSV, 15 confusion matrices, chọn seed bằng Val, Stage2 unfreeze, kiểm toán pHash/domain shift, báo cáo error cases và figures SVG.
 - [ ] Giữ EXP-009 nguyên vẹn; cần **new blind field set 5 lớp**, kiểm toán 51 pHash candidates và calibrated class-wise error analysis.
 - [ ] Thử **matched Stage1 frozen-vs-unfreeze ablation** với đúng một biến trainable layers, không chọn hyperparameters bằng Test/Holdout đã mở.

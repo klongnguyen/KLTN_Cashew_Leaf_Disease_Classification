@@ -1,0 +1,9 @@
+{
+  "status": "COMPLETED_VALIDATION",
+  "training_mode": "classifier_only",
+  "selected_classifier": "A",
+  "deployment_seed": 123,
+  "v08_test": "NOT_RUN",
+  "historical_holdout": "NOT_RUN",
+  "fresh_blind_field_test": "NOT_RUN"
+}

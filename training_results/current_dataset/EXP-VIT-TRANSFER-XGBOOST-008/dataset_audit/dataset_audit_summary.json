@@ -1,0 +1,8 @@
+{
+  "images": 6906,
+  "manifest_sha256": "C699A9ACA707DA25F143DB1FC3C9B5133EA2858BCDC468A158E5644E500EC715",
+  "cross_split_exact_duplicates": 0,
+  "dhash_candidate_pairs": 1,
+  "near_duplicate_status": "VISUAL_REVIEW_REQUIRED",
+  "group_leakage_status": "GROUP_LEAKAGE_NOT_VERIFIED"
+}
