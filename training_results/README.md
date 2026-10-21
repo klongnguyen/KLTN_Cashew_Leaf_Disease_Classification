@@ -1,5 +1,8 @@
 # Training Results
 
+> **Mới 21/10/2026 — ViT Transfer + XGBoost EXP-008:** [README, Validation results, selection lock](./current_dataset/EXP-VIT-TRANSFER-XGBOOST-008/README.md). ViT/DeiT-Tiny **được kế thừa từ EXP-007**, không retrain backbone; A Softmax Val Acc **94,41 ± 0,73%**, B Logistic **96,56 ± 0,17%**, C XGBoost **95,85 ± 0,20%** (5 seeds, V08). Với **deployment seed 123**, D2H trên 900 ảnh bệnh **A=18, B=21, C=23**, vì vậy selected **Softmax A**, không phải XGBoost. **Validation complete; V08 Final Test, historical Holdout, fresh field holdout đều NOT_RUN trong 008.** [Audit](./current_dataset/EXP-VIT-TRANSFER-XGBOOST-008/METHOD_AND_LEAKAGE_REVIEW.md).
+
+
 > **ResNet50 Transfer EXP-009 (20/10/2026)** — [README kết quả](./current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-009/README.md), [method/leakage audit](./current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-009/METHOD_AND_LEAKAGE_REVIEW.md). **ImageNet pretrained + mở conv5_block3 non-BN Stage 2** (4.459.520 trainable backbone params). V08: Val **95,23 ± 0,35%**; Final Test **92,89 ± 0,51%**; historical Real Holdout **75,83 ± 2,80% Accuracy** (4 true classes). **Seed 2026 được chọn theo Val Loss trước khi xem Test/Holdout**, khác EXP-008 frozen (Val **95,09%**, Test **93,24%**, holdout **77,08%**). No updated web deployment, no new blind holdout.
 
 

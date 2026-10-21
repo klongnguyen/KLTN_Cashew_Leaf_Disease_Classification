@@ -1,5 +1,8 @@
 # Current Dataset Experiments
 
+> **ViT Transfer + classifier EXP-008 (21/10/2026):** [Báo cáo riêng](./EXP-VIT-TRANSFER-XGBOOST-008/README.md) · [dữ liệu 5 seeds](./EXP-VIT-TRANSFER-XGBOOST-008/validation_metrics_5seeds_abc.csv) · [confusion matrices](./EXP-VIT-TRANSFER-XGBOOST-008/seed_123/A_confusion_matrix.csv). A Softmax **94,41 ± 0,73%**, B Logistic **96,56 ± 0,17%**, C XGBoost **95,85 ± 0,20% Val Acc**. **Giữ A/seed123** vì D2H 18/900, so với B21/C23. Đây **không phải ViT train mới**, chỉ classifier learning trên EXP-007 embeddings. **Chưa có Test/Holdout cho EXP-008** và chưa xác minh group-level leakage.
+
+
 > **Mới nhất ResNet50 trên V08 (20/10/2026):** [TRANSFER EXP-009 Partial Fine-tuning](./EXP-RESNET50-TRANSFER-5SEEDS-009/README.md) đạt Val **95,23 ± 0,35%**, Test **92,89 ± 0,51%**, historical Holdout **75,83 ± 2,80% Accuracy**, seed triển khai ứng viên **2026 theo min Val Loss**. Stage 2 **đã mở `conv5_block3_*` non-BN**, khác [TRANSFER EXP-008 frozen](./EXP-RESNET50-TRANSFER-5SEEDS-008/README.md). V08 manifest giữ nguyên; **Validation cao không chứng minh chất lượng thực địa**, và chỉ số Test/Holdout không cải thiện trung bình so với frozen EXP-008. [Progress](./EXPERIMENT_PROGRESS_2026_10.md).
 
 

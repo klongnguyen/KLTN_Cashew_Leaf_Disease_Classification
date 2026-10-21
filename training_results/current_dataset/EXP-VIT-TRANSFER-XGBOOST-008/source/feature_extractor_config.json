@@ -1,0 +1,7 @@
+{
+  "seed": 123,
+  "feature_dimension": 192,
+  "pooling": "token",
+  "endpoint": "DeiTImageClassifier.output_dense.input",
+  "preprocessing": "augmentation(training=False) -> classifier.preprocessor once"
+}

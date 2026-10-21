@@ -1,0 +1,7 @@
+{
+  "image": "RGB",
+  "resize": "bilinear 224x224",
+  "range": "float32 0..255",
+  "saved_model_preprocessor": "exactly once",
+  "augmentation": "disabled during extraction"
+}
