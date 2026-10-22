@@ -1,0 +1,16 @@
+{
+  "experiment_id": "EXP-DENSENET121-TRANSFER-5SEEDS-016",
+  "source_training_run": "EXP-DENSENET121-TRANSFER-5SEEDS-014",
+  "training_in_016": "NOT_RUN_REUSED_014_CHECKPOINTS",
+  "final_test": "COMPLETED",
+  "test_images_per_seed": 686,
+  "seeds_evaluated": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "deployment_seed": 123,
+  "completed_at_utc": "2026-10-22T05:17:20.998578+00:00"
+}

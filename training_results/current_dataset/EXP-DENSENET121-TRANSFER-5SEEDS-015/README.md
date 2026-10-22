@@ -1,5 +1,8 @@
 # EXP-DENSENET121-TRANSFER-5SEEDS-015 — Historical Real Holdout Evaluation
 
+> **Cập nhật 22/10/2026:** Cùng 5 checkpoint EXP-014 giờ đã có [Final Test V08 trong EXP-016](../EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md): **95,13 ± 0,51% Accuracy / 94,76 ± 0,58% Macro F1**. EXP-015 vẫn là **historical Holdout 48 ảnh (4 true classes)**; cả EXP-015 và EXP-016 **không huấn luyện mới**.
+
+
 **Thí nghiệm đánh giá, không huấn luyện mới.** Source archive: `EXP-DENSENET121-TRANSFER-5SEEDS-015_ANALYSIS.zip` (19/10/2026).
 
 - Model/checkpoints: **EXP-014 ImageNet transfer learning**, 5 seeds `[42,123,2026,3407,7777]`.
@@ -77,7 +80,7 @@ Không có ảnh bệnh nào thành Healthy trong confusion matrix của **seed 
 
 - EXP-014 + EXP-015 cho thấy **phương pháp ImageNet pretrained + partial fine-tuning** cải thiện rõ rệt hiệu năng trên **cùng 48 ảnh real holdout lịch sử** so với EXP-013 Scratch.
 - **Không retrain** hoặc chọn lại seed theo Holdout. Giữ seed **123** là checkpoint ứng viên theo Validation.
-- **Chưa có Final Test V08 686 ảnh cho EXP-014**; chưa có independent blind holdout mới.
+- **Final Test V08 686 ảnh đã hoàn thành trong [EXP-016](../EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md)**; vẫn chưa có independent blind field holdout mới.
 - Thu thập test thực địa mới ở nhiều cây/vườn/phiên chụp, bảo đảm label `not_cashew_leaf`, kiểm toán trùng và đánh giá YOLO crop → DenseNet end-to-end.
 
 **Tóm tắt tiến độ:** [EXPERIMENT_PROGRESS_2026_10.md](../EXPERIMENT_PROGRESS_2026_10.md).

@@ -1,0 +1,13 @@
+relative_path,true_label,predicted_label,confidence,correct,seed
+test/anthracnose/anthracnose_340.jpg,anthracnose,red_rust,0.9997878671,False,123
+test/leaf_miner/leaf_miner_836.jpg,leaf_miner,anthracnose,0.9995212555,False,123
+test/leaf_miner/leaf_miner_880.jpg,leaf_miner,red_rust,0.9984000325,False,123
+test/anthracnose/anthracnose_328.jpg,anthracnose,leaf_miner,0.9977311492,False,123
+test/anthracnose/anthracnose_325.jpg,anthracnose,leaf_miner,0.9975912571,False,123
+test/leaf_miner/leaf_miner_846.jpg,leaf_miner,anthracnose,0.9935471416,False,123
+test/anthracnose/anthracnose_326.jpg,anthracnose,leaf_miner,0.9886644483,False,123
+test/anthracnose/anthracnose_373.jpg,anthracnose,leaf_miner,0.9885436296,False,123
+test/anthracnose/anthracnose_323.jpg,anthracnose,leaf_miner,0.9858571291,False,123
+test/anthracnose/anthracnose_322.jpg,anthracnose,leaf_miner,0.9820531011,False,123
+test/leaf_miner/leaf_miner_845.jpg,leaf_miner,anthracnose,0.9777571559,False,123
+test/leaf_miner/leaf_miner_906.jpg,leaf_miner,anthracnose,0.9076511264,False,123

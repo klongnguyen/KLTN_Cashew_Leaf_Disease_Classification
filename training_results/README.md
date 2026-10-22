@@ -1,5 +1,8 @@
 # Training Results
 
+> **DenseNet121 Transfer EXP-016 (22/10/2026):** [Final Test V08](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md) vừa hoàn thành trên 5 checkpoint **EXP-014** (không huấn luyện lại); Accuracy **95,13 ± 0,51%**, Macro F1 **94,76 ± 0,58%** trên **686 ảnh**. Deployment seed **123** từ Validation lock có **653/686=95,19%**, Disease→Healthy **2/412**; EXP-015 historical Holdout **80,83 ± 0,93%** không phải field blind. [Integrity/limitations](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-016/QUALITY_AND_PROTOCOL_REVIEW.md). Web vẫn dùng Scratch EXP-009.
+
+
 > **Mới 21/10/2026 — ViT Transfer + XGBoost EXP-008:** [README, Validation results, selection lock](./current_dataset/EXP-VIT-TRANSFER-XGBOOST-008/README.md). ViT/DeiT-Tiny **được kế thừa từ EXP-007**, không retrain backbone; A Softmax Val Acc **94,41 ± 0,73%**, B Logistic **96,56 ± 0,17%**, C XGBoost **95,85 ± 0,20%** (5 seeds, V08). Với **deployment seed 123**, D2H trên 900 ảnh bệnh **A=18, B=21, C=23**, vì vậy selected **Softmax A**, không phải XGBoost. **Validation complete; V08 Final Test, historical Holdout, fresh field holdout đều NOT_RUN trong 008.** [Audit](./current_dataset/EXP-VIT-TRANSFER-XGBOOST-008/METHOD_AND_LEAKAGE_REVIEW.md).
 
 
@@ -12,7 +15,7 @@
 > **ResNet50 Scratch 006–008 (19/10/2026):** [006 V05](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-006/README.md) Val Acc **86.46 ± 2.27%**, Macro F1 **86.12 ± 2.56%**; [007 V07](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-007/README.md) **89.20 ± 2.04%**, F1 **88.61 ± 2.19%**; [008 V07](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-008/README.md) có metrics/predictions/logs **trùng 007** (chưa có bằng chứng train mới). **Chưa có Test riêng 006–008**; là ResNet50 **Scratch**, không phải Transfer. [Audit 006–008](./current_dataset/RESNET50_SCRATCH_006_008_AUDIT_2026_10.md).
 
 
-> **Kết quả mới 19/10/2026:** [EXP-014 — ImageNet Transfer Learning (5 seeds, Val V08)](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md): **97.10 ± 0.20% Val Accuracy**, **96.96 ± 0.21% Val Macro F1**. [EXP-015 — đánh giá lại checkpoint 014, không retrain](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md): **80.83 ± 0.93% Accuracy** trên **48 ảnh Real Holdout lịch sử**; deployment seed 123: **38/48**. **Final Test V08 vẫn pending**. [Progress](./current_dataset/EXPERIMENT_PROGRESS_2026_10.md).
+> **Kết quả mới 19/10/2026:** [EXP-014 — ImageNet Transfer Learning (5 seeds, Val V08)](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md): **97.10 ± 0.20% Val Accuracy**, **96.96 ± 0.21% Val Macro F1**. [EXP-015 — đánh giá lại checkpoint 014, không retrain](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md): **80.83 ± 0.93% Accuracy** trên **48 ảnh Real Holdout lịch sử**; deployment seed 123: **38/48**. **Final Test V08 đã hoàn thành trong [EXP-016](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md)**. [Progress](./current_dataset/EXPERIMENT_PROGRESS_2026_10.md).
 
 
 > **Lịch sử EXP-011/012 (trước EXP-014/015):** [Tiến độ tổng hợp](./current_dataset/EXPERIMENT_PROGRESS_2026_10.md) · [EXP-011 V07](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-011/README.md) · [EXP-012 V08](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-012/README.md). EXP-012 mới hoàn tất **Validation 5 seeds (93.99 ± 1.05% Accuracy; 93.81 ± 1.13% Macro F1)**, **Test pending**; seed 42 đạt **22/35** ảnh `real_`. EXP-011 có metrics trùng EXP-009.
