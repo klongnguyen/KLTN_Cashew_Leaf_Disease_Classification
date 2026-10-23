@@ -1,0 +1,74 @@
+{
+  "experiment_id": "EXP-VIT-DEITSMALL-TRANSFER-5SEEDS-011",
+  "status": "NOT PROMOTED",
+  "selection_basis": "Validation V08 only",
+  "selected": null,
+  "per_seed_stage_choices": [
+    {
+      "seed": 42,
+      "stage": "stage2",
+      "eligible": false,
+      "checkpoint_sha256": "830EA3E975CCCFD8B1EB100E044ED407110F4E873292BCCEED894F6AF1602BFB",
+      "best_val_loss": 0.23998451232910156,
+      "macro_f1": 0.9183622394452742,
+      "disease_to_healthy_count": 22
+    },
+    {
+      "seed": 123,
+      "stage": "stage2",
+      "eligible": false,
+      "checkpoint_sha256": "5D3A45E3DFEB08DD2EC622B22D23597E5125D6BCEE7468805D5BE8470BD650D4",
+      "best_val_loss": 0.19496168196201324,
+      "macro_f1": 0.940702356995407,
+      "disease_to_healthy_count": 14
+    },
+    {
+      "seed": 2026,
+      "stage": "stage2",
+      "eligible": false,
+      "checkpoint_sha256": "80E0B85A19A2ED770CB50343AA3E6609C53B4732638F978DBD75398562482BDB",
+      "best_val_loss": 0.23271100223064423,
+      "macro_f1": 0.9255837302247809,
+      "disease_to_healthy_count": 27
+    },
+    {
+      "seed": 3407,
+      "stage": "stage2",
+      "eligible": false,
+      "checkpoint_sha256": "77883C98E55B9F405D6EB89A4A20BF0FFF90373BC6395512C6B460A91702B5E1",
+      "best_val_loss": 0.20504029095172882,
+      "macro_f1": 0.9337088415681777,
+      "disease_to_healthy_count": 16
+    },
+    {
+      "seed": 7777,
+      "stage": "stage2",
+      "eligible": false,
+      "checkpoint_sha256": "9D38FF2B56B512F1B4F21A6D5B377ABF73742EF310C57D6F506D5CED5EB6451B",
+      "best_val_loss": 0.16552621126174927,
+      "macro_f1": 0.9516559217270759,
+      "disease_to_healthy_count": 17
+    }
+  ],
+  "selected_stage_mean_macro_f1": 0.9340026179921432,
+  "tiny_A_mean_macro_f1": 0.9429087183190787,
+  "seed_123_D2H_below_18": true,
+  "seed_123_guardrails_pass": false,
+  "config_sha256": "C0F088F01530CDD8DB4CA7FB0D07CB0EBC8DD5B7445F04B68587401F4D68BFFA",
+  "locked_at_utc": "2026-10-23T13:52:34.056853+00:00",
+  "test_used": false,
+  "historical_holdout_used": false,
+  "guardrail_thresholds": {
+    "stage_guardrails_vs_same_seed_tiny_A": {
+      "macro_f1_min_delta": -0.01,
+      "disease_to_healthy_max_delta_count": 0,
+      "healthy_recall_min_delta": -0.02,
+      "not_cashew_leaf_recall_min_delta": -0.02,
+      "each_disease_recall_min_delta": -0.02
+    },
+    "stage_choice": "among eligible stage1/stage2 best checkpoints, minimum val_loss; tie higher macro_f1; tie stage1. If neither eligible, retain minimum val_loss for analysis only and mark not promoted",
+    "seed_choice": "among eligible selected-stage seeds, minimum val_loss; tie higher macro_f1; tie lower seed. If none eligible, no deployment seed",
+    "promotion": "mean 5-seed macro_f1 greater than Tiny A mean AND seed_123 D2H < 18/900 AND seed_123 stage guardrails pass; otherwise NOT PROMOTED",
+    "selection_inputs": "Validation V08 only"
+  }
+}

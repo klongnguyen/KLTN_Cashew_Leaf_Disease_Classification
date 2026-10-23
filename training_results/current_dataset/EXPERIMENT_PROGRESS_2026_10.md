@@ -1,5 +1,7 @@
 # Tiến độ huấn luyện và đối chiếu phiên bản (cập nhật 22/10/2026)
 
+> **ViT DeiT-Small EXP-011 — 23/10/2026:** 5 seeds V08 Validation, Stage 1 Frozen Head ≤30 epochs, Stage 2 fine-tune hai transformer blocks cuối ≤30 epochs, patience 7. Stage 2 **Val Acc 93,45 ± 1,28%; Macro F1 93,40 ± 1,30%; Disease→Healthy 19,2 ± 5,26/900**. So với EXP-010 Stage 2, Macro F1 **+0,66 điểm phần trăm**; so với DeiT-Tiny A EXP-008, vẫn thấp **0,89 điểm phần trăm**. **NOT PROMOTED** (0/5 seed đủ điều kiện), **Test/Holdout không dùng inference**, chưa thay web deployment. [Kết quả EXP-011](./EXP-VIT-DEITSMALL-TRANSFER-5SEEDS-011/README.md) · [Source notebook](https://github.com/klongnguyen/KLTN_Cashew_Leaf_Disease_Classification/tree/exp/vit-deitsmall-extended-epochs-011/Notebook/ViT/vit_deit_small_transfer_5seeds_011.ipynb).
+
 > **EXP-DENSENET121-TRANSFER-5SEEDS-016 — 22/10/2026:** **Final Test 686 ảnh đã chạy** trên đúng 5 EXP-014 ImageNet pretrained checkpoints (inference-only, không retrain): **Accuracy 95,13 ± 0,51%; Macro F1 94,76 ± 0,58%**. Locked deploy seed **123** đúng **653/686=95,19%**, bỏ sót bệnh→Healthy **2/412**. [EXP-016 README](./EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md) · [Audit](./EXP-DENSENET121-TRANSFER-5SEEDS-016/QUALITY_AND_PROTOCOL_REVIEW.md). EXP-014 Validation **97,10 ± 0,20%**, EXP-015 historical Holdout **80,83 ± 0,93%**; chưa có fresh blind field set đủ 5 lớp. Ứng dụng web **không đổi**.
 
 
