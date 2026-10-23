@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 import math
+import tempfile
 import time
 import zipfile
 from datetime import datetime, timezone
@@ -65,8 +66,8 @@ def verify_inputs(archive_path, output):
     return config, manifest, sha_file(config_path)
 
 
-def extract_train_val(archive_path, output, manifest):
-    root = Path(output) / "_work" / "CashewData_Split"
+def extract_train_val(archive_path, root, manifest):
+    root = Path(root)
     needed = manifest.loc[manifest.split.isin(["train", "val"])]
     with zipfile.ZipFile(archive_path) as archive:
         for row in needed.itertuples(index=False):
@@ -332,15 +333,17 @@ def run(archive_path, output):
     output = Path(output)
     config, manifest, config_sha = verify_inputs(archive_path, output)
     tf.config.experimental.enable_op_determinism()
+    work_root = Path(tempfile.gettempdir()) / "exp010_train_val" / "CashewData_Split"
     write_json(output / "training_runtime.json", {
         "tensorflow": tf.__version__, "keras": keras.__version__, "keras_hub": keras_hub.__version__,
         "gpu": [str(x) for x in tf.config.list_physical_devices("GPU")],
         "op_determinism_requested": True, "tf_data_deterministic": True,
         "mixed_precision": keras.mixed_precision.global_policy().name,
         "config_sha256": config_sha, "dataset_zip_sha256": ZIP_SHA,
+        "train_val_work_root": str(work_root),
         "source_git_commit": (output / "source_git_commit.txt").read_text().strip()
                              if (output / "source_git_commit.txt").is_file() else None})
-    root = extract_train_val(archive_path, output, manifest)
+    root = extract_train_val(archive_path, work_root, manifest)
     train_frame = manifest[manifest.split == "train"].reset_index(drop=True)
     val_frame = manifest[manifest.split == "val"].reset_index(drop=True)
     val_ds = dataset(val_frame, root, config["batch_size"])
@@ -420,3 +423,4 @@ if __name__ == "__main__":
     parser.add_argument("output")
     args = parser.parse_args()
     print(json.dumps(run(args.dataset_zip, args.output), indent=2))
+
