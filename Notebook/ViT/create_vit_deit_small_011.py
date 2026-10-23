@@ -340,6 +340,9 @@ cells += [
     """),
 ]
 
+for index, cell in enumerate(cells):
+    cell["id"] = f"exp011-{index:02d}"
+
 notebook = {
     "cells": cells,
     "metadata": {
