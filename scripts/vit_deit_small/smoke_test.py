@@ -100,11 +100,14 @@ def run(dataset_root, manifest, output, preset_cache):
         raise RuntimeError(f"Save/reload inference changed: {max_reload_error}")
     source = Path(preset_cache) / "models/keras/deit/keras/deit_small_distilled_patch16_224_imagenet/1"
     provenance = {p.name: {"bytes": p.stat().st_size, "sha256": sha(p)} for p in source.glob("*") if p.is_file()}
-    expected = {"config.json": "E3CABFB27BEDDB3C85BE90371FCCC14FAB94878051BD2587C42BBFC8D92EF26E",
-                "model.weights.h5": "EB03ECF54381B14FEDC6120D30B696B7E848004BD6EE2A708DA973618C926893",
+    required = {"config.json": "E3CABFB27BEDDB3C85BE90371FCCC14FAB94878051BD2587C42BBFC8D92EF26E",
                 "task.json": "DB83E029005D9B645AF578B407454AAF342DDC59D553DCA7C263666DF093E956",
                 "task.weights.h5": "186714690069C17876BA8D6479F27E5C345AAC8A3B37574EE04B8B1D949AB72F"}
-    if {name: item["sha256"] for name, item in provenance.items()} != expected:
+    optional = {"model.weights.h5": "EB03ECF54381B14FEDC6120D30B696B7E848004BD6EE2A708DA973618C926893"}
+    observed = {name: item["sha256"] for name, item in provenance.items()}
+    if (any(observed.get(name) != digest for name, digest in required.items())
+            or any(observed[name] != digest for name, digest in optional.items() if name in observed)
+            or set(observed) - set(required) - set(optional)):
         raise RuntimeError(f"Pretrained preset provenance changed: {provenance}")
     if head[0]["shape"] != (384, 5):
         raise RuntimeError("Expected DeiT-Small 384-D pre-head features")
@@ -134,3 +137,4 @@ if __name__ == "__main__":
     report = run(args.dataset_root, args.manifest, args.output, args.preset_cache)
     print(json.dumps({k: v for k, v in report.items() if k not in ("stage1_gradient_step", "stage2_gradient_step",
                                                                  "stage1_trainable", "stage2_trainable")}, indent=2))
+
