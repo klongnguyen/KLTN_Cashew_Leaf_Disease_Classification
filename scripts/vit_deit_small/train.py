@@ -127,7 +127,7 @@ class ValidationMetrics(keras.callbacks.Callback):
                "val_disease_to_healthy_count": metrics["disease_to_healthy_count"],
                "val_accuracy_from_predictions": metrics["accuracy"]}
         row.update({"val_recall_" + x["class"]: x["recall"] for x in metrics["per_class"]})
-        logs.update(row)
+        logs.update({key: value for key, value in row.items() if key != "epoch"})
         self.records.append({**{"epoch": epoch + 1}, **{k: float(v) for k, v in logs.items()
                                                         if isinstance(v, (int, float, np.floating))}})
 
