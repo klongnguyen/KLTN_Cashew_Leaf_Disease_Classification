@@ -234,17 +234,41 @@ for seed in (42, 123, 2026, 3407, 7777):
 cells += [
     code("""
     # Cell 09 — Read back stage markers, checkpoint SHA256 and per-seed metrics.
+    import hashlib
+    import json
+    import pandas as pd
     from IPython.display import display
-    sys.path.insert(0, str(scripts))
-    import runner as exp011_runner
-    config_sha = exp011_runner.sha_file(output / "experiment_config.json")
+
+    def file_sha256(path):
+        digest = hashlib.sha256()
+        with path.open("rb") as handle:
+            for block in iter(lambda: handle.read(1024 * 1024), b""):
+                digest.update(block)
+        return digest.hexdigest().upper()
+
+    config_sha = file_sha256(output / "experiment_config.json")
     rows = []
     for seed in SEEDS:
         seed_dir = output / f"seed_{seed}"
-        assert (seed_dir / "seed_complete.json").is_file()
+        complete_file = seed_dir / "seed_complete.json"
+        assert complete_file.is_file(), f"Incomplete seed: {seed}"
+        complete = json.loads(complete_file.read_text(encoding="utf-8"))
+        assert complete["seed"] == seed and complete["status"] == "PASS"
+        assert complete["config_sha256"] == config_sha
         for stage in ("stage1", "stage2"):
-            assert exp011_runner.validate_stage(seed_dir, stage, config_sha)
-            metric = json.loads((seed_dir / f"metrics_{stage}.json").read_text())
+            marker_file = seed_dir / f"{stage}_complete.json"
+            checkpoint = seed_dir / "checkpoints" / f"{stage}_best.keras"
+            metrics_file = seed_dir / f"metrics_{stage}.json"
+            assert marker_file.is_file() and checkpoint.is_file() and metrics_file.is_file()
+            marker = json.loads(marker_file.read_text(encoding="utf-8"))
+            metric = json.loads(metrics_file.read_text(encoding="utf-8"))
+            checkpoint_sha = file_sha256(checkpoint)
+            assert marker["seed"] == seed and marker["stage"] == stage
+            assert marker["config_sha256"] == config_sha
+            assert marker["checkpoint_sha256"] == checkpoint_sha
+            assert marker["metrics_sha256"] == file_sha256(metrics_file)
+            assert metric["checkpoint_sha256"] == checkpoint_sha
+            assert complete[f"{stage}_checkpoint_sha256"] == checkpoint_sha
             rows.append({"seed": seed, "stage": stage, "best_epoch": metric["best_epoch"],
                          "epochs_ran": metric["epochs_ran"],
                          "val_macro_f1": metric["macro_f1"],
