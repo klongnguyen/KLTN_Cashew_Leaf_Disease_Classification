@@ -1,10 +1,6 @@
 # Current Dataset Experiments
 
-> **DenseNet121 Transfer — Final Test đã xong 22/10/2026:** [EXP-016](./EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md) sử dụng nguyên 5 checkpoint từ [EXP-014](./EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md), cùng V08 **686 ảnh Test**. Mean Accuracy **95,13 ± 0,51%**, Macro F1 **94,76 ± 0,58%**; seed khóa bằng Validation **123**, đúng **653/686**, D2H **2/412**. [EXP-015](./EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md) historical Holdout **80,83 ± 0,93%**. **016 không train mới/không sửa dataset/không đổi web checkpoint**.
-
-
-> **ViT Transfer + classifier EXP-008 (21/10/2026):** [Báo cáo riêng](./EXP-VIT-TRANSFER-XGBOOST-008/README.md) · [dữ liệu 5 seeds](./EXP-VIT-TRANSFER-XGBOOST-008/validation_metrics_5seeds_abc.csv) · [confusion matrices](./EXP-VIT-TRANSFER-XGBOOST-008/seed_123/A_confusion_matrix.csv). A Softmax **94,41 ± 0,73%**, B Logistic **96,56 ± 0,17%**, C XGBoost **95,85 ± 0,20% Val Acc**. **Giữ A/seed123** vì D2H 18/900, so với B21/C23. Đây **không phải ViT train mới**, chỉ classifier learning trên EXP-007 embeddings. **Chưa có Test/Holdout cho EXP-008** và chưa xác minh group-level leakage.
-
+> **ViT DeiT-Small Transfer EXP-011:** [hồ sơ cấu hình](./EXP-VIT-DEITSMALL-TRANSFER-5SEEDS-011/README.md) và notebook đã sẵn sàng; **chưa có kết quả huấn luyện**.
 
 > **Mới nhất ResNet50 trên V08 (20/10/2026):** [TRANSFER EXP-009 Partial Fine-tuning](./EXP-RESNET50-TRANSFER-5SEEDS-009/README.md) đạt Val **95,23 ± 0,35%**, Test **92,89 ± 0,51%**, historical Holdout **75,83 ± 2,80% Accuracy**, seed triển khai ứng viên **2026 theo min Val Loss**. Stage 2 **đã mở `conv5_block3_*` non-BN**, khác [TRANSFER EXP-008 frozen](./EXP-RESNET50-TRANSFER-5SEEDS-008/README.md). V08 manifest giữ nguyên; **Validation cao không chứng minh chất lượng thực địa**, và chỉ số Test/Holdout không cải thiện trung bình so với frozen EXP-008. [Progress](./EXPERIMENT_PROGRESS_2026_10.md).
 
@@ -15,12 +11,12 @@
 > **ResNet50 Scratch (new archived reports):** [EXP-006/V05](./EXP-RESNET50-SCRATCH-5SEEDS-006/README.md) Val **86.46 ± 2.27%**; [EXP-007/V07](./EXP-RESNET50-SCRATCH-5SEEDS-007/README.md) Val **89.20 ± 2.04%**; [EXP-008/V07](./EXP-RESNET50-SCRATCH-5SEEDS-008/README.md) có **5-seed metrics và predictions trùng EXP-007**, không chứng minh run độc lập. **Không có Test của 006–008**; [audit](./RESNET50_SCRATCH_006_008_AUDIT_2026_10.md). Không trộn với DenseNet121 Transfer V08 hoặc official ResNet50 V05 EXP-005 Test.
 
 
-> **Mới nhất trên V08 (19/10/2026):** [EXP-014 huấn luyện DenseNet121 ImageNet Transfer Learning](./EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md) đạt **97.10 ± 0.20% Val Accuracy**, **96.96 ± 0.21% Val F1**; [EXP-015 đánh giá checkpoint EXP-014](./EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md) đạt **80.83 ± 0.93% Accuracy / 80.80 ± 0.19% Macro F1** trên **48 ảnh Real Holdout lịch sử đã được xem trước đó**. EXP-015 **không huấn luyện**; seed deploy **123** chọn trước bằng Val Loss; Test 686 ảnh **đã hoàn thành trong [EXP-016](./EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md)**. [Theo dõi phiên bản](./EXPERIMENT_PROGRESS_2026_10.md).
+> **DenseNet121 Transfer V08:** [EXP-014 huấn luyện 5 seed](./EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md) đạt **97.10 ± 0.20% Val Accuracy**; [EXP-015](./EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md) đánh giá 48 ảnh Real Holdout lịch sử, **80.83 ± 0.93% Accuracy**; [EXP-016](./EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md) đánh giá **686 ảnh Final Test V08 × 5 checkpoint**, **95.13 ± 0.51% Accuracy / 94.76 ± 0.58% Macro F1**. Cả 015 và 016 không retrain; seed triển khai **123** được khóa bằng Val Loss. [Theo dõi phiên bản](./EXPERIMENT_PROGRESS_2026_10.md).
 
 
 > **Mốc cũ EXP-012/V08 (trước EXP-014/015)**: 5-seed Validation Accuracy **93.99 ± 1.05%**, Macro F1 **93.81 ± 1.13%**; chưa có Final Test. [EXP-012](./EXP-DENSENET121-SCRATCH-5SEEDS-012/README.md) · [EXP-011](./EXP-DENSENET121-SCRATCH-5SEEDS-011/README.md) · [Tiến độ theo phiên bản](./EXPERIMENT_PROGRESS_2026_10.md). V05 là **benchmark Test đa kiến trúc** đã hoàn thành, còn V07/V08 là các snapshot DenseNet mới hơn.
 
-Thư mục này quản lý các classification experiment theo dataset version. **Cashew_dataV05** là snapshot benchmark đã hoàn thành của ba kiến trúc; DenseNet có V07/V08 mới hơn. Người dùng xác nhận locked Test V05 đã được chạy cho cả ba model; tuy nhiên ba ANALYSIS archive đang lưu trong phiên làm việc này không chứa Test artifacts, nên bảng bên dưới vẫn chỉ hiển thị Validation cho tới khi Test outputs được import.
+Thư mục này quản lý các classification experiment theo dataset version. **Cashew_dataV05** là snapshot benchmark đã hoàn thành của ba kiến trúc; DenseNet có V07/V08 mới hơn. Kết quả locked Test V05 đã được nhập vào các bảng bên dưới. EXP-016 là Final Test V08 riêng cho DenseNet121 Transfer EXP-014.
 
 ## Current development snapshot — Cashew_dataV05
 

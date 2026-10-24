@@ -1,0 +1,33 @@
+{
+  "experiment_id": "EXP-DENSENET121-TRANSFER-5SEEDS-014",
+  "model": "DenseNet121",
+  "training_mode": "Transfer Learning (ImageNet 2-stage)",
+  "deployment_seed": 123,
+  "selection_source": "validation only",
+  "selection_metric": "val_loss",
+  "tie_break": "higher val_macro_f1, then lower seed",
+  "test_used_for_selection": false,
+  "val_loss": 0.09253466129302979,
+  "val_accuracy": 0.9727272727272728,
+  "val_macro_f1": 0.9713531130401979,
+  "input_size": [
+    224,
+    224,
+    3
+  ],
+  "class_names": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "red_rust",
+    "not_cashew_leaf"
+  ],
+  "contains_densenet_preprocess_input": true,
+  "external_divide_by_255": false,
+  "deployment_model": "deployment_model.keras",
+  "feature_extractor": "densenet121_feature_extractor.keras",
+  "embedding_model": "densenet121_embedding_model.keras",
+  "embedding_dimension": 1024,
+  "intended_downstream_use": "YOLO crop classification or feature fusion",
+  "source_checkpoint_sha256": "f40fb019b08dcec516e345f6416733688ab9c4e31401b1feb4a16a562ad97658"
+}

@@ -1,5 +1,5 @@
 """
-DenseNet121 v009 Model Inference Service for Cashew Leaf Disease Classification.
+DenseNet121 Transfer v014 Model Inference Service for Cashew Leaf Disease Classification.
 """
 import io
 import json
@@ -154,7 +154,7 @@ class DenseNet121Service:
         return {
             "name": MODEL_NAME,
             "seed": BEST_SEED,
-            "experiment_id": self.metadata.get("experiment_id", "EXP-DENSENET121-SCRATCH-5SEEDS-009"),
+            "experiment_id": self.metadata.get("experiment_id", "EXP-DENSENET121-TRANSFER-5SEEDS-014"),
             "selection_source": self.metadata.get("selection_source", "validation only"),
             "val_accuracy": VAL_ACCURACY,
             "val_loss": VAL_LOSS,

@@ -74,7 +74,7 @@ Cùng V08, nhưng chỉ số nhóm `real_` có **35 ảnh**, dễ dao động th
 - ✅ **Final locked Test V08 686 ảnh hoàn thành trong EXP-016** (inference-only, source checkpoints EXP-014 giữ nguyên).
 - ⏳ Cần audit 51 cặp pHash và thu thập real-world blind holdout mới.
 - ⚠️ Bản ghi trên GitHub bao gồm **báo cáo, config/lock, aggregate CSV, figures tái lập**; **ANALYSIS/FULL ZIP gốc, toàn bộ per-image predictions, training notebooks và binary checkpoint .h5/.keras chưa được commit**. Không thể dùng repository này một mình để tái tạo checkpoint hoặc xác minh binary hash; xem FULL ZIP ngoài GitHub.
-- ⚠️ Ứng dụng web `Application/` trên repo vẫn mô tả chạy **EXP-009 seed 3407**, **chưa thay deployment** sang EXP-014.
+- ✅ Mã nguồn `Application/` đã chuyển sang **EXP-014 seed 123**. Binary `deployment_model.keras` nằm ngoài Git; cần cung cấp checkpoint đúng đường dẫn trong `Application/config.py` khi chạy từ bản clone.
 
-**Đọc tiếp:** [EXP-015 — Holdout checkpoint evaluation](../EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md) · [Tiến độ](../EXPERIMENT_PROGRESS_2026_10.md).
+**Đọc tiếp:** [EXP-015 — Holdout checkpoint evaluation](../EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md) · [EXP-016 — Final Test V08](../EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md) · [Tiến độ](../EXPERIMENT_PROGRESS_2026_10.md).
 

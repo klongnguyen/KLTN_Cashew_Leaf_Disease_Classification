@@ -1,0 +1,18 @@
+{
+  "source_notebooks_reviewed": {
+    "Notebook/ViT/vit_transfer_5seed_007.ipynb": {
+      "bytes": 173672,
+      "sha256": "51CB69CA3C198E7024C2D611BDC0D6B4BA8361BE4E7E6E9C48370BA01465DF5F"
+    },
+    "Notebook/ViT/vit_transfer_xgboost_008.ipynb": {
+      "bytes": 116474,
+      "sha256": "27395F0ED10B02242CC584D94031BD5FD4DEF415AAEC6E0E8EC6D8B8FD63B24F"
+    },
+    "Notebook/ViT/vit_transfer_xgboost_009.ipynb": {
+      "bytes": 71363,
+      "sha256": "11578C6830ED65E58956991BDFDA8C7B2F8280A9E1E6C02711CD0A17E8776F56"
+    }
+  },
+  "exp009_results_available_locally": false,
+  "baseline_tiny_inference_parity_reproduced_locally": false
+}

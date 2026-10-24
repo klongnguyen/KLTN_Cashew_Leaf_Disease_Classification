@@ -1,0 +1,534 @@
+{
+  "status": "PASS",
+  "scope": "2 real Train images, one gradient update per stage; not benchmark",
+  "preset": "kaggle://keras/deit/keras/deit_small_distilled_patch16_224_imagenet/1",
+  "preset_artifacts": {
+    "config.json": {
+      "bytes": 616,
+      "sha256": "E3CABFB27BEDDB3C85BE90371FCCC14FAB94878051BD2587C42BBFC8D92EF26E"
+    },
+    "model.weights.h5": {
+      "bytes": 87155080,
+      "sha256": "EB03ECF54381B14FEDC6120D30B696B7E848004BD6EE2A708DA973618C926893"
+    },
+    "task.json": {
+      "bytes": 3462,
+      "sha256": "DB83E029005D9B645AF578B407454AAF342DDC59D553DCA7C263666DF093E956"
+    },
+    "task.weights.h5": {
+      "bytes": 88707896,
+      "sha256": "186714690069C17876BA8D6479F27E5C345AAC8A3B37574EE04B8B1D949AB72F"
+    }
+  },
+  "python": "3.11.15",
+  "tensorflow": "2.21.0",
+  "keras": "3.15.1",
+  "keras_hub": "0.32.0",
+  "gpu": [],
+  "model_parameters": 21668357,
+  "backbone_parameters": 21666432,
+  "stage1_trainable_parameters": 1925,
+  "stage2_trainable_parameters": 3550853,
+  "stage1_trainable": [
+    {
+      "path": "predictions/kernel",
+      "shape": [
+        384,
+        5
+      ],
+      "parameters": 1920
+    },
+    {
+      "path": "predictions/bias",
+      "shape": [
+        5
+      ],
+      "parameters": 5
+    }
+  ],
+  "stage2_trainable": [
+    {
+      "path": "deit_encoder/transformer_block_11/ln_1/gamma",
+      "shape": [
+        384
+      ],
+      "parameters": 384
+    },
+    {
+      "path": "deit_encoder/transformer_block_11/ln_1/beta",
+      "shape": [
+        384
+      ],
+      "parameters": 384
+    },
+    {
+      "path": "deit_encoder/transformer_block_11/mha/query/kernel",
+      "shape": [
+        384,
+        6,
+        64
+      ],
+      "parameters": 147456
+    },
+    {
+      "path": "deit_encoder/transformer_block_11/mha/query/bias",
+      "shape": [
+        6,
+        64
+      ],
+      "parameters": 384
+    },
+    {
+      "path": "deit_encoder/transformer_block_11/mha/key/kernel",
+      "shape": [
+        384,
+        6,
+        64
+      ],
+      "parameters": 147456
+    },
+    {
+      "path": "deit_encoder/transformer_block_11/mha/key/bias",
+      "shape": [
+        6,
+        64
+      ],
+      "parameters": 384
+    },
+    {
+      "path": "deit_encoder/transformer_block_11/mha/value/kernel",
+      "shape": [
+        384,
+        6,
+        64
+      ],
+      "parameters": 147456
+    },
+    {
+      "path": "deit_encoder/transformer_block_11/mha/value/bias",
+      "shape": [
+        6,
+        64
+      ],
+      "parameters": 384
+    },
+    {
+      "path": "deit_encoder/transformer_block_11/mha/attention_output/kernel",
+      "shape": [
+        6,
+        64,
+        384
+      ],
+      "parameters": 147456
+    },
+    {
+      "path": "deit_encoder/transformer_block_11/mha/attention_output/bias",
+      "shape": [
+        384
+      ],
+      "parameters": 384
+    },
+    {
+      "path": "deit_encoder/transformer_block_11/ln_2/gamma",
+      "shape": [
+        384
+      ],
+      "parameters": 384
+    },
+    {
+      "path": "deit_encoder/transformer_block_11/ln_2/beta",
+      "shape": [
+        384
+      ],
+      "parameters": 384
+    },
+    {
+      "path": "deit_encoder/transformer_block_11/mlp/dense/kernel",
+      "shape": [
+        384,
+        1536
+      ],
+      "parameters": 589824
+    },
+    {
+      "path": "deit_encoder/transformer_block_11/mlp/dense/bias",
+      "shape": [
+        1536
+      ],
+      "parameters": 1536
+    },
+    {
+      "path": "deit_encoder/transformer_block_11/output_layer/output/kernel",
+      "shape": [
+        1536,
+        384
+      ],
+      "parameters": 589824
+    },
+    {
+      "path": "deit_encoder/transformer_block_11/output_layer/output/bias",
+      "shape": [
+        384
+      ],
+      "parameters": 384
+    },
+    {
+      "path": "deit_encoder/transformer_block_12/ln_1/gamma",
+      "shape": [
+        384
+      ],
+      "parameters": 384
+    },
+    {
+      "path": "deit_encoder/transformer_block_12/ln_1/beta",
+      "shape": [
+        384
+      ],
+      "parameters": 384
+    },
+    {
+      "path": "deit_encoder/transformer_block_12/mha/query/kernel",
+      "shape": [
+        384,
+        6,
+        64
+      ],
+      "parameters": 147456
+    },
+    {
+      "path": "deit_encoder/transformer_block_12/mha/query/bias",
+      "shape": [
+        6,
+        64
+      ],
+      "parameters": 384
+    },
+    {
+      "path": "deit_encoder/transformer_block_12/mha/key/kernel",
+      "shape": [
+        384,
+        6,
+        64
+      ],
+      "parameters": 147456
+    },
+    {
+      "path": "deit_encoder/transformer_block_12/mha/key/bias",
+      "shape": [
+        6,
+        64
+      ],
+      "parameters": 384
+    },
+    {
+      "path": "deit_encoder/transformer_block_12/mha/value/kernel",
+      "shape": [
+        384,
+        6,
+        64
+      ],
+      "parameters": 147456
+    },
+    {
+      "path": "deit_encoder/transformer_block_12/mha/value/bias",
+      "shape": [
+        6,
+        64
+      ],
+      "parameters": 384
+    },
+    {
+      "path": "deit_encoder/transformer_block_12/mha/attention_output/kernel",
+      "shape": [
+        6,
+        64,
+        384
+      ],
+      "parameters": 147456
+    },
+    {
+      "path": "deit_encoder/transformer_block_12/mha/attention_output/bias",
+      "shape": [
+        384
+      ],
+      "parameters": 384
+    },
+    {
+      "path": "deit_encoder/transformer_block_12/ln_2/gamma",
+      "shape": [
+        384
+      ],
+      "parameters": 384
+    },
+    {
+      "path": "deit_encoder/transformer_block_12/ln_2/beta",
+      "shape": [
+        384
+      ],
+      "parameters": 384
+    },
+    {
+      "path": "deit_encoder/transformer_block_12/mlp/dense/kernel",
+      "shape": [
+        384,
+        1536
+      ],
+      "parameters": 589824
+    },
+    {
+      "path": "deit_encoder/transformer_block_12/mlp/dense/bias",
+      "shape": [
+        1536
+      ],
+      "parameters": 1536
+    },
+    {
+      "path": "deit_encoder/transformer_block_12/output_layer/output/kernel",
+      "shape": [
+        1536,
+        384
+      ],
+      "parameters": 589824
+    },
+    {
+      "path": "deit_encoder/transformer_block_12/output_layer/output/bias",
+      "shape": [
+        384
+      ],
+      "parameters": 384
+    },
+    {
+      "path": "predictions/kernel",
+      "shape": [
+        384,
+        5
+      ],
+      "parameters": 1920
+    },
+    {
+      "path": "predictions/bias",
+      "shape": [
+        5
+      ],
+      "parameters": 5
+    }
+  ],
+  "preprocess_parity_before": {
+    "input": "RGB float32 0..255, bilinear 224x224",
+    "preprocessor_passes": 1,
+    "max_abs_logit_difference": 0.0
+  },
+  "preprocess_parity_after": {
+    "input": "RGB float32 0..255, bilinear 224x224",
+    "preprocessor_passes": 1,
+    "max_abs_logit_difference": 0.0
+  },
+  "stage1_gradient_step": {
+    "loss": 5.017643928527832,
+    "output_shape": [
+      2,
+      5
+    ],
+    "updated_groups": {
+      "predictions": true
+    },
+    "gradients": [
+      {
+        "path": "predictions/kernel",
+        "gradient_present": true,
+        "gradient_norm": 28.35387420654297
+      },
+      {
+        "path": "predictions/bias",
+        "gradient_present": true,
+        "gradient_norm": 1.1663814783096313
+      }
+    ]
+  },
+  "stage2_gradient_step": {
+    "loss": 6.023550033569336,
+    "output_shape": [
+      2,
+      5
+    ],
+    "updated_groups": {
+      "transformer_block_11": true,
+      "transformer_block_12": true,
+      "predictions": true
+    },
+    "gradients": [
+      {
+        "path": "deit_encoder/transformer_block_11/ln_1/gamma",
+        "gradient_present": true,
+        "gradient_norm": 1.517397403717041
+      },
+      {
+        "path": "deit_encoder/transformer_block_11/ln_1/beta",
+        "gradient_present": true,
+        "gradient_norm": 2.6695430278778076
+      },
+      {
+        "path": "deit_encoder/transformer_block_11/mha/query/kernel",
+        "gradient_present": true,
+        "gradient_norm": 5.9037556648254395
+      },
+      {
+        "path": "deit_encoder/transformer_block_11/mha/query/bias",
+        "gradient_present": true,
+        "gradient_norm": 0.43275031447410583
+      },
+      {
+        "path": "deit_encoder/transformer_block_11/mha/key/kernel",
+        "gradient_present": true,
+        "gradient_norm": 8.004120826721191
+      },
+      {
+        "path": "deit_encoder/transformer_block_11/mha/key/bias",
+        "gradient_present": true,
+        "gradient_norm": 1.12049136191672e-07
+      },
+      {
+        "path": "deit_encoder/transformer_block_11/mha/value/kernel",
+        "gradient_present": true,
+        "gradient_norm": 15.539478302001953
+      },
+      {
+        "path": "deit_encoder/transformer_block_11/mha/value/bias",
+        "gradient_present": true,
+        "gradient_norm": 2.437380313873291
+      },
+      {
+        "path": "deit_encoder/transformer_block_11/mha/attention_output/kernel",
+        "gradient_present": true,
+        "gradient_norm": 16.220664978027344
+      },
+      {
+        "path": "deit_encoder/transformer_block_11/mha/attention_output/bias",
+        "gradient_present": true,
+        "gradient_norm": 2.335601568222046
+      },
+      {
+        "path": "deit_encoder/transformer_block_11/ln_2/gamma",
+        "gradient_present": true,
+        "gradient_norm": 0.47203904390335083
+      },
+      {
+        "path": "deit_encoder/transformer_block_11/ln_2/beta",
+        "gradient_present": true,
+        "gradient_norm": 0.5915306806564331
+      },
+      {
+        "path": "deit_encoder/transformer_block_11/mlp/dense/kernel",
+        "gradient_present": true,
+        "gradient_norm": 15.069189071655273
+      },
+      {
+        "path": "deit_encoder/transformer_block_11/mlp/dense/bias",
+        "gradient_present": true,
+        "gradient_norm": 0.6840400099754333
+      },
+      {
+        "path": "deit_encoder/transformer_block_11/output_layer/output/kernel",
+        "gradient_present": true,
+        "gradient_norm": 13.605341911315918
+      },
+      {
+        "path": "deit_encoder/transformer_block_11/output_layer/output/bias",
+        "gradient_present": true,
+        "gradient_norm": 2.2544264793395996
+      },
+      {
+        "path": "deit_encoder/transformer_block_12/ln_1/gamma",
+        "gradient_present": true,
+        "gradient_norm": 2.148214817047119
+      },
+      {
+        "path": "deit_encoder/transformer_block_12/ln_1/beta",
+        "gradient_present": true,
+        "gradient_norm": 4.112111568450928
+      },
+      {
+        "path": "deit_encoder/transformer_block_12/mha/query/kernel",
+        "gradient_present": true,
+        "gradient_norm": 8.340113639831543
+      },
+      {
+        "path": "deit_encoder/transformer_block_12/mha/query/bias",
+        "gradient_present": true,
+        "gradient_norm": 0.7069488167762756
+      },
+      {
+        "path": "deit_encoder/transformer_block_12/mha/key/kernel",
+        "gradient_present": true,
+        "gradient_norm": 10.719852447509766
+      },
+      {
+        "path": "deit_encoder/transformer_block_12/mha/key/bias",
+        "gradient_present": true,
+        "gradient_norm": 6.45633662088585e-08
+      },
+      {
+        "path": "deit_encoder/transformer_block_12/mha/value/kernel",
+        "gradient_present": true,
+        "gradient_norm": 15.598740577697754
+      },
+      {
+        "path": "deit_encoder/transformer_block_12/mha/value/bias",
+        "gradient_present": true,
+        "gradient_norm": 3.3306589126586914
+      },
+      {
+        "path": "deit_encoder/transformer_block_12/mha/attention_output/kernel",
+        "gradient_present": true,
+        "gradient_norm": 11.305545806884766
+      },
+      {
+        "path": "deit_encoder/transformer_block_12/mha/attention_output/bias",
+        "gradient_present": true,
+        "gradient_norm": 2.806819438934326
+      },
+      {
+        "path": "deit_encoder/transformer_block_12/ln_2/gamma",
+        "gradient_present": true,
+        "gradient_norm": 0.8292194604873657
+      },
+      {
+        "path": "deit_encoder/transformer_block_12/ln_2/beta",
+        "gradient_present": true,
+        "gradient_norm": 0.7595013380050659
+      },
+      {
+        "path": "deit_encoder/transformer_block_12/mlp/dense/kernel",
+        "gradient_present": true,
+        "gradient_norm": 17.27116584777832
+      },
+      {
+        "path": "deit_encoder/transformer_block_12/mlp/dense/bias",
+        "gradient_present": true,
+        "gradient_norm": 0.8723733425140381
+      },
+      {
+        "path": "deit_encoder/transformer_block_12/output_layer/output/kernel",
+        "gradient_present": true,
+        "gradient_norm": 16.319339752197266
+      },
+      {
+        "path": "deit_encoder/transformer_block_12/output_layer/output/bias",
+        "gradient_present": true,
+        "gradient_norm": 2.8064301013946533
+      },
+      {
+        "path": "predictions/kernel",
+        "gradient_present": true,
+        "gradient_norm": 30.148046493530273
+      },
+      {
+        "path": "predictions/bias",
+        "gradient_present": true,
+        "gradient_norm": 1.1829161643981934
+      }
+    ]
+  },
+  "save_reload_max_abs_logit_difference": 0.0,
+  "checkpoint_sha256": "FA574DC67AF1CB4FCFE21EFC11632E8C77185C7F69188F0C6AFF36BE57AB4654"
+}

@@ -1,0 +1,23 @@
+{
+  "captured_utc": "2026-10-22T09:47:10.212961+00:00",
+  "python": "3.11.15",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "dependencies": {
+    "tensorflow": "2.21.0",
+    "keras": "3.15.1",
+    "keras-hub": "0.32.0",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.1",
+    "pillow": "12.3.0",
+    "matplotlib": "3.11.2",
+    "h5py": "3.14.0",
+    "kagglehub": "1.0.2"
+  },
+  "tensorflow_physical_gpu": [],
+  "tensorflow_physical_cpu": [
+    "PhysicalDevice(name='/physical_device:CPU:0', device_type='CPU')"
+  ],
+  "mixed_precision_policy": "float32"
+}

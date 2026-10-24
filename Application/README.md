@@ -1,19 +1,20 @@
 # Cashew Leaf AI Diagnostic Web Application
 ### Chuẩn Đoán Bệnh Lá Cây Điều Bằng Học Máy & Thị Giác Máy Tính
 
-Hệ thống web hoàn chỉnh phục vụ chuẩn đoán bệnh trên lá cây điều sử dụng mô hình học sâu **DenseNet121 phiên bản 009** (chọn phiên bản tối ưu nhất theo thực nghiệm là **Seed 3407**).
+Hệ thống web hoàn chỉnh phục vụ chuẩn đoán bệnh trên lá cây điều sử dụng mô hình học sâu **DenseNet121 Transfer Learning phiên bản 014** (chọn phiên bản tối ưu nhất theo thực nghiệm là **Seed 123**).
 
 ---
 
 ## 1. Thông Tin Mô Hình Triển Khai
-- **Mô hình chính**: `DenseNet121 (Scratch v009)`
-- **Checkpoint tốt nhất**: `Seed 3407` (Được chọn qua đánh giá trên tập kiểm định độc lập Validation):
-  - **Validation Accuracy**: `95.63%`
-  - **Validation Loss**: `0.1410` (Thấp nhất trong 5 seeds)
-  - **Validation Macro F1**: `95.51%`
+- **Mô hình chính**: `DenseNet121 (Transfer v014)`
+- **Checkpoint tốt nhất**: `Seed 123` (Được chọn qua đánh giá trên tập kiểm định độc lập Validation):
+  - **Validation Accuracy**: `97.27%` (So với v009 scratch: +1.64%)
+  - **Validation Loss**: `0.0925` (Thấp nhất trong 5 seeds)
+  - **Validation Macro F1**: `97.14%`
 - **Kích thước đầu vào**: `224 × 224 × 3` (RGB)
 - **Tiền xử lý**: Tích hợp sẵn trực tiếp trong đồ thị tính toán của mô hình (Rescaling & Normalization).
-- **Đường dẫn mô hình**: `training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-009_FULL/EXP-DENSENET121-SCRATCH-5SEEDS-009/model_package/deployment_model.keras`
+- **Đường dẫn mô hình**: `training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-014_FULL/EXP-DENSENET121-TRANSFER-5SEEDS-014/model_package/deployment_model.keras`
+- **Khi clone từ GitHub:** checkpoint `.keras` không được đưa vào Git. Cần đặt binary EXP-014 seed 123 từ gói FULL tại đường dẫn trên trước khi khởi động; `label_map.json` và `deployment_metadata.json` có trong repo.
 
 ---
 
@@ -34,7 +35,7 @@ Hệ thống web hoàn chỉnh phục vụ chuẩn đoán bệnh trên lá cây 
      - Khu vực kéo thả và duyệt ảnh từ thiết bị.
      - Thanh trạng thái tệp ảnh được chọn.
      - Bộ 3 mẫu thử nhanh (`Bệnh Thán Thư`, `Sâu Vẽ Bùa`, `Bệnh Rỉ Đỏ`) để kiểm thử ngay lập tức chỉ với 1 click chuột.
-     - Bảng thông số chi tiết của mô hình DenseNet121 v009.
+     - Bảng thông số chi tiết của mô hình DenseNet121 Transfer v014.
 
 ---
 
