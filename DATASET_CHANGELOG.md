@@ -1,5 +1,11 @@
 # Dataset Changelog
 
+> **DenseNet121 EXP-016 (22/10/2026):** **KHÔNG tạo dataset V09, không thay đổi V08.** Dùng 686 ảnh Test V08 (Train 4.790/Val 1.430/Test 686), cùng dataset SHA256 `75c5928b...` và manifest SHA256 `1810d7e6...` như EXP-014. EXP-016 **chỉ đánh giá 5 checkpoint 014 đã khóa bằng Validation**, Final Test mean **95,13 ± 0,51%**. [Báo cáo](./training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md). Cần lưu ý historical Holdout EXP-015 **không phải fresh blind test** và 51 pHash candidates V08 chưa review hết.
+
+
+> **EXP-VIT-TRANSFER-XGBOOST-008 (21/10/2026) không tạo/chỉnh sửa dataset mới:** kế thừa V08 ZIP SHA256 `75C5928B...` (**Train 4790 / Val 1430 / Test 686**). EXP-008 chỉ fit Logistic Regression/XGBoost trên **DeiT embeddings từ checkpoint EXP-007**, không retrain backbone hoặc đổi split. Audit nguồn ghi 0 ảnh trùng byte cross-split, 1 dHash candidate **cần review**, và **group leakage chưa xác minh**. [Báo cáo](./training_results/current_dataset/EXP-VIT-TRANSFER-XGBOOST-008/README.md). Test/Holdout **chưa chạy trong EXP-008**.
+
+
 > **ResNet50 TRANSFER-009 (20/10/2026) tiếp tục sử dụng V08 không chỉnh sửa:** Train **4.790**, Validation **1.430**, Test **686**, cùng dataset ZIP SHA256 `75c5928b...` và manifest SHA256 `1810d7e6...` với DenseNet121-014 và ResNet50-008. **Không tạo V09**. 51 pHash candidate pairs vẫn cần review; real Holdout 49 ảnh đã loại 1 ảnh trùng Test, còn 48 ảnh, 4 lớp có ground truth. [EXP-009](./training_results/current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-009/README.md). So sánh với 008 là **method comparison**, không phải dataset update hay one-factor fine-tuning ablation.
 
 

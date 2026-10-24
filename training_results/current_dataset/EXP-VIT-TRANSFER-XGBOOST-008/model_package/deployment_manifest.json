@@ -1,0 +1,18 @@
+{
+  "experiment_id": "EXP-VIT-TRANSFER-XGBOOST-008",
+  "seed": 123,
+  "model_type": "A",
+  "source_checkpoint_sha256": "FD1DD6B775F29F400ED4D1E889B217A5C97B513E9C0066C07136B57B57E2BC89",
+  "source_checkpoint_path": "/content/drive/MyDrive/Cashew_Leaf_model_result/training_results/current_dataset/EXP-VIT-TRANSFER-5SEEDS-007/seed_123/best_model.keras",
+  "classifier_sha256": null,
+  "classes": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "red_rust",
+    "not_cashew_leaf"
+  ],
+  "threshold": null,
+  "source_checkpoint_in_full_zip": false,
+  "full_zip_self_contained": false
+}

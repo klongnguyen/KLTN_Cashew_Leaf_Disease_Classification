@@ -1,0 +1,6 @@
+seed,anthracnose_to_healthy,leaf_miner_to_healthy,red_rust_to_healthy,total_disease_to_healthy,disease_total,test_accuracy
+42,1,1,0,2,412,0.956268221574344
+123,1,1,0,2,412,0.9518950437317785
+2026,1,1,0,2,412,0.9504373177842566
+3407,1,1,0,2,412,0.9548104956268222
+7777,1,1,0,2,412,0.9431486880466472

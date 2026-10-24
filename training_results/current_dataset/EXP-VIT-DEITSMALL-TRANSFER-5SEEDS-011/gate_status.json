@@ -1,0 +1,17 @@
+{
+  "gate0": "PASS_WITH_PHASH_CANDIDATES_PENDING_GROUP_REVIEW",
+  "gate1": "PASS_CURRENT_RUNTIME",
+  "gate2": "PASS",
+  "completed_seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "gate3": "PASS",
+  "gate4": "PASS_ANALYSIS_PACKAGE",
+  "test_inference_executed": false,
+  "historical_holdout_inference_executed": false,
+  "validation_status": "NOT PROMOTED"
+}

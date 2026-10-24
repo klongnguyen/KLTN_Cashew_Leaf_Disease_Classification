@@ -1,0 +1,22 @@
+{
+  "experiment": "EXP-DENSENET121-TRANSFER-5SEEDS-016",
+  "checkpoint_source": "EXP-DENSENET121-TRANSFER-5SEEDS-014",
+  "deployment_seed": 123,
+  "checkpoint_sha256": "f40fb019b08dcec516e345f6416733688ab9c4e31401b1feb4a16a562ad97658",
+  "selection_criterion": "minimum validation loss from EXP-014; unchanged by EXP-016",
+  "test_images": 686,
+  "correct": 653,
+  "accuracy": 0.9518950437317785,
+  "macro_f1": 0.9483901995270315,
+  "disease_to_healthy_count": 2,
+  "disease_test_support": 412,
+  "healthy_test_support": 118,
+  "healthy_correct": 118,
+  "healthy_recall": 1,
+  "anthracnose_recall": 0.8770491803278688,
+  "leaf_miner_recall": 0.8787878787878788,
+  "red_rust_recall": 0.9873417721518988,
+  "not_cashew_leaf_recall": 1,
+  "historical_holdout_from": "EXP-DENSENET121-TRANSFER-5SEEDS-015",
+  "new_blind_field_test": "NOT_RUN"
+}

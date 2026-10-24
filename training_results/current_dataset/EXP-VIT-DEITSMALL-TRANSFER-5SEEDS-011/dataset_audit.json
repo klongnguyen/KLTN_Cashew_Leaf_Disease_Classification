@@ -1,0 +1,36 @@
+{
+  "experiment_id": "EXP-VIT-DEITSMALL-TRANSFER-5SEEDS-011",
+  "dataset_zip_sha256": "75C5928B2F6432ACA901BC16831E91F9AA4BDACC1E2FF536753D71DA60C147E7",
+  "manifest_sha256": "C699A9ACA707DA25F143DB1FC3C9B5133EA2858BCDC468A158E5644E500EC715",
+  "total_images": 6906,
+  "counts": {
+    "train": {
+      "anthracnose": 939,
+      "healthy": 803,
+      "leaf_miner": 875,
+      "red_rust": 1072,
+      "not_cashew_leaf": 1101
+    },
+    "val": {
+      "anthracnose": 308,
+      "healthy": 216,
+      "leaf_miner": 264,
+      "red_rust": 328,
+      "not_cashew_leaf": 314
+    },
+    "test": {
+      "anthracnose": 122,
+      "healthy": 118,
+      "leaf_miner": 132,
+      "red_rust": 158,
+      "not_cashew_leaf": 156
+    }
+  },
+  "decode_errors": 0,
+  "cross_split_exact_duplicates": 0,
+  "within_split_exact_duplicate_rows": 0,
+  "cross_split_phash_le_6_candidates": 226,
+  "group_leakage_status": "GROUP_LEAKAGE_NOT_VERIFIED",
+  "candidate_interpretation": "pHash is a visual shortlist, not proof of same leaf/tree/session.",
+  "test_use": "read-only integrity audit; no inference, tuning, or selection"
+}

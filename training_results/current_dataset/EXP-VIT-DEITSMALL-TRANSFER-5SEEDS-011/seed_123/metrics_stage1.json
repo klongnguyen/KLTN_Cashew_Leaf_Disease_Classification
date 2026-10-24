@@ -1,0 +1,106 @@
+{
+  "seed": 123,
+  "stage": "stage1",
+  "n": 1430,
+  "accuracy": 0.8839160839160839,
+  "balanced_accuracy": 0.8865813624979385,
+  "macro_precision": 0.8943083593943708,
+  "macro_recall": 0.8865813624979385,
+  "macro_f1": 0.883238592581017,
+  "log_loss": 0.32851898670196533,
+  "disease_to_healthy_count": 18,
+  "disease_to_healthy_rate": 0.02,
+  "healthy_recall": 0.9120370370370371,
+  "healthy_precision": 0.8794642857142857,
+  "not_cashew_leaf_recall": 0.6942675159235668,
+  "anthracnose_to_leaf_miner": 9,
+  "leaf_miner_to_anthracnose": 14,
+  "confusion_matrix": [
+    [
+      281,
+      18,
+      9,
+      0,
+      0
+    ],
+    [
+      9,
+      197,
+      10,
+      0,
+      0
+    ],
+    [
+      14,
+      0,
+      247,
+      3,
+      0
+    ],
+    [
+      5,
+      0,
+      2,
+      321,
+      0
+    ],
+    [
+      62,
+      9,
+      12,
+      13,
+      218
+    ]
+  ],
+  "per_class": [
+    {
+      "class": "anthracnose",
+      "support": 308,
+      "precision": 0.7574123989218329,
+      "recall": 0.9123376623376623,
+      "f1": 0.8276877761413843,
+      "to_healthy": 18
+    },
+    {
+      "class": "healthy",
+      "support": 216,
+      "precision": 0.8794642857142857,
+      "recall": 0.9120370370370371,
+      "f1": 0.8954545454545455,
+      "to_healthy": null
+    },
+    {
+      "class": "leaf_miner",
+      "support": 264,
+      "precision": 0.8821428571428571,
+      "recall": 0.9356060606060606,
+      "f1": 0.9080882352941176,
+      "to_healthy": 0
+    },
+    {
+      "class": "red_rust",
+      "support": 328,
+      "precision": 0.9525222551928784,
+      "recall": 0.9786585365853658,
+      "f1": 0.9654135338345865,
+      "to_healthy": 0
+    },
+    {
+      "class": "not_cashew_leaf",
+      "support": 314,
+      "precision": 1.0,
+      "recall": 0.6942675159235668,
+      "f1": 0.8195488721804511,
+      "to_healthy": null
+    }
+  ],
+  "best_epoch": 29,
+  "best_val_loss": 0.3285190463066101,
+  "epochs_ran": 30,
+  "training_seconds": 221.24201601000016,
+  "validation_inference_seconds": 1.9669400230000065,
+  "inference_ms_per_image": 1.375482533566438,
+  "checkpoint_bytes": 87175753,
+  "checkpoint_sha256": "ED57A4B85488EEBEE06BDEC3749D3BCC9E74333EE9E3EF50ED0BDFEF46F6828C",
+  "trainable_parameters": 1925
+}

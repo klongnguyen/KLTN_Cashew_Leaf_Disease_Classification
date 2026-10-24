@@ -1,0 +1,7 @@
+{
+  "source_experiment": "EXP-VIT-TRANSFER-5SEEDS-007",
+  "source_dir": "/content/drive/MyDrive/Cashew_Leaf_model_result/training_results/current_dataset/EXP-VIT-TRANSFER-5SEEDS-007",
+  "dataset_zip": "/content/vit008_work/CashewData_Split (8).zip",
+  "dataset_sha256": "75C5928B2F6432ACA901BC16831E91F9AA4BDACC1E2FF536753D71DA60C147E7",
+  "source_lock_sha256": "07843E4CF3236B285A8057431022C7D1363B6871BD7B5A9C27D03F125D94BD09"
+}

@@ -1,0 +1,4 @@
+{
+  "enabled": false,
+  "reason": "classifier-only A/B/C comparison"
+}
