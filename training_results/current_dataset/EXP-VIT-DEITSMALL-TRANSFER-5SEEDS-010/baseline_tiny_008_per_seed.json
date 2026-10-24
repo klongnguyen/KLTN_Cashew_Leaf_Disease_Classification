@@ -1,0 +1,522 @@
+{
+  "source_experiment": "EXP-VIT-TRANSFER-XGBOOST-008",
+  "source_lock_sha256": "DE4697F76DFA5FD87E6F6C02E09A7935DFA15210473FD4654CD79A1BF450F305",
+  "classifier": "A",
+  "metrics": [
+    {
+      "seed": 42,
+      "classifier": "A",
+      "n": 1430,
+      "accuracy": 0.9377622377622378,
+      "balanced_accuracy": 0.9400268917901355,
+      "macro_f1": 0.9371892258631819,
+      "weighted_f1": 0.9376462568495898,
+      "macro_precision": 0.9366871393527216,
+      "macro_recall": 0.9400268917901355,
+      "log_loss": 0.19178646905066873,
+      "multiclass_brier": 0.09488392832073173,
+      "disease_to_healthy_count": 21,
+      "disease_total": 900,
+      "disease_to_healthy_rate": 0.023333333333333334,
+      "healthy_true_count": 216,
+      "healthy_correct": 213,
+      "healthy_predicted_count": 239,
+      "healthy_recall": 0.9861111111111112,
+      "healthy_precision": 0.891213389121339,
+      "not_cashew_leaf_recall": 0.8949044585987261,
+      "not_cashew_leaf_precision": 1,
+      "disease_macro_recall": 0.9397062964136135,
+      "confusion_matrix": [
+        [
+          274,
+          20,
+          4,
+          10,
+          0
+        ],
+        [
+          2,
+          213,
+          1,
+          0,
+          0
+        ],
+        [
+          15,
+          1,
+          247,
+          1,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          326,
+          0
+        ],
+        [
+          13,
+          5,
+          9,
+          6,
+          281
+        ]
+      ],
+      "per_class": [
+        {
+          "class": "anthracnose",
+          "precision": 0.8954248366013072,
+          "recall": 0.8896103896103896,
+          "f1": 0.8925081433224755,
+          "support": 308,
+          "to_healthy": 20
+        },
+        {
+          "class": "healthy",
+          "precision": 0.891213389121339,
+          "recall": 0.9861111111111112,
+          "f1": 0.9362637362637363,
+          "support": 216,
+          "to_healthy": null
+        },
+        {
+          "class": "leaf_miner",
+          "precision": 0.946360153256705,
+          "recall": 0.9356060606060606,
+          "f1": 0.940952380952381,
+          "support": 264,
+          "to_healthy": 1
+        },
+        {
+          "class": "red_rust",
+          "precision": 0.9504373177842566,
+          "recall": 0.9939024390243902,
+          "f1": 0.9716840536512668,
+          "support": 328,
+          "to_healthy": 0
+        },
+        {
+          "class": "not_cashew_leaf",
+          "precision": 1,
+          "recall": 0.8949044585987261,
+          "f1": 0.9445378151260504,
+          "support": 314,
+          "to_healthy": null
+        }
+      ]
+    },
+    {
+      "seed": 123,
+      "classifier": "A",
+      "n": 1430,
+      "accuracy": 0.9545454545454546,
+      "balanced_accuracy": 0.9545062354833987,
+      "macro_f1": 0.9523412204202624,
+      "weighted_f1": 0.9546642390576099,
+      "macro_precision": 0.9513258508092083,
+      "macro_recall": 0.9545062354833987,
+      "log_loss": 0.14799461203843695,
+      "multiclass_brier": 0.07127954230230489,
+      "disease_to_healthy_count": 18,
+      "disease_total": 900,
+      "disease_to_healthy_rate": 0.02,
+      "healthy_true_count": 216,
+      "healthy_correct": 210,
+      "healthy_predicted_count": 237,
+      "healthy_recall": 0.9722222222222222,
+      "healthy_precision": 0.8860759493670886,
+      "not_cashew_leaf_recall": 0.9554140127388535,
+      "not_cashew_leaf_precision": 0.9966777408637874,
+      "disease_macro_recall": 0.9482983141519727,
+      "confusion_matrix": [
+        [
+          281,
+          18,
+          3,
+          6,
+          0
+        ],
+        [
+          2,
+          210,
+          4,
+          0,
+          0
+        ],
+        [
+          15,
+          0,
+          247,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          327,
+          0
+        ],
+        [
+          1,
+          9,
+          3,
+          1,
+          300
+        ]
+      ],
+      "per_class": [
+        {
+          "class": "anthracnose",
+          "precision": 0.9366666666666666,
+          "recall": 0.9123376623376623,
+          "f1": 0.9243421052631579,
+          "support": 308,
+          "to_healthy": 18
+        },
+        {
+          "class": "healthy",
+          "precision": 0.8860759493670886,
+          "recall": 0.9722222222222222,
+          "f1": 0.9271523178807947,
+          "support": 216,
+          "to_healthy": null
+        },
+        {
+          "class": "leaf_miner",
+          "precision": 0.9610894941634242,
+          "recall": 0.9356060606060606,
+          "f1": 0.9481765834932822,
+          "support": 264,
+          "to_healthy": 0
+        },
+        {
+          "class": "red_rust",
+          "precision": 0.9761194029850746,
+          "recall": 0.9969512195121951,
+          "f1": 0.9864253393665159,
+          "support": 328,
+          "to_healthy": 0
+        },
+        {
+          "class": "not_cashew_leaf",
+          "precision": 0.9966777408637874,
+          "recall": 0.9554140127388535,
+          "f1": 0.975609756097561,
+          "support": 314,
+          "to_healthy": null
+        }
+      ]
+    },
+    {
+      "seed": 2026,
+      "classifier": "A",
+      "n": 1430,
+      "accuracy": 0.9433566433566434,
+      "balanced_accuracy": 0.9445708873431414,
+      "macro_f1": 0.9416336507739395,
+      "weighted_f1": 0.943691379260939,
+      "macro_precision": 0.9412326982355926,
+      "macro_recall": 0.9445708873431414,
+      "log_loss": 0.18877558016174031,
+      "multiclass_brier": 0.08590033246736535,
+      "disease_to_healthy_count": 26,
+      "disease_total": 900,
+      "disease_to_healthy_rate": 0.028888888888888888,
+      "healthy_true_count": 216,
+      "healthy_correct": 215,
+      "healthy_predicted_count": 247,
+      "healthy_recall": 0.9953703703703703,
+      "healthy_precision": 0.8704453441295547,
+      "not_cashew_leaf_recall": 0.9363057324840764,
+      "not_cashew_leaf_precision": 1,
+      "disease_macro_recall": 0.9303927779537536,
+      "confusion_matrix": [
+        [
+          278,
+          25,
+          4,
+          1,
+          0
+        ],
+        [
+          1,
+          215,
+          0,
+          0,
+          0
+        ],
+        [
+          25,
+          1,
+          237,
+          1,
+          0
+        ],
+        [
+          3,
+          0,
+          0,
+          325,
+          0
+        ],
+        [
+          7,
+          6,
+          6,
+          1,
+          294
+        ]
+      ],
+      "per_class": [
+        {
+          "class": "anthracnose",
+          "precision": 0.8853503184713376,
+          "recall": 0.9025974025974026,
+          "f1": 0.8938906752411575,
+          "support": 308,
+          "to_healthy": 25
+        },
+        {
+          "class": "healthy",
+          "precision": 0.8704453441295547,
+          "recall": 0.9953703703703703,
+          "f1": 0.9287257019438445,
+          "support": 216,
+          "to_healthy": null
+        },
+        {
+          "class": "leaf_miner",
+          "precision": 0.9595141700404858,
+          "recall": 0.8977272727272727,
+          "f1": 0.9275929549902152,
+          "support": 264,
+          "to_healthy": 1
+        },
+        {
+          "class": "red_rust",
+          "precision": 0.9908536585365854,
+          "recall": 0.9908536585365854,
+          "f1": 0.9908536585365854,
+          "support": 328,
+          "to_healthy": 0
+        },
+        {
+          "class": "not_cashew_leaf",
+          "precision": 1,
+          "recall": 0.9363057324840764,
+          "f1": 0.9671052631578947,
+          "support": 314,
+          "to_healthy": null
+        }
+      ]
+    },
+    {
+      "seed": 3407,
+      "classifier": "A",
+      "n": 1430,
+      "accuracy": 0.9370629370629371,
+      "balanced_accuracy": 0.9394465546593868,
+      "macro_f1": 0.935847067463843,
+      "weighted_f1": 0.9369807735513342,
+      "macro_precision": 0.9348229550631032,
+      "macro_recall": 0.9394465546593868,
+      "log_loss": 0.19920864741397895,
+      "multiclass_brier": 0.0959604200258894,
+      "disease_to_healthy_count": 24,
+      "disease_total": 900,
+      "disease_to_healthy_rate": 0.02666666666666667,
+      "healthy_true_count": 216,
+      "healthy_correct": 211,
+      "healthy_predicted_count": 242,
+      "healthy_recall": 0.9768518518518519,
+      "healthy_precision": 0.871900826446281,
+      "not_cashew_leaf_recall": 0.89171974522293,
+      "not_cashew_leaf_precision": 1,
+      "disease_macro_recall": 0.9428870587407173,
+      "confusion_matrix": [
+        [
+          269,
+          23,
+          10,
+          6,
+          0
+        ],
+        [
+          4,
+          211,
+          1,
+          0,
+          0
+        ],
+        [
+          10,
+          1,
+          253,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          327,
+          0
+        ],
+        [
+          18,
+          7,
+          4,
+          5,
+          280
+        ]
+      ],
+      "per_class": [
+        {
+          "class": "anthracnose",
+          "precision": 0.890728476821192,
+          "recall": 0.8733766233766234,
+          "f1": 0.8819672131147541,
+          "support": 308,
+          "to_healthy": 23
+        },
+        {
+          "class": "healthy",
+          "precision": 0.871900826446281,
+          "recall": 0.9768518518518519,
+          "f1": 0.9213973799126638,
+          "support": 216,
+          "to_healthy": null
+        },
+        {
+          "class": "leaf_miner",
+          "precision": 0.9440298507462687,
+          "recall": 0.9583333333333334,
+          "f1": 0.9511278195488722,
+          "support": 264,
+          "to_healthy": 1
+        },
+        {
+          "class": "red_rust",
+          "precision": 0.9674556213017751,
+          "recall": 0.9969512195121951,
+          "f1": 0.9819819819819819,
+          "support": 328,
+          "to_healthy": 0
+        },
+        {
+          "class": "not_cashew_leaf",
+          "precision": 1,
+          "recall": 0.89171974522293,
+          "f1": 0.9427609427609428,
+          "support": 314,
+          "to_healthy": null
+        }
+      ]
+    },
+    {
+      "seed": 7777,
+      "classifier": "A",
+      "n": 1430,
+      "accuracy": 0.9475524475524476,
+      "balanced_accuracy": 0.9486833685994785,
+      "macro_f1": 0.9475324270741667,
+      "weighted_f1": 0.9477692438150879,
+      "macro_precision": 0.9479185051944887,
+      "macro_recall": 0.9486833685994785,
+      "log_loss": 0.16748785566454277,
+      "multiclass_brier": 0.0796242217879269,
+      "disease_to_healthy_count": 15,
+      "disease_total": 900,
+      "disease_to_healthy_rate": 0.016666666666666666,
+      "healthy_true_count": 216,
+      "healthy_correct": 212,
+      "healthy_predicted_count": 228,
+      "healthy_recall": 0.9814814814814815,
+      "healthy_precision": 0.9298245614035088,
+      "not_cashew_leaf_recall": 0.9076433121019108,
+      "not_cashew_leaf_precision": 1,
+      "disease_macro_recall": 0.9514306831380003,
+      "confusion_matrix": [
+        [
+          286,
+          15,
+          5,
+          2,
+          0
+        ],
+        [
+          1,
+          212,
+          1,
+          2,
+          0
+        ],
+        [
+          16,
+          0,
+          246,
+          2,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          326,
+          0
+        ],
+        [
+          21,
+          1,
+          6,
+          1,
+          285
+        ]
+      ],
+      "per_class": [
+        {
+          "class": "anthracnose",
+          "precision": 0.8773006134969326,
+          "recall": 0.9285714285714286,
+          "f1": 0.9022082018927445,
+          "support": 308,
+          "to_healthy": 15
+        },
+        {
+          "class": "healthy",
+          "precision": 0.9298245614035088,
+          "recall": 0.9814814814814815,
+          "f1": 0.954954954954955,
+          "support": 216,
+          "to_healthy": null
+        },
+        {
+          "class": "leaf_miner",
+          "precision": 0.9534883720930233,
+          "recall": 0.9318181818181818,
+          "f1": 0.9425287356321839,
+          "support": 264,
+          "to_healthy": 0
+        },
+        {
+          "class": "red_rust",
+          "precision": 0.978978978978979,
+          "recall": 0.9939024390243902,
+          "f1": 0.9863842662632375,
+          "support": 328,
+          "to_healthy": 0
+        },
+        {
+          "class": "not_cashew_leaf",
+          "precision": 1,
+          "recall": 0.9076433121019108,
+          "f1": 0.9515859766277128,
+          "support": 314,
+          "to_healthy": null
+        }
+      ]
+    }
+  ]
+}

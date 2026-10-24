@@ -1,5 +1,7 @@
 # Artifact inventory — EXP-014 / EXP-015 (2026-10-19)
 
+> **Cập nhật 22/10/2026:** Bảng bên dưới là ảnh chụp trạng thái 014/015 tại thời điểm lập hồ sơ. [EXP-016](./EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md) đã hoàn tất Final Test V08 686 ảnh × 5 checkpoint EXP-014, không retrain.
+
 Cơ sở dữ liệu: hai **ANALYSIS ZIP do tác giả gửi**. Repo ưu tiên lưu **báo cáo kết quả và bảng machine-readable** có kiểm chứng để dễ review/diff mà không làm phình history bởi binary checkpoint.
 
 | Nhóm | EXP-014 | EXP-015 |

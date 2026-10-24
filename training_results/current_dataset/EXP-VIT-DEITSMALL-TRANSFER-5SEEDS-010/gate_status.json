@@ -1,0 +1,12 @@
+{
+  "experiment_id": "EXP-VIT-DEITSMALL-TRANSFER-5SEEDS-010",
+  "gate0": "PASS_WITH_BASELINE_INFERENCE_PARITY_NOT_REPRODUCED",
+  "gate1": "PASS_LOCAL_CPU_SMOKE",
+  "gate2": "BLOCKED_NO_ACCESSIBLE_TENSORFLOW_GPU_RUNTIME",
+  "gate3": "NOT_STARTED_REQUIRES_GATE2",
+  "gate4": "NOT_STARTED_REQUIRES_GATE3",
+  "five_seed_training_completed": false,
+  "validation_selection_lock_created": false,
+  "test_inference_executed": false,
+  "historical_holdout_inference_executed": false
+}

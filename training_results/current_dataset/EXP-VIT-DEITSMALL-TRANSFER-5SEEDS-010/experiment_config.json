@@ -1,0 +1,89 @@
+{
+  "experiment_id": "EXP-VIT-DEITSMALL-TRANSFER-5SEEDS-010",
+  "protocol_status": "FROZEN_BEFORE_FIVE_SEED_TRAINING",
+  "source_experiment": "EXP-VIT-TRANSFER-5SEEDS-007",
+  "tiny_baseline_experiment": "EXP-VIT-TRANSFER-XGBOOST-008",
+  "tiny_baseline_classifier": "A",
+  "tiny_baseline_lock_sha256": "DE4697F76DFA5FD87E6F6C02E09A7935DFA15210473FD4654CD79A1BF450F305",
+  "dataset": {
+    "name": "Cashew_dataV08_real_val",
+    "archive": "CashewData_Split (8).zip",
+    "archive_sha256": "75C5928B2F6432ACA901BC16831E91F9AA4BDACC1E2FF536753D71DA60C147E7",
+    "manifest_sha256": "C699A9ACA707DA25F143DB1FC3C9B5133EA2858BCDC468A158E5644E500EC715",
+    "class_names": ["anthracnose", "healthy", "leaf_miner", "red_rust", "not_cashew_leaf"],
+    "split_counts": {"train": 4790, "val": 1430, "test": 686},
+    "test_enabled": false,
+    "historical_holdout_enabled": false
+  },
+  "model": {
+    "framework": "tensorflow_keras3_kerashub",
+    "pretrained_preset": "kaggle://keras/deit/keras/deit_small_distilled_patch16_224_imagenet/1",
+    "pretrained_task_weights_sha256": "186714690069C17876BA8D6479F27E5C345AAC8A3B37574EE04B8B1D949AB72F",
+    "pretrained_weights_required": true,
+    "input": "RGB float32 0..255 resized bilinear 224x224",
+    "preset_preprocessor_passes": 1,
+    "patch_size": 16,
+    "expected_prehead_dim": 384,
+    "num_classes": 5,
+    "head_activation": null,
+    "head_dtype": "float32",
+    "loss": "SparseCategoricalCrossentropy(from_logits=True)",
+    "softmax_only_for_reporting": true,
+    "head_dropout": 0.0
+  },
+  "seeds": [42, 123, 2026, 3407, 7777],
+  "batch_size": 16,
+  "stage1": {
+    "name": "frozen_backbone",
+    "trainable": "output_dense head only",
+    "optimizer": "AdamW",
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0001,
+    "max_epochs": 15,
+    "early_stopping_patience": 5,
+    "checkpoint_monitor": "val_loss",
+    "checkpoint_mode": "min"
+  },
+  "stage2": {
+    "name": "last_two_encoder_blocks",
+    "start_from": "same_seed_stage1_best",
+    "trainable": "transformer_block_11, transformer_block_12, output_dense head",
+    "optimizer": "AdamW",
+    "learning_rate": 0.00001,
+    "learning_rate_scope": "single common LR; no unverified differential LR",
+    "minimum_learning_rate": 0.000001,
+    "schedule": "3-epoch linear warmup then cosine decay",
+    "weight_decay": 0.0001,
+    "clipnorm": 1.0,
+    "max_epochs": 15,
+    "early_stopping_patience": 5,
+    "checkpoint_monitor": "val_loss",
+    "checkpoint_mode": "min"
+  },
+  "augmentation_train_only": {
+    "random_flip_horizontal": true,
+    "random_rotation": 0.04,
+    "random_zoom": [-0.05, 0.05],
+    "random_translation": 0.03,
+    "random_contrast": 0.08,
+    "matches_exp007_recipe": true
+  },
+  "validation_rules": {
+    "stage_guardrails_vs_same_seed_tiny_A": {
+      "macro_f1_min_delta": -0.01,
+      "disease_to_healthy_max_delta_count": 0,
+      "healthy_recall_min_delta": -0.02,
+      "not_cashew_leaf_recall_min_delta": -0.02,
+      "each_disease_recall_min_delta": -0.02
+    },
+    "stage_choice": "among eligible stage1/stage2 best checkpoints, minimum val_loss; tie higher macro_f1; tie stage1. If neither eligible, retain minimum val_loss for analysis only and mark not promoted",
+    "seed_choice": "among eligible selected-stage seeds, minimum val_loss; tie higher macro_f1; tie lower seed. If none eligible, no deployment seed",
+    "promotion": "mean 5-seed macro_f1 greater than Tiny A mean AND seed_123 D2H < 18/900 AND seed_123 stage guardrails pass; otherwise NOT PROMOTED",
+    "selection_inputs": "Validation V08 only"
+  },
+  "runtime": {
+    "mixed_precision": false,
+    "batch_size_oom_change": "STOP and record a protocol revision before five-seed training; do not silently change batch size",
+    "determinism": "set Python/NumPy/Keras seed before each fresh preset load; log GPU nondeterminism if any"
+  }
+}

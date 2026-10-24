@@ -1,7 +1,6 @@
 # EXP-DENSENET121-TRANSFER-5SEEDS-015 — Historical Real Holdout Evaluation
 
-> **Cập nhật 22/10/2026:** Cùng 5 checkpoint EXP-014 giờ đã có [Final Test V08 trong EXP-016](../EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md): **95,13 ± 0,51% Accuracy / 94,76 ± 0,58% Macro F1**. EXP-015 vẫn là **historical Holdout 48 ảnh (4 true classes)**; cả EXP-015 và EXP-016 **không huấn luyện mới**.
-
+> **Cập nhật 22/10/2026:** [EXP-016](../EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md) đã đánh giá riêng Final Test V08 686 ảnh trên cùng 5 checkpoint EXP-014. Các dòng "Test chưa chạy" trong báo cáo 015 phản ánh trạng thái lịch sử của lượt đánh giá Holdout này.
 
 **Thí nghiệm đánh giá, không huấn luyện mới.** Source archive: `EXP-DENSENET121-TRANSFER-5SEEDS-015_ANALYSIS.zip` (19/10/2026).
 

@@ -1,6 +1,8 @@
 # KLTN — Cashew Leaf Disease Classification & Detection
 
-> **Cập nhật 24/10/2026** · Nghiên cứu chính đang sử dụng **Cashew_dataV08_real_val (6.906 ảnh, 5 lớp)**. Đã hoàn thành nhiều thí nghiệm phân loại 5 seeds với ResNet50, DenseNet121, DeiT-Tiny, DeiT-Small và các classifier Logistic Regression/XGBoost. **Ứng dụng hiện tại vẫn dùng DenseNet121 Scratch EXP-009/seed 3407**; **DenseNet121 Transfer EXP-014/seed 123 là ứng viên để thử nghiệm trên staging, chưa triển khai thay thế**. Nhánh YOLO26s vẫn đang nghiên cứu, chưa khóa detector cuối.
+> **Trạng thái 24/10/2026:** DenseNet121 Transfer EXP-014 seed 123 là cấu hình mặc định của web; EXP-016 đã hoàn thành Final Test V08 cho 5 seed. [DeiT-Small Transfer EXP-011](./training_results/current_dataset/EXP-VIT-DEITSMALL-TRANSFER-5SEEDS-011/README.md) mới ở giai đoạn chuẩn bị chạy, chưa có metrics. Checkpoint `.keras` và dataset ZIP không lưu trong Git; xem [hướng dẫn ứng dụng](./Application/README.md) và [tiến độ thí nghiệm](./training_results/current_dataset/EXPERIMENT_PROGRESS_2026_10.md).
+
+> **ResNet50 ImageNet Partial Fine-tuning EXP-009 — cập nhật 20/10/2026:** [Báo cáo kỹ thuật](./training_results/current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-009/README.md) · [Kiểm tra Accuracy cao/domain shift](./training_results/current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-009/METHOD_AND_LEAKAGE_REVIEW.md). V08 5 seeds: **Val Acc 95,23 ± 0,35% / Macro F1 95,05 ± 0,39%**; **Final Test 686 ảnh 92,89 ± 0,51% Acc / Macro F1 92,32 ± 0,53%**; **Real Holdout lịch sử 48 ảnh 75,83 ± 2,80% Acc / Macro F1 70,85 ± 3,94%**. Stage 2 đã mở **4.459.520 tham số `conv5_block3_*` không phải BN**, khác [EXP-008 frozen](./training_results/current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-008/README.md). **Seed 2026 chọn bằng Val Loss trước Test/Holdout**; chỉ cải thiện Val nhẹ so với EXP-008 và **chưa chứng minh tăng generalization**. Holdout đã được phân tích từ trước, thiếu lớp `not_cashew_leaf`; mã nguồn Application hiện cấu hình DenseNet121 Transfer EXP-014. [Tiến độ](./training_results/current_dataset/EXPERIMENT_PROGRESS_2026_10.md).
 
 Khóa luận xây dựng một hệ thống hỗ trợ **nhận diện và phân loại bệnh trên lá cây điều** bằng học sâu, tiến tới **phát hiện vị trí tổn thương (bounding box)** và tích hợp kết quả vào ứng dụng web. Dự án bao gồm quản lý dữ liệu, kiểm định leakage, huấn luyện nhiều seed, đánh giá trên các tập độc lập theo giao thức và phân tích các dự đoán sai.
 
@@ -20,9 +22,81 @@ Khóa luận xây dựng một hệ thống hỗ trợ **nhận diện và phân
 
 ## 2. Dataset đang nghiên cứu — V08
 
-**Dataset:** `Cashew_dataV08_real_val` · **ZIP:** `CashewData_Split (8).zip` · **SHA256:** `75C5928B2F6432ACA901BC16831E91F9AA4BDACC1E2FF536753D71DA60C147E7`.
+> **DenseNet121 Transfer V08 — Mô hình chính thức triển khai Web App:** [EXP-014 training 5 seeds](./training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md): **97.10 ± 0.20% Val Accuracy**, **96.96 ± 0.21% Val Macro F1**; [EXP-015 Holdout lịch sử](./training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md): **80.83 ± 0.93% Accuracy** trên 48 ảnh; [EXP-016 Final Test V08](./training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md): **95.13 ± 0.51% Accuracy, 94.76 ± 0.58% Macro F1** trên 686 ảnh. **Seed 123 chọn bằng Validation Loss (97.27% Val Accuracy, 653/686 ảnh Test V08)** đã được **triển khai chính thức vào [Ứng dụng Web AI](Application/)**. [Tiến độ](./training_results/current_dataset/EXPERIMENT_PROGRESS_2026_10.md).
 
-| Lớp | Train | Validation | Test | Tổng |
+
+> **Mốc lịch sử EXP-011/012 (trước EXP-014/015):** [Bảng tiến độ và thay đổi từng EXP](./training_results/current_dataset/EXPERIMENT_PROGRESS_2026_10.md). **DenseNet121 EXP-012 (V08)** đạt **93.99 ± 1.05% Val Accuracy**, **93.81 ± 1.13% Val Macro F1**; **Final Test riêng EXP-012 chưa có**. Seed 42 chỉ đúng **22/35** ảnh `real_` trong Validation. [Chi tiết EXP-012](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-012/README.md). EXP-011 **trùng 5 seed metrics** với EXP-009, chưa xác minh là run độc lập.
+
+Khóa luận xây dựng hệ thống thị giác máy tính cho **phân loại bệnh trên lá cây điều** và hướng mở rộng sang **phát hiện vùng tổn thương bằng bounding box**.
+
+---
+
+## 🌟 Cập nhật tiến độ dự án mới nhất
+
+### 1. 🚀 Đã triển khai Ứng Dụng Web Chuẩn Đoán AI (Application/)
+- Hệ thống web hoàn chỉnh phục vụ chuẩn đoán bệnh lá cây điều, chạy trên nền **FastAPI** và giao diện **HTML5/CSS3/Vanilla JS** responsive hiện đại.
+- **Mô hình tích hợp chính thức**: DenseNet121 (Transfer v014) — checkpoint tối ưu **Seed 123**:
+  - **Validation Accuracy**: **97.27%** (so với v009 Scratch: 95.63%, tăng **+1.64%**)
+  - **Validation Macro F1**: **97.14%** (so với v009 Scratch: 95.51%, tăng **+1.63%**)
+  - **Validation Loss**: **0.0925** (thấp nhất trong cả 5 seeds)
+  - **Final Test V08 (EXP-016)**: **95.19% (653/686 ảnh kiểm thử độc lập)**
+- **Tính năng nổi bật**:
+  - Tải ảnh đơn lẻ trực quan (hỗ trợ kéo thả, kiểm tra định dạng .png, .jpg, .jpeg, .webp).
+  - Phân tích và xếp hạng độ tin cậy từ cao xuống thấp của 5 lớp nhãn (`anthracnose`, `healthy`, `leaf_miner`, `not_cashew_leaf`, `red_rust`).
+  - Cẩm nang nông nghiệp: Tự động cung cấp triệu chứng nhận diện và phác đồ điều trị, hoạt chất thuốc bảo vệ thực vật phòng trừ tương ứng.
+  - Bộ 3 mẫu thử nhanh 1-click (Bệnh Thán Thư, Sâu Vẽ Bùa, Bệnh Rỉ Đỏ).
+- **Khởi chạy nhanh**:
+  ```powershell
+  cd Application
+  python server.py
+  # Hoặc: uvicorn server:app --host 127.0.0.1 --port 8000
+  # Truy cập http://localhost:8000
+  ```
+- ➡️ [Chi tiết tài liệu ứng dụng web](./Application/README.md)
+
+### 2. 🔬 DenseNet121 Transfer Learning v014 (EXP-DENSENET121-TRANSFER-5SEEDS-014)
+- Huấn luyện chuyển giao tri thức từ ImageNet kết hợp 2 giai đoạn (Stage 1: freeze backbone; Stage 2: mở conv5 non-BN fine-tuning) với 5 seeds cố định [42, 123, 2026, 3407, 7777] trên dataset Cashew_dataV08_real_val (6.906 ảnh).
+- Kết quả Validation 5 seeds:
+  - **Val Accuracy**: **97.10 ± 0.20%** (Tối ưu: Seed 123 đạt **97.27%**)
+  - **Val Macro F1**: **96.96 ± 0.21%** (Tối ưu: Seed 123 đạt **97.14%**)
+  - **Val Macro Precision**: **96.94 ± 0.19%**
+  - **Val Macro Recall**: **96.98 ± 0.23%**
+- Đã đánh giá Real Holdout lịch sử 48 ảnh ([EXP-015](./training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md)) đạt **80.83 ± 0.93%** và Final Test V08 686 ảnh ([EXP-016](./training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md)) đạt **95.13 ± 0.51%**.
+- Checkpoint Seed 123 được đóng gói hoàn chỉnh trong model_package (deployment_model.keras, embedding, feature extractor, label map, metadata) và triển khai làm mô hình mặc định trong [Application/](./Application/README.md).
+- ➡️ [Báo cáo chi tiết EXP-014](./training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md) · [Baseline EXP-009 Scratch cũ](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-009_FULL/EXP-DENSENET121-SCRATCH-5SEEDS-009/README.md)
+
+### 3. 🔍 Kiểm định chất lượng dữ liệu (`EXP-DENSENET121-DATASET-AUDIT-001`)
+- Phân tích rà soát tính toàn vẹn bộ dữ liệu: kiểm tra trùng lặp pHash cross-split, đo độ trôi phân phối đặc trưng (Train/Val feature shift), rà soát ảnh thực địa (real images).
+- Cung cấp contact sheets trực quan phục vụ đánh giá chất lượng và phát hiện data leakage.
+- ➡️ [Chi tiết thư mục audit](./training_results/current_dataset/EXP-DENSENET121-DATASET-AUDIT-001/)
+
+### 4. 📓 Bộ Notebook huấn luyện và kiểm định chuẩn hóa (`Notebook/`)
+- [`Notebook/DenseNet121/densenet121_5seed.ipynb`](./Notebook/DenseNet121/densenet121_5seed.ipynb): Pipeline chuẩn hóa 5 seeds cho DenseNet121 (EXP-009 recipe) với đầy đủ logs và outputs.
+- [`Notebook/DenseNet121/densenet121_007_diagnostic.ipynb`](./Notebook/DenseNet121/densenet121_007_diagnostic.ipynb): Diagnostic setup chẩn đoán gradient và learning rate.
+- [`Notebook/DenseNet121/densenet121_dataset_audit_scratch.ipynb`](./Notebook/DenseNet121/densenet121_dataset_audit_scratch.ipynb): Notebook kiểm định chất lượng bộ dữ liệu.
+- [`Notebook/ResNet50/resnet50_5seed_reference_recipe.ipynb`](./Notebook/ResNet50/resnet50_5seed_reference_recipe.ipynb): Pipeline chuẩn hóa 5 seeds cho ResNet50.
+
+---
+
+### Nghiên cứu chất lượng dữ liệu: Kaggle base → CashewData_Split (7)
+
+Báo cáo thực nghiệm 1 seed DenseNet121 Scratch riêng biệt nhằm đánh giá cải thiện dữ liệu và generalization ảnh thực địa: **IMPROVED001 Test Accuracy 93,01%; Real Test 67,86% (19/28); phát hiện 39 cặp nghi gần trùng pHash xuyên split**. Không nhập kết quả này vào benchmark V05 vì ZIP có 6.907 ảnh và giao thức thí nghiệm khác.
+
+➡️ [Kế hoạch điều tra nguyên nhân sai trên ảnh Real (WP0–WP7)](./training_results/dataset_quality_study/INVESTIGATION_PLAN.md)
+
+➡️ [Báo cáo WP3 — IMPROVED002 có 35 ảnh Real Validation](./training_results/dataset_quality_study/EXP-DENSENET121-SCRATCH-IMPROVED-002/ANALYSIS.md)
+
+➡️ [Báo cáo dataset IMPROVED001](./training_results/dataset_quality_study/EXP-DENSENET121-SCRATCH-IMPROVED-001/ANALYSIS.md)
+
+---
+
+## Project status
+
+### Classification — official V05 benchmark (historical cross-model comparison)
+
+Current dataset: **`Cashew_dataV05` — 6,911 images / 5 classes**. Training, Validation, and the locked Test are complete for all three scratch baselines.
+
+| Model | V05 Validation Accuracy | V05 Validation Macro F1 | Candidate seed | Params |
 |---|---:|---:|---:|---:|
 | `anthracnose` — Thán thư | 939 | 308 | 122 | 1.369 |
 | `healthy` — Khỏe | 803 | 216 | 118 | 1.137 |
@@ -115,7 +189,47 @@ YOLO26s dùng 3 bounding-box classes: `anthracnose`, `leaf_miner`, `red_rust`. �
 └── README.md
 ```
 
-**Tài liệu/điểm truy cập quan trọng:**
+### Result management
+
+- `Application/`: Ứng dụng web phục vụ người dùng cuối kiểm thử mô hình trực quan.
+- `Notebook/`: Toàn bộ mã nguồn thí nghiệm và notebook huấn luyện chuẩn hóa theo seed.
+- `training_results/current_dataset/`: Benchmark chính thức, kết quả EXP-009 5 seeds, dataset audit, và validation reruns.
+- `training_results/archive_legacy_dataset/`: Thí nghiệm cũ.
+- `failure/YOLO26/`: Báo cáo failure analysis nhánh object detection.
+- Checkpoint/model/FULL ZIP lớn **không commit trực tiếp**; repo chỉ giữ config, metrics, summaries, panels và code adapters.
+
+---
+
+## Dataset versioning
+
+- Cashew_dataV03 (7,213 ảnh): Phiên bản ban đầu.
+- Cashew_dataV04 / V05 (6,911 ảnh): Làm sạch ảnh mờ, loại bỏ nguy cơ data leakage và cố định split benchmark cho 3 baseline scratch ban đầu.
+- Cashew_dataV07_clean_val (6,907 ảnh): Chuẩn hóa phục vụ thực nghiệm EXP-009 scratch.
+- Cashew_dataV08_real_val (6,906 ảnh): **Dataset chính thức hiện tại** — Train 4.790 / Validation 1.430 / Test 686, bổ sung ảnh thực địa và phân bổ đồng đều, làm nền tảng cho chuỗi mô hình Transfer Learning (EXP-014, EXP-015, EXP-016) và triển khai ứng dụng Web AI.
+
+V03, V04/V05, V07 và V08 có phân chia Train/Validation/Test khác nhau, vì vậy **không dùng so sánh trực tiếp chéo phiên bản dataset như một controlled model comparison**.
+
+Git history vẫn lưu trữ đầy đủ toàn bộ phiên bản cũ.
+
+---
+
+## Tài liệu chính
+
+- [Ứng dụng Web AI Chuẩn Đoán Bệnh](./Application/README.md)
+- [Báo cáo DenseNet121 Transfer Learning 5-Seed v014 (Mô hình triển khai)](./training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md)
+- [Đánh giá Real Holdout EXP-015](./training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md)
+- [Đánh giá Final Test V08 EXP-016](./training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md)
+- [Báo cáo DenseNet121 Scratch 5-Seed v009](./training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-009_FULL/EXP-DENSENET121-SCRATCH-5SEEDS-009/README.md)
+- [Báo cáo Kiểm định Dữ liệu Toàn diện](./training_results/current_dataset/EXP-DENSENET121-DATASET-AUDIT-001/)
+- [Bảng tổng hợp tiến độ thực nghiệm 2026](./training_results/current_dataset/EXPERIMENT_PROGRESS_2026_10.md)
+- [Classification training results](./training_results/README.md)
+- [Current V04/V05 benchmark](./training_results/current_dataset/README.md)
+- [Dataset changelog](./DATASET_CHANGELOG.md)
+- [Bounding-box annotation guideline](./CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md)
+- [YOLO failure/development archive](./failure/YOLO26/README.md)
+- [Disease reference](./DISEASE_REFERENCE.md)
+
+---
 
 - [Danh mục các thí nghiệm phân loại](./training_results/current_dataset/README.md) · [Tiến độ tháng 10](./training_results/current_dataset/EXPERIMENT_PROGRESS_2026_10.md)
 - [Kết quả DenseNet Transfer & Test](./training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md) · [DeiT-Small EXP-011: Scientific report](./training_results/current_dataset/EXP-VIT-DEITSMALL-TRANSFER-5SEEDS-011/analysis/SCIENTIFIC_REPORT.md)
