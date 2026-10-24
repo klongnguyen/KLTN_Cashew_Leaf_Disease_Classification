@@ -1,6 +1,6 @@
 """
 Configuration and Disease Reference Data for Cashew Leaf Disease Diagnosis.
-Model: DenseNet121 Version 009 (Best Seed: 3407)
+Model: DenseNet121 Transfer Version 014 (Best Seed: 123)
 """
 from pathlib import Path
 
@@ -12,8 +12,8 @@ MODEL_PATH = (
     PROJECT_ROOT
     / "training_results"
     / "current_dataset"
-    / "EXP-DENSENET121-SCRATCH-5SEEDS-009_FULL"
-    / "EXP-DENSENET121-SCRATCH-5SEEDS-009"
+    / "EXP-DENSENET121-TRANSFER-5SEEDS-014_FULL"
+    / "EXP-DENSENET121-TRANSFER-5SEEDS-014"
     / "model_package"
     / "deployment_model.keras"
 )
@@ -22,8 +22,8 @@ LABEL_MAP_PATH = (
     PROJECT_ROOT
     / "training_results"
     / "current_dataset"
-    / "EXP-DENSENET121-SCRATCH-5SEEDS-009_FULL"
-    / "EXP-DENSENET121-SCRATCH-5SEEDS-009"
+    / "EXP-DENSENET121-TRANSFER-5SEEDS-014_FULL"
+    / "EXP-DENSENET121-TRANSFER-5SEEDS-014"
     / "model_package"
     / "label_map.json"
 )
@@ -32,8 +32,8 @@ METADATA_PATH = (
     PROJECT_ROOT
     / "training_results"
     / "current_dataset"
-    / "EXP-DENSENET121-SCRATCH-5SEEDS-009_FULL"
-    / "EXP-DENSENET121-SCRATCH-5SEEDS-009"
+    / "EXP-DENSENET121-TRANSFER-5SEEDS-014_FULL"
+    / "EXP-DENSENET121-TRANSFER-5SEEDS-014"
     / "model_package"
     / "deployment_metadata.json"
 )
@@ -43,11 +43,11 @@ SAMPLES_DIR = STATIC_DIR / "samples"
 
 # Model specs
 IMG_SIZE = 224
-MODEL_NAME = "DenseNet121 (Scratch v009)"
-BEST_SEED = 3407
-VAL_ACCURACY = 0.9563
-VAL_LOSS = 0.1410
-VAL_MACRO_F1 = 0.9551
+MODEL_NAME = "DenseNet121 (Transfer v014)"
+BEST_SEED = 123
+VAL_ACCURACY = 0.9727
+VAL_LOSS = 0.0925
+VAL_MACRO_F1 = 0.9714
 
 # Disease Details, Agricultural Reference & Validation Benchmark Metrics
 DISEASE_INFO = {
@@ -55,9 +55,9 @@ DISEASE_INFO = {
         "vn_name": "Bệnh Thán Thư",
         "scientific_name": "Colletotrichum gloeosporioides",
         "severity": "Cao (Nguy hiểm)",
-        "benchmark_precision": 93.05,
-        "benchmark_recall": 93.98,
-        "benchmark_f1": 93.51,
+        "benchmark_precision": 95.71,
+        "benchmark_recall": 94.16,
+        "benchmark_f1": 94.93,
         "badge_color": "danger",
         "color_hex": "#dc2626",
         "icon": "fa-biohazard",
@@ -72,9 +72,9 @@ DISEASE_INFO = {
         "vn_name": "Lá Khỏe Mạnh",
         "scientific_name": "Anacardium occidentale (Healthy)",
         "severity": "An toàn",
-        "benchmark_precision": 95.22,
-        "benchmark_recall": 93.43,
-        "benchmark_f1": 94.31,
+        "benchmark_precision": 96.33,
+        "benchmark_recall": 97.22,
+        "benchmark_f1": 96.77,
         "badge_color": "success",
         "color_hex": "#15803d",
         "icon": "fa-seedling",
@@ -89,9 +89,9 @@ DISEASE_INFO = {
         "vn_name": "Sâu Vẽ Bùa / Sâu Đục Lá",
         "scientific_name": "Acrocercops syngramma",
         "severity": "Trung bình",
-        "benchmark_precision": 96.30,
-        "benchmark_recall": 95.12,
-        "benchmark_f1": 95.71,
+        "benchmark_precision": 94.72,
+        "benchmark_recall": 95.08,
+        "benchmark_f1": 94.90,
         "badge_color": "warning",
         "color_hex": "#b45309",
         "icon": "fa-bug",
@@ -106,9 +106,9 @@ DISEASE_INFO = {
         "vn_name": "Bệnh Rỉ Đỏ / Tảo Đỏ",
         "scientific_name": "Cephaleuros virescens",
         "severity": "Trung bình - Khá",
-        "benchmark_precision": 96.12,
-        "benchmark_recall": 99.69,
-        "benchmark_f1": 97.87,
+        "benchmark_precision": 99.09,
+        "benchmark_recall": 99.39,
+        "benchmark_f1": 99.24,
         "badge_color": "warning",
         "color_hex": "#c2410c",
         "icon": "fa-virus",
@@ -123,9 +123,9 @@ DISEASE_INFO = {
         "vn_name": "Không Phải Lá Điều / Dị Vật",
         "scientific_name": "Outlier / Non-cashew image",
         "severity": "Cảnh báo ảnh",
-        "benchmark_precision": 97.39,
-        "benchmark_recall": 94.90,
-        "benchmark_f1": 96.13,
+        "benchmark_precision": 99.68,
+        "benchmark_recall": 100.00,
+        "benchmark_f1": 99.84,
         "badge_color": "secondary",
         "color_hex": "#64748b",
         "icon": "fa-question-circle",

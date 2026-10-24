@@ -1,0 +1,14 @@
+{
+  "seed": 3407,
+  "selected_stage": "stage2",
+  "checkpoint_sha256": "7d6e720826ad0e979e9a4818b8e23c12216e8cf8cc0b7e6c33e1416fcf48e6db",
+  "n_test": 686,
+  "correct": 655,
+  "accuracy": 0.9548104956268222,
+  "macro_f1": 0.9513853245167653,
+  "recall_anthracnose": 0.8770491803278688,
+  "recall_healthy": 0.9915254237288136,
+  "recall_leaf_miner": 0.8863636363636364,
+  "recall_red_rust": 1.0,
+  "recall_not_cashew_leaf": 1.0
+}

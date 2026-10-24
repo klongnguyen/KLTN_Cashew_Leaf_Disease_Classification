@@ -1,4 +1,4 @@
-# Tiến độ huấn luyện và đối chiếu phiên bản (cập nhật 20/10/2026)
+# Tiến độ huấn luyện và đối chiếu phiên bản (cập nhật 24/10/2026)
 
 > **ResNet50 TRANSFER EXP-009 — 20/10/2026:** V08, 5-seed fine-tuning backbone thật `conv5_block3_*` non-BN **4.459.520 params**; Val Accuracy **95,23 ± 0,35%**, Macro F1 **95,05 ± 0,39%**; Test Accuracy **92,89 ± 0,51%**, Macro F1 **92,32 ± 0,53%**; historical Holdout 48 ảnh Accuracy **75,83 ± 2,80%**, Macro F1 **70,85 ± 3,94%**; deployment seed **2026** theo min Val Loss. **EXP-008 frozen V08 vẫn tốt hơn trung bình trên Test/Holdout**, không kết luận mở backbone chắc chắn hữu ích. [README](./EXP-RESNET50-TRANSFER-5SEEDS-009/README.md) · [Method review](./EXP-RESNET50-TRANSFER-5SEEDS-009/METHOD_AND_LEAKAGE_REVIEW.md).
 
@@ -9,7 +9,9 @@
 > **Bổ sung ResNet50 Scratch EXP-006/007/008 (19/10/2026):** 006 trên V05: Val Acc **86.46 ± 2.27%**, Macro F1 **86.12 ± 2.56%**; 007/008 trên V07: **89.20 ± 2.04%**, Macro F1 **88.61 ± 2.19%**; 007 và 008 có predictions/history/aggregate Validation **trùng byte**, chưa có bằng chứng 008 retrain độc lập. **Final Test cả ba pending**. [Audit/Changelog](./RESNET50_SCRATCH_006_008_AUDIT_2026_10.md).
 
 
-> **Cập nhật 19/10/2026 (EXP-014/015):** V08 đã có **huấn luyện 5 seed DenseNet121 ImageNet Transfer Learning EXP-014** và **đánh giá 48 ảnh Real Holdout lịch sử bằng checkpoint EXP-014 trong EXP-015**. Seed triển khai **123** (khóa theo Val Loss). **Final Test V08 686 ảnh vẫn chưa chạy**. Nhóm Holdout này đã được xem trước EXP-014, nên không phải blind holdout mới.
+> **Cập nhật 22/10/2026 (EXP-014/015/016):** EXP-014 huấn luyện 5 seed DenseNet121 ImageNet trên V08; EXP-015 đánh giá 48 ảnh Real Holdout lịch sử; [EXP-016](./EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md) đã chạy Final Test V08 686 ảnh trên đủ 5 checkpoint, không retrain. Seed triển khai **123** vẫn theo khóa Validation. Test Accuracy **95.13 ± 0.51%**, Macro F1 **94.76 ± 0.58%**. Nhóm Holdout đã được xem trước EXP-014, nên không phải blind holdout mới.
+
+> **DeiT-Small Transfer EXP-011 (24/10/2026):** [notebook, runner và cấu hình](./EXP-VIT-DEITSMALL-TRANSFER-5SEEDS-011/README.md) đã chuẩn bị. Đây là giao thức **chưa chạy huấn luyện 5 seed**; chưa có metrics Validation/Test để so sánh với các mô hình đã đánh giá.
 
 
 Nguồn: cây thư mục GitHub `main` trước cập nhật, các gói ANALYSIS mà người dùng đã gửi, và cấu hình thí nghiệm được ghi trong ZIP. **Validation và Test là hai giao thức khác nhau**; không so sánh các số từ hai tập như cùng một benchmark.
@@ -30,8 +32,9 @@ Nguồn: cây thư mục GitHub `main` trước cập nhật, các gói ANALYSIS
 | DenseNet121 | [EXP-009](./EXP-DENSENET121-SCRATCH-5SEEDS-009_FULL/EXP-DENSENET121-SCRATCH-5SEEDS-009/README.md) | V07 | Validation xong; Test pending | Val Acc **94.55 ± 1.11%**, F1 **94.38 ± 1.13%** |
 | DenseNet121 | [EXP-011](./EXP-DENSENET121-SCRATCH-5SEEDS-011/README.md) | V07 | Validation xong; **số liệu trùng 009** | Val Acc **94.55 ± 1.11%**, F1 **94.38 ± 1.13%** |
 | DenseNet121 | EXP-013 (chưa có directory chuẩn trên repo) | V08 | 5-seed Scratch; Val/Test/Real Holdout lịch sử | Val Acc **94.17 ± 0.90%**, Val F1 **94.02 ± 0.98%**; Holdout Acc **51.25 ± 8.15%** |
-| **DenseNet121 Transfer** | **[EXP-014](./EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md)** | **V08** | **5-seed training + Validation xong; Final Test pending** | **Val Acc 97.10 ± 0.20%; Macro F1 96.96 ± 0.21%; Real Val 79.43 ± 1.28%** |
-| **DenseNet121 Transfer evaluation** | **[EXP-015](./EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md)** | **V08 checkpoints + historical holdout** | **Không retrain; đã chấm 48 ảnh holdout; Test pending** | **Holdout Acc 80.83 ± 0.93%; Macro F1 80.80 ± 0.19%; seed 123 đúng 38/48** |
+| **DenseNet121 Transfer** | **[EXP-014](./EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md)** | **V08** | **5-seed training + Validation xong; Test được đánh giá trong EXP-016** | **Val Acc 97.10 ± 0.20%; Macro F1 96.96 ± 0.21%; Real Val 79.43 ± 1.28%** |
+| **DenseNet121 Transfer evaluation** | **[EXP-015](./EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md)** | **V08 checkpoints + historical holdout** | **Không retrain; đã chấm 48 ảnh holdout** | **Holdout Acc 80.83 ± 0.93%; Macro F1 80.80 ± 0.19%; seed 123 đúng 38/48** |
+| **DenseNet121 Transfer Final Test** | **[EXP-016](./EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md)** | **V08 Test 686 ảnh** | **Không retrain; 5 checkpoint EXP-014 đã khóa** | **Test Acc 95.13 ± 0.51%; Macro F1 94.76 ± 0.58%; seed 123 đúng 653/686** |
 | **DenseNet121** | **[EXP-012](./EXP-DENSENET121-SCRATCH-5SEEDS-012/README.md)** | **V08** | **Validation xong; Test pending** | Val Acc **93.99 ± 1.05%**, F1 **93.81 ± 1.13%** |
 
 Các phiên bản `002–005` của DenseNet121, ResNet50 và ViT đều có README trong thư mục tương ứng. Bản ghi V04 `003` là Test benchmark lịch sử; `004` là validation rerun, **chưa có Test cho chính rerun 004**.
@@ -68,7 +71,7 @@ Các phiên bản `002–005` của DenseNet121, ResNet50 và ViT đều có REA
 - [ ] Thử **matched Stage1 frozen-vs-unfreeze ablation** với đúng một biến trainable layers, không chọn hyperparameters bằng Test/Holdout đã mở.
 - [x] Nhập báo cáo ResNet50 **TRANSFER-008**: Validation, Final Test, historical Holdout đầy đủ, confusion matrix 5 seeds, metadata frozen/preprocessing/selection, audit và bảng tiến độ.
 - [ ] Audit 51 V08 pHash candidates + nguồn cùng lá/cùng phiên chụp và thu thập **fresh blind field test** đủ 5 true classes.
-- [ ] Thiết kế **experiment ID mới ResNet50 partial fine-tuning thực** (mở conv5 non-BN), không ghi đè Transfer-008, chọn bằng Validation.
+- [x] ResNet50 Transfer EXP-009 đã mở `conv5_block3_*` non-BN và chọn seed theo Validation; cần matched Stage 1 ablation để cô lập tác động của fine-tuning.
 - [x] Nhập hồ sơ ResNet50 Scratch **006/007/008**: 3 README versioned, 5-seed Validation CSV, Mean ± SD, 15 confusion matrix CSV, config snapshot, audit V07, biểu đồ SVG; đánh dấu 007/008 không độc lập.
 - [ ] Kiểm tra binary checkpoint ResNet50 007/008 trong FULL ZIP để xác định thực chất retrain/re-export; kiểm tra 52 cặp pHash V07.
 - [ ] Chạy locked Test riêng cho ResNet50 Scratch 006 (V05) và 007 (V07) khi protocol cho phép; không chấm 008 như lần test độc lập nếu là bản tái đóng gói.
@@ -77,12 +80,14 @@ Các phiên bản `002–005` của DenseNet121, ResNet50 và ViT đều có REA
 - [x] Chuẩn hóa ID nguồn ZIP `...-01` thành EXP-012; giữ mapping ID gốc.
 - [x] Gắn cảnh báo kết quả 009 và 011 trùng nhau.
 - [ ] Kiểm tra ảnh nghi tương tự cross-split (pHash) và checkpoint independence 009/011.
-- [ ] Chạy **locked Test V08 686 ảnh** cho checkpoint EXP-014 đã khóa bằng Validation; chưa được chấm trong EXP-015.
+- [x] [EXP-016](./EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md) đã chạy **locked Test V08 686 ảnh** cho đủ 5 checkpoint EXP-014; seed triển khai 123 giữ nguyên theo Validation.
+- [x] Chuẩn bị notebook và cấu hình DeiT-Small Transfer EXP-011.
+- [ ] Chạy và xác minh kết quả 5 seed EXP-011 trước khi đưa vào benchmark.
 - [x] **EXP-015 đã đánh giá 48 ảnh historical Real Holdout** (49 ảnh gốc trừ 1 exact Test duplicate) trên đủ 5 checkpoint của EXP-014; **không** dùng kết quả này để chọn lại seed/model.
 - [ ] Thu thập **blind independent field holdout mới** đầy đủ cả 5 lớp, từ cây/phiên/vườn độc lập; đánh giá sau khi khóa pipeline.
 - [ ] Thử pipeline **YOLO crop → DenseNet121** với label map/inference preprocessing được kiểm tra.
 - [ ] Xác minh và liên kết FULL ZIP/checkpoints/figures còn lưu ngoài GitHub.
-- [ ] Kiểm tra phiên bản thực tế đang chạy trên web: repo hiện mô tả web dùng **EXP-009**, không tự nhận đang dùng EXP-012.
+- [x] Mã nguồn web đã cấu hình **DenseNet121 Transfer EXP-014 seed 123**; binary checkpoint `.keras` không lưu trong Git và phải có tại đường dẫn trong `Application/config.py` để khởi chạy.
 
 ## Chuẩn README cho mọi thí nghiệm
 

@@ -1,6 +1,8 @@
 # Training Results
 
-> **ResNet50 Transfer EXP-009 (20/10/2026)** — [README kết quả](./current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-009/README.md), [method/leakage audit](./current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-009/METHOD_AND_LEAKAGE_REVIEW.md). **ImageNet pretrained + mở conv5_block3 non-BN Stage 2** (4.459.520 trainable backbone params). V08: Val **95,23 ± 0,35%**; Final Test **92,89 ± 0,51%**; historical Real Holdout **75,83 ± 2,80% Accuracy** (4 true classes). **Seed 2026 được chọn theo Val Loss trước khi xem Test/Holdout**, khác EXP-008 frozen (Val **95,09%**, Test **93,24%**, holdout **77,08%**). No updated web deployment, no new blind holdout.
+> **DeiT-Small Transfer EXP-011:** [cấu hình và notebook](./current_dataset/EXP-VIT-DEITSMALL-TRANSFER-5SEEDS-011/README.md) đã chuẩn bị; **chưa chạy 5-seed training, chưa có kết quả Validation/Test**.
+
+> **ResNet50 Transfer EXP-009 (20/10/2026)** — [README kết quả](./current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-009/README.md), [method/leakage audit](./current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-009/METHOD_AND_LEAKAGE_REVIEW.md). **ImageNet pretrained + mở conv5_block3 non-BN Stage 2** (4.459.520 trainable backbone params). V08: Val **95,23 ± 0,35%**; Final Test **92,89 ± 0,51%**; historical Real Holdout **75,83 ± 2,80% Accuracy** (4 true classes). **Seed 2026 được chọn theo Val Loss trước khi xem Test/Holdout**, khác EXP-008 frozen (Val **95,09%**, Test **93,24%**, holdout **77,08%**). Mô hình triển khai web là DenseNet121 Transfer EXP-014 (Seed 123).
 
 
 > **Mới 20/10/2026 — [ResNet50 ImageNet EXP-008](./current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-008/README.md)** trên V08: 5 seeds Val **95.09 ± 0.22% Accuracy / 94.91 ± 0.23% Macro F1**; **Final Test xong 93.24 ± 0.24% Accuracy / 92.72 ± 0.25% F1**; **historical Real Holdout 48 ảnh 77.08 ± 2.55% Accuracy / 72.97 ± 4.07% F1**. **Backbone vẫn frozen cả hai stage**, không nhầm với Scratch-008 V07. Deployment checkpoint candidate **seed 3407 chọn theo Validation Loss**; **không thay mô hình web**. [Audit kỹ thuật](./current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-008/ANALYSIS_AND_PROTOCOL_AUDIT.md).
@@ -9,7 +11,7 @@
 > **ResNet50 Scratch 006–008 (19/10/2026):** [006 V05](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-006/README.md) Val Acc **86.46 ± 2.27%**, Macro F1 **86.12 ± 2.56%**; [007 V07](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-007/README.md) **89.20 ± 2.04%**, F1 **88.61 ± 2.19%**; [008 V07](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-008/README.md) có metrics/predictions/logs **trùng 007** (chưa có bằng chứng train mới). **Chưa có Test riêng 006–008**; là ResNet50 **Scratch**, không phải Transfer. [Audit 006–008](./current_dataset/RESNET50_SCRATCH_006_008_AUDIT_2026_10.md).
 
 
-> **Kết quả mới 19/10/2026:** [EXP-014 — ImageNet Transfer Learning (5 seeds, Val V08)](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md): **97.10 ± 0.20% Val Accuracy**, **96.96 ± 0.21% Val Macro F1**. [EXP-015 — đánh giá lại checkpoint 014, không retrain](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md): **80.83 ± 0.93% Accuracy** trên **48 ảnh Real Holdout lịch sử**; deployment seed 123: **38/48**. **Final Test V08 vẫn pending**. [Progress](./current_dataset/EXPERIMENT_PROGRESS_2026_10.md).
+> **DenseNet121 Transfer V08:** [EXP-014 — huấn luyện 5 seed](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md): **97.10 ± 0.20% Val Accuracy**, **96.96 ± 0.21% Val Macro F1**. [EXP-015 — Real Holdout lịch sử](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md): **80.83 ± 0.93% Accuracy** trên 48 ảnh. [EXP-016 — Final Test V08](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md): **95.13 ± 0.51% Accuracy**, **94.76 ± 0.58% Macro F1** trên 686 ảnh × 5 checkpoint; seed triển khai 123 đúng **653/686**. [Progress](./current_dataset/EXPERIMENT_PROGRESS_2026_10.md).
 
 
 > **Lịch sử EXP-011/012 (trước EXP-014/015):** [Tiến độ tổng hợp](./current_dataset/EXPERIMENT_PROGRESS_2026_10.md) · [EXP-011 V07](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-011/README.md) · [EXP-012 V08](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-012/README.md). EXP-012 mới hoàn tất **Validation 5 seeds (93.99 ± 1.05% Accuracy; 93.81 ± 1.13% Macro F1)**, **Test pending**; seed 42 đạt **22/35** ảnh `real_`. EXP-011 có metrics trùng EXP-009.
@@ -29,17 +31,20 @@ Báo cáo WP3: [IMPROVED002 — Real Validation 35 ảnh, DenseNet121 Scratch](.
 
 ---
 
-## Current Web Deployment — EXP-DENSENET121-SCRATCH-5SEEDS-009
+## Current Web Deployment — EXP-DENSENET121-TRANSFER-5SEEDS-014
 
-- **Model:** DenseNet121 from scratch (5 seeds: `[42, 123, 2026, 3407, 7777]`)
-- **Dataset:** `Cashew_dataV07_clean_val` (6,907 images)
+- **Model:** DenseNet121 Transfer Learning (ImageNet 2-stage partial fine-tuning)
+- **Deployment Checkpoint:** Seed 123 (lựa chọn theo Validation loss thấp nhất)
+- **Dataset:** Cashew_dataV08_real_val (6,906 images: Train 4.790 / Val 1.430 / Test 686)
 - **Validation Results:**
-  - Accuracy: **94.55 ± 1.11%** (Best Seed 3407: **95.63%**)
-  - Macro F1: **94.38 ± 1.13%** (Best Seed 3407: **95.51%**)
-  - Macro Precision: **94.69 ± 1.01%**
-  - Macro Recall: **94.20 ± 1.18%**
-- **Deployment:** Seed 3407 được đóng gói trọn vẹn trong `model_package` (`deployment_model.keras`, embeddings, feature extractor) và triển khai vào [Web Application](../Application/README.md).
-- ➡️ [Báo cáo chi tiết EXP-009](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-009_FULL/EXP-DENSENET121-SCRATCH-5SEEDS-009/README.md)
+  - Accuracy: **97.10 ± 0.20%** (Best Seed 123: **97.27%**)
+  - Macro F1: **96.96 ± 0.21%** (Best Seed 123: **97.14%**)
+  - Val Loss: **0.0925** (thấp nhất trong 5 seeds)
+- **Evaluation Results:**
+  - Final Test V08 (EXP-016): **95.13 ± 0.51%** (Seed 123: **95.19%**, 653/686 ảnh)
+  - Real Holdout 48 ảnh (EXP-015): **80.83 ± 0.93%** (Seed 123: 38/48 ảnh)
+- **Deployment:** Seed 123 được đóng gói trọn vẹn trong model_package (deployment_model.keras, embeddings, feature extractor, label map, metadata) và triển khai chính thức vào [Web Application](../Application/README.md).
+- ➡️ [Báo cáo chi tiết EXP-014](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md) · [Baseline EXP-009 Scratch cũ](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-009_FULL/EXP-DENSENET121-SCRATCH-5SEEDS-009/README.md)
 - ➡️ [Kiểm định dữ liệu toàn diện EXP-DATASET-AUDIT-001](./current_dataset/EXP-DENSENET121-DATASET-AUDIT-001/)
 
 ---

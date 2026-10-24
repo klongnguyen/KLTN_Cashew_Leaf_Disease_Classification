@@ -2,7 +2,7 @@
 
 **Experiment:** `EXP-DENSENET121-TRANSFER-5SEEDS-014` · **đào tạo mới 5 seeds**. Source: user-supplied `EXP-DENSENET121-TRANSFER-5SEEDS-014_ANALYSIS.zip`. **Cập nhật hồ sơ: 2026-10-19.**
 
-> **Phân biệt:** EXP-014 là lần **huấn luyện 5 seed bằng transfer learning**; [EXP-015](../EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md) dùng **nguyên 5 checkpoint 014** để đánh giá Real Holdout, không retrain. EXP-014 chưa chạy Final Test trên 686 ảnh.
+> **Phân biệt:** EXP-014 là lần **huấn luyện 5 seed bằng transfer learning**; [EXP-015](../EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md) dùng nguyên 5 checkpoint để đánh giá Real Holdout, và [EXP-016](../EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md) dùng chúng để đánh giá 686 ảnh Final Test V08. Cả hai lượt đánh giá đều không retrain; trạng thái gốc trong EXP-014 không bị sửa.
 
 ## 1. Dữ liệu cố định, quy tắc chống leakage
 
@@ -68,10 +68,10 @@ Cùng V08, nhưng chỉ số nhóm `real_` có **35 ảnh**, dễ dao động th
 - ✅ 5-seed training, 2-stage selection, validation, class-level error tracking.
 - ✅ Validation lock `2026-10-19T08:38:55.528406+00:00`, config SHA256 `fcf1ebc509cd5c4dd54f9ad073e5af02ba5b412f72210dfee47a998c921292b2`.
 - ✅ EXP-015 đã đánh giá Real Holdout lịch sử **48 ảnh**, ghi ở folder **khác**; **không sửa execution status gốc EXP-014**.
-- ⏳ **Final locked Test V08 686 ảnh chưa chạy** với EXP-014.
+- ✅ **EXP-016 đã đánh giá Final Test V08 686 ảnh trên cả 5 checkpoint EXP-014**; Accuracy **95.13 ± 0.51%**, Macro F1 **94.76 ± 0.58%**. Seed triển khai 123 giữ theo Validation, đạt **653/686**.
 - ⏳ Cần audit 51 cặp pHash và thu thập real-world blind holdout mới.
 - ⚠️ Bản ghi trên GitHub bao gồm **báo cáo, config/lock, aggregate CSV, figures tái lập**; **ANALYSIS/FULL ZIP gốc, toàn bộ per-image predictions, training notebooks và binary checkpoint .h5/.keras chưa được commit**. Không thể dùng repository này một mình để tái tạo checkpoint hoặc xác minh binary hash; xem FULL ZIP ngoài GitHub.
-- ⚠️ Ứng dụng web `Application/` trên repo vẫn mô tả chạy **EXP-009 seed 3407**, **chưa thay deployment** sang EXP-014.
+- ✅ Mã nguồn `Application/` đã chuyển sang **EXP-014 seed 123**. Binary `deployment_model.keras` nằm ngoài Git; cần cung cấp checkpoint đúng đường dẫn trong `Application/config.py` khi chạy từ bản clone.
 
-**Đọc tiếp:** [EXP-015 — Holdout checkpoint evaluation](../EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md) · [Tiến độ](../EXPERIMENT_PROGRESS_2026_10.md).
+**Đọc tiếp:** [EXP-015 — Holdout checkpoint evaluation](../EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md) · [EXP-016 — Final Test V08](../EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md) · [Tiến độ](../EXPERIMENT_PROGRESS_2026_10.md).
 

@@ -1,6 +1,6 @@
 """
 FastAPI Backend Server for Cashew Leaf Disease Diagnosis Web App.
-Using DenseNet121 Version 009 (Best Checkpoint: Seed 3407).
+Using DenseNet121 Transfer Version 014 (Best Checkpoint: Seed 123).
 """
 import io
 import os
@@ -17,7 +17,7 @@ from model_service import model_service
 
 app = FastAPI(
     title="Cashew Leaf Disease Diagnosis AI",
-    description="Web service for diagnosing cashew leaf diseases using DenseNet121 v009 (Seed 3407)",
+    description="Web service for diagnosing cashew leaf diseases using DenseNet121 Transfer v014 (Seed 123)",
     version="1.0.0",
 )
 
