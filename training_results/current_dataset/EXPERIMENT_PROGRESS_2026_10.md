@@ -1,5 +1,7 @@
 # Tiến độ huấn luyện và đối chiếu phiên bản (cập nhật 24/10/2026)
 
+> **CBAM V08 — 27/10/2026:** [So sánh ResNet50 EXP-011, DenseNet121 EXP-017, DeiT-Tiny EXP-012](./CBAM_ABLATION_3MODELS_V08/README.md). Trên cùng Validation 1.430 ảnh qua 5 paired seeds, Accuracy Δ CBAM−baseline lần lượt **+0,839 / −1,273 / −0,126 điểm %**. Cả 3 experiment **không chạy Test/Holdout và không đổi deployment**.
+
 > **ResNet50 TRANSFER EXP-009 — 20/10/2026:** V08, 5-seed fine-tuning backbone thật `conv5_block3_*` non-BN **4.459.520 params**; Val Accuracy **95,23 ± 0,35%**, Macro F1 **95,05 ± 0,39%**; Test Accuracy **92,89 ± 0,51%**, Macro F1 **92,32 ± 0,53%**; historical Holdout 48 ảnh Accuracy **75,83 ± 2,80%**, Macro F1 **70,85 ± 3,94%**; deployment seed **2026** theo min Val Loss. **EXP-008 frozen V08 vẫn tốt hơn trung bình trên Test/Holdout**, không kết luận mở backbone chắc chắn hữu ích. [README](./EXP-RESNET50-TRANSFER-5SEEDS-009/README.md) · [Method review](./EXP-RESNET50-TRANSFER-5SEEDS-009/METHOD_AND_LEAKAGE_REVIEW.md).
 
 
