@@ -1,4 +1,7 @@
 # STANDARD TRAINING NOTEBOOK FORMAT
+
+> Chuẩn bổ sung cho schema output, kiểm tra ZIP và so sánh thống kê: [AUDIT_NOTEBOOK_OUTPUTS_STATISTICAL_PLAN.md](./AUDIT_NOTEBOOK_OUTPUTS_STATISTICAL_PLAN.md). Phần `Evaluate Test` trong sơ đồ bên dưới chỉ được thực hiện sau khi đã khóa cấu hình bằng Validation; không dùng Test để chọn hoặc chỉnh mô hình.
+
 ## Chuẩn chung cho notebook huấn luyện mô hình phân loại ảnh
 
 > Áp dụng cho các notebook: CNN, ResNet50, DenseNet121, Vision Transformer và các mô hình classification khác trong khóa luận.
