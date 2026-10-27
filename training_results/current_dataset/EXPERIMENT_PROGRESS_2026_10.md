@@ -1,4 +1,7 @@
-# Tiến độ huấn luyện và đối chiếu phiên bản (cập nhật 24/10/2026)
+# Tiến độ huấn luyện và đối chiếu phiên bản (cập nhật 27/10/2026)
+
+> **EXP-019 V09 + Holdout 02 — 27/10/2026:** [Báo cáo Final Test/Holdout](./EXP-DENSENET121-TRANSFER-5SEEDS-019/README.md). **Evaluation-only trên checkpoint EXP-018**, không retrain. Test 686 ảnh **95,13 ± 0,41% Acc / 94,79 ± 0,43% Macro F1**; Holdout mới 127 ảnh **67,72 ± 2,67% Acc / 63,72 ± 3,17% Macro F1 (4 lớp có support)**. Seed123 (Val-selected) Holdout **84/127**, riêng Healthy **5/20** (9→Anthracnose, 6→Red Rust). Test/Holdout chưa được dùng để đổi seed/hyperparameter; mô hình phục vụ WebApp giữ EXP-014. V09 Train **4.914**/Val **1.445**/Test **686**, dataset ZIP sha **1eb8c469...**. Holdout02 không có lớp not_cashew_leaf; chưa loại trừ gần trùng/same-leaf leakage. Bản 018 là source training của 019 nhưng chưa có folder kết quả độc lập trên GitHub.
+
 
 > **CBAM V08 — 27/10/2026:** [So sánh ResNet50 EXP-011, DenseNet121 EXP-017, DeiT-Tiny EXP-012](./CBAM_ABLATION_3MODELS_V08/README.md). Trên cùng Validation 1.430 ảnh qua 5 paired seeds, Accuracy Δ CBAM−baseline lần lượt **+0,839 / −1,273 / −0,126 điểm %**. Cả 3 experiment **không chạy Test/Holdout và không đổi deployment**.
 
