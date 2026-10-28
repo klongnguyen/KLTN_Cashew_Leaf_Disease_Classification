@@ -45,6 +45,8 @@ __pycache__/
 .deit_v05_dataset/
 .pytest_cache/
 .mypy_cache/
+analysis/source_024/
+analysis_results/
 
 # Temporary logs / caches
 *.tmp
