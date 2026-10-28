@@ -1,4 +1,6 @@
 # EXP-DENSENET121-TRANSFER-5SEEDS-014 — ImageNet Transfer Learning (V08)
+> **Cập nhật điều hướng 28/10/2026.** SOURCE CỦA WEBAPP EXP-014 seed 123 — Test được đánh giá ở EXP-016, Holdout ở EXP-015. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 > **Cập nhật trạng thái 22/10/2026:** Final Test V08 686 ảnh **đã chạy trong [EXP-016](../EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md)** bằng đúng 5 checkpoint của EXP-014, **không train lại**, seed deploy vẫn **123** theo min Val Loss. Final Test Accuracy **95,13 ± 0,51%**, Macro F1 **94,76 ± 0,58%**; source EXP-014 ban đầu đúng là chưa chạy Test, nhưng trạng thái đánh giá của dòng checkpoint này **đã hoàn thành**. [Historical Holdout EXP-015](../EXP-DENSENET121-TRANSFER-5SEEDS-015/README.md) là phép đánh giá khác.
 

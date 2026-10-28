@@ -1,4 +1,6 @@
 # EXP-DENSENET121-TRANSFER-5SEEDS-018 — V09 · 4,914 Train / 1,445 Validation / 686 Test
+> **Cập nhật điều hướng 28/10/2026.** TRAIN V09 — các EXP-019/020/021 là evaluation lại checkpoint EXP-018. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 > **Backfill of an experiment archive provided by the project owner.** This is a curated GitHub text/CSV extract; **not** an upload of the entire ANALYSIS ZIP, per-image predictions, PNG figures, original notebook, or binary checkpoints.
 
