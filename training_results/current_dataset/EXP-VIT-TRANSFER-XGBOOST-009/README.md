@@ -1,4 +1,6 @@
 # EXP-VIT-TRANSFER-XGBOOST-009 — V08 retrospective Test and historical Holdout
+> **Đồng bộ điều hướng 28/10/2026.** EVALUATION-ONLY — Test/Holdout hồi cứu, không chọn lại classifier bằng kết quả này. [Tổng quan](../../../README.md) · [Danh mục](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 > **Inference-only and retrospective**, backfilled from user-provided `EXP-VIT-TRANSFER-XGBOOST-009_RESULTS(1).zip`. Original archive SHA256: `b55b5ac1d4c64c314e6b09612cc1b99b9865fc66af50f2841bbaed896adfb194`.
 

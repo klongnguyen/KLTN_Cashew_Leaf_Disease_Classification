@@ -1,4 +1,6 @@
 # IMPROVED001 — DenseNet121 Scratch trên CashewData_Split (7)
+> **Đồng bộ điều hướng 28/10/2026.** NHÁNH KIỂM ĐỊNH DỮ LIỆU — kết quả khác benchmark chính thức từng V08–V11. [Tổng quan](../../../README.md) · [Danh mục](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 **Loại:** exploratory dataset-quality audit, **1 seed**, 5 lớp. **Không** thay thế locked-Test benchmark V05.
 

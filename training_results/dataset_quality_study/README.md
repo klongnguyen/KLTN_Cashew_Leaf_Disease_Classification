@@ -1,4 +1,6 @@
 # Dataset quality study — Kaggle base vs improved dataset
+> **Đồng bộ điều hướng 28/10/2026.** NHÁNH KIỂM ĐỊNH DỮ LIỆU — kết quả khác benchmark chính thức từng V08–V11. [Tổng quan](../../README.md) · [Danh mục](../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../docs/RESEARCH_PROTOCOL.md).
+
 
 Nhánh nghiên cứu độc lập nhằm kiểm tra dữ liệu Kaggle gốc và dữ liệu cải tiến, **không trộn với benchmark `Cashew_dataV05` hiện tại**.
 

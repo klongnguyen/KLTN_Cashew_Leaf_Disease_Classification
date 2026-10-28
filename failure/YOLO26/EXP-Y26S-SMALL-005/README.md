@@ -1,4 +1,6 @@
 # EXP-Y26S-SMALL-005 — YOLO26s Dense Small-Lesion Detection
+> **Đồng bộ điều hướng 28/10/2026.** DETECTION RESEARCH — chưa có detector cuối; dữ liệu GT và Test có thể khác qua các take. [Tổng quan](../../../README.md) · [Danh mục](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 > **Status:** ⚠️ Current-dataset experiment — **chưa chọn làm final detector**  
 > **Model:** YOLO26s pretrained  
