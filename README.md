@@ -1,5 +1,8 @@
 # KLTN — Cashew Leaf Disease Classification & Detection
 
+> **Đã bổ sung hồ sơ thí nghiệm chưa có trên GitHub (28/10/2026):** [Bảng kiểm kê DenseNet121 EXP-018–026](./training_results/current_dataset/DENSENET121_TRANSFER_V09_V11_BACKFILL_2026_10.md) và [kết quả ViT/XGBoost EXP-009](./training_results/current_dataset/EXP-VIT-TRANSFER-XGBOOST-009/README.md). Đã tạo README + CSV chỉ số 5 seed cho EXP-018, 020, 021, 022, 023, 024, 025, 026; **EXP-019 đã có từ trước và được giữ nguyên**. V11 EXP-024+025: **Val 97,26%, Test 96,09%, Holdout05 80,00%** Accuracy; EXP-026 fresh-224px: **Val 97,00%, Test 96,23%, Holdout05 74,83%**. Đây là các phép đối chiếu trên dataset có lịch sử thay đổi, **không tự động thay checkpoint WebApp**. Bản cập nhật chỉ lưu hồ sơ Markdown/CSV, **chưa bao gồm ZIP ANALYSIS đầy đủ, figure, notebook hay checkpoint nhị phân**.
+
+
 > **DenseNet121 V09 — EXP-018/019, cập nhật 27/10/2026:** [Final Test và Real Holdout mới](./training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-019/README.md) đã hoàn thành đánh giá **đúng 5 checkpoint EXP-018 (không retrain)**. Test V09 686 ảnh: **95,13 ± 0,41% Accuracy / 94,79 ± 0,43% Macro F1**; Holdout 02 **127 ảnh/4 lớp**: **67,72 ± 2,67% Accuracy / 63,72 ± 3,17% Macro F1**. **Seed 123** chọn theo Validation EXP-018; Holdout seed123 chỉ **5/20 Healthy đúng**. Cần điều tra báo động bệnh giả/domain shift; **không thay mô hình WebApp EXP-014** bằng EXP-018 và không chọn seed theo Holdout. V09 Train **4.914**, Val **1.445**, Test **686**; original ANALYSIS ZIP/checkpoints không lưu trong Git. [Dataset Changelog](./DATASET_CHANGELOG.md) · [Experiment progress](./training_results/current_dataset/EXPERIMENT_PROGRESS_2026_10.md).
 
 
