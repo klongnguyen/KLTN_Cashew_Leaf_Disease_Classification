@@ -1,52 +1,66 @@
-# Cashew Leaf AI Diagnostic Web Application
-### Chuẩn Đoán Bệnh Lá Cây Điều Bằng Học Máy & Thị Giác Máy Tính
+# Application — AI Cashew Leaf Diagnosis (FastAPI)
 
-Hệ thống web hoàn chỉnh phục vụ chuẩn đoán bệnh trên lá cây điều sử dụng mô hình học sâu **DenseNet121 Transfer Learning phiên bản 014** (chọn phiên bản tối ưu nhất theo thực nghiệm là **Seed 123**).
+![Kiến trúc](../docs/assets/research_pipeline.svg)
 
----
+Giao diện và API phân loại lá điều **5 lớp**. Theo [config.py](config.py), mô hình đã cấu hình là **DenseNet121 Transfer EXP-014 seed 123**, **không phải** các EXP mới 024–026 trong tài liệu nghiên cứu.
 
-## 1. Thông Tin Mô Hình Triển Khai
-- **Mô hình chính**: `DenseNet121 (Transfer v014)`
-- **Checkpoint tốt nhất**: `Seed 123` (Được chọn qua đánh giá trên tập kiểm định độc lập Validation):
-  - **Validation Accuracy**: `97.27%` (So với v009 scratch: +1.64%)
-  - **Validation Loss**: `0.0925` (Thấp nhất trong 5 seeds)
-  - **Validation Macro F1**: `97.14%`
-- **Kích thước đầu vào**: `224 × 224 × 3` (RGB)
-- **Tiền xử lý**: Tích hợp sẵn trực tiếp trong đồ thị tính toán của mô hình (Rescaling & Normalization).
-- **Đường dẫn mô hình**: `training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-014_FULL/EXP-DENSENET121-TRANSFER-5SEEDS-014/model_package/deployment_model.keras`
-- **Khi clone từ GitHub:** checkpoint `.keras` không được đưa vào Git. Cần đặt binary EXP-014 seed 123 từ gói FULL tại đường dẫn trên trước khi khởi động; `label_map.json` và `deployment_metadata.json` có trong repo.
+## Thông tin model theo mã nguồn
 
----
+| Thành phần | Giá trị |
+|---|---|
+| Model | DenseNet121 Transfer v014, seed 123 |
+| Input | RGB 224 × 224, BILINEAR, float32 pixel 0–255 |
+| Preprocessing | Đã đóng gói bên trong model, không chia 255 lần nữa |
+| Validation seed 123 | Accuracy 97,27%, Macro F1 97,14%, Val Loss 0,0925 |
+| Final Test V08 seed 123 | 653/686 = 95,19%, Macro F1 94,84% |
+| Lớp | anthracnose, healthy, leaf_miner, red_rust, not_cashew_leaf |
 
-## 2. Các Tính Năng Đã Thực Hiện Theo Yêu Cầu
+**Binary checkpoint không có trong Git.** config.py cần ba file ở thư mục sau, trong đó label_map.json và deployment_metadata.json có trong repository nhưng **deployment_model.keras phải lấy đúng từ source package ngoài Git**:
 
-1. **Ràng buộc tải ảnh**:
-   - Chỉ chấp nhận các định dạng tệp hình ảnh: `.png`, `.jpg`, `.jpeg`, `.webp`.
-   - Giới hạn nghiêm ngặt: **Chỉ cho phép tải 1 ảnh duy nhất mỗi lần** (cả trên giao diện chọn file lẫn kéo thả).
-   - Kiểm tra định dạng hợp lệ ở cả phía máy khách (Client-side) và máy chủ (FastAPI Server-side).
+~~~text
+training_results/current_dataset/
+└── EXP-DENSENET121-TRANSFER-5SEEDS-014_FULL/
+    └── EXP-DENSENET121-TRANSFER-5SEEDS-014/
+        └── model_package/
+            ├── deployment_model.keras         # KHÔNG có trong Git
+            ├── label_map.json
+            └── deployment_metadata.json
+~~~
 
-2. **Cấu trúc giao diện 2 cột chuẩn mực**:
-   - **Cột Bên Trái (Kết quả chuẩn đoán)**:
-     - **Khung ảnh đã tải lên**: Xem trước ảnh, kích thước ảnh gốc, định dạng và tính năng phóng to (lightbox).
-     - **Kết luận chuẩn đoán**: Hiển thị nhãn bệnh có độ tin cậy cao nhất cùng mức độ nguy hiểm và khuyến nghị điều trị.
-     - **Độ tin cậy của các loại nhãn bệnh**: Được sắp xếp **lần lượt từ thấp đến cao** (từ hạng #1 thấp nhất đến hạng #5 cao nhất), nhãn cao nhất được gắn huy hiệu **🏆 KẾT LUẬN**.
-     - **Cẩm nang nông nghiệp**: Mô tả triệu chứng nhận diện và biện pháp phòng trừ cụ thể.
-   - **Cột Bên Phải (Tải ảnh & Công cụ)**:
-     - Khu vực kéo thả và duyệt ảnh từ thiết bị.
-     - Thanh trạng thái tệp ảnh được chọn.
-     - Bộ 3 mẫu thử nhanh (`Bệnh Thán Thư`, `Sâu Vẽ Bùa`, `Bệnh Rỉ Đỏ`) để kiểm thử ngay lập tức chỉ với 1 click chuột.
-     - Bảng thông số chi tiết của mô hình DenseNet121 Transfer v014.
+Không thay checkpoint bằng tên khác nếu chưa xác nhận version, label order, input preprocess và serialization parity. Khi thiếu binary này, server có thể lỗi ngay khi import model_service.
 
----
+## Cách khởi chạy không phụ thuộc đường dẫn máy cá nhân
 
-## 3. Hướng Dẫn Khởi Chạy Ứng Dụng
+Tại thư mục gốc repo, dùng Python và TensorFlow tương thích checkpoint; cần có **binary đã phục hồi**:
 
-Máy chủ web FastAPI hiện đang được chạy tại địa chỉ:
-👉 **`http://127.0.0.1:8000`**
+~~~bash
+python -m venv .venv
+# Kích hoạt môi trường ảo tùy Windows/macOS/Linux
+python -m pip install -r Application/requirements.txt
+cd Application
+python -m uvicorn server:app --host 127.0.0.1 --port 8000
+~~~
 
-Nếu cần khởi động lại máy chủ trong tương lai:
-```powershell
-cd d:\Study\KhoaLuanTotNghiep\Resource\Application
-& "..\.venv\Scripts\python.exe" -m uvicorn server:app --host 127.0.0.1 --port 8000
-```
-Sau đó mở trình duyệt web bất kỳ và truy cập vào: **`http://localhost:8000`**.
+Truy cập **http://127.0.0.1:8000/**. Cài đặt trong môi trường tách biệt được khuyến nghị vì version Keras/TensorFlow có thể ảnh hưởng load model.
+
+## API và kiểm tra đầu vào
+
+| Route | Vai trò |
+|---|---|
+| GET /api/health | Kiểm tra dịch vụ |
+| GET /api/model-info | Thông tin mô hình |
+| GET /api/samples | Danh mục ảnh thử |
+| POST /api/predict | Một ảnh upload |
+| POST /api/predict-sample/{sample_name} | Dự đoán ảnh mẫu |
+
+Theo [server.py](server.py), server cho phép JPG/JPEG, PNG, WEBP, BMP, TIFF, tối đa **25 MiB**. Giao diện có thể hạn chế định dạng chặt hơn server. Theo [model_service.py](model_service.py), danh sách xác suất được sắp **giảm dần** (xác suất lớn nhất trước).
+
+## Hình ảnh thử nghiệm
+
+| Anthracnose | Leaf Miner | Red Rust |
+|:--:|:--:|:--:|
+| ![Anthracnose](static/samples/ath_01.png) | ![Leaf Miner](static/samples/mine01.png) | ![Red Rust](static/samples/red01.png) |
+
+Kết quả chỉ hỗ trợ nhận diện từ ảnh, không thay chẩn đoán chuyên môn hoặc khuyến cáo phun thuốc tại thực địa. Nếu thay model WebApp, cần kiểm tra checkpoint SHA, preprocess, nhãn, inference parity, latency và phê duyệt theo quy tắc Validation; không dùng Test/Holdout lịch sử để chọn.
+
+[README chính](../README.md) · [EXP-014](../training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md) · [EXP-016 Test](../training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md)

@@ -1,4 +1,8 @@
-# YOLO26 Failure Experiments
+# YOLO26 — Development Archive, Take 01–07
+
+![mAP50 qua các take](../../docs/assets/yolo_history_map50.svg)
+
+> Chưa có detector final. Biểu đồ thể hiện lịch sử phát triển; Test và số GT thay đổi, đặc biệt giữa Take 006/007. Không dùng như controlled benchmark giữa hai cấu hình.
 
 Thư mục này lưu các YOLO26 experiment đã chạy thành công về mặt kỹ thuật nhưng **chưa được chọn làm detector cuối cùng**. Toàn bộ Take 01 → Take 07 hiện được quản lý tại đây để tách khỏi các baseline classification hợp lệ trong `training_results/current_dataset/`.
 
