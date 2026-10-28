@@ -1,4 +1,6 @@
 # 🧪 BÁO CÁO THỰC NGHIỆM: EXP-DENSENET121-SCRATCH-001
+> **Cập nhật điều hướng 28/10/2026.** LỊCH SỬ / SCRATCH — Không phải model WebApp Transfer EXP-014. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 > **Mô hình:** DenseNet-121 (Huấn luyện từ đầu - Train from Scratch)  
 > **Bộ dữ liệu:** `CashewData_v01` (7,450 ảnh / 5 lớp)  

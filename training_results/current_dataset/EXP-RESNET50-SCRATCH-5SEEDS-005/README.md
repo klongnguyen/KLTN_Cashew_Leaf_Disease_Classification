@@ -1,4 +1,6 @@
 # EXP-RESNET50-SCRATCH-5SEEDS-005
+> **Cập nhật điều hướng 28/10/2026.** BASELINE SCRATCH LỊCH SỬ — không phải model WebApp Transfer EXP-014. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 **Model:** ResNet50 Scratch  
 **Dataset:** `Cashew_dataV05`  

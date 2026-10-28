@@ -1,4 +1,6 @@
 # EXP-VIT-SCRATCH-001
+> **Cập nhật điều hướng 28/10/2026.** LỊCH SỬ / SCRATCH — Không phải model WebApp Transfer EXP-014. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 ## Model
 Vision Transformer - Scratch

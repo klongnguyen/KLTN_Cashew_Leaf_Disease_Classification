@@ -1,4 +1,6 @@
 # EXP-DENSENET121-CBAM-TRANSFER-5SEEDS-017
+> **Cập nhật điều hướng 28/10/2026.** VALIDATION-ONLY / CBAM — không có Test/Holdout của ablation. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 > **Research-only • V08 Validation • 5 paired seeds • Final Test/Holdout: NOT_RUN**
 

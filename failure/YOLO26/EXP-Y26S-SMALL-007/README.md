@@ -1,4 +1,6 @@
 # EXP-Y26S-SMALL-007 — YOLO26s Detailed Clear-Lesion Annotation
+> **Đồng bộ điều hướng 28/10/2026.** DETECTION RESEARCH — chưa có detector cuối; dữ liệu GT và Test có thể khác qua các take. [Tổng quan](../../../README.md) · [Danh mục](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 > **Source archive:** `EXP-Y26S-SMALL-007.zip`  
 > **Model:** YOLO26s  

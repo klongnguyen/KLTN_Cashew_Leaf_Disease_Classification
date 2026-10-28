@@ -1,4 +1,6 @@
 # EXP-DENSENET121-TRANSFER-5SEEDS-015 — Historical Real Holdout Evaluation
+> **Cập nhật điều hướng 28/10/2026.** HỒ SƠ RIÊNG THEO EXP — Không tự xem là model mới nhất hoặc deploy chính thức. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 > **Cập nhật 22/10/2026:** [EXP-016](../EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md) đã đánh giá riêng Final Test V08 686 ảnh trên cùng 5 checkpoint EXP-014. Các dòng "Test chưa chạy" trong báo cáo 015 phản ánh trạng thái lịch sử của lượt đánh giá Holdout này.
 

@@ -1,4 +1,6 @@
 # EXP-DENSENET121-TRANSFER-5SEEDS-023 — V10 · 4,920 Train / 1,445 Val / 686 locked Test
+> **Cập nhật điều hướng 28/10/2026.** VALIDATION-ONLY — thí nghiệm brightness không có Test/Holdout mới. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 > **Backfill of an experiment archive provided by the project owner.** This is a curated GitHub text/CSV extract; **not** an upload of the entire ANALYSIS ZIP, per-image predictions, PNG figures, original notebook, or binary checkpoints.
 

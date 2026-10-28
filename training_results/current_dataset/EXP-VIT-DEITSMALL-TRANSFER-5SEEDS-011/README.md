@@ -1,4 +1,6 @@
 # EXP-VIT-DEITSMALL-TRANSFER-5SEEDS-011 — Results (23/10/2026)
+> **Cập nhật điều hướng 28/10/2026.** VALIDATION-ONLY DEIT-SMALL — không tự suy ra Test/triển khai từ Val. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 > **Trạng thái: COMPLETED — Validation-only; NOT PROMOTED.** Cả 5 seed đã hoàn tất. Quyết định này nghĩa là không có checkpoint đạt toàn bộ tiêu chí lựa chọn đã khóa; không đồng nghĩa lỗi huấn luyện.
 

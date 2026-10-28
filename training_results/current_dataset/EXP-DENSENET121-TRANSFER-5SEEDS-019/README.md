@@ -1,4 +1,6 @@
 # EXP-DENSENET121-TRANSFER-5SEEDS-019 — Final Test + Real Holdout (V09, evaluation-only)
+> **Cập nhật điều hướng 28/10/2026.** EVALUATION-ONLY — không retrain, số Holdout thay đổi không đại diện cải thiện learning. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 > **Status: COMPLETE — evaluation-only, research report, 27/10/2026.** Source: user-supplied `EXP-DENSENET121-TRANSFER-5SEEDS-019_ANALYSIS.zip` (SHA256 `596c4fa817cb3054de98abe4798584b041a909aac04f91f6b31b538b1ac512d0`). This GitHub directory is a **curated text/CSV extract**, not the complete original ZIP or binary checkpoint bundle.
 

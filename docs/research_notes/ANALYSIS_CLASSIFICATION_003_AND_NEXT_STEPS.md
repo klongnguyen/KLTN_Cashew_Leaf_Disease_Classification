@@ -1,12 +1,14 @@
+> **Ghi chú lưu trữ (28/10/2026):** văn bản này chuyển nguyên nội dung phân tích lịch sử từ thư mục gốc vào docs/research_notes. Các kết luận bên dưới thuộc snapshot/experiment được nêu tại thời điểm viết, không tự thay thế các báo cáo V11 mới. [Tổng quan](../../README.md) · [Timeline mới](../../training_results/current_dataset/DENSENET121_TRANSFER_V09_V11_BACKFILL_2026_10.md).
+
 # Phân tích kết quả classification V04 (bản 003) và việc cần làm tiếp
 
 Ngày rà soát: 2026-09-28.
 
 ## Phạm vi và dữ liệu có thể kiểm tra
 
-Thư mục thực tế trong repository là [`training_results/current_dataset/`](training_results/current_dataset/), khác cách viết `training/_results/current/_dataset` trong yêu cầu. Ba experiment mới nhất là `EXP-DENSENET121-SCRATCH-5SEEDS-003`, `EXP-RESNET50-SCRATCH-5SEEDS-003` và `EXP-VIT-SCRATCH-5SEEDS-003`. Cả ba dùng Cashew_dataV04, cùng split 4.822 train / 1.402 validation / 687 test và cùng seed `42, 123, 2026, 3407, 7777` theo các file `experiment_config.json`.
+Thư mục thực tế trong repository là [`training_results/current_dataset/`](../../training_results/current_dataset/), khác cách viết `training/_results/current/_dataset` trong yêu cầu. Ba experiment mới nhất là `EXP-DENSENET121-SCRATCH-5SEEDS-003`, `EXP-RESNET50-SCRATCH-5SEEDS-003` và `EXP-VIT-SCRATCH-5SEEDS-003`. Cả ba dùng Cashew_dataV04, cùng split 4.822 train / 1.402 validation / 687 test và cùng seed `42, 123, 2026, 3407, 7777` theo các file `experiment_config.json`.
 
-Tôi đã đối chiếu [bảng benchmark](training_results/current_dataset/README.md), từng `aggregate/*.csv`, `README.md`, `experiment_config.json` của ba experiment và [ba notebook](Notebook/). Trong cây thư mục hiện tại **không có ZIP 003**; chỉ có ZIP phân tích ResNet50 002. Các thư mục 003 là bản tóm tắt đã trích ra, không chứa `history.csv`, checkpoint, confusion matrix hay dự đoán từng ảnh của mỗi seed. DenseNet và ViT có thêm SVG learning curves; ResNet50 003 không có SVG này. Vì vậy không thể dựng lại chính xác đường train/validation của ResNet50 003 hoặc xác định nguyên nhân sai từng ảnh chỉ từ bản hiện có.
+Tôi đã đối chiếu [bảng benchmark](../../training_results/current_dataset/README.md), từng `aggregate/*.csv`, `README.md`, `experiment_config.json` của ba experiment và [ba notebook](../../Notebook/). Trong cây thư mục hiện tại **không có ZIP 003**; chỉ có ZIP phân tích ResNet50 002. Các thư mục 003 là bản tóm tắt đã trích ra, không chứa `history.csv`, checkpoint, confusion matrix hay dự đoán từng ảnh của mỗi seed. DenseNet và ViT có thêm SVG learning curves; ResNet50 003 không có SVG này. Vì vậy không thể dựng lại chính xác đường train/validation của ResNet50 003 hoặc xác định nguyên nhân sai từng ảnh chỉ từ bản hiện có.
 
 ## Kết quả đo được
 
@@ -40,7 +42,7 @@ Test Accuracy trung bình cao hơn Validation Accuracy 1,95 điểm ở DenseNet
 
 ## Có cần sửa code không?
 
-**Có, ở phần xuất hình ResNet50.** [Notebook ResNet50](Notebook/ResNet50/resnet50_5seed.ipynb) đã được thêm ô `16A. FIVE-SEED TRAINING AND VALIDATION PANELS` sau vòng huấn luyện. Ô này đọc 5 `seed_*/logs/history.csv`, xuất **một ảnh** `figures/training_curves_5seeds_panel.png` gồm 2 hàng (Accuracy, Loss) × 5 cột seed, đánh dấu epoch có `val_loss` thấp nhất; đồng thời xuất `figures/validation_confusion_matrices_5seeds_panel.png`. Nó dùng lại file đã lưu khi `RUN_TRAINING=False`. Hai hình sẽ nằm trong cả FULL ZIP và ANALYSIS ZIP vì ô đóng gói duyệt toàn bộ `OUT_DIR`.
+**Có, ở phần xuất hình ResNet50.** [Notebook ResNet50](../../Notebook/ResNet50/resnet50_5seed.ipynb) đã được thêm ô `16A. FIVE-SEED TRAINING AND VALIDATION PANELS` sau vòng huấn luyện. Ô này đọc 5 `seed_*/logs/history.csv`, xuất **một ảnh** `figures/training_curves_5seeds_panel.png` gồm 2 hàng (Accuracy, Loss) × 5 cột seed, đánh dấu epoch có `val_loss` thấp nhất; đồng thời xuất `figures/validation_confusion_matrices_5seeds_panel.png`. Nó dùng lại file đã lưu khi `RUN_TRAINING=False`. Hai hình sẽ nằm trong cả FULL ZIP và ANALYSIS ZIP vì ô đóng gói duyệt toàn bộ `OUT_DIR`.
 
 **Chưa có bằng chứng cần sửa kiến trúc hoặc một lỗi training bắt buộc.** ResNet50 hiện dùng cùng augmentation nhẹ với DenseNet, Adam `1e-3`, checkpoint theo `val_loss`, EarlyStopping patience 8 và ReduceLROnPlateau. Code gọi backbone theo `backbone(x)` và nạp lại checkpoint tốt nhất trước validation. Muốn cải thiện điểm số, nên coi thay đổi LR, regularization hay pretrained là **experiment mới** và kiểm tra bằng validation, không sửa trực tiếp cấu hình của 003.
 

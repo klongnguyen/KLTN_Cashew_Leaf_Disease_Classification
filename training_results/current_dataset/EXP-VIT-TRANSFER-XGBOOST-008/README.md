@@ -1,4 +1,6 @@
 # EXP-VIT-TRANSFER-XGBOOST-008 — DeiT-Tiny features + Softmax / Logistic Regression / XGBoost
+> **Đồng bộ điều hướng 28/10/2026.** VALIDATION-ONLY — EXP-009 đánh giá tiếp Test/Holdout, không retrain backbone. [Tổng quan](../../../README.md) · [Danh mục](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 **Trạng thái nguồn:** `COMPLETED_VALIDATION` (21/10/2026), classifier-only. **Final Test V08: NOT_RUN. Historical Holdout: NOT_RUN. Fresh blind field test: NOT_RUN.** Đây không phải lần huấn luyện lại ViT backbone: sử dụng đúng **5 checkpoint DeiT-Tiny đã khóa từ `EXP-VIT-TRANSFER-5SEEDS-007`**, trích embedding và fit các classifier B/C.
 

@@ -1,4 +1,6 @@
 # Legacy Dataset Experiments
+> **Đồng bộ điều hướng 28/10/2026.** ARCHIVE — có giá trị truy xuất, không phải benchmark hiện tại; giữ checkpoint cho reproducibility. [Tổng quan](../../README.md) · [Danh mục](../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../docs/RESEARCH_PROTOCOL.md).
+
 
 Thư mục này lưu các experiment **cũ hơn benchmark V03/V04**, chủ yếu các lần train ban đầu trước khi protocol nhiều seed và dataset versioning được chuẩn hóa.
 

@@ -1,3 +1,5 @@
+> **Ghi chú lưu trữ (28/10/2026):** văn bản này chuyển nguyên nội dung phân tích lịch sử từ thư mục gốc vào docs/research_notes. Các kết luận bên dưới thuộc snapshot/experiment được nêu tại thời điểm viết, không tự thay thế các báo cáo V11 mới. [Tổng quan](../../README.md) · [Timeline mới](../../training_results/current_dataset/DENSENET121_TRANSFER_V09_V11_BACKFILL_2026_10.md).
+
 # Đề xuất so sánh scratch / fine-tune và kế hoạch đánh giá 006
 
 Ngày: 2026-10-05. Phần thiết kế thí nghiệm dưới đây **chỉ là đề xuất, chưa áp dụng thay đổi chế độ huấn luyện**.

@@ -1,4 +1,6 @@
 # DeiT-tiny fine-tune on Cashew_dataV05
+> **Đồng bộ điều hướng 28/10/2026.** TÀI LIỆU RECIPE DEIT-TINY — tham khảo experiment source và benchmark trước khi dùng. [Tổng quan](../../README.md) · [Danh mục](../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../docs/RESEARCH_PROTOCOL.md).
+
 
 ## Files
 

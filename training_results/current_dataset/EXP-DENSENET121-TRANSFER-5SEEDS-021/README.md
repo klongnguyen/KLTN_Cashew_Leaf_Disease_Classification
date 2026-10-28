@@ -1,4 +1,6 @@
 # EXP-DENSENET121-TRANSFER-5SEEDS-021 — V09 checkpoints / Holdout04 · 120 images, 4 supported classes
+> **Cập nhật điều hướng 28/10/2026.** EVALUATION-ONLY — không retrain, số Holdout thay đổi không đại diện cải thiện learning. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 > **Backfill of an experiment archive provided by the project owner.** This is a curated GitHub text/CSV extract; **not** an upload of the entire ANALYSIS ZIP, per-image predictions, PNG figures, original notebook, or binary checkpoints.
 

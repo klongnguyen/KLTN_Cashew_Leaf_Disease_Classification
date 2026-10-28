@@ -1,3 +1,5 @@
+> **Ghi chú lưu trữ (28/10/2026):** văn bản này chuyển nguyên nội dung phân tích lịch sử từ thư mục gốc vào docs/research_notes. Các kết luận bên dưới thuộc snapshot/experiment được nêu tại thời điểm viết, không tự thay thế các báo cáo V11 mới. [Tổng quan](../../README.md) · [Timeline mới](../../training_results/current_dataset/DENSENET121_TRANSFER_V09_V11_BACKFILL_2026_10.md).
+
 # Phân tích khoảng cách Train Accuracy và Validation Accuracy
 
 ## Phạm vi
@@ -13,14 +15,14 @@ chỉ được đánh giá trên train/validation; không thay đổi hoặc dù
 
 Nguồn được dùng:
 
-- [DenseNet121 config](training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-003/experiment_config.json)
-- [DenseNet121 summary](training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-003/README.md)
-- [DenseNet121 learning curves](training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-003/figures/training_curves_5seeds_panel.svg)
-- [DenseNet121 executed notebook](Notebook/DenseNet121/densenet121_5seed.ipynb)
-- [ViT config](training_results/current_dataset/EXP-VIT-SCRATCH-5SEEDS-003/experiment_config.json)
-- [ViT summary](training_results/current_dataset/EXP-VIT-SCRATCH-5SEEDS-003/README.md)
-- [ViT learning curves](training_results/current_dataset/EXP-VIT-SCRATCH-5SEEDS-003/figures/training_curves_5seeds_panel.svg)
-- [ViT executed notebook](Notebook/ViT/VIT_5seed.ipynb)
+- [DenseNet121 config](../../training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-003/experiment_config.json)
+- [DenseNet121 summary](../../training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-003/README.md)
+- [DenseNet121 learning curves](../../training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-003/figures/training_curves_5seeds_panel.svg)
+- [DenseNet121 executed notebook](../../Notebook/DenseNet121/densenet121_5seed.ipynb)
+- [ViT config](../../training_results/current_dataset/EXP-VIT-SCRATCH-5SEEDS-003/experiment_config.json)
+- [ViT summary](../../training_results/current_dataset/EXP-VIT-SCRATCH-5SEEDS-003/README.md)
+- [ViT learning curves](../../training_results/current_dataset/EXP-VIT-SCRATCH-5SEEDS-003/figures/training_curves_5seeds_panel.svg)
+- [ViT executed notebook](../../Notebook/ViT/VIT_5seed.ipynb)
 
 Các package kết quả 003 trong repository không chứa `history.csv` theo từng seed. Vì vậy,
 các số theo epoch bên dưới được khôi phục từ training log nằm trong output của notebook đã chạy;
@@ -53,7 +55,7 @@ validation tiếp tục tiến gần train. Train vẫn tăng hoặc giữ mức
 
 ## DenseNet121 003
 
-![DenseNet121 training curves](training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-003/figures/training_curves_5seeds_panel.svg)
+![DenseNet121 training curves](../../training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-003/figures/training_curves_5seeds_panel.svg)
 
 | Seed | Best epoch theo val_loss | Stop epoch | Gap tại best epoch | Gap epoch cuối | Gap trung bình 5 epoch cuối |
 |---:|---:|---:|---:|---:|---:|
@@ -78,7 +80,7 @@ huấn luyện sau best epoch.
 
 ## ViT 003
 
-![ViT training curves](training_results/current_dataset/EXP-VIT-SCRATCH-5SEEDS-003/figures/training_curves_5seeds_panel.svg)
+![ViT training curves](../../training_results/current_dataset/EXP-VIT-SCRATCH-5SEEDS-003/figures/training_curves_5seeds_panel.svg)
 
 | Seed | Best epoch theo val_loss | Stop epoch | Gap epoch cuối | Gap trung bình 5 epoch cuối |
 |---:|---:|---:|---:|---:|
