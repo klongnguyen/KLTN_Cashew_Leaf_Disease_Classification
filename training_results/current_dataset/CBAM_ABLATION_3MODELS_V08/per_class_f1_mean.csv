@@ -1,0 +1,16 @@
+model,class_name,baseline_mean_f1_percent,cbam_mean_f1_percent,delta_pp
+ResNet50,anthracnose,90.963,92.395,1.432
+ResNet50,healthy,94.210,95.243,1.033
+ResNet50,leaf_miner,92.326,94.087,1.761
+ResNet50,red_rust,98.505,98.777,0.272
+ResNet50,not_cashew_leaf,99.423,99.358,-0.065
+DenseNet121,anthracnose,94.329,91.854,-2.475
+DenseNet121,healthy,96.371,93.408,-2.963
+DenseNet121,leaf_miner,94.936,93.892,-1.044
+DenseNet121,red_rust,99.239,98.995,-0.244
+DenseNet121,not_cashew_leaf,99.777,99.585,-0.192
+DeiT-Tiny,anthracnose,91.828,91.681,-0.147
+DeiT-Tiny,healthy,94.404,93.780,-0.624
+DeiT-Tiny,leaf_miner,94.642,94.934,0.292
+DeiT-Tiny,red_rust,99.058,98.967,-0.091
+DeiT-Tiny,not_cashew_leaf,98.154,98.019,-0.135

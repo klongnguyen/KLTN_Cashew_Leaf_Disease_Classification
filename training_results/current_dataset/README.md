@@ -1,5 +1,7 @@
 # Current Dataset Experiments
 
+> **Mới 27/10/2026 — [CBAM ablation 3 backbone](./CBAM_ABLATION_3MODELS_V08/README.md):** V08 cùng manifest, 5 paired seeds cho mỗi ResNet50, DenseNet121, DeiT-Tiny. ResNet50 CBAM +0,839 pp Accuracy; DenseNet121 −1,273 pp; DeiT-Tiny −0,126 pp (Validation 1.430 ảnh). [Bảng CSV](./CBAM_ABLATION_3MODELS_V08/validation_5seeds.csv) và [biểu đồ](./CBAM_ABLATION_3MODELS_V08/validation_accuracy_f1.svg). **Research-only; Test/Holdout not run; WebApp unchanged.**
+
 > **ViT DeiT-Small Transfer EXP-011:** [hồ sơ cấu hình](./EXP-VIT-DEITSMALL-TRANSFER-5SEEDS-011/README.md) và notebook đã sẵn sàng; **chưa có kết quả huấn luyện**.
 
 > **Mới nhất ResNet50 trên V08 (20/10/2026):** [TRANSFER EXP-009 Partial Fine-tuning](./EXP-RESNET50-TRANSFER-5SEEDS-009/README.md) đạt Val **95,23 ± 0,35%**, Test **92,89 ± 0,51%**, historical Holdout **75,83 ± 2,80% Accuracy**, seed triển khai ứng viên **2026 theo min Val Loss**. Stage 2 **đã mở `conv5_block3_*` non-BN**, khác [TRANSFER EXP-008 frozen](./EXP-RESNET50-TRANSFER-5SEEDS-008/README.md). V08 manifest giữ nguyên; **Validation cao không chứng minh chất lượng thực địa**, và chỉ số Test/Holdout không cải thiện trung bình so với frozen EXP-008. [Progress](./EXPERIMENT_PROGRESS_2026_10.md).

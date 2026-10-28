@@ -1,5 +1,7 @@
 # Training Results
 
+> **CBAM ablation V08 — 27/10/2026:** [Báo cáo so sánh ResNet50 / DenseNet121 / DeiT-Tiny](./current_dataset/CBAM_ABLATION_3MODELS_V08/README.md), đủ 5 paired seeds mỗi backbone (30 lượt model-seed). Val Acc Δ +0,839 / −1,273 / −0,126 điểm %, tương ứng; **Test/Holdout chưa chạy trong ba ablation; deployment giữ nguyên**.
+
 > **DenseNet121 Transfer EXP-016 (22/10/2026):** [Final Test V08](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md) vừa hoàn thành trên 5 checkpoint **EXP-014** (không huấn luyện lại); Accuracy **95,13 ± 0,51%**, Macro F1 **94,76 ± 0,58%** trên **686 ảnh**. Deployment seed **123** từ Validation lock có **653/686=95,19%**, Disease→Healthy **2/412**; EXP-015 historical Holdout **80,83 ± 0,93%** không phải field blind. [Integrity/limitations](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-016/QUALITY_AND_PROTOCOL_REVIEW.md). Web vẫn dùng Scratch EXP-009.
 
 

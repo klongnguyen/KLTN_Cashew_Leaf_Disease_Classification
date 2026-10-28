@@ -1,0 +1,6 @@
+split,seed,accuracy,macro_f1
+holdout,42,0.7167,0.6899
+holdout,123,0.7000,0.6770
+holdout,2026,0.6750,0.6349
+holdout,3407,0.7333,0.7039
+holdout,7777,0.7417,0.7095

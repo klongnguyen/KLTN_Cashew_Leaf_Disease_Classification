@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="560" viewBox="0 0 1100 560">
+<rect width="1100" height="560" fill="#ffffff"/>
+<text x="550" y="36" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#172943">CBAM ablation — V08 validation, 5 seeds</text>
+<text x="550" y="59" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#4f6072">Mean across 5 seeds (%) • 1,430 validation images • same split</text>
+<text x="259" y="103" text-anchor="middle" font-family="Arial" font-size="18" fill="#172943">Accuracy (%)</text>
+<line x1="55" y1="430" x2="490" y2="430" stroke="#e2e7ed"/>
+<text x="47" y="435" text-anchor="end" font-family="Arial" font-size="12" fill="#607184">94</text>
+<line x1="55" y1="365" x2="490" y2="365" stroke="#e2e7ed"/>
+<text x="47" y="370" text-anchor="end" font-family="Arial" font-size="12" fill="#607184">95</text>
+<line x1="55" y1="300" x2="490" y2="300" stroke="#e2e7ed"/>
+<text x="47" y="305" text-anchor="end" font-family="Arial" font-size="12" fill="#607184">96</text>
+<line x1="55" y1="235" x2="490" y2="235" stroke="#e2e7ed"/>
+<text x="47" y="240" text-anchor="end" font-family="Arial" font-size="12" fill="#607184">97</text>
+<line x1="55" y1="170" x2="490" y2="170" stroke="#e2e7ed"/>
+<text x="47" y="175" text-anchor="end" font-family="Arial" font-size="12" fill="#607184">98</text>
+<rect x="96" y="346.36363679999994" width="31" height="83.63636320000005" fill="#356da6" rx="2"/>
+<text x="111" y="337.36363679999994" text-anchor="middle" font-family="Arial" font-size="11" fill="#172943">95.29</text>
+<rect x="131" y="291.81818220000054" width="31" height="138.18181779999946" fill="#cf6b32" rx="2"/>
+<text x="146" y="282.81818220000054" text-anchor="middle" font-family="Arial" font-size="11" fill="#172943">96.13</text>
+<text x="128" y="452" font-family="Arial" font-size="13" text-anchor="middle" fill="#172943">ResNet50</text>
+<rect x="228" y="229.99999979999998" width="31" height="200.00000020000002" fill="#356da6" rx="2"/>
+<text x="243" y="220.99999979999998" text-anchor="middle" font-family="Arial" font-size="11" fill="#172943">97.08</text>
+<rect x="263" y="312.7272743000009" width="31" height="117.27272569999911" fill="#cf6b32" rx="2"/>
+<text x="278" y="303.7272743000009" text-anchor="middle" font-family="Arial" font-size="11" fill="#172943">95.80</text>
+<text x="260" y="452" font-family="Arial" font-size="13" text-anchor="middle" fill="#172943">DenseNet121</text>
+<rect x="360" y="314.5454543000003" width="31" height="115.45454569999968" fill="#356da6" rx="2"/>
+<text x="375" y="305.5454543000003" text-anchor="middle" font-family="Arial" font-size="11" fill="#172943">95.78</text>
+<rect x="395" y="322.727273399999" width="31" height="107.27272660000104" fill="#cf6b32" rx="2"/>
+<text x="410" y="313.727273399999" text-anchor="middle" font-family="Arial" font-size="11" fill="#172943">95.65</text>
+<text x="392" y="452" font-family="Arial" font-size="13" text-anchor="middle" fill="#172943">DeiT-Tiny</text>
+<text x="794" y="103" text-anchor="middle" font-family="Arial" font-size="18" fill="#172943">Macro-F1 (%)</text>
+<line x1="590" y1="430" x2="1025" y2="430" stroke="#e2e7ed"/>
+<text x="582" y="435" text-anchor="end" font-family="Arial" font-size="12" fill="#607184">94</text>
+<line x1="590" y1="365" x2="1025" y2="365" stroke="#e2e7ed"/>
+<text x="582" y="370" text-anchor="end" font-family="Arial" font-size="12" fill="#607184">95</text>
+<line x1="590" y1="300" x2="1025" y2="300" stroke="#e2e7ed"/>
+<text x="582" y="305" text-anchor="end" font-family="Arial" font-size="12" fill="#607184">96</text>
+<line x1="590" y1="235" x2="1025" y2="235" stroke="#e2e7ed"/>
+<text x="582" y="240" text-anchor="end" font-family="Arial" font-size="12" fill="#607184">97</text>
+<line x1="590" y1="170" x2="1025" y2="170" stroke="#e2e7ed"/>
+<text x="582" y="175" text-anchor="end" font-family="Arial" font-size="12" fill="#607184">98</text>
+<rect x="631" y="359.46148389999973" width="31" height="70.53851610000024" fill="#356da6" rx="2"/>
+<text x="646" y="350.46148389999973" text-anchor="middle" font-family="Arial" font-size="11" fill="#172943">95.09</text>
+<rect x="666" y="301.82068509999976" width="31" height="128.1793149000002" fill="#cf6b32" rx="2"/>
+<text x="681" y="292.82068509999976" text-anchor="middle" font-family="Arial" font-size="11" fill="#172943">95.97</text>
+<text x="663" y="452" font-family="Arial" font-size="13" text-anchor="middle" fill="#172943">ResNet50</text>
+<rect x="763" y="239.52731109999922" width="31" height="190.47268890000078" fill="#356da6" rx="2"/>
+<text x="778" y="230.52731109999922" text-anchor="middle" font-family="Arial" font-size="11" fill="#172943">96.93</text>
+<rect x="798" y="329.45931689999964" width="31" height="100.54068310000034" fill="#cf6b32" rx="2"/>
+<text x="813" y="320.45931689999964" text-anchor="middle" font-family="Arial" font-size="11" fill="#172943">95.55</text>
+<text x="795" y="452" font-family="Arial" font-size="13" text-anchor="middle" fill="#172943">DenseNet121</text>
+<rect x="895" y="324.8867579999995" width="31" height="105.11324200000054" fill="#356da6" rx="2"/>
+<text x="910" y="315.8867579999995" text-anchor="middle" font-family="Arial" font-size="11" fill="#172943">95.62</text>
+<rect x="930" y="334.04342759999963" width="31" height="95.95657240000037" fill="#cf6b32" rx="2"/>
+<text x="945" y="325.04342759999963" text-anchor="middle" font-family="Arial" font-size="11" fill="#172943">95.48</text>
+<text x="927" y="452" font-family="Arial" font-size="13" text-anchor="middle" fill="#172943">DeiT-Tiny</text>
+<rect x="370" y="490" width="16" height="15" fill="#356da6"/><text x="393" y="502" font-family="Arial" font-size="14">No CBAM</text>
+<rect x="530" y="490" width="16" height="15" fill="#cf6b32"/><text x="553" y="502" font-family="Arial" font-size="14">With CBAM</text>
+<text x="550" y="534" text-anchor="middle" font-family="Arial" font-size="12" fill="#6a6f7b">Note: vertical axes begin at 94%, not 0%. Compare labels and deltas, not bar length alone.</text>
+</svg>
