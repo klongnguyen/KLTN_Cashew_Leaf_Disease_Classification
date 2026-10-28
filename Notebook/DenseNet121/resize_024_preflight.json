@@ -1,0 +1,24 @@
+{
+  "samples": 50,
+  "classes": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "not_cashew_leaf",
+    "red_rust"
+  ],
+  "mean_absolute_pixel_error_after_upsample_to_512": {
+    "224": 3.0937819439172745,
+    "256": 2.9366973733901975
+  },
+  "resize_and_restore_seconds": {
+    "224": 0.157,
+    "256": 0.154
+  },
+  "note": "Pixel reconstruction proxy only; this does not measure classification accuracy or establish an optimal input size.",
+  "dataset_archive": "CashewData_Split (11).zip",
+  "dataset_zip_sha256": "5d60295d26068f5d9f6427dc730a0f662c56c28ad9ee95f8b594faf546861f49",
+  "sampling": "First 10 sorted Validation filenames from each of five classes",
+  "method": "TensorFlow bilinear resize to 224 or 256, bilinear upsample to 512, mean absolute RGB difference from direct 512 resize",
+  "tensorflow_version": "2.21.0"
+}
