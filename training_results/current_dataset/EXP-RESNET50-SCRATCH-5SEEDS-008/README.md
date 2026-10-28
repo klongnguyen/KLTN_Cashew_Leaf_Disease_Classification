@@ -1,4 +1,6 @@
 # EXP-RESNET50-SCRATCH-5SEEDS-008 — V07 reporting revision / repackage
+> **Cập nhật điều hướng 28/10/2026.** SCRATCH LỊCH SỬ — không phải model WebApp Transfer EXP-014. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 > **Đính chính mức độ độc lập:** Source `EXP-RESNET50-SCRATCH-5SEEDS-008_ANALYSIS.zip` ghi ID 008 nhưng **cùng tập V07, cùng cấu hình trọng yếu và dữ liệu huấn luyện/Validation trùng byte với EXP-007 ở cả 5 seeds**. Do đó **chưa có bằng chứng một lần train cải thiện độc lập**; 008 nên được mô tả là **bản tái xuất/hoàn thiện notebook và visualization** cho đến khi đối chiếu được binary checkpoint từ FULL ZIP.
 

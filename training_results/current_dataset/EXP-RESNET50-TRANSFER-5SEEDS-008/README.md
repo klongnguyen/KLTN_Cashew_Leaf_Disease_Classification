@@ -1,4 +1,6 @@
 # EXP-RESNET50-TRANSFER-5SEEDS-008 — ImageNet Frozen Feature Extraction / Head Refinement
+> **Cập nhật điều hướng 28/10/2026.** TRANSFER V08 FROZEN — benchmark/Test/Holdout cũ; phân biệt EXP-009 partial fine-tuning. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 **Trạng thái:** Đã chạy 5 seeds, Validation V08, **Final Test V08 686 ảnh**, **historical Real Holdout 48 ảnh**. Nguồn: `EXP-RESNET50-TRANSFER-5SEEDS-008_ANALYSIS.zip` do chủ dự án cung cấp (kiểm tra 20/10/2026).
 
