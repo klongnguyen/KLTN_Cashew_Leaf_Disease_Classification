@@ -1,3 +1,5 @@
+> **Ghi chú lưu trữ (28/10/2026):** văn bản này chuyển nguyên nội dung phân tích lịch sử từ thư mục gốc vào docs/research_notes. Các kết luận bên dưới thuộc snapshot/experiment được nêu tại thời điểm viết, không tự thay thế các báo cáo V11 mới. [Tổng quan](../../README.md) · [Timeline mới](../../training_results/current_dataset/DENSENET121_TRANSFER_V09_V11_BACKFILL_2026_10.md).
+
 # Đánh giá kết quả phân loại mới nhất trên Cashew_dataV05
 
 Ngày rà soát: 2026-10-05. Nguồn: [thư mục kết quả trên Google Drive](https://drive.google.com/drive/folders/1DGKTnzsvVc60RIEn5lQgflR3s-loM24G). Báo cáo này đánh giá ba lần chạy scratch mới nhất trong thư mục: [DenseNet121-005](https://drive.google.com/drive/folders/1L7eSB4LGdn5-BuP8TJ9na2hR1sPKgzV1), [ResNet50-005](https://drive.google.com/drive/folders/13XL5dy2-q7Wqf4O1TNPeyJuHBYAOsmcP) và [ViT-004](https://drive.google.com/drive/folders/19yy8LGAT0HY2C27fjZbA1JlgIHgS0NFf). Đây là kết quả **Validation tại checkpoint có `val_loss` thấp nhất**, chưa phải kết quả Test.

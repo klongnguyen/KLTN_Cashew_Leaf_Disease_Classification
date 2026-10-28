@@ -1,3 +1,5 @@
+> **Ghi chú lưu trữ (28/10/2026):** văn bản này chuyển nguyên nội dung phân tích lịch sử từ thư mục gốc vào docs/research_notes. Các kết luận bên dưới thuộc snapshot/experiment được nêu tại thời điểm viết, không tự thay thế các báo cáo V11 mới. [Tổng quan](../../README.md) · [Timeline mới](../../training_results/current_dataset/DENSENET121_TRANSFER_V09_V11_BACKFILL_2026_10.md).
+
 # Phân tích DenseNet121 scratch 006 và kế hoạch lần train tiếp theo
 
 Ngày: 07/10/2026. Nguồn chính: ZIP người dùng cung cấp, không dùng kết luận trong README làm bằng chứng thay cho log. Các hướng dẫn trong tài liệu được xem là nội dung tham khảo, không phải yêu cầu thực thi.
@@ -79,7 +81,7 @@ Trên Validation, trung bình recall healthy chỉ **76,98%**, so red_rust **98,
 
 Có **73 ảnh khác nhau sai ở ít nhất 4/5 seed**, trong đó **36 ảnh sai cả 5/5**. Trong 73 ảnh: healthy 28, leaf_miner 18, anthracnose 15, not_cashew_leaf 12. Hai ảnh anthracnose_129.jpg và anthracnose_110.jpg bị cả năm seed dự đoán red_rust với confidence rất cao. Đây là danh sách ưu tiên rà ảnh, nhãn, triệu chứng chồng lấp, nền/ánh sáng và nguồn chụp; không phải bằng chứng nhãn sai. Không đổi nhãn theo đa số mô hình.
 
-Danh sách cụ thể: [validation_persistent_errors.csv](training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-006/diagnostics/validation_persistent_errors.csv). ZIP không chứa ảnh gốc, hash ảnh, group ID cây/lá/buổi chụp hoặc probabilities đầy đủ; chưa thể xác nhận label noise, gần trùng ảnh hay domain shift.
+Danh sách cụ thể: [validation_persistent_errors.csv](../../training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-006/diagnostics/validation_persistent_errors.csv). ZIP không chứa ảnh gốc, hash ảnh, group ID cây/lá/buổi chụp hoặc probabilities đầy đủ; chưa thể xác nhận label noise, gần trùng ảnh hay domain shift.
 
 **6. Những hướng chưa có bằng chứng là nguyên nhân chính**
 
@@ -132,10 +134,10 @@ Tiêu chí chốt trước pilot: giảm số lần tụt ≥10 pp và biến đ
 
 Đầu ra kèm theo:
 
-- [Đồ thị raw Accuracy / Loss / LR](training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-006/diagnostics/diagnostic_curves.png), loss dùng trục log và đánh dấu spike.
-- [Bảng chẩn đoán từng seed](training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-006/diagnostics/seed_diagnostics.csv).
-- [73 ảnh Validation cần rà](training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-006/diagnostics/validation_persistent_errors.csv).
-- [Script tái tạo đồ thị và kiểm tra prediction](training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-006/diagnostics/analyze_006.py).
-- [Snapshot source local đã đọc](training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-006/diagnostics/reviewed_notebook_training_source.txt).
+- [Đồ thị raw Accuracy / Loss / LR](../../training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-006/diagnostics/diagnostic_curves.png), loss dùng trục log và đánh dấu spike.
+- [Bảng chẩn đoán từng seed](../../training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-006/diagnostics/seed_diagnostics.csv).
+- [73 ảnh Validation cần rà](../../training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-006/diagnostics/validation_persistent_errors.csv).
+- [Script tái tạo đồ thị và kiểm tra prediction](../../training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-006/diagnostics/analyze_006.py).
+- [Snapshot source local đã đọc](../../training_results/current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-006/diagnostics/reviewed_notebook_training_source.txt).
 
 Chưa train mô hình, chưa chạy BN calibration, chưa xem ảnh gốc. Phân biệt rõ: spike/gap/regression/callback là quan sát đã kiểm chứng; BatchNorm mismatch, optimizer update quá mạnh, overfitting và sai lệch dữ liệu là các cơ chế cần các phép thử trên để định lượng đóng góp.
