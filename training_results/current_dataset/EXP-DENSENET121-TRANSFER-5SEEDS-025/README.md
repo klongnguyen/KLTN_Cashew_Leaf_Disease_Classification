@@ -1,4 +1,6 @@
 # EXP-DENSENET121-TRANSFER-5SEEDS-025 — V11 · Final Test 685 images; Real Holdout05 120 images (4 true classes)
+> **Cập nhật điều hướng 28/10/2026.** EVALUATION-ONLY V11 — sử dụng checkpoint 024, Holdout05 lịch sử thiếu Not Cashew Leaf. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 > **Curated backfill** from the user-provided experiment ANALYSIS archive. This is **not the complete ZIP**: figures, per-image predictions, checkpoint binaries, and original notebook have not been uploaded by this commit.
 

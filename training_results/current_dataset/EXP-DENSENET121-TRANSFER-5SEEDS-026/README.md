@@ -1,4 +1,6 @@
 # EXP-DENSENET121-TRANSFER-5SEEDS-026 — V11 · 4,916 Train / 1,447 Val / 685 Test; Holdout05 120
+> **Cập nhật điều hướng 28/10/2026.** TRAIN V11 224px không brightness — Test/Holdout hồi cứu; chưa promote WebApp. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 > **Curated backfill** from the user-provided experiment ANALYSIS archive. This is **not the complete ZIP**: figures, per-image predictions, checkpoint binaries, and original notebook have not been uploaded by this commit.
 

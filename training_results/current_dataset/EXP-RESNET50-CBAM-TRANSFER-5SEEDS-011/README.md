@@ -1,4 +1,6 @@
 # EXP-RESNET50-CBAM-TRANSFER-5SEEDS-011
+> **Cập nhật điều hướng 28/10/2026.** VALIDATION-ONLY / CBAM — Test/Holdout chưa chạy. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 > **Research-only • V08 Validation • 5 paired seeds • Final Test/Holdout: NOT_RUN**
 

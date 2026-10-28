@@ -1,4 +1,6 @@
 # EXP-RESNET50-SCRATCH-5SEEDS-002
+> **Cập nhật điều hướng 28/10/2026.** BASELINE SCRATCH LỊCH SỬ — không phải model WebApp Transfer EXP-014. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 > ✅ **Official baseline — Current Dataset (`Cashew_dataV03`)**  
 > ResNet50 được huấn luyện **from scratch** trên 5 random seeds với cùng một configuration. Kết quả được báo cáo theo **Mean ± sample Standard Deviation (ddof=1)**.
