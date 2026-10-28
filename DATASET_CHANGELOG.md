@@ -1,5 +1,8 @@
 # Dataset Changelog
 
+> **Cập nhật V10/V11 và Holdout04/05 (28/10/2026):** V10 **Train 4.920 / Val 1.445 / Test 686** dùng cho EXP-022/023; bổ sung 6 ảnh Healthy từng có trong Holdout vào Train, nên ảnh đó không còn độc lập. V11 **Train 4.916 / Val 1.447 / Test 685** dùng cho EXP-024/025/026; sau rà soát P0, có sửa/xóa/đổi nhãn và chỉnh nội dung một số ảnh, bao gồm **Test V11 khác V10**. Dataset V11 SHA256 `5d60295d26068f5d9f6427dc730a0f662c56c28ad9ee95f8b594faf546861f49`. Holdout04=120 ảnh; Holdout05=120 ảnh, nhưng có **6 ảnh thay đổi nội dung** so Holdout04, không có true `not_cashew_leaf`. Chỉ được đánh giá hồi cứu trên dữ liệu đã tiếp xúc; [bảng phiên bản thí nghiệm](./training_results/current_dataset/DENSENET121_TRANSFER_V09_V11_BACKFILL_2026_10.md).
+
+
 > **V09 — Cashew_dataV09_more_real, EXP-018/019 (27/10/2026):** Thay thế snapshot đang thử nghiệm V08 bằng **Train 4.914 / Val 1.445 / Test 686 = 7.045 ảnh** (so V08 tăng **124 Train + 15 Val**, giữ Test 686 ảnh). ZIP SHA256 1eb8c46921de19ab53ef8d50e05d8785f94dcb45a5511dcf32e2e7e01516c6f4. EXP-018 huấn luyện DenseNet121 ImageNet 5-seed trên V09; **EXP-019 chỉ đánh giá** 5 checkpoint đã khóa, [Test + Holdout report](./training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-019/README.md). **Holdout 02 tách riêng: 127 ảnh**, Anthracnose 46 / Healthy 20 / Leaf Miner 36 / Red Rust 25 / Not Cashew 0; Holdout ZIP SHA256 47a5722660e2c8dc7cc04c9ff720e1f889c2481ec99112b41bc0606958a7fdd7. Audit gốc báo cáo 0 exact overlap với các split; gần trùng/cùng lá/cây/buổi vẫn cần xác minh. **Test không dùng để sửa dataset hoặc chọn seed.** Các đoạn phía dưới mô tả mốc lịch sử V08/V07, không phải phủ định sự tồn tại của V09 mới.
 
 
