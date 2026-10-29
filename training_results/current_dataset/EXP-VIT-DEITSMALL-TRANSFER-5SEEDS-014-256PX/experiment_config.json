@@ -1,0 +1,21 @@
+{
+  "experiment_id": "EXP-VIT-DEITSMALL-TRANSFER-5SEEDS-014-256PX",
+  "status": "NOT_RUN_READY_FOR_GPU",
+  "dataset_version": "Cashew_dataV11",
+  "dataset_zip_sha256": "5d60295d26068f5d9f6427dc730a0f662c56c28ad9ee95f8b594faf546861f49",
+  "manifest_sha256": "91d8279239eaad2007b652f1859667359d0cf01f94af917dd27b0a934a7b7e75",
+  "class_names": ["anthracnose", "healthy", "leaf_miner", "red_rust", "not_cashew_leaf"],
+  "split_counts": {"train": 4916, "val": 1447, "test": 685},
+  "seeds": [42, 123, 2026, 3407, 7777],
+  "image_size": 256,
+  "patch_size": 16,
+  "batch_size": 16,
+  "pretrained_source": "facebook/deit-small-distilled-patch16-224",
+  "framework": "PyTorch + Hugging Face Transformers; dual-head distilled protocol revision",
+  "optimizer": "AdamW",
+  "weight_decay": 0.0001,
+  "stage1": {"max_epochs": 30, "learning_rate": 0.0001, "patience": 7},
+  "stage2": {"max_epochs": 30, "learning_rate": 0.00001, "minimum_learning_rate": 0.000001, "warmup_epochs": 3, "patience": 7, "clipnorm": 1.0},
+  "test_inference": false,
+  "holdout_inference": false
+}
