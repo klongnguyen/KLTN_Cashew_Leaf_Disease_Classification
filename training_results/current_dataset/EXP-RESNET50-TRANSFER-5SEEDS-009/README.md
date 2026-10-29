@@ -1,4 +1,6 @@
 # EXP-RESNET50-TRANSFER-5SEEDS-009 — ImageNet ResNet50 Partial Fine-tuning, V08
+> **Cập nhật điều hướng 28/10/2026.** TRANSFER V08 PARTIAL FINE-TUNING — seed chọn bằng Validation, Test/Holdout đã tiếp xúc. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 > **Trạng thái:** 5-seed Training/Validation **COMPLETED**; Final Test V08 **COMPLETED**; Real Holdout lịch sử 48 ảnh **COMPLETED**; **fresh independent real-world test NOT RUN**. Nguồn: gói `EXP-RESNET50-TRANSFER-5SEEDS-009_ANALYSIS.zip` do tác giả cung cấp và kiểm tra ngày 20/10/2026. **Không nhầm với ResNet50 Scratch-009 (nếu có) hoặc ResNet50-TRANSFER-008 frozen-only.**
 

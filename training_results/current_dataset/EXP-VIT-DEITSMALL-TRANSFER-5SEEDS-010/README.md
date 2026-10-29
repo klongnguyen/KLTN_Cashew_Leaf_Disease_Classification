@@ -1,4 +1,6 @@
 # EXP-VIT-DEITSMALL-TRANSFER-5SEEDS-010 — Stage A
+> **Cập nhật điều hướng 28/10/2026.** VALIDATION-ONLY DEIT-SMALL — không tự suy ra Test/triển khai từ Val. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 **Status (2026-10-22): Gate 0 and Gate 1 technical checks passed locally; Gate 2 five-seed training has not run.** The local TensorFlow 2.21.0 runtime on native Windows reports no GPU. Consequently there are no new training checkpoints, Validation metrics, confusion matrices, predictions, scientific outcome, or PROMOTED/NOT PROMOTED decision yet. `gate_status.json` is the machine-readable state. The Colab notebook is ready to execute the frozen protocol on a GPU; it stops before Gate 2 if no GPU is visible.
 

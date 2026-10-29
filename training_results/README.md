@@ -1,179 +1,24 @@
-# Training Results
+# Training Results — Kho dữ liệu thực nghiệm
 
-> **DenseNet121 Transfer EXP-016 (22/10/2026):** [Final Test V08](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-016/README.md) vừa hoàn thành trên 5 checkpoint **EXP-014** (không huấn luyện lại); Accuracy **95,13 ± 0,51%**, Macro F1 **94,76 ± 0,58%** trên **686 ảnh**. Deployment seed **123** từ Validation lock có **653/686=95,19%**, Disease→Healthy **2/412**; EXP-015 historical Holdout **80,83 ± 0,93%** không phải field blind. [Integrity/limitations](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-016/QUALITY_AND_PROTOCOL_REVIEW.md). Web vẫn dùng Scratch EXP-009.
+![V08 Test và Holdout](../docs/assets/benchmark_v08_test_holdout.svg)
 
+Mỗi thư mục thí nghiệm có **ID, dataset snapshot, config và cách đánh giá riêng**. Không gộp tất cả thành bảng xếp hạng; đặc biệt giữ ranh giới V08 với V09–V11, giữa Test và Historical Holdout.
 
-> **Mới 21/10/2026 — ViT Transfer + XGBoost EXP-008:** [README, Validation results, selection lock](./current_dataset/EXP-VIT-TRANSFER-XGBOOST-008/README.md). ViT/DeiT-Tiny **được kế thừa từ EXP-007**, không retrain backbone; A Softmax Val Acc **94,41 ± 0,73%**, B Logistic **96,56 ± 0,17%**, C XGBoost **95,85 ± 0,20%** (5 seeds, V08). Với **deployment seed 123**, D2H trên 900 ảnh bệnh **A=18, B=21, C=23**, vì vậy selected **Softmax A**, không phải XGBoost. **Validation complete; V08 Final Test, historical Holdout, fresh field holdout đều NOT_RUN trong 008.** [Audit](./current_dataset/EXP-VIT-TRANSFER-XGBOOST-008/METHOD_AND_LEAKAGE_REVIEW.md).
+| Khu vực | Nội dung | Xem |
+|---|---|---|
+| current_dataset | EXP classification Scratch/Transfer/CBAM/ViT-XGBoost, các snapshot V04–V11 | [Current dataset](current_dataset/README.md) |
+| dataset_quality_study | Kiểm tra nhãn, real-prefix, ảnh trùng, domain shift | [Dataset quality](dataset_quality_study/README.md) |
+| archive_legacy_dataset | Checkpoint / báo cáo gốc lịch sử | [Legacy archive](archive_legacy_dataset/README.md) |
+| failure | YOLO26 Take chưa chọn final | [Detection archive](../failure/YOLO26/README.md) |
 
+## Mốc đánh giá quan trọng
+- **V08 DenseNet121 Transfer 014 + đánh giá 015/016:** 5-seed Test Accuracy **95,13 ± 0,51%**; Historical Holdout 48 ảnh **80,83 ± 0,93%**.
+- **V11 DenseNet121 024+025:** Test **96,09 ± 0,42%**, Holdout05 **80,00 ± 1,56%**.
+- **V11 DenseNet121 026:** Test **96,23 ± 0,56%**, Holdout05 **74,83 ± 2,24%**.
+- **CBAM V08:** ba ablation mới chỉ Validation; không có Test/Holdout.
 
-> **ResNet50 Transfer EXP-009 (20/10/2026)** — [README kết quả](./current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-009/README.md), [method/leakage audit](./current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-009/METHOD_AND_LEAKAGE_REVIEW.md). **ImageNet pretrained + mở conv5_block3 non-BN Stage 2** (4.459.520 trainable backbone params). V08: Val **95,23 ± 0,35%**; Final Test **92,89 ± 0,51%**; historical Real Holdout **75,83 ± 2,80% Accuracy** (4 true classes). **Seed 2026 được chọn theo Val Loss trước khi xem Test/Holdout**, khác EXP-008 frozen (Val **95,09%**, Test **93,24%**, holdout **77,08%**). No updated web deployment, no new blind holdout.
+![DenseNet121 V11](../docs/assets/v11_retrospective.svg)
 
+Không dùng số Test/Holdout đã tiếp xúc để chọn seed/hyperparameter. Đối với EXP chỉ backfill README/CSV từ ZIP ANALYSIS ngoài Git, không quảng bá là đã có đầy đủ checkpoint/figure/notebook. Không xóa artifact nguồn chỉ vì cũ: cấu trúc phải hỗ trợ tái lập và truy xuất lỗi.
 
-> **Mới 20/10/2026 — [ResNet50 ImageNet EXP-008](./current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-008/README.md)** trên V08: 5 seeds Val **95.09 ± 0.22% Accuracy / 94.91 ± 0.23% Macro F1**; **Final Test xong 93.24 ± 0.24% Accuracy / 92.72 ± 0.25% F1**; **historical Real Holdout 48 ảnh 77.08 ± 2.55% Accuracy / 72.97 ± 4.07% F1**. **Backbone vẫn frozen cả hai stage**, không nhầm với Scratch-008 V07. Deployment checkpoint candidate **seed 3407 chọn theo Validation Loss**; **không thay mô hình web**. [Audit kỹ thuật](./current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-008/ANALYSIS_AND_PROTOCOL_AUDIT.md).
-
-
-> **ResNet50 Scratch 006–008 (19/10/2026):** [006 V05](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-006/README.md) Val Acc **86.46 ± 2.27%**, Macro F1 **86.12 ± 2.56%**; [007 V07](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-007/README.md) **89.20 ± 2.04%**, F1 **88.61 ± 2.19%**; [008 V07](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-008/README.md) có metrics/predictions/logs **trùng 007** (chưa có bằng chứng train mới). **Chưa có Test riêng 006–008**; là ResNet50 **Scratch**, không phải Transfer. [Audit 006–008](./current_dataset/RESNET50_SCRATCH_006_008_AUDIT_2026_10.md).
-
-
-> **Lịch sử EXP-011/012 (trước EXP-014/015):** [Tiến độ tổng hợp](./current_dataset/EXPERIMENT_PROGRESS_2026_10.md) · [EXP-011 V07](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-011/README.md) · [EXP-012 V08](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-012/README.md). EXP-012 mới hoàn tất **Validation 5 seeds (93.99 ± 1.05% Accuracy; 93.81 ± 1.13% Macro F1)**, **Test pending**; seed 42 đạt **22/35** ảnh `real_`. EXP-011 có metrics trùng EXP-009.
-
-Thư mục này quản lý kết quả huấn luyện theo **phiên bản dataset** để tránh so sánh sai giữa các experiment sử dụng dữ liệu khác nhau.
-
-
-## Dataset quality audit — kiểm tra Kaggle base / Split (7)
-
-[Kế hoạch kiểm chứng nguyên nhân: Real review → leakage → Real Val → ablation → Holdout](./dataset_quality_study/INVESTIGATION_PLAN.md)
-
-Báo cáo độc lập: [IMPROVED001 — DenseNet121 Scratch, 1 seed, 5 lớp](./dataset_quality_study/EXP-DENSENET121-SCRATCH-IMPROVED-001/ANALYSIS.md). Dataset 6.907 ảnh (khác V05 6.911 ảnh); Real Test 67,86% (19/28), Non-real Test 94,08% (620/659). Đã phát hiện **39 cặp pHash nghi gần trùng khác split**, chưa được xác nhận bằng thủ công. **Không đưa vào benchmark chính thức hoặc so trực tiếp với BASE001 (4 lớp).**
-
----
-
-Báo cáo WP3: [IMPROVED002 — Real Validation 35 ảnh, DenseNet121 Scratch](./dataset_quality_study/EXP-DENSENET121-SCRATCH-IMPROVED-002/ANALYSIS.md). Real Val **65,71% (23/35)**; Test V8 **91,11% (625/686)**. Đây là nhánh dataset quality, không nhập vào V05 benchmark.
-
----
-
-## Current Web Deployment — EXP-DENSENET121-TRANSFER-5SEEDS-014
-
-- **Model:** DenseNet121 Transfer Learning (ImageNet 2-stage partial fine-tuning)
-- **Deployment Checkpoint:** Seed 123 (lựa chọn theo Validation loss thấp nhất)
-- **Dataset:** Cashew_dataV08_real_val (6,906 images: Train 4.790 / Val 1.430 / Test 686)
-- **Validation Results:**
-  - Accuracy: **97.10 ± 0.20%** (Best Seed 123: **97.27%**)
-  - Macro F1: **96.96 ± 0.21%** (Best Seed 123: **97.14%**)
-  - Val Loss: **0.0925** (thấp nhất trong 5 seeds)
-- **Evaluation Results:**
-  - Final Test V08 (EXP-016): **95.13 ± 0.51%** (Seed 123: **95.19%**, 653/686 ảnh)
-  - Real Holdout 48 ảnh (EXP-015): **80.83 ± 0.93%** (Seed 123: 38/48 ảnh)
-- **Deployment:** Seed 123 được đóng gói trọn vẹn trong model_package (deployment_model.keras, embeddings, feature extractor, label map, metadata) và triển khai chính thức vào [Web Application](../Application/README.md).
-- ➡️ [Báo cáo chi tiết EXP-014](./current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-014/README.md) · [Baseline EXP-009 Scratch cũ](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-009_FULL/EXP-DENSENET121-SCRATCH-5SEEDS-009/README.md)
-- ➡️ [Kiểm định dữ liệu toàn diện EXP-DATASET-AUDIT-001](./current_dataset/EXP-DENSENET121-DATASET-AUDIT-001/)
-
----
-
-Ba scratch baseline mới nhất đã hoàn tất 5-seed Training + Validation:
-
-| Model | Experiment | Validation Accuracy | Validation Macro F1 | Status |
-|---|---|---:|---:|---|
-| DenseNet121 | [EXP-005](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-005/) | **94.58 ± 0.95%** | **94.43 ± 0.93%** | Final Test complete |
-| ResNet50 | [EXP-005](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-005/) | **92.43 ± 1.94%** | **92.30 ± 1.98%** | Final Test complete |
-| Compact ViT | [EXP-005](./current_dataset/EXP-VIT-SCRATCH-5SEEDS-005/) | **88.33 ± 1.44%** | **87.81 ± 1.52%** | Final Test complete |
-
-Detailed analysis: [current_dataset/V05_VALIDATION_ANALYSIS.md](./current_dataset/V05_VALIDATION_ANALYSIS.md).
-
-### Final V05 locked-Test benchmark
-
-| Model | Test Accuracy | Macro Precision | Macro Recall | Macro F1 | Balanced Accuracy | Params |
-|---|---:|---:|---:|---:|---:|---:|
-| **DenseNet121** | **91.97 ± 1.11%** | **91.48 ± 1.13%** | **91.42 ± 1.15%** | **91.41 ± 1.13%** | **91.42 ± 1.15%** | 7.57M |
-| **ResNet50** | 89.78 ± 2.50% | 89.72 ± 2.08% | 89.37 ± 2.56% | 89.36 ± 2.47% | 89.37 ± 2.56% | 24.64M |
-| **Compact ViT** | 85.04 ± 0.44% | 84.35 ± 0.30% | 84.12 ± 0.35% | 83.93 ± 0.37% | 84.12 ± 0.35% | **0.35M** |
-
-
-
-V05 has the same counts as V04. The ResNet notebook-recorded split fingerprints differ for Train/Validation but match for Test, so V05 is treated as a new dataset snapshot while preserving the locked Test reference.
-
-**Status:** V05 locked Test is complete for all three models and the final aggregate metrics are now imported into the repository.
-
-
-## Latest completed locked-Test benchmark — Cashew_dataV04
-
-Dataset hiện tại có **6,911 ảnh / 5 lớp**:
-
-```text
-Train      4,822
-Validation 1,402
-Test         687
-```
-
-| Experiment | Model | Seeds | Test Accuracy | Macro F1 | Params | Status |
-|---|---|---:|---:|---:|---:|---|
-| [`EXP-DENSENET121-SCRATCH-5SEEDS-003`](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-003/) | DenseNet121 Scratch | 5 | **91.82 ± 0.86%** | **91.37 ± 0.79%** | 7.57M | ✅ V04 baseline |
-| [`EXP-RESNET50-SCRATCH-5SEEDS-003`](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-003/) | ResNet50 Scratch | 5 | **90.63 ± 2.11%** | **90.17 ± 2.04%** | 24.64M | ✅ V04 baseline |
-| [`EXP-VIT-SCRATCH-5SEEDS-003`](./current_dataset/EXP-VIT-SCRATCH-5SEEDS-003/) | Compact ViT Scratch | 5 | **85.30 ± 1.68%** | **84.41 ± 1.71%** | **0.35M** | ✅ V04 baseline |
-
-➡️ Chi tiết dataset, class-level metrics và figures: [`current_dataset/README.md`](./current_dataset/README.md)
-
-## Previous V04 validation-only reruns
-
-### DenseNet121 EXP-004
-
-[`EXP-DENSENET121-SCRATCH-5SEEDS-004`](./current_dataset/EXP-DENSENET121-SCRATCH-5SEEDS-004/) đã hoàn tất 5-seed training/validation trên V04:
-
-- Validation Accuracy: **92.13 ± 1.31%**
-- Validation Macro-F1: **91.90 ± 1.37%**
-- Per-class F1 thấp nhất: `anthracnose` — **86.47 ± 2.66%**
-- Highest validation Macro-F1 seed: `42` — **93.11%**
-- Final locked Test: **chưa chạy**
-- Source archive tự ghi ID `...-003`; repository lưu thành `...-004` để không ghi đè official EXP-003.
-
-So với DenseNet121 official EXP-003, rerun mới tăng Validation Accuracy **+2.26 pp** và Macro-F1 **+2.37 pp**, đồng thời giảm seed SD. Tuy nhiên môi trường chạy khác nên đây được xem là rerun result, chưa phải bằng chứng về model improvement.
-
-### ResNet50 EXP-004
-
-[`EXP-RESNET50-SCRATCH-5SEEDS-004`](./current_dataset/EXP-RESNET50-SCRATCH-5SEEDS-004/) đã hoàn tất 5-seed training/validation trên Colab NVIDIA L4:
-
-- Validation Accuracy: **90.23 ± 1.45%**
-- Validation Macro-F1: **90.03 ± 1.44%**
-- Per-class F1 thấp nhất: `anthracnose` — **83.46 ± 2.87%**
-- Highest validation Macro-F1 seed: `7777` — **91.59%**
-- Final locked Test: **chưa chạy**
-
-### Compact ViT EXP-004
-
-[`EXP-VIT-SCRATCH-5SEEDS-004`](./current_dataset/EXP-VIT-SCRATCH-5SEEDS-004/) đã hoàn tất 5-seed training/validation trên single-GPU `OneDeviceStrategy`:
-
-- Validation Accuracy: **87.13 ± 0.62%**
-- Validation Macro-F1: **86.68 ± 0.70%**
-- Per-class F1 thấp nhất: `anthracnose` — **80.28 ± 1.68%**
-- Highest validation Macro-F1 seed: `42` — **87.73%**
-- Final locked Test: **chưa chạy**
-- Source archive tự ghi ID `...-003`; repository lưu thành `...-004` để không ghi đè official EXP-003.
-
-So với ViT official EXP-003, rerun mới tăng Validation Accuracy **+1.85 pp** và Macro-F1 **+2.00 pp**, đồng thời giảm seed SD gần một nửa. Cả 5 seed đều cải thiện trên Validation, nhưng do execution strategy khác nên chưa xem đây là bằng chứng một thay đổi kiến trúc gây ra cải thiện.
-
-Cả ba EXP-004 hiện có status **Validation complete — Test pending** và chưa thay thế các official EXP-003 trong bảng Test benchmark.
-
-## Quy tắc benchmark
-
-- Mỗi dataset version phải có fixed Train/Validation/Test split.
-- Baseline hiện tại dùng 5 seeds: `42, 123, 2026, 3407, 7777`.
-- Validation dùng cho model selection/tuning.
-- Test không dùng để tuning hoặc chọn seed.
-- Báo cáo `Mean ± sample Standard Deviation (ddof=1)`.
-- Không ghi đè experiment cũ; thay dataset/config quan trọng hoặc ID trùng phải tạo ID mới.
-- Chỉ so sánh model trực tiếp khi chúng dùng **cùng dataset version và cùng evaluation protocol**.
-- Validation-only experiment không được ghi vào official Test benchmark cho tới khi Test khóa được chạy trên cấu hình đã freeze.
-
-## Dataset history
-
-| Version | Total | Train | Val | Test | Status |
-|---|---:|---:|---:|---:|---|
-| `Cashew_dataV05` | **6,911** | 4,822 | 1,402 | 687 | **Current final benchmark** |
-| `Cashew_dataV04` | **6,911** | 4,822 | 1,402 | 687 | Latest completed Test benchmark |
-| `Cashew_dataV03` | 7,213 | 5,049 | 1,433 | 731 | Historical |
-
-V04 được tạo sau khi tiếp tục loại ảnh mờ/chất lượng thấp và xử lý các trường hợp có nguy cơ data leakage.
-
-Xem [`../DATASET_CHANGELOG.md`](../DATASET_CHANGELOG.md).
-
-## Thư mục
-
-```text
-training_results/
-├── current_dataset/            # V04 benchmark + validation reruns + historical V03 paths kept for compatibility
-└── archive_legacy_dataset/     # experiments cũ hơn V03
-```
-
-## YOLO detection
-
-YOLO26 chưa được đưa vào `current_dataset/` vì detector cuối chưa khóa. Toàn bộ Take 01–06 được lưu tại [`../failure/YOLO26/README.md`](../failure/YOLO26/README.md).
-
-## Dung lượng
-
-GitHub ưu tiên lưu:
-- config;
-- aggregate CSV/JSON;
-- README;
-- panel figures nhẹ.
-
-Checkpoint `.weights.h5`, model `.keras`/`.pt` và FULL ZIP không commit trực tiếp; lưu ở external archive/Drive để phục vụ tái sử dụng.
+[Danh mục toàn bộ experiment](../docs/EXPERIMENT_INDEX.md) · [Protocol](../docs/RESEARCH_PROTOCOL.md) · [Trang chính](../README.md)

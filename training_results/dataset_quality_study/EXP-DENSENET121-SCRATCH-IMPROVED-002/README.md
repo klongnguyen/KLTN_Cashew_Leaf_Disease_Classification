@@ -1,4 +1,6 @@
 # IMPROVED002 — DenseNet121 Scratch trên CashewData_Split (8)
+> **Đồng bộ điều hướng 28/10/2026.** NHÁNH KIỂM ĐỊNH DỮ LIỆU — kết quả khác benchmark chính thức từng V08–V11. [Tổng quan](../../../README.md) · [Danh mục](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 WP3: **Real Validation 35 ảnh**, chuyển từ V7 Train; Test V8 có 686 ảnh. Không nhập vào official benchmark V05.
 

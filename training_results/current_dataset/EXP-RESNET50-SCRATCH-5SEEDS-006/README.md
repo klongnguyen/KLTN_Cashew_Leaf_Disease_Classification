@@ -1,4 +1,6 @@
 # EXP-RESNET50-SCRATCH-5SEEDS-006 — ResNet50 Scratch, V05
+> **Cập nhật điều hướng 28/10/2026.** BASELINE SCRATCH LỊCH SỬ — không phải model WebApp Transfer EXP-014. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+
 
 > **Nguồn:** `EXP-RESNET50-SCRATCH-5SEEDS-006_ANALYSIS (1).zip` do chủ dự án cung cấp; tổng hợp 19/10/2026. `README.md` trong source ghi **Status: INCOMPLETE** vì chưa chạy Final Test. Đây **không** phải thí nghiệm Transfer Learning `EXP-RESNET50-TRANSFER-5SEEDS-006`.
 

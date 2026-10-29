@@ -1,0 +1,6 @@
+split,seed,accuracy,macro_f1
+validation,42,0.9647,0.9630
+validation,123,0.9716,0.9707
+validation,2026,0.9668,0.9650
+validation,3407,0.9633,0.9616
+validation,7777,0.9716,0.9707
