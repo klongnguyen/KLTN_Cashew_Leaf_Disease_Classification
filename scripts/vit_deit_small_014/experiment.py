@@ -246,7 +246,10 @@ def new_model(snapshot, seed):
         output_loading_info=True, use_safetensors=(snapshot / "model.safetensors").is_file())
     if loading.get("missing_keys") or loading.get("unexpected_keys"):
         raise RuntimeError(f"Unexpected pretrained loading keys: {loading}")
-    mismatch = [x[0] for x in loading.get("mismatched_keys", [])]
+    # Transformers 4.57 reports names as strings; older versions report
+    # (name, checkpoint_shape, model_shape) tuples.
+    mismatch = [x if isinstance(x, str) else x[0]
+                for x in loading.get("mismatched_keys", [])]
     expected = {"cls_classifier.weight", "cls_classifier.bias",
                 "distillation_classifier.weight", "distillation_classifier.bias"}
     if set(mismatch) != expected:
