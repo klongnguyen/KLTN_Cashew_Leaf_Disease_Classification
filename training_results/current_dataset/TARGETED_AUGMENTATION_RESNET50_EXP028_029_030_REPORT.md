@@ -37,6 +37,13 @@ Các ảnh offline augmented là phiên bản **phụ thuộc** của 15 ảnh H
 
 Theo seed, số ảnh real_healthy Validation đúng/7 (EXP-028 → EXP-029 → EXP-030): seed 42: 3→3→5; 123: 3→5→6; 2026: 3→5→6; 3407: 3→4→5; 7777: 3→4→5. Chỉ có 7 ảnh nguồn chung cho cả 5 seed, không được coi là 35 ảnh độc lập.
 
+
+## Biểu đồ trực quan
+
+![Real Healthy Validation Recall](./figures/resnet_aug_real_healthy_validation.svg)
+
+![Disease predicted Healthy on Holdout](./figures/resnet_aug_disease_to_healthy_holdout.svg)
+
 ## 3. Phân tích sự đánh đổi trên Real Holdout 05
 
 | Metric (5-seed mean, 120 ảnh) | EXP-028 | EXP-030 |
