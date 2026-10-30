@@ -56,3 +56,19 @@ Danh mục tạo từ cây GitHub ngày 28/10/2026. Không coi EXP ID cao hơn l
 [V09–V11 timeline](../training_results/current_dataset/DENSENET121_TRANSFER_V09_V11_BACKFILL_2026_10.md) · [CBAM](../training_results/current_dataset/CBAM_ABLATION_3MODELS_V08/README.md) · [YOLO26](../failure/YOLO26/README.md) · [Quality study](../training_results/dataset_quality_study/README.md) · [Legacy archive](../training_results/archive_legacy_dataset/README.md)
 
 **Giữ nguyên thư mục EXP và checksum:** không chuyển đường dẫn artifact gốc vì tài liệu và mã nguồn có thể tham chiếu chúng.
+
+## EXP V11 mới: ResNet50 Transfer và DINOv2-Small (30/10/2026)
+
+Báo cáo backfill từ ANALYSIS ZIP gốc, gồm README và metrics_5seeds.csv; ZIP/weights/PNG gốc chưa được lưu trực tiếp trong Git.
+
+| EXP | Tóm tắt | Hồ sơ |
+|---|---|---|
+| ResNet50-TRANSFER-025 | 256px + Brightness; Val/Test/Holdout | [README](../training_results/current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-025/README.md) |
+| ResNet50-TRANSFER-026 | 224px, recipe EXP-009 | [README](../training_results/current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-026/README.md) |
+| ResNet50-TRANSFER-027 | 256px, ablation resize vs 026 | [README](../training_results/current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-027/README.md) |
+| ResNet50-TRANSFER-028 | 256px, ablation Stage 2 16 epochs | [README](../training_results/current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-028/README.md) |
+| ResNet50-TRANSFER-029 | Target Aug real_healthy 30; Validation only | [README](../training_results/current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-029/README.md) |
+| ResNet50-TRANSFER-030 | Target Aug real_healthy 50; Val/Test/Holdout | [README](../training_results/current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-030/README.md) |
+| DINOv2-Small-TRANSFER-013 | ViT DINOv2, 256px | [README](../training_results/current_dataset/EXP-VIT-DINOV2SMALL-TRANSFER-5SEEDS-013/README.md) |
+
+[Báo cáo Targeted Augmentation](../training_results/current_dataset/TARGETED_AUGMENTATION_RESNET50_EXP028_029_030_REPORT.md) · [Bảng 35 dòng metrics](../training_results/current_dataset/RECENT_V11_MODELS_5SEEDS.csv) · [SHA256 các ANALYSIS ZIP](../training_results/current_dataset/RECENT_SOURCE_ARCHIVE_PROVENANCE.csv)
