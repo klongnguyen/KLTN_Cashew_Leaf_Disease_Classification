@@ -116,3 +116,12 @@ Các phiên bản `002–005` của DenseNet121, ResNet50 và ViT đều có REA
 7. Artifact đã commit (và artifact vẫn chỉ có trong FULL/ANALYSIS ZIP), tiến độ tiếp theo.
 
 > **Không tự suy diễn thông số chưa có trong ZIP/README, không đổi Test set sau khi tuning mà vẫn gọi là cùng benchmark.**
+
+## Cập nhật V11 ngày 30/10 — ResNet50 Targeted Aug
+
+- Đã nhập curated README/metrics CSV cho ResNet50 Transfer **025, 026, 027, 028, 029, 030** và DINOv2-Small Transfer **013**. Original ANALYSIS ZIP + toàn bộ ảnh không được commit.
+- EXP-028 → EXP-029 → EXP-030: 15 ảnh real_healthy Train nguồn tạo ra tổng 15 → 30 → 50 file Train có prefix real_healthy. **Không** tăng số lá Healthy độc lập.
+- real_healthy Validation Recall trung bình 5 seeds tăng 42,86 → 60,00 → 77,14%. Holdout 05 Healthy Recall tăng 29,23 → 40,00% khi so 028/030, **nhưng** Disease → Healthy tăng 2,0 → 6,2 ảnh/seed.
+- EXP-029 chỉ Validation. EXP-030 có Test + exposed Holdout lịch sử (4 lớp true).
+- Không promote EXP-030; xem [báo cáo](./TARGETED_AUGMENTATION_RESNET50_EXP028_029_030_REPORT.md).
+- Cần bổ sung fresh blind holdout độc lập, đủ 5 lớp trước tuyên bố generalization.
