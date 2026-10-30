@@ -1,0 +1,6 @@
+seed,val_accuracy_pct,final_test_accuracy_pct,holdout_accuracy_pct,real_healthy_val_correct,real_healthy_val_total
+42,98.76,97.52,89.17,7,7
+123,98.27,96.35,78.33,4,7
+2026,98.13,97.66,92.50,6,7
+3407,98.48,97.66,86.67,5,7
+7777,98.41,97.81,89.17,7,7
