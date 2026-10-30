@@ -107,3 +107,13 @@ Mã ứng dụng tại [Application](Application/README.md) gồm FastAPI và HT
 **Giới hạn:** Một số EXP mới chỉ backfill README/CSV từ source ANALYSIS ZIP, **không chứa checkpoint, notebook chạy hoặc toàn bộ predictions/figures trong Git**. SD giữa seed không thay thế confidence về các vườn khác; đã có near-duplicate candidates và domain shift. Một fresh blind field holdout đủ 5 lớp vẫn cần thực hiện. Các checkpoint legacy lớn được giữ để tránh mất bằng chứng lịch sử.
 
 **Tiếp theo:** kiểm tra nhóm ảnh cùng lá/cây/phiên; thu thập holdout mới độc lập; phân tích nhầm Anthracnose→Healthy; thống nhất inference contract và benchmarking tốc độ; kiểm thử YOLO crop → classifier trên tập ảnh được khóa.
+
+## Phân tích Targeted Augmentation ResNet50 — EXP-028/029/030
+
+Đã đưa lên GitHub hồ sơ **ResNet50 Transfer EXP-025→030** và **DINOv2-Small Transfer EXP-013**, gồm README, CSV 5 seed và checksum của ANALYSIS ZIP gốc. **Hạn chế:** đây là dữ liệu biên soạn và đối chiếu, không phải bản sao của toàn bộ ZIP, checkpoint hay các PNG gốc.
+
+- Trên 7 ảnh real_healthy Validation: EXP-028 **42,86%** → EXP-029 **60,00%** → EXP-030 **77,14%**.
+- Real Holdout 05 Healthy Recall: EXP-028 **29,23%** → EXP-030 **40,00%**, nhưng số ảnh bệnh bị gán Healthy tăng **2,0 → 6,2 ảnh/seed** và Holdout Accuracy giảm **72,50% → 71,33%**.
+- EXP-029 **không** chạy Test/Holdout; Test/Holdout V11 đã được xem trong quá trình nghiên cứu, không dùng để lựa chọn tiếp hyperparameter.
+
+**Xem:** [Báo cáo Targeted Augmentation](training_results/current_dataset/TARGETED_AUGMENTATION_RESNET50_EXP028_029_030_REPORT.md) · [Bảng 35 seed-exp](training_results/current_dataset/RECENT_V11_MODELS_5SEEDS.csv) · [Danh mục EXP](docs/EXPERIMENT_INDEX.md) · [Provenance ZIP](training_results/current_dataset/RECENT_SOURCE_ARCHIVE_PROVENANCE.csv).
