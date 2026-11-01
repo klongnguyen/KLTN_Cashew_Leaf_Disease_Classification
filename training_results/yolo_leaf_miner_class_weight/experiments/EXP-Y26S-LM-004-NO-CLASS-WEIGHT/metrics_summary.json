@@ -1,0 +1,75 @@
+{
+  "experiment_id": "EXP-Y26S-LM-004-NO-CLASS-WEIGHT",
+  "model": "yolo26s.pt",
+  "task": "object_detection",
+  "evaluation_split": "val",
+  "dataset_fingerprint": "9cd75fd917a0edbce88e43d535c823ae464e348468d9a5e5ef2c98cf328349d7",
+  "dataset_split_images": {
+    "train": 2876,
+    "val": 893,
+    "test": 412
+  },
+  "test_evaluation_performed": false,
+  "seed": 42,
+  "cls_pw": 0,
+  "training_recipe": {
+    "imgsz": 640,
+    "batch": 8,
+    "epochs_max": 80,
+    "optimizer": "AdamW",
+    "lr0": 0.001,
+    "patience": 20,
+    "mosaic": 0.4,
+    "close_mosaic": 10,
+    "mixup": 0,
+    "amp": true
+  },
+  "epochs_run": 74,
+  "best_epoch_from_history": 54,
+  "training_seconds": 1089.4734903959998,
+  "precision_macro": 0.6790326733233153,
+  "recall_macro": 0.6774391805871275,
+  "map50": 0.7156634030638221,
+  "map50_95": 0.39982339489825824,
+  "per_class": [
+    {
+      "class_id": 0,
+      "class_name": "anthracnose",
+      "precision": 0.6432220494309205,
+      "recall": 0.6399669125249879,
+      "ap50": 0.6589916206550595,
+      "ap50_95": 0.3238585585563497,
+      "train_boxes": 34887,
+      "effective_class_weight": 1
+    },
+    {
+      "class_id": 1,
+      "class_name": "leaf_miner",
+      "precision": 0.716338158966847,
+      "recall": 0.7291433458880429,
+      "ap50": 0.7803367063956146,
+      "ap50_95": 0.5198869781232389,
+      "train_boxes": 2076,
+      "effective_class_weight": 1
+    },
+    {
+      "class_id": 2,
+      "class_name": "red_rust",
+      "precision": 0.6775378115721782,
+      "recall": 0.6632072833483517,
+      "ap50": 0.7076618821407925,
+      "ap50_95": 0.35572464801518594,
+      "train_boxes": 73072,
+      "effective_class_weight": 1
+    }
+  ],
+  "leaf_miner_qa": {
+    "failure_analysis_false_positives": 674,
+    "failure_analysis_false_negatives": 87,
+    "warning": "Counts from a separate analysis pipeline, not official YOLO TP/FP/FN used to calculate P/R."
+  },
+  "source_analysis_archive_name": "EXP-Y26S-LM-004-NO-CLASS-WEIGHT-20261101T124909Z-1-001.zip",
+  "source_sha256": "3e317ad67a95c9d3c593000c437490ba6aa841df56da13e2a0d0e028079a0cc8",
+  "analysis_zip_sha256": "4a40e318de36503592b4178e62218e8428f0e953f9782a9b77970fa5d13488d9",
+  "note": "Derived summary transcribed from supplied analysis archives; see per_class_metrics.csv. Not a byte-for-byte copy of metrics.json."
+}

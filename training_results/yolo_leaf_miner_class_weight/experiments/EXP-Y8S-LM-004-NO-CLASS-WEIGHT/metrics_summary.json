@@ -1,0 +1,75 @@
+{
+  "experiment_id": "EXP-Y8S-LM-004-NO-CLASS-WEIGHT",
+  "model": "yolov8s.pt",
+  "task": "object_detection",
+  "evaluation_split": "val",
+  "dataset_fingerprint": "9cd75fd917a0edbce88e43d535c823ae464e348468d9a5e5ef2c98cf328349d7",
+  "dataset_split_images": {
+    "train": 2876,
+    "val": 893,
+    "test": 412
+  },
+  "test_evaluation_performed": false,
+  "seed": 42,
+  "cls_pw": 0,
+  "training_recipe": {
+    "imgsz": 640,
+    "batch": 8,
+    "epochs_max": 80,
+    "optimizer": "AdamW",
+    "lr0": 0.001,
+    "patience": 20,
+    "mosaic": 0.4,
+    "close_mosaic": 10,
+    "mixup": 0,
+    "amp": true
+  },
+  "epochs_run": 61,
+  "best_epoch_from_history": 41,
+  "training_seconds": 566.2949068769994,
+  "precision_macro": 0.7006342447840107,
+  "recall_macro": 0.662214390921169,
+  "map50": 0.7087648178494556,
+  "map50_95": 0.3827138670172447,
+  "per_class": [
+    {
+      "class_id": 0,
+      "class_name": "anthracnose",
+      "precision": 0.6877766576392513,
+      "recall": 0.5698794780826043,
+      "ap50": 0.6420688181166785,
+      "ap50_95": 0.30230127050415956,
+      "train_boxes": 34887,
+      "effective_class_weight": 1
+    },
+    {
+      "class_id": 1,
+      "class_name": "leaf_miner",
+      "precision": 0.7433761157638724,
+      "recall": 0.7165492957746479,
+      "ap50": 0.7639139193987633,
+      "ap50_95": 0.5089144084314895,
+      "train_boxes": 2076,
+      "effective_class_weight": 1
+    },
+    {
+      "class_id": 2,
+      "class_name": "red_rust",
+      "precision": 0.6707499609489082,
+      "recall": 0.7002143989062548,
+      "ap50": 0.7203117160329249,
+      "ap50_95": 0.33692592211608496,
+      "train_boxes": 73072,
+      "effective_class_weight": 1
+    }
+  ],
+  "leaf_miner_qa": {
+    "failure_analysis_false_positives": 678,
+    "failure_analysis_false_negatives": 93,
+    "warning": "Counts from a separate analysis pipeline, not official YOLO TP/FP/FN used to calculate P/R."
+  },
+  "source_analysis_archive_name": "EXP-Y8S-LM-004-NO-CLASS-WEIGHT-20261101T124902Z-1-001.zip",
+  "source_sha256": "506586dcef2f1826fcc86dea4952f8ff1f82827bcf9b74651d002bd7517962ab",
+  "analysis_zip_sha256": "e20c1cb3905df88b9bd289cad105f9827d61fd22a9509a5a3cdc4d0492699812",
+  "note": "Derived summary transcribed from supplied analysis archives; see per_class_metrics.csv. Not a byte-for-byte copy of metrics.json."
+}

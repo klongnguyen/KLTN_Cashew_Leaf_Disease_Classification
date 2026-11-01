@@ -1,5 +1,9 @@
 # Training Results — Kho dữ liệu thực nghiệm
 
+## YOLO class-weight ablation (Validation, 4 experiments)
+
+[YOLOv8s và YOLO26s, cls_pw=0 so với 0.25](yolo_leaf_miner_class_weight/README.md). Bốn experiment đã được backfill các **chỉ số Validation, per-class CSV và checksum của ZIP nguồn**. Các ảnh biểu đồ, dự đoán và ZIP ANALYSIS nguyên bản chưa nằm trong Git; xem giới hạn tại trang thí nghiệm. Không dùng Test để chọn mô hình.
+
 ![V08 Test và Holdout](../docs/assets/benchmark_v08_test_holdout.svg)
 
 Mỗi thư mục thí nghiệm có **ID, dataset snapshot, config và cách đánh giá riêng**. Không gộp tất cả thành bảng xếp hạng; đặc biệt giữ ranh giới V08 với V09–V11, giữa Test và Historical Holdout.

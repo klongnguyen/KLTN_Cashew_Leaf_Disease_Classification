@@ -1,0 +1,14 @@
+{
+  "cls_pw": 0.25,
+  "train_box_counts": {
+    "anthracnose": 34887,
+    "leaf_miner": 2076,
+    "red_rust": 73072
+  },
+  "effective_class_weights": {
+    "anthracnose": 0.7780247926712036,
+    "leaf_miner": 1.5752495527267456,
+    "red_rust": 0.6467254757881165
+  },
+  "source_note": "Values correspond to source experiment class_weights.json"
+}

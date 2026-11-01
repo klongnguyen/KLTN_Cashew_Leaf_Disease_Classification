@@ -75,6 +75,10 @@ Cùng 5 seed ghép cặp trên V08, thêm CBAM làm ResNet50 **+0,887 điểm ph
 
 Đã thực nghiệm Take 01–07. Take 006 có Precision **0,7473**, Recall **0,6648**, mAP@0.50 **0,7298**, mAP@0.50:0.95 **0,3877**; Take 007 mAP50 **0,6993** với Test/GT thay đổi, nên hai take **không phải controlled ablation**. Chưa chốt detector cuối. Pipeline YOLO → crop ROI → classifier là **hướng phát triển**, không phải hệ thống end-to-end đã kiểm nghiệm. [Quy định gán nhãn](CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md) · [Thí nghiệm detection](failure/YOLO26/README.md).
 
+### 3.1. Class-weight ablation YOLOv8s / YOLO26s (Validation-only)
+
+Đã bổ sung hồ sơ **4 experiment** trên Cashew YOLO Master Final: YOLOv8s/YOLO26s với `cls_pw=0` và `0.25`. Ở YOLOv8s, weighting làm mAP50-95 giảm 38,27% → 37,68%; ở YOLO26s, tăng nhẹ 39,98% → 40,30%, đổi lại Recall Leaf Miner giảm. Các giá trị đều **Validation**, một seed, chưa có kết luận ổn định. [Bảng so sánh](training_results/yolo_leaf_miner_class_weight/README.md). Đây là backfill chỉ số/CSV, chưa phải bản sao đầy đủ binary ANALYSIS.zip.
+
 ## 4. Ứng dụng Web
 
 | Anthracnose | Leaf Miner | Red Rust |
