@@ -125,3 +125,13 @@ Các phiên bản `002–005` của DenseNet121, ResNet50 và ViT đều có REA
 - EXP-029 chỉ Validation. EXP-030 có Test + exposed Holdout lịch sử (4 lớp true).
 - Không promote EXP-030; xem [báo cáo](./TARGETED_AUGMENTATION_RESNET50_EXP028_029_030_REPORT.md).
 - Cần bổ sung fresh blind holdout độc lập, đủ 5 lớp trước tuyên bố generalization.
+
+## DenseNet121 V12/V13 result archive — 03/11/2026
+
+- [x] EXP-DENSENET121-TRANSFER-5SEEDS-027: 5-seed Val/Test/Holdout06 metrics, README, SHA256 nguồn.
+- [x] EXP-DENSENET121-TRANSFER-5SEEDS-028: 5-seed Val/Test/Holdout09 metrics, per-class Holdout09 và Confusion Matrix selected seed42.
+- [x] So khớp đúng 118 ảnh có cùng path + SHA256 giữa Holdout07 và Holdout09; mean Accuracy vẫn 80,17%.
+- [x] Bốn biểu đồ so sánh SVG và báo cáo diễn giải.
+- [ ] Xác minh nguồn/nhãn của hai cặp ảnh real_anthracnose_157/159 từ V12 xuất hiện như real_healthy_40/42 Holdout09.
+- [ ] Thu thập fresh field holdout độc lập đủ 5 lớp, cố định protocol.
+- [ ] Sao lưu ANALYSIS ZIP, predictions đầy đủ, notebook, checkpoint vào storage ngoài Git; chưa commit binary lớn.
