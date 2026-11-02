@@ -1,0 +1,17 @@
+{
+  "archive": "NEG_V03_NEGATIVE_IMAGE_EVALUATION_ANALYSIS.zip",
+  "sha": "91435db7b9fbe9ac408417bc0290d9656c9c08829601401a8899754153c5dcbb",
+  "size": 36078,
+  "files": 52,
+  "ultralytics": "8.4.197",
+  "validation_fingerprint": "9a502be84e2d619a6d75bb76b979c7d40eabc8d6688124d05d013965555ee78f",
+  "n_val": 951,
+  "n_negative": 58,
+  "n_healthy": 38,
+  "n_not_cashew": 20,
+  "confidence": 0.25,
+  "ap_conf": 0.001,
+  "iou": 0.7,
+  "half": false,
+  "batch": 4
+}

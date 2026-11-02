@@ -83,6 +83,15 @@ Cùng 5 seed ghép cặp trên V08, thêm CBAM làm ResNet50 **+0,887 điểm ph
 
 Bổ sung 276 ảnh âm Train và 58 ảnh âm Validation, vẫn giữ **3 disease classes** và **Test 412 ảnh khóa**. YOLO26s weighted (`cls_pw=0.25`) giảm cảnh báo nhầm trên 58 ảnh âm từ **15/58** xuống **3/58** khi `conf>=0.25`; YOLOv8s tăng 13/58 → 14/58. Đánh giá paired dùng cùng Validation và 1 seed, không suy luận ngay cho Test/field. [Báo cáo & provenance](training_results/yolo_negative_v02/README.md).
 
+### 3.3. YOLO Negative Images V03 (Validation-only, 02/11/2026)
+
+Dataset NEG V03 có **3497 Train (621 ảnh âm), 951 Validation (58 ảnh âm), 412 Test được khóa**. Hai thí nghiệm `cls_pw=0.25`, seed 42, input 640 px:
+- YOLOv8s: mAP50-95 notebook **38,00%**.
+- YOLO26s: mAP50-95 notebook **39,81%**.
+- Đánh giá lại trên cùng Validation: tỷ lệ ảnh âm có ít nhất một phát hiện sai ở `conf >= 0.25` là **13/58 YOLOv8s** và **3/58 YOLO26s**. Tăng negative Train từ 276 (V02) lên 621 (V03) **chưa giảm thêm** số ảnh âm bị báo sai của YOLO26s (vẫn 3/58).
+
+Đây là bằng chứng **Validation**, một seed. [Kết quả, CSV và nguồn gốc ZIP](training_results/yolo_negative_v03/README.md) · [Báo cáo 6 checkpoint](training_results/yolo_negative_v03/negative_image_evaluation/README.md). Không có tuyên bố Test hoặc blind-field improvement.
+
 ## 4. Ứng dụng Web
 
 | Anthracnose | Leaf Miner | Red Rust |

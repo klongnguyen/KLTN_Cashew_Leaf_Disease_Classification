@@ -1,5 +1,9 @@
 # Training Results — Kho dữ liệu thực nghiệm
 
+## YOLO NEG V03: Tăng Negative Images và đánh giá False Positive (Validation-only)
+
+[So sánh YOLOv8s và YOLO26s NEG V03; sáu checkpoint trên cùng 951 ảnh](yolo_negative_v03/README.md). Train 3497 ảnh (621 Negative); Validation 951 (58 Negative); Test 412 giữ khóa. YOLO26s NEG V03 mAP50-95 notebook **39,81%**; False Positive Rate **3/58 (5,17%)**, YOLOv8s **13/58 (22,41%)** tại conf 0,25. Dữ liệu tóm tắt + CSV + importer; các PNG/JPG nguồn cần đồng bộ riêng.
+
 ## YOLO NEG V02: Train với Negative Images
 
 [Phân tích YOLOv8s/YOLO26s NEG V02, False Positive và provenance 7 archive](yolo_negative_v02/README.md) — Validation-only, Test khóa. YOLO26s giảm tỷ lệ ảnh âm báo nhầm từ 15/58 còn 3/58 ở ngưỡng conf 0,25. Hiện Git chứa báo cáo và bảng tổng hợp; cần chạy đồng bộ archive nguồn để có toàn bộ hình và CSV gốc.

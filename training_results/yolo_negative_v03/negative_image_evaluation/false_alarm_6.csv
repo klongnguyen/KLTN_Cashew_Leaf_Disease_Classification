@@ -1,0 +1,7 @@
+model,run,healthy_false_alarm,healthy_total,not_cashew_false_alarm,not_cashew_total,total_false_alarm,negative_total,false_alarm_rate,false_boxes
+yolov8s,v003,8,38,5,20,13,58,0.22413793103448276,19
+yolov8s,neg_v02,8,38,6,20,14,58,0.2413793103448276,19
+yolov8s,neg_v03,10,38,3,20,13,58,0.22413793103448276,14
+yolo26s,v003,6,38,9,20,15,58,0.25862068965517243,24
+yolo26s,neg_v02,2,38,1,20,3,58,0.05172413793103448,3
+yolo26s,neg_v03,2,38,1,20,3,58,0.05172413793103448,3

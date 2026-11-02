@@ -1,0 +1,51 @@
+{
+  "name": "CASHEW_YOLO_MASTER_FINAL_NEG_V03",
+  "dataset_fingerprint": "1acc0edcf7f736f9754e4977b61133a7ec5582b44d8cf3eef27208f49a202add",
+  "dataset_source_md5": "49c845e0dc9692d69e27979f6d5857f6",
+  "classes": [
+    "anthracnose",
+    "leaf_miner",
+    "red_rust"
+  ],
+  "class_weights": {
+    "anthracnose": 0.7780247926712036,
+    "leaf_miner": 1.5752495527267456,
+    "red_rust": 0.6467254757881165
+  },
+  "images": {
+    "train": 3497,
+    "train_negative": 621,
+    "train_positive": 2876,
+    "validation": 951,
+    "validation_negative": 58,
+    "validation_positive": 893,
+    "test_locked": 412
+  },
+  "boxes": {
+    "train": {
+      "anthracnose": 34886,
+      "leaf_miner": 2076,
+      "red_rust": 73071
+    },
+    "validation": {
+      "anthracnose": 14507,
+      "leaf_miner": 568,
+      "red_rust": 32183
+    }
+  },
+  "config": {
+    "imgsz": 640,
+    "batch": 8,
+    "seed": 42,
+    "max_epochs": 80,
+    "optimizer": "AdamW",
+    "lr0": 0.001,
+    "patience": 20,
+    "mosaic": 0.4,
+    "close_mosaic": 10,
+    "mixup": 0,
+    "amp": true,
+    "cls_pw": 0.25,
+    "training_ultralytics_version": "8.4.198"
+  }
+}
