@@ -79,6 +79,10 @@ Cùng 5 seed ghép cặp trên V08, thêm CBAM làm ResNet50 **+0,887 điểm ph
 
 Đã bổ sung hồ sơ **4 experiment** trên Cashew YOLO Master Final: YOLOv8s/YOLO26s với `cls_pw=0` và `0.25`. Ở YOLOv8s, weighting làm mAP50-95 giảm 38,27% → 37,68%; ở YOLO26s, tăng nhẹ 39,98% → 40,30%, đổi lại Recall Leaf Miner giảm. Các giá trị đều **Validation**, một seed, chưa có kết luận ổn định. [Bảng so sánh](training_results/yolo_leaf_miner_class_weight/README.md). Đây là backfill chỉ số/CSV, chưa phải bản sao đầy đủ binary ANALYSIS.zip.
 
+### 3.2. YOLO Negative Images V02 (Validation-only)
+
+Bổ sung 276 ảnh âm Train và 58 ảnh âm Validation, vẫn giữ **3 disease classes** và **Test 412 ảnh khóa**. YOLO26s weighted (`cls_pw=0.25`) giảm cảnh báo nhầm trên 58 ảnh âm từ **15/58** xuống **3/58** khi `conf>=0.25`; YOLOv8s tăng 13/58 → 14/58. Đánh giá paired dùng cùng Validation và 1 seed, không suy luận ngay cho Test/field. [Báo cáo & provenance](training_results/yolo_negative_v02/README.md).
+
 ## 4. Ứng dụng Web
 
 | Anthracnose | Leaf Miner | Red Rust |

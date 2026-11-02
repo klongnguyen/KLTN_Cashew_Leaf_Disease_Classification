@@ -1,0 +1,7 @@
+model,group,images,both_alarm,v003_only_alarm,neg_v02_only_alarm,neither_alarm,mcnemar_exact_p
+yolov8s,all,58,8,5,6,39,1
+yolo26s,all,58,1,14,2,41,0.004180908203125
+yolov8s,healthy,38,5,3,3,27,1
+yolov8s,not_cashew_leaf,20,3,2,3,12,1
+yolo26s,healthy,38,0,6,2,30,0.2890625
+yolo26s,not_cashew_leaf,20,1,8,0,11,0.0078125

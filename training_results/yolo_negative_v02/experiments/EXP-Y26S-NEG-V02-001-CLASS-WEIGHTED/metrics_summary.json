@@ -1,0 +1,93 @@
+{
+  "experiment_id": "EXP-Y26S-NEG-V02-001-CLASS-WEIGHTED",
+  "model": "YOLO26s",
+  "split": "val",
+  "test_evaluated": false,
+  "source_dataset_md5": "5bd73eea2c28644ce136bee54f6c58fb",
+  "dataset_fingerprint": "55d0ae3678af8f79ecd1c146dce06054930205363b771d181b4be1c3991b0ede",
+  "split_image_counts": {
+    "train": 3152,
+    "val": 951,
+    "test": 412
+  },
+  "negative_images": {
+    "train": 276,
+    "val": 58,
+    "test": 0
+  },
+  "positive_images": {
+    "train": 2876,
+    "val": 893,
+    "test": 412
+  },
+  "train_boxes": {
+    "anthracnose": 34886,
+    "leaf_miner": 2076,
+    "red_rust": 73071
+  },
+  "test_locked": true,
+  "cls_pw": 0.25,
+  "class_weights": {
+    "anthracnose": 0.7780247926712036,
+    "leaf_miner": 1.5752495527267456,
+    "red_rust": 0.6467254757881165
+  },
+  "ultralytics_version": "8.4.197",
+  "seed": 42,
+  "base_recipe": {
+    "imgsz": 640,
+    "batch": 8,
+    "max_epochs": 80,
+    "optimizer": "AdamW",
+    "lr0": 0.001,
+    "patience": 20,
+    "mosaic": 0.4,
+    "close_mosaic": 10,
+    "mixup": 0,
+    "amp": true
+  },
+  "note": "NEG V02 Train has 1 fewer anthracnose and 1 fewer red_rust annotation than V003; not an absolutely controlled only-negative change.",
+  "epochs_run": 61,
+  "training_seconds": 962.177996496,
+  "macro": {
+    "precision": 0.6894675343322096,
+    "recall": 0.6615650471413964,
+    "ap50": 0.7130568859650036,
+    "ap50_95": 0.40084038450776255
+  },
+  "per_class": [
+    {
+      "class_id": 0,
+      "class_name": "anthracnose",
+      "precision": 0.6321630000754858,
+      "recall": 0.6274901771558558,
+      "ap50": 0.6488551643271455,
+      "ap50_95": 0.3224609006131663,
+      "train_boxes": 34886
+    },
+    {
+      "class_id": 1,
+      "class_name": "leaf_miner",
+      "precision": 0.754290764485494,
+      "recall": 0.6919014084507042,
+      "ap50": 0.7841672255384963,
+      "ap50_95": 0.5285342732527798,
+      "train_boxes": 2076
+    },
+    {
+      "class_id": 2,
+      "class_name": "red_rust",
+      "precision": 0.6819488384356491,
+      "recall": 0.6653035558176291,
+      "ap50": 0.7061482680293691,
+      "ap50_95": 0.3515259796573416,
+      "train_boxes": 73071
+    }
+  ],
+  "source_archive": {
+    "name": "EXP-Y26S-NEG-V02-001_ANALYSIS.zip",
+    "sha256": "2028def8b43046a3c4532252b02714291a750bab97d3cdfefd34cd9ee4e035fa",
+    "bytes": 1984706
+  },
+  "source_note": "Source-derived summary; not a full bytewise copy of source metrics.json."
+}

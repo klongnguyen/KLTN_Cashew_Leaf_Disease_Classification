@@ -1,5 +1,9 @@
 # Training Results — Kho dữ liệu thực nghiệm
 
+## YOLO NEG V02: Train với Negative Images
+
+[Phân tích YOLOv8s/YOLO26s NEG V02, False Positive và provenance 7 archive](yolo_negative_v02/README.md) — Validation-only, Test khóa. YOLO26s giảm tỷ lệ ảnh âm báo nhầm từ 15/58 còn 3/58 ở ngưỡng conf 0,25. Hiện Git chứa báo cáo và bảng tổng hợp; cần chạy đồng bộ archive nguồn để có toàn bộ hình và CSV gốc.
+
 ## YOLO class-weight ablation (Validation, 4 experiments)
 
 [YOLOv8s và YOLO26s, cls_pw=0 so với 0.25](yolo_leaf_miner_class_weight/README.md). Bốn experiment đã được backfill các **chỉ số Validation, per-class CSV và checksum của ZIP nguồn**. Các ảnh biểu đồ, dự đoán và ZIP ANALYSIS nguyên bản chưa nằm trong Git; xem giới hạn tại trang thí nghiệm. Không dùng Test để chọn mô hình.

@@ -1,0 +1,46 @@
+{
+  "source_dataset_md5": "5bd73eea2c28644ce136bee54f6c58fb",
+  "dataset_fingerprint": "55d0ae3678af8f79ecd1c146dce06054930205363b771d181b4be1c3991b0ede",
+  "split_image_counts": {
+    "train": 3152,
+    "val": 951,
+    "test": 412
+  },
+  "negative_images": {
+    "train": 276,
+    "val": 58,
+    "test": 0
+  },
+  "positive_images": {
+    "train": 2876,
+    "val": 893,
+    "test": 412
+  },
+  "train_boxes": {
+    "anthracnose": 34886,
+    "leaf_miner": 2076,
+    "red_rust": 73071
+  },
+  "test_locked": true,
+  "cls_pw": 0.25,
+  "class_weights": {
+    "anthracnose": 0.7780247926712036,
+    "leaf_miner": 1.5752495527267456,
+    "red_rust": 0.6467254757881165
+  },
+  "ultralytics_version": "8.4.197",
+  "seed": 42,
+  "base_recipe": {
+    "imgsz": 640,
+    "batch": 8,
+    "max_epochs": 80,
+    "optimizer": "AdamW",
+    "lr0": 0.001,
+    "patience": 20,
+    "mosaic": 0.4,
+    "close_mosaic": 10,
+    "mixup": 0,
+    "amp": true
+  },
+  "note": "NEG V02 Train has 1 fewer anthracnose and 1 fewer red_rust annotation than V003; not an absolutely controlled only-negative change."
+}
