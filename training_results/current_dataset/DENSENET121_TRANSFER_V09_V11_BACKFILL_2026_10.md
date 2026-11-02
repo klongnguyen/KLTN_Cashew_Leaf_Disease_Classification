@@ -49,3 +49,11 @@ All percentages in the table are **mean over 5 seeds** and rounded. Test/Validat
 - **Historic Holdouts**: Holdout02=127, Holdout03=126, Holdout04=120, Holdout05=120; memberships and, in some cases, file contents were revised. Compare on identical image hashes only when claiming paired image-level effects.
 
 [Main README](../../README.md) · [Dataset changelog](../../DATASET_CHANGELOG.md)
+
+## Bổ sung DenseNet121 V12/V13 — 03/11/2026
+
+Báo cáo trước đó chỉ bao gồm V09/V11. Đã lưu kết quả V12 và V13 dưới **thư mục EXP riêng**, không sửa kết quả 018–026:
+- [EXP-027 — Cashew Split (12), Holdout06](./EXP-DENSENET121-TRANSFER-5SEEDS-027/README.md).
+- [EXP-028 — Cashew Split (13), Holdout09](./EXP-DENSENET121-TRANSFER-5SEEDS-028/README.md).
+- [Báo cáo so sánh V12/V13](./DENSENET121_V12_V13_EXP027_028_COMPARISON.md) — cặp ảnh chung, khác biệt phân bố, lỗi đổi nhãn và tính độc lập của Holdout.
+- ANALYSIS ZIP gốc và trọng số không được đưa lên GitHub; đã ghi [SHA256](./DENSENET121_V12_V13_ARCHIVE_PROVENANCE.csv).
