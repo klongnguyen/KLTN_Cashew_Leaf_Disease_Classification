@@ -134,3 +134,15 @@ Mã ứng dụng tại [Application](Application/README.md) gồm FastAPI và HT
 - EXP-029 **không** chạy Test/Holdout; Test/Holdout V11 đã được xem trong quá trình nghiên cứu, không dùng để lựa chọn tiếp hyperparameter.
 
 **Xem:** [Báo cáo Targeted Augmentation](training_results/current_dataset/TARGETED_AUGMENTATION_RESNET50_EXP028_029_030_REPORT.md) · [Bảng 35 seed-exp](training_results/current_dataset/RECENT_V11_MODELS_5SEEDS.csv) · [Danh mục EXP](docs/EXPERIMENT_INDEX.md) · [Provenance ZIP](training_results/current_dataset/RECENT_SOURCE_ARCHIVE_PROVENANCE.csv).
+
+## DenseNet121 V12 → V13 — EXP-027/028 (03/11/2026)
+
+Đã bổ sung [DenseNet121 EXP-027 / Split12](training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-027/README.md), [DenseNet121 EXP-028 / Split13](training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-028/README.md), CSV kết quả từng seed, Confusion Matrix, báo cáo so sánh 118 ảnh giữ nguyên SHA256 và bốn biểu đồ SVG.
+
+- V12→V13: Train **4.975 → 4.972** (−3 Anthracnose), Validation **1.452** và Final Test **685** giữ nguyên từng ảnh; Healthy Train vẫn **872**.
+- Validation Accuracy **97,245% → 97,287%**, Test Accuracy **95,912% → 95,912%** (5 seeds).
+- **118 ảnh Holdout chung**: Accuracy trung bình **80,17% → 80,17%**, nhưng Healthy Recall **47,27% → 56,36%** (chỉ 11 ảnh Healthy không thay đổi).
+- Hai file cùng SHA256 đã từng được gán `Anthracnose` ở Train V12 và `Healthy` ở Holdout09: cần xác minh nhãn; không thể coi là blind field data của mô hình V12.
+- Holdout09 khác Holdout07 về số lượng/nội dung và không có true not_cashew_leaf. Không dùng Holdout lịch sử để chọn lại checkpoint.
+
+**Xem [báo cáo V12/V13](training_results/current_dataset/DENSENET121_V12_V13_EXP027_028_COMPARISON.md)** · [index thí nghiệm](docs/EXPERIMENT_INDEX.md) · [provenance ZIP](training_results/current_dataset/DENSENET121_V12_V13_ARCHIVE_PROVENANCE.csv). Các ZIP/checkpoint/PNG gốc vẫn ở nguồn riêng; GitHub lưu curated CSV/README/SVG, **không phải trọn vẹn 15MB archive**.
