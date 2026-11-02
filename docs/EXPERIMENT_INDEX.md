@@ -72,3 +72,14 @@ Báo cáo backfill từ ANALYSIS ZIP gốc, gồm README và metrics_5seeds.csv;
 | DINOv2-Small-TRANSFER-013 | ViT DINOv2, 256px | [README](../training_results/current_dataset/EXP-VIT-DINOV2SMALL-TRANSFER-5SEEDS-013/README.md) |
 
 [Báo cáo Targeted Augmentation](../training_results/current_dataset/TARGETED_AUGMENTATION_RESNET50_EXP028_029_030_REPORT.md) · [Bảng 35 dòng metrics](../training_results/current_dataset/RECENT_V11_MODELS_5SEEDS.csv) · [SHA256 các ANALYSIS ZIP](../training_results/current_dataset/RECENT_SOURCE_ARCHIVE_PROVENANCE.csv)
+
+## DenseNet121 V12/V13 — Thí nghiệm EXP-027 và EXP-028
+
+| EXP | Dataset | Selected seed (Val Loss) | Val Acc | Final Test Acc | Holdout |
+|---|---|---:|---:|---:|---|
+| [EXP-027](../training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-027/README.md) | Split12, 4.975 Train | **7777** | 97,245% | 95,912% | Holdout06 (125): 76,320% |
+| [EXP-028](../training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-028/README.md) | Split13, 4.972 Train | **42** | 97,287% | 95,912% | Holdout09 (126): 79,365% |
+
+**Không trực tiếp so Holdout06 và Holdout09:** [đối chiếu 118 ảnh chung](../training_results/current_dataset/DENSENET121_V12_V13_EXP027_028_COMPARISON.md) cho Accuracy mean = 80,17% ở cả hai lần train. Hai ảnh từ Anthracnose Train V12 sang Healthy Holdout09 cần xác minh nhãn.
+
+[CSV matched 118/seed](../training_results/current_dataset/DENSENET121_V12_V13_MATCHED118_BY_SEED.csv) · [CSV per-class Recall](../training_results/current_dataset/DENSENET121_V12_V13_MATCHED118_PER_CLASS_RECALL.csv) · [Archival SHA256](../training_results/current_dataset/DENSENET121_V12_V13_ARCHIVE_PROVENANCE.csv) · [4 biểu đồ](../training_results/current_dataset/figures/densenet_v12_v13_paired118.svg).
