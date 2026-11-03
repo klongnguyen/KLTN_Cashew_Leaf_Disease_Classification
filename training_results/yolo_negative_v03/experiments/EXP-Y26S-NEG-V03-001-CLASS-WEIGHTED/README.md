@@ -1,5 +1,10 @@
 # EXP-Y26S-NEG-V03-001-CLASS-WEIGHTED
 
+<!-- docs-sync-2026-11-04:start -->
+> **Đồng bộ README 04/11/2026:** YOLO Validation-only (không đánh giá trên Test khóa). Không phát sinh huấn luyện hoặc Test mới; kết quả gốc được giữ nguyên. [Trang chủ](../../../../README.md) · [Danh mục 95 README](../../../../docs/EXPERIMENT_INDEX.md) · [Tiến độ](../../../../docs/RESEARCH_STATUS_2026-11-04.md) · [Protocol](../../../../docs/RESEARCH_PROTOCOL.md).
+<!-- docs-sync-2026-11-04:end -->
+
+
 | Thuộc tính | Giá trị |
 |---|---|
 | Model | `yolo26s.pt` |

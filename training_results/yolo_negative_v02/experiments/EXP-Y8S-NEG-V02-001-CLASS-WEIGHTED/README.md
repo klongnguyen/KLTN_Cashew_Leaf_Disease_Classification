@@ -1,5 +1,10 @@
 # EXP-Y8S-NEG-V02-001-CLASS-WEIGHTED
 
+<!-- docs-sync-2026-11-04:start -->
+> **Đồng bộ README 04/11/2026:** YOLO Validation-only (không đánh giá trên Test khóa). Không phát sinh huấn luyện hoặc Test mới; kết quả gốc được giữ nguyên. [Trang chủ](../../../../README.md) · [Danh mục 95 README](../../../../docs/EXPERIMENT_INDEX.md) · [Tiến độ](../../../../docs/RESEARCH_STATUS_2026-11-04.md) · [Protocol](../../../../docs/RESEARCH_PROTOCOL.md).
+<!-- docs-sync-2026-11-04:end -->
+
+
 - Architecture: **YOLOv8s**; Dataset: **Cashew YOLO Master Final NEG V02**; Train/Validation/Test: **3152/951/412**.
 - Negative images: Train **276**, Validation **58**; Test **unchanged, locked**. Healthy and not-cashew are 0-box background images, not fourth/fifth classes.
 - Model config: `cls_pw=0.25` (Leaf Miner weight 1.5752), seed 42, image 640px, AdamW, batch 8, up to 80 epochs.

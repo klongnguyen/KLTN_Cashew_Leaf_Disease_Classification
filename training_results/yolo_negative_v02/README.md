@@ -1,5 +1,10 @@
 # YOLO Negative Image V02 — YOLOv8s và YOLO26s
 
+<!-- docs-sync-2026-11-04:start -->
+> **Đồng bộ README 04/11/2026:** YOLO Validation-only (không đánh giá trên Test khóa). Không phát sinh huấn luyện hoặc Test mới; kết quả gốc được giữ nguyên. [Trang chủ](../../README.md) · [Danh mục 95 README](../../docs/EXPERIMENT_INDEX.md) · [Tiến độ](../../docs/RESEARCH_STATUS_2026-11-04.md) · [Protocol](../../docs/RESEARCH_PROTOCOL.md).
+<!-- docs-sync-2026-11-04:end -->
+
+
 Hai thí nghiệm `cls_pw=0.25`, seed 42, ảnh 640px, **cùng snapshot NEG V02**.
 
 | Mô hình | Precision | Recall | mAP50 | mAP50-95 | Leaf Miner AP50-95 |

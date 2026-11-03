@@ -1,5 +1,10 @@
 # YOLO Negative Images V03 — so sánh YOLOv8s / YOLO26s
 
+<!-- docs-sync-2026-11-04:start -->
+> **Đồng bộ README 04/11/2026:** YOLO Validation-only (không đánh giá trên Test khóa). Không phát sinh huấn luyện hoặc Test mới; kết quả gốc được giữ nguyên. [Trang chủ](../../README.md) · [Danh mục 95 README](../../docs/EXPERIMENT_INDEX.md) · [Tiến độ](../../docs/RESEARCH_STATUS_2026-11-04.md) · [Protocol](../../docs/RESEARCH_PROTOCOL.md).
+<!-- docs-sync-2026-11-04:end -->
+
+
 Thí nghiệm **Validation-only** sử dụng **NEG V03**, Train **3497 ảnh (621 ảnh âm)**, Validation **951 ảnh (58 ảnh âm)** và Test **412 ảnh được giữ khóa**. Train 3 lớp Anthracnose, Leaf Miner, Red Rust; Healthy/Not Cashew là background 0 box.
 
 - Dataset fingerprint: `1acc0edcf7f736f9754e4977b61133a7ec5582b44d8cf3eef27208f49a202add`.

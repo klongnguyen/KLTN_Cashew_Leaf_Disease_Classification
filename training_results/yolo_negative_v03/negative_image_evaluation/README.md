@@ -1,5 +1,10 @@
 # Negative Image Evaluation — 6 checkpoint, V003 / NEG V02 / NEG V03
 
+<!-- docs-sync-2026-11-04:start -->
+> **Đồng bộ README 04/11/2026:** YOLO Validation-only (không đánh giá trên Test khóa). Không phát sinh huấn luyện hoặc Test mới; kết quả gốc được giữ nguyên. [Trang chủ](../../../README.md) · [Danh mục 95 README](../../../docs/EXPERIMENT_INDEX.md) · [Tiến độ](../../../docs/RESEARCH_STATUS_2026-11-04.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+<!-- docs-sync-2026-11-04:end -->
+
+
 Nguồn: `NEG_V03_NEGATIVE_IMAGE_EVALUATION_ANALYSIS.zip`; SHA256: `91435db7b9fbe9ac408417bc0290d9656c9c08829601401a8899754153c5dcbb`. **Validation-only**, không sử dụng Test. Sáu checkpoint được đánh giá lại trên cùng một tập **951 ảnh**, trong đó **58 ảnh negative**: 38 Healthy và 20 Not Cashew Leaf.
 
 **Evaluation contract:** Ultralytics 8.4.197, `imgsz=640`, `batch=4`, `iou=0.7`, `half=False`, `rect=False`; báo bệnh nhầm nếu ≥1 box trên ảnh âm với `conf >= 0.25`. Tính P/R/mAP từ `model.val(conf=0.001)`. Validation SHA256: `9a502be84e2d619a6d75bb76b979c7d40eabc8d6688124d05d013965555ee78f`. Các metric re-check không gộp với metric gốc trong notebook (train Ultralytics 8.4.198).
