@@ -8,3 +8,7 @@
 Các báo cáo trên thuộc nhánh rà soát hậu nghiệm. Không lấy lỗi đã xem trên Test/Holdout làm cơ sở tuning rồi tiếp tục gọi dataset đó là blind evaluation.
 
 [Dataset Changelog](../DATASET_CHANGELOG.md) · [Research Protocol](../docs/RESEARCH_PROTOCOL.md)
+
+## Grad-CAM P0 và parity gate
+
+[Xem audit EXP-025](../analysis_results/ANALYSIS-DENSENET121-EXP025-P0-GRADCAM-005/README.md): kiểm tra parity xác suất với log nguồn chưa qua ngưỡng `1e-4` trên 5 ảnh, vì vậy chưa có CAM hợp lệ để diễn giải.

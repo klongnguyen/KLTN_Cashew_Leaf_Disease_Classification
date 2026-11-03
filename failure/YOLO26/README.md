@@ -86,3 +86,7 @@ Tuy nhiên đây **không phải controlled ablation** vì Validation/Test thay 
 5. Giữ YOLO26s + `640×640` trước khi đổi resolution/model size.
 6. Tune confidence threshold trên Validation rồi khóa threshold trước khi đánh giá Test.
 7. Chỉ đưa YOLO ra khỏi `failure/` khi đã chốt một detector cuối theo protocol này.
+
+## Nhánh NEG V03 hiện hành
+
+Các thí nghiệm [NEG V02](../../training_results/yolo_negative_v02/README.md) và [NEG V03](../../training_results/yolo_negative_v03/README.md) dùng negative images, đánh giá Validation-only. Đây là benchmark khác với Take 01–07, vẫn **chưa chốt detector final**.

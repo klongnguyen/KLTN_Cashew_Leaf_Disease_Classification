@@ -43,6 +43,8 @@ python -m uvicorn server:app --host 127.0.0.1 --port 8000
 
 Truy cập **http://127.0.0.1:8000/**. Cài đặt trong môi trường tách biệt được khuyến nghị vì version Keras/TensorFlow có thể ảnh hưởng load model.
 
+**Phạm vi triển khai 04/11/2026:** API hiện **phân loại ảnh 5 lớp**, chưa triển khai YOLO bounding box hay pipeline hai giai đoạn. Không đổi EXP-014 sang EXP-028 bằng kết quả Test/Holdout lịch sử. [Tiến độ](../docs/RESEARCH_STATUS_2026-11-04.md).
+
 ## API và kiểm tra đầu vào
 
 | Route | Vai trò |
