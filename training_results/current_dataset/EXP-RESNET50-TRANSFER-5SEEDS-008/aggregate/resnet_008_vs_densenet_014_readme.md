@@ -1,5 +1,10 @@
 # Controlled dataset, different training methods
 
+<!-- docs-sync-2026-11-04:start -->
+> **Đồng bộ README 04/11/2026:** Giữ đúng dataset, seed, config và phạm vi đánh giá gốc. Không phát sinh huấn luyện hoặc Test mới; kết quả gốc được giữ nguyên. [Trang chủ](../../../../README.md) · [Danh mục 95 README](../../../../docs/EXPERIMENT_INDEX.md) · [Tiến độ](../../../../docs/RESEARCH_STATUS_2026-11-04.md) · [Protocol](../../../../docs/RESEARCH_PROTOCOL.md).
+<!-- docs-sync-2026-11-04:end -->
+
+
 Both EXP-RESNET50-TRANSFER-5SEEDS-008 and EXP-DENSENET121-TRANSFER-5SEEDS-014 use V08 with the same manifest and 5 fixed seeds. The comparison remains **method-level**, because DenseNet121-014 unfreezes the last Dense Block while ResNet50-008 freezes the backbone throughout.
 
 | Split | ResNet50-008 | DenseNet121-014 (evaluated in 015 where noted) |
