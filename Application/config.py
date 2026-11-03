@@ -38,6 +38,24 @@ METADATA_PATH = (
     / "deployment_metadata.json"
 )
 
+# Fallback checkpoint included in repository when deployment_model.keras is absent
+FALLBACK_MODEL_PATH = (
+    PROJECT_ROOT
+    / "training_results"
+    / "archive_legacy_dataset"
+    / "EXP-DENSENET121-SCRATCH-001"
+    / "checkpoints"
+    / "EXP-DENSENET121-SCRATCH-001_best.keras"
+)
+
+FALLBACK_LABEL_MAP = {
+    "0": "anthracnose",
+    "1": "healthy",
+    "2": "leaf_miner",
+    "3": "not_cashew_leaf",
+    "4": "red_rust",
+}
+
 STATIC_DIR = BASE_DIR / "static"
 SAMPLES_DIR = STATIC_DIR / "samples"
 

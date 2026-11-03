@@ -15,6 +15,8 @@ from config import (
     MODEL_PATH,
     LABEL_MAP_PATH,
     METADATA_PATH,
+    FALLBACK_MODEL_PATH,
+    FALLBACK_LABEL_MAP,
     IMG_SIZE,
     MODEL_NAME,
     BEST_SEED,
@@ -38,31 +40,49 @@ class DenseNet121Service:
         return cls._instance
 
     def _initialize(self):
-        logger.info(f"Loading best DenseNet121 model from: {MODEL_PATH}")
-        if not MODEL_PATH.exists():
-            raise FileNotFoundError(f"Model file not found at: {MODEL_PATH}")
-
-        # Load deployment model (contains internal DenseNet preprocessing)
-        self.model = keras.models.load_model(str(MODEL_PATH), compile=False)
-
-        # Load label map
-        if LABEL_MAP_PATH.exists():
-            with open(LABEL_MAP_PATH, "r", encoding="utf-8") as f:
-                self.label_map = json.load(f)
+        if MODEL_PATH.exists():
+            active_model_path = MODEL_PATH
+            using_fallback = False
+            logger.info(f"Loading best DenseNet121 model from: {active_model_path}")
+        elif FALLBACK_MODEL_PATH.exists():
+            active_model_path = FALLBACK_MODEL_PATH
+            using_fallback = True
+            logger.warning(
+                f"Primary model not found at {MODEL_PATH}. "
+                f"Falling back to repository checkpoint: {active_model_path}"
+            )
         else:
-            self.label_map = {
-                "0": "anthracnose",
-                "1": "healthy",
-                "2": "leaf_miner",
-                "3": "red_rust",
-                "4": "not_cashew_leaf",
-            }
+            raise FileNotFoundError(
+                f"Model file not found at {MODEL_PATH} or fallback {FALLBACK_MODEL_PATH}"
+            )
 
-        # Load metadata
-        self.metadata = {}
-        if METADATA_PATH.exists():
-            with open(METADATA_PATH, "r", encoding="utf-8") as f:
-                self.metadata = json.load(f)
+        # Load model (contains internal preprocessing/rescaling)
+        self.model = keras.models.load_model(str(active_model_path), compile=False)
+
+        # Load label map and metadata corresponding to active model
+        if using_fallback:
+            self.label_map = FALLBACK_LABEL_MAP
+            self.metadata = {
+                "experiment_id": "EXP-DENSENET121-SCRATCH-001",
+                "selection_source": "validation only (fallback checkpoint in repo)",
+            }
+        else:
+            if LABEL_MAP_PATH.exists():
+                with open(LABEL_MAP_PATH, "r", encoding="utf-8") as f:
+                    self.label_map = json.load(f)
+            else:
+                self.label_map = {
+                    "0": "anthracnose",
+                    "1": "healthy",
+                    "2": "leaf_miner",
+                    "3": "red_rust",
+                    "4": "not_cashew_leaf",
+                }
+
+            self.metadata = {}
+            if METADATA_PATH.exists():
+                with open(METADATA_PATH, "r", encoding="utf-8") as f:
+                    self.metadata = json.load(f)
 
         # Warm up model to eliminate initial inference latency
         logger.info("Warming up model with dummy input...")

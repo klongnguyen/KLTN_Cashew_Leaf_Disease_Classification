@@ -1,10 +1,52 @@
 /**
- * Cashew Leaf AI Diagnostic - Frontend Controller
- * Nền trắng chữ đen, giao diện gọn gàng, xếp hạng độ tin cậy từ cao xuống thấp
+ * Cashew Leaf AI Encyclopedia & Diagnostic - Frontend Controller
+ * Luồng chuẩn:
+ * 1. Trang Chủ (#view-leaf-selector): Chỉ hiển thị danh sách các loại lá cây trồng để chọn.
+ *    (Thanh chọn chức năng Phần 1 & Phần 2 hoàn toàn ẩn khi ở Trang Chủ).
+ * 2. Sau khi chọn 1 loại lá:
+ *    - Hiện thanh chức năng (#leaf-workspace-bar) gồm [Phần 1: Bách Khoa ...] và [Phần 2: Khoanh Vùng & Nhận Diện]
+ *      cùng bộ chuyển đổi nhanh giữa các loại lá.
+ *    - Nếu là Lá Cây Điều (cashew): Mở Phần 1 (Bách Khoa Lá Điều) hoặc Phần 2 (Khoanh Vùng & Nhận Diện).
+ *    - Nếu là các lá khác (coffee, pepper, durian, rubber, rice): Nhảy sang màn hình thông báo "Đang phát triển".
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // DOM Elements
+  // ================= VIEW NAVIGATION ELEMENTS =================
+  const views = {
+    'view-leaf-selector': document.getElementById('view-leaf-selector'),
+    'view-wiki': document.getElementById('view-wiki'),
+    'view-under-dev': document.getElementById('view-under-dev'),
+    'view-diagnose': document.getElementById('view-diagnose'),
+  };
+
+  const leafWorkspaceBar = document.getElementById('leaf-workspace-bar');
+  const navBtnSelector = document.getElementById('nav-btn-selector');
+  const brandHomeTrigger = document.getElementById('brand-home-trigger');
+  const btnWorkspaceBackHome = document.getElementById('btn-workspace-back-home');
+
+  // Function tabs inside Selected Leaf Workspace Bar
+  const navBtnWiki = document.getElementById('nav-btn-wiki');
+  const navBtnDiagnose = document.getElementById('nav-btn-diagnose');
+  const navWikiLabel = document.getElementById('nav-wiki-label');
+  const navDiagnoseLabel = document.getElementById('nav-diagnose-label');
+
+  // Buttons inside Wiki (Phần 1)
+  const btnSidebarToDiagnose = document.getElementById('btn-sidebar-to-diagnose');
+  const btnSidebarBackHome = document.getElementById('btn-sidebar-back-home');
+  const btnTopToDiagnose = document.getElementById('btn-top-to-diagnose');
+  const btnBottomToDiagnose = document.getElementById('btn-bottom-to-diagnose');
+
+  // Under Development View Elements
+  const underDevLeafLabel = document.getElementById('under-dev-leaf-label');
+  const underDevFeatureDesc = document.getElementById('under-dev-feature-desc');
+  const btnDevGoCashewWiki = document.getElementById('btn-dev-go-cashew-wiki');
+  const btnDevBackSelector = document.getElementById('btn-dev-back-selector');
+
+  // Leaf choice cards & dropdown
+  const leafChoiceCards = document.querySelectorAll('.leaf-choice-card');
+  const quickLeafSelect = document.getElementById('quick-leaf-select');
+
+  // ================= DIAGNOSIS ELEMENTS =================
   const dropzoneBox = document.getElementById('dropzone-box');
   const fileInput = document.getElementById('file-input');
   const fileStatusTray = document.getElementById('file-status-tray');
@@ -14,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnTrayRemove = document.getElementById('btn-tray-remove');
   const btnPredict = document.getElementById('btn-predict');
   const btnClearSelection = document.getElementById('btn-clear-selection');
+  const sampleButtons = document.querySelectorAll('.sample-item-btn');
 
   // Result Area
   const emptyStateView = document.getElementById('empty-state-view');
@@ -23,13 +66,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Preview elements
   const diagnosisPreviewImg = document.getElementById('diagnosis-preview-img');
+  const bboxDevOverlay = document.getElementById('bbox-dev-overlay');
+  const btnToggleBbox = document.getElementById('btn-toggle-bbox');
   const imgFileName = document.getElementById('img-file-name');
   const imgFileSize = document.getElementById('img-file-size');
   const imageDimBadge = document.getElementById('image-dim-badge');
   const btnZoomImage = document.getElementById('btn-zoom-image');
   const btnReuploadTrigger = document.getElementById('btn-reupload-trigger');
 
-  // Conclusion elements (Bệnh cao nhất trên đầu)
+  // Conclusion elements
   const conclusionDiseaseName = document.getElementById('conclusion-disease-name');
   const conclusionLatin = document.getElementById('conclusion-latin');
   const conclusionConfidenceValue = document.getElementById('conclusion-confidence-value');
@@ -38,23 +83,230 @@ document.addEventListener('DOMContentLoaded', () => {
   const diseaseIconBox = document.getElementById('disease-icon-box');
   const conclusionIcon = document.getElementById('conclusion-icon');
 
-  // Confidence List
+  // Confidence List & Guide
   const confidenceList = document.getElementById('confidence-list');
-
-  // Guide elements
   const guideSymptomsText = document.getElementById('guide-symptoms-text');
   const guideManagementList = document.getElementById('guide-management-list');
 
   // Modal
   const imageModal = document.getElementById('image-modal');
+  const modalImgTitle = document.getElementById('modal-img-title');
   const modalFullImg = document.getElementById('modal-full-img');
   const btnCloseModal = document.getElementById('btn-close-modal');
 
   // State
   let currentFile = null;
   let currentPreviewUrl = null;
+  let activeLeafId = null;
+  let activeLeafPart = 'part1'; // 'part1' (Bách khoa) hoặc 'part2' (Khoanh vùng & Nhận diện)
 
   const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp'];
+
+  const LEAF_META = {
+    cashew: {
+      shortName: 'Lá Điều',
+      fullName: 'Lá Cây Điều (Cashew Leaf)',
+    },
+    coffee: {
+      shortName: 'Lá Cà Phê',
+      fullName: 'Lá Cây Cà Phê (Coffee Leaf)',
+    },
+    pepper: {
+      shortName: 'Lá Hồ Tiêu',
+      fullName: 'Lá Cây Hồ Tiêu (Black Pepper Leaf)',
+    },
+    durian: {
+      shortName: 'Lá Sầu Riêng',
+      fullName: 'Lá Cây Sầu Riêng (Durian Leaf)',
+    },
+    rubber: {
+      shortName: 'Lá Cao Su',
+      fullName: 'Lá Cây Cao Su (Rubber Leaf)',
+    },
+    rice: {
+      shortName: 'Lá Lúa',
+      fullName: 'Lá Cây Lúa (Rice Leaf)',
+    },
+  };
+
+  // ================= 0. PAGE VIEW NAVIGATION & LEAF SELECTION =================
+
+  function showOnlySection(targetViewId) {
+    Object.entries(views).forEach(([id, sectionEl]) => {
+      if (!sectionEl) return;
+      if (id === targetViewId) {
+        sectionEl.classList.remove('hidden');
+      } else {
+        sectionEl.classList.add('hidden');
+      }
+    });
+  }
+
+  function goToHomeSelector() {
+    activeLeafId = null;
+    if (leafWorkspaceBar) {
+      leafWorkspaceBar.classList.add('hidden');
+    }
+    if (navBtnSelector) {
+      navBtnSelector.classList.add('active');
+    }
+    showOnlySection('view-leaf-selector');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function openLeafWorkspace(leafId, part = 'part1') {
+    activeLeafId = leafId;
+    activeLeafPart = part;
+
+    const meta = LEAF_META[leafId] || {
+      shortName: 'Lá Cây',
+      fullName: 'Loại lá khác',
+    };
+
+    // Show the post-leaf-selection workspace bar
+    if (leafWorkspaceBar) {
+      leafWorkspaceBar.classList.remove('hidden');
+    }
+    if (navBtnSelector) {
+      navBtnSelector.classList.remove('active');
+    }
+    if (quickLeafSelect) {
+      quickLeafSelect.value = leafId;
+    }
+
+    // Update the Part 1 & Part 2 button labels for the selected leaf
+    if (navWikiLabel) {
+      navWikiLabel.textContent = `Phần 1: Bách Khoa ${meta.shortName}`;
+    }
+    if (navDiagnoseLabel) {
+      navDiagnoseLabel.textContent = `Phần 2: Khoanh Vùng & Nhận Diện`;
+    }
+
+    // Highlight active part tab inside the selected leaf workspace
+    if (navBtnWiki && navBtnDiagnose) {
+      navBtnWiki.classList.toggle('active', part === 'part1');
+      navBtnDiagnose.classList.toggle('active', part === 'part2');
+    }
+
+    if (leafId === 'cashew') {
+      if (part === 'part1') {
+        showOnlySection('view-wiki');
+      } else {
+        showOnlySection('view-diagnose');
+      }
+    } else {
+      const partName = part === 'part1'
+        ? `Phần 1: Bách Khoa ${meta.shortName}`
+        : `Phần 2: Khoanh Vùng & Nhận Diện (${meta.shortName})`;
+
+      if (underDevLeafLabel) {
+        underDevLeafLabel.textContent = `Đã chọn: ${meta.fullName} — ${partName}`;
+      }
+      if (underDevFeatureDesc) {
+        underDevFeatureDesc.innerHTML = `Chức năng <strong>${partName}</strong> hiện đang trong quá trình phát triển. Hiện tại hệ thống chỉ hỗ trợ đầy đủ cả 2 phần cho <strong>Lá Cây Điều (Cashew Leaf)</strong>.`;
+      }
+      showOnlySection('view-under-dev');
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Home triggers
+  if (navBtnSelector) {
+    navBtnSelector.addEventListener('click', goToHomeSelector);
+  }
+  if (brandHomeTrigger) {
+    brandHomeTrigger.addEventListener('click', goToHomeSelector);
+  }
+  if (btnWorkspaceBackHome) {
+    btnWorkspaceBackHome.addEventListener('click', goToHomeSelector);
+  }
+  if (btnSidebarBackHome) {
+    btnSidebarBackHome.addEventListener('click', goToHomeSelector);
+  }
+  if (btnDevBackSelector) {
+    btnDevBackSelector.addEventListener('click', goToHomeSelector);
+  }
+
+  // Leaf cards on Home Page
+  leafChoiceCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const leafId = card.getAttribute('data-leaf-id');
+      openLeafWorkspace(leafId, 'part1');
+    });
+  });
+
+  // Dropdown switcher inside Selected Leaf Workspace Bar
+  if (quickLeafSelect) {
+    quickLeafSelect.addEventListener('change', (e) => {
+      const chosenId = e.target.value;
+      openLeafWorkspace(chosenId, activeLeafPart);
+    });
+  }
+
+  // Part 1 & Part 2 buttons inside Selected Leaf Workspace Bar
+  if (navBtnWiki) {
+    navBtnWiki.addEventListener('click', () => {
+      openLeafWorkspace(activeLeafId || 'cashew', 'part1');
+    });
+  }
+  if (navBtnDiagnose) {
+    navBtnDiagnose.addEventListener('click', () => {
+      openLeafWorkspace(activeLeafId || 'cashew', 'part2');
+    });
+  }
+
+  // Internal buttons inside Cashew Wiki to jump to Part 2
+  if (btnSidebarToDiagnose) {
+    btnSidebarToDiagnose.addEventListener('click', () => openLeafWorkspace('cashew', 'part2'));
+  }
+  if (btnTopToDiagnose) {
+    btnTopToDiagnose.addEventListener('click', () => openLeafWorkspace('cashew', 'part2'));
+  }
+  if (btnBottomToDiagnose) {
+    btnBottomToDiagnose.addEventListener('click', () => openLeafWorkspace('cashew', 'part2'));
+  }
+
+  // Button on Under-Development page to switch to Cashew Leaf
+  if (btnDevGoCashewWiki) {
+    btnDevGoCashewWiki.addEventListener('click', () => openLeafWorkspace('cashew', activeLeafPart));
+  }
+
+  // Smooth scroll for Wikipedia TOC links without changing view
+  document.querySelectorAll('.toc-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const targetEl = document.querySelector(href);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+
+  // Zoomable images on Wikipedia page
+  document.querySelectorAll('.wiki-zoomable-img').forEach(img => {
+    img.addEventListener('click', () => {
+      modalFullImg.src = img.src;
+      if (modalImgTitle) {
+        modalImgTitle.textContent = img.alt || 'Chi Tiết Hình Ảnh Lá Điều';
+      }
+      imageModal.classList.remove('hidden');
+    });
+  });
+
+  // Toggle Bounding Box preview overlay on Diagnose page
+  if (btnToggleBbox && bboxDevOverlay) {
+    btnToggleBbox.addEventListener('click', () => {
+      const isHidden = bboxDevOverlay.classList.toggle('hidden');
+      btnToggleBbox.classList.toggle('active', !isHidden);
+      if (!isHidden) {
+        showToast('Chế độ khoanh vùng ảnh: Mô hình AI đang trong quá trình huấn luyện.', 'info');
+      }
+    });
+  }
 
   // ================= 1. FILE UPLOAD & VALIDATION =================
 
@@ -98,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const file = files[0];
 
-    const isValidType = ALLOWED_TYPES.includes(file.type.toLowerCase()) || 
+    const isValidType = ALLOWED_TYPES.includes(file.type.toLowerCase()) ||
       /\.(png|jpe?g|webp)$/i.test(file.name);
 
     if (!isValidType) {
@@ -157,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showToast('Đã làm mới.', 'info');
   });
 
-  // ================= 2. PREDICTION EXECUTION =================
+  // ================= 2. PREDICTION EXECUTION (UPLOAD & SAMPLES) =================
 
   btnPredict.addEventListener('click', async () => {
     if (!currentFile) {
@@ -165,6 +417,16 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     await executePrediction(currentFile);
+  });
+
+  sampleButtons.forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const sampleName = btn.getAttribute('data-sample');
+      const sampleLabel = btn.getAttribute('data-label') || sampleName;
+      if (sampleName) {
+        await executeSamplePrediction(sampleName, sampleLabel);
+      }
+    });
   });
 
   async function executePrediction(file) {
@@ -186,7 +448,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const result = await response.json();
       renderDiagnosisResult(result, currentPreviewUrl, file.name, formatBytes(file.size));
-      showToast('Chuẩn đoán hoàn tất!', 'success');
+      showToast('Nhận diện hoàn tất!', 'success');
+    } catch (err) {
+      console.error(err);
+      showToast(`Lỗi: ${err.message}`, 'error');
+      setStatus('Lỗi');
+    } finally {
+      setAnalyzingState(false);
+    }
+  }
+
+  async function executeSamplePrediction(sampleName, sampleLabel) {
+    setAnalyzingState(true);
+
+    try {
+      const response = await fetch(`/api/predict-sample/${encodeURIComponent(sampleName)}`, {
+        method: 'POST',
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Không thể chuẩn đoán ảnh mẫu.');
+      }
+
+      const result = await response.json();
+      const sampleUrl = `/static/samples/${sampleName}?v=cashew`;
+      renderDiagnosisResult(result, sampleUrl, sampleName, 'Mẫu Lá Điều Project');
+      showToast(`Đã nhận diện: ${sampleLabel}`, 'success');
     } catch (err) {
       console.error(err);
       showToast(`Lỗi: ${err.message}`, 'error');
@@ -224,8 +512,11 @@ document.addEventListener('DOMContentLoaded', () => {
     imgFileSize.textContent = fileSizeStr;
     imageDimBadge.textContent = `${result.image_meta.width} × ${result.image_meta.height} px`;
     modalFullImg.src = imageUrl;
+    if (modalImgTitle) {
+      modalImgTitle.textContent = `Hình Ảnh Chuẩn Đoán: ${fileName}`;
+    }
 
-    // 2. Primary Conclusion (Nhãn cao nhất đặt trên đầu)
+    // 2. Primary Conclusion
     const conclusion = result.conclusion;
     conclusionDiseaseName.textContent = conclusion.label_vn;
     conclusionLatin.textContent = conclusion.scientific_name || '';
@@ -237,8 +528,8 @@ document.addEventListener('DOMContentLoaded', () => {
     diseaseIconBox.style.borderColor = conclusion.color_hex;
     conclusionIcon.className = `fa-solid ${conclusion.icon}`;
 
-    // 3. Render Confidence Breakdown (Xếp hạng từ cao xuống thấp)
-    const listDesc = result.probabilities_desc || 
+    // 3. Render Confidence Breakdown
+    const listDesc = result.probabilities_desc ||
       [...result.probabilities_asc].sort((a, b) => b.confidence - a.confidence);
     renderDescendingConfidenceList(listDesc, conclusion.class_id);
 
@@ -267,7 +558,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     classesDesc.forEach((item, index) => {
       const isWinner = item.class_id === winnerClassId;
-      const rankNumber = index + 1; // 1 (cao nhất trên đầu) -> 5 (thấp nhất)
+      const rankNumber = index + 1;
 
       const row = document.createElement('div');
       row.className = `confidence-row ${isWinner ? 'is-winner' : ''}`;

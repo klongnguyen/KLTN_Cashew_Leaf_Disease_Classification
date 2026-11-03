@@ -55,28 +55,35 @@ async def get_model_info():
 
 @app.get("/api/samples")
 async def get_samples():
-    """Return available sample images for instant testing."""
+    """Return available genuine cashew leaf sample images for instant testing."""
     sample_items = [
         {
             "id": "ath_01.png",
-            "title": "Mẫu Bệnh Thán Thư",
+            "title": "Lá Điều — Bệnh Thán Thư",
             "class_hint": "anthracnose",
             "url": "/static/samples/ath_01.png",
-            "description": "Lá điều có vết đốm hoại tử viền sẫm đặc trưng của thán thư."
+            "description": "Lá điều có mảng cháy khô hoại tử từ mép lá đặc trưng của bệnh thán thư."
         },
         {
             "id": "mine01.png",
-            "title": "Mẫu Sâu Vẽ Bùa",
+            "title": "Lá Điều — Sâu Vẽ Bùa",
             "class_hint": "leaf_miner",
             "url": "/static/samples/mine01.png",
-            "description": "Lá điều có đường đục ngoằn ngoèo ánh bạc của sâu đục lá."
+            "description": "Lá điều có vết đục lớp biểu bì và mảng tổn thương do ấu trùng sâu vẽ bùa."
         },
         {
             "id": "red01.png",
-            "title": "Mẫu Bệnh Rỉ Đỏ",
+            "title": "Lá Điều — Bệnh Rỉ Đỏ",
             "class_hint": "red_rust",
             "url": "/static/samples/red01.png",
-            "description": "Lá điều có các đốm đỏ gạch/rỉ sắt gồ lên trên mặt lá."
+            "description": "Lá điều có các đốm tròn màu đỏ gạch/cam rỉ sắt gồ trên mặt lá."
+        },
+        {
+            "id": "healthy01.png",
+            "title": "Lá Điều — Khỏe Mạnh",
+            "class_hint": "healthy",
+            "url": "/static/samples/healthy01.png",
+            "description": "Lá điều nguyên vẹn, xanh lục bóng khỏe, hệ gân lá nổi rõ."
         }
     ]
     return {"samples": sample_items}
