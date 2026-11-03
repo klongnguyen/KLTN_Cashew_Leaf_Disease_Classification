@@ -1,0 +1,19 @@
+{
+  "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+  "tensorflow": "2.21.0",
+  "keras": "3.13.2",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "gpu": [
+    "PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')"
+  ],
+  "cuda_build": "12.5.1",
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "code_revision_sha256": "f9fd5d5f50287b65dc545e1b4b2827349423d84914dbb415e9c8e8da76a7cc0c",
+  "code_revision_method": "SHA256 of generated model/smoke, train, comparison, export, and VIEW_ONLY cells"
+}

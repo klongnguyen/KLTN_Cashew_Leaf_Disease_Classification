@@ -1,0 +1,25 @@
+{
+  "prediction_rows": 7835,
+  "unique_images": 1567,
+  "priority_cases": 27,
+  "images": "COMPLETE",
+  "gradcam": "BLOCKED_PARITY_FAILURE",
+  "issues": [],
+  "missing_assets": 0,
+  "holdout_seed42_healthy_wrong": 5,
+  "holdout_seed42_disease_to_healthy": 3,
+  "holdout_all_five_wrong": 14,
+  "quality_images_read": 30,
+  "parity_failure": {
+    "relative_path": "anthracnose/real_anthracnose_051.jpg",
+    "true_label": "anthracnose",
+    "logged_prediction": "leaf_miner",
+    "model_prediction": "leaf_miner",
+    "logged_confidence": 0.6648407578468323,
+    "model_confidence": 0.6643527746200562,
+    "log_confidence_abs_diff": 0.00048798322677612305,
+    "unpooled_max_abs_diff": 2.682209014892578e-07
+  },
+  "parity_smoke_images": 5,
+  "cam_maps": 0
+}

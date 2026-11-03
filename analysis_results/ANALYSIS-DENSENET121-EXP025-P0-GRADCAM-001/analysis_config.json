@@ -1,0 +1,20 @@
+{
+  "analysis_id": "ANALYSIS-DENSENET121-EXP025-P0-GRADCAM-001",
+  "exp024": null,
+  "exp025": "C:\\Users\\KIM LONG\\Downloads\\EXP-DENSENET121-TRANSFER-5SEEDS-025-256px_ANALYSIS.zip",
+  "split11_zip": null,
+  "holdout05_zip": null,
+  "checkpoint": null,
+  "seed": 42,
+  "img_size": 256,
+  "class_names": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "red_rust",
+    "not_cashew_leaf"
+  ],
+  "run_training": false,
+  "run_test": false,
+  "run_holdout_reevaluation": false
+}

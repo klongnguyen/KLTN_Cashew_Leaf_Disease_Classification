@@ -1,0 +1,11 @@
+{
+  "experiment_id": "EXP-DENSENET121-TRANSFER-5SEEDS-024-256px-f9fd5d5f",
+  "training": "COMPLETE",
+  "validation": "COMPLETE",
+  "test": "PENDING",
+  "real_holdout": "PENDING",
+  "dataset_zip_sha256": "5d60295d26068f5d9f6427dc730a0f662c56c28ad9ee95f8b594faf546861f49",
+  "dataset_manifest_sha256": "91d8279239eaad2007b652f1859667359d0cf01f94af917dd27b0a934a7b7e75",
+  "deployment_seed": 42,
+  "selection_lock_sha256": "fc494edc5840191b2e211c299a46a5a617ac44ecbd840ee57574dcd3629ced1e"
+}

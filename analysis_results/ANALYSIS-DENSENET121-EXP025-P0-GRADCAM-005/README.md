@@ -1,0 +1,5 @@
+# P0 Healthy error audit
+
+Read-only source analysis. Both image ZIPs, the EXP-024 FULL ZIP and the seed-42 checkpoint passed SHA-256 checks. Prediction inventory contains 7,835 rows. Image quality table contains 30 verified original images. The CAM CSV is empty because classifier probability parity against the EXP-025 log failed the required 1e-4 tolerance on five smoke images; no heatmap was produced. Review template is blinded to model predictions and contains no human decisions.
+
+Run `uv run --python 3.11 --no-project python analysis/scripts/exp025_p0_audit.py --help` for the prediction inventory, then `uv run --python 3.11 --no-project python analysis/scripts/exp025_p0_visual_audit.py --help` for images and the strict parity gate. The original EXP-025 ANALYSIS ZIP used for Holdout predictions was present in Downloads during the first run; the current report uses its cached inventory because that ZIP is no longer at the same path. Reproduction from scratch requires the original EXP-025 archive.
