@@ -1,4 +1,9 @@
 # EXP-DENSENET121-TRANSFER-5SEEDS-022 — V10 · 4,920 Train / 1,445 Val / 686 Test; Holdout04 120
+
+<!-- docs-sync-2026-11-04:start -->
+> **Đồng bộ README 04/11/2026:** Giữ đúng dataset, seed, config và phạm vi đánh giá gốc. Không phát sinh huấn luyện hoặc Test mới; kết quả gốc được giữ nguyên. [Trang chủ](../../../README.md) · [Danh mục 95 README](../../../docs/EXPERIMENT_INDEX.md) · [Tiến độ](../../../docs/RESEARCH_STATUS_2026-11-04.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+<!-- docs-sync-2026-11-04:end -->
+
 > **Cập nhật điều hướng 28/10/2026.** TRAIN V10 / KẾT QUẢ HỒI CỨU — Holdout đã tiếp xúc. [README chính](../../../README.md) · [Danh mục EXP](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
 
 
