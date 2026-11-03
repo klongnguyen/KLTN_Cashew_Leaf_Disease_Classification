@@ -1,5 +1,10 @@
 # YOLOv8s / YOLO26s — tác động Class-Weighted Loss trên Cashew YOLO Master Final
 
+<!-- docs-sync-2026-11-04:start -->
+> **Đồng bộ README 04/11/2026:** YOLO Validation-only (không đánh giá trên Test khóa). Không phát sinh huấn luyện hoặc Test mới; kết quả gốc được giữ nguyên. [Trang chủ](../../README.md) · [Danh mục 95 README](../../docs/EXPERIMENT_INDEX.md) · [Tiến độ](../../docs/RESEARCH_STATUS_2026-11-04.md) · [Protocol](../../docs/RESEARCH_PROTOCOL.md).
+<!-- docs-sync-2026-11-04:end -->
+
+
 ## Phạm vi
 
 Bốn thí nghiệm trên **Validation-only** của cùng dataset fingerprint `9cd75fd917a0edbce88e43d535c823ae464e348468d9a5e5ef2c98cf328349d7`: Train **2.876**, Validation **893**, Test **412** (chưa sử dụng để chọn mô hình). So sánh `cls_pw=0` và `cls_pw=0.25` cho từng kiến trúc, seed **42**, 640px, batch 8, AdamW, max 80 epochs.

@@ -1,4 +1,9 @@
 # IMPROVED001 — DenseNet121 Scratch trên CashewData_Split (7)
+
+<!-- docs-sync-2026-11-04:start -->
+> **Đồng bộ README 04/11/2026:** Nhánh kiểm định dữ liệu riêng. Không phát sinh huấn luyện hoặc Test mới; kết quả gốc được giữ nguyên. [Trang chủ](../../../README.md) · [Danh mục 95 README](../../../docs/EXPERIMENT_INDEX.md) · [Tiến độ](../../../docs/RESEARCH_STATUS_2026-11-04.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+<!-- docs-sync-2026-11-04:end -->
+
 > **Đồng bộ điều hướng 28/10/2026.** NHÁNH KIỂM ĐỊNH DỮ LIỆU — kết quả khác benchmark chính thức từng V08–V11. [Tổng quan](../../../README.md) · [Danh mục](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
 
 
