@@ -1,0 +1,20 @@
+{
+  "analysis_id": "ANALYSIS-DENSENET121-EXP025-P0-GRADCAM-001",
+  "exp024": "training_results\\current_dataset\\EXP-DENSENET121-TRANSFER-5SEEDS-024-256px-f9fd5d5f_FULL.zip",
+  "exp025": null,
+  "split11_zip": "dataset\\CashewData_Split (11).zip",
+  "holdout05_zip": "dataset\\RL_Cashew_holdout (5).zip",
+  "checkpoint": "analysis\\source_024\\seed_42\\best.weights.h5",
+  "seed": 42,
+  "img_size": 256,
+  "class_names": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "red_rust",
+    "not_cashew_leaf"
+  ],
+  "run_training": false,
+  "run_test": false,
+  "run_holdout_reevaluation": false
+}
