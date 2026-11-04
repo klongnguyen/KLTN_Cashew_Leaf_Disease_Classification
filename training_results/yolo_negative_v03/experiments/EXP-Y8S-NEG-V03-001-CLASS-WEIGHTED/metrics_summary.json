@@ -1,0 +1,69 @@
+{
+  "experiment_id": "EXP-Y8S-NEG-V03-001-CLASS-WEIGHTED",
+  "model": "yolov8s.pt",
+  "split": "val",
+  "dataset_fingerprint": "1acc0edcf7f736f9754e4977b61133a7ec5582b44d8cf3eef27208f49a202add",
+  "source_md5": "49c845e0dc9692d69e27979f6d5857f6",
+  "training_recipe": {
+    "imgsz": 640,
+    "batch": 8,
+    "seed": 42,
+    "max_epochs": 80,
+    "optimizer": "AdamW",
+    "lr0": 0.001,
+    "patience": 20,
+    "mosaic": 0.4,
+    "close_mosaic": 10,
+    "mixup": 0,
+    "amp": true,
+    "cls_pw": 0.25,
+    "training_ultralytics_version": "8.4.198"
+  },
+  "training_seconds": 546.072651724,
+  "training_epochs": 50,
+  "macro": {
+    "precision": 0.6652442366776707,
+    "recall": 0.6579792228479188,
+    "ap50": 0.7015090323637413,
+    "ap50_95": 0.380018930157035
+  },
+  "per_class": [
+    {
+      "class_id": 0,
+      "class": "anthracnose",
+      "precision": 0.7530325768074531,
+      "recall": 0.49497970892376997,
+      "ap50": 0.6394862935668977,
+      "ap50_95": 0.30971586690686476,
+      "train_boxes": 34886,
+      "class_weight": 0.7780247926712036
+    },
+    {
+      "class_id": 1,
+      "class": "leaf_miner",
+      "precision": 0.5823499103698184,
+      "recall": 0.7732748349889701,
+      "ap50": 0.7432024044682879,
+      "ap50_95": 0.4756390423005358,
+      "train_boxes": 2076,
+      "class_weight": 1.5752495527267456
+    },
+    {
+      "class_id": 2,
+      "class": "red_rust",
+      "precision": 0.6603502228557409,
+      "recall": 0.7056831246310163,
+      "ap50": 0.7218383990560386,
+      "ap50_95": 0.3547018812637043,
+      "train_boxes": 73071,
+      "class_weight": 0.6467254757881165
+    }
+  ],
+  "source_archive": {
+    "filename": "EXP-Y8S-NEG-V03-001_ANALYSIS.zip",
+    "sha256": "c9e1375b1456dd70c16d8a6b9cb908724744cc0f871c9062b7036ea6a5b1b29a",
+    "analysis_sha256": "c9e1375b1456dd70c16d8a6b9cb908724744cc0f871c9062b7036ea6a5b1b29a",
+    "source_file_count": 37
+  },
+  "test_evaluated": false
+}

@@ -1,4 +1,9 @@
 # EXP-VIT-TRANSFER-XGBOOST-009 — V08 retrospective Test and historical Holdout
+
+<!-- docs-sync-2026-11-04:start -->
+> **Đồng bộ README 04/11/2026:** Giữ đúng dataset, seed, config và phạm vi đánh giá gốc. Không phát sinh huấn luyện hoặc Test mới; kết quả gốc được giữ nguyên. [Trang chủ](../../../README.md) · [Danh mục 95 README](../../../docs/EXPERIMENT_INDEX.md) · [Tiến độ](../../../docs/RESEARCH_STATUS_2026-11-04.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+<!-- docs-sync-2026-11-04:end -->
+
 > **Đồng bộ điều hướng 28/10/2026.** EVALUATION-ONLY — Test/Holdout hồi cứu, không chọn lại classifier bằng kết quả này. [Tổng quan](../../../README.md) · [Danh mục](../../../docs/EXPERIMENT_INDEX.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
 
 

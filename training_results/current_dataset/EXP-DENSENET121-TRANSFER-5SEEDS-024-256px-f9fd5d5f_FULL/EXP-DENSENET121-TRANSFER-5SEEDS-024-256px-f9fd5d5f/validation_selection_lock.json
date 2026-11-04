@@ -1,0 +1,32 @@
+{
+  "experiment_id": "EXP-DENSENET121-TRANSFER-5SEEDS-024-256px-f9fd5d5f",
+  "config_sha256": "baf850ba9798aab7b8ec6d7a91b5ababc6180257a42ef852103c689a08700aff",
+  "dataset_sha256": "5d60295d26068f5d9f6427dc730a0f662c56c28ad9ee95f8b594faf546861f49",
+  "dataset_manifest_sha256": "91d8279239eaad2007b652f1859667359d0cf01f94af917dd27b0a934a7b7e75",
+  "class_names": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "red_rust",
+    "not_cashew_leaf"
+  ],
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "selection_rule": "lowest Validation loss, higher Validation macro-F1, Stage 1 on tie",
+  "deployment_rule": "lowest Validation loss, higher macro-F1, lower seed on tie",
+  "deployment_seed": 42,
+  "validation_sha256": "27485b4d9b654e1b48e658658f2c9858506564f25aeea45cd6508f3e367ba583",
+  "selected_checkpoint_sha256": {
+    "42": "fddcde3988af72b4446468a813a0d516f45663459fd7c761bec4aed58ff662c5",
+    "123": "9629513bad8161726d1db9511829ac2c1f7d83357624bbb98dc949651c9880fd",
+    "2026": "93636d42097fdfc01784d49d1b82a0adc3b2da1c7293735a4c92c64b94b247a2",
+    "3407": "e31690c4008c87b342ec9194d2c79045c96d0cac619edf3d686be300b5a44db2",
+    "7777": "1584e7e6d54cd65523b735cc51abc00876f5958f8c475e58914c13341f62c665"
+  },
+  "locked_at": "2026-10-27T20:37:43.977143+00:00"
+}

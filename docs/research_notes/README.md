@@ -1,6 +1,6 @@
 # Ghi chú và phân tích lịch sử
 
-Các tài liệu này được chuyển khỏi repo root để tập trung cho README hiện hành. **Không xóa nội dung nghiên cứu**; những nhận xét trước V11 có thể đã bị kết quả sau thay đổi. Vui lòng dùng [README chính](../../README.md) và [Research status](../RESEARCH_STATUS_2026-10-28.md) để xem trạng thái mới.
+Các tài liệu này được chuyển khỏi repo root để tập trung cho README hiện hành. **Không xóa nội dung nghiên cứu**; những nhận xét trước V11 có thể đã bị kết quả sau thay đổi. Vui lòng dùng [README chính](../../README.md) và [Research status](../RESEARCH_STATUS_2026-11-04.md) để xem trạng thái mới.
 
 - [ANALYSIS_CLASSIFICATION_003_AND_NEXT_STEPS.md](ANALYSIS_CLASSIFICATION_003_AND_NEXT_STEPS.md)
 - [ANALYSIS_CLASSIFICATION_V05_LATEST_2026-10-05.md](ANALYSIS_CLASSIFICATION_V05_LATEST_2026-10-05.md)

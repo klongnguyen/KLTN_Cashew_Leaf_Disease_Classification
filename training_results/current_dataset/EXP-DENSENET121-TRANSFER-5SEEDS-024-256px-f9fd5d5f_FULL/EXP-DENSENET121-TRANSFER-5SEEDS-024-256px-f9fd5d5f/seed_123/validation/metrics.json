@@ -1,0 +1,21 @@
+{
+  "seed": 123,
+  "selected_stage": "stage2",
+  "selected_epoch": 27,
+  "val_loss": 0.0769963264465332,
+  "val_accuracy": 0.9758120248790602,
+  "val_macro_precision": 0.9750917473966754,
+  "val_macro_recall": 0.9747032743493769,
+  "val_macro_f1": 0.9748756449037067,
+  "val_balanced_accuracy": 0.9747032743493769,
+  "prediction_seconds_including_input_pipeline": 0.9916750200000024,
+  "inference_time_ms_per_image": 0.6853317346233604,
+  "anthracnose_recall": 0.9514563106796117,
+  "leaf_miner_recall": 0.9625468164794008,
+  "false_healthy_count": 4,
+  "disease_count": 911,
+  "false_healthy_rate": 0.0043907793633369925,
+  "healthy_to_diseased_count": 7,
+  "healthy_count": 222,
+  "healthy_to_diseased_rate": 0.03153153153153153
+}

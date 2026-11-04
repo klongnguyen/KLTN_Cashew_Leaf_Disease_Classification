@@ -1,5 +1,10 @@
 # CBAM ablation — So sánh 3 kiến trúc trên Cashew V08 (27/10/2026)
 
+<!-- docs-sync-2026-11-04:start -->
+> **Đồng bộ README 04/11/2026:** Giữ đúng dataset, seed, config và phạm vi đánh giá gốc. Không phát sinh huấn luyện hoặc Test mới; kết quả gốc được giữ nguyên. [Trang chủ](../../../README.md) · [Danh mục 95 README](../../../docs/EXPERIMENT_INDEX.md) · [Tiến độ](../../../docs/RESEARCH_STATUS_2026-11-04.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+<!-- docs-sync-2026-11-04:end -->
+
+
 > **Trạng thái: RESEARCH ONLY — VALIDATION COMPLETE.** Test V08 (686 ảnh) và historical/field holdout **không chạy** trong ba ablation này. Không tự đổi model WebApp hay chọn lại cấu hình bằng Test.
 
 ## 1. Giao thức và nguồn

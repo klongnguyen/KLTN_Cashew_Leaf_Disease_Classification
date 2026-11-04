@@ -1,5 +1,10 @@
 # EXP-Y26S-LM-004-NO-CLASS-WEIGHT
 
+<!-- docs-sync-2026-11-04:start -->
+> **Đồng bộ README 04/11/2026:** YOLO Validation-only (không đánh giá trên Test khóa). Không phát sinh huấn luyện hoặc Test mới; kết quả gốc được giữ nguyên. [Trang chủ](../../../../README.md) · [Danh mục 95 README](../../../../docs/EXPERIMENT_INDEX.md) · [Tiến độ](../../../../docs/RESEARCH_STATUS_2026-11-04.md) · [Protocol](../../../../docs/RESEARCH_PROTOCOL.md).
+<!-- docs-sync-2026-11-04:end -->
+
+
 - Mô hình: `yolo26s.pt`; class weighting: `cls_pw=0`; seed: **42**.
 - Dataset YOLO Master Final leakage fixed (Train **2.876**, Validation **893**, Test khóa **412**); fingerprint: `9cd75fd917a0edbce88e43d535c823ae464e348468d9a5e5ef2c98cf328349d7`.
 - **Validation:** Precision 67.90%, Recall 67.74%, mAP50 71.57%, mAP50-95 39.98%.

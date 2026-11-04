@@ -1,5 +1,10 @@
 # EXP-DENSENET121-TRANSFER-5SEEDS-016 — Final Test V08
 
+<!-- docs-sync-2026-11-04:start -->
+> **Đồng bộ README 04/11/2026:** Giữ đúng dataset, seed, config và phạm vi đánh giá gốc. Không phát sinh huấn luyện hoặc Test mới; kết quả gốc được giữ nguyên. [Trang chủ](../../../README.md) · [Danh mục 95 README](../../../docs/EXPERIMENT_INDEX.md) · [Tiến độ](../../../docs/RESEARCH_STATUS_2026-11-04.md) · [Protocol](../../../docs/RESEARCH_PROTOCOL.md).
+<!-- docs-sync-2026-11-04:end -->
+
+
 Inference only on the five EXP-014 Validation-locked checkpoints. No retraining, checkpoint changes, or seed selection using Test results.
 
 Dataset: 686 Test images from `CashewData_Split (8).zip` (SHA256 `75c5928b2f6432aca901bc16831e91f9aa4bdacc1e2ff536753d71da60c147e7`). The 686 individual image SHA256 values match the frozen EXP-014 manifest.

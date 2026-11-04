@@ -1,0 +1,4 @@
+image,class_predicted,confidence,image_group
+healthy_neg_0223.jpg,anthracnose,0.2965555787086487,healthy
+healthy_neg_0234.jpg,anthracnose,0.3111953139305115,healthy
+not_cashew_neg_0117.jpg,red_rust,0.46951934695243835,not_cashew_leaf

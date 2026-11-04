@@ -13,3 +13,7 @@
 Các notebook backup/smoke và code dựng notebook được giữ để truy nguyên. **Không xem notebook backup là recipe hiện hành**; luôn đối chiếu EXP ID, dataset version và trạng thái Test trong [Training Results](../training_results/current_dataset/README.md). Không dùng Test/Holdout đã xem để chọn cấu hình.
 
 [Protocol](../docs/RESEARCH_PROTOCOL.md) · [Tất cả experiment](../docs/EXPERIMENT_INDEX.md)
+
+## Bổ sung kết quả V12/V13 (04/11/2026)
+
+Báo cáo và CSV [DenseNet121 EXP-027/028](../training_results/current_dataset/DENSENET121_V12_V13_EXP027_028_COMPARISON.md) đã nằm trong `training_results`. Không suy ra notebook thực thi 027/028 đã có trong Git chỉ vì có báo cáo; cần lấy nguồn chạy từ archive tương ứng.

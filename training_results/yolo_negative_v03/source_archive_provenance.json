@@ -1,0 +1,26 @@
+[
+  {
+    "archive": "EXP-Y8S-NEG-V03-001_ANALYSIS.zip",
+    "sha256": "c9e1375b1456dd70c16d8a6b9cb908724744cc0f871c9062b7036ea6a5b1b29a",
+    "analysis_sha256": "c9e1375b1456dd70c16d8a6b9cb908724744cc0f871c9062b7036ea6a5b1b29a",
+    "bytes": 2108438,
+    "source_file_count": 37,
+    "experiment_id": "EXP-Y8S-NEG-V03-001-CLASS-WEIGHTED"
+  },
+  {
+    "archive": "EXP-Y26S-NEG-V03-001-CLASS-WEIGHTED-20261102T043914Z-1-001.zip",
+    "sha256": "d65d59c4b3e410b19fbcb41b09d5620c6d3d4ac6b2c029b9dd03ea796f340c46",
+    "analysis_sha256": "3e7663a9575fc88f67915cddf3fe32c85c59761e794bca30c0647af7b38abb57",
+    "bytes": 53483560,
+    "source_file_count": 39,
+    "experiment_id": "EXP-Y26S-NEG-V03-001-CLASS-WEIGHTED"
+  },
+  {
+    "archive": "NEG_V03_NEGATIVE_IMAGE_EVALUATION_ANALYSIS.zip",
+    "sha256": "91435db7b9fbe9ac408417bc0290d9656c9c08829601401a8899754153c5dcbb",
+    "analysis_sha256": "91435db7b9fbe9ac408417bc0290d9656c9c08829601401a8899754153c5dcbb",
+    "bytes": 36078,
+    "source_file_count": 52,
+    "experiment_id": "NEGATIVE_IMAGE_EVALUATION_ANALYSIS_V03"
+  }
+]

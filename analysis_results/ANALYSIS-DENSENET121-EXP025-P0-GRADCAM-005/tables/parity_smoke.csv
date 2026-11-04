@@ -1,0 +1,6 @@
+﻿relative_path,true_label,logged_prediction,model_prediction,logged_confidence,model_confidence,log_confidence_abs_diff,parity_pass
+anthracnose/real_anthracnose_051.jpg,anthracnose,leaf_miner,leaf_miner,0.6648407578468323,0.6643527746200562,0.00048798322677612305,False
+healthy/real_healthy_027.jpg,healthy,anthracnose,anthracnose,0.5322929620742798,0.532526433467865,0.00023347139358520508,False
+leaf_miner/real_leaf_miner_131.jpg,leaf_miner,healthy,healthy,0.6938577890396118,0.693132221698761,0.0007255673408508301,False
+red_rust/real_red_rust_031.jpg,red_rust,red_rust,red_rust,0.6739045977592468,0.6736724376678467,0.00023216009140014648,False
+healthy/real_healthy_022.jpg,healthy,healthy,healthy,0.9667078256607056,0.9665927290916443,0.0001150965690612793,False

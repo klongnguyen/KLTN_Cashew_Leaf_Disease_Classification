@@ -1,0 +1,7 @@
+model,old_version,new_version,images,both_alarm,old_only_alarm,new_only_alarm,neither_alarm,mcnemar_exact_two_sided_p
+yolov8s,v003,neg_v02,58,8,5,6,39,1
+yolov8s,neg_v02,neg_v03,58,8,6,5,39,1
+yolov8s,v003,neg_v03,58,6,7,7,38,1
+yolo26s,v003,neg_v02,58,1,14,2,41,0.004180908203125
+yolo26s,neg_v02,neg_v03,58,1,2,2,53,1
+yolo26s,v003,neg_v03,58,1,14,2,41,0.004180908203125

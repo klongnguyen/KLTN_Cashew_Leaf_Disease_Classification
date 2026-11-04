@@ -1,0 +1,15 @@
+{
+  "stage": "stage1",
+  "best_epoch": 12,
+  "actual_epochs": 12,
+  "fit_seconds": 69.40125958499993,
+  "val_loss": 0.18171314895153046,
+  "val_accuracy": 0.9467864632606506,
+  "val_macro_f1": 0.9440382792180729,
+  "checkpoint_path": "/content/drive/MyDrive/Cashew_Leaf_model_result/training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-024-256px-f9fd5d5f/seed_3407/stage1/best.weights.h5",
+  "checkpoint_sha256": "8129f6d85e7ee15b3b7190de2d59bfeae10e72aa51fd46afd5cefdc60d34ee3b",
+  "checkpoint_size_mb": 27.984344482421875,
+  "backbone_trainable_params": 0,
+  "learning_rate_first": 0.0003000000142492354,
+  "learning_rate_last": 0.0003000000142492354
+}

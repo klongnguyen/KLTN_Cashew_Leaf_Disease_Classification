@@ -1,0 +1,43 @@
+{
+  "seed": 123,
+  "selected_stage": "stage2",
+  "selected_epoch": 27,
+  "selection_metric": "val_loss",
+  "val_loss": 0.0769963264465332,
+  "val_macro_f1": 0.9748756449037067,
+  "tie_break": "higher val_macro_f1, then Stage 1",
+  "checkpoint_sha256": "9629513bad8161726d1db9511829ac2c1f7d83357624bbb98dc949651c9880fd",
+  "model_params": 7042629,
+  "stage_candidates": {
+    "stage1": {
+      "stage": "stage1",
+      "best_epoch": 12,
+      "actual_epochs": 12,
+      "fit_seconds": 67.87942971200027,
+      "val_loss": 0.18321719765663147,
+      "val_accuracy": 0.9474775195121765,
+      "val_macro_f1": 0.9456265524979273,
+      "checkpoint_path": "/content/drive/MyDrive/Cashew_Leaf_model_result/training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-024-256px-f9fd5d5f/seed_123/stage1/best.weights.h5",
+      "checkpoint_sha256": "ce4b98dd9b9c2c3dfc8a979954084c3408b3fea80e7116db1293c2917c03d512",
+      "checkpoint_size_mb": 27.9833984375,
+      "backbone_trainable_params": 0,
+      "learning_rate_first": 0.0003000000142492354,
+      "learning_rate_last": 0.0003000000142492354
+    },
+    "stage2": {
+      "stage": "stage2",
+      "best_epoch": 27,
+      "actual_epochs": 30,
+      "fit_seconds": 222.55207465099966,
+      "val_loss": 0.0769963264465332,
+      "val_accuracy": 0.9758120179176331,
+      "val_macro_f1": 0.9748756449037067,
+      "checkpoint_path": "/content/drive/MyDrive/Cashew_Leaf_model_result/training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-024-256px-f9fd5d5f/seed_123/stage2/best.weights.h5",
+      "checkpoint_sha256": "9629513bad8161726d1db9511829ac2c1f7d83357624bbb98dc949651c9880fd",
+      "checkpoint_size_mb": 44.2548828125,
+      "backbone_trainable_params": 2129920,
+      "learning_rate_first": 9.999999747378752e-06,
+      "learning_rate_last": 4.999999873689376e-06
+    }
+  }
+}

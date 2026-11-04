@@ -1,6 +1,6 @@
 # KLTN — Hệ thống nhận diện và phân loại bệnh trên lá cây điều
 
-> **Cập nhật: 28/10/2026 · CNTT_KLCN183.** Trang tổng hợp này đối chiếu dữ liệu, mã nguồn và báo cáo thí nghiệm theo từng phiên bản. Đặc biệt phân biệt **Validation, Test, historical Holdout và deployment**, tránh mô tả các phép đánh giá hồi cứu là kiểm thử thực địa mù.
+> **Cập nhật: 04/11/2026 · CNTT_KLCN183.** Trang tổng hợp này đối chiếu dữ liệu, mã nguồn và báo cáo thí nghiệm theo từng phiên bản. Đặc biệt phân biệt **Validation, Test, historical Holdout và deployment**, tránh mô tả các phép đánh giá hồi cứu là kiểm thử thực địa mù.
 
 ![Kiến trúc nghiên cứu](docs/assets/research_pipeline.svg)
 
@@ -12,12 +12,20 @@
 
 | Nhánh | Hiện trạng có bằng chứng | Tài liệu |
 |---|---|---|
-| Dataset | V04/V05/V07/V08 → V09/V10/V11, split và ảnh/nhãn thay đổi | [Dataset changelog](DATASET_CHANGELOG.md) |
-| DenseNet121 | Scratch, Transfer tới EXP-026; V11 Test/Holdout hồi cứu | [EXP-018–026](training_results/current_dataset/DENSENET121_TRANSFER_V09_V11_BACKFILL_2026_10.md) |
-| ResNet50 | Scratch, ImageNet frozen, partial fine-tuning và CBAM Validation-only | [Transfer EXP-009](training_results/current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-009/README.md) |
+| Dataset | V04/V05/V07/V08 → V09/V10/V11 → **V12/V13**, mỗi version có manifest riêng | [Dataset changelog](DATASET_CHANGELOG.md) |
+| DenseNet121 | Scratch/Transfer đến **EXP-028**, có so sánh V12/V13 trên 118 ảnh giữ nguyên | [EXP-027/028](training_results/current_dataset/DENSENET121_V12_V13_EXP027_028_COMPARISON.md) |
+| ResNet50 | Scratch, Transfer, CBAM và targeted Healthy augmentation EXP-028/029/030 | [Báo cáo](training_results/current_dataset/TARGETED_AUGMENTATION_RESNET50_EXP028_029_030_REPORT.md) |
 | ViT / DeiT | Scratch, DeiT-Small, DeiT-Tiny và Softmax/Logistic/XGBoost | [Classifier EXP-008/009](training_results/current_dataset/EXP-VIT-TRANSFER-XGBOOST-009/README.md) |
-| Detection | YOLO26s Take 01–07, chưa có detector final | [YOLO history](failure/YOLO26/README.md) |
+| Detection | YOLO26 Take 01–07 và YOLOv8s/YOLO26s NEG V03 (Validation-only); chưa final | [NEG V03](training_results/yolo_negative_v03/README.md) |
 | WebApp | FastAPI + DenseNet121 Transfer **EXP-014, seed 123** trong config.py | [Application](Application/README.md) |
+
+## Mới nhất — 04/11/2026
+
+**DenseNet121 EXP-027/028 (V12/V13):** Validation và Test giữ nguyên (1.452/685 ảnh), Train giảm 3 ảnh Anthracnose. 5-seed Test Accuracy cùng **95,912%**; Accuracy trên 118 ảnh Holdout khớp checksum cùng **80,17%**. Healthy Recall trên 11 ảnh chung tăng **47,27% → 56,36%** nhưng mẫu nhỏ, dữ liệu đã tiếp xúc. [Phân tích V12/V13](training_results/current_dataset/DENSENET121_V12_V13_EXP027_028_COMPARISON.md).
+
+**ResNet50 EXP-028/029/030:** targeted augmentation nâng Recall Healthy trên 7 ảnh Validation nhưng tăng lỗi bệnh→Healthy trên Holdout. [Báo cáo](training_results/current_dataset/TARGETED_AUGMENTATION_RESNET50_EXP028_029_030_REPORT.md). **YOLO NEG V03:** YOLO26s đạt **39,81% mAP50-95 Validation**, 3/58 ảnh âm báo nhầm tại conf=0,25; Test khóa. [YOLO V03](training_results/yolo_negative_v03/README.md). **WebApp:** vẫn dùng EXP-014 seed 123, chưa triển khai YOLO end-to-end.
+
+[Tiến độ 04/11](docs/RESEARCH_STATUS_2026-11-04.md) · [Danh mục toàn bộ 95 README](docs/EXPERIMENT_INDEX.md).
 
 ## 1. Dataset và giao thức
 
@@ -29,6 +37,8 @@
 | V09 | 4.914 | 1.445 | 686 | 7.045 |
 | V10 | 4.920 | 1.445 | 686 | 7.051 |
 | V11 | 4.916 | 1.447 | 685 | 7.048 |
+| V12 | 4.975 | 1.452 | 685 | 7.112 |
+| V13 | 4.972 | 1.452 | 685 | 7.109 |
 
 V10 có ảnh từng thuộc Holdout được đưa vào Train; V11 thay đổi nhãn/nội dung ảnh và một phần Test so với V10. **Không gộp các dataset này vào cùng một leaderboard** như thí nghiệm chỉ thay đổi mô hình. Tiền tố real_ không xác nhận nguồn thực địa độc lập. Kiểm tra near-duplicate pHash, cùng lá/cây/phiên thu thập phải làm riêng; không suy luận 0 trùng byte tương đương không có leakage.
 
@@ -50,7 +60,7 @@ Seed/checkpoint phải chọn bằng **Validation**. Test dùng để đánh gi�
 
 Đây là **mean ± sample standard deviation** qua năm seed, không phải kết quả của seed được triển khai. Holdout 48 ảnh đã tiếp xúc, có 4 true classes và không phải blind test mới. DeiT-Tiny EXP-008 dùng 5 checkpoint EXP-007; EXP-009 là **inference-only**. Mặc dù Logistic Regression/XGBoost đạt Test/Holdout lịch sử cao hơn Softmax, rule đã khóa theo Validation Disease→Healthy chọn **Softmax A, seed 123**; không được đổi selection do số Test.
 
-### 2.2. DenseNet121 V09–V11
+### 2.2. DenseNet121 V09–V11 (lịch sử) và V12–V13 (mới)
 
 ![V11 Test/Holdout](docs/assets/v11_retrospective.svg)
 
@@ -83,6 +93,15 @@ Cùng 5 seed ghép cặp trên V08, thêm CBAM làm ResNet50 **+0,887 điểm ph
 
 Bổ sung 276 ảnh âm Train và 58 ảnh âm Validation, vẫn giữ **3 disease classes** và **Test 412 ảnh khóa**. YOLO26s weighted (`cls_pw=0.25`) giảm cảnh báo nhầm trên 58 ảnh âm từ **15/58** xuống **3/58** khi `conf>=0.25`; YOLOv8s tăng 13/58 → 14/58. Đánh giá paired dùng cùng Validation và 1 seed, không suy luận ngay cho Test/field. [Báo cáo & provenance](training_results/yolo_negative_v02/README.md).
 
+### 3.3. YOLO Negative Images V03 (Validation-only, 02/11/2026)
+
+Dataset NEG V03 có **3497 Train (621 ảnh âm), 951 Validation (58 ảnh âm), 412 Test được khóa**. Hai thí nghiệm `cls_pw=0.25`, seed 42, input 640 px:
+- YOLOv8s: mAP50-95 notebook **38,00%**.
+- YOLO26s: mAP50-95 notebook **39,81%**.
+- Đánh giá lại trên cùng Validation: tỷ lệ ảnh âm có ít nhất một phát hiện sai ở `conf >= 0.25` là **13/58 YOLOv8s** và **3/58 YOLO26s**. Tăng negative Train từ 276 (V02) lên 621 (V03) **chưa giảm thêm** số ảnh âm bị báo sai của YOLO26s (vẫn 3/58).
+
+Đây là bằng chứng **Validation**, một seed. [Kết quả, CSV và nguồn gốc ZIP](training_results/yolo_negative_v03/README.md) · [Báo cáo 6 checkpoint](training_results/yolo_negative_v03/negative_image_evaluation/README.md). Không có tuyên bố Test hoặc blind-field improvement.
+
 ## 4. Ứng dụng Web
 
 | Anthracnose | Leaf Miner | Red Rust |
@@ -102,7 +121,7 @@ Mã ứng dụng tại [Application](Application/README.md) gồm FastAPI và HT
 ├── scripts/                        # Notebook builders và utilities
 ├── analysis/                       # Kiểm tra sai số và kiểm toán dữ liệu
 ├── training_results/
-│   ├── current_dataset/           # Thực nghiệm phân loại V04–V11
+│   ├── current_dataset/           # Thực nghiệm phân loại V04–V13
 │   ├── archive_legacy_dataset/    # Artifact cũ cần giữ provenance
 │   └── dataset_quality_study/     # Audit ảnh thực địa
 ├── failure/                        # YOLO26 Take 01–07 chưa final
@@ -116,7 +135,7 @@ Mã ứng dụng tại [Application](Application/README.md) gồm FastAPI và HT
 
 **Tiếp theo:** kiểm tra nhóm ảnh cùng lá/cây/phiên; thu thập holdout mới độc lập; phân tích nhầm Anthracnose→Healthy; thống nhất inference contract và benchmarking tốc độ; kiểm thử YOLO crop → classifier trên tập ảnh được khóa.
 
-## Phân tích Targeted Augmentation ResNet50 — EXP-028/029/030
+## 6. Phân tích Targeted Augmentation ResNet50 — EXP-028/029/030
 
 Đã đưa lên GitHub hồ sơ **ResNet50 Transfer EXP-025→030** và **DINOv2-Small Transfer EXP-013**, gồm README, CSV 5 seed và checksum của ANALYSIS ZIP gốc. **Hạn chế:** đây là dữ liệu biên soạn và đối chiếu, không phải bản sao của toàn bộ ZIP, checkpoint hay các PNG gốc.
 
@@ -125,3 +144,15 @@ Mã ứng dụng tại [Application](Application/README.md) gồm FastAPI và HT
 - EXP-029 **không** chạy Test/Holdout; Test/Holdout V11 đã được xem trong quá trình nghiên cứu, không dùng để lựa chọn tiếp hyperparameter.
 
 **Xem:** [Báo cáo Targeted Augmentation](training_results/current_dataset/TARGETED_AUGMENTATION_RESNET50_EXP028_029_030_REPORT.md) · [Bảng 35 seed-exp](training_results/current_dataset/RECENT_V11_MODELS_5SEEDS.csv) · [Danh mục EXP](docs/EXPERIMENT_INDEX.md) · [Provenance ZIP](training_results/current_dataset/RECENT_SOURCE_ARCHIVE_PROVENANCE.csv).
+
+## 7. DenseNet121 V12 → V13 — EXP-027/028 (03/11/2026)
+
+Đã bổ sung [DenseNet121 EXP-027 / Split12](training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-027/README.md), [DenseNet121 EXP-028 / Split13](training_results/current_dataset/EXP-DENSENET121-TRANSFER-5SEEDS-028/README.md), CSV kết quả từng seed, Confusion Matrix, báo cáo so sánh 118 ảnh giữ nguyên SHA256 và bốn biểu đồ SVG.
+
+- V12→V13: Train **4.975 → 4.972** (−3 Anthracnose), Validation **1.452** và Final Test **685** giữ nguyên từng ảnh; Healthy Train vẫn **872**.
+- Validation Accuracy **97,245% → 97,287%**, Test Accuracy **95,912% → 95,912%** (5 seeds).
+- **118 ảnh Holdout chung**: Accuracy trung bình **80,17% → 80,17%**, nhưng Healthy Recall **47,27% → 56,36%** (chỉ 11 ảnh Healthy không thay đổi).
+- Hai file cùng SHA256 đã từng được gán `Anthracnose` ở Train V12 và `Healthy` ở Holdout09: cần xác minh nhãn; không thể coi là blind field data của mô hình V12.
+- Holdout09 khác Holdout07 về số lượng/nội dung và không có true not_cashew_leaf. Không dùng Holdout lịch sử để chọn lại checkpoint.
+
+**Xem [báo cáo V12/V13](training_results/current_dataset/DENSENET121_V12_V13_EXP027_028_COMPARISON.md)** · [index thí nghiệm](docs/EXPERIMENT_INDEX.md) · [provenance ZIP](training_results/current_dataset/DENSENET121_V12_V13_ARCHIVE_PROVENANCE.csv). Các ZIP/checkpoint/PNG gốc vẫn ở nguồn riêng; GitHub lưu curated CSV/README/SVG, **không phải trọn vẹn 15MB archive**.

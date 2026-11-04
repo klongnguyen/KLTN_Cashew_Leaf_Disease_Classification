@@ -6,3 +6,7 @@
 Script là công cụ nghiên cứu, **không phải mã deploy WebApp**. Code phục vụ API thật ở [Application](../Application/README.md). Trước khi chạy, đối chiếu version dataset, label order và checkpoint selection của experiment.
 
 [Notebook](../Notebook/README.md) · [Experiment index](../docs/EXPERIMENT_INDEX.md)
+
+## Chuẩn tái lập thí nghiệm
+
+Đối chiếu [Training Notebook Format](../STANDARD_TRAINING_NOTEBOOK_FORMAT%20(1).md) và [Research Protocol](../docs/RESEARCH_PROTOCOL.md); ghi rõ dataset version, seed, label order, preprocess và artifact còn ở ZIP nguồn trước khi chạy.

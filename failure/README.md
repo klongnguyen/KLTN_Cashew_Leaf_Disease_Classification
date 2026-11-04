@@ -13,3 +13,7 @@ Không phải tất cả các Take là lỗi kỹ thuật: đây là **kho nghi�
 **Take 006 và 007 đổi Test/số GT**, không là controlled ablation. Không tự lựa chọn detector final dựa trên kết quả này. Giữ nguyên bảng metrics, config và failure notes để phân tích.
 
 [Chi tiết 7 Take](YOLO26/README.md) · [Annotation guideline](../CASHEW_BOUNDING_BOX_ANNOTATION_GUIDELINE.md)
+
+## YOLO NEG V03
+
+[So sánh YOLOv8s/YOLO26s có ảnh âm](../training_results/yolo_negative_v03/README.md) là benchmark Validation-only khác dataset Take 01–07; không xếp hạng mAP trực tiếp giữa hai nhánh.

@@ -1,0 +1,6 @@
+split,seed,rows,probability_columns,status
+validation,42,1447,5,COMPLETE
+validation,123,1447,5,COMPLETE
+validation,2026,1447,5,COMPLETE
+validation,3407,1447,5,COMPLETE
+validation,7777,1447,5,COMPLETE
