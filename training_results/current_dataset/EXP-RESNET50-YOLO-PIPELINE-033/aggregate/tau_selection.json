@@ -1,0 +1,12 @@
+{
+  "false_alarm_anthracnose": 0.21415270018621974,
+  "holdout_was_used_for_selection": false,
+  "max_validation_cost_points": 2.0,
+  "sensitivity_anthracnose": 0.9094076655052264,
+  "sensitivity_floor": 0.85,
+  "source": "EXP-031 procedure rerun on ResNet50 032 clean Validation",
+  "tau": 0.6,
+  "validation_baseline": 0.9629684055841293,
+  "validation_cost_points": 0.440852314474649,
+  "youden_j": 0.6952549653190068
+}

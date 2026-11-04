@@ -1,0 +1,30 @@
+{
+  "checks": [
+    {
+      "exists": true,
+      "path": "aggregate/tau_selection.json"
+    },
+    {
+      "exists": true,
+      "path": "aggregate/leakage_audit.json"
+    },
+    {
+      "exists": true,
+      "path": "aggregate/pipeline_latency_batch1.json"
+    },
+    {
+      "exists": true,
+      "path": "aggregate/fusion_results_partA.csv"
+    },
+    {
+      "exists": true,
+      "path": "aggregate/fusion_results_partB.csv"
+    },
+    {
+      "exists": true,
+      "path": "pipeline_bundle/cashew_pipeline.py"
+    }
+  ],
+  "experiment_id": "EXP-RESNET50-YOLO-PIPELINE-033",
+  "status": "PASS"
+}

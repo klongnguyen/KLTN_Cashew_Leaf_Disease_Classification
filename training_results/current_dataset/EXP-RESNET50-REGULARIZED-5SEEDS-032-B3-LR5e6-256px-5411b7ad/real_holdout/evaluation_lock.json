@@ -1,0 +1,37 @@
+{
+  "helper_version": "006.1",
+  "archive_sha256": "485512A7142E36DF081B8439BCC0B6D2AE59873D1897E6F1646FD1927889E5B6",
+  "manifest_sha256": "b23612b241fed952b7f78e36b71e5adf0f8e78f6b48cb7ae34fefd6c85553331",
+  "reference_fingerprint": "bee2dff50ce0dd5f5f5f770ebd1039370d1a5ad2898e54411dfbd815504376a5",
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "checkpoint_sha256": {
+    "42": "BDB1CB29AA578D405CC247F1841243F777DB93D98C8E852187FA973CEB908CF0",
+    "123": "F4B2020595D22B96DD01C03A66D14393D049F2F64FEC8460C40E952A4DF67921",
+    "2026": "F2562B7A16DA2FBDCD3253E2F7D48293C66D98C843A37F0F50BDCF4623F683B0",
+    "3407": "F5ECD819172ED161605A354647929D655CE2F9155D14C726B3BDAE13CC242B7D",
+    "7777": "F24518845D95A581D0C2BB0ACD3A2FEFB2534516A21E0DAEEC6DB90FBB0F1340"
+  },
+  "deployment_seed": 2026,
+  "validation_sha256": "c6ae893fa3e7492333f16fd886c51feebc1fd17a8efbcaedaf0cf0d83642efa9",
+  "model_classes": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "red_rust",
+    "not_cashew_leaf"
+  ],
+  "macro_classes": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "red_rust"
+  ],
+  "selection_source": "validation only; lowest val_loss, then macro F1 and seed",
+  "outputs_are_logits": false
+}

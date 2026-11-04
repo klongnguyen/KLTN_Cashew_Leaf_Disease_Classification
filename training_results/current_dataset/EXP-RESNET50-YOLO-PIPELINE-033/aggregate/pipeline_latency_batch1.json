@@ -1,0 +1,11 @@
+{
+  "gpu": [
+    "PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')"
+  ],
+  "hardware": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "mean_ms": 247.20778780019828,
+  "median_ms": 246.67336650054494,
+  "n": 10,
+  "scope": "YOLO + five-seed classifier + fusion; same machine",
+  "tensorflow": "2.21.0"
+}

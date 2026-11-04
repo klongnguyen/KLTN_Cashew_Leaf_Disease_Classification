@@ -1,0 +1,7 @@
+tensorflow==2.21.0
+numpy==2.4.6
+pandas==2.2.3
+Pillow
+scikit-learn
+matplotlib
+scipy

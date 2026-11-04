@@ -1,0 +1,17 @@
+{
+  "experiment_id": "EXP-RESNET50-REGULARIZED-5SEEDS-032-B3-LR5e6-256px-5411b7ad",
+  "deployment_seed": 2026,
+  "selection_source": "Validation only",
+  "source_checkpoint_sha256": "f2562b7a16da2fbdcd3253e2f7d48293c66d98c843a37f0f50bdcf4623f683b0",
+  "input": "RGB float32 raw 0..255, 256x256, bilinear resize",
+  "preprocessing": "contained inside deployment_model.keras",
+  "external_divide_by_255": false,
+  "class_names": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "red_rust",
+    "not_cashew_leaf"
+  ],
+  "holdout_archive": "RL_Cashew_holdout (9).zip"
+}

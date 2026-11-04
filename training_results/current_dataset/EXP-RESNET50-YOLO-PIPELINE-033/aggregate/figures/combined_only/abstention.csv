@@ -1,0 +1,3 @@
+split,threshold,coverage,selective_accuracy,referred_to_expert
+test,0.0,1.0,0.981021897810219,0
+holdout,0.0,1.0,0.9047619047619048,0

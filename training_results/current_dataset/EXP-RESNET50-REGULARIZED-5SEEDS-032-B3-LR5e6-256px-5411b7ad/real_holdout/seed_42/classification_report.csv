@@ -1,0 +1,8 @@
+class,precision,recall,f1-score,support,evaluated,scope
+anthracnose,0.65,0.8478260869565217,0.7358490566037735,46.0,True,true class present
+healthy,0.8,0.42105263157894735,0.5517241379310345,19.0,True,true class present
+leaf_miner,1.0,0.9166666666666666,0.9565217391304348,36.0,True,true class present
+red_rust,0.7727272727272727,0.68,0.723404255319149,25.0,True,true class present
+not_cashew_leaf,,,,0.0,False,not evaluated: zero true support
+macro avg (present classes),0.8056818181818182,0.716386346300534,0.7418747972460978,126.0,True,4 supported true classes only
+weighted avg,0.7969696969696969,0.7698412698412699,0.7686643191756954,126.0,True,weighted by true support

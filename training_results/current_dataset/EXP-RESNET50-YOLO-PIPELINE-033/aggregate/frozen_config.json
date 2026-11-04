@@ -1,0 +1,72 @@
+{
+  "C": {
+    "F3": 1,
+    "F3a": 3,
+    "F3b": 1
+  },
+  "F2_post_hoc": true,
+  "abstain_thresholds": {
+    "F0": 0.6916324293593323,
+    "F1": 0.7642907897643003,
+    "F2": 0.6833107002889657,
+    "F3": 0.0,
+    "F3a": 0.8446645963182885,
+    "F3b": 0.8632766652142209
+  },
+  "box_conf": 0.25,
+  "box_conf_selection": "YOLO Val macro F1 at IoU 0.5",
+  "box_nms_iou": 0.5,
+  "classes": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "red_rust",
+    "not_cashew_leaf"
+  ],
+  "detector_classes": [
+    "anthracnose",
+    "leaf_miner",
+    "red_rust"
+  ],
+  "experiment": "EXP-RESNET50-YOLO-PIPELINE-033",
+  "feature_columns": [
+    "prob_anthracnose",
+    "prob_healthy",
+    "prob_leaf_miner",
+    "prob_red_rust",
+    "prob_not_cashew_leaf",
+    "max_conf_anthracnose",
+    "max_conf_leaf_miner",
+    "max_conf_red_rust",
+    "n_boxes_anthracnose",
+    "n_boxes_leaf_miner",
+    "n_boxes_red_rust",
+    "area_frac_anthracnose",
+    "area_frac_leaf_miner",
+    "area_frac_red_rust"
+  ],
+  "holdout_used_for_selection": false,
+  "max_display_boxes": 20,
+  "part": "B",
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "selection_split": "clean Validation",
+  "tau_selection": {
+    "source": "EXP-031 procedure rerun on ResNet50 clean Validation",
+    "tau": 0.6
+  },
+  "temperature": {
+    "F0": 1.0977646956352995,
+    "F1": 1.3603486229946609,
+    "F2": 1.090206278432673,
+    "F3": 0.8813547054497698,
+    "F3a": 0.9730417609669939,
+    "F3b": 0.8916930419824819
+  },
+  "temperature_note": "Fit on clean Validation; learned stacker temperature is in-sample and may be optimistic"
+}

@@ -1,0 +1,23 @@
+{
+  "deployment_sha256": "555b6c786340af219487005e9e197beb65ec1dd2a9feeb98e555172651b5749c",
+  "seed": 3407,
+  "selected_stage": "stage2",
+  "selection_primary_metric": "val_loss",
+  "stages": [
+    {
+      "checkpoint": "/content/training_results/current_dataset/EXP-RESNET50-YOLO-PIPELINE-033/seed_3407/stage1.weights.h5",
+      "epochs": 12,
+      "seconds": 49.57145618699724,
+      "stage": "stage1",
+      "val_loss": 0.13565635681152344
+    },
+    {
+      "checkpoint": "/content/training_results/current_dataset/EXP-RESNET50-YOLO-PIPELINE-033/seed_3407/stage2.weights.h5",
+      "epochs": 21,
+      "seconds": 95.13539107299584,
+      "stage": "stage2",
+      "val_loss": 0.11039167642593384
+    }
+  ],
+  "validation_accuracy": 0.9600550964187328
+}

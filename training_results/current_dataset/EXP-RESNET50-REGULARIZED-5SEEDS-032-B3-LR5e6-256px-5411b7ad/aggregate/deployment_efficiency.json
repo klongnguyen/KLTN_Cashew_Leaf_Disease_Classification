@@ -1,0 +1,18 @@
+{
+  "experiment_id": "EXP-RESNET50-REGULARIZED-5SEEDS-032-B3-LR5e6-256px-5411b7ad",
+  "deployment_seed": 2026,
+  "batch_size": 1,
+  "warmup_runs": 5,
+  "measured_runs": 30,
+  "measurement": "wall-clock EXIF decode + RGB conversion + bilinear resize + Keras predict + argmax",
+  "device": [
+    "/physical_device:GPU:0"
+  ],
+  "mean_ms": 53.765111532993615,
+  "median_ms": 53.58893899756367,
+  "p95_ms": 56.54349300093599,
+  "sample_sd_ms": 1.2420098116760383,
+  "parameters": 23597957,
+  "deployment_model_bytes": 95066381,
+  "note": "One Validation image repeated; platform-specific timing, not a cross-device benchmark."
+}

@@ -1,0 +1,6 @@
+{
+  "returncode": 0,
+  "scope": "one exported Keras model and both registered custom layers",
+  "stderr_tail": "",
+  "stdout": "stage=import_module\nstage=load_model\nstage=predict\nstage=PASS\n"
+}

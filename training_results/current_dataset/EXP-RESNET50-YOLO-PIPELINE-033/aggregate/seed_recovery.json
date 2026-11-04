@@ -1,0 +1,32 @@
+{
+  "123": {
+    "action": "restored",
+    "drive_file_id": "1gvEfXHdQROEm7PXIfMoM8IHt49vDq2kY",
+    "drive_md5": "411384cabfcc76cfdb1d558ebb92466b",
+    "model_sha256": "5543b8e088a7978a4eddf89172d210c166f0d78e35106d115e62d481144ca6db"
+  },
+  "2026": {
+    "action": "restored",
+    "drive_file_id": "1s937Rrn-zpsm3AP1Jcu5m0Rh-EjZS0Wi",
+    "drive_md5": "a027697e1b6b38e3fbfa936d26fa8352",
+    "model_sha256": "3f8078ad438b05c88b9708aba6cbeb43a77f96b54242139e38b97d3707093368"
+  },
+  "3407": {
+    "action": "restored",
+    "drive_file_id": "1c_NMOebygf0wCb7xYqWLQIiPaq5VbEgU",
+    "drive_md5": "09766a6d17bdb150a20b9ed8a8b7c566",
+    "model_sha256": "555b6c786340af219487005e9e197beb65ec1dd2a9feeb98e555172651b5749c"
+  },
+  "42": {
+    "action": "local_preserved_then_drive_restored",
+    "drive_file_id": "1YO00pFZ3MiMD12icG-jkVz-RtzC7e3Fj",
+    "drive_md5": "2ce014c7b9ed5a918a569999225e4635",
+    "model_sha256": "3fe1f7b59f88836244f6118504904a1d0e0813c3a7898492f3b087c5b1d53535"
+  },
+  "7777": {
+    "action": "restored",
+    "drive_file_id": "1fokkEbDP5oImUzYTh0t2vA8si3iOdiX7",
+    "drive_md5": "20031eba0d81651e68c51e917ed55893",
+    "model_sha256": "9cbe3daf5cfec56df91038a2389aff62aa44a5af6bc8f3356570426fdb6829d1"
+  }
+}

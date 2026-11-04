@@ -1,0 +1,16 @@
+split,seed,rows,probability_columns,status
+validation,42,1452,5,COMPLETE
+validation,123,1452,5,COMPLETE
+validation,2026,1452,5,COMPLETE
+validation,3407,1452,5,COMPLETE
+validation,7777,1452,5,COMPLETE
+test,42,685,5,COMPLETE
+test,123,685,5,COMPLETE
+test,2026,685,5,COMPLETE
+test,3407,685,5,COMPLETE
+test,7777,685,5,COMPLETE
+real_holdout,42,126,5,COMPLETE
+real_holdout,123,126,5,COMPLETE
+real_holdout,2026,126,5,COMPLETE
+real_holdout,3407,126,5,COMPLETE
+real_holdout,7777,126,5,COMPLETE

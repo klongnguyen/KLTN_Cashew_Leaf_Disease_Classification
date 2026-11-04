@@ -1,0 +1,14 @@
+{
+  "seed": 42,
+  "selected_stage": "stage2",
+  "stage1_epochs": 10,
+  "stage2_epochs": 28,
+  "stage1_training_seconds": 38.98336050599755,
+  "stage2_training_seconds": 118.55766699799278,
+  "training_time_seconds": 157.54102750399034,
+  "stage1_backbone_trainable_params": 0,
+  "stage2_backbone_trainable_params": 4459520,
+  "total_parameters": 23597957,
+  "selected_checkpoint_sha256": "bdb1cb29aa578d405cc247f1841243f777db93d98c8e852187fa973ceb908cf0",
+  "selected_checkpoint_size_mb": 124.6068115234375
+}

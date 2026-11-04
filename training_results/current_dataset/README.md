@@ -44,3 +44,7 @@ Số trên là mean 5 seed. Test có 5 lớp; Holdout 48 ảnh chỉ 4 lớp, đ
 
 ## Nghiên cứu có thể tái lập
 [Danh mục tất cả thư mục EXP](../../docs/EXPERIMENT_INDEX.md) · [Experiment progress](EXPERIMENT_PROGRESS_2026_10.md) · [Protocol](../../docs/RESEARCH_PROTOCOL.md). Các archive backfill chỉ có thể chứa trích xuất README/CSV; không mặc nhiên có checkpoint binary, figure hoặc nguồn ZIP đầy đủ.
+
+## ResNet50 EXP-032 và EXP-033
+
+[Chỉ mục kết quả, notebook và SHA256 nguồn](RESNET50_032_033_ARTIFACT_INDEX.md).
