@@ -1,0 +1,318 @@
+{
+  "yolov8s_v003": {
+    "checkpoint": {
+      "checkpoint": "D:\\Study\\KhoaLuanTotNghiep\\Resource\\training_results\\negative_evaluation\\checkpoints\\EXP-Y8S-LM-003_best.pt",
+      "checkpoint_sha256": "e9ac1894a4640857bfab2b0538c679fe3e1b5fb4ecc9faecb8f8ceb7af13e843",
+      "training_model": "yolov8s.pt",
+      "training_cls_pw": 0.25,
+      "training_dataset_fingerprint": "9cd75fd917a0edbce88e43d535c823ae464e348468d9a5e5ef2c98cf328349d7",
+      "training_recipe": {
+        "IMGSZ": 640,
+        "EPOCHS": 80,
+        "BATCH": 8,
+        "SEED": 42,
+        "OPTIMIZER": "AdamW",
+        "LR0": 0.001,
+        "PATIENCE": 20,
+        "MOSAIC": 0.4,
+        "CLOSE_MOSAIC": 10,
+        "MIXUP": 0.0,
+        "AMP": true
+      }
+    },
+    "negative": {
+      "healthy": {
+        "images": 38,
+        "images_with_false_positive": 8,
+        "false_positive_image_rate": 0.21052631578947367,
+        "false_boxes": 12,
+        "mean_false_boxes_per_image": 0.3157894736842105
+      },
+      "not_cashew_leaf": {
+        "images": 20,
+        "images_with_false_positive": 5,
+        "false_positive_image_rate": 0.25,
+        "false_boxes": 7,
+        "mean_false_boxes_per_image": 0.35
+      },
+      "all": {
+        "images": 58,
+        "images_with_false_positive": 13,
+        "false_positive_image_rate": 0.22413793103448276,
+        "false_boxes": 19,
+        "mean_false_boxes_per_image": 0.3275862068965517
+      }
+    },
+    "validation": {
+      "split": "val",
+      "images_expected": 951,
+      "precision_macro": 0.6651942501393907,
+      "recall_macro": 0.6416112060588607,
+      "map50": 0.6898025107629256,
+      "map50_95": 0.37384386997368624,
+      "per_class": [
+        {
+          "class_id": 0,
+          "class": "anthracnose",
+          "precision": 0.6265291287436805,
+          "recall": 0.603407907025607,
+          "ap50": 0.6304777938799635,
+          "ap50_95": 0.2943766325016811
+        },
+        {
+          "class_id": 1,
+          "class": "leaf_miner",
+          "precision": 0.6355895447381245,
+          "recall": 0.6971830985915493,
+          "ap50": 0.7257847264358674,
+          "ap50_95": 0.4777911594656972
+        },
+        {
+          "class_id": 2,
+          "class": "red_rust",
+          "precision": 0.7334640769363673,
+          "recall": 0.6242426125594258,
+          "ap50": 0.7131450119729462,
+          "ap50_95": 0.34936381795368043
+        }
+      ]
+    }
+  },
+  "yolov8s_neg_v02": {
+    "checkpoint": {
+      "checkpoint": "D:\\Study\\KhoaLuanTotNghiep\\Resource\\training_results\\negative_evaluation\\checkpoints\\EXP-Y8S-NEG-V02-001_best.pt",
+      "checkpoint_sha256": "013e273c08b724178575fdef8e2dbb28129cfad59ceec4bbb4120df2554070d8",
+      "training_model": "yolov8s.pt",
+      "training_cls_pw": 0.25,
+      "training_dataset_fingerprint": "55d0ae3678af8f79ecd1c146dce06054930205363b771d181b4be1c3991b0ede",
+      "training_recipe": {
+        "IMGSZ": 640,
+        "EPOCHS": 80,
+        "BATCH": 8,
+        "SEED": 42,
+        "OPTIMIZER": "AdamW",
+        "LR0": 0.001,
+        "PATIENCE": 20,
+        "MOSAIC": 0.4,
+        "CLOSE_MOSAIC": 10,
+        "MIXUP": 0.0,
+        "AMP": true
+      }
+    },
+    "negative": {
+      "healthy": {
+        "images": 38,
+        "images_with_false_positive": 8,
+        "false_positive_image_rate": 0.21052631578947367,
+        "false_boxes": 9,
+        "mean_false_boxes_per_image": 0.23684210526315788
+      },
+      "not_cashew_leaf": {
+        "images": 20,
+        "images_with_false_positive": 6,
+        "false_positive_image_rate": 0.3,
+        "false_boxes": 10,
+        "mean_false_boxes_per_image": 0.5
+      },
+      "all": {
+        "images": 58,
+        "images_with_false_positive": 14,
+        "false_positive_image_rate": 0.2413793103448276,
+        "false_boxes": 19,
+        "mean_false_boxes_per_image": 0.3275862068965517
+      }
+    },
+    "validation": {
+      "split": "val",
+      "images_expected": 951,
+      "precision_macro": 0.7034803200951142,
+      "recall_macro": 0.6430724689182564,
+      "map50": 0.6977014946448028,
+      "map50_95": 0.3847485546763842,
+      "per_class": [
+        {
+          "class_id": 0,
+          "class": "anthracnose",
+          "precision": 0.6334905460081165,
+          "recall": 0.6006755359481629,
+          "ap50": 0.6303705168882956,
+          "ap50_95": 0.3025821113345719
+        },
+        {
+          "class_id": 1,
+          "class": "leaf_miner",
+          "precision": 0.7485458110723002,
+          "recall": 0.6919014084507042,
+          "ap50": 0.7454215475336985,
+          "ap50_95": 0.48885195209554383
+        },
+        {
+          "class_id": 2,
+          "class": "red_rust",
+          "precision": 0.7284046032049258,
+          "recall": 0.6366404623559022,
+          "ap50": 0.7173124195124141,
+          "ap50_95": 0.36281160059903683
+        }
+      ]
+    }
+  },
+  "yolo26s_v003": {
+    "checkpoint": {
+      "checkpoint": "D:\\Study\\KhoaLuanTotNghiep\\Resource\\training_results\\negative_evaluation\\checkpoints\\EXP-Y26S-LM-003_best.pt",
+      "checkpoint_sha256": "4f10dc42fa95ed1ecea9fab9ce470af00b43f44e4b95a875fa70aaae0cb099ae",
+      "training_model": "yolo26s.pt",
+      "training_cls_pw": 0.25,
+      "training_dataset_fingerprint": "9cd75fd917a0edbce88e43d535c823ae464e348468d9a5e5ef2c98cf328349d7",
+      "training_recipe": {
+        "IMGSZ": 640,
+        "EPOCHS": 80,
+        "BATCH": 8,
+        "SEED": 42,
+        "OPTIMIZER": "AdamW",
+        "LR0": 0.001,
+        "PATIENCE": 20,
+        "MOSAIC": 0.4,
+        "CLOSE_MOSAIC": 10,
+        "MIXUP": 0.0,
+        "AMP": true
+      }
+    },
+    "negative": {
+      "healthy": {
+        "images": 38,
+        "images_with_false_positive": 6,
+        "false_positive_image_rate": 0.15789473684210525,
+        "false_boxes": 7,
+        "mean_false_boxes_per_image": 0.18421052631578946
+      },
+      "not_cashew_leaf": {
+        "images": 20,
+        "images_with_false_positive": 9,
+        "false_positive_image_rate": 0.45,
+        "false_boxes": 17,
+        "mean_false_boxes_per_image": 0.85
+      },
+      "all": {
+        "images": 58,
+        "images_with_false_positive": 15,
+        "false_positive_image_rate": 0.25862068965517243,
+        "false_boxes": 24,
+        "mean_false_boxes_per_image": 0.41379310344827586
+      }
+    },
+    "validation": {
+      "split": "val",
+      "images_expected": 951,
+      "precision_macro": 0.6955878371980934,
+      "recall_macro": 0.6533912521971647,
+      "map50": 0.7054327047713805,
+      "map50_95": 0.3984778882727261,
+      "per_class": [
+        {
+          "class_id": 0,
+          "class": "anthracnose",
+          "precision": 0.6620210756102162,
+          "recall": 0.5986876153671696,
+          "ap50": 0.648685362261926,
+          "ap50_95": 0.3217764417961433
+        },
+        {
+          "class_id": 1,
+          "class": "leaf_miner",
+          "precision": 0.7579497207122247,
+          "recall": 0.7059859154929577,
+          "ap50": 0.7714391511069558,
+          "ap50_95": 0.5210183573299557
+        },
+        {
+          "class_id": 2,
+          "class": "red_rust",
+          "precision": 0.6667927152718395,
+          "recall": 0.6555002257313668,
+          "ap50": 0.6961736009452597,
+          "ap50_95": 0.35263886569207936
+        }
+      ]
+    }
+  },
+  "yolo26s_neg_v02": {
+    "checkpoint": {
+      "checkpoint": "D:\\Study\\KhoaLuanTotNghiep\\Resource\\training_results\\negative_evaluation\\checkpoints\\EXP-Y26S-NEG-V02-001_best.pt",
+      "checkpoint_sha256": "52782846b4385c32cb8274015450a338d70b815f38af05a8a6c240217e1f52bd",
+      "training_model": "yolo26s.pt",
+      "training_cls_pw": 0.25,
+      "training_dataset_fingerprint": "55d0ae3678af8f79ecd1c146dce06054930205363b771d181b4be1c3991b0ede",
+      "training_recipe": {
+        "IMGSZ": 640,
+        "EPOCHS": 80,
+        "BATCH": 8,
+        "SEED": 42,
+        "OPTIMIZER": "AdamW",
+        "LR0": 0.001,
+        "PATIENCE": 20,
+        "MOSAIC": 0.4,
+        "CLOSE_MOSAIC": 10,
+        "MIXUP": 0.0,
+        "AMP": true
+      }
+    },
+    "negative": {
+      "healthy": {
+        "images": 38,
+        "images_with_false_positive": 2,
+        "false_positive_image_rate": 0.05263157894736842,
+        "false_boxes": 2,
+        "mean_false_boxes_per_image": 0.05263157894736842
+      },
+      "not_cashew_leaf": {
+        "images": 20,
+        "images_with_false_positive": 1,
+        "false_positive_image_rate": 0.05,
+        "false_boxes": 1,
+        "mean_false_boxes_per_image": 0.05
+      },
+      "all": {
+        "images": 58,
+        "images_with_false_positive": 3,
+        "false_positive_image_rate": 0.05172413793103448,
+        "false_boxes": 3,
+        "mean_false_boxes_per_image": 0.05172413793103448
+      }
+    },
+    "validation": {
+      "split": "val",
+      "images_expected": 951,
+      "precision_macro": 0.6773900933504268,
+      "recall_macro": 0.665309126977254,
+      "map50": 0.7073488685802376,
+      "map50_95": 0.39707949699131767,
+      "per_class": [
+        {
+          "class_id": 0,
+          "class": "anthracnose",
+          "precision": 0.6241608658212225,
+          "recall": 0.6358999103880885,
+          "ap50": 0.6501454334231811,
+          "ap50_95": 0.3224486219739408
+        },
+        {
+          "class_id": 1,
+          "class": "leaf_miner",
+          "precision": 0.7333118865991514,
+          "recall": 0.7007042253521126,
+          "ap50": 0.7737574804798765,
+          "ap50_95": 0.5216077888441784
+        },
+        {
+          "class_id": 2,
+          "class": "red_rust",
+          "precision": 0.6746975276309063,
+          "recall": 0.6593232451915607,
+          "ap50": 0.6981436918376553,
+          "ap50_95": 0.34718208015583374
+        }
+      ]
+    }
+  }
+}

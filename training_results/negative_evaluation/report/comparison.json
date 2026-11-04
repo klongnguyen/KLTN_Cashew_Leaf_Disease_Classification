@@ -1,0 +1,164 @@
+{
+  "negative_groups": [
+    {
+      "model": "yolov8s",
+      "group": "healthy",
+      "images": 38,
+      "v003_false_positive_rate": 0.21052631578947367,
+      "neg_v02_false_positive_rate": 0.21052631578947367,
+      "delta_rate_percentage_points": 0.0,
+      "v003_mean_false_boxes": 0.3157894736842105,
+      "neg_v02_mean_false_boxes": 0.23684210526315788,
+      "delta_mean_false_boxes": -0.07894736842105263
+    },
+    {
+      "model": "yolov8s",
+      "group": "not_cashew_leaf",
+      "images": 20,
+      "v003_false_positive_rate": 0.25,
+      "neg_v02_false_positive_rate": 0.3,
+      "delta_rate_percentage_points": 4.999999999999999,
+      "v003_mean_false_boxes": 0.35,
+      "neg_v02_mean_false_boxes": 0.5,
+      "delta_mean_false_boxes": 0.15000000000000002
+    },
+    {
+      "model": "yolov8s",
+      "group": "all",
+      "images": 58,
+      "v003_false_positive_rate": 0.22413793103448276,
+      "neg_v02_false_positive_rate": 0.2413793103448276,
+      "delta_rate_percentage_points": 1.7241379310344835,
+      "v003_mean_false_boxes": 0.3275862068965517,
+      "neg_v02_mean_false_boxes": 0.3275862068965517,
+      "delta_mean_false_boxes": 0.0
+    },
+    {
+      "model": "yolo26s",
+      "group": "healthy",
+      "images": 38,
+      "v003_false_positive_rate": 0.15789473684210525,
+      "neg_v02_false_positive_rate": 0.05263157894736842,
+      "delta_rate_percentage_points": -10.526315789473683,
+      "v003_mean_false_boxes": 0.18421052631578946,
+      "neg_v02_mean_false_boxes": 0.05263157894736842,
+      "delta_mean_false_boxes": -0.13157894736842105
+    },
+    {
+      "model": "yolo26s",
+      "group": "not_cashew_leaf",
+      "images": 20,
+      "v003_false_positive_rate": 0.45,
+      "neg_v02_false_positive_rate": 0.05,
+      "delta_rate_percentage_points": -40.0,
+      "v003_mean_false_boxes": 0.85,
+      "neg_v02_mean_false_boxes": 0.05,
+      "delta_mean_false_boxes": -0.7999999999999999
+    },
+    {
+      "model": "yolo26s",
+      "group": "all",
+      "images": 58,
+      "v003_false_positive_rate": 0.25862068965517243,
+      "neg_v02_false_positive_rate": 0.05172413793103448,
+      "delta_rate_percentage_points": -20.689655172413797,
+      "v003_mean_false_boxes": 0.41379310344827586,
+      "neg_v02_mean_false_boxes": 0.05172413793103448,
+      "delta_mean_false_boxes": -0.3620689655172414
+    }
+  ],
+  "paired_transitions": [
+    {
+      "model": "yolov8s",
+      "group": "healthy",
+      "images": 38,
+      "both_alarm": 5,
+      "v003_only_alarm": 3,
+      "neg_v02_only_alarm": 3,
+      "neither_alarm": 27,
+      "mcnemar_exact_two_sided_p": 1.0
+    },
+    {
+      "model": "yolov8s",
+      "group": "not_cashew_leaf",
+      "images": 20,
+      "both_alarm": 3,
+      "v003_only_alarm": 2,
+      "neg_v02_only_alarm": 3,
+      "neither_alarm": 12,
+      "mcnemar_exact_two_sided_p": 1.0
+    },
+    {
+      "model": "yolov8s",
+      "group": "all",
+      "images": 58,
+      "both_alarm": 8,
+      "v003_only_alarm": 5,
+      "neg_v02_only_alarm": 6,
+      "neither_alarm": 39,
+      "mcnemar_exact_two_sided_p": 1.0
+    },
+    {
+      "model": "yolo26s",
+      "group": "healthy",
+      "images": 38,
+      "both_alarm": 0,
+      "v003_only_alarm": 6,
+      "neg_v02_only_alarm": 2,
+      "neither_alarm": 30,
+      "mcnemar_exact_two_sided_p": 0.2890625
+    },
+    {
+      "model": "yolo26s",
+      "group": "not_cashew_leaf",
+      "images": 20,
+      "both_alarm": 1,
+      "v003_only_alarm": 8,
+      "neg_v02_only_alarm": 0,
+      "neither_alarm": 11,
+      "mcnemar_exact_two_sided_p": 0.0078125
+    },
+    {
+      "model": "yolo26s",
+      "group": "all",
+      "images": 58,
+      "both_alarm": 1,
+      "v003_only_alarm": 14,
+      "neg_v02_only_alarm": 2,
+      "neither_alarm": 41,
+      "mcnemar_exact_two_sided_p": 0.004180908203125
+    }
+  ],
+  "validation_metrics": [
+    {
+      "model": "yolov8s",
+      "v003_precision_macro": 0.6651942501393907,
+      "v003_recall_macro": 0.6416112060588607,
+      "v003_map50": 0.6898025107629256,
+      "v003_map50_95": 0.37384386997368624,
+      "neg_v02_precision_macro": 0.7034803200951142,
+      "neg_v02_recall_macro": 0.6430724689182564,
+      "neg_v02_map50": 0.6977014946448028,
+      "neg_v02_map50_95": 0.3847485546763842,
+      "delta_precision_macro": 0.03828606995572348,
+      "delta_recall_macro": 0.00146126285939574,
+      "delta_map50": 0.007898983881877153,
+      "delta_map50_95": 0.010904684702697953
+    },
+    {
+      "model": "yolo26s",
+      "v003_precision_macro": 0.6955878371980934,
+      "v003_recall_macro": 0.6533912521971647,
+      "v003_map50": 0.7054327047713805,
+      "v003_map50_95": 0.3984778882727261,
+      "neg_v02_precision_macro": 0.6773900933504268,
+      "neg_v02_recall_macro": 0.665309126977254,
+      "neg_v02_map50": 0.7073488685802376,
+      "neg_v02_map50_95": 0.39707949699131767,
+      "delta_precision_macro": -0.018197743847666592,
+      "delta_recall_macro": 0.011917874780089321,
+      "delta_map50": 0.0019161638088570632,
+      "delta_map50_95": -0.001398391281408451
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "ultralytics_version": "8.4.197",
+  "torch_version": "2.5.1+cu124",
+  "device": "0",
+  "imgsz": 640,
+  "batch": 4,
+  "negative_predict_conf": 0.25,
+  "ap_validation_conf": 0.001,
+  "iou": 0.7,
+  "half": false,
+  "rect": false,
+  "agnostic_nms": false,
+  "augment": false,
+  "max_det": 300,
+  "models": [
+    "yolov8s_v003",
+    "yolov8s_neg_v02",
+    "yolo26s_v003",
+    "yolo26s_neg_v02"
+  ],
+  "training_performed": false,
+  "test_used": false
+}

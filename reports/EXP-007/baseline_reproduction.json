@@ -1,0 +1,42 @@
+[
+  {
+    "trial_id": "A_v005",
+    "dense_reduction": 0.27441215730567825,
+    "excess": 0.2671678864956265,
+    "sparse_reduction": 0.07483492296404992,
+    "max_delta": 0.0,
+    "elapsed_seconds": 30.963128900009906
+  },
+  {
+    "trial_id": "B_e6e7d65f",
+    "dense_reduction": 0.41534038402300033,
+    "excess": 0.2897469485763903,
+    "sparse_reduction": 0.09391049156272924,
+    "max_delta": 0.0,
+    "elapsed_seconds": 32.51299000001745
+  },
+  {
+    "trial_id": "B_08ff744d",
+    "dense_reduction": 0.48926994557962833,
+    "excess": 0.3081309257806343,
+    "sparse_reduction": 0.11885546588407925,
+    "max_delta": 0.0,
+    "elapsed_seconds": 31.05862639998668
+  },
+  {
+    "trial_id": "C2_6451497a",
+    "dense_reduction": 0.523513707772872,
+    "excess": 0.4646957275400734,
+    "sparse_reduction": 0.07190022010271457,
+    "max_delta": 0.0,
+    "elapsed_seconds": 54.90140940001584
+  },
+  {
+    "trial_id": "C2_fc918698",
+    "dense_reduction": 0.5284680151966321,
+    "excess": 0.4181018081541352,
+    "sparse_reduction": 0.16727806309611148,
+    "max_delta": 0.0,
+    "elapsed_seconds": 48.92167680000421
+  }
+]

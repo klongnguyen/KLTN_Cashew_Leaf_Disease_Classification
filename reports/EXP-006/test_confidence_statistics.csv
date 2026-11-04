@@ -1,0 +1,13 @@
+operating_point,target,statistic,regions_n_ge2,roc_auc,pr_auc
+test_locked,has_tp,max,2870,0.7657292993016168,0.9571532251333829
+test_locked,has_tp,mean,2870,0.7600862850638577,0.9553504888372626
+test_locked,has_tp,top3_mean,2870,0.7675596616120692,0.9580969530930497
+test_locked,has_tp,n_detections,2870,0.660517228074237,0.9245781148494643
+test_locked,has_tp,fill_ratio,2870,0.34727929544314545,0.8453681443625515
+test_locked,has_tp,max_times_fill,2870,0.5245820793301694,0.9094787756909832
+test_locked,tp_member_share_ge_half,max,2870,0.5761846537978248,0.7964305072383375
+test_locked,tp_member_share_ge_half,mean,2870,0.6601868852636597,0.8572698795817892
+test_locked,tp_member_share_ge_half,top3_mean,2870,0.6304344588153733,0.8337389445238258
+test_locked,tp_member_share_ge_half,n_detections,2870,0.42488741117466094,0.7448360266712369
+test_locked,tp_member_share_ge_half,fill_ratio,2870,0.537228107803631,0.7836488765876478
+test_locked,tp_member_share_ge_half,max_times_fill,2870,0.5821282334589887,0.8124216370272405

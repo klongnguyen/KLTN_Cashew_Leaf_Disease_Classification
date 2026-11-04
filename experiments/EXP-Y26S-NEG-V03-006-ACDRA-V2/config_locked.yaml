@@ -1,0 +1,14 @@
+experiment_id: EXP-Y26S-NEG-V03-006-ACDRA-V2
+selection_source: Validation only; owner approved after gallery review
+approved_point: balanced
+trial_id: B_e6e7d65f
+candidate_config:
+  k: 0.5
+  max_region_area_ratio: 0.1
+  max_region_span_ratio: 0.35
+  min_fill_ratio: 0.15
+  min_group_members: 3
+  variant: B
+validation_tuning_sha256: 6705b106495ce76df674bb06e873a73279f13df5c6714edcc606178940170529
+gallery_manifest_sha256: eddac05b7bd0c162018e2f9812f8054990aa37e731e8973ca3d1f15260e65e56
+test_policy: one evaluation; no retuning after Test

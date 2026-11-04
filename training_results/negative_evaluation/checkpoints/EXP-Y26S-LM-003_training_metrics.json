@@ -1,0 +1,68 @@
+{
+  "experiment_id": "EXP-Y26S-LM-003-CLASS-WEIGHTED",
+  "model": "yolo26s.pt",
+  "split": "val",
+  "dataset_source_md5": "1ecc9bb6bb3f0c6b1faaff1441a42035",
+  "dataset_fingerprint": "9cd75fd917a0edbce88e43d535c823ae464e348468d9a5e5ef2c98cf328349d7",
+  "cls_pw": 0.25,
+  "training_seconds": 1086.2648647119995,
+  "training_recipe": {
+    "IMGSZ": 640,
+    "EPOCHS": 80,
+    "BATCH": 8,
+    "SEED": 42,
+    "OPTIMIZER": "AdamW",
+    "LR0": 0.001,
+    "PATIENCE": 20,
+    "MOSAIC": 0.4,
+    "CLOSE_MOSAIC": 10,
+    "MIXUP": 0.0,
+    "AMP": true
+  },
+  "map50": 0.7120026365266529,
+  "map50_95": 0.4029950875943885,
+  "speed_ms_per_image": {
+    "preprocess": 0.24648741879746838,
+    "inference": 0.9031841556539927,
+    "loss": 0.00041259798711916165,
+    "postprocess": 1.9290675128712367
+  },
+  "per_class": [
+    {
+      "class_id": 0,
+      "class": "anthracnose",
+      "precision": 0.6678553583781074,
+      "recall": 0.6030192320948508,
+      "ap50": 0.652812490518582,
+      "ap50_95": 0.32184338607092855,
+      "train_boxes": 34887,
+      "class_weight": 0.7780247926712036
+    },
+    {
+      "class_id": 1,
+      "class": "leaf_miner",
+      "precision": 0.7518573907880564,
+      "recall": 0.7077464788732394,
+      "ap50": 0.7804966479509265,
+      "ap50_95": 0.5306669244336409,
+      "train_boxes": 2076,
+      "class_weight": 1.5752495527267456
+    },
+    {
+      "class_id": 2,
+      "class": "red_rust",
+      "precision": 0.6635382294139939,
+      "recall": 0.6683342137153155,
+      "ap50": 0.7026987711104499,
+      "ap50_95": 0.3564749522785962,
+      "train_boxes": 73072,
+      "class_weight": 0.6467254757881165
+    }
+  ],
+  "macro": {
+    "precision": 0.6944169928600527,
+    "recall": 0.6596999748944685,
+    "ap50": 0.7120026365266529,
+    "ap50_95": 0.40299508759438857
+  }
+}

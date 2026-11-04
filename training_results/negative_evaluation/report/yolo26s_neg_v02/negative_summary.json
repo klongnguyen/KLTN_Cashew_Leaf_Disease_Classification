@@ -1,0 +1,23 @@
+{
+  "healthy": {
+    "images": 38,
+    "images_with_false_positive": 2,
+    "false_positive_image_rate": 0.05263157894736842,
+    "false_boxes": 2,
+    "mean_false_boxes_per_image": 0.05263157894736842
+  },
+  "not_cashew_leaf": {
+    "images": 20,
+    "images_with_false_positive": 1,
+    "false_positive_image_rate": 0.05,
+    "false_boxes": 1,
+    "mean_false_boxes_per_image": 0.05
+  },
+  "all": {
+    "images": 58,
+    "images_with_false_positive": 3,
+    "false_positive_image_rate": 0.05172413793103448,
+    "false_boxes": 3,
+    "mean_false_boxes_per_image": 0.05172413793103448
+  }
+}

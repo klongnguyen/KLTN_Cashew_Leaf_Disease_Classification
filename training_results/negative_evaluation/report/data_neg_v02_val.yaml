@@ -1,0 +1,8 @@
+path: D:/Study/KhoaLuanTotNghiep/Resource/training_results/negative_evaluation/report/dataset_working_copy
+train: D:/Study/KhoaLuanTotNghiep/Resource/training_results/negative_evaluation/report/dataset_working_copy/images/train
+val: D:/Study/KhoaLuanTotNghiep/Resource/training_results/negative_evaluation/report/dataset_working_copy/images/val
+nc: 3
+names:
+- anthracnose
+- leaf_miner
+- red_rust

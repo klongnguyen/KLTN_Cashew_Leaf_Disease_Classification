@@ -1,0 +1,52 @@
+{
+  "seed": 7777,
+  "selected_stage": "stage2",
+  "selected_epoch": 16,
+  "selection_metric": "val_loss",
+  "val_loss": 0.11101974546909332,
+  "val_macro_f1": 0.9609736666602456,
+  "real_subgroup_accuracy": 0.7457627118644068,
+  "stage_by_val_loss_rule": "stage2",
+  "stage_rules_agree": true,
+  "tie_break": "lower val_loss, higher val_macro_f1, then Stage 1",
+  "checkpoint_sha256": "f24518845d95a581d0c2bb0acd3a2fefb2534516a21e0daeec6db90fbb0f1340",
+  "model_params": 23597957,
+  "stage_candidates": {
+    "stage1": {
+      "stage": "stage1",
+      "best_epoch": 11,
+      "real_subgroup_accuracy": 0.7457627118644068,
+      "real_subgroup_correct": 44,
+      "real_subgroup_total": 59,
+      "actual_epochs": 12,
+      "fit_seconds": 46.92747023699485,
+      "val_loss": 0.13186267018318176,
+      "val_accuracy": 0.9600551128387451,
+      "val_macro_f1": 0.9587669843310955,
+      "checkpoint_path": "/content/training_results/current_dataset/EXP-RESNET50-REGULARIZED-5SEEDS-032-B3-LR5e6-256px-5411b7ad/seed_7777/stage1/best.weights.h5",
+      "checkpoint_sha256": "0ab2f41e2f0d10d970bb7ed428be297e48b0de4948f8b17a257f11c948e85c9f",
+      "checkpoint_size_mb": 90.5794677734375,
+      "backbone_trainable_params": 0,
+      "learning_rate_first": 0.0003000000142492354,
+      "learning_rate_last": 0.0003000000142492354
+    },
+    "stage2": {
+      "stage": "stage2",
+      "best_epoch": 16,
+      "real_subgroup_accuracy": 0.7457627118644068,
+      "real_subgroup_correct": 44,
+      "real_subgroup_total": 59,
+      "actual_epochs": 24,
+      "fit_seconds": 102.18790136399912,
+      "val_loss": 0.11101974546909332,
+      "val_accuracy": 0.9621211886405945,
+      "val_macro_f1": 0.9609736666602456,
+      "checkpoint_path": "/content/training_results/current_dataset/EXP-RESNET50-REGULARIZED-5SEEDS-032-B3-LR5e6-256px-5411b7ad/seed_7777/stage2/best.weights.h5",
+      "checkpoint_sha256": "f24518845d95a581d0c2bb0acd3a2fefb2534516a21e0daeec6db90fbb0f1340",
+      "checkpoint_size_mb": 124.6068115234375,
+      "backbone_trainable_params": 4459520,
+      "learning_rate_first": 4.999999873689376e-06,
+      "learning_rate_last": 2.499999936844688e-06
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "holdout_images": 126,
+  "real_train_unique_images": 294,
+  "holdout_class_counts": {
+    "anthracnose": 46,
+    "healthy": 19,
+    "leaf_miner": 36,
+    "red_rust": 25
+  },
+  "exact_pixel_overlap_count": 0,
+  "exact_pixel_overlaps": [],
+  "phash_hamming_le_4_pairs": [],
+  "note": "Near-duplicates are listed for review; no model selection uses Holdout labels."
+}

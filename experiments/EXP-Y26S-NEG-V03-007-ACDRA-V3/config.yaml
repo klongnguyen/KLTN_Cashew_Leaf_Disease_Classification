@@ -1,0 +1,22 @@
+experiment_id: EXP-Y26S-NEG-V03-007-ACDRA-V3
+seed: 42
+split_for_selection: val
+source_experiment: EXP-Y26S-NEG-V03-006-ACDRA-V2
+checkpoint_sha256: 12f5717ff7e97c6ffcc3b2ab8c66b869bc8065995507dac3a5dbd95ce7714d19
+dataset_zip_sha256: 312870474cfbab8c3fc77db7b19e821c1edf34a0787cb45592f00bde841b4dbe
+v005_full_zip_sha256: 990df19b094cc14d6e5706183616245dda83d21fac3b52c20f9a2a3f5488c845
+raw_detection_conf: 0.2
+raw_detection_nms_iou: 0.7
+raw_detection_max_det: 500
+algorithm:
+  candidate_variants: [B, C, D]
+  d_base_variants: [B, C]
+  d_theta_ov_values: [0.1, 0.25, 0.5]
+  d_merge_condition: same-class IoA over smaller region, geometry guard and fill ratio
+metrics:
+  raw_tp_iou_threshold: 0.5
+  same_class_overlap_pair_iou_threshold: 0.1
+  overlap_area: exact area covered by at least two same-class regions
+  verifiable_s_min_px: [32, 48, 64]
+  crop_W_min_px: [64, 96, 128]
+test_policy: no Test run until owner selects and locks one configuration; Test is already non-pristine after V006

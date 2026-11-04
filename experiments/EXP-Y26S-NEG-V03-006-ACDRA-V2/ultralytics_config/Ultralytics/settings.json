@@ -1,0 +1,19 @@
+{
+  "settings_version": "0.0.8",
+  "datasets_dir": "D:\\Study\\KhoaLuanTotNghiep\\datasets",
+  "weights_dir": "D:\\Study\\KhoaLuanTotNghiep\\Resource\\weights",
+  "runs_dir": "D:\\Study\\KhoaLuanTotNghiep\\Resource\\runs",
+  "uuid": "a0d7fc0d3c4ef9a5cfe9831ae003daf6d38840555e52b8f3ac17b35561b068ae",
+  "sync": true,
+  "api_key": "",
+  "openai_api_key": "",
+  "clearml": true,
+  "comet": true,
+  "dvc": true,
+  "mlflow": true,
+  "raytune": true,
+  "tensorboard": false,
+  "wandb": false,
+  "vscode_msg": true,
+  "openvino_msg": true
+}

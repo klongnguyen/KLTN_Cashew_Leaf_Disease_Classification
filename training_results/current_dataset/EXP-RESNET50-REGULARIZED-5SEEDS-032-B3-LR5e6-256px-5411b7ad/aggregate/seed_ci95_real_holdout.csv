@@ -1,0 +1,4 @@
+metric,mean,sd_seed,n_seeds,ci95_low,ci95_high,interval,meaning
+accuracy,0.7555555555555555,0.0197617453936329,5,0.7310181077586124,0.7800930033524986,"mean +/- t(0.975, df=4) * SD / sqrt(5); SD uses ddof=1","variation across random seeds on one fixed split, not a CI for new orchards"
+macro_recall,0.7063367658276125,0.0129420592115206,5,0.6902670768420459,0.7224064548131791,"mean +/- t(0.975, df=4) * SD / sqrt(5); SD uses ddof=1","variation across random seeds on one fixed split, not a CI for new orchards"
+macro_f1,0.7315299429903908,0.0150580934385366,5,0.7128328504861715,0.75022703549461,"mean +/- t(0.975, df=4) * SD / sqrt(5); SD uses ddof=1","variation across random seeds on one fixed split, not a CI for new orchards"

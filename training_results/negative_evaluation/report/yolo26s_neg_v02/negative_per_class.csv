@@ -1,0 +1,10 @@
+﻿model,group,class,images_with_prediction,false_boxes
+yolo26s_neg_v02,healthy,anthracnose,1,1
+yolo26s_neg_v02,healthy,leaf_miner,0,0
+yolo26s_neg_v02,healthy,red_rust,1,1
+yolo26s_neg_v02,not_cashew_leaf,anthracnose,0,0
+yolo26s_neg_v02,not_cashew_leaf,leaf_miner,0,0
+yolo26s_neg_v02,not_cashew_leaf,red_rust,1,1
+yolo26s_neg_v02,all,anthracnose,1,1
+yolo26s_neg_v02,all,leaf_miner,0,0
+yolo26s_neg_v02,all,red_rust,2,2

@@ -1,0 +1,79 @@
+{
+  "checkpoint": {
+    "checkpoint": "D:\\Study\\KhoaLuanTotNghiep\\Resource\\training_results\\negative_evaluation\\checkpoints\\EXP-Y26S-LM-003_best.pt",
+    "checkpoint_sha256": "4f10dc42fa95ed1ecea9fab9ce470af00b43f44e4b95a875fa70aaae0cb099ae",
+    "training_model": "yolo26s.pt",
+    "training_cls_pw": 0.25,
+    "training_dataset_fingerprint": "9cd75fd917a0edbce88e43d535c823ae464e348468d9a5e5ef2c98cf328349d7",
+    "training_recipe": {
+      "IMGSZ": 640,
+      "EPOCHS": 80,
+      "BATCH": 8,
+      "SEED": 42,
+      "OPTIMIZER": "AdamW",
+      "LR0": 0.001,
+      "PATIENCE": 20,
+      "MOSAIC": 0.4,
+      "CLOSE_MOSAIC": 10,
+      "MIXUP": 0.0,
+      "AMP": true
+    }
+  },
+  "negative": {
+    "healthy": {
+      "images": 38,
+      "images_with_false_positive": 6,
+      "false_positive_image_rate": 0.15789473684210525,
+      "false_boxes": 7,
+      "mean_false_boxes_per_image": 0.18421052631578946
+    },
+    "not_cashew_leaf": {
+      "images": 20,
+      "images_with_false_positive": 9,
+      "false_positive_image_rate": 0.45,
+      "false_boxes": 17,
+      "mean_false_boxes_per_image": 0.85
+    },
+    "all": {
+      "images": 58,
+      "images_with_false_positive": 15,
+      "false_positive_image_rate": 0.25862068965517243,
+      "false_boxes": 24,
+      "mean_false_boxes_per_image": 0.41379310344827586
+    }
+  },
+  "validation": {
+    "split": "val",
+    "images_expected": 951,
+    "precision_macro": 0.6955878371980934,
+    "recall_macro": 0.6533912521971647,
+    "map50": 0.7054327047713805,
+    "map50_95": 0.3984778882727261,
+    "per_class": [
+      {
+        "class_id": 0,
+        "class": "anthracnose",
+        "precision": 0.6620210756102162,
+        "recall": 0.5986876153671696,
+        "ap50": 0.648685362261926,
+        "ap50_95": 0.3217764417961433
+      },
+      {
+        "class_id": 1,
+        "class": "leaf_miner",
+        "precision": 0.7579497207122247,
+        "recall": 0.7059859154929577,
+        "ap50": 0.7714391511069558,
+        "ap50_95": 0.5210183573299557
+      },
+      {
+        "class_id": 2,
+        "class": "red_rust",
+        "precision": 0.6667927152718395,
+        "recall": 0.6555002257313668,
+        "ap50": 0.6961736009452597,
+        "ap50_95": 0.35263886569207936
+      }
+    ]
+  }
+}

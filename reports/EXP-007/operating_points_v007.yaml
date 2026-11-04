@@ -1,0 +1,30 @@
+conservative:
+  trial_id: B_08ff744d
+  config:
+    k: 0.5
+    max_region_area_ratio: 0.1
+    max_region_span_ratio: 0.35
+    min_fill_ratio: 0.15
+    min_group_members: 2
+    variant: B
+  selection_status: proposed; owner review pending
+balanced:
+  trial_id: V7_e95d60ebf1
+  config:
+    k: 2
+    max_region_area_ratio: 0.1
+    max_region_span_ratio: 0.35
+    min_fill_ratio: 0.15
+    min_group_members: 2
+    variant: B
+  selection_status: proposed; owner review pending
+aggressive:
+  trial_id: V7_1c8106e164
+  config:
+    k: 3
+    max_region_area_ratio: 0.1
+    max_region_span_ratio: 0.35
+    min_fill_ratio: 0.15
+    min_group_members: 2
+    variant: B
+  selection_status: proposed; owner review pending

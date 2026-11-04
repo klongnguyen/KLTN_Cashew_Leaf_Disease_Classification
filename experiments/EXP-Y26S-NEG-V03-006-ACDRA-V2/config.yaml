@@ -1,0 +1,37 @@
+experiment_id: EXP-Y26S-NEG-V03-006-ACDRA-V2
+purpose: deterministic class-aware bbox display-region aggregation
+seed: 42
+source:
+  v005_full_zip: source/EXP-Y26S-NEG-V03-005_FULL.zip
+  v005_full_sha256: 990df19b094cc14d6e5706183616245dda83d21fac3b52c20f9a2a3f5488c845
+  v005_analysis_zip: source/EXP-Y26S-NEG-V03-005_ANALYSIS.zip
+  v005_analysis_sha256: 38ed98c637fd822f0ec534aa28a0954efce301e6d50a8802de3d80ef9ef96859
+  dataset_zip: source/CASHEW_YOLO_MASTER_FINAL_NEG_V03.zip
+  dataset_sha256: 312870474cfbab8c3fc77db7b19e821c1edf34a0787cb45592f00bde841b4dbe
+  best_pt_sha256: 12f5717ff7e97c6ffcc3b2ab8c66b869bc8065995507dac3a5dbd95ce7714d19
+  raw_detection_conf: 0.2
+  nms_iou: 0.7
+  max_det: 500
+baseline_a:
+  overlap_iou: 0.6
+  containment_ratio: 0.8
+  cluster_gap_ratio: 0.02
+  min_group_members: 5
+  min_local_density: 40.0
+  max_region_area_ratio: 0.25
+  max_region_span_ratio: 0.55
+tuning:
+  split: val
+  k_values: [0.5, 1, 1.5, 2, 3, 4]
+  tau_fill_values: [0.15, 0.25, 0.35, 0.5]
+  max_region_area_ratio_values: [0.10, 0.15, 0.25, 0.35]
+  max_region_span_ratio_values: [0.35, 0.45, 0.55]
+  min_group_members_values: [2, 3, 5, 8]
+  b_pair_scale: minimum of sqrt(width * height) of the two lesions
+  b_pair_scale_reason: a large false box must not pull a small lesion from far away
+  greedy_c_candidate_neighbors: 16
+  sparse_reduction_limit: 0.10
+  region_precision_max_drop_points: 2.0
+test:
+  selection_source: validation only
+  run_once_after_lock: true

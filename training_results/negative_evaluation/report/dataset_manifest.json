@@ -1,0 +1,18 @@
+{
+  "dataset_root": "D:\\Study\\KhoaLuanTotNghiep\\Resource\\dataset\\CASHEW_YOLO_MASTER_FINAL_NEG_V02 (2)\\CASHEW_YOLO_MASTER_FINAL_NEG_V02",
+  "working_copy": "D:\\Study\\KhoaLuanTotNghiep\\Resource\\training_results\\negative_evaluation\\report\\dataset_working_copy",
+  "split": "val",
+  "validation_images": 951,
+  "negative_images": 58,
+  "negative_groups": {
+    "healthy": 38,
+    "not_cashew_leaf": 20
+  },
+  "validation_sha256": "9a502be84e2d619a6d75bb76b979c7d40eabc8d6688124d05d013965555ee78f",
+  "class_names": [
+    "anthracnose",
+    "leaf_miner",
+    "red_rust"
+  ],
+  "test_used": false
+}
