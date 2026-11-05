@@ -1,0 +1,4 @@
+{
+  "rule": "Single combined model frozen before Test and Holdout",
+  "selected_default_rule": "F3"
+}

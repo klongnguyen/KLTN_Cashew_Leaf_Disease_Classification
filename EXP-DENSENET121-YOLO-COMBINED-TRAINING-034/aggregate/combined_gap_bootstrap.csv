@@ -1,0 +1,2 @@
+part,split,rule,delta_accuracy,bootstrap_low,bootstrap_high
+B,gap_test_minus_holdout,F3,0.010485459390568885,-0.023362298690765854,0.05017263353029778

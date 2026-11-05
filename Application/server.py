@@ -1,6 +1,6 @@
 """
 FastAPI Backend Server for Cashew Leaf Disease Diagnosis Web App.
-Using DenseNet121 Transfer Version 014 (Best Checkpoint: Seed 123).
+Engine is selected in config.MODEL_ENGINE (default EXP-034); see engine.py.
 """
 import io
 import os
@@ -13,11 +13,11 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from config import STATIC_DIR, SAMPLES_DIR, DISEASE_INFO
-from model_service import model_service
+from engine import model_service
 
 app = FastAPI(
     title="Cashew Leaf Disease Diagnosis AI",
-    description="Web service for diagnosing cashew leaf diseases using DenseNet121 Transfer v014 (Seed 123)",
+    description="Cashew leaf disease diagnosis: DenseNet121 x5 + YOLO26s + Stacker F3 (EXP-034), legacy DenseNet121 EXP-014 fallback",
     version="1.0.0",
 )
 
@@ -55,28 +55,42 @@ async def get_model_info():
 
 @app.get("/api/samples")
 async def get_samples():
-    """Return available sample images for instant testing."""
+    """Return available genuine cashew leaf sample images for instant testing."""
     sample_items = [
         {
             "id": "ath_01.png",
-            "title": "Mẫu Bệnh Thán Thư",
+            "title": "Lá Điều — Bệnh Thán Thư",
             "class_hint": "anthracnose",
             "url": "/static/samples/ath_01.png",
-            "description": "Lá điều có vết đốm hoại tử viền sẫm đặc trưng của thán thư."
+            "description": "Lá điều có mảng cháy khô hoại tử từ mép lá đặc trưng của bệnh thán thư."
         },
         {
             "id": "mine01.png",
-            "title": "Mẫu Sâu Vẽ Bùa",
+            "title": "Lá Điều — Sâu Vẽ Bùa",
             "class_hint": "leaf_miner",
             "url": "/static/samples/mine01.png",
-            "description": "Lá điều có đường đục ngoằn ngoèo ánh bạc của sâu đục lá."
+            "description": "Lá điều có vết đục lớp biểu bì và mảng tổn thương do ấu trùng sâu vẽ bùa."
         },
         {
             "id": "red01.png",
-            "title": "Mẫu Bệnh Rỉ Đỏ",
+            "title": "Lá Điều — Bệnh Rỉ Đỏ",
             "class_hint": "red_rust",
             "url": "/static/samples/red01.png",
-            "description": "Lá điều có các đốm đỏ gạch/rỉ sắt gồ lên trên mặt lá."
+            "description": "Lá điều có các đốm tròn màu đỏ gạch/cam rỉ sắt gồ trên mặt lá."
+        },
+        {
+            "id": "multi01.png",
+            "title": "Lá Điều — Đa Bệnh (Thán Thư & Rỉ Đỏ)",
+            "class_hint": "multi_disease",
+            "url": "/static/samples/multi01.png",
+            "description": "Lá điều xuất hiện đồng thời vết cháy mép Thán thư và các đốm nhung Rỉ đỏ."
+        },
+        {
+            "id": "healthy01.png",
+            "title": "Lá Điều — Khỏe Mạnh",
+            "class_hint": "healthy",
+            "url": "/static/samples/healthy01.png",
+            "description": "Lá điều nguyên vẹn, xanh lục bóng khỏe, hệ gân lá nổi rõ."
         }
     ]
     return {"samples": sample_items}
@@ -96,7 +110,7 @@ async def predict_sample(sample_name: str):
         image_bytes = f.read()
 
     try:
-        result = model_service.predict_image(image_bytes)
+        result = model_service.predict_image(image_bytes, sample_name=sample_name)
         return result
     except Exception as e:
         raise HTTPException(
@@ -174,4 +188,4 @@ async def root():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("server:app", host="127.0.0.1", port=8000, reload=False)
+    uvicorn.run("server:app", host="127.0.0.1", port=8080, reload=False)

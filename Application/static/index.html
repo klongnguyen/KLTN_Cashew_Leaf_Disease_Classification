@@ -1,263 +1,1186 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chuẩn Đoán Bệnh Lá Cây Điều</title>
-  
+  <title>Hệ Thống Tri Thức &amp; Chuẩn Đoán Bệnh Lá Cây Nông Nghiệp</title>
+
   <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
+
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=20261105_4">
 </head>
+
 <body>
 
-  <!-- Header gọn gàng -->
+  <!-- ================= HEADER CHUNG (KHÔNG HIỂN THỊ PHẦN 1 / PHẦN 2 Ở TRANG CHỦ) ================= -->
   <header class="app-header">
     <div class="header-container">
-      <div class="brand">
+      <div class="brand" id="brand-home-trigger" role="button" tabindex="0">
         <div class="brand-logo">
           <i class="fa-solid fa-leaf"></i>
         </div>
         <div class="brand-info">
-          <h1 class="brand-title">Chuẩn Đoán Bệnh Lá Cây Điều</h1>
-          <p class="brand-subtitle">Hệ thống nhận diện và đánh giá bệnh trên lá điều</p>
+          <h1 class="brand-title">Cổng Tri Thức &amp; Chuẩn Đoán Bệnh Lá Cây Trồng</h1>
         </div>
       </div>
+
+      <nav class="header-nav" aria-label="Điều hướng trang chủ">
+        <button type="button" class="nav-tab active" id="nav-btn-selector">
+          <i class="fa-solid fa-house"></i>
+          <span>Trang Chủ </span>
+        </button>
+      </nav>
     </div>
   </header>
 
-  <!-- Main Container -->
+  <!-- ================= MAIN CONTAINER ================= -->
   <main class="main-layout">
-    <div class="app-grid">
-      
-      <!-- ================= LEFT COLUMN: DIAGNOSIS RESULTS ================= -->
-      <section class="result-column" id="diagnosis-result-column">
-        
-        <div class="panel-card main-result-panel">
-          <div class="panel-header">
-            <div class="panel-title-wrap">
-              <span class="panel-icon"><i class="fa-solid fa-microscope"></i></span>
-              <h2 class="panel-title">Kết Quả Chuẩn Đoán</h2>
+
+    <!-- =======================================================================
+         TRANG CHỦ (MẶC ĐỊNH): THEO MẪU THIẾT KẾ NÔNG NGHIỆP THÔNG MINH
+         ======================================================================= -->
+    <section class="page-view" id="view-leaf-selector">
+      <div class="panel-card selector-page-card">
+
+        <!-- Hero Banner -->
+        <div class="home-hero-banner">
+          <div class="home-hero-content">
+            <div class="hero-pill-badge">
+              <span class="hero-pill-icon"><i class="fa-solid fa-leaf"></i></span>
+              <span>Hệ thống hỗ trợ nông nghiệp thông minh</span>
             </div>
-            <div class="panel-status-tag" id="panel-status-tag">
-              <span class="status-dot-sm" id="status-dot-indicator"></span>
-              <span id="status-text">Chờ tải ảnh</span>
-            </div>
+
+            <h2 class="hero-main-title">
+              Chọn Loại Lá Cây Để Mở Chức Năng<br>
+              <span class="hero-title-green">Tra Cứu &amp; Nhận <span class="hero-underline-word">Diện</span></span>
+            </h2>
+
+            <p class="hero-desc-quote">
+              Vui lòng chọn một loại lá cây trồng bên dưới để mở các chức năng tương ứng gồm<br>
+              <strong>Phần 1: Bách Khoa Toàn Thư</strong> cùng với <strong>Phần 2: Khoanh Vùng &amp; Nhận Diện Bệnh.</strong>
+            </p>
           </div>
 
-          <!-- Empty State -->
-          <div class="empty-state-view" id="empty-state-view">
-            <i class="fa-solid fa-cloud-arrow-up empty-icon"></i>
-            <h3 class="empty-title">Chưa Có Ảnh Chuẩn Đoán</h3>
-            <p class="empty-text">Vui lòng chọn hoặc kéo thả ảnh lá điều vào khung bên phải để xem kết quả.</p>
+          <div class="home-hero-visual">
+            <img src="/static/samples/home/hero_right.png" alt="Minh họa nhận diện bệnh lá cây" class="hero-right-img">
           </div>
-
-          <!-- Active Result View -->
-          <div class="active-result-view hidden" id="active-result-view">
-            
-            <div class="diagnosis-top-grid">
-              
-              <!-- 1. Uploaded Image Display -->
-              <div class="image-preview-card">
-                <div class="sub-header">
-                  <span class="sub-title"><i class="fa-solid fa-image"></i> Ảnh đã tải lên</span>
-                  <span class="meta-tag" id="image-dim-badge">224 x 224</span>
-                </div>
-                
-                <div class="preview-img-wrapper" id="preview-img-wrapper">
-                  <img id="diagnosis-preview-img" src="" alt="Hình ảnh lá điều">
-                  <div class="img-overlay-info" id="img-overlay-info">
-                    <span id="img-file-name">image.jpg</span>
-                    <span id="img-file-size">1.2 MB</span>
-                  </div>
-                </div>
-
-                <div class="preview-footer-actions">
-                  <button type="button" class="btn-ghost-sm" id="btn-zoom-image">
-                    <i class="fa-solid fa-magnifying-glass-plus"></i> Xem ảnh lớn
-                  </button>
-                  <button type="button" class="btn-ghost-sm" id="btn-reupload-trigger">
-                    <i class="fa-solid fa-arrow-rotate-right"></i> Chọn ảnh khác
-                  </button>
-                </div>
-              </div>
-
-              <!-- 2. Primary Conclusion (Nhãn cao nhất đặt trên đầu) -->
-              <div class="conclusion-card" id="conclusion-card">
-                <div class="conclusion-eyebrow">
-                  <span class="badge-conclusion-tag">
-                    <i class="fa-solid fa-check"></i> KẾT LUẬN CAO NHẤT
-                  </span>
-                </div>
-
-                <div class="conclusion-main-body">
-                  <div class="disease-icon-box" id="disease-icon-box">
-                    <i class="fa-solid fa-biohazard" id="conclusion-icon"></i>
-                  </div>
-                  <div class="conclusion-text-wrap">
-                    <h3 class="conclusion-disease-name" id="conclusion-disease-name">Bệnh Thán Thư</h3>
-                    <p class="conclusion-latin" id="conclusion-latin">Colletotrichum gloeosporioides</p>
-                  </div>
-                </div>
-
-                <!-- Highlighted Confidence Box -->
-                <div class="confidence-summary-box">
-                  <div class="confidence-label-row">
-                    <span class="conf-title">Độ tin cậy:</span>
-                    <span class="conf-percent-big" id="conclusion-confidence-value">99.86%</span>
-                  </div>
-                  <div class="progress-bar-track">
-                    <div class="progress-bar-fill top-score-fill" id="conclusion-progress-fill" style="width: 99.86%;"></div>
-                  </div>
-                </div>
-
-                <!-- Advisory Excerpt -->
-                <div class="advisory-box">
-                  <div class="advisory-title">
-                    <i class="fa-solid fa-notes-medical"></i> Khuyến nghị xử lý:
-                  </div>
-                  <p class="advisory-text" id="conclusion-advisory-text"></p>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- ================= 3. ALL LABELS CONFIDENCE ================= -->
-            <div class="confidence-breakdown-section">
-              <div class="breakdown-header">
-                <div class="breakdown-title-wrap">
-                  <span class="sort-icon-box"><i class="fa-solid fa-arrow-down-wide-short"></i></span>
-                  <h4 class="breakdown-title">Bảng Độ Tin Cậy Các Loại Bệnh</h4>
-                </div>
-              </div>
-
-              <!-- List sorted from HIGHEST to LOWEST -->
-              <div class="confidence-list" id="confidence-list"></div>
-            </div>
-
-            <!-- Detailed Disease Guide Accordion -->
-            <div class="disease-guide-section" id="disease-guide-section">
-              <div class="guide-card-header">
-                <i class="fa-solid fa-book-open"></i>
-                <span>Chi tiết triệu chứng &amp; biện pháp phòng trừ</span>
-              </div>
-              <div class="guide-content">
-                <div class="guide-item">
-                  <strong>Dấu hiệu nhận diện:</strong>
-                  <p id="guide-symptoms-text"></p>
-                </div>
-                <div class="guide-item">
-                  <strong>Biện pháp can thiệp:</strong>
-                  <ul class="guide-list" id="guide-management-list"></ul>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Loading Overlay -->
-          <div class="analyzing-overlay hidden" id="analyzing-overlay">
-            <div class="spinner-core">
-              <div class="radar-spin"></div>
-              <i class="fa-solid fa-leaf analyze-leaf-icon"></i>
-            </div>
-            <h4 class="analyzing-title">Đang Phân Tích Hình Ảnh...</h4>
-            <div class="analyzing-step-bar">
-              <div class="step-indeterminate"></div>
-            </div>
-          </div>
-
         </div>
 
-      </section>
-
-      <!-- ================= RIGHT COLUMN: UPLOAD ================= -->
-      <section class="upload-column" id="upload-column">
-        
-        <!-- Upload Card -->
-        <div class="panel-card upload-panel">
-          <div class="panel-header">
-            <div class="panel-title-wrap">
-              <span class="panel-icon"><i class="fa-solid fa-upload"></i></span>
-              <h2 class="panel-title">Tải Hình Ảnh Lên</h2>
-            </div>
-          </div>
-
-          <!-- Drag and Drop Zone -->
-          <div class="dropzone-box" id="dropzone-box">
-            <input 
-              type="file" 
-              id="file-input" 
-              accept="image/png,image/jpeg,image/jpg,image/webp" 
-              class="hidden-file-input"
-            >
-
-            <div class="dropzone-inner">
-              <div class="upload-icon-pulse">
-                <i class="fa-solid fa-cloud-arrow-up"></i>
+        <!-- 6 Thẻ Chọn Lá Cây -->
+        <div class="leaf-selector-grid home-cards-grid">
+          <!-- Card 1: Lá Cây Điều (Active) -->
+          <div class="leaf-choice-card is-supported" data-leaf-id="cashew" data-leaf-name="Lá Cây Điều" role="button" tabindex="0">
+            <div class="leaf-card-left">
+              <div class="leaf-thumb-box">
+                <img src="/static/samples/home/leaf_cashew.png" alt="Lá Cây Điều">
               </div>
-              <h3 class="dropzone-title">Kéo &amp; thả tệp hình ảnh vào đây</h3>
-              <p class="dropzone-desc">hoặc bấm vào ô để duyệt tệp từ máy tính</p>
-              
-              <div class="format-chips">
-                <span class="chip">PNG</span>
-                <span class="chip">JPG</span>
-                <span class="chip">JPEG</span>
-                <span class="chip">WEBP</span>
+              <div class="leaf-card-text">
+                <h4 class="leaf-choice-title">Lá Cây Điều (Cashew Leaf)</h4>
+                <span class="leaf-choice-cta">Chọn Lá Cây Điều</span>
               </div>
             </div>
+            <span class="leaf-arrow-btn active-arrow">
+              <i class="fa-solid fa-arrow-right"></i>
+            </span>
           </div>
 
-          <!-- Selected File Status Tray -->
-          <div class="file-status-tray hidden" id="file-status-tray">
-            <div class="file-tray-left">
-              <div class="file-icon-thumb" id="tray-thumb-container">
-                <img id="tray-thumb-img" src="" alt="Thumbnail">
+          <!-- Card 2: Lá Cà Phê -->
+          <div class="leaf-choice-card is-dev" data-leaf-id="coffee" data-leaf-name="Lá Cà Phê" role="button" tabindex="0">
+            <div class="leaf-card-left">
+              <div class="leaf-thumb-box">
+                <img src="/static/samples/home/leaf_coffee.png" alt="Lá Cà Phê">
               </div>
-              <div class="file-tray-meta">
-                <div class="file-name-line" id="tray-file-name">anh_la_dieu.jpg</div>
-                <div class="file-size-line">
-                  <span id="tray-file-size">1.4 MB</span> &bull; 
-                  <span class="valid-tag">Hợp lệ</span>
-                </div>
+              <div class="leaf-card-text">
+                <h4 class="leaf-choice-title">Lá Cà Phê (Coffee Leaf)</h4>
+                <span class="leaf-choice-cta">Chọn Lá Cà Phê</span>
               </div>
             </div>
-            <button type="button" class="btn-tray-remove" id="btn-tray-remove" title="Hủy chọn">
-              <i class="fa-solid fa-xmark"></i>
-            </button>
+            <span class="leaf-arrow-btn">
+              <i class="fa-solid fa-arrow-right"></i>
+            </span>
           </div>
 
-          <!-- Upload Actions -->
-          <div class="upload-actions">
-            <button type="button" class="btn-primary-action" id="btn-predict" disabled>
-              <i class="fa-solid fa-wand-magic-sparkles"></i>
-              <span>Chuẩn Đoán Ngay</span>
-            </button>
-            <button type="button" class="btn-secondary-action" id="btn-clear-selection">
-              <i class="fa-solid fa-rotate-left"></i>
-              <span>Làm mới</span>
-            </button>
+          <!-- Card 3: Lá Hồ Tiêu -->
+          <div class="leaf-choice-card is-dev" data-leaf-id="pepper" data-leaf-name="Lá Hồ Tiêu" role="button" tabindex="0">
+            <div class="leaf-card-left">
+              <div class="leaf-thumb-box">
+                <img src="/static/samples/home/leaf_pepper.png" alt="Lá Hồ Tiêu">
+              </div>
+              <div class="leaf-card-text">
+                <h4 class="leaf-choice-title">Lá Hồ Tiêu (Black Pepper Leaf)</h4>
+                <span class="leaf-choice-cta">Chọn Lá Hồ Tiêu</span>
+              </div>
+            </div>
+            <span class="leaf-arrow-btn">
+              <i class="fa-solid fa-arrow-right"></i>
+            </span>
           </div>
 
+          <!-- Card 4: Lá Sầu Riêng -->
+          <div class="leaf-choice-card is-dev" data-leaf-id="durian" data-leaf-name="Lá Sầu Riêng" role="button" tabindex="0">
+            <div class="leaf-card-left">
+              <div class="leaf-thumb-box">
+                <img src="/static/samples/home/leaf_durian.png" alt="Lá Sầu Riêng">
+              </div>
+              <div class="leaf-card-text">
+                <h4 class="leaf-choice-title">Lá Sầu Riêng (Durian Leaf)</h4>
+                <span class="leaf-choice-cta">Chọn Lá Sầu Riêng</span>
+              </div>
+            </div>
+            <span class="leaf-arrow-btn">
+              <i class="fa-solid fa-arrow-right"></i>
+            </span>
+          </div>
+
+          <!-- Card 5: Lá Cao Su -->
+          <div class="leaf-choice-card is-dev" data-leaf-id="rubber" data-leaf-name="Lá Cao Su" role="button" tabindex="0">
+            <div class="leaf-card-left">
+              <div class="leaf-thumb-box">
+                <img src="/static/samples/home/leaf_rubber.png" alt="Lá Cao Su">
+              </div>
+              <div class="leaf-card-text">
+                <h4 class="leaf-choice-title">Lá Cao Su (Rubber Leaf)</h4>
+                <span class="leaf-choice-cta">Chọn Lá Cao Su</span>
+              </div>
+            </div>
+            <span class="leaf-arrow-btn">
+              <i class="fa-solid fa-arrow-right"></i>
+            </span>
+          </div>
+
+          <!-- Card 6: Lá Lúa -->
+          <div class="leaf-choice-card is-dev" data-leaf-id="rice" data-leaf-name="Lá Lúa" role="button" tabindex="0">
+            <div class="leaf-card-left">
+              <div class="leaf-thumb-box">
+                <img src="/static/samples/home/leaf_rice.png" alt="Lá Lúa">
+              </div>
+              <div class="leaf-card-text">
+                <h4 class="leaf-choice-title">Lá Lúa (Rice Leaf)</h4>
+                <span class="leaf-choice-cta">Chọn Lá Lúa</span>
+              </div>
+            </div>
+            <span class="leaf-arrow-btn">
+              <i class="fa-solid fa-arrow-right"></i>
+            </span>
+          </div>
         </div>
 
-      </section>
+      </div>
+    </section>
 
+    <!-- =======================================================================
+         THANH CHỌN CHỨC NĂNG (PHẦN 1 & PHẦN 2) NẰM Ở KHOẢNG GIỮA SAU KHI ĐÃ CHỌN LÁ
+         (Ẩn hoàn toàn khi đang ở Trang Chủ, chỉ hiện sau khi người dùng chọn 1 loại lá)
+         ======================================================================= -->
+    <div class="leaf-workspace-bar hidden" id="leaf-workspace-bar">
+      <!-- 2 nút chọn chức năng Phần 1 & Phần 2 nằm chính giữa khoảng trống -->
+      <div class="workspace-bar-tabs" role="tablist" aria-label="Chức năng của loại lá đã chọn">
+        <button type="button" class="nav-tab active" id="nav-btn-wiki">
+          <i class="fa-solid fa-book-atlas"></i>
+          <span id="nav-wiki-label">Phần 1: Bách Khoa Lá Điều</span>
+        </button>
+        <button type="button" class="nav-tab" id="nav-btn-diagnose">
+          <i class="fa-solid fa-crosshairs"></i>
+          <span id="nav-diagnose-label">Phần 2: Khoanh Vùng &amp; Nhận Diện</span>
+        </button>
+      </div>
     </div>
+
+    <!-- =======================================================================
+         PHẦN 1 (SAU KHI CHỌN LÁ ĐIỀU): TRANG BÁCH KHOA TOÀN THƯ CÂY ĐIỀU & BỆNH HẠI
+         ======================================================================= -->
+    <section class="page-view hidden" id="view-wiki">
+      <div class="wiki-layout">
+
+        <!-- Cột trái: Mục lục Wikipedia cố định -->
+        <aside class="wiki-sidebar">
+          <div class="panel-card wiki-toc-card">
+            <div class="wiki-toc-header">
+              <span>Mục lục Bách Khoa Lá Điều</span>
+            </div>
+            <ol class="wiki-toc-list">
+              <li><a href="#wiki-sec-overview" class="toc-link">1. Tổng quan về Cây Điều</a></li>
+              <li><a href="#wiki-sec-morphology" class="toc-link">2. Đặc điểm hình thái lá điều</a></li>
+              <li><a href="#wiki-sec-causes" class="toc-link">3. Lý do &amp; Điều kiện phát sinh bệnh</a></li>
+              <li>
+                <a href="#wiki-sec-diseases" class="toc-link">4. Các loại bệnh trên lá điều</a>
+                <ol class="wiki-toc-sublist">
+                  <li><a href="#wiki-disease-anthracnose" class="toc-link">4.1. Bệnh Thán Thư (Anthracnose)</a></li>
+                  <li><a href="#wiki-disease-leafminer" class="toc-link">4.2. Sâu Vẽ Bùa (Leaf Miner)</a></li>
+                  <li><a href="#wiki-disease-redrust" class="toc-link">4.3. Bệnh Rỉ Đỏ / Tảo Đỏ (Red Rust)</a></li>
+                  <li><a href="#wiki-disease-healthy" class="toc-link">4.4. Lá Khỏe Mạnh &amp; Ngoại Lai</a></li>
+                </ol>
+              </li>
+              <li><a href="#wiki-sec-comparison" class="toc-link">5. Bảng đối chiếu nhận dạng nhanh</a></li>
+              <li><a href="#wiki-sec-phenology" class="toc-link">6. Chu kỳ mùa vụ &amp; Thời điểm nhạy cảm</a></li>
+              <li><a href="#wiki-sec-ipm" class="toc-link">7. Quy trình quản lý dịch hại (IPM)</a></li>
+            </ol>
+          </div>
+        </aside>
+
+        <!-- Cột chính: Nội dung bài viết kiểu Wikipedia -->
+        <article class="panel-card wiki-article">
+
+          <!-- Đầu đề chuẩn Wikipedia -->
+          <div class="wiki-title-banner">
+            <h2 class="wiki-main-heading">Cây Điều (<em>Anacardium occidentale</em>) &amp; Hệ Thống Bệnh Hại Trên Lá
+            </h2>
+            <p class="wiki-lead-meta">
+              Tài liệu bách khoa tổng hợp đặc điểm sinh học của cây điều, nguyên nhân phát sinh dịch hại, dấu hiệu nhận
+              dạng trực quan trên phiến lá (kèm hình ảnh lá điều thực tế trong bộ dữ liệu dự án) và các giải pháp quản
+              lý dịch hại tổng hợp.
+            </p>
+          </div>
+
+          <!-- Khung dẫn nhập + Infobox bên phải -->
+          <div class="wiki-intro-grid">
+            <div class="wiki-intro-text" id="wiki-sec-overview">
+              <h3 class="wiki-section-heading">1. Tổng quan về Cây Điều</h3>
+              <p>
+                <strong>Cây điều</strong> (danh pháp khoa học: <em>Anacardium occidentale</em>), còn được gọi là
+                <strong>đào lộn hột</strong>, là loài cây công nghiệp nhiệt đới thường xanh thuộc họ Xoài
+                (<em>Anacardiaceae</em>), có nguồn gốc từ vùng Đông Bắc Brazil. Tại Việt Nam, cây điều là cây công
+                nghiệp mũi nhọn có giá trị xuất khẩu cao, được canh tác tập trung tại Bình Phước, Đồng Nai, Bà Rịa –
+                Vũng Tàu, Bình Thuận và các tỉnh Tây Nguyên.
+              </p>
+              <p>
+                Cây điều có khả năng chịu hạn tốt nhờ hệ rễ cọc ăn sâu và tán lá rộng. Tuy nhiên, năng suất hạt điều phụ
+                thuộc rất lớn vào sức khỏe của bộ lá trong giai đoạn ra lộc non, phân hóa mầm hoa và nuôi quả. Khi lá bị
+                nấm bệnh, tảo ký sinh hoặc sâu hại tấn công, diện tích quang hợp suy giảm mạnh dẫn đến khô chồi, rụng
+                hoa và giảm tỷ lệ đậu hạt.
+              </p>
+
+              <h3 class="wiki-section-heading" id="wiki-sec-morphology">2. Đặc điểm hình thái lá cây điều</h3>
+              <ul class="wiki-bullet-list">
+                <li><strong>Kiểu lá &amp; Cách mọc:</strong> Lá đơn nguyên, mọc so le, thường xếp dày ở đầu các cành
+                  sinh trưởng tạo thành tán cây dày.</li>
+                <li><strong>Hình dạng phiến lá:</strong> Hình trứng ngược (obovate) hoặc bầu dục thuôn dài, kích thước
+                  dài từ 8–20 cm, rộng 5–12 cm; đầu lá tròn tù hoặc hơi lõm nhẹ ở đỉnh, gốc lá thuôn dần về phía cuống.
+                </li>
+                <li><strong>Bề mặt &amp; Hệ gân lá:</strong> Phiến lá trưởng thành dày, chất da cứng, mặt trên nhẵn
+                  bóng; hệ gân lông chim nổi rất rõ ở cả hai mặt với 10–16 cặp gân phụ tỏa ra từ gân chính, mép lá
+                  nguyên.</li>
+                <li><strong>Đặc trưng sinh lý theo tuổi lá:</strong> Lá điều non mới nhú có màu xanh lục nhạt pha sắc
+                  nâu đồng hoặc hồng tím, mô lá mềm và giàu dinh dưỡng nên rất mẫn cảm với nấm thán thư và sâu vẽ bùa;
+                  lá trưởng thành có màu xanh lục sẫm và lớp biểu bì dày.</li>
+              </ul>
+            </div>
+
+            <!-- Wikipedia Infobox -->
+            <aside class="wiki-infobox">
+              <div class="infobox-title">Cây Điều (<em>Anacardium occidentale</em>)</div>
+              <div class="infobox-img-box">
+                <img src="/static/samples/healthy01.png" alt="Lá cây điều khỏe mạnh trong bộ dữ liệu"
+                  class="wiki-zoomable-img">
+                <span class="infobox-caption">Hình thái lá điều khỏe mạnh thực tế với đầu lá tròn và hệ gân lông chim
+                  nổi rõ.</span>
+              </div>
+              <table class="infobox-table">
+                <tbody>
+                  <tr>
+                    <th>Giới (Kingdom)</th>
+                    <td>Plantae (Thực vật)</td>
+                  </tr>
+                  <tr>
+                    <th>Bộ (Order)</th>
+                    <td>Sapindales (Bộ Bồ hòn)</td>
+                  </tr>
+                  <tr>
+                    <th>Họ (Family)</th>
+                    <td>Anacardiaceae (Họ Xoài)</td>
+                  </tr>
+                  <tr>
+                    <th>Chi &amp; Loài</th>
+                    <td><em>Anacardium occidentale</em> L.</td>
+                  </tr>
+                  <tr>
+                    <th>Vùng trồng chính</th>
+                    <td>Bình Phước, Đồng Nai, Tây Nguyên</td>
+                  </tr>
+                  <tr>
+                    <th>Nhóm bệnh chính</th>
+                    <td>Thán thư, Sâu vẽ bùa, Rỉ đỏ</td>
+                  </tr>
+                  <tr>
+                    <th>Dữ liệu Project</th>
+                    <td>5 lớp phân loại (RGB 224&times;224)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </aside>
+          </div>
+
+          <!-- Mục 3: Lý do & Điều kiện phát sinh bệnh -->
+          <div class="wiki-section-block" id="wiki-sec-causes">
+            <h3 class="wiki-section-heading">3. Lý do gây bệnh &amp; Điều kiện môi trường phát sinh</h3>
+            <p>
+              Sự bùng phát bệnh hại trên lá điều chịu chi phối trực tiếp bởi 3 nhóm nguyên nhân: <strong>tác nhân vi
+                sinh vật / côn trùng ký sinh</strong>, <strong>điều kiện thời tiết bất lợi</strong> và <strong>kỹ thuật
+                canh tác thiếu cân đối</strong>:
+            </p>
+            <div class="wiki-cause-cards">
+              <div class="cause-card">
+                <div class="cause-card-head">
+                  <h4>Ẩm độ cao, mưa phùn &amp; sương muối</h4>
+                </div>
+                <p>
+                  Độ ẩm không khí vượt 80%, mưa trái mùa hoặc sương mù dày vào ban đêm và sáng sớm khiến bề mặt lá luôn
+                  ướt. Đây là điều kiện tiên quyết để bào tử nấm <em>Colletotrichum gloeosporioides</em> nảy mầm và xâm
+                  nhập qua biểu bì gây bệnh Thán thư.
+                </p>
+              </div>
+              <div class="cause-card">
+                <div class="cause-card-head">
+                  <h4>Giai đoạn ra đọt non / lộc non</h4>
+                </div>
+                <p>
+                  Lá non có tầng cutin mỏng, giàu axit amin và đường đơn. Ngài sâu vẽ bùa (<em>Acrocercops
+                    syngramma</em>) thường chọn đúng thời điểm vườn điều nhú lộc non để đẻ trứng, khiến ấu trùng đục phá
+                  đồng loạt dưới lớp biểu bì.
+                </p>
+              </div>
+              <div class="cause-card">
+                <div class="cause-card-head">
+                  <h4>Vườn rậm rạp, thiếu nắng &amp; thừa đạm</h4>
+                </div>
+                <p>
+                  Vườn trồng mật độ dày không tỉa cành thông thoáng, ánh nắng không xuyên qua tán lá kết hợp bón thừa
+                  phân đạm (N) làm vách tế bào lá mỏng, tạo điều kiện cho tảo <em>Cephaleuros virescens</em> ký sinh gây
+                  bệnh Rỉ đỏ.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mục 4: Chi tiết các loại bệnh có trong Project -->
+          <div class="wiki-section-block" id="wiki-sec-diseases">
+            <h3 class="wiki-section-heading">4. Các loại bệnh và nhóm phân loại trên lá điều trong Project</h3>
+            <p class="wiki-sub-lead">
+              Toàn bộ hình ảnh minh họa dưới đây đều là <strong>ảnh lá cây điều thực tế</strong> trích xuất từ bộ dữ
+              liệu nghiên cứu của đồ án. Bạn có thể bấm vào bất kỳ ảnh nào để phóng to.
+            </p>
+
+            <!-- 4.1. BỆNH THÁN THƯ -->
+            <div class="disease-wiki-entry" id="wiki-disease-anthracnose">
+              <div class="disease-entry-header danger-border">
+                <div class="entry-title-group">
+                  <span class="entry-index-badge danger-bg">4.1</span>
+                  <div>
+                    <h4 class="entry-name">Bệnh Thán Thư Trên Lá Điều (Anthracnose)</h4>
+                    <span class="entry-latin">Tác nhân: Nấm <em>Colletotrichum gloeosporioides</em> &bull; Mức độ nguy
+                      hiểm: <strong>Cao (Nguy hiểm nhất)</strong></span>
+                  </div>
+                </div>
+                <span class="entry-code-tag">Class: anthracnose</span>
+              </div>
+
+              <div class="disease-entry-body">
+                <div class="entry-info-columns">
+                  <div class="entry-info-box">
+                    <h5>Lý do &amp; Cơ chế gây bệnh</h5>
+                    <p>
+                      Nấm <em>Colletotrichum gloeosporioides</em> lưu tồn dưới dạng sợi nấm và đĩa cành trên các cành
+                      khô, lá bệnh cũ. Khi gặp thời tiết mưa dầm, sương muối hoặc ẩm độ cao trùng với đợt ra đọt non và
+                      ra hoa, bào tử nấm phát tán theo nước mưa và gió, xâm nhiễm trực tiếp qua vết thương hoặc qua khí
+                      khổng của lá điều.
+                    </p>
+                  </div>
+                  <div class="entry-info-box">
+                    <h5>Đặc điểm nhận dạng trên lá điều</h5>
+                    <ul>
+                      <li>Ban đầu là những đốm nhỏ thấm nước, sau nhanh chóng chuyển sang <strong>màu nâu sẫm, nâu đỏ
+                          hoặc đen cháy hoại tử</strong>.</li>
+                      <li>Vết bệnh thường khởi phát từ <strong>chóp lá hoặc rìa mép lá</strong> rồi lan rộng vào trong
+                        phiến lá tạo thành mảng khô cháy lớn, giòn và dễ rách.</li>
+                      <li>Ranh giới giữa vùng mô hoại tử và mô xanh khỏe mạnh thường rõ rệt, đôi khi có quầng vàng hoặc
+                        các vân vòng đồng tâm trên mảng cháy.</li>
+                    </ul>
+                  </div>
+                  <div class="entry-info-box full-span">
+                    <h5>Giải pháp phòng trừ &amp; Điều trị</h5>
+                    <ul>
+                      <li><strong>Vệ sinh &amp; Canh tác:</strong> Cắt tỉa cành bị bệnh, cành khô bên trong tán ngay sau
+                        vụ thu hoạch và đem tiêu hủy để triệt tiêu nguồn nấm lưu niên.</li>
+                      <li><strong>Chế độ phân bón:</strong> Không bón phân đạm đơn lẻ khi trời mưa ẩm; tăng cường Kali,
+                        Canxi và Silic giúp biểu bì lá điều cứng chắc.</li>
+                      <li><strong>Biện pháp hóa học:</strong> Phun phòng định kỳ khi cây nhú lộc non/chồi hoa gặp sương
+                        muối bằng các hoạt chất: <em>Azoxystrobin</em>, <em>Hexaconazole</em>, <em>Difenoconazole</em>,
+                        <em>Mancozeb</em> hoặc <em>Propineb</em> (phun ướt đều hai mặt lá).</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Hình ảnh thực tế Lá Điều bị Thán thư -->
+                <div class="entry-gallery">
+                  <div class="gallery-label">Hình ảnh thực tế Lá Điều mắc Bệnh Thán
+                    Thư trong Project (bấm vào ảnh để phóng to):</div>
+                  <div class="gallery-grid-4">
+                    <figure class="wiki-figure">
+                      <img src="/static/samples/ath_01.png" alt="Lá điều bị bệnh Thán thư - Mẫu 1"
+                        class="wiki-zoomable-img">
+                      <figcaption>Mẫu 1: Mảng hoại tử khô cháy lớn lan từ mép lá điều vào gân chính</figcaption>
+                    </figure>
+                    <figure class="wiki-figure">
+                      <img src="/static/samples/ath_02.png" alt="Lá điều bị bệnh Thán thư - Mẫu 2"
+                        class="wiki-zoomable-img">
+                      <figcaption>Mẫu 2: Đốm nâu đen dọc gân chính và cháy khô ở rìa chóp lá điều</figcaption>
+                    </figure>
+                    <figure class="wiki-figure">
+                      <img src="/static/samples/ath_03.png" alt="Lá điều bị bệnh Thán thư - Mẫu 3"
+                        class="wiki-zoomable-img">
+                      <figcaption>Mẫu 3: Vết bệnh thán thư hoại tử ăn sâu vào phiến lá điều</figcaption>
+                    </figure>
+                    <figure class="wiki-figure">
+                      <img src="/static/samples/ath_04.png" alt="Lá điều bị bệnh Thán thư - Mẫu 4"
+                        class="wiki-zoomable-img">
+                      <figcaption>Mẫu 4: Vùng mô lá điều bị cháy khô bạc màu và rách giòn do thán thư</figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4.2. SÂU VẼ BÙA -->
+            <div class="disease-wiki-entry" id="wiki-disease-leafminer">
+              <div class="disease-entry-header warning-border">
+                <div class="entry-title-group">
+                  <span class="entry-index-badge warning-bg">4.2</span>
+                  <div>
+                    <h4 class="entry-name">Sâu Vẽ Bùa / Sâu Đục Lá Điều (Leaf Miner)</h4>
+                    <span class="entry-latin">Tác nhân: Ấu trùng ngài <em>Acrocercops syngramma</em> &bull; Mức độ nguy
+                      hiểm: <strong>Trung bình</strong></span>
+                  </div>
+                </div>
+                <span class="entry-code-tag">Class: leaf_miner</span>
+              </div>
+
+              <div class="disease-entry-body">
+                <div class="entry-info-columns">
+                  <div class="entry-info-box">
+                    <h5>Lý do &amp; Cơ chế gây hại</h5>
+                    <p>
+                      Ngài trưởng thành <em>Acrocercops syngramma</em> có kích thước nhỏ, hoạt động mạnh vào ban đêm và
+                      đẻ trứng rải rác trên các lá điều non vừa mở phiến. Ấu trùng mới nở đục xuyên qua lớp biểu bì mặt
+                      trên lá để ăn phần mô diệp lục phía dưới, làm tách rời lớp màng biểu bì khỏi mô thịt lá.
+                    </p>
+                  </div>
+                  <div class="entry-info-box">
+                    <h5>Đặc điểm nhận dạng trên lá điều</h5>
+                    <ul>
+                      <li>Ban đầu là các <strong>đường hầm ngoằn ngoèo như sợi chỉ màu trắng bạc hoặc xám ánh
+                          kim</strong> chạy dọc ngang trên mặt lá điều.</li>
+                      <li>Khi sâu lớn dần, các đường đục nối liền nhau tạo thành <strong>vết phồng rộp mảng lớn có lớp
+                          màng trắng mỏng</strong> dễ bong tróc.</li>
+                      <li>Về sau, vùng mô dưới vết đục bị khô nâu, hoại tử làm phiến lá điều nhăn nheo, biến dạng.</li>
+                    </ul>
+                  </div>
+                  <div class="entry-info-box full-span">
+                    <h5>Giải pháp phòng trừ &amp; Điều trị</h5>
+                    <ul>
+                      <li><strong>Canh tác &amp; Thiên địch:</strong> Tỉa cành và bón phân đồng loạt để điều khiển cây
+                        ra lộc non tập trung; duy trì quần thể kiến vàng (<em>Oecophylla smaragdina</em>) và ong ký sinh
+                        trong vườn điều.</li>
+                      <li><strong>Phun phòng đúng thời điểm:</strong> Khi chồi non vừa nhú lá dài 1–3 cm và phát hiện
+                        vết đục đầu tiên, phun dầu khoáng nông nghiệp hoặc thuốc sinh học <em>Abamectin</em>,
+                        <em>Emamectin benzoate</em> để diệt ấu trùng bên trong đường đục.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Hình ảnh thực tế Lá Điều bị Sâu vẽ bùa -->
+                <div class="entry-gallery">
+                  <div class="gallery-label">Hình ảnh thực tế Lá Điều bị Sâu Vẽ Bùa
+                    trong Project (bấm vào ảnh để phóng to):</div>
+                  <div class="gallery-grid-3">
+                    <figure class="wiki-figure">
+                      <img src="/static/samples/mine01.png" alt="Lá điều bị Sâu vẽ bùa - Mẫu 1"
+                        class="wiki-zoomable-img">
+                      <figcaption>Mẫu 1: Mảng biểu bì lá điều bị đục phồng trắng bạc và khô nâu ở rìa lá</figcaption>
+                    </figure>
+                    <figure class="wiki-figure">
+                      <img src="/static/samples/mine02.png" alt="Lá điều bị Sâu vẽ bùa - Mẫu 2"
+                        class="wiki-zoomable-img">
+                      <figcaption>Mẫu 2: Vùng tổn thương đặc trưng do sâu đục dưới lớp biểu bì chóp lá điều</figcaption>
+                    </figure>
+                    <figure class="wiki-figure">
+                      <img src="/static/samples/mine03.png" alt="Lá điều bị Sâu vẽ bùa - Mẫu 3"
+                        class="wiki-zoomable-img">
+                      <figcaption>Mẫu 3: Đường hầm ngoằn ngoèo dẫn tới mảng bong tróc trắng trên phiến lá điều
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4.3. BỆNH RỈ ĐỎ / TẢO ĐỎ -->
+            <div class="disease-wiki-entry" id="wiki-disease-redrust">
+              <div class="disease-entry-header rust-border">
+                <div class="entry-title-group">
+                  <span class="entry-index-badge rust-bg">4.3</span>
+                  <div>
+                    <h4 class="entry-name">Bệnh Rỉ Đỏ / Đốm Tảo Đỏ Trên Lá Điều (Red Rust)</h4>
+                    <span class="entry-latin">Tác nhân: Tảo lục ký sinh <em>Cephaleuros virescens</em> &bull; Mức độ
+                      nguy hiểm: <strong>Trung bình – Khá</strong></span>
+                  </div>
+                </div>
+                <span class="entry-code-tag">Class: red_rust</span>
+              </div>
+
+              <div class="disease-entry-body">
+                <div class="entry-info-columns">
+                  <div class="entry-info-box">
+                    <h5>Lý do &amp; Cơ chế gây bệnh</h5>
+                    <p>
+                      Do tảo <em>Cephaleuros virescens</em> bám và phát triển sợi tảo dưới lớp cutin của lá điều. Bệnh
+                      phát sinh mạnh trong mùa mưa tại những vườn điều già cỗi, trồng dày thiếu ánh sáng mặt trời, độ ẩm
+                      không khí cao và đất thoát nước kém.
+                    </p>
+                  </div>
+                  <div class="entry-info-box">
+                    <h5>Đặc điểm nhận dạng trên lá điều</h5>
+                    <ul>
+                      <li>Mặt trên phiến lá xuất hiện các <strong>đốm tròn hơi gồ lên, bề mặt mịn như nhung có màu cam
+                          đỏ, đỏ gạch hoặc vàng rỉ sắt</strong> rất đặc trưng.</li>
+                      <li>Đốm bệnh có đường kính 2–8 mm, mọc rải rác hoặc kết tụ thành từng đám dày đặc che phủ mặt lá.
+                      </li>
+                      <li>Khi đốm tảo già đi, màu đỏ cam phai dần sang <strong>màu xám trắng hoặc nâu xám</strong> khô
+                        cứng.</li>
+                    </ul>
+                  </div>
+                  <div class="entry-info-box full-span">
+                    <h5>Giải pháp phòng trừ &amp; Điều trị</h5>
+                    <ul>
+                      <li><strong>Cải tạo tiểu khí hậu vườn:</strong> Rong tỉa các cành la, cành khuất sáng bên dưới và
+                        dọn sạch cỏ dại để ánh nắng chiếu thông thoáng toàn bộ tán điều.</li>
+                      <li><strong>Xử lý thuốc:</strong> Phun các thuốc gốc Đồng như <em>Đồng Oxyclorua (Copper
+                          Oxychloride)</em>, <em>Copper Hydroxide</em> hoặc <em>Dung dịch Booc-đô 1%</em> vào đầu và
+                        giữa mùa mưa để diệt tảo.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Hình ảnh thực tế Lá Điều bị Rỉ đỏ -->
+                <div class="entry-gallery">
+                  <div class="gallery-label">Hình ảnh thực tế Lá Điều mắc Bệnh Rỉ Đỏ
+                    trong Project (bấm vào ảnh để phóng to):</div>
+                  <div class="gallery-grid-3">
+                    <figure class="wiki-figure">
+                      <img src="/static/samples/red01.png" alt="Lá điều bị Rỉ đỏ - Mẫu 1" class="wiki-zoomable-img">
+                      <figcaption>Mẫu 1: Các đốm tròn nhung màu cam rỉ sắt nổi rõ trên mặt lá điều</figcaption>
+                    </figure>
+                    <figure class="wiki-figure">
+                      <img src="/static/samples/red02.png" alt="Lá điều bị Rỉ đỏ - Mẫu 2" class="wiki-zoomable-img">
+                      <figcaption>Mẫu 2: Mật độ đốm tảo đỏ phân bố dày dọc hai bên gân lá điều</figcaption>
+                    </figure>
+                    <figure class="wiki-figure">
+                      <img src="/static/samples/red03.png" alt="Lá điều bị Rỉ đỏ - Mẫu 3" class="wiki-zoomable-img">
+                      <figcaption>Mẫu 3: Vết bệnh rỉ đỏ giai đoạn già chuyển dần sang màu xám bạc</figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4.4. LÁ KHỎE MẠNH & NGOẠI LAI -->
+            <div class="disease-wiki-entry" id="wiki-disease-healthy">
+              <div class="disease-entry-header success-border">
+                <div class="entry-title-group">
+                  <span class="entry-index-badge success-bg">4.4</span>
+                  <div>
+                    <h4 class="entry-name">Lá Điều Khỏe Mạnh (Healthy) &amp; Nhóm Ngoại Lai (Not Cashew Leaf)</h4>
+                    <span class="entry-latin">Tiêu chuẩn nhận biết lá điều sinh trưởng tốt &amp; cơ chế lọc ảnh không
+                      hợp lệ</span>
+                  </div>
+                </div>
+                <span class="entry-code-tag">healthy / not_cashew_leaf</span>
+              </div>
+
+              <div class="disease-entry-body">
+                <div class="entry-info-columns">
+                  <div class="entry-info-box">
+                    <h5>Đặc điểm Lá Điều Khỏe Mạnh (<code>healthy</code>)</h5>
+                    <p>
+                      Phiến lá điều có màu xanh lục đồng nhất, bóng láng, đầu lá bầu tròn đặc trưng, hệ gân chính và các
+                      cặp gân phụ màu vàng sáng phân bố cân đối; hoàn toàn không có vết cháy nâu đen, đường đục biểu bì
+                      hay đốm tảo rỉ sắt.
+                    </p>
+                  </div>
+                  <div class="entry-info-box">
+                    <h5>Vai trò của lớp Không Phải Lá Điều
+                      (<code>not_cashew_leaf</code>)</h5>
+                    <p>
+                      Được huấn luyện như một hàng rào kiểm soát chất lượng đầu vào: khi người dùng tải lên hình ảnh lá
+                      cây khác hoặc vật thể ngoại lai, mô hình sẽ phân loại vào nhóm <code>not_cashew_leaf</code> để
+                      cảnh báo thay vì ép gán vào một bệnh của cây điều.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Hình ảnh thực tế Lá Điều Khỏe Mạnh -->
+                <div class="entry-gallery">
+                  <div class="gallery-label">Hình ảnh thực tế Lá Điều Khỏe Mạnh trong
+                    Project (bấm vào ảnh để phóng to):</div>
+                  <div class="gallery-grid-2">
+                    <figure class="wiki-figure">
+                      <img src="/static/samples/healthy01.png" alt="Lá điều khỏe mạnh - Mẫu 1"
+                        class="wiki-zoomable-img">
+                      <figcaption>Mẫu 1: Phiến lá điều hình trứng ngược, đầu tròn, gân lông chim sáng rõ</figcaption>
+                    </figure>
+                    <figure class="wiki-figure">
+                      <img src="/static/samples/healthy02.png" alt="Lá điều khỏe mạnh - Mẫu 2"
+                        class="wiki-zoomable-img">
+                      <figcaption>Mẫu 2: Bề mặt lá điều xanh bóng tự nhiên, không có dấu hiệu sâu bệnh</figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Mục 5: Bảng đối chiếu nhanh -->
+          <div class="wiki-section-block" id="wiki-sec-comparison">
+            <h3 class="wiki-section-heading">5. Bảng tổng hợp đối chiếu đặc điểm nhận dạng nhanh</h3>
+            <div class="wiki-table-wrapper">
+              <table class="wiki-comparison-table">
+                <thead>
+                  <tr>
+                    <th>Nhóm phân loại</th>
+                    <th>Tác nhân chính</th>
+                    <th>Màu sắc &amp; Hình thái vết bệnh đặc trưng</th>
+                    <th>Vị trí xuất hiện thường gặp</th>
+                    <th>Hướng xử lý trọng tâm</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Bệnh Thán Thư</strong><br><small>(<code>anthracnose</code>)</small></td>
+                    <td>Nấm <em>Colletotrichum gloeosporioides</em></td>
+                    <td>Đốm nâu tối / đen cháy hoại tử, mảng khô giòn, ranh giới rõ</td>
+                    <td>Chóp lá, mép lá lan vào phiến lá (nhất là lá non)</td>
+                    <td>Tỉa cành bệnh, phun Mancozeb / Azoxystrobin / Hexaconazole</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sâu Vẽ Bùa</strong><br><small>(<code>leaf_miner</code>)</small></td>
+                    <td>Ấu trùng <em>Acrocercops syngramma</em></td>
+                    <td>Đường hầm ngoằn ngoèo &amp; mảng phồng trắng bạc dưới lớp biểu bì</td>
+                    <td>Mặt trên lá non dọc theo phiến lá làm lá co quắp</td>
+                    <td>Bảo vệ kiến vàng, phun Abamectin / Emamectin / dầu khoáng</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bệnh Rỉ Đỏ</strong><br><small>(<code>red_rust</code>)</small></td>
+                    <td>Tảo ký sinh <em>Cephaleuros virescens</em></td>
+                    <td>Đốm tròn nhung gồ nhẹ màu cam đỏ / rỉ sắt; khi già chuyển nâu xám</td>
+                    <td>Rải rác hoặc thành cụm trên mặt lá bánh tẻ &amp; lá già</td>
+                    <td>Tỉa thông thoáng đón nắng, phun thuốc gốc Đồng (Booc-đô 1%)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Lá Khỏe Mạnh</strong><br><small>(<code>healthy</code>)</small></td>
+                    <td>Sinh lý bình thường</td>
+                    <td>Xanh lục đồng nhất, bóng khỏe, đầu lá tròn, gân lông chim rõ</td>
+                    <td>Toàn bộ phiến lá nguyên vẹn</td>
+                    <td>Duy trì NPK cân đối, bổ sung vi lượng và kiểm tra định kỳ</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Mục 6: Chu kỳ sinh trưởng & Thời điểm nhạy cảm dịch bệnh theo mùa vụ -->
+          <div class="wiki-section-block" id="wiki-sec-phenology">
+            <h3 class="wiki-section-heading">6. Chu kỳ sinh trưởng của Cây Điều &amp; Thời điểm nhạy cảm dịch bệnh theo
+              mùa vụ</h3>
+            <p>
+              Tại các vùng trồng điều trọng điểm của Việt Nam (Đông Nam Bộ và Tây Nguyên), sự xuất hiện của các loại
+              bệnh trên lá gắn liền với <strong>4 giai đoạn sinh lý chính trong năm</strong> của cây điều:
+            </p>
+            <div class="wiki-table-wrapper">
+              <table class="wiki-comparison-table">
+                <thead>
+                  <tr>
+                    <th>Giai đoạn sinh trưởng</th>
+                    <th>Thời gian trong năm</th>
+                    <th>Đặc điểm sinh lý bộ lá</th>
+                    <th>Dịch hại trọng tâm cần cảnh giác</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>1. Phục hồi sau thu hoạch &amp; Ra lộc mùa mưa</strong></td>
+                    <td>Tháng 5 – Tháng 8</td>
+                    <td>Cây được tỉa cành và bón phân thúc, đâm chồi và ra đợt lá non mới đồng loạt trong điều kiện mưa
+                      nhiều.</td>
+                    <td><strong>Sâu vẽ bùa</strong> tấn công mạnh các đợt lá non; <strong>Bệnh Rỉ đỏ</strong> phát triển
+                      ở các tầng lá dưới thấp thiếu nắng.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>2. Nuôi cành bánh tẻ &amp; Tích lũy mầm hoa</strong></td>
+                    <td>Tháng 9 – Tháng 11</td>
+                    <td>Bộ lá chuyển sang giai đoạn bánh tẻ và trưởng thành, tích lũy dinh dưỡng chuẩn bị phân hóa mầm
+                      hoa cuối mùa mưa.</td>
+                    <td><strong>Bệnh Rỉ đỏ (Tảo đỏ)</strong> lan rộng nếu vườn rậm rạp, ẩm độ cao kéo dài; xuất hiện rải
+                      rác đốm <strong>Thán thư</strong>.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>3. Ra đọt non kèm chồi hoa &amp; Đậu quả non</strong></td>
+                    <td>Tháng 12 – Tháng 2</td>
+                    <td>Cây ra lộc non đi kèm phát hoa; thường gặp sương muối đêm và sáng sớm hoặc mưa trái mùa.</td>
+                    <td><strong>Bệnh Thán thư</strong> bùng phát nguy hiểm nhất (gây cháy lá non, khô đen chồi hoa và
+                      rụng trái non hàng loạt).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>4. Nuôi quả lớn &amp; Thu hoạch</strong></td>
+                    <td>Tháng 2 – Tháng 4</td>
+                    <td>Thời tiết nắng khô, bộ lá trưởng thành hoạt động quang hợp tối đa để nuôi hạt điều chắc nhân.
+                    </td>
+                    <td>Áp lực nấm bệnh trên lá giảm nhưng cần giữ bộ lá khỏe để không suy kiệt cây.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Mục 7: Quy trình Quản lý Dịch hại Tổng hợp (IPM) -->
+          <div class="wiki-section-block" id="wiki-sec-ipm">
+            <h3 class="wiki-section-heading">7. Quy trình Quản lý Dịch hại Tổng hợp (IPM) &amp; Chăm sóc Vườn Điều Bền
+              vững</h3>
+            <p>
+              Để bảo vệ bộ lá điều khỏe mạnh xuyên suốt mùa vụ và giảm thiểu sự phụ thuộc vào thuốc hóa học, nhà vườn
+              cần áp dụng đồng bộ quy trình <strong>Quản lý dịch hại tổng hợp (IPM)</strong> gồm 3 trụ cột:
+            </p>
+            <div class="wiki-cause-cards">
+              <div class="cause-card">
+                <div class="cause-card-head">
+                  <h4>1. Kỹ thuật tạo tán &amp; Vệ sinh vườn</h4>
+                </div>
+                <p>
+                  Thực hiện tỉa cành tạo tán hình mâm xôi ngay sau thu hoạch; cắt bỏ cành vượt, cành sâu bệnh, cành giao
+                  tán để ánh nắng chiếu xuyên đều vào thân và mặt lá, giúp sương sớm khô nhanh và ức chế nấm Thán thư,
+                  Tảo đỏ.
+                </p>
+              </div>
+              <div class="cause-card">
+                <div class="cause-card-head">
+                  <h4>2. Dinh dưỡng cân đối theo chu kỳ</h4>
+                </div>
+                <p>
+                  Kết hợp phân hữu cơ hoai mục với N-P-K cân đối. Ở giai đoạn ra đọt non và trước ra hoa, bổ sung phân
+                  bón lá giàu Canxi, Bo, Kẽm và Silic giúp biểu bì lá điều dày cứng, hạn chế sâu vẽ bùa đục mô và nấm
+                  xâm nhiễm.
+                </p>
+              </div>
+              <div class="cause-card">
+                <div class="cause-card-head">
+                  <h4>3. Thiên địch &amp; Phun thuốc "4 Đúng"</h4>
+                </div>
+                <p>
+                  Nhân nuôi và bảo vệ kiến vàng (<em>Oecophylla smaragdina</em>) trong vườn điều để khống chế sâu hại tự
+                  nhiên. Chỉ phun thuốc bảo vệ thực vật khi tỷ lệ lá nhiễm vượt ngưỡng kinh tế và luân phiên hoạt chất
+                  để tránh kháng thuốc.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </article>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         TRANG THÔNG BÁO "ĐANG PHÁT TRIỂN" (KHI CHỌN CÁC LÁ NGOÀI CÂY ĐIỀU)
+         ======================================================================= -->
+    <section class="page-view hidden" id="view-under-dev">
+      <div class="panel-card under-dev-card">
+        <div class="under-dev-icon-box">
+          <i class="fa-solid fa-screwdriver-wrench"></i>
+        </div>
+        <h2 class="under-dev-title">Đang Phát Triển</h2>
+        <p class="under-dev-selected-leaf" id="under-dev-leaf-label">Đối tượng đã chọn: Lá Cà Phê</p>
+        <p class="under-dev-desc" id="under-dev-feature-desc">
+          Chức năng này hiện đang trong quá trình phát triển.
+        </p>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         PHẦN 2 (SAU KHI CHỌN LÁ ĐIỀU): KHOANH VÙNG HÌNH ẢNH & NHẬN DIỆN BỆNH LÁ ĐIỀU
+         ======================================================================= -->
+    <section class="page-view hidden" id="view-diagnose">
+
+      <div class="app-grid">
+
+        <!-- ================= LEFT COLUMN: DIAGNOSIS RESULTS & REGION BOX ================= -->
+        <section class="result-column" id="diagnosis-result-column">
+
+          <div class="panel-card main-result-panel">
+            <div class="panel-header">
+              <div class="panel-title-wrap">
+                <span class="panel-icon"><i class="fa-solid fa-microscope"></i></span>
+                <h2 class="panel-title">Kết Quả Khoanh Vùng &amp; Nhận Diện Bệnh Lá Điều</h2>
+              </div>
+              <div class="panel-status-tag" id="panel-status-tag">
+                <span class="status-dot-sm" id="status-dot-indicator"></span>
+                <span id="status-text">Chờ tải ảnh</span>
+              </div>
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state-view" id="empty-state-view">
+              <i class="fa-solid fa-cloud-arrow-up empty-icon"></i>
+              <h3 class="empty-title">Chưa Có Ảnh Chuẩn Đoán</h3>
+              <p class="empty-text">
+                Vui lòng tải ảnh lá điều ở cột bên phải hoặc bấm chọn một <strong>ảnh mẫu Lá Điều có sẵn</strong> để xem
+                kết quả phân loại và giải pháp xử lý.
+              </p>
+            </div>
+
+            <!-- Active Result View -->
+            <div class="active-result-view hidden" id="active-result-view">
+
+              <div class="diagnosis-top-grid">
+
+                <!-- 1. Interactive Image Preview & Lesion Canvas Overlay -->
+                <div class="image-preview-card">
+                  <div class="sub-header">
+                    <span class="sub-title"><i class="fa-solid fa-crosshairs"></i> Khung Khoanh Vùng &amp; Định Vị Ổ Dịch AI</span>
+                    <span class="meta-tag" id="image-dim-badge">Đang nạp ảnh...</span>
+                  </div>
+
+                  <!-- Disease count + class filter (above the image) -->
+                  <div class="lesion-filter-toolbar is-top" id="lesion-filter-toolbar">
+                    <div class="lesion-summary-line" id="lesion-summary-line"></div>
+                    <div class="lesion-filters-wrap">
+                      <button type="button" class="lesion-filter-chip active" id="btn-filter-all" data-filter="all">
+                        <span>Tất cả</span>
+                        <span class="chip-count" id="chip-count-all">0</span>
+                      </button>
+                      <div class="dynamic-filter-chips" id="dynamic-filter-chips"></div>
+                      <button type="button" class="lesion-isolate-pill hidden" id="btn-clear-isolate" title="Hiện lại tất cả vùng (Esc)">
+                        <i class="fa-solid fa-eye"></i> <span id="isolate-label">Đang xem 1 vùng</span> <i class="fa-solid fa-xmark"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="preview-img-wrapper" id="preview-img-wrapper">
+                    <div class="preview-canvas-box" id="preview-canvas-box">
+                      <img id="diagnosis-preview-img" src="" alt="Hình ảnh lá điều">
+                      <!-- Interactive SVG Overlay Layer for Precise Bounding Boxes -->
+                      <svg class="lesion-svg-overlay" id="lesion-svg-overlay" xmlns="http://www.w3.org/2000/svg"></svg>
+                    </div>
+
+                    <div class="img-overlay-info" id="img-overlay-info">
+                      <span id="img-file-name">image.jpg</span>
+                      <span id="img-file-size">1.2 MB</span>
+                    </div>
+                  </div>
+
+                  <!-- Image actions -->
+                  <div class="lesion-filter-toolbar">
+                    <div class="preview-footer-actions">
+                      <button type="button" class="btn-ghost-sm active" id="btn-toggle-bbox" title="Bật/Tắt hiển thị khung khoanh vùng">
+                        <i class="fa-solid fa-vector-square"></i> Khung AI
+                      </button>
+                      <button type="button" class="btn-ghost-sm" id="btn-zoom-image" title="Phóng to ảnh">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i> Phóng to
+                      </button>
+                      <button type="button" class="btn-ghost-sm" id="btn-reupload-trigger" title="Chọn ảnh khác">
+                        <i class="fa-solid fa-arrow-rotate-right"></i> Đổi ảnh
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 2. Primary Diagnosis & Severity Summary (Separated Indicators) -->
+                <div class="conclusion-card" id="conclusion-card">
+                  <!-- Indicator 1: Whole-Leaf Classification (DenseNet121) -->
+                  <div class="indicator-block indicator-global">
+                    <div class="indicator-header">
+                      <span class="indicator-badge badge-densenet">
+                        <i class="fa-solid fa-brain"></i> CHỈ SỐ 1: PHÂN LOẠI TOÀN LÁ (DENSENET121)
+                      </span>
+                      <span class="badge-conclusion-tag" id="conclusion-mode-tag">
+                        <i class="fa-solid fa-check"></i> ĐƠN BỆNH (SINGLE)
+                      </span>
+                    </div>
+
+                    <div class="conclusion-main-body">
+                      <div class="disease-icon-box" id="disease-icon-box">
+                        <i class="fa-solid fa-biohazard" id="conclusion-icon"></i>
+                      </div>
+                      <div class="conclusion-text-wrap">
+                        <h3 class="conclusion-disease-name" id="conclusion-disease-name">Bệnh Thán Thư</h3>
+                        <p class="conclusion-latin" id="conclusion-latin">Colletotrichum gloeosporioides</p>
+                      </div>
+                      <div class="global-conf-badge-wrap">
+                        <div class="conf-score-large" id="global-conf-score">98.5%</div>
+                        <div class="conf-score-sub">Độ tin cậy toàn lá</div>
+                      </div>
+                    </div>
+
+                    <div class="indicator-note">
+                      <i class="fa-solid fa-circle-info"></i> Mô hình DenseNet121 phân loại hình thái tổng thể của toàn bộ phiến lá.
+                    </div>
+                  </div>
+
+                  <!-- Multi-disease Detected Chips -->
+                  <div class="detected-diseases-row" id="detected-diseases-row"></div>
+
+                  <!-- Indicator 2: Local Lesion Localization & Damage Meter -->
+                  <div class="indicator-block indicator-local">
+                    <div class="indicator-header">
+                      <span class="indicator-badge badge-lesion">
+                        <i class="fa-solid fa-crosshairs"></i> CHỈ SỐ 2: ĐỊNH VỊ Ổ BỆNH &amp; MỨC ĐỘ TỔN THƯƠNG
+                      </span>
+                      <span class="severity-badge-tag" id="severity-badge-tag">Trung bình</span>
+                    </div>
+
+                    <div class="severity-meter-card">
+                      <div class="severity-meter-header">
+                        <span class="severity-title"><i class="fa-solid fa-chart-pie"></i> Diện tích lá bị hoại tử:</span>
+                        <span class="severity-stat-text" id="severity-stat-text">12.5% diện tích lá (5 ổ dịch khoanh vùng)</span>
+                      </div>
+                      <div class="progress-bar-track">
+                        <div class="progress-bar-fill" id="severity-progress-fill" style="width: 12.5%;"></div>
+                      </div>
+                    </div>
+
+                    <div class="indicator-note">
+                      <i class="fa-solid fa-vector-square"></i> Các khung màu trên ảnh định vị vị trí và đo lường diện tích từng ổ bệnh tổn thương thực tế.
+                    </div>
+                  </div>
+
+                  <!-- Advisory Excerpt -->
+                  <div class="advisory-box">
+                    <div class="advisory-title">
+                      <i class="fa-solid fa-notes-medical"></i> Nhận định bệnh học lâm sàng:
+                    </div>
+                    <p class="advisory-text" id="conclusion-advisory-text"></p>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- ================= 3. LESION BREAKDOWN TABLE & THUMBNAILS ================= -->
+              <div class="lesion-breakdown-section" id="lesion-breakdown-section">
+                <div class="breakdown-header">
+                  <div class="breakdown-title-wrap">
+                    <span class="sort-icon-box"><i class="fa-solid fa-table-list"></i></span>
+                    <div>
+                      <h4 class="breakdown-title">Bảng Chi Tiết Từng Vùng Bệnh Khoanh Vùng (YOLO26s + DenseNet121)</h4>
+                      <p class="breakdown-subtitle">Bấm vào từng vùng bệnh để định vị và làm nổi bật vết bệnh trên ảnh</p>
+                    </div>
+                  </div>
+                  <span class="lesion-total-badge" id="lesion-total-badge">0 vùng bệnh</span>
+                </div>
+
+                <div class="lesion-grid-table" id="lesion-grid-table">
+                  <!-- Dynamic lesion cards rendered by JS -->
+                </div>
+              </div>
+
+              <!-- ================= 4. DETAILED TREATMENT PROTOCOL & IPM ================= -->
+              <div class="disease-guide-section" id="disease-guide-section">
+                <div class="guide-card-header">
+                  <div class="guide-header-title">
+                    <i class="fa-solid fa-book-medical"></i>
+                    <span id="guide-protocol-heading">Phác Đồ Điều Trị &amp; Quản Lý Dịch Hại Nông Học Khuyến Nghị</span>
+                  </div>
+                  <button type="button" class="btn-link-wiki" id="btn-jump-to-wiki">
+                    <i class="fa-solid fa-book-atlas"></i>
+                    <span>Xem Bách Khoa Toàn Thư (Phần 1)</span>
+                  </button>
+                </div>
+
+                <!-- Priority Alert Box (Critical for Multi-Disease) -->
+                <div class="priority-directive-box" id="priority-directive-box">
+                  <div class="priority-icon"><i class="fa-solid fa-shield-virus"></i></div>
+                  <div class="priority-body">
+                    <strong class="priority-title">Nguyên tắc &amp; Thứ tự ưu tiên xử lý:</strong>
+                    <p class="priority-desc" id="guide-priority-note"></p>
+                  </div>
+                </div>
+
+                <div class="guide-content-grid">
+                  <!-- Left: Urgent Cultivation & Sanitation -->
+                  <div class="guide-sub-card">
+                    <div class="guide-card-label">
+                      <i class="fa-solid fa-scissors"></i>
+                      <span>1. Biện pháp canh tác &amp; Vệ sinh vườn:</span>
+                    </div>
+                    <ul class="guide-list" id="guide-urgent-list"></ul>
+                  </div>
+
+                  <!-- Right: Chemical & Active Ingredients -->
+                  <div class="guide-sub-card">
+                    <div class="guide-card-label">
+                      <i class="fa-solid fa-flask-vial"></i>
+                      <span>2. Hoạt chất &amp; Thuốc BVTV đặc trị:</span>
+                    </div>
+                    <div class="chemical-recs-wrap" id="chemical-recs-wrap"></div>
+                  </div>
+                </div>
+
+                <!-- Bottom: Long-term Rehabilitation -->
+                <div class="prevention-bottom-box">
+                  <div class="prevention-label">
+                    <i class="fa-solid fa-seedling"></i>
+                    <span>3. Phục hồi tán lá &amp; Phòng ngừa tái phát:</span>
+                  </div>
+                  <ul class="guide-list-horizontal" id="guide-prevention-list"></ul>
+                </div>
+              </div>
+
+              <!-- ================= 5. GLOBAL DENSENET PREDICTIONS ================= -->
+              <div class="confidence-breakdown-section">
+                <div class="breakdown-header">
+                  <div class="breakdown-title-wrap">
+                    <span class="sort-icon-box"><i class="fa-solid fa-arrow-down-wide-short"></i></span>
+                    <h4 class="breakdown-title">Bảng Xác Suất Phân Loại (Ensemble DenseNet121 + Stacker F3)</h4>
+                  </div>
+                </div>
+
+                <!-- List sorted from HIGHEST to LOWEST -->
+                <div class="confidence-list" id="confidence-list"></div>
+              </div>
+
+            </div>
+
+            <!-- Loading Overlay -->
+            <div class="analyzing-overlay hidden" id="analyzing-overlay">
+              <div class="spinner-core">
+                <div class="radar-spin"></div>
+                <i class="fa-solid fa-leaf analyze-leaf-icon"></i>
+              </div>
+              <h4 class="analyzing-title">Đang Phân Tích Hình Ảnh...</h4>
+              <div class="analyzing-step-bar">
+                <div class="step-indeterminate"></div>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ================= RIGHT COLUMN: UPLOAD & GENUINE CASHEW SAMPLES ================= -->
+        <section class="upload-column" id="upload-column">
+
+          <!-- Upload Card -->
+          <div class="panel-card upload-panel">
+            <div class="panel-header">
+              <div class="panel-title-wrap">
+                <span class="panel-icon"><i class="fa-solid fa-upload"></i></span>
+                <h2 class="panel-title">Tải Ảnh Lá Điều Lên</h2>
+              </div>
+            </div>
+
+            <!-- Drag and Drop Zone -->
+            <div class="dropzone-box" id="dropzone-box">
+              <input type="file" id="file-input" accept="image/png,image/jpeg,image/jpg,image/webp"
+                class="hidden-file-input">
+
+              <div class="dropzone-inner">
+                <div class="upload-icon-pulse">
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+                </div>
+                <h3 class="dropzone-title">Kéo &amp; thả tệp hình ảnh vào đây</h3>
+                <p class="dropzone-desc">hoặc bấm vào ô để duyệt tệp từ máy tính</p>
+
+                <div class="format-chips">
+                  <span class="chip">PNG</span>
+                  <span class="chip">JPG</span>
+                  <span class="chip">JPEG</span>
+                  <span class="chip">WEBP</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Selected File Status Tray -->
+            <div class="file-status-tray hidden" id="file-status-tray">
+              <div class="file-tray-left">
+                <div class="file-icon-thumb" id="tray-thumb-container">
+                  <img id="tray-thumb-img" src="" alt="Thumbnail">
+                </div>
+                <div class="file-tray-meta">
+                  <div class="file-name-line" id="tray-file-name">anh_la_dieu.jpg</div>
+                  <div class="file-size-line">
+                    <span id="tray-file-size">1.4 MB</span> &bull;
+                    <span class="valid-tag">Hợp lệ</span>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn-tray-remove" id="btn-tray-remove" title="Hủy chọn">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+
+            <!-- Upload Actions -->
+            <div class="upload-actions">
+              <button type="button" class="btn-primary-action" id="btn-predict" disabled>
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>Nhận Diện Ngay</span>
+              </button>
+              <button type="button" class="btn-secondary-action" id="btn-clear-selection">
+                <i class="fa-solid fa-rotate-left"></i>
+                <span>Làm mới</span>
+              </button>
+            </div>
+
+            <!-- Quick Sample Images in Project (100% Genuine Cashew Leaves) -->
+            <div class="sample-picker-section">
+              <div class="sample-picker-title">
+                <i class="fa-solid fa-vial"></i>
+                <span>Hoặc thử nhanh với ảnh mẫu Lá Điều trong Project:</span>
+              </div>
+              <div class="sample-picker-grid sample-grid-5">
+                <button type="button" class="sample-item-btn" data-sample="ath_01.png" data-label="Lá Điều — Thán Thư">
+                  <img src="/static/samples/ath_01.png" alt="Mẫu Lá Điều Thán Thư">
+                  <span>Lá điều: Thán thư</span>
+                </button>
+                <button type="button" class="sample-item-btn" data-sample="mine01.png"
+                  data-label="Lá Điều — Sâu Vẽ Bùa">
+                  <img src="/static/samples/mine01.png" alt="Mẫu Lá Điều Sâu Vẽ Bùa">
+                  <span>Lá điều: Sâu vẽ bùa</span>
+                </button>
+                <button type="button" class="sample-item-btn" data-sample="red01.png" data-label="Lá Điều — Rỉ Đỏ">
+                  <img src="/static/samples/red01.png" alt="Mẫu Lá Điều Rỉ Đỏ">
+                  <span>Lá điều: Rỉ đỏ</span>
+                </button>
+                <button type="button" class="sample-item-btn" data-sample="multi01.png" data-label="Lá Điều — Đa Bệnh (Thán Thư & Rỉ Đỏ)">
+                  <img src="/static/samples/multi01.png" alt="Mẫu Lá Điều Đa Bệnh">
+                  <span class="sample-multi-tag">Lá điều: Đa bệnh</span>
+                </button>
+                <button type="button" class="sample-item-btn" data-sample="healthy01.png"
+                  data-label="Lá Điều — Khỏe Mạnh">
+                  <img src="/static/samples/healthy01.png" alt="Mẫu Lá Điều Khỏe Mạnh">
+                  <span>Lá điều: Khỏe mạnh</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+    </section>
+
   </main>
 
   <!-- Image Lightbox Modal -->
   <div class="modal-backdrop hidden" id="image-modal">
     <div class="modal-box">
       <div class="modal-top">
-        <h4 class="modal-title" id="modal-img-title">Hình Ảnh Chuẩn Đoán</h4>
+        <h4 class="modal-title" id="modal-img-title">Chi Tiết Hình Ảnh</h4>
         <button type="button" class="btn-close-modal" id="btn-close-modal">
           <i class="fa-solid fa-xmark"></i>
         </button>
@@ -271,14 +1194,27 @@
   <!-- Toast Notification Container -->
   <div class="toast-stack" id="toast-stack"></div>
 
-  <!-- Footer gọn gàng -->
+  <!-- Footer sóng xanh trang nhã theo mẫu -->
   <footer class="app-footer">
+    <div class="footer-waves" aria-hidden="true">
+      <svg class="waves-svg" viewBox="0 0 1440 110" preserveAspectRatio="none">
+        <path fill="#bce6d5" fill-opacity="0.65" d="M0,35 C220,95 440,105 740,70 C1040,35 1240,15 1440,45 L1440,110 L0,110 Z"></path>
+        <path fill="#9bd8c0" fill-opacity="0.55" d="M0,65 C320,110 680,30 1080,65 C1260,80 1360,40 1440,25 L1440,110 L0,110 Z"></path>
+        <path fill="#e8f6f0" fill-opacity="0.9" d="M0,82 C380,45 820,105 1440,68 L1440,110 L0,110 Z"></path>
+      </svg>
+      <svg class="footer-sprout-svg" viewBox="0 0 80 80" fill="none">
+        <path d="M40 72 C40 52 42 36 42 22" stroke="#6db89b" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M41 48 C26 46 18 32 22 18 C35 18 44 30 41 48 Z" stroke="#6db89b" stroke-width="1.5" fill="rgba(188,230,213,0.25)"/>
+        <path d="M42 40 C56 36 66 22 62 10 C48 12 40 24 42 40 Z" stroke="#6db89b" stroke-width="1.5" fill="rgba(188,230,213,0.25)"/>
+      </svg>
+    </div>
     <div class="footer-container">
-      <p>Hệ Thống Chuẩn Đoán Bệnh Lá Cây Điều &bull; 2026</p>
+      <p>Hệ Thống Bách Khoa &amp; Chuẩn Đoán Bệnh Lá Cây Điều &bull; KLTN 2026</p>
     </div>
   </footer>
 
   <!-- Main JavaScript Application Logic -->
-  <script src="/static/js/app.js"></script>
+  <script src="/static/js/app.js?v=20261105_4"></script>
 </body>
+
 </html>
