@@ -1,0 +1,187 @@
+{
+  "knn_threshold": 0.196858,
+  "energy_threshold": -3.090293,
+  "knn_k": 5,
+  "quantile": 0.99,
+  "bank_size": 3721,
+  "bank_seed_index": 0,
+  "bank_source": "D:\\NAM CUOI\\KLTN\\CashewData_Split (3)\\CashewData_Split\\train",
+  "calibration_source": "D:\\NAM CUOI\\KLTN\\CashewData_Split (3)\\CashewData_Split\\val",
+  "skipped_unreadable": {
+    "bank": 0,
+    "val": 0
+  },
+  "protocol": "Thresholds = quantile of in-distribution cashew Validation scores only; OOD sets are reported, never used for tuning.",
+  "report": {
+    "in_distribution": {
+      "all_cashew_val": {
+        "n": 1088,
+        "accepted": 0.9504,
+        "rejected_by_argmax": 0.0,
+        "rejected_by_knn": 0.0257,
+        "rejected_by_energy": 0.0257
+      },
+      "anthracnose": {
+        "n": 294,
+        "accepted": 0.898
+      },
+      "healthy": {
+        "n": 225,
+        "accepted": 0.9156
+      },
+      "leaf_miner": {
+        "n": 249,
+        "accepted": 0.992
+      },
+      "red_rust": {
+        "n": 320,
+        "accepted": 0.9906
+      }
+    },
+    "ood": {
+      "val:not_cashew_leaf": {
+        "n": 314,
+        "rejected": 1.0,
+        "rejected_by_argmax": 1.0,
+        "rejected_by_knn": 1.0,
+        "rejected_by_energy": 0.0096,
+        "densenet_argmax_counts": {
+          "anthracnose": 0,
+          "healthy": 0,
+          "leaf_miner": 0,
+          "red_rust": 0,
+          "not_cashew_leaf": 314
+        }
+      },
+      "Corn_Merge_Data-20260311T141539Z-3-001:Blight": {
+        "n": 150,
+        "rejected": 1.0,
+        "rejected_by_argmax": 0.8067,
+        "rejected_by_knn": 1.0,
+        "rejected_by_energy": 0.26,
+        "densenet_argmax_counts": {
+          "anthracnose": 8,
+          "healthy": 1,
+          "leaf_miner": 1,
+          "red_rust": 19,
+          "not_cashew_leaf": 121
+        }
+      },
+      "Corn_Merge_Data-20260311T141539Z-3-001:Common_Rust": {
+        "n": 150,
+        "rejected": 0.9933,
+        "rejected_by_argmax": 0.86,
+        "rejected_by_knn": 0.9933,
+        "rejected_by_energy": 0.2867,
+        "densenet_argmax_counts": {
+          "anthracnose": 3,
+          "healthy": 0,
+          "leaf_miner": 0,
+          "red_rust": 18,
+          "not_cashew_leaf": 129
+        }
+      },
+      "Corn_Merge_Data-20260311T141539Z-3-001:Gray_Leaf_Spot": {
+        "n": 150,
+        "rejected": 0.9933,
+        "rejected_by_argmax": 0.8467,
+        "rejected_by_knn": 0.9933,
+        "rejected_by_energy": 0.1933,
+        "densenet_argmax_counts": {
+          "anthracnose": 3,
+          "healthy": 0,
+          "leaf_miner": 0,
+          "red_rust": 20,
+          "not_cashew_leaf": 127
+        }
+      },
+      "Corn_Merge_Data-20260311T141539Z-3-001:Healthy": {
+        "n": 150,
+        "rejected": 1.0,
+        "rejected_by_argmax": 0.26,
+        "rejected_by_knn": 1.0,
+        "rejected_by_energy": 0.9,
+        "densenet_argmax_counts": {
+          "anthracnose": 14,
+          "healthy": 93,
+          "leaf_miner": 1,
+          "red_rust": 3,
+          "not_cashew_leaf": 39
+        }
+      }
+    }
+  },
+  "knn_threshold_q0975_initial": 0.185008,
+  "energy_used": false,
+  "threshold_sweep": {
+    "note": "Thresholds are quantiles of cashew-Validation kNN scores. The 0.99 quantile was selected after viewing this sweep on cashew Test and diseased corn (reported transparently; treat Test/corn figures as optimistic). Energy disabled: wrongly rejected 39% of real_ field cashew Test photos.",
+    "rows": [
+      {
+        "quantile": 0.95,
+        "thr": 0.179,
+        "val_keep": 0.949,
+        "test_keep": 0.983,
+        "test_anthracnose_keep": 0.934,
+        "corn_reject": {
+          "Blight": 1.0,
+          "Common_Rust": 0.993,
+          "Gray_Leaf_Spot": 0.993,
+          "Healthy": 1.0
+        }
+      },
+      {
+        "quantile": 0.975,
+        "thr": 0.185,
+        "val_keep": 0.974,
+        "test_keep": 0.985,
+        "test_anthracnose_keep": 0.943,
+        "corn_reject": {
+          "Blight": 1.0,
+          "Common_Rust": 0.993,
+          "Gray_Leaf_Spot": 0.993,
+          "Healthy": 1.0
+        }
+      },
+      {
+        "quantile": 0.99,
+        "thr": 0.197,
+        "val_keep": 0.99,
+        "test_keep": 0.994,
+        "test_anthracnose_keep": 0.984,
+        "corn_reject": {
+          "Blight": 1.0,
+          "Common_Rust": 0.987,
+          "Gray_Leaf_Spot": 0.987,
+          "Healthy": 1.0
+        }
+      },
+      {
+        "quantile": 0.995,
+        "thr": 0.204,
+        "val_keep": 0.994,
+        "test_keep": 0.996,
+        "test_anthracnose_keep": 0.992,
+        "corn_reject": {
+          "Blight": 1.0,
+          "Common_Rust": 0.987,
+          "Gray_Leaf_Spot": 0.987,
+          "Healthy": 1.0
+        }
+      },
+      {
+        "quantile": 1.0,
+        "thr": 0.225,
+        "val_keep": 1.0,
+        "test_keep": 0.998,
+        "test_anthracnose_keep": 0.992,
+        "corn_reject": {
+          "Blight": 0.973,
+          "Common_Rust": 0.967,
+          "Gray_Leaf_Spot": 0.973,
+          "Healthy": 1.0
+        }
+      }
+    ],
+    "test_real_field_photos_keep_argmax_knn_q0975": 1.0
+  }
+}

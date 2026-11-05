@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="/static/css/style.css?v=20261102_9">
+  <link rel="stylesheet" href="/static/css/style.css?v=20261105_4">
 </head>
 
 <body>
@@ -849,21 +849,33 @@
 
               <div class="diagnosis-top-grid">
 
-                <!-- 1. Uploaded Image Display + Region Detection Placeholder -->
+                <!-- 1. Interactive Image Preview & Lesion Canvas Overlay -->
                 <div class="image-preview-card">
                   <div class="sub-header">
-                    <span class="sub-title"><i class="fa-solid fa-crop-simple"></i> Khung ảnh &amp; Vùng khảo sát</span>
-                    <span class="meta-tag" id="image-dim-badge">224 x 224</span>
+                    <span class="sub-title"><i class="fa-solid fa-crosshairs"></i> Khung Khoanh Vùng &amp; Định Vị Ổ Dịch AI</span>
+                    <span class="meta-tag" id="image-dim-badge">Đang nạp ảnh...</span>
+                  </div>
+
+                  <!-- Disease count + class filter (above the image) -->
+                  <div class="lesion-filter-toolbar is-top" id="lesion-filter-toolbar">
+                    <div class="lesion-summary-line" id="lesion-summary-line"></div>
+                    <div class="lesion-filters-wrap">
+                      <button type="button" class="lesion-filter-chip active" id="btn-filter-all" data-filter="all">
+                        <span>Tất cả</span>
+                        <span class="chip-count" id="chip-count-all">0</span>
+                      </button>
+                      <div class="dynamic-filter-chips" id="dynamic-filter-chips"></div>
+                      <button type="button" class="lesion-isolate-pill hidden" id="btn-clear-isolate" title="Hiện lại tất cả vùng (Esc)">
+                        <i class="fa-solid fa-eye"></i> <span id="isolate-label">Đang xem 1 vùng</span> <i class="fa-solid fa-xmark"></i>
+                      </button>
+                    </div>
                   </div>
 
                   <div class="preview-img-wrapper" id="preview-img-wrapper">
-                    <img id="diagnosis-preview-img" src="" alt="Hình ảnh lá điều">
-
-                    <!-- Khung hiển thị chế độ Khoanh vùng (đang train AI) -->
-                    <div class="bbox-dev-overlay hidden" id="bbox-dev-overlay">
-                      <div class="bbox-guide-frame">
-                        <span class="bbox-frame-label">Vùng khảo sát AI (Đang huấn luyện Detector)</span>
-                      </div>
+                    <div class="preview-canvas-box" id="preview-canvas-box">
+                      <img id="diagnosis-preview-img" src="" alt="Hình ảnh lá điều">
+                      <!-- Interactive SVG Overlay Layer for Precise Bounding Boxes -->
+                      <svg class="lesion-svg-overlay" id="lesion-svg-overlay" xmlns="http://www.w3.org/2000/svg"></svg>
                     </div>
 
                     <div class="img-overlay-info" id="img-overlay-info">
@@ -872,53 +884,85 @@
                     </div>
                   </div>
 
-                  <div class="preview-footer-actions">
-                    <button type="button" class="btn-ghost-sm" id="btn-toggle-bbox">
-                      <i class="fa-solid fa-vector-square"></i> Khung khoanh vùng
-                    </button>
-                    <button type="button" class="btn-ghost-sm" id="btn-zoom-image">
-                      <i class="fa-solid fa-magnifying-glass-plus"></i> Phóng to
-                    </button>
-                    <button type="button" class="btn-ghost-sm" id="btn-reupload-trigger">
-                      <i class="fa-solid fa-arrow-rotate-right"></i> Ảnh khác
-                    </button>
+                  <!-- Image actions -->
+                  <div class="lesion-filter-toolbar">
+                    <div class="preview-footer-actions">
+                      <button type="button" class="btn-ghost-sm active" id="btn-toggle-bbox" title="Bật/Tắt hiển thị khung khoanh vùng">
+                        <i class="fa-solid fa-vector-square"></i> Khung AI
+                      </button>
+                      <button type="button" class="btn-ghost-sm" id="btn-zoom-image" title="Phóng to ảnh">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i> Phóng to
+                      </button>
+                      <button type="button" class="btn-ghost-sm" id="btn-reupload-trigger" title="Chọn ảnh khác">
+                        <i class="fa-solid fa-arrow-rotate-right"></i> Đổi ảnh
+                      </button>
+                    </div>
                   </div>
                 </div>
 
-                <!-- 2. Primary Conclusion (Nhãn cao nhất đặt trên đầu) -->
+                <!-- 2. Primary Diagnosis & Severity Summary (Separated Indicators) -->
                 <div class="conclusion-card" id="conclusion-card">
-                  <div class="conclusion-eyebrow">
-                    <span class="badge-conclusion-tag">
-                      <i class="fa-solid fa-check"></i> KẾT LUẬN NHẬN DIỆN CAO NHẤT
-                    </span>
+                  <!-- Indicator 1: Whole-Leaf Classification (DenseNet121) -->
+                  <div class="indicator-block indicator-global">
+                    <div class="indicator-header">
+                      <span class="indicator-badge badge-densenet">
+                        <i class="fa-solid fa-brain"></i> CHỈ SỐ 1: PHÂN LOẠI TOÀN LÁ (DENSENET121)
+                      </span>
+                      <span class="badge-conclusion-tag" id="conclusion-mode-tag">
+                        <i class="fa-solid fa-check"></i> ĐƠN BỆNH (SINGLE)
+                      </span>
+                    </div>
+
+                    <div class="conclusion-main-body">
+                      <div class="disease-icon-box" id="disease-icon-box">
+                        <i class="fa-solid fa-biohazard" id="conclusion-icon"></i>
+                      </div>
+                      <div class="conclusion-text-wrap">
+                        <h3 class="conclusion-disease-name" id="conclusion-disease-name">Bệnh Thán Thư</h3>
+                        <p class="conclusion-latin" id="conclusion-latin">Colletotrichum gloeosporioides</p>
+                      </div>
+                      <div class="global-conf-badge-wrap">
+                        <div class="conf-score-large" id="global-conf-score">98.5%</div>
+                        <div class="conf-score-sub">Độ tin cậy toàn lá</div>
+                      </div>
+                    </div>
+
+                    <div class="indicator-note">
+                      <i class="fa-solid fa-circle-info"></i> Mô hình DenseNet121 phân loại hình thái tổng thể của toàn bộ phiến lá.
+                    </div>
                   </div>
 
-                  <div class="conclusion-main-body">
-                    <div class="disease-icon-box" id="disease-icon-box">
-                      <i class="fa-solid fa-biohazard" id="conclusion-icon"></i>
-                    </div>
-                    <div class="conclusion-text-wrap">
-                      <h3 class="conclusion-disease-name" id="conclusion-disease-name">Bệnh Thán Thư</h3>
-                      <p class="conclusion-latin" id="conclusion-latin">Colletotrichum gloeosporioides</p>
-                    </div>
-                  </div>
+                  <!-- Multi-disease Detected Chips -->
+                  <div class="detected-diseases-row" id="detected-diseases-row"></div>
 
-                  <!-- Highlighted Confidence Box -->
-                  <div class="confidence-summary-box">
-                    <div class="confidence-label-row">
-                      <span class="conf-title">Độ tin cậy phân loại:</span>
-                      <span class="conf-percent-big" id="conclusion-confidence-value">99.86%</span>
+                  <!-- Indicator 2: Local Lesion Localization & Damage Meter -->
+                  <div class="indicator-block indicator-local">
+                    <div class="indicator-header">
+                      <span class="indicator-badge badge-lesion">
+                        <i class="fa-solid fa-crosshairs"></i> CHỈ SỐ 2: ĐỊNH VỊ Ổ BỆNH &amp; MỨC ĐỘ TỔN THƯƠNG
+                      </span>
+                      <span class="severity-badge-tag" id="severity-badge-tag">Trung bình</span>
                     </div>
-                    <div class="progress-bar-track">
-                      <div class="progress-bar-fill top-score-fill" id="conclusion-progress-fill"
-                        style="width: 99.86%;"></div>
+
+                    <div class="severity-meter-card">
+                      <div class="severity-meter-header">
+                        <span class="severity-title"><i class="fa-solid fa-chart-pie"></i> Diện tích lá bị hoại tử:</span>
+                        <span class="severity-stat-text" id="severity-stat-text">12.5% diện tích lá (5 ổ dịch khoanh vùng)</span>
+                      </div>
+                      <div class="progress-bar-track">
+                        <div class="progress-bar-fill" id="severity-progress-fill" style="width: 12.5%;"></div>
+                      </div>
+                    </div>
+
+                    <div class="indicator-note">
+                      <i class="fa-solid fa-vector-square"></i> Các khung màu trên ảnh định vị vị trí và đo lường diện tích từng ổ bệnh tổn thương thực tế.
                     </div>
                   </div>
 
                   <!-- Advisory Excerpt -->
                   <div class="advisory-box">
                     <div class="advisory-title">
-                      <i class="fa-solid fa-notes-medical"></i> Đặc điểm nhận diện chính:
+                      <i class="fa-solid fa-notes-medical"></i> Nhận định bệnh học lâm sàng:
                     </div>
                     <p class="advisory-text" id="conclusion-advisory-text"></p>
                   </div>
@@ -926,47 +970,87 @@
 
               </div>
 
-              <!-- Thông báo tiến độ module Khoanh vùng tổn thương (Bounding Box) -->
-              <div class="bbox-status-banner">
-                <div class="bbox-status-left">
-                  <i class="fa-solid fa-crosshairs"></i>
-                  <div>
-                    <strong>Module Khoanh Vùng Tổn Thương (Object Detection / Bounding Box):</strong>
-                    <span>Hiện đang trong quá trình huấn luyện mô hình AI (YOLO). Khi hoàn tất huấn luyện, hệ thống sẽ
-                      tự động vẽ tọa độ từng vết bệnh trực tiếp trên ảnh.</span>
+              <!-- ================= 3. LESION BREAKDOWN TABLE & THUMBNAILS ================= -->
+              <div class="lesion-breakdown-section" id="lesion-breakdown-section">
+                <div class="breakdown-header">
+                  <div class="breakdown-title-wrap">
+                    <span class="sort-icon-box"><i class="fa-solid fa-table-list"></i></span>
+                    <div>
+                      <h4 class="breakdown-title">Bảng Chi Tiết Từng Vùng Bệnh Khoanh Vùng (YOLO26s + DenseNet121)</h4>
+                      <p class="breakdown-subtitle">Bấm vào từng vùng bệnh để định vị và làm nổi bật vết bệnh trên ảnh</p>
+                    </div>
                   </div>
+                  <span class="lesion-total-badge" id="lesion-total-badge">0 vùng bệnh</span>
+                </div>
+
+                <div class="lesion-grid-table" id="lesion-grid-table">
+                  <!-- Dynamic lesion cards rendered by JS -->
                 </div>
               </div>
 
-              <!-- ================= 3. ALL LABELS CONFIDENCE ================= -->
+              <!-- ================= 4. DETAILED TREATMENT PROTOCOL & IPM ================= -->
+              <div class="disease-guide-section" id="disease-guide-section">
+                <div class="guide-card-header">
+                  <div class="guide-header-title">
+                    <i class="fa-solid fa-book-medical"></i>
+                    <span id="guide-protocol-heading">Phác Đồ Điều Trị &amp; Quản Lý Dịch Hại Nông Học Khuyến Nghị</span>
+                  </div>
+                  <button type="button" class="btn-link-wiki" id="btn-jump-to-wiki">
+                    <i class="fa-solid fa-book-atlas"></i>
+                    <span>Xem Bách Khoa Toàn Thư (Phần 1)</span>
+                  </button>
+                </div>
+
+                <!-- Priority Alert Box (Critical for Multi-Disease) -->
+                <div class="priority-directive-box" id="priority-directive-box">
+                  <div class="priority-icon"><i class="fa-solid fa-shield-virus"></i></div>
+                  <div class="priority-body">
+                    <strong class="priority-title">Nguyên tắc &amp; Thứ tự ưu tiên xử lý:</strong>
+                    <p class="priority-desc" id="guide-priority-note"></p>
+                  </div>
+                </div>
+
+                <div class="guide-content-grid">
+                  <!-- Left: Urgent Cultivation & Sanitation -->
+                  <div class="guide-sub-card">
+                    <div class="guide-card-label">
+                      <i class="fa-solid fa-scissors"></i>
+                      <span>1. Biện pháp canh tác &amp; Vệ sinh vườn:</span>
+                    </div>
+                    <ul class="guide-list" id="guide-urgent-list"></ul>
+                  </div>
+
+                  <!-- Right: Chemical & Active Ingredients -->
+                  <div class="guide-sub-card">
+                    <div class="guide-card-label">
+                      <i class="fa-solid fa-flask-vial"></i>
+                      <span>2. Hoạt chất &amp; Thuốc BVTV đặc trị:</span>
+                    </div>
+                    <div class="chemical-recs-wrap" id="chemical-recs-wrap"></div>
+                  </div>
+                </div>
+
+                <!-- Bottom: Long-term Rehabilitation -->
+                <div class="prevention-bottom-box">
+                  <div class="prevention-label">
+                    <i class="fa-solid fa-seedling"></i>
+                    <span>3. Phục hồi tán lá &amp; Phòng ngừa tái phát:</span>
+                  </div>
+                  <ul class="guide-list-horizontal" id="guide-prevention-list"></ul>
+                </div>
+              </div>
+
+              <!-- ================= 5. GLOBAL DENSENET PREDICTIONS ================= -->
               <div class="confidence-breakdown-section">
                 <div class="breakdown-header">
                   <div class="breakdown-title-wrap">
                     <span class="sort-icon-box"><i class="fa-solid fa-arrow-down-wide-short"></i></span>
-                    <h4 class="breakdown-title">Bảng Độ Tin Cậy Các Nhóm Bệnh (Xếp từ cao xuống thấp)</h4>
+                    <h4 class="breakdown-title">Bảng Xác Suất Phân Loại (Ensemble DenseNet121 + Stacker F3)</h4>
                   </div>
                 </div>
 
                 <!-- List sorted from HIGHEST to LOWEST -->
                 <div class="confidence-list" id="confidence-list"></div>
-              </div>
-
-              <!-- ================= 4. DETAILED DISEASE SOLUTION & GUIDE ================= -->
-              <div class="disease-guide-section" id="disease-guide-section">
-                <div class="guide-card-header">
-                  <i class="fa-solid fa-book-medical"></i>
-                  <span>Giải Pháp Xử Lý &amp; Biện Pháp Phòng Trừ Khuyến Nghị</span>
-                </div>
-                <div class="guide-content">
-                  <div class="guide-item">
-                    <strong>Triệu chứng &amp; dấu hiệu nhận dạng:</strong>
-                    <p id="guide-symptoms-text"></p>
-                  </div>
-                  <div class="guide-item">
-                    <strong>Giải pháp canh tác &amp; điều trị:</strong>
-                    <ul class="guide-list" id="guide-management-list"></ul>
-                  </div>
-                </div>
               </div>
 
             </div>
@@ -1057,7 +1141,7 @@
                 <i class="fa-solid fa-vial"></i>
                 <span>Hoặc thử nhanh với ảnh mẫu Lá Điều trong Project:</span>
               </div>
-              <div class="sample-picker-grid sample-grid-4">
+              <div class="sample-picker-grid sample-grid-5">
                 <button type="button" class="sample-item-btn" data-sample="ath_01.png" data-label="Lá Điều — Thán Thư">
                   <img src="/static/samples/ath_01.png" alt="Mẫu Lá Điều Thán Thư">
                   <span>Lá điều: Thán thư</span>
@@ -1070,6 +1154,10 @@
                 <button type="button" class="sample-item-btn" data-sample="red01.png" data-label="Lá Điều — Rỉ Đỏ">
                   <img src="/static/samples/red01.png" alt="Mẫu Lá Điều Rỉ Đỏ">
                   <span>Lá điều: Rỉ đỏ</span>
+                </button>
+                <button type="button" class="sample-item-btn" data-sample="multi01.png" data-label="Lá Điều — Đa Bệnh (Thán Thư & Rỉ Đỏ)">
+                  <img src="/static/samples/multi01.png" alt="Mẫu Lá Điều Đa Bệnh">
+                  <span class="sample-multi-tag">Lá điều: Đa bệnh</span>
                 </button>
                 <button type="button" class="sample-item-btn" data-sample="healthy01.png"
                   data-label="Lá Điều — Khỏe Mạnh">
@@ -1126,7 +1214,7 @@
   </footer>
 
   <!-- Main JavaScript Application Logic -->
-  <script src="/static/js/app.js?v=20261102_5"></script>
+  <script src="/static/js/app.js?v=20261105_4"></script>
 </body>
 
 </html>

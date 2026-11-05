@@ -1,0 +1,2 @@
+test_minus_holdout,bootstrap_low,bootstrap_high,resamples
+0.010485459390568885,-0.02272042637006144,0.048708145058510066,10000

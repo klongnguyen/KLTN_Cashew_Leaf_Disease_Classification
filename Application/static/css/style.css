@@ -1238,9 +1238,15 @@ body {
 
 .app-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  /* results take the room; the upload column is a fixed narrow rail */
+  grid-template-columns: minmax(0, 1fr) 320px;
   gap: 1.25rem;
   align-items: start;
+}
+
+/* Diagnose page uses a wider canvas than the wiki pages */
+.main-layout:has(#view-diagnose:not(.hidden)) {
+  max-width: 1640px;
 }
 
 @media (max-width: 1024px) {
@@ -1294,8 +1300,15 @@ body {
 
 .diagnosis-top-grid {
   display: grid;
-  grid-template-columns: 1fr 1.35fr;
+  grid-template-columns: minmax(0, 1.65fr) minmax(300px, 1fr);
   gap: 1rem;
+  align-items: start;
+}
+
+@media (max-width: 1280px) {
+  .diagnosis-top-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1343,47 +1356,86 @@ body {
 .preview-img-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
-  background: #f1f5f9;
+  /* fixed viewing area; JS scales the image (up or down) to fit it */
+  height: clamp(360px, 68vh, 760px);
+  background: #0f172a;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sharp);
   overflow: hidden;
-}
-
-.preview-img-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Bounding Box Dev Overlay */
-.bbox-dev-overlay {
-  position: absolute;
-  inset: 0;
   display: flex;
-  align-items: center;
   justify-content: center;
-  pointer-events: none;
-  padding: 12%;
+  align-items: center;
 }
 
-.bbox-guide-frame {
+/*
+ * .preview-canvas-box shrinks/grows to the EXACT rendered dimensions of <img>.
+ * The SVG overlay is pinned onto .preview-canvas-box (100% width & height),
+ * guaranteeing that SVG coordinates align 1:1 with the visible leaf pixels
+ * without letterbox drift, rounding error, or aspect ratio distortion!
+ */
+.preview-canvas-box {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  transform-origin: 0 0;
+  transition: transform 0.35s ease;
+}
+
+/* width/height are set by JS (fit-to-frame, small images are upscaled) */
+.preview-canvas-box img {
+  display: block;
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
+  image-orientation: from-image;
+}
+
+.preview-canvas-box img.raw-orientation {
+  image-orientation: none;
+}
+
+/* ================= INTERACTIVE LESION OVERLAY & FILTER TOOLBAR ================= */
+.preview-canvas-box .lesion-svg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  border: 2px dashed #f59e0b;
-  background: rgba(245, 158, 11, 0.08);
-  position: relative;
+  pointer-events: none;
+  z-index: 5;
 }
 
-.bbox-frame-label {
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  background: #f59e0b;
-  color: #ffffff;
-  font-size: 0.65rem;
-  font-weight: 800;
-  padding: 0.12rem 0.4rem;
+.lesion-svg-overlay .lesion-box-group {
+  cursor: pointer;
+  pointer-events: auto;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.lesion-svg-overlay .lesion-rect {
+  fill-opacity: 0.15;
+  stroke-width: 2.5;
+  transition: all 0.2s ease;
+  vector-effect: non-scaling-stroke;
+}
+
+.lesion-svg-overlay .lesion-box-group:hover .lesion-rect,
+.lesion-svg-overlay .lesion-box-group.is-focused .lesion-rect {
+  fill-opacity: 0.32;
+  stroke-width: 4;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+.lesion-svg-overlay .lesion-tag-bg {
+  transition: fill 0.2s ease;
+}
+
+/* font-size is set per render by JS in image units so it stays 11 screen px */
+.lesion-svg-overlay .lesion-tag-text {
+  font-family: var(--font-family);
+  font-weight: 700;
+  fill: #ffffff;
+  dominant-baseline: central;
+  text-anchor: start;
 }
 
 .img-overlay-info {
@@ -1391,18 +1443,128 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0.3rem 0.5rem;
-  background: rgba(15, 23, 42, 0.85);
-  font-size: 0.7rem;
+  padding: 0.35rem 0.65rem;
+  background: rgba(15, 23, 42, 0.88);
+  font-size: 0.72rem;
   color: #ffffff;
   display: flex;
   justify-content: space-between;
+  z-index: 6;
+}
+
+/* Lesion Filter Toolbar */
+.lesion-filter-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.65rem;
+}
+
+.lesion-filter-toolbar.is-top {
+  margin: 0 0 0.6rem;
+  gap: 0.4rem;
+}
+
+.lesion-summary-line {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.lesion-summary-line strong { color: var(--text-primary); }
+
+.lesion-filter-chip:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.lesion-isolate-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: auto;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-family: var(--font-family);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: #0f172a;
+  border: 1px solid #0f172a;
+  cursor: pointer;
+}
+
+.lesion-isolate-pill:hover { background: #1e293b; }
+
+/* Single-box view: the selected box is the only one drawn */
+.lesion-svg-overlay .lesion-box-group.is-hidden { display: none; }
+
+.lesion-card.is-isolated {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 1px;
+}
+
+.lesion-filters-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.lesion-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  font-family: var(--font-family);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lesion-filter-chip:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.lesion-filter-chip.active {
+  background: var(--color-brand);
+  color: #ffffff;
+  border-color: var(--color-brand);
+}
+
+.lesion-filter-chip .chip-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  background: rgba(0, 0, 0, 0.1);
+  color: inherit;
+}
+
+.lesion-filter-chip.active .chip-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.dynamic-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
 }
 
 .preview-footer-actions {
   display: flex;
   gap: 0.4rem;
-  margin-top: 0.55rem;
 }
 
 .btn-ghost-sm {
@@ -1434,16 +1596,114 @@ body {
 /* Primary Conclusion Card */
 .conclusion-card {
   background: #ffffff;
-  border: 2px solid var(--color-brand);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-sharp);
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* ================= SEPARATED INDICATORS (CHỈ SỐ 1 & CHỈ SỐ 2) ================= */
+.indicator-block {
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sharp);
+  border: 1px solid var(--border-color);
+  background: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.indicator-global {
+  background: linear-gradient(145deg, #f0fdf4 0%, #ffffff 100%);
+  border-left: 4px solid #16a34a;
+}
+
+.indicator-local {
+  background: linear-gradient(145deg, #fffbeb 0%, #ffffff 100%);
+  border-left: 4px solid #d97706;
+}
+
+.indicator-header {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.indicator-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.55rem;
+  border-radius: 3px;
+}
+
+.badge-densenet {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.badge-lesion {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+.global-conf-badge-wrap {
+  text-align: right;
+  padding-left: 0.75rem;
+  margin-left: auto;
+  flex-shrink: 0;
+  min-width: 5.5rem;
+}
+
+.global-conf-badge-wrap .conf-score-sub { white-space: nowrap; }
+
+.conclusion-text-wrap { flex: 1 1 auto; min-width: 0; }
+
+.diagnosis-top-grid > * { min-width: 0; }
+
+.conf-score-large {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #15803d;
+  line-height: 1.1;
+  font-family: monospace;
+}
+
+.conf-score-sub {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.indicator-note {
+  margin-top: 0.55rem;
+  font-size: 0.73rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+
+.indicator-note i {
+  margin-top: 0.15rem;
+  color: var(--text-secondary);
 }
 
 .conclusion-eyebrow {
-  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding-bottom: 0.45rem;
   border-bottom: 1px solid var(--border-color);
 }
@@ -1452,73 +1712,166 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  padding: 0.2rem 0.5rem;
+  padding: 0.22rem 0.55rem;
   border-radius: var(--radius-sharp);
   font-size: 0.72rem;
   font-weight: 800;
   background: var(--color-brand);
   color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.badge-conclusion-tag.multi-mode {
+  background: #dc2626;
+  animation: pulseTag 2s infinite;
+}
+
+.badge-conclusion-tag.abstain-mode {
+  background: #facc15;
+  color: #713f12;
+  border: 1px solid #eab308;
+  animation: pulseTag 2s infinite;
+}
+
+.conclusion-card.is-abstain {
+  border-color: #eab308;
+  background: #fffef7;
+}
+
+.conclusion-card.is-abstain .advisory-box {
+  border-left-color: #eab308;
+  background: #fefce8;
+}
+
+@keyframes pulseTag {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
 }
 
 .conclusion-main-body {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 0.75rem;
 }
 
 .disease-icon-box {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: var(--radius-sharp);
   background: var(--bg-subtle);
   border: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.35rem;
+  font-size: 1.45rem;
   flex-shrink: 0;
 }
 
 .conclusion-disease-name {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 800;
   color: var(--text-primary);
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 .conclusion-latin {
   font-size: 0.78rem;
   font-style: italic;
   color: var(--text-muted);
+  margin-top: 0.15rem;
 }
 
-/* Confidence Summary Box */
-.confidence-summary-box {
+/* Detected Diseases Row */
+.detected-diseases-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.disease-pill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.28rem 0.65rem;
+  border-radius: var(--radius-sharp);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.disease-pill-chip .dot-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Severity Meter Card */
+.severity-meter-card {
   background: var(--bg-subtle);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sharp);
   padding: 0.65rem 0.75rem;
-  margin-bottom: 0.75rem;
 }
 
-.confidence-label-row {
+.severity-meter-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
+  flex-wrap: wrap;
+  gap: 0.4rem;
 }
 
-.conf-title {
-  font-size: 0.78rem;
+.severity-left {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.severity-title {
+  font-size: 0.76rem;
   font-weight: 700;
   color: var(--text-secondary);
 }
 
-.conf-percent-big {
-  font-size: 1.4rem;
+.severity-badge-tag {
+  display: inline-block;
+  padding: 0.12rem 0.45rem;
+  border-radius: 3px;
+  font-size: 0.68rem;
   font-weight: 800;
-  color: var(--color-brand);
+  background: #e2e8f0;
+  color: var(--text-primary);
+}
+
+.severity-badge-tag.sev-low {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.severity-badge-tag.sev-medium {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.severity-badge-tag.sev-high {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.severity-badge-tag.sev-abstain {
+  background: #fef08a;
+  color: #854d0e;
+  border: 1px solid #facc15;
+}
+
+.severity-stat-text {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--text-secondary);
 }
 
 .progress-bar-track {
@@ -1533,9 +1886,6 @@ body {
   height: 100%;
   border-radius: 1px;
   transition: width 0.4s ease;
-}
-
-.top-score-fill {
   background: var(--color-brand);
 }
 
@@ -1561,34 +1911,7 @@ body {
 .advisory-text {
   font-size: 0.78rem;
   color: var(--text-secondary);
-  line-height: 1.4;
-}
-
-/* Bounding Box Status Banner */
-.bbox-status-banner {
-  background: var(--bg-subtle);
-  border: 1px solid var(--border-color);
-  border-left: 3px solid var(--color-warning);
-  border-radius: var(--radius-sharp);
-  padding: 0.65rem 0.85rem;
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-}
-
-.bbox-status-left {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.55rem;
-}
-
-.bbox-status-left i {
-  color: var(--color-warning);
-  margin-top: 0.15rem;
-}
-
-.bbox-status-left strong {
-  color: var(--text-primary);
-  margin-right: 0.25rem;
+  line-height: 1.45;
 }
 
 /* ================= 3. CONFIDENCE LIST ================= */
@@ -1731,49 +2054,362 @@ body {
   transition: width 0.4s ease;
 }
 
-/* Guide Section */
+/* ================= 4. LESION BREAKDOWN SECTION ================= */
+.lesion-breakdown-section {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sharp);
+  padding: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.breakdown-subtitle {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 0.1rem;
+}
+
+.lesion-total-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  background: var(--bg-subtle);
+  color: var(--color-brand);
+  border: 1px solid var(--border-color);
+}
+
+.lesion-grid-table {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.55rem;
+}
+
+.lesion-card {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sharp);
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.lesion-card:hover,
+.lesion-card.is-active {
+  background: #ffffff;
+  border-color: var(--color-brand);
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.12);
+  transform: translateY(-1px);
+}
+
+.lesion-thumb-wrap {
+  width: 58px;
+  height: 58px;
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  flex-shrink: 0;
+  background: #0f172a;
+}
+
+.lesion-thumb-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.lesion-card:hover .lesion-thumb-wrap img {
+  transform: scale(1.08);
+}
+
+.lesion-card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.lesion-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.3rem;
+}
+
+.lesion-id-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--text-muted);
+}
+
+.lesion-disease-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 2px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.lesion-dim-row {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.lesion-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.1rem;
+}
+
+.lesion-conf-score {
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: var(--color-brand);
+}
+
+.btn-locate-lesion {
+  background: transparent;
+  border: none;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.1rem 0.3rem;
+  border-radius: 2px;
+}
+
+.lesion-card:hover .btn-locate-lesion,
+.lesion-card.is-active .btn-locate-lesion {
+  color: var(--color-brand);
+  background: rgba(15, 118, 110, 0.08);
+}
+
+/* ================= 5. TREATMENT PROTOCOL & IPM ================= */
 .disease-guide-section {
   background: #ffffff;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sharp);
-  padding: 0.85rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .guide-card-header {
-  font-size: 0.84rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.guide-header-title {
+  font-size: 0.92rem;
   font-weight: 800;
   color: var(--text-primary);
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  margin-bottom: 0.6rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid var(--border-color);
+  gap: 0.45rem;
 }
 
-.guide-card-header i {
+.guide-header-title i {
   color: var(--color-brand);
 }
 
-.guide-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  font-size: 0.8rem;
-  color: var(--text-secondary);
+.btn-link-wiki {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.65rem;
+  border-radius: var(--radius-sharp);
+  font-family: var(--font-family);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--color-brand);
+  background: rgba(15, 118, 110, 0.08);
+  border: 1px solid var(--color-brand);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.guide-item strong {
-  color: var(--text-primary);
+.btn-link-wiki:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+}
+
+/* Priority directive box (Multi-disease warning) */
+.priority-directive-box {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-left: 4px solid #d97706;
+  border-radius: var(--radius-sharp);
+  padding: 0.65rem 0.85rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.priority-icon {
+  font-size: 1.1rem;
+  color: #d97706;
+  margin-top: 0.1rem;
+  flex-shrink: 0;
+}
+
+.priority-body {
+  flex: 1;
+}
+
+.priority-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #92400e;
   display: block;
   margin-bottom: 0.15rem;
+}
+
+.priority-desc {
+  font-size: 0.78rem;
+  color: #78350f;
+  line-height: 1.45;
+}
+
+.guide-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+@media (max-width: 900px) {
+  .guide-content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.guide-sub-card {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sharp);
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.guide-card-label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.guide-card-label i {
+  color: var(--color-brand);
 }
 
 .guide-list {
   padding-left: 1.15rem;
   display: flex;
   flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.chemical-recs-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.chemical-item-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  padding: 0.45rem 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.chem-target {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--color-brand);
+}
+
+.chem-actives {
+  font-size: 0.75rem;
+  color: var(--text-primary);
+}
+
+.chem-actives strong {
+  color: var(--text-secondary);
+}
+
+.chem-timing {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.prevention-bottom-box {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sharp);
+  padding: 0.7rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.prevention-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.prevention-label i {
+  color: #10b981;
+}
+
+.guide-list-horizontal {
+  list-style: square inside;
+  display: flex;
+  flex-direction: column;
   gap: 0.25rem;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
 }
 
 /* Analyzing Spinner Overlay */
@@ -1859,7 +2495,7 @@ body {
   border-radius: var(--radius-sharp);
   background: var(--bg-subtle);
   cursor: pointer;
-  padding: 2rem 1rem;
+  padding: 1.25rem 0.75rem;
   text-align: center;
   transition: all 0.15s ease;
 }
@@ -2078,6 +2714,20 @@ body {
   grid-template-columns: repeat(2, 1fr);
 }
 
+.sample-picker-grid.sample-grid-5 {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.45rem;
+}
+
+.sample-picker-grid.sample-grid-5 .sample-item-btn:last-child {
+  grid-column: span 2;
+}
+
+.sample-multi-tag {
+  color: #dc2626 !important;
+  font-weight: 800 !important;
+}
+
 .sample-item-btn {
   background: var(--bg-subtle);
   border: 1px solid var(--border-color);
@@ -2247,3 +2897,51 @@ body {
 .hidden {
   display: none !important;
 }
+
+/* Input-quality / engine warnings (P0/P1) */
+.input-warning-box {
+  margin-bottom: 0.75rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #facc15;
+  border-left: 4px solid #eab308;
+  border-radius: 3px;
+  background: #fefce8;
+  color: #713f12;
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+.input-warning-box.hidden { display: none; }
+.input-warning-box .input-warning-title { font-weight: 700; margin-bottom: 0.3rem; }
+.input-warning-box ul { margin: 0; padding-left: 0; list-style: none; }
+.input-warning-box li { margin: 0.2rem 0; }
+.input-warning-box li i { width: 1.1rem; margin-right: 0.25rem; opacity: 0.8; }
+.input-warning-box li.is-strong { color: #991b1b; font-weight: 600; }
+
+/* YOLO-propose / DenseNet-verify summary */
+.verification-summary-box {
+  margin: 0.6rem 0;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #cbd5e1;
+  border-left: 4px solid #2563eb;
+  border-radius: 3px;
+  background: #f8fafc;
+  font-size: 0.79rem;
+  line-height: 1.5;
+  color: #1e293b;
+}
+.verification-summary-box.hidden { display: none; }
+.verification-summary-box .vs-title { font-weight: 700; margin-bottom: 0.25rem; }
+.verification-summary-box .vs-row i { width: 1.1rem; opacity: 0.75; }
+.verification-summary-box .vs-ref { color: #64748b; margin-left: 0.25rem; }
+.verification-summary-box .vs-ref.is-conflict { color: #b91c1c; font-weight: 600; }
+.verification-summary-box .vs-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.3rem; }
+.verification-summary-box .vs-chip { padding: 0.1rem 0.5rem; border-radius: 999px; border: 1px solid #cbd5e1; background: #fff; }
+.verification-summary-box .vs-chip.ok { border-color: #86efac; background: #f0fdf4; color: #166534; }
+.verification-summary-box .vs-chip.warn { border-color: #fcd34d; background: #fffbeb; color: #92400e; }
+.verification-summary-box .vs-chip.muted { color: #475569; }
+.lesion-verify-row { display: flex; flex-wrap: wrap; gap: 0.25rem 0.6rem; font-size: 0.72rem; margin: 0.25rem 0; color: #334155; }
+.lesion-verify-row .verify-badge { font-weight: 700; }
+.lesion-verify-row.is-agree .verify-badge { color: #15803d; }
+.lesion-verify-row.is-differ .verify-badge { color: #b45309; }
+.verification-summary-box .vs-reasons { margin: 0.2rem 0 0.3rem 1.1rem; padding: 0; color: #991b1b; }
+.lesion-verify-row.is-unverified .verify-badge { color: #64748b; }

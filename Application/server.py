@@ -1,6 +1,6 @@
 """
 FastAPI Backend Server for Cashew Leaf Disease Diagnosis Web App.
-Using DenseNet121 Transfer Version 014 (Best Checkpoint: Seed 123).
+Engine is selected in config.MODEL_ENGINE (default EXP-034); see engine.py.
 """
 import io
 import os
@@ -13,11 +13,11 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from config import STATIC_DIR, SAMPLES_DIR, DISEASE_INFO
-from model_service import model_service
+from engine import model_service
 
 app = FastAPI(
     title="Cashew Leaf Disease Diagnosis AI",
-    description="Web service for diagnosing cashew leaf diseases using DenseNet121 Transfer v014 (Seed 123)",
+    description="Cashew leaf disease diagnosis: DenseNet121 x5 + YOLO26s + Stacker F3 (EXP-034), legacy DenseNet121 EXP-014 fallback",
     version="1.0.0",
 )
 
@@ -79,6 +79,13 @@ async def get_samples():
             "description": "Lá điều có các đốm tròn màu đỏ gạch/cam rỉ sắt gồ trên mặt lá."
         },
         {
+            "id": "multi01.png",
+            "title": "Lá Điều — Đa Bệnh (Thán Thư & Rỉ Đỏ)",
+            "class_hint": "multi_disease",
+            "url": "/static/samples/multi01.png",
+            "description": "Lá điều xuất hiện đồng thời vết cháy mép Thán thư và các đốm nhung Rỉ đỏ."
+        },
+        {
             "id": "healthy01.png",
             "title": "Lá Điều — Khỏe Mạnh",
             "class_hint": "healthy",
@@ -103,7 +110,7 @@ async def predict_sample(sample_name: str):
         image_bytes = f.read()
 
     try:
-        result = model_service.predict_image(image_bytes)
+        result = model_service.predict_image(image_bytes, sample_name=sample_name)
         return result
     except Exception as e:
         raise HTTPException(
@@ -181,4 +188,4 @@ async def root():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("server:app", host="127.0.0.1", port=8000, reload=False)
+    uvicorn.run("server:app", host="127.0.0.1", port=8080, reload=False)

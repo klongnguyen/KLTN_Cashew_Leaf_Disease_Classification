@@ -1,0 +1,6 @@
+,anthracnose,healthy,leaf_miner,red_rust,not_cashew_leaf
+anthracnose,43,1,0,2,0
+healthy,0,19,0,0,0
+leaf_miner,1,0,35,0,0
+red_rust,1,0,0,24,0
+not_cashew_leaf,0,0,0,0,0
