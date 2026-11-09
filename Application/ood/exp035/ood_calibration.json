@@ -1,0 +1,52 @@
+{
+  "embedding": "5 seeds, per-seed L2-normalised mean of image + h-flip; distance = 1 - mean cosine over seeds",
+  "knn_threshold": 0.174355,
+  "knn_threshold_high": 0.210403,
+  "quantile": 0.99,
+  "quantile_high": 0.999,
+  "knn_k": 5,
+  "band_rule": {
+    "max_p_not_cashew": 0.01,
+    "min_top_cashew": 0.9
+  },
+  "energy_threshold": null,
+  "energy_used": false,
+  "bank_size": 3869,
+  "bank_source": "D:\\Study\\KhoaLuanTotNghiep\\Dataset\\CashewData_Split (13)\\CashewData_Split\\train",
+  "calibration_source": "D:\\Study\\KhoaLuanTotNghiep\\Dataset\\CashewData_Split (13)\\CashewData_Split\\val",
+  "skipped_unreadable": {
+    "bank": 0,
+    "val": 0
+  },
+  "protocol": "Both thresholds = quantiles of in-distribution cashew Validation scores only; OOD sets are reported, never used for tuning.",
+  "report": {
+    "in_distribution": {
+      "all_cashew_val": {
+        "n": 1138,
+        "accepted": 0.9965
+      },
+      "anthracnose": {
+        "n": 309,
+        "accepted": 1.0
+      },
+      "healthy": {
+        "n": 227,
+        "accepted": 0.9868
+      },
+      "leaf_miner": {
+        "n": 267,
+        "accepted": 1.0
+      },
+      "red_rust": {
+        "n": 335,
+        "accepted": 0.997
+      }
+    },
+    "ood": {
+      "val:not_cashew_leaf": {
+        "n": 314,
+        "rejected": 1.0
+      }
+    }
+  }
+}

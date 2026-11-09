@@ -1,0 +1,478 @@
+{
+  "n_val_boxes": 121,
+  "val_target_counts": {
+    "anthracnose": 111,
+    "red_rust": 3,
+    "background": 7
+  },
+  "val_grid": [
+    {
+      "cfg": "-",
+      "rule": "yolo",
+      "t": null,
+      "macro_f1": 0.5884,
+      "label_acc_true_boxes": 0.9912,
+      "true_boxes_wrongly_rejected": 0.0,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p125_m64",
+      "rule": "dense",
+      "t": null,
+      "macro_f1": 0.5853,
+      "label_acc_true_boxes": 0.9649,
+      "true_boxes_wrongly_rejected": 0.0263,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p125_m64",
+      "rule": "switch",
+      "t": 0.5,
+      "macro_f1": 0.5838,
+      "label_acc_true_boxes": 0.9649,
+      "true_boxes_wrongly_rejected": 0.0263,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p125_m64",
+      "rule": "switch",
+      "t": 0.6,
+      "macro_f1": 0.5838,
+      "label_acc_true_boxes": 0.9649,
+      "true_boxes_wrongly_rejected": 0.0263,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p125_m64",
+      "rule": "switch",
+      "t": 0.7,
+      "macro_f1": 0.5838,
+      "label_acc_true_boxes": 0.9649,
+      "true_boxes_wrongly_rejected": 0.0263,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p125_m64",
+      "rule": "switch",
+      "t": 0.8,
+      "macro_f1": 0.5838,
+      "label_acc_true_boxes": 0.9649,
+      "true_boxes_wrongly_rejected": 0.0263,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p125_m64",
+      "rule": "switch",
+      "t": 0.9,
+      "macro_f1": 0.5838,
+      "label_acc_true_boxes": 0.9649,
+      "true_boxes_wrongly_rejected": 0.0263,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p125_m64",
+      "rule": "switch",
+      "t": 0.95,
+      "macro_f1": 0.5838,
+      "label_acc_true_boxes": 0.9649,
+      "true_boxes_wrongly_rejected": 0.0263,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p150_m96",
+      "rule": "dense",
+      "t": null,
+      "macro_f1": 0.5806,
+      "label_acc_true_boxes": 0.9386,
+      "true_boxes_wrongly_rejected": 0.0175,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p150_m96",
+      "rule": "switch",
+      "t": 0.5,
+      "macro_f1": 0.5837,
+      "label_acc_true_boxes": 0.9561,
+      "true_boxes_wrongly_rejected": 0.0175,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p150_m96",
+      "rule": "switch",
+      "t": 0.6,
+      "macro_f1": 0.5853,
+      "label_acc_true_boxes": 0.9649,
+      "true_boxes_wrongly_rejected": 0.0175,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p150_m96",
+      "rule": "switch",
+      "t": 0.7,
+      "macro_f1": 0.5854,
+      "label_acc_true_boxes": 0.9737,
+      "true_boxes_wrongly_rejected": 0.0175,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p150_m96",
+      "rule": "switch",
+      "t": 0.8,
+      "macro_f1": 0.5854,
+      "label_acc_true_boxes": 0.9737,
+      "true_boxes_wrongly_rejected": 0.0175,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p150_m96",
+      "rule": "switch",
+      "t": 0.9,
+      "macro_f1": 0.5854,
+      "label_acc_true_boxes": 0.9737,
+      "true_boxes_wrongly_rejected": 0.0175,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p150_m96",
+      "rule": "switch",
+      "t": 0.95,
+      "macro_f1": 0.5854,
+      "label_acc_true_boxes": 0.9737,
+      "true_boxes_wrongly_rejected": 0.0175,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p200_m128",
+      "rule": "dense",
+      "t": null,
+      "macro_f1": 0.5741,
+      "label_acc_true_boxes": 0.9035,
+      "true_boxes_wrongly_rejected": 0.0088,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p200_m128",
+      "rule": "switch",
+      "t": 0.5,
+      "macro_f1": 0.5758,
+      "label_acc_true_boxes": 0.9123,
+      "true_boxes_wrongly_rejected": 0.0088,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p200_m128",
+      "rule": "switch",
+      "t": 0.6,
+      "macro_f1": 0.5774,
+      "label_acc_true_boxes": 0.9211,
+      "true_boxes_wrongly_rejected": 0.0088,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p200_m128",
+      "rule": "switch",
+      "t": 0.7,
+      "macro_f1": 0.5821,
+      "label_acc_true_boxes": 0.9474,
+      "true_boxes_wrongly_rejected": 0.0088,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p200_m128",
+      "rule": "switch",
+      "t": 0.8,
+      "macro_f1": 0.5837,
+      "label_acc_true_boxes": 0.9561,
+      "true_boxes_wrongly_rejected": 0.0088,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p200_m128",
+      "rule": "switch",
+      "t": 0.9,
+      "macro_f1": 0.5838,
+      "label_acc_true_boxes": 0.9649,
+      "true_boxes_wrongly_rejected": 0.0088,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p200_m128",
+      "rule": "switch",
+      "t": 0.95,
+      "macro_f1": 0.5854,
+      "label_acc_true_boxes": 0.9737,
+      "true_boxes_wrongly_rejected": 0.0088,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p300_m128",
+      "rule": "dense",
+      "t": null,
+      "macro_f1": 0.5776,
+      "label_acc_true_boxes": 0.9298,
+      "true_boxes_wrongly_rejected": 0.0088,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p300_m128",
+      "rule": "switch",
+      "t": 0.5,
+      "macro_f1": 0.5776,
+      "label_acc_true_boxes": 0.9298,
+      "true_boxes_wrongly_rejected": 0.0088,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p300_m128",
+      "rule": "switch",
+      "t": 0.6,
+      "macro_f1": 0.5792,
+      "label_acc_true_boxes": 0.9386,
+      "true_boxes_wrongly_rejected": 0.0088,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p300_m128",
+      "rule": "switch",
+      "t": 0.7,
+      "macro_f1": 0.5823,
+      "label_acc_true_boxes": 0.9561,
+      "true_boxes_wrongly_rejected": 0.0088,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p300_m128",
+      "rule": "switch",
+      "t": 0.8,
+      "macro_f1": 0.5838,
+      "label_acc_true_boxes": 0.9649,
+      "true_boxes_wrongly_rejected": 0.0088,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p300_m128",
+      "rule": "switch",
+      "t": 0.9,
+      "macro_f1": 0.5854,
+      "label_acc_true_boxes": 0.9737,
+      "true_boxes_wrongly_rejected": 0.0088,
+      "background_rejected": 0.0
+    },
+    {
+      "cfg": "p300_m128",
+      "rule": "switch",
+      "t": 0.95,
+      "macro_f1": 0.5869,
+      "label_acc_true_boxes": 0.9825,
+      "true_boxes_wrongly_rejected": 0.0088,
+      "background_rejected": 0.0
+    }
+  ],
+  "val_selected": {
+    "cfg": "-",
+    "rule": "yolo",
+    "t": null,
+    "macro_f1": 0.5884,
+    "label_acc_true_boxes": 0.9912,
+    "true_boxes_wrongly_rejected": 0.0,
+    "background_rejected": 0.0,
+    "per_class": {
+      "anthracnose": {
+        "precision": 0.9328,
+        "recall": 1.0,
+        "f1": 0.9652,
+        "support": 111
+      },
+      "leaf_miner": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "red_rust": {
+        "precision": 1.0,
+        "recall": 0.6667,
+        "f1": 0.8,
+        "support": 3
+      },
+      "background": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 7
+      }
+    }
+  },
+  "val_yolo": {
+    "macro_f1": 0.5884,
+    "label_acc_true_boxes": 0.9912,
+    "true_boxes_wrongly_rejected": 0.0,
+    "background_rejected": 0.0,
+    "per_class": {
+      "anthracnose": {
+        "precision": 0.9328,
+        "recall": 1.0,
+        "f1": 0.9652,
+        "support": 111
+      },
+      "leaf_miner": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "red_rust": {
+        "precision": 1.0,
+        "recall": 0.6667,
+        "f1": 0.8,
+        "support": 3
+      },
+      "background": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 7
+      }
+    }
+  },
+  "val_image_level": {
+    "yolo_n1": {
+      "exact_match": 1.0,
+      "anthracnose": {
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "leaf_miner": {
+        "precision": null,
+        "recall": null
+      },
+      "red_rust": {
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "healthy_or_negative_images": {
+        "n": 0,
+        "predicted_no_disease": null
+      },
+      "multi_disease_images": {
+        "n": 1,
+        "exact": 1.0
+      }
+    },
+    "selected_n1": {
+      "exact_match": 1.0,
+      "anthracnose": {
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "leaf_miner": {
+        "precision": null,
+        "recall": null
+      },
+      "red_rust": {
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "healthy_or_negative_images": {
+        "n": 0,
+        "predicted_no_disease": null
+      },
+      "multi_disease_images": {
+        "n": 1,
+        "exact": 1.0
+      }
+    },
+    "yolo_n2": {
+      "exact_match": 0.9,
+      "anthracnose": {
+        "precision": 1.0,
+        "recall": 0.9
+      },
+      "leaf_miner": {
+        "precision": null,
+        "recall": null
+      },
+      "red_rust": {
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "healthy_or_negative_images": {
+        "n": 0,
+        "predicted_no_disease": null
+      },
+      "multi_disease_images": {
+        "n": 1,
+        "exact": 1.0
+      }
+    },
+    "selected_n2": {
+      "exact_match": 0.9,
+      "anthracnose": {
+        "precision": 1.0,
+        "recall": 0.9
+      },
+      "leaf_miner": {
+        "precision": null,
+        "recall": null
+      },
+      "red_rust": {
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "healthy_or_negative_images": {
+        "n": 0,
+        "predicted_no_disease": null
+      },
+      "multi_disease_images": {
+        "n": 1,
+        "exact": 1.0
+      }
+    },
+    "yolo_n3": {
+      "exact_match": 0.8,
+      "anthracnose": {
+        "precision": 1.0,
+        "recall": 0.9
+      },
+      "leaf_miner": {
+        "precision": null,
+        "recall": null
+      },
+      "red_rust": {
+        "precision": null,
+        "recall": 0.0
+      },
+      "healthy_or_negative_images": {
+        "n": 0,
+        "predicted_no_disease": null
+      },
+      "multi_disease_images": {
+        "n": 1,
+        "exact": 0.0
+      }
+    },
+    "selected_n3": {
+      "exact_match": 0.8,
+      "anthracnose": {
+        "precision": 1.0,
+        "recall": 0.9
+      },
+      "leaf_miner": {
+        "precision": null,
+        "recall": null
+      },
+      "red_rust": {
+        "precision": null,
+        "recall": 0.0
+      },
+      "healthy_or_negative_images": {
+        "n": 0,
+        "predicted_no_disease": null
+      },
+      "multi_disease_images": {
+        "n": 1,
+        "exact": 0.0
+      }
+    }
+  }
+}

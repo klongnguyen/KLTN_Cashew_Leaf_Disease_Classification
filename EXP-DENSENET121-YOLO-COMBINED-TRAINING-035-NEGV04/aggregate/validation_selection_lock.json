@@ -1,0 +1,26 @@
+{
+  "model_sha256": {
+    "123": "fd8350c417fc75d5dbedabb8be45c5e1f1575ccb5a2667ed9a68610c62717183",
+    "2026": "c24aefe0befbb14dfae07f713c7a6f1774caf2f9910e0608c4bf8f7a2d2559f3",
+    "3407": "3528277898238b5ffd456161c665adfef4699dcd19ff9b2632b5f08fda7f608a",
+    "42": "feb05191bddd7e2b29f88294bff215237cbbd5738067e6cc9c0b5ad9d52b20ef",
+    "7777": "042b4e65e73d3fc5b593276d219edd3215f0e8dc210c35d327d0336f3dc86409"
+  },
+  "real_oversample_factor": 1,
+  "seed_models_source": "EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04",
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "selection_metric": "val_loss",
+  "validation_accuracy": {
+    "123": 0.9745179063360881,
+    "2026": 0.9724517906336089,
+    "3407": 0.9772727272727273,
+    "42": 0.9724517906336089,
+    "7777": 0.9662534435261708
+  }
+}

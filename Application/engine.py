@@ -7,7 +7,7 @@ every prediction (model_meta.engine_warning) so the UI can show it.
 import logging
 from typing import Any, Dict, Optional
 
-from config import MODEL_ENGINE
+from config import EXP034_ID, MODEL_ENGINE
 
 logger = logging.getLogger("CashewLeafAI.Engine")
 
@@ -32,7 +32,7 @@ class EngineDispatcher:
                 from exp034_service import EXP034Service
                 self._active_service = EXP034Service()
                 self._engine_type = "exp034"
-                logger.info("Engine Dispatcher: EXP-034 is the active engine.")
+                logger.info(f"Engine Dispatcher: combined engine active ({EXP034_ID}).")
                 return
             except Exception as e:  # noqa: BLE001
                 logger.error(f"Engine Dispatcher: EXP-034 failed to load: {e}")

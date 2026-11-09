@@ -5,7 +5,7 @@ Shared image utilities for the inference services.
 - predownscale: antialiased shrink of very large photos before the classifier.
 - compute_leaf_mask: coarse leaf-blade mask (used to reject boxes on the
   background and to measure damage relative to the leaf, not the photo).
-- assess_quality: resolution / blur / exposure / leaf-coverage checks.
+- assess_quality: input resolution check (reject < 64px, warn < 224px).
 - tile_windows, merge_boxes: tiled YOLO inference helpers.
 - damage_percent: union of boxes over the leaf area.
 """
@@ -190,19 +190,15 @@ def compute_leaf_mask(img: Image.Image, work_max_side: int = 384) -> Optional[Le
 # ----------------------------------------------------------------------------
 # Quality gate
 # ----------------------------------------------------------------------------
-def assess_quality(img: Image.Image, leaf: Optional[LeafMask]) -> Dict[str, Any]:
-    """Returns {"reject": str|None, "warnings": [...], "metrics": {...}}."""
+def assess_quality(img: Image.Image) -> Dict[str, Any]:
+    """Input size check only: {"reject": str|None, "warnings": [...], "metrics": {...}}.
+
+    Blur / exposure / leaf-coverage are NOT checked here: the user is asked on
+    the upload panel to provide a sharp, well-lit, unobstructed photo.
+    """
     q = QUALITY
     w, h = img.size
     short = min(w, h)
-    small = predownscale(img, 512)
-    gray = np.asarray(small.convert("L"), dtype=np.float32)
-    lap_var = float(ndi.laplace(gray).var())
-    mean_int = float(gray.mean())
-    clip_hi = float((gray >= 250).mean())
-    clip_lo = float((gray <= 5).mean())
-    leaf_frac = leaf.fraction if leaf is not None else 0.0
-
     warnings: List[str] = []
     reject = None
     if short < q["min_side_reject"]:
@@ -215,31 +211,7 @@ def assess_quality(img: Image.Image, leaf: Optional[LeafMask]) -> Dict[str, Any]
             f"Độ phân giải thấp ({w}×{h}px): các đốm bệnh nhỏ có thể không được phát hiện. "
             f"Nên dùng ảnh có cạnh ngắn ≥ {q['min_side_warn']}px."
         )
-    if lap_var < q["blur_laplacian_var_warn"]:
-        warnings.append("Ảnh có thể bị mờ/rung: hãy lấy nét vào phiến lá rồi chụp lại.")
-    if mean_int < q["dark_mean_warn"] or clip_lo > q["clip_fraction_warn"]:
-        warnings.append("Ảnh quá tối hoặc có nhiều vùng tối mất chi tiết.")
-    if mean_int > q["bright_mean_warn"] or clip_hi > q["clip_fraction_warn"]:
-        warnings.append("Ảnh bị cháy sáng/lóa: tránh chụp ngược sáng hoặc nắng gắt trực tiếp.")
-    if leaf is None or leaf_frac < q["leaf_fraction_warn"]:
-        warnings.append(
-            "Không xác định rõ phiến lá trong khung hình hoặc lá chiếm diện tích quá nhỏ: "
-            "hãy chụp gần, để lá chiếm phần lớn khung hình."
-        )
-
-    return {
-        "reject": reject,
-        "warnings": warnings,
-        "metrics": {
-            "width": w,
-            "height": h,
-            "laplacian_var": round(lap_var, 1),
-            "mean_intensity": round(mean_int, 1),
-            "clip_high": round(clip_hi, 4),
-            "clip_low": round(clip_lo, 4),
-            "leaf_fraction": round(leaf_frac, 4),
-        },
-    }
+    return {"reject": reject, "warnings": warnings, "metrics": {"width": w, "height": h}}
 
 
 # ----------------------------------------------------------------------------

@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnTrayRemove = document.getElementById('btn-tray-remove');
   const btnPredict = document.getElementById('btn-predict');
   const btnClearSelection = document.getElementById('btn-clear-selection');
+  const uploadProgress = document.getElementById('upload-progress');
   const sampleButtons = document.querySelectorAll('.sample-item-btn');
 
   // Result Area
@@ -85,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const conclusionDiseaseName = document.getElementById('conclusion-disease-name');
   const conclusionLatin = document.getElementById('conclusion-latin');
   const conclusionAdvisoryText = document.getElementById('conclusion-advisory-text');
+  const nextActionText = document.getElementById('next-action-text');
   const diseaseIconBox = document.getElementById('disease-icon-box');
   const conclusionIcon = document.getElementById('conclusion-icon');
   const detectedDiseasesRow = document.getElementById('detected-diseases-row');
@@ -122,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let lastDiagnosisResult = null;
   let currentLesionFilter = 'all';
   let isBboxVisible = true;
+  const diagnoseView = views['view-diagnose'];
 
   // Lesion overlay state: boxes + server pixel frame, redrawn on every resize
   // isolatedId: when set, only that box is drawn (single-box view)
@@ -341,7 +344,8 @@ document.addEventListener('DOMContentLoaded', () => {
       isBboxVisible = !isBboxVisible;
       lesionSvgOverlay.style.display = isBboxVisible ? 'block' : 'none';
       btnToggleBbox.classList.toggle('active', isBboxVisible);
-      showToast(isBboxVisible ? 'Đã bật hiển thị khung khoanh vùng AI' : 'Đã ẩn khung khoanh vùng AI', 'info');
+      btnToggleBbox.setAttribute('aria-pressed', String(isBboxVisible));
+      document.getElementById('bbox-toggle-label').textContent = isBboxVisible ? 'Ẩn khung' : 'Hiện khung';
     });
   }
 
@@ -379,6 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   btnReuploadTrigger.addEventListener('click', () => {
+    fileInput.value = '';
     fileInput.click();
   });
 
@@ -435,6 +440,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function setFile(file) {
     currentFile = file;
+    diagnoseView.classList.remove('has-result');
+    diagnoseView.classList.add('has-selection');
+    activeResultView.classList.add('hidden');
+    emptyStateView.classList.remove('hidden');
 
     if (currentPreviewUrl && currentPreviewUrl.startsWith('blob:')) {
       URL.revokeObjectURL(currentPreviewUrl);
@@ -451,6 +460,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function resetFileSelection() {
     currentFile = null;
+    diagnoseView.classList.remove('has-selection');
     fileInput.value = '';
     if (currentPreviewUrl && currentPreviewUrl.startsWith('blob:')) {
       URL.revokeObjectURL(currentPreviewUrl);
@@ -467,6 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btnClearSelection.addEventListener('click', () => {
     resetFileSelection();
+    diagnoseView.classList.remove('has-result');
     emptyStateView.classList.remove('hidden');
     activeResultView.classList.add('hidden');
     setStatus('Chờ tải ảnh');
@@ -551,10 +562,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function setAnalyzingState(isAnalyzing) {
     if (isAnalyzing) {
       analyzingOverlay.classList.remove('hidden');
+      uploadProgress.classList.remove('hidden');
       btnPredict.disabled = true;
       setStatus('Đang phân tích...');
     } else {
       analyzingOverlay.classList.add('hidden');
+      uploadProgress.classList.add('hidden');
       btnPredict.disabled = currentFile === null;
     }
   }
@@ -571,6 +584,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     emptyStateView.classList.add('hidden');
     activeResultView.classList.remove('hidden');
+    diagnoseView.classList.add('has-result');
+    diagnoseView.classList.remove('has-selection');
+    document.querySelectorAll('#active-result-view details').forEach(details => { details.open = false; });
     setStatus('Đã chuẩn đoán');
 
     // 1. Image Preview & Dimensions
@@ -600,17 +616,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 2b. Only a critical engine warning (fallback model in use) is shown;
-    //     input-quality notes are no longer displayed.
+    //     the only input-quality note left is the image-size warning.
     renderInputWarnings(result);
 
     // 3. Render Lesion Filter Toolbar
     renderFilterChips(result.diseases_detected || [], result.total_lesion_boxes || 0, result.boxes || []);
+    const hasBoxes = (result.boxes || []).length > 0;
+    document.getElementById('image-preview-title').textContent = hasBoxes ? 'Vùng nghi bệnh trên lá' : 'Ảnh lá đã kiểm tra';
+    btnToggleBbox.classList.toggle('hidden', !hasBoxes);
+    if (result.conclusion.ood_rejected) {
+      document.getElementById('lesion-summary-line').textContent = 'Ảnh không phù hợp để khoanh vùng bệnh lá điều.';
+    }
 
     // 4. Primary Conclusion & Multi-Disease Mode
     const conclusion = result.conclusion;
     const conclusionCard = document.getElementById('conclusion-card');
-    conclusionDiseaseName.textContent = conclusion.label_vn;
-    conclusionLatin.textContent = conclusion.scientific_name || '';
+    conclusionDiseaseName.textContent = conclusion.label === 'not_cashew_leaf' ? 'Ảnh không phải lá điều' : conclusion.label_vn;
+    conclusionLatin.textContent = conclusion.scientific_name ? `Tên khoa học: ${conclusion.scientific_name}` : '';
+    conclusionLatin.classList.toggle('hidden', !conclusion.scientific_name);
+
+    const actions = (result.treatment_plan && result.treatment_plan.urgent_actions) || [];
+    const suggestedAction = conclusion.ood_rejected
+      ? 'Hãy chọn ảnh lá điều rõ hơn để nhận diện lại. Ảnh này không phù hợp để kết luận bệnh.'
+      : conclusion.abstain
+        ? 'Chụp lại ảnh rõ hơn hoặc hỏi cán bộ chuyên môn trước khi xử lý. Chưa phun thuốc diện rộng.'
+        : conclusion.label === 'healthy'
+          ? 'Tiếp tục theo dõi lá và kiểm tra vườn định kỳ.'
+          : actions[0] || 'Kiểm tra lại các vùng được đánh dấu trên lá và theo dõi diễn biến.';
+    const uncertain = !conclusion.ood_rejected && !conclusion.abstain && conclusion.label !== 'healthy'
+      && conclusion.confidence_percent != null && conclusion.confidence_percent < 70;
+    nextActionText.textContent = uncertain
+      ? `Kết quả còn chưa chắc chắn; hãy đối chiếu vết trên lá. ${suggestedAction}`
+      : suggestedAction;
 
     // Populate Indicator 1: Whole-Leaf Confidence
     const globalConfEl = document.getElementById('global-conf-score');
@@ -618,11 +655,31 @@ document.addEventListener('DOMContentLoaded', () => {
       globalConfEl.textContent = (conclusion.confidence_percent === null || conclusion.confidence_percent === undefined)
         ? '—'
         : `${conclusion.confidence_percent}%`;
+      globalConfEl.parentElement.classList.toggle('hidden', conclusion.ood_rejected || conclusion.abstain || conclusion.confidence_percent == null);
+    }
+
+    const ind1Title = document.getElementById('indicator1-title');
+    const ind1Note = document.getElementById('indicator1-note');
+    const confSub = document.getElementById('global-conf-sub');
+    if (conclusion.ood_rejected) {
+      if (ind1Title) ind1Title.textContent = 'Chưa thể nhận diện';
+      if (confSub) confSub.textContent = 'Không áp dụng';
+      if (ind1Note) ind1Note.textContent = 'DenseNet121 xác định ảnh không phải lá điều nên YOLO không được chạy.';
+    } else if (conclusion.confidence_source === 'box') {
+      if (ind1Title) ind1Title.textContent = conclusion.is_multi_disease ? 'Phát hiện nhiều bệnh' : 'Kết quả nhận diện';
+      if (confSub) confSub.textContent = 'Độ tin cậy vùng rõ nhất';
+      if (ind1Note) ind1Note.textContent = 'Bệnh được tổng hợp từ các vùng YOLO26s khoanh và DenseNet121 xác minh trên từng vùng cắt.';
+    } else {
+      if (ind1Title) ind1Title.textContent = conclusion.abstain ? 'Cần kiểm tra thêm' : 'Kết quả nhận diện';
+      if (confSub) confSub.textContent = 'Độ tin cậy toàn ảnh';
+      if (ind1Note) ind1Note.textContent = conclusion.label === 'healthy'
+        ? 'YOLO26s không còn vùng bệnh nào sau xác minh và DenseNet121 toàn lá xác nhận lá khỏe.'
+        : 'YOLO26s chưa khoanh được vùng bệnh nhưng DenseNet121 toàn lá nghi có bệnh — cần chuyên gia kiểm tra.';
     }
 
     if (conclusion.abstain) {
       if (conclusionCard) conclusionCard.classList.add('is-abstain');
-      conclusionModeTag.innerHTML = '<i class="fa-solid fa-user-doctor"></i> CẦN CHUYÊN GIA KIỂM TRA';
+      conclusionModeTag.innerHTML = '<i class="fa-solid fa-user-doctor"></i> Cần kiểm tra thêm';
       conclusionModeTag.className = 'badge-conclusion-tag abstain-mode';
 
       let top2Html = '';
@@ -639,24 +696,25 @@ document.addEventListener('DOMContentLoaded', () => {
           <strong>Phân vân giữa 2 khả năng:</strong> 1. ${name1} (${(t1[1] * 100).toFixed(1)}%) &bull; 2. ${name2} (${(t2[1] * 100).toFixed(1)}%)
         </div>`;
       }
-      conclusionAdvisoryText.innerHTML = (conclusion.symptoms || '') + top2Html;
+      conclusionAdvisoryText.textContent = conclusion.symptoms || '';
+      if (top2Html) conclusionAdvisoryText.insertAdjacentHTML('beforeend', top2Html);
     } else {
       if (conclusionCard) conclusionCard.classList.remove('is-abstain');
       conclusionAdvisoryText.textContent = conclusion.symptoms || '';
 
       if (conclusion.is_multi_disease) {
-        conclusionModeTag.innerHTML = '<i class="fa-solid fa-viruses"></i> ĐA BỆNH (MULTI-DISEASE)';
+        conclusionModeTag.innerHTML = '<i class="fa-solid fa-viruses"></i> Nhiều bệnh';
         conclusionModeTag.className = 'badge-conclusion-tag multi-mode';
       } else if (conclusion.label === 'healthy') {
-        conclusionModeTag.innerHTML = '<i class="fa-solid fa-shield-halved"></i> LÁ KHỎE MẠNH';
+        conclusionModeTag.innerHTML = '<i class="fa-solid fa-shield-halved"></i> Lá khỏe';
         conclusionModeTag.className = 'badge-conclusion-tag';
       } else if (conclusion.label === 'not_cashew_leaf') {
         conclusionModeTag.innerHTML = conclusion.ood_rejected
-          ? '<i class="fa-solid fa-ban"></i> TỪ CHỐI — ẢNH NGOẠI LAI'
-          : '<i class="fa-solid fa-triangle-exclamation"></i> NGOẠI LAI (CẢNH BÁO)';
+          ? '<i class="fa-solid fa-ban"></i> Ảnh không phù hợp'
+          : '<i class="fa-solid fa-triangle-exclamation"></i> Ảnh không phù hợp';
         conclusionModeTag.className = 'badge-conclusion-tag';
       } else {
-        conclusionModeTag.innerHTML = '<i class="fa-solid fa-check"></i> ĐƠN BỆNH (SINGLE)';
+        conclusionModeTag.innerHTML = '<i class="fa-solid fa-check"></i> Đã nhận diện';
         conclusionModeTag.className = 'badge-conclusion-tag';
       }
     }
@@ -664,10 +722,14 @@ document.addEventListener('DOMContentLoaded', () => {
     diseaseIconBox.style.color = conclusion.color_hex;
     diseaseIconBox.style.borderColor = conclusion.color_hex;
     conclusionIcon.className = `fa-solid ${conclusion.icon}`;
+    conclusionModeTag.classList.toggle('hidden', !conclusion.abstain && !conclusion.is_multi_disease && conclusion.label !== 'healthy' && conclusion.label !== 'not_cashew_leaf');
+    conclusionCard.classList.toggle('is-healthy', conclusion.label === 'healthy');
+    conclusionCard.classList.toggle('is-rejected', !!conclusion.ood_rejected);
 
     // 5. Render Detected Diseases Row
-    renderDetectedDiseasesRow(result.diseases_detected || []);
+    renderDetectedDiseasesRow(conclusion.is_multi_disease ? (result.diseases_detected || []) : []);
     renderVerificationSummary(result);
+    document.getElementById('lesion-breakdown-section').classList.toggle('hidden', !(result.boxes || []).length);
 
     // 6. Severity Assessment Meter
     const totalArea = conclusion.total_damage_area_percent || 0;
@@ -678,7 +740,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let sevBadgeClass = 'sev-low';
     let sevBarColor = '#15803d';
 
-    if (conclusion.abstain || sevLevel === 'abstain') {
+    if (conclusion.ood_rejected || sevLevel === 'none') {
+      sevBadgeText = 'Không áp dụng';
+      sevBadgeClass = 'sev-abstain';
+      sevBarColor = '#94a3b8';
+    } else if (conclusion.abstain || sevLevel === 'abstain') {
       sevBadgeText = 'Cần Thẩm Định';
       sevBadgeClass = 'sev-abstain';
       sevBarColor = '#eab308';
@@ -699,8 +765,16 @@ document.addEventListener('DOMContentLoaded', () => {
     severityBadgeTag.textContent = sevBadgeText;
     severityBadgeTag.className = `severity-badge-tag ${sevBadgeClass}`;
     const areaBasis = conclusion.damage_basis === 'image' ? 'diện tích ảnh' : 'diện tích lá';
-    severityStatText.textContent = `≤ ${totalArea}% ${areaBasis} (${totalBoxes} vùng khoanh, ước tính theo khung)`;
-    severityProgressFill.style.width = `${Math.min(100, Math.max(totalArea, 4))}%`;
+    if (conclusion.ood_rejected || sevLevel === 'none') {
+      severityStatText.textContent = 'Không đánh giá — ảnh bị từ chối ở Bước 1 (không phải lá điều)';
+    } else if (totalBoxes === 0) {
+      severityStatText.textContent = conclusion.label === 'healthy'
+        ? '0% — không có vùng bệnh nào được khoanh'
+        : 'Chưa khoanh được vùng bệnh nên chưa ước lượng được diện tích';
+    } else {
+      severityStatText.textContent = `≤ ${totalArea}% ${areaBasis} (${totalBoxes} vùng khoanh, ước tính theo khung)`;
+    }
+    severityProgressFill.style.width = totalBoxes === 0 ? '0%' : `${Math.min(100, Math.max(totalArea, 4))}%`;
     severityProgressFill.style.background = sevBarColor;
 
     // 7. Render Lesion Breakdown Table & Thumbnails
@@ -827,6 +901,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const tagH = 18 * k;
     const padX = 5 * k;
     const svgNS = 'http://www.w3.org/2000/svg';
+    const hasSeveralDiseases = new Set(boxes.map(box => box.cls)).size > 1;
 
     boxes.forEach(box => {
       const [x1, y1, x2, y2] = box.xyxy;
@@ -848,14 +923,14 @@ document.addEventListener('DOMContentLoaded', () => {
       rect.setAttribute('stroke', box.color_hex);
       rect.setAttribute('fill', box.color_hex);
 
-      // Label Tag Text: Show Spot ID, Disease Name, and Prediction Confidence %
+      // Keep labels short on the photo; scores and model details live below.
       const text = document.createElementNS(svgNS, 'text');
       text.setAttribute('class', 'lesion-tag-text');
       text.setAttribute('font-size', fontSize);
-      const differ = box.verify && box.verify.status === 'differ';
-      text.textContent = (box.conf_percent === null || box.conf_percent === undefined)
-        ? `#${box.id} ${box.label_vn}`
-        : `#${box.id} ${box.label_vn} ${box.conf_percent}%${differ ? ' ≠YOLO' : ''}`;
+      const disease = (lastDiagnosisResult.diseases_detected || []).find(item => item.class_key === box.cls);
+      text.textContent = hasSeveralDiseases
+        ? `#${box.id} ${disease?.short_name || disease?.label_vn || box.label_vn}`
+        : `#${box.id}`;
 
       const tagBg = document.createElementNS(svgNS, 'rect');
       tagBg.setAttribute('class', 'lesion-tag-bg');
@@ -883,6 +958,10 @@ document.addEventListener('DOMContentLoaded', () => {
       tagBg.setAttribute('width', tagW);
       text.setAttribute('x', tagX + padX);
       text.setAttribute('y', tagY + tagH / 2);
+
+      const showTag = boxes.length <= 12 || overlayState.focusedId === box.id;
+      tagBg.style.display = showTag ? '' : 'none';
+      text.style.display = showTag ? '' : 'none';
 
       if (overlayState.focusedId === box.id) g.classList.add('is-focused');
 
@@ -930,9 +1009,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (summary) {
       summary.innerHTML = boxes.length === 0
         ? '<i class="fa-solid fa-circle-info"></i> Không có vùng bệnh nào được khoanh trên ảnh này.'
-        : `<i class="fa-solid fa-viruses"></i> Phát hiện <strong>${groups.length} loại bệnh</strong> · <strong>${boxes.length} vùng</strong>
-           <span class="vs-ref">— chọn một bệnh để lọc, bấm vào một khung hoặc thẻ để chỉ xem vùng đó</span>`;
+        : `<i class="fa-solid fa-crosshairs"></i> <strong>${boxes.length} vùng nghi bệnh</strong> được đánh dấu trên ảnh.`;
     }
+    lesionFilterToolbar.classList.toggle('has-class-filters', groups.length > 1);
 
     groups.forEach(g => {
       const chip = document.createElement('button');
@@ -1009,6 +1088,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fromCard && previewWrapper) {
       previewWrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     } else if (lesionGridTable) {
+      document.getElementById('lesion-breakdown-section').open = true;
       const card = lesionGridTable.querySelector(`.lesion-card[data-box-id="${boxId}"]`);
       if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
@@ -1043,13 +1123,21 @@ document.addEventListener('DOMContentLoaded', () => {
       box.id = 'input-warning-box';
       box.className = 'input-warning-box';
     }
-    // Keep the warning INSIDE the conclusion card: inserting it as a sibling
-    // made it a cell of the 2-column .diagnosis-top-grid and pushed the
-    // conclusion card into the narrow column of the next row.
-    if (box.parentNode !== card) card.insertBefore(box, card.firstChild);
+    // Keep warnings beside the action, without displacing the main answer.
+    const signs = document.getElementById('signs-details');
+    if (box.parentNode !== card) card.insertBefore(box, signs);
     const items = [];
     const engineWarning = result.model_meta && result.model_meta.engine_warning;
     if (engineWarning) items.push({ icon: 'fa-server', text: engineWarning, strong: true });
+    const sizeWarnings = (result.quality && result.quality.warnings) || [];
+    if (sizeWarnings.length) items.push({ icon: 'fa-camera', text: 'Ảnh khá nhỏ, có thể bỏ sót vết bệnh. Hãy chụp cận cảnh rõ hơn nếu cần.', strong: false });
+    const gateWarning = result.ood_gate && result.ood_gate.warning;
+    const technicalGateWarning = document.getElementById('technical-gate-warning');
+    technicalGateWarning.textContent = gateWarning || '';
+    technicalGateWarning.classList.toggle('hidden', !gateWarning);
+    if (gateWarning && !result.conclusion.ood_rejected) {
+      items.push({ icon: 'fa-image', text: 'Ảnh khác với ảnh thường gặp; hãy kiểm tra lại kết quả hoặc chụp ảnh khác.', strong: false });
+    }
     if (items.length === 0) {
       box.classList.add('hidden');
       box.innerHTML = '';
@@ -1057,20 +1145,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     box.classList.remove('hidden');
     box.innerHTML = `
-      <div class="input-warning-title"><i class="fa-solid fa-triangle-exclamation"></i> Cảnh báo hệ thống</div>
+      <div class="input-warning-title"><i class="fa-solid fa-triangle-exclamation"></i> ${engineWarning ? 'Cảnh báo hệ thống' : 'Lưu ý về kết quả'}</div>
       <ul>${items.map(i => `<li class="${i.strong ? 'is-strong' : ''}"><i class="fa-solid ${i.icon}"></i> ${escapeHtml(i.text)}</li>`).join('')}</ul>
     `;
   }
 
   function renderVerificationSummary(result) {
-    if (!detectedDiseasesRow || !detectedDiseasesRow.parentNode) return;
     let box = document.getElementById('verification-summary-box');
-    if (!box) {
-      box = document.createElement('div');
-      box.id = 'verification-summary-box';
-      box.className = 'verification-summary-box';
-      detectedDiseasesRow.parentNode.insertBefore(box, detectedDiseasesRow.nextSibling);
-    }
+    if (!box) return;
     const dec = result.decision;
     const loc = result.localization || {};
     const v = loc.verification || {};
@@ -1081,14 +1163,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (dec.final_source === 'ood_gate' && gate) {
       const fmt = (v, d) => (v === null || v === undefined) ? '—' : Number(v).toFixed(d);
       box.innerHTML = `
-        <div class="vs-title"><i class="fa-solid fa-ban"></i> Bước 0 — Cổng kiểm tra ngoại lai: ẢNH BỊ TỪ CHỐI</div>
+        <div class="vs-title"><i class="fa-solid fa-ban"></i> Bước 1 — Kiểm tra lá điều (DenseNet121 toàn ảnh): ẢNH BỊ TỪ CHỐI</div>
         <ul class="vs-reasons">${gate.reasons.map(r => `<li>${escapeHtml(r)}</li>`).join('')}</ul>
         <div class="vs-chips">
           <span class="vs-chip muted">P(không phải lá điều) ${(gate.p_not_cashew * 100).toFixed(1)}%</span>
           <span class="vs-chip muted">kNN ${fmt(gate.knn_distance, 3)} / vùng nghi ngờ ${fmt(gate.knn_threshold, 3)}–${fmt(gate.knn_threshold_high, 3)}</span>
           <span class="vs-chip muted">Energy ${fmt(gate.energy, 2)}${gate.energy_used ? ` / ngưỡng ${fmt(gate.energy_threshold, 2)}` : ' (tham khảo)'}</span>
         </div>
-        <div class="vs-row"><i class="fa-solid fa-lock"></i> Luật cứng: YOLO không được chạy, không khoanh vùng và không chẩn đoán bệnh.</div>`;
+        <div class="vs-row"><i class="fa-solid fa-lock"></i> Ảnh không phải lá điều: YOLO không được chạy, không khoanh vùng và không chẩn đoán bệnh.</div>`;
       return;
     }
 
@@ -1096,53 +1178,58 @@ document.addEventListener('DOMContentLoaded', () => {
       const it = (result.probabilities_desc || []).find(p => p.class_key === key);
       return it ? (it.short_name || it.label_vn) : key;
     };
-    const finalSrc = dec.final_source === 'densenet' ? 'DenseNet121 ×5 (toàn lá)' : 'Stacker F3';
-    const other = dec.final_source === 'densenet'
-      ? `Stacker F3: ${name(dec.stacker_label)} ${(dec.stacker_conf * 100).toFixed(1)}%`
-      : `DenseNet: ${name(dec.densenet_label)} ${(dec.densenet_conf * 100).toFixed(1)}%`;
-
-    let verifyLine = '';
-    if (v.proposed !== undefined && v.agree !== undefined) {
-      verifyLine = `
-        <div class="vs-row"><i class="fa-solid fa-crosshairs"></i> YOLO đề xuất <strong>${v.proposed}</strong> vùng
-          → DenseNet xác minh qua <strong>${loc.verify_crops || 0}</strong> vùng cắt:</div>
-        <div class="vs-chips">
-          <span class="vs-chip ok"><i class="fa-solid fa-check"></i> Khớp ${v.agree}</span>
-          <span class="vs-chip warn"><i class="fa-solid fa-not-equal"></i> Khác nhãn ${v.differ}</span>
-          <span class="vs-chip muted"><i class="fa-solid fa-leaf"></i> DenseNet bác bỏ (lá khỏe) ${v.rejected_healthy}</span>
-          <span class="vs-chip muted"><i class="fa-solid fa-eye-slash"></i> Ẩn (bệnh khác chưa đủ bằng chứng) ${v.hidden_other_disease}</span>
-          ${v.unverified ? `<span class="vs-chip muted">Chưa xác minh ${v.unverified}</span>` : ''}
-        </div>`;
-    } else if (v.proposed !== undefined) {
-      verifyLine = `<div class="vs-row"><i class="fa-solid fa-crosshairs"></i> YOLO đề xuất ${v.proposed} vùng; DenseNet toàn lá kết luận không bệnh nên không khoanh.</div>`;
-    }
+    const fmt3 = x => (x === null || x === undefined) ? '—' : Number(x).toFixed(3);
 
     let gateLine = '';
     if (gate && !gate.calibrated) {
-      gateLine = `<div class="vs-row"><i class="fa-solid fa-shield-halved"></i> Bước 0 — Cổng ngoại lai: <strong>đạt</strong>
+      gateLine = `<div class="vs-row"><i class="fa-solid fa-shield-halved"></i> Bước 1 — Kiểm tra lá điều: <strong>đạt</strong>
         <span class="vs-ref is-conflict">(chưa hiệu chỉnh kNN — chỉ dùng lớp not_cashew_leaf)</span></div>`;
     } else if (gate && gate.zone === 'band') {
-      const top = gate.band_rule ? (gate.band_rule.top_cashew * 100).toFixed(1) : '—';
-      gateLine = `<div class="vs-row"><i class="fa-solid fa-shield-halved"></i> Bước 0 — Cổng ngoại lai:
-        <strong class="vs-ref is-conflict">qua cổng có điều kiện</strong>
-        (kNN ${Number(gate.knn_distance).toFixed(3)} trong vùng nghi ngờ ${Number(gate.knn_threshold).toFixed(3)}–${Number(gate.knn_threshold_high).toFixed(3)};
-        được chấp nhận vì DenseNet chắc là lá điều: ${top}%, P(không phải lá điều) ${(gate.p_not_cashew * 100).toFixed(1)}%). Nên kiểm tra lại bằng ảnh rõ hơn.</div>`;
+      gateLine = `<div class="vs-row"><i class="fa-solid fa-shield-halved"></i> Bước 1 — Kiểm tra lá điều:
+        <strong class="vs-ref is-conflict">đạt, kèm cảnh báo</strong>
+        (kNN ${fmt3(gate.knn_distance)} trong vùng nghi ngờ ${fmt3(gate.knn_threshold)}–${fmt3(gate.knn_threshold_high)}:
+        ảnh khác ảnh huấn luyện, kết quả có thể kém tin cậy).</div>`;
     } else if (gate) {
-      gateLine = `<div class="vs-row"><i class="fa-solid fa-shield-halved"></i> Bước 0 — Cổng ngoại lai: <strong>đạt</strong>
-        (kNN ${Number(gate.knn_distance).toFixed(3)} ≤ ${Number(gate.knn_threshold).toFixed(3)}; Energy ${Number(gate.energy).toFixed(2)} — chỉ tham khảo)</div>`;
+      gateLine = `<div class="vs-row"><i class="fa-solid fa-shield-halved"></i> Bước 1 — Kiểm tra lá điều: <strong>đạt</strong>
+        (P(không phải lá điều) ${(gate.p_not_cashew * 100).toFixed(1)}%; kNN ${fmt3(gate.knn_distance)} ≤ ${fmt3(gate.knn_threshold)})</div>`;
     }
+
+    let verifyLine = '';
+    if (v.proposed !== undefined) {
+      verifyLine = `
+        <div class="vs-row"><i class="fa-solid fa-crosshairs"></i> Bước 2 — YOLO26s khoanh <strong>${v.proposed}</strong> vùng
+          → Bước 3 — DenseNet121 xác minh <strong>${loc.verify_crops || 0}</strong> vùng cắt:</div>
+        <div class="vs-chips">
+          <span class="vs-chip ok"><i class="fa-solid fa-check"></i> Khớp nhãn YOLO ${v.agree || 0}</span>
+          <span class="vs-chip warn"><i class="fa-solid fa-pen"></i> DenseNet sửa nhãn ${v.switched || 0}</span>
+          <span class="vs-chip muted"><i class="fa-solid fa-not-equal"></i> Khác nhưng giữ nhãn YOLO ${v.kept_yolo || 0}</span>
+          <span class="vs-chip muted"><i class="fa-solid fa-leaf"></i> Bác bỏ (mô lá khỏe) ${v.rejected_healthy || 0}</span>
+          ${v.unverified ? `<span class="vs-chip muted">Chưa xác minh (ngoài ${loc.verify_crops || 0} vùng đầu) ${v.unverified}</span>` : ''}
+        </div>`;
+    }
+
+    const counts = dec.box_counts || {};
+    const present = (dec.diseases_present || []).map(c => `${escapeHtml(name(c))} (${counts[c] || 0} vùng)`);
+    const resultLine = dec.final_source === 'boxes'
+      ? `Bước 4 — Kết quả: <strong>${present.join(', ')}</strong>`
+      : `Bước 4 — Kết quả: <strong>không còn vùng bệnh</strong> → dùng DenseNet121 toàn lá: ${escapeHtml(name(dec.densenet_label))} ${(dec.densenet_conf * 100).toFixed(1)}%`;
+    const ref = dec.stacker_label
+      ? `<span class="vs-ref">(tham khảo — DenseNet toàn lá: ${escapeHtml(name(dec.densenet_label))} ${(dec.densenet_conf * 100).toFixed(1)}%;
+         Stacker F3: ${escapeHtml(name(dec.stacker_label))} ${(dec.stacker_conf * 100).toFixed(1)}%)</span>`
+      : '';
+
     box.innerHTML = `
-      <div class="vs-title"><i class="fa-solid fa-diagram-project"></i> Quy trình: Cổng ngoại lai → YOLO khoanh vùng → DenseNet xác minh &amp; kết luận</div>
+      <div class="vs-title"><i class="fa-solid fa-diagram-project"></i> Quy trình: Kiểm tra lá điều → YOLO khoanh vùng → Cắt vùng → DenseNet xác minh từng vùng</div>
       ${gateLine}
-      <div class="vs-row"><i class="fa-solid fa-brain"></i> Kết luận cuối: <strong>${finalSrc}</strong>
-        <span class="vs-ref ${dec.agree ? '' : 'is-conflict'}">(đối chiếu ${escapeHtml(other)}${dec.agree ? ' — trùng' : ' — KHÁC'})</span></div>
       ${verifyLine}
+      <div class="vs-row"><i class="fa-solid fa-flag-checkered"></i> ${resultLine} ${ref}</div>
     `;
   }
 
   function renderDetectedDiseasesRow(diseasesDetected) {
     if (!detectedDiseasesRow) return;
     detectedDiseasesRow.innerHTML = '';
+    detectedDiseasesRow.classList.toggle('hidden', !diseasesDetected || diseasesDetected.length < 2);
 
     if (!diseasesDetected || diseasesDetected.length === 0) return;
 
@@ -1157,12 +1244,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function renderVerifyRow(box) {
+    const vf = box.verify;
+    const yolo = `<span title="Nhãn YOLO26s cho khung này"><i class="fa-solid fa-crosshairs"></i> YOLO: <strong>${vf.yolo_label_vn} ${vf.yolo_conf_percent}%</strong></span>`;
+    if (vf.status === 'unverified') {
+      return `<div class="lesion-verify-row is-unverified">${yolo}
+        <span class="verify-badge" title="Ngoài số vùng cắt tối đa được DenseNet xác minh, giữ nhãn YOLO"><i class="fa-solid fa-circle-question"></i> Chưa xác minh</span></div>`;
+    }
+    const dense = `<span title="DenseNet121 phân loại vùng cắt quanh khung (xác suất thô)"><i class="fa-solid fa-brain"></i> DenseNet: <strong>${vf.dense_label_vn || '—'} ${vf.dense_conf_percent}%</strong></span>`;
+    const badge = {
+      agree: ['is-agree', '<i class="fa-solid fa-check"></i> Khớp'],
+      switched: ['is-differ', '<i class="fa-solid fa-pen"></i> DenseNet sửa nhãn'],
+      kept_yolo: ['is-differ', '<i class="fa-solid fa-not-equal"></i> Khác — giữ nhãn YOLO'],
+    }[vf.status] || ['is-unverified', vf.status];
+    return `<div class="lesion-verify-row ${badge[0]}">${yolo}${dense}<span class="verify-badge">${badge[1]}</span></div>`;
+  }
+
   function renderLesionBreakdown(boxes) {
     if (!lesionGridTable) return;
     lesionGridTable.innerHTML = '';
 
     if (lesionTotalBadge) {
-      lesionTotalBadge.textContent = `${boxes.length} vùng bệnh`;
+      lesionTotalBadge.textContent = `${boxes.length} vùng`;
     }
 
     if (!boxes || boxes.length === 0) {
@@ -1195,22 +1298,11 @@ document.addEventListener('DOMContentLoaded', () => {
             <span>&bull;</span>
             <span>Chiếm: <strong>${box.area_percent}% ảnh</strong></span>
           </div>
-          ${box.verify ? (box.verify.status === 'unverified' ? `
-          <div class="lesion-verify-row is-unverified">
-            <span title="Nhãn YOLO đề xuất cho khung này"><i class="fa-solid fa-crosshairs"></i> YOLO: <strong>${box.verify.yolo_label_vn} ${box.verify.yolo_conf_percent}%</strong></span>
-            <span class="verify-badge" title="DenseNet không đọc được vùng cắt (xác suất 3 bệnh < 50%), giữ nhãn YOLO"><i class="fa-solid fa-circle-question"></i> Chưa xác minh</span>
-          </div>` : `
-          <div class="lesion-verify-row ${box.verify.status === 'agree' ? 'is-agree' : 'is-differ'}">
-            <span title="DenseNet phân loại vùng cắt quanh khung (xác suất thô)"><i class="fa-solid fa-brain"></i> DenseNet: <strong>${box.label_vn} ${box.verify.dense_conf_percent}%</strong></span>
-            <span title="Nhãn YOLO đề xuất cho khung này"><i class="fa-solid fa-crosshairs"></i> YOLO: ${box.verify.yolo_label_vn} ${box.verify.yolo_conf_percent}%</span>
-            <span class="verify-badge">${box.verify.status === 'agree' ? '<i class="fa-solid fa-check"></i> Khớp' : '<i class="fa-solid fa-not-equal"></i> Khác nhãn'}</span>
-          </div>`) : ''}
+          ${box.verify ? renderVerifyRow(box) : ''}
           <div class="lesion-card-bottom">
             ${(box.conf_percent === null || box.conf_percent === undefined)
               ? `<span class="lesion-conf-score" title="Vùng tìm theo màu sắc, không có điểm tin cậy của mô hình"><i class="fa-solid fa-circle-question"></i> Vùng nghi ngờ (chưa chấm điểm)</span>`
-              : box.verify
-                ? `<span class="lesion-conf-score"><i class="fa-solid fa-layer-group"></i> Vùng cắt #${(box.verify.crop_id ?? 0) + 1}</span>`
-                : `<span class="lesion-conf-score"><i class="fa-solid fa-bullseye"></i> Điểm: <strong>${box.conf_percent}%</strong></span>`}
+              : `<span class="lesion-conf-score"><i class="fa-solid fa-bullseye"></i> Độ tin cậy: <strong>${box.conf_percent}%</strong></span>`}
             <button type="button" class="btn-locate-lesion" title="Chỉ hiện vùng này trên ảnh (bấm lại để hiện tất cả)">
               <i class="fa-solid fa-crosshairs"></i> Chỉ xem vùng này
             </button>

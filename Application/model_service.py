@@ -650,7 +650,7 @@ class DenseNet121Service:
         image, orig_format = load_image(image_bytes)
         orig_w, orig_h = image.size
         leaf = compute_leaf_mask(image)
-        quality = assess_quality(image, leaf)
+        quality = assess_quality(image)
         if quality["reject"]:
             raise ValueError(quality["reject"])
 

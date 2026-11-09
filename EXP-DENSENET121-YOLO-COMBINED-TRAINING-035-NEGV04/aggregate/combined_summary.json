@@ -1,0 +1,36 @@
+{
+  "abstain_threshold": 0.4262051578949093,
+  "box_conf": 0.25,
+  "detector": "EXP-Y26S-NEG-V04-001",
+  "experiment_id": "EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04",
+  "holdout_accuracy": 0.9444444444444444,
+  "holdout_n": 126,
+  "holdout_wilson_95": [
+    0.8897591867429664,
+    0.9728312448294558
+  ],
+  "model": "DenseNet121 + YOLO26s",
+  "seed_models_source": "EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04",
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "selected_C": 1.0,
+  "source_hashes": {
+    "detector_weights": "f9dc3fba1347b3213819f61abddb36b07e455112d4e6e8d57eeeeca8ab1b7f4a",
+    "split13": "e1647b72e10af04275dc760545f4ef17c9f44343ae119495b89ba1e3cd954e04",
+    "yolo_dataset": "4dca7b48a07fb971ef7f4e7c3b8cbe5b67f17bc411a7d43c060cece2e9e5798b"
+  },
+  "status": "real run",
+  "temperature": 0.9317085223347958,
+  "test_accuracy": 0.9708029197080292,
+  "test_minus_holdout": 0.026358475263584813,
+  "test_wilson_95": [
+    0.9553336174165086,
+    0.9810211732843817
+  ],
+  "yolo_dataset": "CASHEW_YOLO_MASTER_FINAL_NEG_V04.zip"
+}

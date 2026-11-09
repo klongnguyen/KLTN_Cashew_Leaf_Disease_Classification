@@ -1,12 +1,13 @@
 """
 Shared result builder for both inference engines.
 
-Rules (P0):
-- The diagnosis label and its confidence ALWAYS come from the classifier
-  (EXP-034 stacker or legacy DenseNet). Boxes never override them.
-- A box's confidence is the detector's own score; heuristic regions carry no
-  score (conf = None) and are shown as "suspected region".
-- A second disease is reported only with strong detector evidence.
+Rules:
+- EXP-034 (thesis Fig. 3.15): the diseases come from the verified lesion
+  boxes (YOLO26s + DenseNet121 crop verification); "primary" is the disease
+  with the most boxes, the others are reported as co-occurring diseases.
+- Legacy engine: the label comes from the whole-image classifier; boxes never
+  override it and a second disease needs strong detector evidence.
+- Heuristic regions carry no score (conf = None), shown as "suspected region".
 """
 import base64
 import io
@@ -141,8 +142,10 @@ def format_boxes(image: Image.Image, raw: List[Dict[str, Any]]) -> List[Dict[str
         verify = b.get("verify")
         if verify is not None:
             yinfo = DISEASE_INFO.get(verify["yolo_cls"], {})
+            dcls = verify.get("dense_cls")
             verify = {
                 **verify,
+                "dense_label_vn": DISEASE_INFO.get(dcls, {}).get("short_name", dcls) if dcls else None,
                 "yolo_label_vn": yinfo.get("short_name", verify["yolo_cls"]),
                 "yolo_conf_percent": round(verify["yolo_conf"] * 100, 1),
                 "dense_conf_percent": round(verify["dense_conf"] * 100, 1),
@@ -367,10 +370,10 @@ def build_report(
             "badge_color": "danger",
             "icon": "fa-viruses",
             "symptoms": (
-                f"Bệnh chính theo DenseNet (toàn lá): {info.get('vn_name', primary)} ({conf_pct}%). "
-                f"DenseNet xác minh trên các vùng YOLO đề xuất còn ghi nhận dấu hiệu rõ của: "
-                + ", ".join(d["label_vn"] for d in diseases[1:])
-                + f". Tổng {n_boxes} vùng được khoanh."
+                f"Phát hiện {len(diseases)} bệnh trên cùng lá. Bệnh chiếm nhiều vùng nhất: "
+                f"{info.get('vn_name', primary)} ({diseases[0]['box_count']} vùng). Bệnh kèm theo: "
+                + ", ".join(f"{d['label_vn']} ({d['box_count']} vùng)" for d in diseases[1:])
+                + f". Tổng {n_boxes} vùng được YOLO khoanh và DenseNet xác minh."
             ),
         }
         protocol = MULTI_DISEASE_PROTOCOLS.get(tuple(sorted(d["class_key"] for d in diseases))) or {

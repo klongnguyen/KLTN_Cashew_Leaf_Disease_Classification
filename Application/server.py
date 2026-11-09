@@ -79,13 +79,6 @@ async def get_samples():
             "description": "Lá điều có các đốm tròn màu đỏ gạch/cam rỉ sắt gồ trên mặt lá."
         },
         {
-            "id": "multi01.png",
-            "title": "Lá Điều — Đa Bệnh (Thán Thư & Rỉ Đỏ)",
-            "class_hint": "multi_disease",
-            "url": "/static/samples/multi01.png",
-            "description": "Lá điều xuất hiện đồng thời vết cháy mép Thán thư và các đốm nhung Rỉ đỏ."
-        },
-        {
             "id": "healthy01.png",
             "title": "Lá Điều — Khỏe Mạnh",
             "class_hint": "healthy",

@@ -1,0 +1,3 @@
+split,missed_disease,wrong_disease_type,false_alarm
+test,1,14,5
+holdout,1,4,2

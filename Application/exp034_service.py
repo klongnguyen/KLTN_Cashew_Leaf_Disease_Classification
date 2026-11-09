@@ -7,6 +7,7 @@ Model Architecture: DenseNet121 Ensemble (5 Seeds: 42, 123, 2026, 3407, 7777)
                    + Abstention Threshold (tau=0.5042)
 """
 import json
+from collections import Counter
 import time
 import hashlib
 import logging
@@ -23,11 +24,12 @@ from ultralytics import YOLO
 
 from config import (
     EXP034_BUNDLE_DIR,
+    EXP034_ID,
+    EXP_VERSION,
     EXP034_MODEL_NAME,
     EXP034_METRICS,
     EXP034_VERIFY_SHA256,
     DISEASE_INFO,
-    ABSTAIN_MIN_MARGIN,
     BOX_CONF_PER_CLASS,
     CLASSIFIER_PREDOWNSCALE_MAX_SIDE,
     LEAF_MASK_FILTER,
@@ -40,28 +42,27 @@ from config import (
     TILE_SOURCE_MAX_SIDE,
     YOLO_TILED_DISPLAY,
     FINAL_DECISION,
-    DENSENET_ABSTAIN_THRESHOLD,
+    DISEASE_MIN_BOXES,
+    LABEL_SWITCH_MIN_CONF,
     VERIFY_CROP_CONTEXT,
     VERIFY_CROP_MIN_PX,
     VERIFY_HEALTHY_REJECT,
     VERIFY_MAX_CROPS,
-    VERIFY_MIN_DISEASE_MASS,
-    SECONDARY_CROP_MIN_CONF,
     OOD_GATE_ENABLED,
     OOD_REFERENCE_PATH,
     OOD_CALIBRATION_PATH,
     OOD_KNN_K,
     OOD_BANK_SEED,
     OOD_USE_ENERGY,
+    OOD_BAND_ACTION,
+    OOD_KNN_HARD_THRESHOLD,
     OOD_BAND_MAX_P_NOT_CASHEW,
     OOD_BAND_MIN_TOP_CASHEW,
 )
 from diagnosis_report import (
-    abstain_decision,
     build_report,
     format_boxes,
     probabilities_list,
-    select_verified_boxes,
 )
 from image_utils import (
     assess_quality,
@@ -166,12 +167,12 @@ class EXP034Service:
                     raise ValueError(
                         f"SHA256 mismatch for {rel_path}!\nExpected: {expected_sha}\nActual:   {actual_sha}"
                     )
-        logger.info("All EXP-034 bundle artifacts verified successfully with exact SHA-256 match!")
+        logger.info(f"All {EXP034_ID} bundle artifacts verified successfully with exact SHA-256 match!")
 
     def _initialize(self):
         self.bundle_dir = Path(EXP034_BUNDLE_DIR)
         if not self.bundle_dir.exists():
-            raise FileNotFoundError(f"EXP-034 bundle directory not found at: {self.bundle_dir}")
+            raise FileNotFoundError(f"{EXP034_ID} bundle directory not found at: {self.bundle_dir}")
 
         if EXP034_VERIFY_SHA256:
             self._verify_bundle_integrity()
@@ -223,13 +224,13 @@ class EXP034Service:
         self._load_ood_reference()
 
         # Warm up ensemble and detector
-        logger.info("Warming up EXP-034 ensemble & detector...")
+        logger.info(f"Warming up {EXP034_ID} ensemble & detector...")
         for size in self.BATCH_BUCKETS:
             self._forward(np.zeros((size, 256, 256, 3), dtype=np.float32))
         dummy_pil = Image.fromarray(np.zeros((640, 640, 3), dtype=np.uint8))
         _ = self.detector.predict(dummy_pil, conf=0.05, iou=0.7, imgsz=640, verbose=False)
 
-        logger.info("EXP-034 Combined Pipeline successfully initialized and warmed up!")
+        logger.info(f"{EXP034_ID} combined pipeline initialized and warmed up (bundle {EXP034_BUNDLE_DIR})")
 
     # ------------------------------------------------------------------
     # Detector passes
@@ -391,7 +392,7 @@ class EXP034Service:
         nc = self.classes.index("not_cashew_leaf")
         knn = self._knn_score(feats, feats_flip)
         t_low = self.ood_cal.get("knn_threshold")
-        t_high = self.ood_cal.get("knn_threshold_high", t_low)
+        t_high = OOD_KNN_HARD_THRESHOLD or self.ood_cal.get("knn_threshold_high", t_low)
         t_e = self.ood_cal.get("energy_threshold")
         p_nc = float(probs[nc])
         top_cashew = float(np.max(np.delete(probs, nc)))
@@ -406,7 +407,7 @@ class EXP034Service:
                 reasons.append(
                     f"đặc trưng ảnh khác xa mọi lá điều tham chiếu (khoảng cách kNN {knn:.3f} > ngưỡng cứng {t_high:.3f})"
                 )
-            elif not confident_cashew:
+            elif OOD_BAND_ACTION == "reject" and not confident_cashew:
                 reasons.append(
                     f"ảnh ở vùng nghi ngờ (kNN {knn:.3f} trong ({t_low:.3f}; {t_high:.3f}]) và DenseNet không đủ chắc "
                     f"là lá điều (bệnh/khỏe cao nhất {top_cashew * 100:.1f}% < {OOD_BAND_MIN_TOP_CASHEW * 100:.0f}% "
@@ -417,12 +418,21 @@ class EXP034Service:
         if OOD_USE_ENERGY and t_e is not None and energy > t_e:
             reasons.append(f"điểm bất thường Energy cao ({energy:.2f} > ngưỡng {t_e:.2f})")
         rejected = bool(reasons) and OOD_GATE_ENABLED
+        warning = None
+        if not rejected and zone == "band":
+            warning = (
+                f"Ảnh khác đáng kể so với ảnh lá điều dùng để huấn luyện (khoảng cách kNN {knn:.3f} trong vùng "
+                f"nghi ngờ {t_low:.3f}–{t_high:.3f}; DenseNet: P(không phải lá điều) {p_nc * 100:.1f}%). "
+                "Hệ thống vẫn chẩn đoán nhưng kết quả có thể kém tin cậy — nên chụp lại ảnh rõ, đủ sáng, cận lá."
+            )
         return {
             "enabled": OOD_GATE_ENABLED,
             "calibrated": self.ood_bank is not None,
             "rejected": rejected,
             "zone": "reject" if rejected else zone,
             "reasons": reasons,
+            "warning": warning,
+            "band_action": OOD_BAND_ACTION,
             "knn_distance": knn,
             "knn_threshold": t_low,
             "knn_threshold_high": t_high,
@@ -450,63 +460,58 @@ class EXP034Service:
         return (left, top, left + side, top + side)
 
     def _verify_boxes(self, image: Image.Image, boxes: List[Dict[str, Any]]) -> Tuple[List[Dict[str, Any]], int]:
-        """DenseNet verification of YOLO proposals.
+        """Step 3 of Fig. 3.15: crop every YOLO box and let DenseNet verify it.
 
-        Boxes (highest YOLO confidence first) get a context window; a box that
-        lies inside an existing window shares it (merged region). Each window
-        is classified once by the DenseNet ensemble:
-          - healthy dominant                      -> "rejected_healthy"
-          - disease mass < VERIFY_MIN_DISEASE_MASS -> "unverified": DenseNet
-            cannot read the fragment, the box keeps YOLO's label
-          - otherwise the box gets DenseNet's disease (raw probability, not
-            renormalised) -> "agree" / "differ" with YOLO.
+        Boxes are processed in decreasing YOLO confidence. Each of the first
+        VERIFY_MAX_CROPS boxes gets its OWN context window (no sharing), which
+        is classified by the DenseNet x5 ensemble:
+          - healthy dominant (>= VERIFY_HEALTHY_REJECT and above every
+            disease)                                   -> "rejected_healthy"
+          - DenseNet's top disease == YOLO label       -> "agree"
+          - different and DenseNet >= LABEL_SWITCH_MIN_CONF
+                                                       -> "switched" (DenseNet label)
+          - different, DenseNet less confident         -> "kept_yolo" (YOLO label)
+        Boxes beyond the cap keep YOLO's label ("unverified").
+        A box's displayed confidence is the score of the model whose label it
+        carries (YOLO conf, or DenseNet probability when switched).
         """
         w, h = image.size
-        windows: List[Tuple[float, float, float, float]] = []
-        assign: List[Optional[int]] = []
-        for b in boxes:
-            x1, y1, x2, y2 = b["xyxy"]
-            k = next(
-                (i for i, (l, t, r, bt) in enumerate(windows) if x1 >= l and y1 >= t and x2 <= r and y2 <= bt),
-                None,
-            )
-            if k is None and len(windows) < VERIFY_MAX_CROPS:
-                windows.append(self._context_window(w, h, b["xyxy"]))
-                k = len(windows) - 1
-            if k is None:  # cap reached: reuse a window holding the box centre
-                cx, cy = (x1 + x2) / 2.0, (y1 + y2) / 2.0
-                k = next(
-                    (i for i, (l, t, r, bt) in enumerate(windows) if l <= cx <= r and t <= cy <= bt),
-                    None,
-                )
-            assign.append(k)
-        if not windows:
-            return [], 0
-
-        P = self._densenet_batch([image.crop(tuple(int(round(v)) for v in win)) for win in windows])
+        to_check = boxes[:VERIFY_MAX_CROPS]
+        windows = [self._context_window(w, h, b["xyxy"]) for b in to_check]
+        P = (self._densenet_batch([image.crop(tuple(int(round(v)) for v in win)) for win in windows])
+             if windows else np.zeros((0, len(self.classes))))
         d_idx = [self.classes.index(c) for c in self.detector_classes]
         h_idx = self.classes.index("healthy")
 
         out: List[Dict[str, Any]] = []
-        for b, k in zip(boxes, assign):
-            verify = {"yolo_cls": b["cls"], "yolo_conf": float(b["conf"]), "crop_id": k,
-                      "crop_xyxy": None, "dense_conf": 0.0, "dense_disease_mass": None,
+        for i, b in enumerate(boxes):
+            verify = {"yolo_cls": b["cls"], "yolo_conf": float(b["conf"]), "crop_id": None,
+                      "crop_xyxy": None, "dense_cls": None, "dense_conf": 0.0,
                       "dense_healthy": None, "status": "unverified"}
-            cls, conf = b["cls"], None  # default: YOLO label, no DenseNet score
-            if k is not None:
-                p = P[k]
+            cls, conf = b["cls"], float(b["conf"])
+            if i < len(windows):
+                p = P[i]
                 pdis = p[d_idx]
                 j = int(np.argmax(pdis))
-                verify["crop_xyxy"] = [int(round(v)) for v in windows[k]]
-                verify["dense_conf"] = float(pdis[j])
-                verify["dense_disease_mass"] = float(pdis.sum())
-                verify["dense_healthy"] = float(p[h_idx])
-                if p[h_idx] >= VERIFY_HEALTHY_REJECT and p[h_idx] > pdis.max():
+                dense_cls = self.detector_classes[j]
+                verify.update({
+                    "crop_id": i,
+                    "crop_xyxy": [int(round(v)) for v in windows[i]],
+                    "dense_cls": dense_cls,
+                    "dense_conf": float(pdis[j]),
+                    "dense_healthy": float(p[h_idx]),
+                })
+                if (VERIFY_HEALTHY_REJECT is not None and p[h_idx] >= VERIFY_HEALTHY_REJECT
+                        and p[h_idx] > pdis.max()):
                     verify["status"] = "rejected_healthy"
-                    cls = None
-                elif pdis.sum() >= VERIFY_MIN_DISEASE_MASS:
-                    cls, conf = self.detector_classes[j], float(pdis[j])
-                    verify["status"] = "agree" if cls == b["cls"] else "differ"
+                    cls, conf = None, None
+                elif dense_cls == b["cls"]:
+                    verify["status"] = "agree"
+                elif pdis[j] >= LABEL_SWITCH_MIN_CONF:
+                    verify["status"] = "switched"
+                    cls, conf = dense_cls, float(pdis[j])
+                else:
+                    verify["status"] = "kept_yolo"
             out.append({**b, "cls": cls, "conf": conf, "verify": verify})
         return out, len(windows)
 
@@ -556,7 +561,7 @@ class EXP034Service:
             "image_meta": {"width": w, "height": h, "format": orig_format},
             "model_meta": {
                 "name": EXP034_MODEL_NAME,
-                "version": "EXP-034",
+                "version": EXP_VERSION,
                 "engine": "exp034",
                 "final_decision": "Cổng ngoại lai (DenseNet + kNN + Energy)",
                 "seeds": self.seeds,
@@ -571,21 +576,23 @@ class EXP034Service:
         self, image_bytes: bytes, sample_name: Optional[str] = None
     ) -> Dict[str, Any]:
         """
-        YOLO proposes, DenseNet decides:
+        Pipeline of thesis Fig. 3.15:
         1. Decode + EXIF transpose; quality gate; coarse leaf mask.
-        2. DenseNet121 x5 on the whole leaf -> final diagnosis (FINAL_DECISION
-           = "densenet"); the frozen Stacker F3 is computed as a reference
-           (or used as the final rule when FINAL_DECISION = "stacker").
-        3. YOLO26s (640px pass + tiled pass) only proposes lesion regions.
-        4. DenseNet classifies context crops around the proposals; each box is
-           labelled by DenseNet and compared with YOLO's label.
+           DenseNet121 x5 on the whole image -> is it a cashew leaf? (OOD gate;
+           a rejected image never reaches YOLO).
+        2. YOLO26s (640px pass + tiled pass) detects lesion boxes.
+        3. Each box is cropped (own window) and DenseNet121 x5 verifies its
+           label (keep YOLO's label unless DenseNet is very confident).
+        4. Result = the diseases present, each with its boxes; no verified box
+           -> whole-leaf DenseNet: healthy, or "suspected, not localised".
+        The frozen Stacker F3 is still computed, as a reference only.
         """
         t0 = time.perf_counter()
         image, orig_format = load_image(image_bytes)
         orig_w, orig_h = image.size
 
         leaf = compute_leaf_mask(image)
-        quality = assess_quality(image, leaf)
+        quality = assess_quality(image)
         if quality["reject"]:
             raise ValueError(quality["reject"])
 
@@ -600,6 +607,13 @@ class EXP034Service:
         #    downstream (crop verification, stacker) can override it.
         gate = self._ood_gate(
             densenet_probs, float(whole["energy"][0]), whole["feats"][0], whole["feats"][1]
+        )
+        logger.info(
+            "gate %s | %dx%d | knn=%s | p_not_cashew=%.4f | top=%s %.3f | reasons=%s",
+            gate["zone"], orig_w, orig_h,
+            "n/a" if gate["knn_distance"] is None else f"{gate['knn_distance']:.4f}",
+            gate["p_not_cashew"], self.classes[int(np.argmax(densenet_probs))],
+            float(np.max(densenet_probs)), "; ".join(gate["reasons"]) or "-",
         )
         if gate["rejected"]:
             return self._ood_rejection_result(image, orig_format, quality, densenet_probs, gate, t0)
@@ -624,55 +638,67 @@ class EXP034Service:
         p_stack = np.clip(p_stack, 1e-9, 1.0) ** (1.0 / self.temperature)
         p_stack = p_stack / p_stack.sum()
 
-        # 3. Final decision
-        use_dense = FINAL_DECISION.lower() != "stacker"
-        p = densenet_probs if use_dense else p_stack
-        threshold = DENSENET_ABSTAIN_THRESHOLD if use_dense else self.abstain_threshold
-        order = np.argsort(-p)
-        primary = self.classes[order[0]]
-        confidence = float(p[order[0]])
-        ranked = [(self.classes[i], float(p[i])) for i in order]
-        abstain, abstain_reason = abstain_decision(ranked, threshold, ABSTAIN_MIN_MARGIN)
+        # 3. YOLO26s lesion boxes (640 pass + tiled pass), on-leaf only
+        tiled, n_tiles = self._yolo_tiled_pass(image)
+        cands = [
+            b for b in full_boxes + tiled
+            if b["conf"] >= BOX_CONF_PER_CLASS.get(b["cls"], self.box_conf)
+        ]
+        cands = merge_boxes(cands, MERGE_IOU, MERGE_IOS)
+        n_offleaf = 0
+        if LEAF_MASK_FILTER and leaf is not None:
+            on_leaf = [b for b in cands if leaf.box_inside_fraction(b["xyxy"]) >= LEAF_MASK_MIN_INSIDE]
+            n_offleaf = len(cands) - len(on_leaf)
+            cands = on_leaf
+        cands.sort(key=lambda b: -b["conf"])
 
-        # 4. YOLO proposals -> DenseNet verification
-        n_tiles = n_crops = n_offleaf = 0
-        shown_raw: List[Dict[str, Any]] = []
-        confirmed: List[str] = []
-        vstats: Dict[str, int] = {}
-        if not abstain and primary != "not_cashew_leaf":
-            tiled, n_tiles = self._yolo_tiled_pass(image) if primary != "healthy" else ([], 0)
-            cands = [
-                b for b in full_boxes + tiled
-                if b["conf"] >= BOX_CONF_PER_CLASS.get(b["cls"], self.box_conf)
-            ]
-            cands = merge_boxes(cands, MERGE_IOU, MERGE_IOS)
-            if LEAF_MASK_FILTER and leaf is not None:
-                on_leaf = [b for b in cands if leaf.box_inside_fraction(b["xyxy"]) >= LEAF_MASK_MIN_INSIDE]
-                n_offleaf = len(cands) - len(on_leaf)
-                cands = on_leaf
-            cands.sort(key=lambda b: -b["conf"])
-            verified, n_crops = self._verify_boxes(image, cands)
+        # 4. Crop every box -> DenseNet x5 verifies / corrects its label
+        verified, n_crops = self._verify_boxes(image, cands)
+        vstats: Dict[str, int] = {"proposed": len(verified), "agree": 0, "switched": 0,
+                                  "kept_yolo": 0, "rejected_healthy": 0, "unverified": 0}
+        for b in verified:
+            vstats[b["verify"]["status"]] += 1
+        kept = [b for b in verified if b["cls"] is not None]
+        counts = Counter(b["cls"] for b in kept)
+        best_conf = {c: max(b["conf"] for b in kept if b["cls"] == c) for c in counts}
+        present = [c for c in self.detector_classes if counts[c] >= DISEASE_MIN_BOXES]
 
+        # 5. Result: the diseases present on the leaf (each with its boxes)
+        nc = self.classes.index("not_cashew_leaf")
+        cashew_rank = sorted(
+            ((c, float(densenet_probs[i])) for i, c in enumerate(self.classes) if i != nc),
+            key=lambda t: -t[1],
+        )
+        if present:
+            present.sort(key=lambda c: (-counts[c], -best_conf[c]))
+            primary, confirmed = present[0], present[1:]
+            confidence = best_conf[primary]
+            abstain, abstain_reason = False, None
+            shown_raw = sorted((b for b in kept if b["cls"] in present), key=lambda b: -b["conf"])
+            shown_raw = shown_raw[: self.max_draw_boxes]
+            final_source = "boxes"
+        else:
+            # No verified lesion box: whole-leaf DenseNet decides healthy or not.
+            shown_raw, confirmed = [], []
+            primary, confidence = cashew_rank[0]
             if primary == "healthy":
-                # Whole leaf says healthy: only flag a conflict, draw nothing.
-                diseased = {b["verify"]["crop_id"] for b in verified
-                            if b["verify"]["status"] in ("agree", "differ")
-                            and b["verify"]["dense_conf"] >= SECONDARY_CROP_MIN_CONF}
-                if len(diseased) >= 2:
-                    abstain = True
-                    abstain_reason = (
-                        "DenseNet toàn lá kết luận khỏe nhưng xác nhận dấu hiệu bệnh ở "
-                        f"{len(diseased)} vùng YOLO đề xuất"
-                    )
-                vstats = {"proposed": len(verified)}
+                abstain, abstain_reason = False, None
             else:
-                shown_raw, confirmed, vstats = select_verified_boxes(verified, primary, self.max_draw_boxes)
+                abstain = True
+                abstain_reason = (
+                    "YOLO không khoanh được vùng bệnh nào (hoặc DenseNet bác bỏ mọi vùng), "
+                    f"nhưng DenseNet toàn lá nghiêng về {DISEASE_INFO.get(primary, {}).get('vn_name', primary)} "
+                    f"({confidence * 100:.1f}%)"
+                )
+            final_source = "whole_leaf_no_box"
 
         boxes = format_boxes(image, shown_raw)
         damage, basis = damage_percent(boxes, orig_w, orig_h, leaf)
         conclusion, diseases, plan = build_report(
             primary, confidence, abstain, abstain_reason, boxes, confirmed, damage, basis
         )
+        conclusion["confidence_source"] = "box" if final_source == "boxes" else "whole_leaf"
+        conclusion["input_warning"] = gate.get("warning")
 
         s_top = int(np.argmax(p_stack))
         d_top = int(np.argmax(densenet_probs))
@@ -684,13 +710,15 @@ class EXP034Service:
             "total_lesion_boxes": len(boxes),
             "total_damage_area_percent": conclusion.get("total_damage_area_percent", 0.0),
             "treatment_plan": plan,
-            "probabilities_desc": probabilities_list(self.classes, p),
-            "top2": ranked[:2],
+            "probabilities_desc": probabilities_list(self.classes, densenet_probs),
+            "top2": [],
             "abstain": abstain,
             "quality": quality,
             "ood_gate": gate,
             "decision": {
-                "final_source": "densenet" if use_dense else "stacker",
+                "final_source": final_source,
+                "diseases_present": present,
+                "box_counts": dict(counts),
                 "densenet_label": self.classes[d_top],
                 "densenet_conf": float(densenet_probs[d_top]),
                 "stacker_label": self.classes[s_top],
@@ -709,16 +737,16 @@ class EXP034Service:
             "image_meta": {"width": orig_w, "height": orig_h, "format": orig_format},
             "model_meta": {
                 "name": EXP034_MODEL_NAME,
-                "version": "EXP-034",
+                "version": EXP_VERSION,
                 "engine": "exp034",
-                "final_decision": "DenseNet121 ×5 (toàn lá)" if use_dense else "Stacker F3",
+                "final_decision": "Tổng hợp từ vùng bệnh (YOLO26s khoanh vùng, DenseNet121 ×5 xác minh)",
                 "seeds": self.seeds,
-                "abstain_threshold": threshold,
-                "abstain_min_margin": ABSTAIN_MIN_MARGIN,
+                "label_switch_min_conf": LABEL_SWITCH_MIN_CONF,
+                "crop_context": VERIFY_CROP_CONTEXT,
                 "test_accuracy": EXP034_METRICS["test_accuracy"],
                 "test_macro_f1": EXP034_METRICS["test_macro_f1"],
                 "holdout_accuracy": EXP034_METRICS["holdout_accuracy"],
-                "architecture": "YOLO26s đề xuất vùng → DenseNet121 ×5 xác minh từng vùng & kết luận",
+                "architecture": "DenseNet121 kiểm tra lá điều → YOLO26s khoanh vùng → cắt vùng → DenseNet121 xác minh từng vùng",
             },
         }
 
@@ -726,7 +754,7 @@ class EXP034Service:
         return {
             "engine": "exp034",
             "name": EXP034_MODEL_NAME,
-            "version": "EXP-034",
+            "version": EXP_VERSION,
             "final_decision": FINAL_DECISION,
             "rule": self.rule,
             "seeds": self.seeds,
