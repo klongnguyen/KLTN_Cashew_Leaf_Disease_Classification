@@ -17,6 +17,14 @@ Khóa luận CNTT_KLCN183. Hệ thống nhận ảnh lá điều, phát hiện v
 | [docs/RESEARCH_PROTOCOL.md](docs/RESEARCH_PROTOCOL.md) | Giao thức Train / Validation / Test / ảnh thực địa |
 | [STANDARD_STATISTICAL_ANALYSIS_FORMAT.md](STANDARD_STATISTICAL_ANALYSIS_FORMAT.md) | Quy chuẩn phân tích thống kê |
 
+## Bộ dữ liệu (Dataset)
+
+Bộ dữ liệu hình ảnh dùng trong nghiên cứu được lưu trữ trên Google Drive, không đưa trực tiếp vào GitHub:
+
+**[📁 Truy cập Dataset trên Google Drive](https://drive.google.com/drive/folders/1BIiAnkZ4n72isYfbsE4XGi9sA-SgUUE4?usp=drive_link)**
+
+Thông tin về các thay đổi của bộ dữ liệu được ghi tại [DATASET_CHANGELOG.md](DATASET_CHANGELOG.md).
+
 ## Mô hình triển khai (EXP-035)
 
 Quy trình: kiểm tra ảnh có phải lá điều (DenseNet121 + khoảng cách k láng giềng) → YOLO26s khoanh vùng bệnh → DenseNet121 kiểm tra từng vùng cắt → tổng hợp kết luận. Chi tiết luồng và ngưỡng ở [Application/README.md](Application/README.md).
