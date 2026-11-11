@@ -84,37 +84,61 @@ document.addEventListener('DOMContentLoaded', () => {
   const conclusionCard = document.getElementById('conclusion-card');
   const conclusionModeTag = document.getElementById('conclusion-mode-tag');
   const conclusionDiseaseName = document.getElementById('conclusion-disease-name');
-  const conclusionLatin = document.getElementById('conclusion-latin');
   const conclusionAdvisoryText = document.getElementById('conclusion-advisory-text');
   const nextActionText = document.getElementById('next-action-text');
   const diseaseIconBox = document.getElementById('disease-icon-box');
   const conclusionIcon = document.getElementById('conclusion-icon');
   const detectedDiseasesRow = document.getElementById('detected-diseases-row');
-  const severityBadgeTag = document.getElementById('severity-badge-tag');
-  const severityStatText = document.getElementById('severity-stat-text');
-  const severityProgressFill = document.getElementById('severity-progress-fill');
 
   // Lesion Breakdown elements
   const lesionTotalBadge = document.getElementById('lesion-total-badge');
   const lesionGridTable = document.getElementById('lesion-grid-table');
 
-  // Treatment Protocol elements
+  // Care guide elements
   const guideProtocolHeading = document.getElementById('guide-protocol-heading');
   const priorityDirectiveBox = document.getElementById('priority-directive-box');
   const guidePriorityNote = document.getElementById('guide-priority-note');
   const guideUrgentList = document.getElementById('guide-urgent-list');
+  const guideChemicalBlock = document.getElementById('guide-chemical-block');
   const chemicalRecsWrap = document.getElementById('chemical-recs-wrap');
+  const guidePreventionBlock = document.getElementById('guide-prevention-block');
   const guidePreventionList = document.getElementById('guide-prevention-list');
   const btnJumpToWiki = document.getElementById('btn-jump-to-wiki');
 
-  // Confidence List
-  const confidenceList = document.getElementById('confidence-list');
+  const bboxToggleLabel = document.getElementById('bbox-toggle-label');
+  const btnCameraResult = document.getElementById('btn-camera-result');
 
-  // Modal
+  // Full-screen viewer
   const imageModal = document.getElementById('image-modal');
   const modalImgTitle = document.getElementById('modal-img-title');
+  const modalImgSub = document.getElementById('modal-img-sub');
   const modalFullImg = document.getElementById('modal-full-img');
+  const modalBboxLabel = document.getElementById('modal-bbox-label');
+  const btnModalToggleBbox = document.getElementById('btn-modal-toggle-bbox');
   const btnCloseModal = document.getElementById('btn-close-modal');
+  const viewerSvg = document.getElementById('viewer-svg');
+  const viewerStage = document.getElementById('viewer-stage');
+  const viewerCanvas = document.getElementById('viewer-canvas');
+
+  // Camera
+  const btnOpenCamera = document.getElementById('btn-open-camera');
+  const cameraInput = document.getElementById('camera-input');
+  const cameraModal = document.getElementById('camera-modal');
+  const cameraVideo = document.getElementById('camera-video');
+  const cameraSnapshot = document.getElementById('camera-snapshot');
+  const cameraCanvas = document.getElementById('camera-canvas');
+  const cameraStatus = document.getElementById('camera-status');
+  const cameraStatusIcon = document.getElementById('camera-status-icon');
+  const cameraStatusText = document.getElementById('camera-status-text');
+  const cameraStatusActions = document.getElementById('camera-status-actions');
+  const cameraHint = document.getElementById('camera-hint');
+  const btnCameraClose = document.getElementById('btn-camera-close');
+  const btnCameraShutter = document.getElementById('btn-camera-shutter');
+  const btnCameraSwitch = document.getElementById('btn-camera-switch');
+  const btnCameraRetake = document.getElementById('btn-camera-retake');
+  const btnCameraUse = document.getElementById('btn-camera-use');
+  const btnCameraRetry = document.getElementById('btn-camera-retry');
+  const btnCameraFallback = document.getElementById('btn-camera-fallback');
 
   // State
   let currentFile = null;
@@ -124,6 +148,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let lastDiagnosisResult = null;
   let currentLesionFilter = 'all';
   let isBboxVisible = true;
+  let viewerSource = null;      // { src, title } of the diagnosed photo, shown by the full-screen viewer
+  let viewerOpen = false;
+  let viewerHasBoxes = false;   // the viewer shows the diagnosed photo (with boxes) rather than a wiki photo
+  let viewerReturnFocus = null;
+  const overlayStack = [];      // open full-screen layers (viewer / camera); the last one is on top
   const diagnoseView = views['view-diagnose'];
 
   // Lesion overlay state: boxes + server pixel frame, redrawn on every resize
@@ -140,6 +169,25 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     window.addEventListener('resize', () => syncOverlayToImage(false));
   }
+
+  // A surface is a place where the photo is drawn together with its boxes:
+  // the preview on the page, or the full-screen viewer.
+  const pageSurface = {
+    img: diagnosisPreviewImg,
+    svg: lesionSvgOverlay,
+    canvas: document.getElementById('preview-canvas-box'),
+    frame: previewWrapper,
+    info: document.getElementById('img-overlay-info'),
+    zoomable: true,
+  };
+  const viewerSurface = {
+    img: modalFullImg,
+    svg: viewerSvg,
+    canvas: viewerCanvas,
+    frame: viewerStage,
+    info: null,
+    zoomable: false,
+  };
 
   const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp'];
 
@@ -313,6 +361,16 @@ document.addEventListener('DOMContentLoaded', () => {
     btnDevGoCashewWiki.addEventListener('click', () => openLeafWorkspace('cashew', activeLeafPart));
   }
 
+  // On phones/tablets the table of contents starts collapsed so the article is not pushed far down.
+  const tocDetails = document.getElementById('wiki-toc-details');
+  const tocMedia = window.matchMedia('(max-width: 1024px)');
+  if (tocDetails) {
+    const syncToc = () => { tocDetails.open = !tocMedia.matches; };
+    syncToc();
+    if (tocMedia.addEventListener) tocMedia.addEventListener('change', syncToc);
+    else if (tocMedia.addListener) tocMedia.addListener(syncToc);
+  }
+
   // Smooth scroll for Wikipedia TOC links without changing view
   document.querySelectorAll('.toc-link').forEach(link => {
     link.addEventListener('click', (e) => {
@@ -320,6 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (href && href.startsWith('#')) {
         e.preventDefault();
         const targetEl = document.querySelector(href);
+        if (tocDetails && tocMedia.matches) tocDetails.open = false;
         if (targetEl) {
           targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
@@ -327,27 +386,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Zoomable images on Wikipedia page
+  // Zoomable images on Wikipedia page (full-screen viewer, no boxes)
   document.querySelectorAll('.wiki-zoomable-img').forEach(img => {
     img.addEventListener('click', () => {
-      modalFullImg.src = img.src;
-      if (modalImgTitle) {
-        modalImgTitle.textContent = img.alt || 'Chi Tiết Hình Ảnh Lá Điều';
-      }
-      imageModal.classList.remove('hidden');
+      openViewer({ src: img.src, title: img.alt || 'Chi Tiết Hình Ảnh Lá Điều', withBoxes: false });
     });
   });
 
-  // Toggle Bounding Box preview overlay on Diagnose page
-  if (btnToggleBbox && lesionSvgOverlay) {
-    btnToggleBbox.addEventListener('click', () => {
-      isBboxVisible = !isBboxVisible;
-      lesionSvgOverlay.style.display = isBboxVisible ? 'block' : 'none';
-      btnToggleBbox.classList.toggle('active', isBboxVisible);
-      btnToggleBbox.setAttribute('aria-pressed', String(isBboxVisible));
-      document.getElementById('bbox-toggle-label').textContent = isBboxVisible ? 'Ẩn khung' : 'Hiện khung';
+  // Show/hide the boxes — one switch shared by the page preview and the full-screen viewer
+  function setBboxVisible(visible) {
+    isBboxVisible = visible;
+    const display = visible ? 'block' : 'none';
+    if (lesionSvgOverlay) lesionSvgOverlay.style.display = display;
+    if (viewerSvg) viewerSvg.style.display = display;
+    [btnToggleBbox, btnModalToggleBbox].forEach(btn => {
+      if (!btn) return;
+      btn.classList.toggle('active', visible);
+      btn.setAttribute('aria-pressed', String(visible));
     });
+    const label = visible ? 'Ẩn khung' : 'Hiện khung';
+    if (bboxToggleLabel) bboxToggleLabel.textContent = label;
+    if (modalBboxLabel) modalBboxLabel.textContent = label;
+    // Labels are measured while drawn; redraw so they are sized right once visible again
+    if (visible) syncOverlayToImage(false);
   }
+
+  if (btnToggleBbox) btnToggleBbox.addEventListener('click', () => setBboxVisible(!isBboxVisible));
+  if (btnModalToggleBbox) btnModalToggleBbox.addEventListener('click', () => setBboxVisible(!isBboxVisible));
 
   // Filter All Lesions Button
   if (btnFilterAll) {
@@ -517,8 +582,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || 'Không thể thực hiện chuẩn đoán.');
+        const errorData = await response.json().catch(() => ({}));
+        console.error('Predict failed:', response.status, errorData.detail);
+        throw new Error(friendlyError(response.status, errorData.detail, 'Không thể thực hiện chuẩn đoán.'));
       }
 
       const result = await response.json();
@@ -542,8 +608,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || 'Không thể chuẩn đoán ảnh mẫu.');
+        const errorData = await response.json().catch(() => ({}));
+        console.error('Predict sample failed:', response.status, errorData.detail);
+        throw new Error(friendlyError(response.status, errorData.detail, 'Không thể chuẩn đoán ảnh mẫu.'));
       }
 
       const result = await response.json();
@@ -593,10 +660,7 @@ document.addEventListener('DOMContentLoaded', () => {
     imgFileName.textContent = fileName;
     imgFileSize.textContent = fileSizeStr;
     imageDimBadge.textContent = `${result.image_meta.width} × ${result.image_meta.height} px`;
-    modalFullImg.src = imageUrl;
-    if (modalImgTitle) {
-      modalImgTitle.textContent = `Hình Ảnh Chuẩn Đoán: ${fileName}`;
-    }
+    viewerSource = { src: imageUrl, title: fileName };
 
     // 2. Draw Interactive SVG Bounding Boxes (after the image has decoded,
     //    so naturalWidth/naturalHeight are known and the overlay can be pinned
@@ -632,10 +696,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const conclusion = result.conclusion;
     const conclusionCard = document.getElementById('conclusion-card');
     conclusionDiseaseName.textContent = conclusion.label === 'not_cashew_leaf' ? 'Ảnh không phải lá điều' : conclusion.label_vn;
-    conclusionLatin.textContent = conclusion.scientific_name ? `Tên khoa học: ${conclusion.scientific_name}` : '';
-    conclusionLatin.classList.toggle('hidden', !conclusion.scientific_name);
 
-    const actions = (result.treatment_plan && result.treatment_plan.urgent_actions) || [];
+    const actions = ((result.treatment_plan && result.treatment_plan.urgent_actions) || []).map(userText).filter(Boolean);
     const suggestedAction = conclusion.ood_rejected
       ? 'Hãy chọn ảnh lá điều rõ hơn để nhận diện lại. Ảnh này không phù hợp để kết luận bệnh.'
       : conclusion.abstain
@@ -659,22 +721,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const ind1Title = document.getElementById('indicator1-title');
-    const ind1Note = document.getElementById('indicator1-note');
     const confSub = document.getElementById('global-conf-sub');
     if (conclusion.ood_rejected) {
       if (ind1Title) ind1Title.textContent = 'Chưa thể nhận diện';
       if (confSub) confSub.textContent = 'Không áp dụng';
-      if (ind1Note) ind1Note.textContent = 'DenseNet121 xác định ảnh không phải lá điều nên YOLO không được chạy.';
     } else if (conclusion.confidence_source === 'box') {
       if (ind1Title) ind1Title.textContent = conclusion.is_multi_disease ? 'Phát hiện nhiều bệnh' : 'Kết quả nhận diện';
       if (confSub) confSub.textContent = 'Độ tin cậy vùng rõ nhất';
-      if (ind1Note) ind1Note.textContent = 'Bệnh được tổng hợp từ các vùng YOLO26s khoanh và DenseNet121 xác minh trên từng vùng cắt.';
     } else {
       if (ind1Title) ind1Title.textContent = conclusion.abstain ? 'Cần kiểm tra thêm' : 'Kết quả nhận diện';
       if (confSub) confSub.textContent = 'Độ tin cậy toàn ảnh';
-      if (ind1Note) ind1Note.textContent = conclusion.label === 'healthy'
-        ? 'YOLO26s không còn vùng bệnh nào sau xác minh và DenseNet121 toàn lá xác nhận lá khỏe.'
-        : 'YOLO26s chưa khoanh được vùng bệnh nhưng DenseNet121 toàn lá nghi có bệnh — cần chuyên gia kiểm tra.';
     }
 
     if (conclusion.abstain) {
@@ -696,11 +752,11 @@ document.addEventListener('DOMContentLoaded', () => {
           <strong>Phân vân giữa 2 khả năng:</strong> 1. ${name1} (${(t1[1] * 100).toFixed(1)}%) &bull; 2. ${name2} (${(t2[1] * 100).toFixed(1)}%)
         </div>`;
       }
-      conclusionAdvisoryText.textContent = conclusion.symptoms || '';
+      conclusionAdvisoryText.textContent = userText(conclusion.symptoms);
       if (top2Html) conclusionAdvisoryText.insertAdjacentHTML('beforeend', top2Html);
     } else {
       if (conclusionCard) conclusionCard.classList.remove('is-abstain');
-      conclusionAdvisoryText.textContent = conclusion.symptoms || '';
+      conclusionAdvisoryText.textContent = userText(conclusion.symptoms);
 
       if (conclusion.is_multi_disease) {
         conclusionModeTag.innerHTML = '<i class="fa-solid fa-viruses"></i> Nhiều bệnh';
@@ -728,64 +784,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. Render Detected Diseases Row
     renderDetectedDiseasesRow(conclusion.is_multi_disease ? (result.diseases_detected || []) : []);
-    renderVerificationSummary(result);
     document.getElementById('lesion-breakdown-section').classList.toggle('hidden', !(result.boxes || []).length);
 
-    // 6. Severity Assessment Meter
-    const totalArea = conclusion.total_damage_area_percent || 0;
-    const totalBoxes = result.total_lesion_boxes || 0;
-    const sevLevel = conclusion.severity_level || 'low';
-
-    let sevBadgeText = 'Nhẹ — Cấp độ 1';
-    let sevBadgeClass = 'sev-low';
-    let sevBarColor = '#15803d';
-
-    if (conclusion.ood_rejected || sevLevel === 'none') {
-      sevBadgeText = 'Không áp dụng';
-      sevBadgeClass = 'sev-abstain';
-      sevBarColor = '#94a3b8';
-    } else if (conclusion.abstain || sevLevel === 'abstain') {
-      sevBadgeText = 'Cần Thẩm Định';
-      sevBadgeClass = 'sev-abstain';
-      sevBarColor = '#eab308';
-    } else if (sevLevel === 'high') {
-      sevBadgeText = 'Nặng — Cấp độ 3';
-      sevBadgeClass = 'sev-high';
-      sevBarColor = '#dc2626';
-    } else if (sevLevel === 'medium') {
-      sevBadgeText = 'Trung bình — Cấp độ 2';
-      sevBadgeClass = 'sev-medium';
-      sevBarColor = '#b45309';
-    } else if (sevLevel === 'healthy') {
-      sevBadgeText = 'An toàn';
-      sevBadgeClass = 'sev-low';
-      sevBarColor = '#10b981';
-    }
-
-    severityBadgeTag.textContent = sevBadgeText;
-    severityBadgeTag.className = `severity-badge-tag ${sevBadgeClass}`;
-    const areaBasis = conclusion.damage_basis === 'image' ? 'diện tích ảnh' : 'diện tích lá';
-    if (conclusion.ood_rejected || sevLevel === 'none') {
-      severityStatText.textContent = 'Không đánh giá — ảnh bị từ chối ở Bước 1 (không phải lá điều)';
-    } else if (totalBoxes === 0) {
-      severityStatText.textContent = conclusion.label === 'healthy'
-        ? '0% — không có vùng bệnh nào được khoanh'
-        : 'Chưa khoanh được vùng bệnh nên chưa ước lượng được diện tích';
-    } else {
-      severityStatText.textContent = `≤ ${totalArea}% ${areaBasis} (${totalBoxes} vùng khoanh, ước tính theo khung)`;
-    }
-    severityProgressFill.style.width = totalBoxes === 0 ? '0%' : `${Math.min(100, Math.max(totalArea, 4))}%`;
-    severityProgressFill.style.background = sevBarColor;
-
-    // 7. Render Lesion Breakdown Table & Thumbnails
+    // 6. Render Lesion Breakdown Table & Thumbnails
     renderLesionBreakdown(result.boxes || []);
 
-    // 8. Render Actionable Treatment Protocol & IPM
+    // 7. Render the care guide shown under the conclusion
     renderTreatmentProtocol(result.treatment_plan, conclusion);
-
-    // 9. Render Global DenseNet Confidence Breakdown
-    const listDesc = result.probabilities_desc || [];
-    renderDescendingConfidenceList(listDesc, conclusion.label);
 
     if (window.innerWidth <= 1024) {
       document.getElementById('diagnosis-result-column').scrollIntoView({ behavior: 'smooth' });
@@ -806,32 +811,40 @@ document.addEventListener('DOMContentLoaded', () => {
    * preview is switched to raw orientation so both frames are identical.
    */
   function syncOverlayToImage(isNewImage) {
-    const img = diagnosisPreviewImg;
-    const canvasBox = document.getElementById('preview-canvas-box');
-    const meta = overlayState.meta;
-    if (!img || !lesionSvgOverlay || !meta) return;
+    layoutSurface(pageSurface, isNewImage);
+    if (viewerOpen) layoutSurface(viewerSurface, isNewImage);
+  }
+
+  /**
+   * Lays out one surface (page preview or full-screen viewer): fits the photo to
+   * its frame, then draws the boxes in the server's pixel frame on top of it.
+   * The viewer shows boxes only when it was opened for the diagnosed photo.
+   */
+  function layoutSurface(s, isNewImage) {
+    const { img, svg, canvas, frame } = s;
+    if (!img) return;
 
     const nw = img.naturalWidth;
     const nh = img.naturalHeight;
     if (!nw || !nh) return;
 
-    const mw = meta.width || nw;
-    const mh = meta.height || nh;
+    const meta = (s.zoomable || viewerHasBoxes) ? overlayState.meta : null;
+    const mw = (meta && meta.width) || nw;
+    const mh = (meta && meta.height) || nh;
 
-    if (isNewImage && !img.classList.contains('raw-orientation') &&
+    if (meta && isNewImage && !img.classList.contains('raw-orientation') &&
         nw !== nh && nw === mh && nh === mw) {
       img.classList.add('raw-orientation');
-      requestAnimationFrame(() => syncOverlayToImage(false));
+      requestAnimationFrame(() => layoutSurface(s, false));
       return;
     }
 
     // Fit the image to the viewing frame (contain). Small photos are UPSCALED
     // so lesions are visible; the canvas box follows the <img> size exactly,
     // so the SVG overlay stays aligned 1:1 with the image pixels.
-    if (previewWrapper) {
-      const info = document.getElementById('img-overlay-info');
-      const availW = previewWrapper.clientWidth;
-      const availH = previewWrapper.clientHeight - (info ? info.offsetHeight : 0);
+    if (frame) {
+      const availW = frame.clientWidth;
+      const availH = frame.clientHeight - (s.info ? s.info.offsetHeight : 0);
       if (availW > 0 && availH > 0) {
         const fit = Math.min(availW / nw, availH / nh);
         img.style.width = `${Math.floor(nw * fit)}px`;
@@ -839,20 +852,26 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Since .preview-canvas-box wraps <img> directly, SVG overlay (width: 100%, height: 100%)
-    // has the EXACT same rendered dimensions and aspect ratio as the visible image.
-    // SVG viewBox defines the original coordinate space from the server:
-    lesionSvgOverlay.setAttribute('viewBox', `0 0 ${mw} ${mh}`);
-    lesionSvgOverlay.setAttribute('preserveAspectRatio', 'none');
+    if (!svg) return;
+    if (!meta) {
+      svg.innerHTML = '';
+      return;
+    }
 
-    const renderedW = img.clientWidth || (canvasBox ? canvasBox.clientWidth : nw);
-    const zoom = computeZoom(canvasBox, mw);
+    // The canvas wraps <img> directly, so the SVG overlay (width/height: 100%)
+    // has the EXACT same rendered size as the visible image. Its viewBox is the
+    // original coordinate space from the server:
+    svg.setAttribute('viewBox', `0 0 ${mw} ${mh}`);
+    svg.setAttribute('preserveAspectRatio', 'none');
+
+    const renderedW = img.clientWidth || (canvas ? canvas.clientWidth : nw);
+    const zoom = s.zoomable ? computeZoom(canvas, mw) : { s: 1, tx: 0, ty: 0 };
     // Divide by the zoom so labels keep a constant on-screen size when zoomed
     const unitsPerPx = renderedW > 0 ? (mw / renderedW) / zoom.s : 1;
 
-    drawLesionBoxes(overlayState.boxes, mw, mh, unitsPerPx);
-    if (canvasBox) {
-      canvasBox.style.transform = zoom.s === 1 ? '' : `translate(${zoom.tx}px, ${zoom.ty}px) scale(${zoom.s})`;
+    drawLesionBoxes(overlayState.boxes, mw, mh, unitsPerPx, svg);
+    if (canvas && s.zoomable) {
+      canvas.style.transform = zoom.s === 1 ? '' : `translate(${zoom.tx}px, ${zoom.ty}px) scale(${zoom.s})`;
     }
   }
 
@@ -891,9 +910,9 @@ document.addEventListener('DOMContentLoaded', () => {
    * @param {number} unitsPerPx     frame units per screen pixel, used to keep
    *                                labels a constant on-screen size
    */
-  function drawLesionBoxes(boxes, frameW, frameH, unitsPerPx) {
-    if (!lesionSvgOverlay) return;
-    lesionSvgOverlay.innerHTML = '';
+  function drawLesionBoxes(boxes, frameW, frameH, unitsPerPx, svg = lesionSvgOverlay) {
+    if (!svg) return;
+    svg.innerHTML = '';
     if (!boxes || boxes.length === 0) return;
 
     const k = unitsPerPx > 0 ? unitsPerPx : 1;
@@ -942,7 +961,7 @@ document.addEventListener('DOMContentLoaded', () => {
       g.appendChild(rect);
       g.appendChild(tagBg);
       g.appendChild(text);
-      lesionSvgOverlay.appendChild(g);
+      svg.appendChild(g);
 
       let textLen = 0;
       try { textLen = text.getComputedTextLength(); } catch (_) { textLen = 0; }
@@ -968,13 +987,13 @@ document.addEventListener('DOMContentLoaded', () => {
       // Click on a box -> show ONLY that box (click again to show all)
       g.addEventListener('click', (e) => {
         e.stopPropagation();
-        toggleIsolate(box.id, false);
+        toggleIsolate(box.id, false, svg === viewerSvg);
       });
     });
 
     applyLesionVisibility();
-    const focused = lesionSvgOverlay.querySelector('.lesion-box-group.is-focused');
-    if (focused) lesionSvgOverlay.appendChild(focused);
+    const focused = svg.querySelector('.lesion-box-group.is-focused');
+    if (focused) svg.appendChild(focused);
   }
 
   /**
@@ -1049,13 +1068,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const iso = overlayState.isolatedId;
     const visible = (cls, id) => iso !== null ? id === iso : (currentLesionFilter === 'all' || cls === currentLesionFilter);
 
-    if (lesionSvgOverlay) {
-      lesionSvgOverlay.querySelectorAll('.lesion-box-group').forEach(g => {
+    [lesionSvgOverlay, viewerSvg].forEach(svg => {
+      if (!svg) return;
+      svg.querySelectorAll('.lesion-box-group').forEach(g => {
         const id = parseInt(g.getAttribute('data-box-id'), 10);
         g.classList.toggle('is-hidden', !visible(g.getAttribute('data-cls'), id));
         g.classList.toggle('is-focused', iso !== null && id === iso);
       });
-    }
+    });
     if (lesionGridTable) {
       lesionGridTable.querySelectorAll('.lesion-card').forEach(card => {
         const id = parseInt(card.getAttribute('data-box-id'), 10);
@@ -1079,12 +1099,12 @@ document.addEventListener('DOMContentLoaded', () => {
    * Single-box view. fromCard: the click came from the breakdown table, so the
    * image is scrolled into view; a click on the image scrolls to the card.
    */
-  function toggleIsolate(boxId, fromCard) {
+  function toggleIsolate(boxId, fromCard, fromViewer) {
     overlayState.isolatedId = overlayState.isolatedId === boxId ? null : boxId;
     overlayState.focusedId = overlayState.isolatedId;
     applyLesionVisibility();
     applyZoom();
-    if (overlayState.isolatedId === null) return;
+    if (overlayState.isolatedId === null || fromViewer) return;
     if (fromCard && previewWrapper) {
       previewWrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     } else if (lesionGridTable) {
@@ -1107,8 +1127,26 @@ document.addEventListener('DOMContentLoaded', () => {
   // Click on empty image area also leaves single-box view
   if (previewWrapper) previewWrapper.addEventListener('click', clearIsolate);
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && imageModal && imageModal.classList.contains('hidden')) clearIsolate();
+    if (e.key === 'Escape' && overlayStack.length === 0) clearIsolate();
   });
+
+  /**
+   * Text that comes from the server is shown to farmers, so it must never name the
+   * internal models or their scores. Any sentence that does is dropped (the server
+   * wording is already plain; this is the safety net for every engine / version).
+   */
+  function userText(text) {
+    if (text === null || text === undefined) return '';
+    const jargon = /yolo|densenet|knn|stacker|energy|ensemble|backbone|checkpoint|exp-\d|legacy|traceback|exception|\b\w+error\b/i;
+    const sentences = String(text).match(/[\s\S]+?(?:[.!?]+(?=\s|$)|$)\s*/g) || [];
+    return sentences.filter(part => !jargon.test(part)).join('').trim();
+  }
+
+  /** Error shown in a toast: server faults get a plain message, validation messages pass through. */
+  function friendlyError(status, detail, fallback) {
+    if (status >= 500) return 'Hệ thống đang gặp sự cố khi nhận diện. Vui lòng thử lại sau ít phút.';
+    return userText(detail) || fallback;
+  }
 
   function escapeHtml(s) {
     return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -1127,14 +1165,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const signs = document.getElementById('signs-details');
     if (box.parentNode !== card) card.insertBefore(box, signs);
     const items = [];
-    const engineWarning = result.model_meta && result.model_meta.engine_warning;
+    const engineWarning = userText(result.model_meta && result.model_meta.engine_warning);
     if (engineWarning) items.push({ icon: 'fa-server', text: engineWarning, strong: true });
     const sizeWarnings = (result.quality && result.quality.warnings) || [];
     if (sizeWarnings.length) items.push({ icon: 'fa-camera', text: 'Ảnh khá nhỏ, có thể bỏ sót vết bệnh. Hãy chụp cận cảnh rõ hơn nếu cần.', strong: false });
     const gateWarning = result.ood_gate && result.ood_gate.warning;
-    const technicalGateWarning = document.getElementById('technical-gate-warning');
-    technicalGateWarning.textContent = gateWarning || '';
-    technicalGateWarning.classList.toggle('hidden', !gateWarning);
     if (gateWarning && !result.conclusion.ood_rejected) {
       items.push({ icon: 'fa-image', text: 'Ảnh khác với ảnh thường gặp; hãy kiểm tra lại kết quả hoặc chụp ảnh khác.', strong: false });
     }
@@ -1147,82 +1182,6 @@ document.addEventListener('DOMContentLoaded', () => {
     box.innerHTML = `
       <div class="input-warning-title"><i class="fa-solid fa-triangle-exclamation"></i> ${engineWarning ? 'Cảnh báo hệ thống' : 'Lưu ý về kết quả'}</div>
       <ul>${items.map(i => `<li class="${i.strong ? 'is-strong' : ''}"><i class="fa-solid ${i.icon}"></i> ${escapeHtml(i.text)}</li>`).join('')}</ul>
-    `;
-  }
-
-  function renderVerificationSummary(result) {
-    let box = document.getElementById('verification-summary-box');
-    if (!box) return;
-    const dec = result.decision;
-    const loc = result.localization || {};
-    const v = loc.verification || {};
-    if (!dec) { box.classList.add('hidden'); box.innerHTML = ''; return; }
-    box.classList.remove('hidden');
-
-    const gate = result.ood_gate;
-    if (dec.final_source === 'ood_gate' && gate) {
-      const fmt = (v, d) => (v === null || v === undefined) ? '—' : Number(v).toFixed(d);
-      box.innerHTML = `
-        <div class="vs-title"><i class="fa-solid fa-ban"></i> Bước 1 — Kiểm tra lá điều (DenseNet121 toàn ảnh): ẢNH BỊ TỪ CHỐI</div>
-        <ul class="vs-reasons">${gate.reasons.map(r => `<li>${escapeHtml(r)}</li>`).join('')}</ul>
-        <div class="vs-chips">
-          <span class="vs-chip muted">P(không phải lá điều) ${(gate.p_not_cashew * 100).toFixed(1)}%</span>
-          <span class="vs-chip muted">kNN ${fmt(gate.knn_distance, 3)} / vùng nghi ngờ ${fmt(gate.knn_threshold, 3)}–${fmt(gate.knn_threshold_high, 3)}</span>
-          <span class="vs-chip muted">Energy ${fmt(gate.energy, 2)}${gate.energy_used ? ` / ngưỡng ${fmt(gate.energy_threshold, 2)}` : ' (tham khảo)'}</span>
-        </div>
-        <div class="vs-row"><i class="fa-solid fa-lock"></i> Ảnh không phải lá điều: YOLO không được chạy, không khoanh vùng và không chẩn đoán bệnh.</div>`;
-      return;
-    }
-
-    const name = key => {
-      const it = (result.probabilities_desc || []).find(p => p.class_key === key);
-      return it ? (it.short_name || it.label_vn) : key;
-    };
-    const fmt3 = x => (x === null || x === undefined) ? '—' : Number(x).toFixed(3);
-
-    let gateLine = '';
-    if (gate && !gate.calibrated) {
-      gateLine = `<div class="vs-row"><i class="fa-solid fa-shield-halved"></i> Bước 1 — Kiểm tra lá điều: <strong>đạt</strong>
-        <span class="vs-ref is-conflict">(chưa hiệu chỉnh kNN — chỉ dùng lớp not_cashew_leaf)</span></div>`;
-    } else if (gate && gate.zone === 'band') {
-      gateLine = `<div class="vs-row"><i class="fa-solid fa-shield-halved"></i> Bước 1 — Kiểm tra lá điều:
-        <strong class="vs-ref is-conflict">đạt, kèm cảnh báo</strong>
-        (kNN ${fmt3(gate.knn_distance)} trong vùng nghi ngờ ${fmt3(gate.knn_threshold)}–${fmt3(gate.knn_threshold_high)}:
-        ảnh khác ảnh huấn luyện, kết quả có thể kém tin cậy).</div>`;
-    } else if (gate) {
-      gateLine = `<div class="vs-row"><i class="fa-solid fa-shield-halved"></i> Bước 1 — Kiểm tra lá điều: <strong>đạt</strong>
-        (P(không phải lá điều) ${(gate.p_not_cashew * 100).toFixed(1)}%; kNN ${fmt3(gate.knn_distance)} ≤ ${fmt3(gate.knn_threshold)})</div>`;
-    }
-
-    let verifyLine = '';
-    if (v.proposed !== undefined) {
-      verifyLine = `
-        <div class="vs-row"><i class="fa-solid fa-crosshairs"></i> Bước 2 — YOLO26s khoanh <strong>${v.proposed}</strong> vùng
-          → Bước 3 — DenseNet121 xác minh <strong>${loc.verify_crops || 0}</strong> vùng cắt:</div>
-        <div class="vs-chips">
-          <span class="vs-chip ok"><i class="fa-solid fa-check"></i> Khớp nhãn YOLO ${v.agree || 0}</span>
-          <span class="vs-chip warn"><i class="fa-solid fa-pen"></i> DenseNet sửa nhãn ${v.switched || 0}</span>
-          <span class="vs-chip muted"><i class="fa-solid fa-not-equal"></i> Khác nhưng giữ nhãn YOLO ${v.kept_yolo || 0}</span>
-          <span class="vs-chip muted"><i class="fa-solid fa-leaf"></i> Bác bỏ (mô lá khỏe) ${v.rejected_healthy || 0}</span>
-          ${v.unverified ? `<span class="vs-chip muted">Chưa xác minh (ngoài ${loc.verify_crops || 0} vùng đầu) ${v.unverified}</span>` : ''}
-        </div>`;
-    }
-
-    const counts = dec.box_counts || {};
-    const present = (dec.diseases_present || []).map(c => `${escapeHtml(name(c))} (${counts[c] || 0} vùng)`);
-    const resultLine = dec.final_source === 'boxes'
-      ? `Bước 4 — Kết quả: <strong>${present.join(', ')}</strong>`
-      : `Bước 4 — Kết quả: <strong>không còn vùng bệnh</strong> → dùng DenseNet121 toàn lá: ${escapeHtml(name(dec.densenet_label))} ${(dec.densenet_conf * 100).toFixed(1)}%`;
-    const ref = dec.stacker_label
-      ? `<span class="vs-ref">(tham khảo — DenseNet toàn lá: ${escapeHtml(name(dec.densenet_label))} ${(dec.densenet_conf * 100).toFixed(1)}%;
-         Stacker F3: ${escapeHtml(name(dec.stacker_label))} ${(dec.stacker_conf * 100).toFixed(1)}%)</span>`
-      : '';
-
-    box.innerHTML = `
-      <div class="vs-title"><i class="fa-solid fa-diagram-project"></i> Quy trình: Kiểm tra lá điều → YOLO khoanh vùng → Cắt vùng → DenseNet xác minh từng vùng</div>
-      ${gateLine}
-      ${verifyLine}
-      <div class="vs-row"><i class="fa-solid fa-flag-checkered"></i> ${resultLine} ${ref}</div>
     `;
   }
 
@@ -1242,22 +1201,6 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       detectedDiseasesRow.appendChild(pill);
     });
-  }
-
-  function renderVerifyRow(box) {
-    const vf = box.verify;
-    const yolo = `<span title="Nhãn YOLO26s cho khung này"><i class="fa-solid fa-crosshairs"></i> YOLO: <strong>${vf.yolo_label_vn} ${vf.yolo_conf_percent}%</strong></span>`;
-    if (vf.status === 'unverified') {
-      return `<div class="lesion-verify-row is-unverified">${yolo}
-        <span class="verify-badge" title="Ngoài số vùng cắt tối đa được DenseNet xác minh, giữ nhãn YOLO"><i class="fa-solid fa-circle-question"></i> Chưa xác minh</span></div>`;
-    }
-    const dense = `<span title="DenseNet121 phân loại vùng cắt quanh khung (xác suất thô)"><i class="fa-solid fa-brain"></i> DenseNet: <strong>${vf.dense_label_vn || '—'} ${vf.dense_conf_percent}%</strong></span>`;
-    const badge = {
-      agree: ['is-agree', '<i class="fa-solid fa-check"></i> Khớp'],
-      switched: ['is-differ', '<i class="fa-solid fa-pen"></i> DenseNet sửa nhãn'],
-      kept_yolo: ['is-differ', '<i class="fa-solid fa-not-equal"></i> Khác — giữ nhãn YOLO'],
-    }[vf.status] || ['is-unverified', vf.status];
-    return `<div class="lesion-verify-row ${badge[0]}">${yolo}${dense}<span class="verify-badge">${badge[1]}</span></div>`;
   }
 
   function renderLesionBreakdown(boxes) {
@@ -1298,7 +1241,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <span>&bull;</span>
             <span>Chiếm: <strong>${box.area_percent}% ảnh</strong></span>
           </div>
-          ${box.verify ? renderVerifyRow(box) : ''}
           <div class="lesion-card-bottom">
             ${(box.conf_percent === null || box.conf_percent === undefined)
               ? `<span class="lesion-conf-score" title="Vùng tìm theo màu sắc, không có điểm tin cậy của mô hình"><i class="fa-solid fa-circle-question"></i> Vùng nghi ngờ (chưa chấm điểm)</span>`
@@ -1318,141 +1260,422 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /**
+   * Care guide shown under the conclusion. Only blocks that have content are
+   * displayed, and wording follows the situation: normal care, "ask an expert"
+   * (low confidence), or "retake the photo" (not a cashew leaf).
+   */
   function renderTreatmentProtocol(treatmentPlan, conclusion) {
     if (!treatmentPlan) return;
+    conclusion = conclusion || {};
 
-    if (guideProtocolHeading) {
-      guideProtocolHeading.textContent = treatmentPlan.title || 'Phác Đồ Xử Lý & Điều Trị Khuyến Nghị';
+    const mode = conclusion.ood_rejected ? 'retake' : conclusion.abstain ? 'refer' : 'care';
+    const copy = {
+      care: { heading: 'Hướng dẫn chăm sóc chi tiết', urgent: 'Chăm sóc và vệ sinh vườn', icon: 'fa-scissors' },
+      refer: { heading: 'Khuyến nghị tiếp theo', urgent: 'Việc cần làm', icon: 'fa-list-check' },
+      retake: { heading: 'Hướng dẫn chụp lại ảnh', urgent: 'Cách chụp ảnh rõ hơn', icon: 'fa-camera' },
+    }[mode];
+
+    if (guideProtocolHeading) guideProtocolHeading.textContent = copy.heading;
+    const urgentLabel = document.getElementById('guide-urgent-label');
+    if (urgentLabel) {
+      urgentLabel.textContent = copy.urgent;
+      const urgentIcon = urgentLabel.previousElementSibling;
+      if (urgentIcon) urgentIcon.className = `fa-solid ${copy.icon}`;
     }
+    if (btnJumpToWiki) btnJumpToWiki.classList.toggle('hidden', mode === 'retake');
 
-    // Priority note
+    // Priority note: only for mixed diseases or an uncertain result. For a single
+    // disease the backend note is just the lesion-area estimate, which we don't show.
     if (priorityDirectiveBox && guidePriorityNote) {
-      if (treatmentPlan.priority_note) {
-        priorityDirectiveBox.classList.remove('hidden');
-        guidePriorityNote.textContent = treatmentPlan.priority_note;
-      } else {
-        priorityDirectiveBox.classList.add('hidden');
-      }
+      const priorityText = userText(treatmentPlan.priority_note);
+      const showPriority = !!priorityText && (conclusion.is_multi_disease || mode === 'refer');
+      priorityDirectiveBox.classList.toggle('hidden', !showPriority);
+      guidePriorityNote.textContent = showPriority ? priorityText : '';
     }
 
-    // Urgent Cultivation Actions
+    // Garden care / next steps. The first action is already shown in the
+    // "Nên làm ngay" box right above, so it is not repeated in the list.
     if (guideUrgentList) {
       guideUrgentList.innerHTML = '';
-      if (treatmentPlan.urgent_actions && treatmentPlan.urgent_actions.length > 0) {
-        treatmentPlan.urgent_actions.forEach(action => {
-          const li = document.createElement('li');
-          li.textContent = action;
-          guideUrgentList.appendChild(li);
-        });
-      } else {
+      const planActions = (treatmentPlan.urgent_actions || []).map(userText).filter(Boolean);
+      let actions = planActions.length > 0
+        ? planActions
+        : ['Duy trì vệ sinh thông thoáng vườn điều và theo dõi định kỳ.'];
+      const shownAbove = nextActionText ? nextActionText.textContent : '';
+      const remaining = actions.filter(action => !shownAbove.includes(action));
+      if (remaining.length > 0) actions = remaining;
+      actions.forEach(action => {
         const li = document.createElement('li');
-        li.textContent = 'Duy trì vệ sinh thông thoáng vườn điều và theo dõi định kỳ.';
+        li.textContent = action;
         guideUrgentList.appendChild(li);
-      }
+      });
     }
 
-    // Chemical Recommendations
-    if (chemicalRecsWrap) {
+    // Crop-protection products
+    if (chemicalRecsWrap && guideChemicalBlock) {
       chemicalRecsWrap.innerHTML = '';
-      if (conclusion && conclusion.abstain) {
+      const recs = treatmentPlan.chemical_recommendations || [];
+      if (mode === 'refer') {
+        guideChemicalBlock.classList.remove('hidden');
         chemicalRecsWrap.innerHTML = `
-          <div class="chemical-item-card" style="color: #854d0e; background: #fefce8; border-color: #facc15; font-size: 0.8rem;">
-            <i class="fa-solid fa-triangle-exclamation" style="margin-right: 0.35rem; color: #eab308;"></i>
+          <div class="chemical-item-card is-caution">
             <strong>Khuyến cáo an toàn:</strong> Tạm ngưng phun hóa chất bảo vệ thực vật diện rộng khi chưa có ý kiến của cán bộ chuyên môn / trạm BVTV địa phương.
           </div>
         `;
-      } else if (treatmentPlan.chemical_recommendations && treatmentPlan.chemical_recommendations.length > 0) {
-        treatmentPlan.chemical_recommendations.forEach(chem => {
+      } else if (recs.length > 0) {
+        guideChemicalBlock.classList.remove('hidden');
+        recs.forEach(chem => {
           const card = document.createElement('div');
           card.className = 'chemical-item-card';
+          const actives = conclusion.label === 'healthy'
+            ? escapeHtml(userText(chem.actives))
+            : `<strong>Hoạt chất:</strong> ${escapeHtml(userText(chem.actives))}`;
           card.innerHTML = `
-            <div class="chem-target"><i class="fa-solid fa-shield-virus"></i> ${chem.target}</div>
-            <div class="chem-actives"><strong>Hoạt chất:</strong> ${chem.actives}</div>
-            <div class="chem-timing"><i class="fa-regular fa-clock"></i> ${chem.timing}</div>
+            <div class="chem-target"><i class="fa-solid fa-shield-virus"></i> ${escapeHtml(userText(chem.target))}</div>
+            <div class="chem-actives">${actives}</div>
+            <div class="chem-timing"><i class="fa-regular fa-clock"></i> ${escapeHtml(userText(chem.timing))}</div>
           `;
           chemicalRecsWrap.appendChild(card);
         });
       } else {
-        chemicalRecsWrap.innerHTML = `
-          <div class="chemical-item-card" style="color: var(--text-muted); font-size: 0.78rem;">
-            Không cần phun hóa chất bảo vệ thực vật. Khuyến khích sử dụng chế phẩm sinh học phòng ngừa.
-          </div>
-        `;
+        guideChemicalBlock.classList.add('hidden');
       }
     }
 
-    // Prevention List
-    if (guidePreventionList) {
+    // Prevention
+    if (guidePreventionList && guidePreventionBlock) {
       guidePreventionList.innerHTML = '';
-      if (treatmentPlan.long_term_prevention && treatmentPlan.long_term_prevention.length > 0) {
-        treatmentPlan.long_term_prevention.forEach(item => {
-          const li = document.createElement('li');
-          li.textContent = item;
-          guidePreventionList.appendChild(li);
-        });
-      }
+      const items = (treatmentPlan.long_term_prevention || []).map(userText).filter(Boolean);
+      guidePreventionBlock.classList.toggle('hidden', items.length === 0);
+      items.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        guidePreventionList.appendChild(li);
+      });
     }
   }
 
-  function renderDescendingConfidenceList(classesDesc, winnerKey) {
-    if (!confidenceList) return;
-    confidenceList.innerHTML = '';
+  // ================= 4. FULL-SCREEN LAYERS: HISTORY, VIEWER, CAMERA =================
 
-    classesDesc.forEach((item, index) => {
-      const isWinner = item.class_key === winnerKey;
-      const rankNumber = index + 1;
+  const isTouchDevice = !!(window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
 
-      const row = document.createElement('div');
-      row.className = `confidence-row ${isWinner ? 'is-winner' : ''}`;
-
-      row.innerHTML = `
-        <div class="row-top-info">
-          <div class="row-label-group">
-            <span class="rank-index">#${rankNumber}</span>
-            <span class="disease-vn-label">${item.label_vn}</span>
-            <span class="disease-en-sub">(${item.class_key})</span>
-            ${isWinner ? '<span class="winner-pill-tag"><i class="fa-solid fa-check"></i> XÁC SUẤT CAO NHẤT</span>' : ''}
-          </div>
-          <span class="row-conf-value">${item.confidence_percent.toFixed(2)}%</span>
-        </div>
-        <div class="bar-container">
-          <div class="bar-fill" style="width: 0%; background: ${item.color_hex};"></div>
-        </div>
-      `;
-
-      confidenceList.appendChild(row);
-
-      setTimeout(() => {
-        const barFill = row.querySelector('.bar-fill');
-        if (barFill) {
-          const pct = Math.max(item.confidence_percent, item.confidence_percent > 0 ? 0.6 : 0);
-          barFill.style.width = `${pct}%`;
-        }
-      }, 30 * (index + 1));
-    });
+  function lockScroll(locked) {
+    document.documentElement.classList.toggle('overlay-open', locked);
   }
 
-  // ================= 4. IMAGE ZOOM MODAL =================
+  /**
+   * Each full-screen layer pushes one history entry, so the phone's Back button
+   * (or browser Back) closes the layer instead of leaving the page.
+   * Closing from the UI goes through history.back(), and 'popstate' does the closing.
+   */
+  function pushOverlay(name, closeFn) {
+    const entry = { name, closeFn, hasHistory: false };
+    try {
+      history.pushState({ overlay: name }, '');
+      entry.hasHistory = true;
+    } catch (_) { /* history is not available (e.g. sandboxed frame) */ }
+    overlayStack.push(entry);
+  }
 
-  btnZoomImage.addEventListener('click', () => {
-    if (modalFullImg.src) {
-      imageModal.classList.remove('hidden');
+  function dismissOverlay(name) {
+    const top = overlayStack[overlayStack.length - 1];
+    if (!top || top.name !== name) return;
+    if (top.hasHistory) {
+      history.back();
+    } else {
+      overlayStack.pop();
+      top.closeFn();
     }
-  });
+  }
 
-  btnCloseModal.addEventListener('click', () => {
-    imageModal.classList.add('hidden');
-  });
-
-  imageModal.addEventListener('click', (e) => {
-    if (e.target === imageModal) {
-      imageModal.classList.add('hidden');
-    }
+  window.addEventListener('popstate', () => {
+    const top = overlayStack.pop();
+    if (top) top.closeFn();
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !imageModal.classList.contains('hidden')) {
-      imageModal.classList.add('hidden');
+    if (e.key !== 'Escape') return;
+    const top = overlayStack[overlayStack.length - 1];
+    if (top) dismissOverlay(top.name);
+  });
+
+  // ---------- Full-screen image viewer ----------
+
+  function openViewer({ src, title, withBoxes = false }) {
+    if (!src || viewerOpen) return;
+
+    viewerHasBoxes = !!(withBoxes && overlayState.meta && overlayState.boxes.length > 0);
+    modalImgTitle.textContent = title || 'Chi Tiết Hình Ảnh';
+    if (modalImgSub) {
+      modalImgSub.textContent = viewerHasBoxes ? `${overlayState.boxes.length} vùng nghi bệnh được đánh dấu` : '';
+      modalImgSub.classList.toggle('hidden', !viewerHasBoxes);
+    }
+    if (btnModalToggleBbox) {
+      btnModalToggleBbox.classList.toggle('hidden', !viewerHasBoxes);
+      btnModalToggleBbox.classList.toggle('active', isBboxVisible);
+      btnModalToggleBbox.setAttribute('aria-pressed', String(isBboxVisible));
+    }
+    if (modalBboxLabel) modalBboxLabel.textContent = isBboxVisible ? 'Ẩn khung' : 'Hiện khung';
+
+    viewerSvg.innerHTML = '';
+    viewerSvg.style.display = isBboxVisible ? 'block' : 'none';
+    modalFullImg.classList.remove('raw-orientation');
+    modalFullImg.style.width = '';
+    modalFullImg.style.height = '';
+
+    viewerReturnFocus = document.activeElement;
+    viewerOpen = true;
+    imageModal.classList.remove('hidden');
+    lockScroll(true);
+    pushOverlay('viewer', closeViewer);
+
+    modalFullImg.onload = () => layoutSurface(viewerSurface, true);
+    modalFullImg.src = src;
+    if (modalFullImg.complete && modalFullImg.naturalWidth > 0) {
+      requestAnimationFrame(() => layoutSurface(viewerSurface, true));
+    }
+    btnCloseModal.focus({ preventScroll: true });
+  }
+
+  function closeViewer() {
+    viewerOpen = false;
+    viewerHasBoxes = false;
+    imageModal.classList.add('hidden');
+    viewerSvg.innerHTML = '';
+    lockScroll(false);
+    if (viewerReturnFocus && typeof viewerReturnFocus.focus === 'function') {
+      try { viewerReturnFocus.focus({ preventScroll: true }); } catch (_) { /* element is gone */ }
+    }
+    viewerReturnFocus = null;
+  }
+
+  if (viewerStage && 'ResizeObserver' in window) {
+    // Phone rotated / window resized while the viewer is open: refit the photo and redraw the boxes
+    let viewerRaf = 0;
+    new ResizeObserver(() => {
+      if (!viewerOpen) return;
+      cancelAnimationFrame(viewerRaf);
+      viewerRaf = requestAnimationFrame(() => layoutSurface(viewerSurface, false));
+    }).observe(viewerStage);
+  }
+
+  btnZoomImage.addEventListener('click', () => {
+    if (viewerSource) openViewer({ src: viewerSource.src, title: viewerSource.title, withBoxes: true });
+  });
+  btnCloseModal.addEventListener('click', () => dismissOverlay('viewer'));
+  // Boxes stop propagation, so this is a click on the empty picture area: leave single-box view
+  viewerStage.addEventListener('click', clearIsolate);
+
+  // ---------- Camera ----------
+
+  let camStream = null;
+  let camFacing = 'environment';
+  let camBlob = null;
+  let camSnapshotUrl = null;
+  let camSession = 0;           // bumped to cancel a pending getUserMedia
+  let camPausedByHide = false;
+  let camReturnFocus = null;
+
+  function canUseLiveCamera() {
+    return !!(window.isSecureContext && navigator.mediaDevices && typeof navigator.mediaDevices.getUserMedia === 'function');
+  }
+
+  /** Opens the in-page camera, or the device's own camera app when the browser blocks live camera. */
+  function openCamera() {
+    if (!canUseLiveCamera()) {
+      showToast(
+        isTouchDevice
+          ? 'Đang mở camera của thiết bị…'
+          : 'Trình duyệt chưa cho dùng camera trực tiếp trên kết nối này — hãy chọn ảnh từ máy.',
+        'info'
+      );
+      openNativeCamera();
+      return;
+    }
+    if (!cameraModal.classList.contains('hidden')) return;
+
+    camReturnFocus = document.activeElement;
+    cameraModal.classList.remove('hidden');
+    lockScroll(true);
+    pushOverlay('camera', closeCameraLayer);
+    startCamera();
+  }
+
+  function openNativeCamera() {
+    cameraInput.value = '';
+    cameraInput.click();
+  }
+
+  function stopCameraStream() {
+    if (camStream) camStream.getTracks().forEach(track => track.stop());
+    camStream = null;
+    cameraVideo.srcObject = null;
+  }
+
+  function setCameraState(state, message) {
+    cameraModal.dataset.state = state;
+    cameraVideo.classList.toggle('hidden', state !== 'live');
+    cameraSnapshot.classList.toggle('hidden', state !== 'review');
+    cameraStatus.classList.toggle('hidden', state !== 'loading' && state !== 'error');
+    cameraStatusIcon.className = state === 'error' ? 'fa-solid fa-video-slash' : 'fa-solid fa-circle-notch fa-spin';
+    cameraStatusText.textContent = message || (state === 'loading' ? 'Đang mở camera…' : '');
+    cameraStatusActions.classList.toggle('hidden', state !== 'error');
+    cameraHint.classList.toggle('hidden', state !== 'live');
+    btnCameraShutter.disabled = state !== 'live';
+  }
+
+  function cameraErrorMessage(err) {
+    switch (err && err.name) {
+      case 'NotAllowedError':
+      case 'PermissionDeniedError':
+      case 'SecurityError':
+        return 'Trình duyệt chưa được cấp quyền dùng camera. Hãy cho phép camera cho trang này rồi thử lại.';
+      case 'NotFoundError':
+      case 'DevicesNotFoundError':
+      case 'OverconstrainedError':
+        return 'Không tìm thấy camera trên thiết bị này.';
+      case 'NotReadableError':
+      case 'TrackStartError':
+      case 'AbortError':
+        return 'Không mở được camera. Có thể ứng dụng khác đang dùng camera — hãy đóng nó rồi thử lại.';
+      default:
+        return 'Không mở được camera. Bạn có thể chọn ảnh từ thiết bị thay thế.';
+    }
+  }
+
+  async function startCamera() {
+    const session = ++camSession;
+    stopCameraStream();
+    setCameraState('loading');
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: false,
+        video: { facingMode: { ideal: camFacing }, width: { ideal: 1920 }, height: { ideal: 1080 } },
+      });
+      if (session !== camSession || cameraModal.classList.contains('hidden')) {
+        stream.getTracks().forEach(track => track.stop());   // closed while the browser was asking permission
+        return;
+      }
+      camStream = stream;
+      cameraVideo.srcObject = stream;
+      try { await cameraVideo.play(); } catch (_) { /* autoplay is allowed for muted inline video */ }
+
+      const track = stream.getVideoTracks()[0];
+      const settings = (track && track.getSettings && track.getSettings()) || {};
+      cameraVideo.classList.toggle('is-mirrored', (settings.facingMode || camFacing) === 'user');
+      setCameraState('live');
+      updateCameraSwitch();
+    } catch (err) {
+      if (session !== camSession) return;
+      console.warn('Camera error:', err);
+      setCameraState('error', cameraErrorMessage(err));
+    }
+  }
+
+  async function updateCameraSwitch() {
+    try {
+      const devices = await navigator.mediaDevices.enumerateDevices();
+      const cameras = devices.filter(d => d.kind === 'videoinput').length;
+      btnCameraSwitch.classList.toggle('hidden', cameras < 2);
+    } catch (_) {
+      btnCameraSwitch.classList.add('hidden');
+    }
+  }
+
+  function captureCameraFrame() {
+    const vw = cameraVideo.videoWidth;
+    const vh = cameraVideo.videoHeight;
+    if (!vw || !vh) return;
+
+    const k = Math.min(1, 2560 / Math.max(vw, vh));   // keep the upload reasonably small
+    cameraCanvas.width = Math.round(vw * k);
+    cameraCanvas.height = Math.round(vh * k);
+    cameraCanvas.getContext('2d').drawImage(cameraVideo, 0, 0, cameraCanvas.width, cameraCanvas.height);
+
+    cameraCanvas.toBlob((blob) => {
+      if (!blob) {
+        showToast('Không chụp được ảnh, hãy thử lại.', 'error');
+        return;
+      }
+      camBlob = blob;
+      if (camSnapshotUrl) URL.revokeObjectURL(camSnapshotUrl);
+      camSnapshotUrl = URL.createObjectURL(blob);
+      cameraSnapshot.src = camSnapshotUrl;
+      cameraVideo.pause();
+      setCameraState('review');
+    }, 'image/jpeg', 0.92);
+  }
+
+  function retakeCameraPhoto() {
+    camBlob = null;
+    if (camStream && camStream.active) {
+      cameraVideo.play().catch(() => { });
+      setCameraState('live');
+    } else {
+      startCamera();
+    }
+  }
+
+  function useCameraPhoto() {
+    if (!camBlob) return;
+    const d = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    const name = `camera_${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}.jpg`;
+    const file = new File([camBlob], name, { type: 'image/jpeg', lastModified: Date.now() });
+    dismissOverlay('camera');
+    handleSelectedFiles([file]);
+  }
+
+  function closeCameraLayer() {
+    camSession++;                 // cancels a pending getUserMedia
+    stopCameraStream();
+    camBlob = null;
+    camPausedByHide = false;
+    if (camSnapshotUrl) URL.revokeObjectURL(camSnapshotUrl);
+    camSnapshotUrl = null;
+    cameraSnapshot.removeAttribute('src');
+    cameraModal.classList.add('hidden');
+    lockScroll(false);
+    if (camReturnFocus && typeof camReturnFocus.focus === 'function') {
+      try { camReturnFocus.focus({ preventScroll: true }); } catch (_) { /* element is gone */ }
+    }
+    camReturnFocus = null;
+  }
+
+  // Release the camera while the tab is in the background, resume when it comes back
+  document.addEventListener('visibilitychange', () => {
+    if (cameraModal.classList.contains('hidden')) return;
+    if (document.hidden) {
+      if (cameraModal.dataset.state === 'live') {
+        stopCameraStream();
+        camPausedByHide = true;
+      }
+    } else if (camPausedByHide) {
+      camPausedByHide = false;
+      startCamera();
+    }
+  });
+
+  if (btnOpenCamera) btnOpenCamera.addEventListener('click', openCamera);
+  if (btnCameraResult) btnCameraResult.addEventListener('click', openCamera);
+  btnCameraClose.addEventListener('click', () => dismissOverlay('camera'));
+  btnCameraShutter.addEventListener('click', captureCameraFrame);
+  btnCameraRetake.addEventListener('click', retakeCameraPhoto);
+  btnCameraUse.addEventListener('click', useCameraPhoto);
+  btnCameraRetry.addEventListener('click', startCamera);
+  btnCameraFallback.addEventListener('click', openNativeCamera);
+  btnCameraSwitch.addEventListener('click', () => {
+    camFacing = camFacing === 'environment' ? 'user' : 'environment';
+    startCamera();
+  });
+
+  // Photo taken with the device's own camera app (fallback path)
+  cameraInput.addEventListener('change', (e) => {
+    const files = e.target.files;
+    if (files && files.length > 0) {
+      handleSelectedFiles(files);
+      dismissOverlay('camera');
     }
   });
 
@@ -1468,10 +1691,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (type === 'warning') iconClass = 'fa-triangle-exclamation';
     if (type === 'error') iconClass = 'fa-circle-exclamation';
 
-    toast.innerHTML = `
-      <i class="fa-solid ${iconClass}"></i>
-      <span>${message}</span>
-    `;
+    const icon = document.createElement('i');
+    icon.className = `fa-solid ${iconClass}`;
+    const text = document.createElement('span');
+    text.textContent = message;
+    toast.append(icon, text);
 
     toastStack.appendChild(toast);
 

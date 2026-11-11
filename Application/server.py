@@ -17,7 +17,7 @@ from engine import model_service
 
 app = FastAPI(
     title="Cashew Leaf Disease Diagnosis AI",
-    description="Cashew leaf disease diagnosis: DenseNet121 x5 + YOLO26s + Stacker F3 (EXP-034), legacy DenseNet121 EXP-014 fallback",
+    description="Cashew leaf disease diagnosis API",
     version="1.0.0",
 )
 

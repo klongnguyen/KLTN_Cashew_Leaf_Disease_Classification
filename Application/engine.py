@@ -11,6 +11,8 @@ from config import EXP034_ID, MODEL_ENGINE
 
 logger = logging.getLogger("CashewLeafAI.Engine")
 
+FALLBACK_USER_WARNING = "Hệ thống đang chạy ở chế độ dự phòng nên kết quả có thể kém chính xác hơn bình thường."
+
 
 class EngineDispatcher:
     _instance = None
@@ -24,7 +26,8 @@ class EngineDispatcher:
     def _initialize(self):
         self._active_service = None
         self._engine_type = None
-        self._warning: Optional[str] = None
+        self._warning: Optional[str] = None       # technical detail: logs and /api/model-info only
+        self._user_warning: Optional[str] = None  # plain wording shown to users with each result
         choice = (MODEL_ENGINE or "exp034").lower().strip()
 
         if choice == "exp034":
@@ -40,6 +43,7 @@ class EngineDispatcher:
                     f"Không nạp được EXP-034 ({type(e).__name__}: {e}). "
                     "Đang dùng engine legacy (chỉ DenseNet121, khoanh vùng theo màu sắc)."
                 )
+                self._user_warning = FALLBACK_USER_WARNING
 
         from model_service import get_legacy_service
         try:
@@ -54,6 +58,7 @@ class EngineDispatcher:
         legacy_warning = getattr(self._active_service, "using_fallback", False)
         if legacy_warning:
             self._warning = (self._warning or "") + " Legacy đang dùng checkpoint dự phòng SCRATCH-001 (chỉ debug)."
+            self._user_warning = FALLBACK_USER_WARNING
         logger.warning(f"Engine Dispatcher: legacy engine active. {self._warning or ''}")
 
     @property
@@ -62,10 +67,9 @@ class EngineDispatcher:
 
     def predict_image(self, image_bytes: bytes, sample_name: Optional[str] = None) -> Dict[str, Any]:
         result = self._active_service.predict_image(image_bytes, sample_name=sample_name)
-        if self._warning:
-            meta = result.setdefault("model_meta", {})
-            existing = meta.get("engine_warning")
-            meta["engine_warning"] = self._warning if not existing else f"{self._warning} {existing}"
+        if self._user_warning:
+            # Users get plain wording; the technical reason stays in the logs and /api/model-info
+            result.setdefault("model_meta", {})["engine_warning"] = self._user_warning
         return result
 
     def get_model_info(self) -> Dict[str, Any]:

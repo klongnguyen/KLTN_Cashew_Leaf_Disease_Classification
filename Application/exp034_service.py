@@ -420,10 +420,10 @@ class EXP034Service:
         rejected = bool(reasons) and OOD_GATE_ENABLED
         warning = None
         if not rejected and zone == "band":
+            # Plain wording for users; the measured values stay in the returned gate dict.
             warning = (
-                f"Ảnh khác đáng kể so với ảnh lá điều dùng để huấn luyện (khoảng cách kNN {knn:.3f} trong vùng "
-                f"nghi ngờ {t_low:.3f}–{t_high:.3f}; DenseNet: P(không phải lá điều) {p_nc * 100:.1f}%). "
-                "Hệ thống vẫn chẩn đoán nhưng kết quả có thể kém tin cậy — nên chụp lại ảnh rõ, đủ sáng, cận lá."
+                "Ảnh khác khá nhiều so với ảnh lá điều thường gặp. "
+                "Hệ thống vẫn nhận diện nhưng kết quả có thể kém tin cậy — nên chụp lại ảnh rõ, đủ sáng, cận lá."
             )
         return {
             "enabled": OOD_GATE_ENABLED,
@@ -525,8 +525,9 @@ class EXP034Service:
                 "confidence_percent": None,
                 "ood_rejected": True,
                 "symptoms": (
-                    "Ảnh bị từ chối ở cổng kiểm tra đầu vào, nên không khoanh vùng hay chẩn đoán bệnh "
-                    "(kể cả khi trên lá có vết giống bệnh): " + "; ".join(gate["reasons"]) + "."
+                    "Ảnh này không giống ảnh lá điều nên hệ thống không khoanh vùng hay chẩn đoán bệnh "
+                    "(kể cả khi trên lá có vết giống bệnh). "
+                    "Hãy chụp lại lá điều rõ nét, đủ sáng và lấy cận cảnh."
                 ),
             }
         )
@@ -686,8 +687,8 @@ class EXP034Service:
             else:
                 abstain = True
                 abstain_reason = (
-                    "YOLO không khoanh được vùng bệnh nào (hoặc DenseNet bác bỏ mọi vùng), "
-                    f"nhưng DenseNet toàn lá nghiêng về {DISEASE_INFO.get(primary, {}).get('vn_name', primary)} "
+                    "chưa khoanh được vùng bệnh cụ thể nào trên lá, "
+                    f"nhưng toàn ảnh nghiêng về {DISEASE_INFO.get(primary, {}).get('vn_name', primary)} "
                     f"({confidence * 100:.1f}%)"
                 )
             final_source = "whole_leaf_no_box"

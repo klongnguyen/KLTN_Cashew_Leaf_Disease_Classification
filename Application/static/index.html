@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f766e">
   <title>Hệ Thống Tri Thức &amp; Chuẩn Đoán Bệnh Lá Cây Nông Nghiệp</title>
 
   <!-- Google Fonts: Plus Jakarta Sans -->
@@ -16,7 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="/static/css/style.css?v=20261110_2">
+  <link rel="stylesheet" href="/static/css/style.css?v=20261111_9">
 </head>
 
 <body>
@@ -34,7 +35,7 @@
       </div>
 
       <nav class="header-nav" aria-label="Điều hướng trang chủ">
-        <button type="button" class="nav-tab active" id="nav-btn-selector">
+        <button type="button" class="nav-tab active" id="nav-btn-selector" aria-label="Trang chủ">
           <i class="fa-solid fa-house"></i>
           <span>Trang Chủ </span>
         </button>
@@ -203,10 +204,11 @@
 
         <!-- Cột trái: Mục lục Wikipedia cố định -->
         <aside class="wiki-sidebar">
-          <div class="panel-card wiki-toc-card">
-            <div class="wiki-toc-header">
+          <details class="panel-card wiki-toc-card" id="wiki-toc-details" open>
+            <summary class="wiki-toc-header">
               <span>Mục lục Bách Khoa Lá Điều</span>
-            </div>
+              <i class="fa-solid fa-chevron-down wiki-toc-chevron" aria-hidden="true"></i>
+            </summary>
             <ol class="wiki-toc-list">
               <li><a href="#wiki-sec-overview" class="toc-link">1. Tổng quan về Cây Điều</a></li>
               <li><a href="#wiki-sec-morphology" class="toc-link">2. Đặc điểm hình thái lá điều</a></li>
@@ -224,7 +226,7 @@
               <li><a href="#wiki-sec-phenology" class="toc-link">6. Chu kỳ mùa vụ &amp; Thời điểm nhạy cảm</a></li>
               <li><a href="#wiki-sec-ipm" class="toc-link">7. Quy trình quản lý dịch hại (IPM)</a></li>
             </ol>
-          </div>
+          </details>
         </aside>
 
         <!-- Cột chính: Nội dung bài viết kiểu Wikipedia -->
@@ -890,8 +892,11 @@
                       <button type="button" class="btn-ghost-sm active" id="btn-toggle-bbox" title="Bật/Tắt hiển thị khung khoanh vùng">
                         <i class="fa-solid fa-vector-square"></i> <span id="bbox-toggle-label">Ẩn khung</span>
                       </button>
-                      <button type="button" class="btn-ghost-sm" id="btn-zoom-image" title="Phóng to ảnh">
-                        <i class="fa-solid fa-magnifying-glass-plus"></i> Phóng to
+                      <button type="button" class="btn-ghost-sm" id="btn-zoom-image" title="Xem ảnh toàn màn hình">
+                        <i class="fa-solid fa-expand"></i> Phóng to
+                      </button>
+                      <button type="button" class="btn-ghost-sm" id="btn-camera-result" title="Chụp ảnh mới bằng camera">
+                        <i class="fa-solid fa-camera"></i> Chụp ảnh
                       </button>
                       <button type="button" class="btn-ghost-sm" id="btn-reupload-trigger" title="Chọn ảnh khác">
                         <i class="fa-solid fa-arrow-rotate-right"></i> Chọn ảnh khác
@@ -900,12 +905,14 @@
                   </div>
                 </div>
 
-                <!-- 2. Primary Diagnosis & Severity Summary (Separated Indicators) -->
+                <!-- 2. Right column: the answer, then the care guide right under it. -->
+                <div class="result-side-column">
+
                 <div class="conclusion-card" id="conclusion-card">
                   <!-- The main answer: disease, confidence source, and next step. -->
                   <div class="indicator-block indicator-global">
                     <div class="indicator-header">
-                      <span class="indicator-badge badge-densenet">
+                      <span class="indicator-badge badge-result">
                         <i class="fa-solid fa-leaf"></i> <span id="indicator1-title">Kết quả nhận diện</span>
                       </span>
                       <span class="badge-conclusion-tag" id="conclusion-mode-tag">
@@ -943,6 +950,45 @@
                   </details>
                 </div>
 
+                <!-- Care guide: always visible, fills the column under the conclusion. -->
+                <section class="care-guide-card" id="disease-guide-section" aria-labelledby="guide-protocol-heading">
+                  <div class="care-guide-header">
+                    <h3 class="care-guide-title">
+                      <i class="fa-solid fa-book-medical"></i>
+                      <span id="guide-protocol-heading">Hướng dẫn chăm sóc chi tiết</span>
+                    </h3>
+                    <button type="button" class="btn-link-wiki" id="btn-jump-to-wiki">
+                      <i class="fa-solid fa-book-atlas"></i>
+                      <span>Xem bách khoa lá điều</span>
+                    </button>
+                  </div>
+
+                  <div class="priority-directive-box" id="priority-directive-box">
+                    <div class="priority-icon"><i class="fa-solid fa-shield-virus"></i></div>
+                    <div class="priority-body">
+                      <strong class="priority-title">Ưu tiên xử lý</strong>
+                      <p class="priority-desc" id="guide-priority-note"></p>
+                    </div>
+                  </div>
+
+                  <div class="care-guide-block" id="guide-urgent-block">
+                    <div class="guide-card-label"><i class="fa-solid fa-scissors"></i><span id="guide-urgent-label">Chăm sóc và vệ sinh vườn</span></div>
+                    <ul class="guide-list" id="guide-urgent-list"></ul>
+                  </div>
+
+                  <div class="care-guide-block" id="guide-chemical-block">
+                    <div class="guide-card-label"><i class="fa-solid fa-flask-vial"></i><span>Thuốc bảo vệ thực vật</span></div>
+                    <div class="chemical-recs-wrap" id="chemical-recs-wrap"></div>
+                  </div>
+
+                  <div class="care-guide-block" id="guide-prevention-block">
+                    <div class="guide-card-label"><i class="fa-solid fa-seedling"></i><span>Phòng ngừa tái phát</span></div>
+                    <ul class="guide-list" id="guide-prevention-list"></ul>
+                  </div>
+                </section>
+
+                </div>
+
               </div>
 
               <!-- Further information is available when the user requests it. -->
@@ -950,83 +996,6 @@
                 <summary><span><i class="fa-solid fa-list"></i> Xem từng vùng nghi bệnh</span><span class="lesion-total-badge" id="lesion-total-badge">0 vùng</span></summary>
                 <p class="disclosure-intro">Chọn một vùng để xem vị trí tương ứng trên ảnh.</p>
                 <div class="lesion-grid-table" id="lesion-grid-table"></div>
-              </details>
-
-              <details class="result-disclosure" id="disease-guide-section">
-                <summary><span><i class="fa-solid fa-book-open"></i> Hướng dẫn chăm sóc chi tiết</span></summary>
-                <div class="guide-card-header">
-                  <div class="guide-header-title">
-                    <i class="fa-solid fa-book-medical"></i>
-                    <span id="guide-protocol-heading">Hướng dẫn xử lý</span>
-                  </div>
-                  <button type="button" class="btn-link-wiki" id="btn-jump-to-wiki">
-                    <i class="fa-solid fa-book-atlas"></i>
-                    <span>Xem bách khoa lá điều</span>
-                  </button>
-                </div>
-
-                <div class="priority-directive-box" id="priority-directive-box">
-                  <div class="priority-icon"><i class="fa-solid fa-shield-virus"></i></div>
-                  <div class="priority-body">
-                    <strong class="priority-title">Ưu tiên xử lý</strong>
-                    <p class="priority-desc" id="guide-priority-note"></p>
-                  </div>
-                </div>
-
-                <div class="guide-content-grid">
-                  <div class="guide-sub-card">
-                    <div class="guide-card-label"><i class="fa-solid fa-scissors"></i><span>Chăm sóc và vệ sinh vườn</span></div>
-                    <ul class="guide-list" id="guide-urgent-list"></ul>
-                  </div>
-                  <div class="guide-sub-card">
-                    <div class="guide-card-label"><i class="fa-solid fa-flask-vial"></i><span>Thuốc bảo vệ thực vật</span></div>
-                    <div class="chemical-recs-wrap" id="chemical-recs-wrap"></div>
-                  </div>
-                </div>
-                <div class="prevention-bottom-box">
-                  <div class="prevention-label"><i class="fa-solid fa-seedling"></i><span>Phòng ngừa tái phát</span></div>
-                  <ul class="guide-list-horizontal" id="guide-prevention-list"></ul>
-                </div>
-              </details>
-
-              <details class="result-disclosure technical-disclosure" id="technical-details">
-                <summary><span><i class="fa-solid fa-circle-info"></i> Thông tin phân tích</span></summary>
-                <p class="technical-description" id="indicator1-note"></p>
-                <p class="technical-description hidden" id="technical-gate-warning"></p>
-                <p class="conclusion-latin" id="conclusion-latin"></p>
-                <div class="verification-summary-box" id="verification-summary-box"></div>
-                <div class="technical-area-note">Diện tích bên dưới là ước tính theo khung bao vùng nghi bệnh, không phải diện tích mô lá bị hoại tử đo chính xác.</div>
-                <!-- Indicator 2: Local Lesion Localization & Damage Meter -->
-                  <div class="indicator-block indicator-local">
-                    <div class="indicator-header">
-                      <span class="indicator-badge badge-lesion">
-                        <i class="fa-solid fa-crosshairs"></i> Ước tính vùng nghi bệnh
-                      </span>
-                      <span class="severity-badge-tag" id="severity-badge-tag">Trung bình</span>
-                    </div>
-
-                    <div class="severity-meter-card">
-                      <div class="severity-meter-header">
-                        <span class="severity-title"><i class="fa-solid fa-chart-pie"></i> Diện tích trong khung:</span>
-                        <span class="severity-stat-text" id="severity-stat-text">12.5% diện tích lá (5 ổ dịch khoanh vùng)</span>
-                      </div>
-                      <div class="progress-bar-track">
-                        <div class="progress-bar-fill" id="severity-progress-fill" style="width: 12.5%;"></div>
-                      </div>
-                    </div>
-
-                  </div>
-                <div class="confidence-breakdown-section">
-                <div class="breakdown-header">
-                  <div class="breakdown-title-wrap">
-                    <span class="sort-icon-box"><i class="fa-solid fa-arrow-down-wide-short"></i></span>
-                    <h4 class="breakdown-title">Xác suất phân loại toàn ảnh (tham khảo)</h4>
-                  </div>
-                </div>
-
-                <!-- List sorted from HIGHEST to LOWEST -->
-                <div class="confidence-list" id="confidence-list"></div>
-                </div>
               </details>
 
             </div>
@@ -1074,6 +1043,14 @@
                 <p class="dropzone-desc">Bấm để chọn hoặc kéo ảnh vào đây · JPG, PNG, WEBP · tối đa 25 MB</p>
               </div>
             </div>
+
+            <!-- Camera: live capture in the page, or the device camera app when the browser blocks it -->
+            <div class="source-divider" aria-hidden="true"><span>hoặc</span></div>
+            <button type="button" class="btn-camera" id="btn-open-camera">
+              <i class="fa-solid fa-camera"></i>
+              <span>Chụp ảnh bằng camera</span>
+            </button>
+            <input type="file" id="camera-input" accept="image/*" capture="environment" class="hidden-file-input">
 
             <!-- Selected File Status Tray -->
             <div class="file-status-tray hidden" id="file-status-tray">
@@ -1142,19 +1119,74 @@
 
   </main>
 
-  <!-- Image Lightbox Modal -->
-  <div class="modal-backdrop hidden" id="image-modal">
-    <div class="modal-box">
-      <div class="modal-top">
-        <h4 class="modal-title" id="modal-img-title">Chi Tiết Hình Ảnh</h4>
-        <button type="button" class="btn-close-modal" id="btn-close-modal">
+  <!-- Full-screen image viewer: the diagnosis photo with its boxes (can be hidden), or a wiki photo -->
+  <div class="viewer hidden" id="image-modal" role="dialog" aria-modal="true" aria-labelledby="modal-img-title">
+    <div class="viewer-bar">
+      <div class="viewer-heading">
+        <h4 class="viewer-title" id="modal-img-title">Chi Tiết Hình Ảnh</h4>
+        <span class="viewer-sub hidden" id="modal-img-sub"></span>
+      </div>
+      <div class="viewer-actions">
+        <button type="button" class="viewer-btn hidden" id="btn-modal-toggle-bbox" aria-pressed="true">
+          <i class="fa-solid fa-vector-square"></i> <span id="modal-bbox-label">Ẩn khung</span>
+        </button>
+        <button type="button" class="viewer-btn viewer-btn-icon" id="btn-close-modal" aria-label="Đóng">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
-      <div class="modal-body">
+    </div>
+    <div class="viewer-stage" id="viewer-stage">
+      <div class="viewer-canvas" id="viewer-canvas">
         <img id="modal-full-img" src="" alt="Chi tiết ảnh">
+        <svg class="lesion-svg-overlay" id="viewer-svg" xmlns="http://www.w3.org/2000/svg"></svg>
       </div>
     </div>
+  </div>
+
+  <!-- Camera: live preview -> capture -> review -> use photo -->
+  <div class="camera-overlay hidden" id="camera-modal" role="dialog" aria-modal="true" aria-labelledby="camera-title">
+    <div class="viewer-bar">
+      <div class="viewer-heading">
+        <h4 class="viewer-title" id="camera-title"><i class="fa-solid fa-camera"></i> Chụp ảnh lá điều</h4>
+      </div>
+      <div class="viewer-actions">
+        <button type="button" class="viewer-btn viewer-btn-icon" id="btn-camera-close" aria-label="Đóng camera">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="camera-stage" id="camera-stage">
+      <video id="camera-video" autoplay playsinline muted></video>
+      <img id="camera-snapshot" class="hidden" alt="Ảnh vừa chụp">
+      <div class="camera-status hidden" id="camera-status" role="status" aria-live="polite">
+        <i class="fa-solid fa-circle-notch fa-spin" id="camera-status-icon"></i>
+        <p id="camera-status-text">Đang mở camera…</p>
+        <div class="camera-status-actions hidden" id="camera-status-actions">
+          <button type="button" class="camera-pill-btn" id="btn-camera-retry"><i class="fa-solid fa-rotate-right"></i> Thử lại</button>
+          <button type="button" class="camera-pill-btn is-primary" id="btn-camera-fallback"><i class="fa-solid fa-image"></i> Chọn ảnh từ thiết bị</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="camera-hint" id="camera-hint">Giữ lá trong khung hình, đủ sáng và lấy nét vào vùng bệnh.</p>
+
+    <div class="camera-controls" id="camera-controls">
+      <div class="camera-controls-live">
+        <button type="button" class="camera-side-btn hidden" id="btn-camera-switch" aria-label="Đổi camera trước/sau">
+          <i class="fa-solid fa-camera-rotate"></i>
+        </button>
+        <button type="button" class="camera-shutter" id="btn-camera-shutter" aria-label="Chụp ảnh" disabled>
+          <span></span>
+        </button>
+        <span class="camera-side-spacer" aria-hidden="true"></span>
+      </div>
+      <div class="camera-controls-review">
+        <button type="button" class="camera-pill-btn" id="btn-camera-retake"><i class="fa-solid fa-rotate-left"></i> Chụp lại</button>
+        <button type="button" class="camera-pill-btn is-primary" id="btn-camera-use"><i class="fa-solid fa-check"></i> Dùng ảnh này</button>
+      </div>
+    </div>
+    <canvas id="camera-canvas" hidden></canvas>
   </div>
 
   <!-- Toast Notification Container -->
@@ -1180,7 +1212,7 @@
   </footer>
 
   <!-- Main JavaScript Application Logic -->
-  <script src="/static/js/app.js?v=20261110_2"></script>
+  <script src="/static/js/app.js?v=20261111_9"></script>
 </body>
 
 </html>

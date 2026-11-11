@@ -373,7 +373,7 @@ def build_report(
                 f"Phát hiện {len(diseases)} bệnh trên cùng lá. Bệnh chiếm nhiều vùng nhất: "
                 f"{info.get('vn_name', primary)} ({diseases[0]['box_count']} vùng). Bệnh kèm theo: "
                 + ", ".join(f"{d['label_vn']} ({d['box_count']} vùng)" for d in diseases[1:])
-                + f". Tổng {n_boxes} vùng được YOLO khoanh và DenseNet xác minh."
+                + f". Tổng cộng {n_boxes} vùng nghi bệnh được đánh dấu trên ảnh."
             ),
         }
         protocol = MULTI_DISEASE_PROTOCOLS.get(tuple(sorted(d["class_key"] for d in diseases))) or {
