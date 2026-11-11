@@ -18,7 +18,7 @@ Các chỉ số Test/Holdout trong `EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-N
 
 ## Tệp mô hình và cách chạy
 
-Các tệp `.keras` và `.pt` không được lưu trong Git. Trước khi chạy, khôi phục đúng các binary theo `pipeline_bundle/artifact_sha256.csv` của EXP-035:
+Trọng số của mô hình triển khai (EXP-035, khoảng 243 MB) **đã nằm trong Git**, nên sau khi `git clone` có thể chạy ngay. Các tệp gồm (SHA-256 được kiểm khi khởi động theo `pipeline_bundle/artifact_sha256.csv`):
 
 ```text
 EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04/pipeline_bundle/
@@ -42,7 +42,10 @@ cd Application
 python -m uvicorn server:app --host 127.0.0.1 --port 8080
 ```
 
-Mở `http://127.0.0.1:8080/`. 
+Mở `http://127.0.0.1:8080/`.
+
+Để mở từ điện thoại cùng mạng Wi-Fi, chạy với `--host 0.0.0.0` rồi truy cập `http://<IP máy tính>:8080/` (có thể cần mở cổng 8080 trên tường lửa). Camera trực tiếp trong trang chỉ hoạt động trên HTTPS hoặc localhost; qua HTTP thông thường, nút chụp ảnh sẽ mở ứng dụng camera của điện thoại.
+
 ## API
 
 | Route | Vai trò |

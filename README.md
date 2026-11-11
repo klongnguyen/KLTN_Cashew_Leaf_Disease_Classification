@@ -56,7 +56,7 @@ Mọi chỉ số YOLO ở mục này là một seed, trừ khi README tương �
 
 ## Chạy ứng dụng web
 
-Xem [Application/README.md](Application/README.md). **Trọng số mô hình (`.keras`, `.pt`) và bộ dữ liệu ảnh không nằm trong Git** (bị `.gitignore`). Cần khôi phục đúng tệp theo `EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04/pipeline_bundle/artifact_sha256.csv` trước khi chạy.
+Xem [Application/README.md](Application/README.md). Trọng số của mô hình triển khai (EXP-035) đã nằm trong Git (`EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04/pipeline_bundle/`), nên clone xong là chạy được. **Bộ dữ liệu ảnh huấn luyện không nằm trong Git.**
 
 ## Giới hạn
 

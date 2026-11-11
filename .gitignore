@@ -60,3 +60,7 @@ Desktop.ini
 .DS_Store
 .vscode/
 .idea/
+
+# Weights of the deployed model (EXP-035) are tracked so a fresh clone can run the web app
+!EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04/pipeline_bundle/best.pt
+!EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04/pipeline_bundle/seed_*/deployment_model.keras
