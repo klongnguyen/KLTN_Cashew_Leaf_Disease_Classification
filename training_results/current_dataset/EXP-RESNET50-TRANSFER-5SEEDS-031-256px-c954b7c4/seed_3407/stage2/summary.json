@@ -1,0 +1,18 @@
+{
+  "stage": "stage2",
+  "best_epoch": 8,
+  "real_subgroup_accuracy": 0.864406779661017,
+  "real_subgroup_correct": 51,
+  "real_subgroup_total": 59,
+  "actual_epochs": 16,
+  "fit_seconds": 82.09805603999848,
+  "val_loss": 0.09472748637199402,
+  "val_accuracy": 0.9683195352554321,
+  "val_macro_f1": 0.9671540015506703,
+  "checkpoint_path": "/content/training_results/current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-031-256px-c954b7c4/seed_3407/stage2/best.weights.h5",
+  "checkpoint_sha256": "090c84a9c6d703dea22f7083a9600aded64f749cb202fb6c632effb82079532e",
+  "checkpoint_size_mb": 204.6790771484375,
+  "backbone_trainable_params": 14953472,
+  "learning_rate_first": 9.999999747378752e-06,
+  "learning_rate_last": 4.999999873689376e-06
+}

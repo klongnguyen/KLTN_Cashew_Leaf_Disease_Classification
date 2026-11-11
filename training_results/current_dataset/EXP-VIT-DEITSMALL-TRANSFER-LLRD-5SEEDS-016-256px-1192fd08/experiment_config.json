@@ -1,0 +1,258 @@
+{
+  "experiment_id": "EXP-VIT-DEITSMALL-TRANSFER-LLRD-5SEEDS-016-256px-1192fd08",
+  "notebook_version": "016",
+  "code_revision_sha256": "1192fd08d756789044cd23e9fa6e419a7eecf064b4165836f0d87d3d03db6bb4",
+  "reference_recipe": "EXP-DENSENET121-TRANSFER-5SEEDS-029-256px-9c23ac05: same dataset, augmentation, schedule, seeds and selection rule",
+  "peer_experiment": "EXP-RESNET50-TRANSFER-5SEEDS-031-256px-c954b7c4",
+  "baseline_experiment": "EXP-VIT-DEITSMALL-TRANSFER-5SEEDS-015-256px-d4379a48",
+  "plan_document": "KE_HOACH_CAI_TIEN_VIT_SAU_EXP-015.md (EXP-016)",
+  "phase": "CONFIRM",
+  "comparison_scope": "single-factor change versus the DeiT-Small EXP-015 baseline: Stage 2 learning-rate scheme (layer-wise decay) and unfreeze depth; all other settings identical to the DenseNet121 EXP-029 / EXP-015 recipe",
+  "fairness_contract": {
+    "dataset_archive_sha256": "e1647b72e10af04275dc760545f4ef17c9f44343ae119495b89ba1e3cd954e04",
+    "dataset_manifest_sha256": "2cee0fb4818f93fba1dda43ab2e83615d33c5f7f3e4e15dc7c647436ff54b607",
+    "dataset_totals": {
+      "train": 4972,
+      "val": 1452,
+      "test": 685,
+      "total": 7109
+    },
+    "class_names": [
+      "anthracnose",
+      "healthy",
+      "leaf_miner",
+      "red_rust",
+      "not_cashew_leaf"
+    ],
+    "real_holdout_archive": "RL_Cashew_holdout (9).zip",
+    "real_holdout_counts": {
+      "anthracnose": 46,
+      "healthy": 19,
+      "leaf_miner": 36,
+      "red_rust": 25
+    },
+    "seeds": [
+      42,
+      123,
+      2026,
+      3407,
+      7777
+    ],
+    "img_size": 256,
+    "batch_size": 16,
+    "head_dropout": 0.4,
+    "weight_decay": 0.0001,
+    "optimizer": "AdamW",
+    "loss": "SparseCategoricalCrossentropy",
+    "lr_reduction_factor": 0.5,
+    "stage1": {
+      "lr": 0.0003,
+      "epochs": 12,
+      "early_patience": 4,
+      "reduce_patience": 2,
+      "min_lr": 1e-06
+    },
+    "stage2": {
+      "lr": 1e-05,
+      "epochs": 30,
+      "early_patience": 8,
+      "reduce_patience": 4,
+      "min_lr": 1e-07
+    },
+    "augmentation": {
+      "horizontal_flip": true,
+      "rotation_factor": 0.08,
+      "zoom_factor": 0.1,
+      "contrast_factor": 0.25,
+      "brightness_factor": 0.25,
+      "saturation_range": [
+        0.6,
+        1.4
+      ],
+      "hue_delta": 0.03,
+      "grayscale_probability": 0.1
+    },
+    "real_oversample_factor": 1,
+    "selection_primary_metric": "val_loss"
+  },
+  "model_specific_differences": {
+    "backbone": "DeiT-Small distilled (KerasHub, ImageNet-1k), 21,689,472 parameters at 256 px",
+    "input_resolution": "256x256 like both references; the 224 px preset position grid (14x14) is resampled bicubically to 16x16, CLS and DIST rows kept",
+    "preprocessing_inside_model": "x/255 then ImageNet mean/std, identical to the DenseNet121 reference",
+    "head": "two new 5-class heads (CLS and DIST token), Dropout 0.40 each, logits averaged before softmax",
+    "stage2_trainable_rule": "last 8 of 12 encoder blocks + final LayerNorm (embeddings and earlier blocks frozen); LR = 5e-05 x 0.75 ** (11 - block index): 14,196,480 backbone parameters (65.5%); DenseNet121 reference 2,129,920, ResNet50 peer 14,953,472",
+    "normalization": "LayerNorm has no running statistics, so no BatchNorm-style freeze applies (the CNNs keep BatchNorm frozen)",
+    "exp016_declared_deviation": "Stage 2 learning rate is NOT the flat 1e-5 of the references: lr(encoder block i) = base_lr * 0.75 ** (11 - i) for the unfrozen blocks; final LayerNorm and both heads use base_lr; embeddings frozen; weight decay applies the unscaled base_lr (about 5e-9 relative shrink per step). Baseline for comparison: EXP-VIT-DEITSMALL-TRANSFER-5SEEDS-015-256px-d4379a48."
+  },
+  "dataset": {
+    "name": "Cashew_dataV13",
+    "archive": "CashewData_Split (13).zip",
+    "archive_sha256": "e1647b72e10af04275dc760545f4ef17c9f44343ae119495b89ba1e3cd954e04",
+    "drive_file_id": "1HUE5ObO1vW0mP2QjgsdObMuW4RVPzNk7",
+    "manifest_sha256": "2cee0fb4818f93fba1dda43ab2e83615d33c5f7f3e4e15dc7c647436ff54b607",
+    "counts": {
+      "train": 4972,
+      "val": 1452,
+      "test": 685,
+      "total": 7109
+    },
+    "class_counts": {
+      "anthracnose": {
+        "train": 991,
+        "val": 309,
+        "test": 120,
+        "total": 1420
+      },
+      "healthy": {
+        "train": 872,
+        "val": 227,
+        "test": 118,
+        "total": 1217
+      },
+      "leaf_miner": {
+        "train": 875,
+        "val": 267,
+        "test": 130,
+        "total": 1272
+      },
+      "red_rust": {
+        "train": 1131,
+        "val": 335,
+        "test": 161,
+        "total": 1627
+      },
+      "not_cashew_leaf": {
+        "train": 1103,
+        "val": 314,
+        "test": 156,
+        "total": 1573
+      }
+    },
+    "class_names": [
+      "anthracnose",
+      "healthy",
+      "leaf_miner",
+      "red_rust",
+      "not_cashew_leaf"
+    ],
+    "real_filename_counts": {
+      "train": 294,
+      "val": 59,
+      "test": 28
+    },
+    "train_rows_before_oversample": 4972,
+    "train_rows_after_oversample": 4972,
+    "real_oversample_factor": 1
+  },
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "screening_seeds": [
+    42,
+    123,
+    2026
+  ],
+  "input": "raw RGB float32 0..255, bilinear resize 256x256",
+  "model": {
+    "backbone": "DeiT-Small distilled (KerasHub DeiTBackbone)",
+    "weights": "imagenet",
+    "pretrained_handles": [
+      "deit_small_distilled_patch16_224_imagenet",
+      "hf://facebook/deit-small-distilled-patch16-224"
+    ],
+    "pretrained_weights_sha256": "9f41529cb0b85ef1a04a236180b72d6aad91fd1974e665644a3c00c5a67262de",
+    "pretrained_resolution": 224,
+    "input_resolution": 256,
+    "position_embedding": "224 px 14x14 patch grid resampled bicubically to 16x16; CLS and DIST rows kept",
+    "backbone_config": {
+      "patch_size": [
+        16,
+        16
+      ],
+      "num_layers": 12,
+      "num_heads": 6,
+      "hidden_dim": 384,
+      "intermediate_dim": 1536,
+      "dropout_rate": 0.0,
+      "attention_dropout": 0.0,
+      "layer_norm_epsilon": 1e-12,
+      "use_mha_bias": true
+    },
+    "backbone_parameters": 21689472,
+    "head": "CLS and DIST tokens -> Dropout(0.40) -> Dense(5) each; logits averaged; softmax",
+    "head_dropout": 0.4,
+    "preprocessing": "inside model: x/255, then ImageNet mean/std (identical to DenseNet121 reference)",
+    "augmentation": {
+      "horizontal_flip": true,
+      "rotation_factor": 0.08,
+      "zoom_factor": 0.1,
+      "contrast_factor": 0.25,
+      "brightness_enabled": true,
+      "brightness_factor": 0.25,
+      "brightness_value_range": [
+        0.0,
+        255.0
+      ],
+      "hsv_jitter_enabled": true,
+      "saturation_range": [
+        0.6,
+        1.4
+      ],
+      "hue_delta": 0.03,
+      "grayscale_probability": 0.1,
+      "identical_to": "EXP-DENSENET121-TRANSFER-5SEEDS-029-256px-9c23ac05"
+    },
+    "backbone_call": "backbone(x); backbone dropout rates are 0"
+  },
+  "optimizer": "AdamW",
+  "weight_decay": 0.0001,
+  "batch_size": 16,
+  "loss": "SparseCategoricalCrossentropy",
+  "stage1": {
+    "lr": 0.0003,
+    "max_epochs": 12,
+    "early_patience": 4,
+    "reduce_patience": 2,
+    "min_lr": 1e-06,
+    "trainable_backbone": "none"
+  },
+  "stage2": {
+    "max_epochs": 30,
+    "early_patience": 8,
+    "reduce_patience": 4,
+    "min_lr": 1e-07,
+    "optimizer": "LayerwiseLRAdamW (AdamW with a per-variable learning-rate multiplier)",
+    "learning_rate_rule": "lr(encoder block i) = base_lr * 0.75 ** (11 - i) for the unfrozen blocks; final LayerNorm and both heads use base_lr; embeddings frozen; weight decay applies the unscaled base_lr (about 5e-9 relative shrink per step)",
+    "llrd_decay": 0.75,
+    "baseline_flat_lr": 1e-05,
+    "variable_under_test": {
+      "phase": "confirmation",
+      "config": {
+        "id": "n08_lr5e-05",
+        "unfreeze_last_blocks": 8,
+        "base_lr": 5e-05,
+        "decay": 0.75,
+        "trainable_params": 14196480,
+        "rule_text": "last 8 of 12 encoder blocks + final LayerNorm (embeddings and earlier blocks frozen); LR = 5e-05 x 0.75 ** (11 - block index)"
+      },
+      "config_source": "screening lock /content/training_results/current_dataset/EXP-VIT-DEITSMALL-TRANSFER-LLRD-SCREEN-016-256px-1192fd08/screening_selection_lock.json",
+      "screening_experiment": "EXP-VIT-DEITSMALL-TRANSFER-LLRD-SCREEN-016-256px-1192fd08"
+    },
+    "unfreeze_final_layernorm": true,
+    "embeddings": "always frozen",
+    "exp015_trainable_backbone_params": 7098624,
+    "backbone_params": 21689472,
+    "densenet121_reference_trainable_params": 2129920,
+    "resnet50_peer_trainable_params": 14953472
+  },
+  "selection_primary_metric": "val_loss",
+  "selection_rule": "lowest Validation loss, higher Validation macro-F1, Stage 1 on tie",
+  "deployment_rule": "lowest Validation loss, higher macro-F1, lower seed on tie",
+  "selection_note": "Both the real_ subgroup ranking and the val_loss ranking are written to selection_comparison.json. Holdout and Test never select.",
+  "test_protocol": "enabled Final Test after five-seed Validation lock; no model selection",
+  "holdout_protocol": "holdout leakage audited before training; predictions only after Validation lock; descriptive audit, not a blind benchmark"
+}

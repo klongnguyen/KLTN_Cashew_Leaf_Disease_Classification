@@ -1,0 +1,18 @@
+{
+  "seed": 2026,
+  "selected_stage": "stage2",
+  "stage2_config_id": "n08_lr5e-05",
+  "unfreeze_last_blocks": 8,
+  "stage2_base_lr": 5e-05,
+  "llrd_decay": 0.75,
+  "stage1_epochs": 12,
+  "stage2_epochs": 13,
+  "stage1_training_seconds": 69.95138281599975,
+  "stage2_training_seconds": 155.35923931899924,
+  "training_time_seconds": 225.310622134999,
+  "stage1_backbone_trainable_params": 0,
+  "stage2_backbone_trainable_params": 14196480,
+  "total_parameters": 21693322,
+  "selected_checkpoint_sha256": "be97ac2ce4cd0b96eca329b25a7be2f79bfce0f9ed864cee16e0fe68c9ea123f",
+  "selected_checkpoint_size_mb": 245.8991928100586
+}

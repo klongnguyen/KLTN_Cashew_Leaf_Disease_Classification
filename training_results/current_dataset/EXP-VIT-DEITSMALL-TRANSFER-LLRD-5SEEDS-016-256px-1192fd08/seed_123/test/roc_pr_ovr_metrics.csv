@@ -1,0 +1,6 @@
+class,support,roc_auc,average_precision,status
+anthracnose,120,0.9916224188790561,0.9713620460202071,OK
+healthy,118,0.9999701073147401,0.9998587570621468,OK
+leaf_miner,130,0.9962162162162163,0.9854307571599026,OK
+red_rust,161,1.0,1.0,OK
+not_cashew_leaf,156,1.0,1.0,OK

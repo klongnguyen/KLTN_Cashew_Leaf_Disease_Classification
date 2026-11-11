@@ -1,0 +1,41 @@
+{
+  "split": "val",
+  "note": "Display-region diagnostics; not detector mAP/recall.",
+  "experiment_id": "EXP-Y26S-NEG-V04-001",
+  "model_weights": "yolo26s.pt",
+  "checkpoint_sha256": "f9dc3fba1347b3213819f61abddb36b07e455112d4e6e8d57eeeeca8ab1b7f4a",
+  "dataset_archive_sha256": "4dca7b48a07fb971ef7f4e7c3b8cbe5b67f17bc411a7d43c060cece2e9e5798b",
+  "dataset_fingerprint": "edc28c5d5c7f12e83fdaff6509263a0085d19e7a9fd9e83297f5cfd5bddd66fa",
+  "seed": 42,
+  "ultralytics_version": "8.4.202",
+  "config": {
+    "proposal_conf": 0.2,
+    "nms_iou": 0.7,
+    "agnostic_nms": false,
+    "max_det": 500,
+    "region_config": {
+      "overlap_iou": 0.6,
+      "containment_ratio": 0.8,
+      "cluster_gap_ratio": 0.02,
+      "min_group_members": 5,
+      "min_local_density": 40.0,
+      "max_region_area_ratio": 0.25,
+      "max_region_span_ratio": 0.55
+    },
+    "gt_coverage_ioa": 0.5
+  },
+  "images": 1076,
+  "negative_images": 183,
+  "negative_raw_boxes": 37,
+  "negative_display_regions": 37,
+  "raw_boxes": 51503,
+  "display_regions": 39574,
+  "box_reduction_ratio": 0.23161757567520339,
+  "gt_count": 47258,
+  "raw_gt_covered": 34128,
+  "region_gt_covered": 34885,
+  "regions_without_gt_support": 8782,
+  "mean_display_gap_area_ratio": 0.11382605213987629,
+  "mean_inference_ms": 4.534381562203959,
+  "mean_aggregation_ms": 3.205849314201672
+}

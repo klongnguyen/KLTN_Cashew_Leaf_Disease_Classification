@@ -12,11 +12,11 @@ Dấu hiệu thường gặp trong dataset:
 
 | Sample 1 | Sample 2 |
 |---|---|
-| ![Anthracnose 1](./img_check/ath_01.png) | ![Anthracnose 2](./img_check/ath_02.png) |
+| ![Anthracnose 1](./Application/static/samples/ath_01.png) | ![Anthracnose 2](./Application/static/samples/ath_02.png) |
 
 | Sample 3 | Sample 4 |
 |---|---|
-| ![Anthracnose 3](./img_check/ath_03.png) | ![Anthracnose 4](./img_check/ath_04.png) |
+| ![Anthracnose 3](./Application/static/samples/ath_03.png) | ![Anthracnose 4](./Application/static/samples/ath_04.png) |
 
 ## Leaf Miner
 
@@ -27,7 +27,7 @@ Dấu hiệu thường gặp:
 
 | Sample 1 | Sample 2 |
 |---|---|
-| ![Leaf Miner 1](./img_check/mine01.png) | ![Leaf Miner 2](./img_check/mine02.png) |
+| ![Leaf Miner 1](./Application/static/samples/mine01.png) | ![Leaf Miner 2](./Application/static/samples/mine02.png) |
 
 ## Red Rust
 
@@ -38,7 +38,7 @@ Dấu hiệu thường gặp:
 
 | Sample 1 | Sample 2 | Sample 3 |
 |---|---|---|
-| ![Red Rust 1](./img_check/red01.png) | ![Red Rust 2](./img_check/red02.png) | ![Red Rust 3](./img_check/red03.png) |
+| ![Red Rust 1](./Application/static/samples/red01.png) | ![Red Rust 2](./Application/static/samples/red02.png) | ![Red Rust 3](./Application/static/samples/red03.png) |
 
 ## Liên quan đến annotation
 

@@ -1,0 +1,10 @@
+model,split,n,accuracy,abstain_threshold,referred_to_expert,coverage,selective_accuracy
+DenseNet121,validation_clean,1361,98.5305,0.4451,0.0,100.0,98.5305
+DenseNet121,test,685,97.0803,0.4451,0.0,100.0,97.0803
+DenseNet121,holdout,126,94.4444,0.4451,0.0,100.0,94.4444
+ResNet50,validation_clean,1361,98.604,0.4439,0.0,100.0,98.604
+ResNet50,test,685,97.9562,0.4439,0.0,100.0,97.9562
+ResNet50,holdout,126,88.8889,0.4439,1.0,99.2063,89.6
+ViT (DeiT-S),validation_clean,1361,98.5305,0.447,0.0,100.0,98.5305
+ViT (DeiT-S),test,685,97.8102,0.447,0.0,100.0,97.8102
+ViT (DeiT-S),holdout,126,92.8571,0.447,0.0,100.0,92.8571

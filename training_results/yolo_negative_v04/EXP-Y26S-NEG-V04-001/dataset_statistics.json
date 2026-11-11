@@ -1,0 +1,37 @@
+{
+  "source_archive": "/content/exp_yolo_neg_v04_001/CASHEW_YOLO_MASTER_FINAL_NEG_V04.zip",
+  "source_md5": "121d68222f4ab2bc563afcc3818160d5",
+  "dataset_fingerprint": "edc28c5d5c7f12e83fdaff6509263a0085d19e7a9fd9e83297f5cfd5bddd66fa",
+  "splits": {
+    "train": {
+      "images": 3739,
+      "negative_images": 863,
+      "boxes": {
+        "anthracnose": 34886,
+        "leaf_miner": 2076,
+        "red_rust": 73071
+      },
+      "total_boxes": 110033
+    },
+    "val": {
+      "images": 1076,
+      "negative_images": 183,
+      "boxes": {
+        "anthracnose": 14507,
+        "leaf_miner": 568,
+        "red_rust": 32183
+      },
+      "total_boxes": 47258
+    },
+    "test": {
+      "images": 488,
+      "negative_images": 76,
+      "boxes": {
+        "anthracnose": 2907,
+        "leaf_miner": 372,
+        "red_rust": 14391
+      },
+      "total_boxes": 17670
+    }
+  }
+}

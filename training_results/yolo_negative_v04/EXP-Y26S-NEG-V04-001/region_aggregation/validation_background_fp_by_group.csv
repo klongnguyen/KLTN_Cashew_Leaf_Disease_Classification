@@ -1,0 +1,4 @@
+group,images,images_with_any_box,share_images_with_box,raw_boxes,raw_boxes_per_image,max_boxes_one_image
+healthy,38,1,0.02631578947368421,1,0.02631578947368421,1
+non_cashew_diseased_leaf,125,11,0.088,36,0.288,14
+not_cashew_leaf,20,0,0.0,0,0.0,0

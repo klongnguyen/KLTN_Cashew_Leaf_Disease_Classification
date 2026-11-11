@@ -1,0 +1,18 @@
+{
+  "experiment_id": "EXP-VIT-DEITSMALL-TRANSFER-LLRD-5SEEDS-016-256px-1192fd08",
+  "deployment_seed": 7777,
+  "batch_size": 1,
+  "warmup_runs": 5,
+  "measured_runs": 30,
+  "measurement": "wall-clock EXIF decode + RGB conversion + bilinear resize + Keras predict + argmax",
+  "device": [
+    "/physical_device:GPU:0"
+  ],
+  "mean_ms": 52.2995681334578,
+  "median_ms": 52.09984199973405,
+  "p95_ms": 53.182996000759886,
+  "sample_sd_ms": 1.0612020190858962,
+  "parameters": 21693322,
+  "deployment_model_bytes": 87264944,
+  "note": "One Validation image repeated; platform-specific timing, not a cross-device benchmark."
+}

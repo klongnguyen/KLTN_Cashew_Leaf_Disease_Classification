@@ -1,7 +1,0 @@
-{
-  "holdout_images": 20,
-  "no_detection_and_grayscale": true,
-  "probability_atol": 0.0001,
-  "same_boxes": true,
-  "status": "PASS"
-}

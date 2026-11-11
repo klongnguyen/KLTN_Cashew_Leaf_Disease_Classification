@@ -1,6 +1,6 @@
 # Application — Nhận diện bệnh lá điều
 
-Ứng dụng FastAPI nhận ảnh lá điều, đánh dấu vùng nghi bệnh và hiển thị kết luận cùng bước chăm sóc tiếp theo. Giao diện tại `http://127.0.0.1:8080/` chỉ hiện thông tin chính trước; chi tiết từng vùng, hướng dẫn đầy đủ và thông số mô hình nằm trong các mục mở rộng.
+Ứng dụng FastAPI nhận ảnh lá điều, đánh dấu vùng nghi bệnh và hiển thị kết luận cùng bước chăm sóc tiếp theo. Giao diện tại `http://127.0.0.1:8080/` hiện kết luận, vùng nghi bệnh trên ảnh và hướng dẫn chăm sóc; có thể chụp ảnh trực tiếp bằng camera, phóng to toàn màn hình (kèm khung, ẩn/hiện được) và dùng được trên điện thoại. Giao diện không hiển thị tên mô hình hay điểm kỹ thuật.
 
 ## Mô hình đang dùng
 
@@ -42,8 +42,7 @@ cd Application
 python -m uvicorn server:app --host 127.0.0.1 --port 8080
 ```
 
-Mở `http://127.0.0.1:8080/`. Nếu muốn dùng lại EXP-034 để đối chiếu, đổi `ACTIVE_BUNDLE` trong [config.py](config.py) và cung cấp đầy đủ bundle cùng bộ OOD tương ứng.
-
+Mở `http://127.0.0.1:8080/`. 
 ## API
 
 | Route | Vai trò |

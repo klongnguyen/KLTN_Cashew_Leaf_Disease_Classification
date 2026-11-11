@@ -1,0 +1,6 @@
+{
+  "ece_10_bins": 0.01289230890495861,
+  "multiclass_brier": 0.03864156095650202,
+  "n": 1452,
+  "note": "Diagnostic only; no calibration fit or threshold tuning."
+}

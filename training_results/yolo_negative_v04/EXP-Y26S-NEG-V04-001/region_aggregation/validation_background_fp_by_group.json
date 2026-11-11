@@ -1,0 +1,35 @@
+{
+  "split": "val",
+  "proposal_conf": 0.2,
+  "nms_iou": 0.7,
+  "note": "Raw YOLO boxes on background (0-GT) images; display-level FP, not mAP.",
+  "groups": [
+    {
+      "group": "healthy",
+      "images": 38,
+      "images_with_any_box": 1,
+      "share_images_with_box": 0.02631578947368421,
+      "raw_boxes": 1,
+      "raw_boxes_per_image": 0.02631578947368421,
+      "max_boxes_one_image": 1
+    },
+    {
+      "group": "non_cashew_diseased_leaf",
+      "images": 125,
+      "images_with_any_box": 11,
+      "share_images_with_box": 0.088,
+      "raw_boxes": 36,
+      "raw_boxes_per_image": 0.288,
+      "max_boxes_one_image": 14
+    },
+    {
+      "group": "not_cashew_leaf",
+      "images": 20,
+      "images_with_any_box": 0,
+      "share_images_with_box": 0.0,
+      "raw_boxes": 0,
+      "raw_boxes_per_image": 0.0,
+      "max_boxes_one_image": 0
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "archive_sha256": "485512A7142E36DF081B8439BCC0B6D2AE59873D1897E6F1646FD1927889E5B6",
+  "archive_name": "RL_Cashew_holdout (9).zip",
+  "archive_manifest_sha256": "b23612b241fed952b7f78e36b71e5adf0f8e78f6b48cb7ae34fefd6c85553331",
+  "manifest_sha256": "b23612b241fed952b7f78e36b71e5adf0f8e78f6b48cb7ae34fefd6c85553331",
+  "counts": {
+    "anthracnose": 46,
+    "healthy": 19,
+    "leaf_miner": 36,
+    "red_rust": 25,
+    "not_cashew_leaf": 0
+  },
+  "images": 126,
+  "archive_images": 126,
+  "excluded_overlap_images": 0,
+  "evaluated_counts": {
+    "anthracnose": 46,
+    "leaf_miner": 36,
+    "red_rust": 25,
+    "healthy": 19
+  },
+  "present_classes": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "red_rust"
+  ],
+  "unsupported_classes": [
+    "not_cashew_leaf"
+  ],
+  "reference_images_checked": 7109,
+  "reference_fingerprint": "bee2dff50ce0dd5f5f5f770ebd1039370d1a5ad2898e54411dfbd815504376a5",
+  "byte_overlap_count": 0,
+  "byte_overlaps": [],
+  "limitation": "Byte audit only; near-duplicate photos and shared trees/sessions need a separate audit."
+}

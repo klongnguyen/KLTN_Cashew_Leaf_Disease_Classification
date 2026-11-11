@@ -1,0 +1,61 @@
+{
+  "seed": 42,
+  "selected_stage": "stage2",
+  "selected_epoch": 7,
+  "selection_metric": "val_loss",
+  "val_loss": 0.07995736598968506,
+  "val_macro_f1": 0.978025974819557,
+  "real_subgroup_accuracy": 0.8983050847457628,
+  "stage_by_val_loss_rule": "stage2",
+  "stage_rules_agree": true,
+  "tie_break": "lower val_loss, higher val_macro_f1, then Stage 1",
+  "checkpoint_sha256": "0f4eb89d6511a2e1c3040b3bdfdcebc44a3fc29117a8864d0198b9e081db7f26",
+  "model_params": 21693322,
+  "stage2_config": {
+    "id": "n08_lr5e-05",
+    "unfreeze_last_blocks": 8,
+    "base_lr": 5e-05,
+    "decay": 0.75,
+    "trainable_params": 14196480,
+    "rule_text": "last 8 of 12 encoder blocks + final LayerNorm (embeddings and earlier blocks frozen); LR = 5e-05 x 0.75 ** (11 - block index)"
+  },
+  "stage1_shared_across_configs": false,
+  "stage_candidates": {
+    "stage1": {
+      "stage": "stage1",
+      "best_epoch": 11,
+      "real_subgroup_accuracy": 0.8135593220338984,
+      "real_subgroup_correct": 48,
+      "real_subgroup_total": 59,
+      "actual_epochs": 12,
+      "fit_seconds": 70.05702129099882,
+      "val_loss": 0.19809068739414215,
+      "val_accuracy": 0.9387052059173584,
+      "val_macro_f1": 0.9372740258258931,
+      "checkpoint_path": "/content/training_results/current_dataset/EXP-VIT-DEITSMALL-TRANSFER-LLRD-5SEEDS-016-256px-1192fd08/seed_42/stage1/best.weights.h5",
+      "checkpoint_sha256": "1dc51fa2935d203e52ee97297f865aac28246f5793e75993f3059676ae9d0805",
+      "checkpoint_size_mb": 83.28962707519531,
+      "backbone_trainable_params": 0,
+      "learning_rate_first": 0.0003000000142492354,
+      "learning_rate_last": 0.0003000000142492354
+    },
+    "stage2": {
+      "stage": "stage2",
+      "best_epoch": 7,
+      "real_subgroup_accuracy": 0.8983050847457628,
+      "real_subgroup_correct": 53,
+      "real_subgroup_total": 59,
+      "actual_epochs": 15,
+      "fit_seconds": 176.84397035199981,
+      "val_loss": 0.07995736598968506,
+      "val_accuracy": 0.9786501526832581,
+      "val_macro_f1": 0.978025974819557,
+      "checkpoint_path": "/content/training_results/current_dataset/EXP-VIT-DEITSMALL-TRANSFER-LLRD-5SEEDS-016-256px-1192fd08/seed_42/stage2/best.weights.h5",
+      "checkpoint_sha256": "0f4eb89d6511a2e1c3040b3bdfdcebc44a3fc29117a8864d0198b9e081db7f26",
+      "checkpoint_size_mb": 245.8991928100586,
+      "backbone_trainable_params": 14196480,
+      "learning_rate_first": 4.999999873689376e-05,
+      "learning_rate_last": 2.499999936844688e-05
+    }
+  }
+}

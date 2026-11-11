@@ -1,5 +1,0 @@
-_preset_cache/
-_work/
-checkpoints/
-seed_*/checkpoints/
-deployment_package/*.keras

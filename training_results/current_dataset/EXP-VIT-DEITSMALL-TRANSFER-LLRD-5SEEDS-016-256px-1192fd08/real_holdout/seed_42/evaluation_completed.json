@@ -1,0 +1,13 @@
+{
+  "seed": 42,
+  "accuracy": 0.8412698412698413,
+  "macro_precision_present_classes": 0.8349206349206348,
+  "macro_recall_present_classes": 0.8453451563691837,
+  "macro_f1_present_classes": 0.8388557095078835,
+  "balanced_accuracy_present_classes": 0.8453451563691837,
+  "images": 126,
+  "macro_class_count": 4,
+  "prediction_seconds_including_input_pipeline": 0.8789391219979734,
+  "inference_time_ms_per_image": 6.9757073174442334,
+  "fps_including_input_pipeline": 143.35463838904025
+}

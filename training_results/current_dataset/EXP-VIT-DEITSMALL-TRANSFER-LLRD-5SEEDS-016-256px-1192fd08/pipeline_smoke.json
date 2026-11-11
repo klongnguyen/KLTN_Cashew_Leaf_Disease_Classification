@@ -1,0 +1,102 @@
+{
+  "status": "PASS",
+  "preprocess_max_abs_error": 0.0,
+  "stage1_backbone_trainable_params": 0,
+  "stage2_backbone_trainable_params": 14196480,
+  "stage2_trainable_share_of_backbone": 0.6545332223854965,
+  "densenet121_reference_stage2_params": 2129920,
+  "stage2_unfrozen_blocks": [
+    "transformer_block_5",
+    "transformer_block_6",
+    "transformer_block_7",
+    "transformer_block_8",
+    "transformer_block_9",
+    "transformer_block_10",
+    "transformer_block_11",
+    "transformer_block_12",
+    "ln"
+  ],
+  "exp016_stage2_depth_gate": {
+    "4": 7098624,
+    "8": 14196480,
+    "12": 21294336
+  },
+  "exp016_layerwise_lr_gate": {
+    "decay": 0.75,
+    "variables_checked": 198,
+    "tolerance": 0.02,
+    "measured_multiplier_by_block": {
+      "0": 1.0,
+      "1": 0.04223698913119733,
+      "2": 0.056314985267817974,
+      "3": 0.07508506998419762,
+      "4": 0.10011441167443991,
+      "5": 0.13348345831036568,
+      "6": 0.1779777705669403,
+      "7": 0.23730761092156172,
+      "8": 0.3164071571081877,
+      "9": 0.4218734744936228,
+      "10": 0.5624995119869709,
+      "11": 0.7499997466802597,
+      "12": 1.0
+    },
+    "expected_multiplier_by_block": {
+      "1": 0.04223513603210449,
+      "2": 0.056313514709472656,
+      "3": 0.07508468627929688,
+      "4": 0.1001129150390625,
+      "5": 0.13348388671875,
+      "6": 0.177978515625,
+      "7": 0.2373046875,
+      "8": 0.31640625,
+      "9": 0.421875,
+      "10": 0.5625,
+      "11": 0.75,
+      "12": 1.0
+    },
+    "head_and_final_layernorm_multiplier": 1.0,
+    "status": "PASS"
+  },
+  "exp016_active_config_for_smoke": {
+    "id": "n08_lr5e-05",
+    "unfreeze_last_blocks": 8,
+    "base_lr": 5e-05,
+    "decay": 0.75,
+    "trainable_params": 14196480,
+    "rule_text": "last 8 of 12 encoder blocks + final LayerNorm (embeddings and earlier blocks frozen); LR = 5e-05 x 0.75 ** (11 - block index)"
+  },
+  "backbone_batchnorm_layers": 0,
+  "backbone_normalization": "LayerNorm (no running statistics)",
+  "backbone_parameters": 21689472,
+  "resnet50_peer_stage2_params": 14953472,
+  "pretrained_weight_transfer_gate": {
+    "copied_tensors": 198,
+    "resampled_tensors": 1,
+    "source_grid": 14,
+    "target_grid": 16,
+    "method": "tf.image.resize bicubic, antialias=False; CLS/DIST rows unchanged",
+    "pretrained_handle": "deit_small_distilled_patch16_224_imagenet",
+    "pretrained_weights_sha256": "9f41529cb0b85ef1a04a236180b72d6aad91fd1974e665644a3c00c5a67262de",
+    "status": "PASS"
+  },
+  "preset_converter_check": {
+    "status": "PASS",
+    "max_abs_error": 7.152557373046875e-07
+  },
+  "weights_and_model_reload": "PASS",
+  "imagenet_initialization": "PASS",
+  "inference_augmentation_identity": "PASS",
+  "train_augmentation_stochastic": "PASS",
+  "photometric_coverage_gate": {
+    "baseline_mean_saturation_0_255": 86.94856262207031,
+    "augmented_ratio_min_excluding_grayscale": 0.6319657564163208,
+    "augmented_ratio_max_excluding_grayscale": 1.396044135093689,
+    "grayscale_draw_fraction": 0.075,
+    "audit_saturation_ratio": 0.8529176658673062,
+    "audit_source": "EXP-025 P0 Healthy error audit: wrong S 106.7 vs correct S 125.1",
+    "per_image_draws": 120,
+    "status": "PASS"
+  },
+  "real_oversample_factor": 1,
+  "train_rows_after_oversample": 4972
+}

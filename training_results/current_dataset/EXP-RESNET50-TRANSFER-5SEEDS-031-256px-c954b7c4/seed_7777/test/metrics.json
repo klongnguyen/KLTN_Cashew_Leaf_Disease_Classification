@@ -1,0 +1,18 @@
+{
+  "seed": 7777,
+  "images": 685,
+  "loss": 0.1385365128517151,
+  "accuracy": 0.9562043795620438,
+  "macro_precision": 0.952315639589169,
+  "macro_recall": 0.9530000998755603,
+  "macro_f1": 0.9525326393473996,
+  "balanced_accuracy": 0.9530000998755603,
+  "prediction_seconds_including_input_pipeline": 0.9493732470000396,
+  "inference_time_ms_per_image": 1.3859463459854593,
+  "real_filename_correct": 25,
+  "real_filename_total": 28,
+  "real_filename_accuracy": 0.8928571428571429,
+  "other_filename_correct": 630,
+  "other_filename_total": 657,
+  "other_filename_accuracy": 0.958904109589041
+}

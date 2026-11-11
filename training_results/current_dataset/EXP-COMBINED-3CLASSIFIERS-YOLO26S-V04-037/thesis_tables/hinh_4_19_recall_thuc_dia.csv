@@ -1,0 +1,13 @@
+model,class,F0,F3
+DenseNet121,anthracnose,87.0,93.5
+DenseNet121,healthy,63.2,89.5
+DenseNet121,leaf_miner,94.4,100.0
+DenseNet121,red_rust,76.0,92.0
+ResNet50,anthracnose,84.8,91.3
+ResNet50,healthy,57.9,94.7
+ResNet50,leaf_miner,91.7,94.4
+ResNet50,red_rust,64.0,72.0
+ViT (DeiT-S),anthracnose,91.3,91.3
+ViT (DeiT-S),healthy,78.9,100.0
+ViT (DeiT-S),leaf_miner,94.4,94.4
+ViT (DeiT-S),red_rust,76.0,88.0

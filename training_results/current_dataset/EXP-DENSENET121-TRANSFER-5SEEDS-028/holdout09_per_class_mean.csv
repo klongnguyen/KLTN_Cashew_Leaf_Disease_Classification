@@ -1,6 +1,0 @@
-class,support,precision_mean_pct,recall_mean_pct,f1_mean_pct
-anthracnose,46,69.162800,83.913043,75.652932
-healthy,19,85.208791,61.052632,71.038253
-leaf_miner,36,96.988826,85.555556,90.732237
-red_rust,25,79.607180,76.000000,76.772910
-not_cashew_leaf,0,NOT_EVALUATED,NOT_EVALUATED,NOT_EVALUATED

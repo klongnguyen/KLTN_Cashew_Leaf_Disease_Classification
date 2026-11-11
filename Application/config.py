@@ -228,31 +228,10 @@ QUALITY = {
 }
 
 # ================= Model bundle selection =================
-# Both bundles share the same layout and code path (DenseNet121 x5 seeds +
-# YOLO26s best.pt + Stacker F3). Switch with ACTIVE_BUNDLE; each bundle has
+# The bundle uses DenseNet121 x5 seeds + YOLO26s best.pt + Stacker F3. Each bundle has
 # its own OOD reference bank / calibration (embeddings depend on DenseNet).
 ACTIVE_BUNDLE = "035"
 BUNDLES = {
-    "034": {
-        "id": "EXP-DENSENET121-YOLO-COMBINED-TRAINING-034",
-        "version": "EXP-034",
-        "model_name": "DenseNet121 ×5 + YOLO26s NEG-V03 (EXP-034)",
-        "detector": "EXP-Y26S-NEG-V03-001-CLASS-WEIGHTED",
-        "ood_dir": BASE_DIR / "ood",
-        "knn_hard_threshold": 0.25,
-        # Frozen Stacker-F3 metrics (aggregate/combined_results.csv). Holdout 09
-        # was already seen in EXP-032 (descriptive only).
-        "metrics": {
-            "test_accuracy": 0.9708, "test_wilson_95": [0.9553, 0.9810], "test_macro_f1": 0.9680,
-            "test_top2_accuracy": 0.9985, "test_ece15": 0.0128,
-            "holdout_accuracy": 0.9603, "holdout_wilson_95": [0.9105, 0.9829],
-            "validation_clean_accuracy": 0.9838,
-            "test_recall": {"anthracnose": 0.9250, "healthy": 0.9576, "leaf_miner": 0.9538,
-                            "red_rust": 1.0, "not_cashew_leaf": 1.0},
-            # YOLO-Test box quality, fused display boxes at BOX_CONF=0.25, IoU 0.5
-            "box_f1_50": {"anthracnose": 0.654, "leaf_miner": 0.536, "red_rust": 0.701},
-        },
-    },
     "035": {
         "id": "EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04",
         "version": "EXP-035",

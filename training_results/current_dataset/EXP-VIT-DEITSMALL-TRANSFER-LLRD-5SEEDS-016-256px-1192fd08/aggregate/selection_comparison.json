@@ -1,0 +1,69 @@
+{
+  "experiment_id": "EXP-VIT-DEITSMALL-TRANSFER-LLRD-5SEEDS-016-256px-1192fd08",
+  "primary_metric": "val_loss",
+  "deployment_seed": 7777,
+  "deployment_seed_under_val_loss_rule": 7777,
+  "rules_agree": true,
+  "ranking_by_real_subgroup": [
+    42,
+    3407,
+    123,
+    7777,
+    2026
+  ],
+  "ranking_by_val_loss": [
+    7777,
+    42,
+    3407,
+    2026,
+    123
+  ],
+  "per_seed": [
+    {
+      "seed": 42,
+      "val_loss": 0.07995736598968506,
+      "val_accuracy": 0.9786501377410468,
+      "val_macro_f1": 0.978025974819557,
+      "real_subgroup_accuracy": 0.8983050847457628,
+      "real_subgroup_correct": 53,
+      "real_subgroup_total": 59
+    },
+    {
+      "seed": 123,
+      "val_loss": 0.0917900949716568,
+      "val_accuracy": 0.9765840220385675,
+      "val_macro_f1": 0.9759862418165124,
+      "real_subgroup_accuracy": 0.8813559322033898,
+      "real_subgroup_correct": 52,
+      "real_subgroup_total": 59
+    },
+    {
+      "seed": 2026,
+      "val_loss": 0.08122553676366806,
+      "val_accuracy": 0.9703856749311295,
+      "val_macro_f1": 0.9697566272367111,
+      "real_subgroup_accuracy": 0.8135593220338984,
+      "real_subgroup_correct": 48,
+      "real_subgroup_total": 59
+    },
+    {
+      "seed": 3407,
+      "val_loss": 0.08113483339548111,
+      "val_accuracy": 0.9800275482093664,
+      "val_macro_f1": 0.9789540035975275,
+      "real_subgroup_accuracy": 0.8813559322033898,
+      "real_subgroup_correct": 52,
+      "real_subgroup_total": 59
+    },
+    {
+      "seed": 7777,
+      "val_loss": 0.07552315294742584,
+      "val_accuracy": 0.9772727272727273,
+      "val_macro_f1": 0.9766799098924025,
+      "real_subgroup_accuracy": 0.864406779661017,
+      "real_subgroup_correct": 51,
+      "real_subgroup_total": 59
+    }
+  ],
+  "note": "Selection used Validation only; Test and Holdout never select."
+}
