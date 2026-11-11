@@ -108,7 +108,7 @@ async def predict_sample(sample_name: str):
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Lỗi chuẩn đoán: {str(e)}"
+            detail=f"Lỗi chẩn đoán: {str(e)}"
         )
 
 
@@ -159,7 +159,7 @@ async def predict_uploaded_image(file: UploadFile = File(...)):
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Lỗi xảy ra trong quá trình mô hình chuẩn đoán: {str(e)}"
+            detail=f"Lỗi xảy ra trong quá trình mô hình chẩn đoán: {str(e)}"
         )
 
 

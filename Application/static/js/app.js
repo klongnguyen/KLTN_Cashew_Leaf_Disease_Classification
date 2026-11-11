@@ -584,7 +584,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         console.error('Predict failed:', response.status, errorData.detail);
-        throw new Error(friendlyError(response.status, errorData.detail, 'Không thể thực hiện chuẩn đoán.'));
+        throw new Error(friendlyError(response.status, errorData.detail, 'Không thể thực hiện chẩn đoán.'));
       }
 
       const result = await response.json();
@@ -610,7 +610,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         console.error('Predict sample failed:', response.status, errorData.detail);
-        throw new Error(friendlyError(response.status, errorData.detail, 'Không thể chuẩn đoán ảnh mẫu.'));
+        throw new Error(friendlyError(response.status, errorData.detail, 'Không thể chẩn đoán ảnh mẫu.'));
       }
 
       const result = await response.json();
@@ -654,7 +654,7 @@ document.addEventListener('DOMContentLoaded', () => {
     diagnoseView.classList.add('has-result');
     diagnoseView.classList.remove('has-selection');
     document.querySelectorAll('#active-result-view details').forEach(details => { details.open = false; });
-    setStatus('Đã chuẩn đoán');
+    setStatus('Đã chẩn đoán');
 
     // 1. Image Preview & Dimensions
     imgFileName.textContent = fileName;
