@@ -34,6 +34,7 @@ from config import (
     CLASSIFIER_PREDOWNSCALE_MAX_SIDE,
     LEAF_MASK_FILTER,
     LEAF_MASK_MIN_INSIDE,
+    CROSS_CLASS_IOU,
     MERGE_IOS,
     MERGE_IOU,
     TILE_MIN_LONG_SIDE,
@@ -70,6 +71,7 @@ from image_utils import (
     damage_percent,
     load_image,
     merge_boxes,
+    suppress_cross_class,
     predownscale,
     tile_windows,
 )
@@ -646,6 +648,7 @@ class EXP034Service:
             if b["conf"] >= BOX_CONF_PER_CLASS.get(b["cls"], self.box_conf)
         ]
         cands = merge_boxes(cands, MERGE_IOU, MERGE_IOS)
+        cands = suppress_cross_class(cands, CROSS_CLASS_IOU)
         n_offleaf = 0
         if LEAF_MASK_FILTER and leaf is not None:
             on_leaf = [b for b in cands if leaf.box_inside_fraction(b["xyxy"]) >= LEAF_MASK_MIN_INSIDE]

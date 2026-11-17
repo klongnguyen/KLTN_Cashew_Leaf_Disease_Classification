@@ -212,6 +212,11 @@ TILE_SOURCE_MAX_SIDE = 1280
 TILE_MIN_LONG_SIDE = 800
 MERGE_IOU = 0.50
 MERGE_IOS = 0.80
+# Cross-class suppression: two boxes of DIFFERENT classes with IoU above this
+# are the same lesion -> keep only the higher-confidence one. Without it the web
+# showed both an anthracnose and a leaf-miner box on one lesion (82 holdout
+# photos: 11 had a cross-class pair with IoU 0.75-0.97). None disables.
+CROSS_CLASS_IOU = 0.50
 
 # Boxes must lie mostly on the leaf blade (coarse colour mask).
 LEAF_MASK_FILTER = True

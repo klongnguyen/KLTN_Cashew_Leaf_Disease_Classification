@@ -281,6 +281,26 @@ def merge_boxes(
     return kept
 
 
+def suppress_cross_class(
+    boxes: List[Dict[str, Any]], iou_thr: Optional[float]
+) -> List[Dict[str, Any]]:
+    """Class-agnostic NMS: one lesion gets ONE box.
+
+    merge_boxes() only removes duplicates of the same class, so YOLO can leave
+    e.g. an anthracnose box and a leaf-miner box on the very same lesion. When
+    two boxes of different classes overlap with IoU > iou_thr, keep only the
+    higher-confidence one (the crop verification can still relabel it later).
+    iou_thr=None disables the step.
+    """
+    if iou_thr is None:
+        return boxes
+    kept: List[Dict[str, Any]] = []
+    for box in sorted(boxes, key=lambda b: -b["conf"]):
+        if all(iou(box["xyxy"], k["xyxy"]) <= iou_thr for k in kept):
+            kept.append(box)
+    return kept
+
+
 # ----------------------------------------------------------------------------
 # Damage estimate
 # ----------------------------------------------------------------------------
