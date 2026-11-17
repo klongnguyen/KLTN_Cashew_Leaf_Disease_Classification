@@ -576,7 +576,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setAnalyzingState(true);
 
     try {
-      const response = await fetch('/api/predict', {
+      const response = await fetch(`${window.CASHEW_API_BASE || ''}/api/predict`, {
         method: 'POST',
         body: formData,
       });
@@ -603,7 +603,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setAnalyzingState(true);
 
     try {
-      const response = await fetch(`/api/predict-sample/${encodeURIComponent(sampleName)}`, {
+      const response = await fetch(`${window.CASHEW_API_BASE || ''}/api/predict-sample/${encodeURIComponent(sampleName)}`, {
         method: 'POST',
       });
 

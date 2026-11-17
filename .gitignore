@@ -66,3 +66,6 @@ Notebook/**/*.ipynb
 !Notebook/DenseNet121/densenet121_yolo_combined_training_034.ipynb
 !Notebook/DenseNet121/densenet121_yolo_combined_training_035_negv04.ipynb
 !Notebook/DenseNet121/densenet121_yolo_presence_036.ipynb
+
+# Deploy build output
+deploy/_build/
