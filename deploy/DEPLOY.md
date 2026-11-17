@@ -1,46 +1,47 @@
-# Deploy: Vercel (giao diện) + Hugging Face Spaces (backend AI)
+# Deploy: Vercel (giao diện) + Modal (backend AI)
 
-Vercel chỉ host giao diện tĩnh. Backend FastAPI (TensorFlow + YOLO + ~240 MB model) chạy trong Docker trên
-Hugging Face Space (CPU miễn phí, 16 GB RAM). Trình duyệt gọi thẳng Space; CORS của `server.py` đã mở.
+- **Modal** chạy backend FastAPI (TensorFlow + YOLO). Model nằm trong Modal Volume `cashew-models`,
+  không nằm trong Git hay image. Container tự tắt khi không dùng.
+- **Vercel** chỉ host giao diện tĩnh; trình duyệt gọi thẳng API Modal (CORS đã mở trong `server.py`).
 
-## 1. Tạo Space (backend)
+Hiện tại:
+- Backend: https://nguyenkimlong261105--cashew-leaf-api-web.us-east.modal.run
+- Web: https://cashew-leaf-diagnosis.vercel.app
 
-1. Đăng nhập https://huggingface.co → **New Space** → SDK **Docker** → đặt tên, ví dụ `cashew-leaf-api`.
-2. Đăng nhập CLI một lần: `hf auth login` (token quyền *write*).
-3. Build thư mục deploy (chạy ở máy có đủ file model; script kiểm SHA-256 của bundle):
-
-   ```bash
-   python deploy/prepare.py --api-url https://<user>-cashew-leaf-api.hf.space
-   ```
-
-4. Đẩy `deploy/_build/space` lên Space (Git LFS cho `.keras`/`.pt`/`.npz`):
-
-   ```bash
-   cd deploy/_build/space
-   git init -b main && git lfs install
-   git add . && git commit -m "Deploy EXP-035 backend"
-   git remote add space https://huggingface.co/spaces/<user>/cashew-leaf-api
-   git push space main --force
-   ```
-
-5. Chờ Space build xong (vài phút) rồi kiểm tra:
-   `https://<user>-cashew-leaf-api.hf.space/api/health` → `{"status":"ok",...}` và `/api/model-info` → EXP-035.
-
-## 2. Deploy giao diện lên Vercel
+## Cài một lần
 
 ```bash
-npm i -g vercel
-cd deploy/_build/vercel
-vercel login
-vercel --prod
+uv tool install modal          # hoặc: pip install modal
+modal setup                    # đăng nhập qua trình duyệt
+npm i -g vercel && vercel login
 ```
 
-Khi hỏi: *Set up and deploy?* Yes → *Link to existing project?* No → các câu còn lại để mặc định
-(không có build command, output là thư mục hiện tại). Mở URL `*.vercel.app` được in ra.
+## Backend (Modal)
+
+```bash
+# Chỉ làm lại khi model đổi. Trên Git Bash đặt MSYS_NO_PATHCONV=1 để "/pipeline_bundle" không bị đổi thành đường dẫn Windows.
+modal volume create cashew-models
+modal volume put cashew-models EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04/pipeline_bundle /pipeline_bundle
+
+modal deploy deploy/modal_app.py      # sửa code Application/ thì chạy lại lệnh này
+```
+
+Kiểm tra: `<url>/api/health`, `<url>/api/model-info` (phải là EXP-035). Lần gọi đầu (cold start) mất khoảng 1,5 phút
+vì nạp 5 DenseNet + YOLO; sau đó giữ ấm 5 phút.
+
+## Giao diện (Vercel)
+
+```bash
+python deploy/prepare.py --api-url https://nguyenkimlong261105--cashew-leaf-api-web.us-east.modal.run
+cd deploy/_build/vercel
+vercel deploy --prod --yes --name cashew-leaf-diagnosis
+```
+
+Sửa giao diện (`Application/static`) → chạy lại hai lệnh trên.
 
 ## Lưu ý
 
-- Space miễn phí tự ngủ khi không dùng; lần gọi đầu có thể chậm 1–2 phút (nạp 5 DenseNet + YOLO).
-- Sửa giao diện → chạy lại `prepare.py` rồi `vercel --prod`. Đổi tên Space → chạy lại với `--api-url` mới.
-- `deploy/_build/` bị git bỏ qua; không commit model lên GitHub.
-- Muốn giới hạn chỉ site Vercel được gọi API: đổi `allow_origins=["*"]` trong `Application/server.py` thành URL Vercel.
+- Gói Starter của Modal: chưa thêm thẻ chỉ có 1 USD; thêm thẻ để có 30 USD/tháng và đặt *spending limit* ở Settings → Billing.
+- Endpoint backend công khai: ai biết URL cũng gọi được và tiêu tín dụng. Muốn giới hạn, đổi `allow_origins=["*"]`
+  trong `Application/server.py` thành URL Vercel (không chặn được gọi trực tiếp bằng curl).
+- Không commit model lên GitHub (`.gitignore` đã chặn `*.keras`, `*.pt`).
