@@ -61,6 +61,14 @@ Desktop.ini
 .vscode/
 .idea/
 
+# Notebooks: ignored by default, only the listed ones are tracked
+Notebook/**/*.ipynb
+!Notebook/DenseNet121/densenet121_yolo_combined_training_034.ipynb
+!Notebook/DenseNet121/densenet121_yolo_combined_training_035_negv04.ipynb
+!Notebook/DenseNet121/densenet121_yolo_presence_036.ipynb
+
+# Deploy build output
+deploy/_build/
 # Weights of the deployed model (EXP-035) are tracked so a fresh clone can run the web app
 !EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04/pipeline_bundle/best.pt
 !EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04/pipeline_bundle/seed_*/deployment_model.keras
