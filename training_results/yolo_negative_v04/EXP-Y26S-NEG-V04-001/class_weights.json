@@ -1,0 +1,25 @@
+{
+  "cls_pw": 0.25,
+  "train_box_counts": {
+    "anthracnose": 34886,
+    "leaf_miner": 2076,
+    "red_rust": 73071
+  },
+  "expected_normalized": {
+    "anthracnose": 0.7780248127878512,
+    "leaf_miner": 1.575249696314261,
+    "red_rust": 0.6467254908978876
+  },
+  "actual_trainer": {
+    "anthracnose": 0.7780247926712036,
+    "leaf_miner": 1.5752495527267456,
+    "red_rust": 0.6467254757881165
+  },
+  "effective": {
+    "anthracnose": 0.7780247926712036,
+    "leaf_miner": 1.5752495527267456,
+    "red_rust": 0.6467254757881165
+  },
+  "weighting_enabled": true,
+  "verified": true
+}

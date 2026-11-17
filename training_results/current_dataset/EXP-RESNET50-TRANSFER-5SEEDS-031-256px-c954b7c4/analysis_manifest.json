@@ -1,0 +1,1168 @@
+{
+  "experiment_id": "EXP-RESNET50-TRANSFER-5SEEDS-031-256px-c954b7c4",
+  "artifact_schema_version": 2,
+  "protocol_version": "STANDARD_TRAINING_NOTEBOOK_FORMAT_V2",
+  "dataset_sha256": "e1647b72e10af04275dc760545f4ef17c9f44343ae119495b89ba1e3cd954e04",
+  "dataset_manifest_sha256": "2cee0fb4818f93fba1dda43ab2e83615d33c5f7f3e4e15dc7c647436ff54b607",
+  "config_sha256": "f646e77de706b7812fce0d1c6d5786724737bbafc17089a541fe3491f6abca41",
+  "code_revision_sha256": "c954b7c4692e8bd608fa792f9d344a40fa8ac95ceb56ae18633972227f226025",
+  "framework": "tensorflow 2.21.0",
+  "generated_at_utc": "2026-11-03T17:18:56.477772Z",
+  "artifacts": [
+    {
+      "path": "experiment_config.json",
+      "status": "PRESENT",
+      "sha256": "f646e77de706b7812fce0d1c6d5786724737bbafc17089a541fe3491f6abca41",
+      "bytes": 5984,
+      "rows": null
+    },
+    {
+      "path": "dataset_audit.json",
+      "status": "PRESENT",
+      "sha256": "8362f8960ad83bcce6939bc5461c3d877ec1f7ac2dcf8d8d645b80e7d3446c29",
+      "bytes": 532,
+      "rows": null
+    },
+    {
+      "path": "validation_selection_lock.json",
+      "status": "PRESENT",
+      "sha256": "57260224aeeb74ca3fabbcbc2c5bc6256825381668ad09506991ef980a88d5e3",
+      "bytes": 1945,
+      "rows": null
+    },
+    {
+      "path": "label_map.json",
+      "status": "PRESENT",
+      "sha256": "f426a64d2c133785b398dd2c0afd4e33d2a8db5de098e4e6e008b9a1b97bc995",
+      "bytes": 108,
+      "rows": null
+    },
+    {
+      "path": "model_summary.txt",
+      "status": "PRESENT",
+      "sha256": "dd535871789eaed65d36dff28fac8f4852c455b78c16b571365e355e84ab059e",
+      "bytes": 2893,
+      "rows": null
+    },
+    {
+      "path": "README.md",
+      "status": "PRESENT",
+      "sha256": "c92054742bf398b957e3525263a2917a7d6019201643aef334ba2a1828a5dacd",
+      "bytes": 1156,
+      "rows": null
+    },
+    {
+      "path": "execution_status.json",
+      "status": "PRESENT",
+      "sha256": "9578b7ee187ae830a5fa253eb27ca5eb8220e9438745bca0fc62ddc61ea48f79",
+      "bytes": 514,
+      "rows": null
+    },
+    {
+      "path": "dataset_manifest.csv",
+      "status": "PRESENT",
+      "sha256": "d57dd5ca67443605e8cee6b7c367a3becfb332c407bbf93e558981917cbb47ea",
+      "bytes": 2247534,
+      "rows": 7109
+    },
+    {
+      "path": "class_counts_by_split.csv",
+      "status": "PRESENT",
+      "sha256": "d07858fcd35618335869a3a8e87a2300c86e2db7bb5b2a0e7c911c4e3327f8c7",
+      "bytes": 170,
+      "rows": 5
+    },
+    {
+      "path": "real_prefix_counts_by_split.csv",
+      "status": "PRESENT",
+      "sha256": "af32ca456d45c5332bba190067e4f05c749a52be866af315e1658a7a51c9606c",
+      "bytes": 55,
+      "rows": 3
+    },
+    {
+      "path": "real_prefix_counts_by_split_class.csv",
+      "status": "PRESENT",
+      "sha256": "810a9276adac2d482cbcec376cb715263c2369f03a4433e7da190d4f9c3f92d2",
+      "bytes": 365,
+      "rows": 15
+    },
+    {
+      "path": "EXPERIMENT_REGISTRY_ROW.csv",
+      "status": "PRESENT",
+      "sha256": "663581a34d8cd8d14a0af6e350cbd58d1cfc0cf63339e193dca0fc8b8d33a14f",
+      "bytes": 490,
+      "rows": 1
+    },
+    {
+      "path": "model_package/deployment_metadata.json",
+      "status": "PRESENT",
+      "sha256": "50d89e932e6c2937d3157837536cdafe90cba8308a1f15c4a4ef4baaaf476538",
+      "bytes": 561,
+      "rows": null
+    },
+    {
+      "path": "benchmark/inference_latency.csv",
+      "status": "PRESENT",
+      "sha256": "2f9f5cb25beb9100fdf4ed640f6560fe920d4a6d0e94006794934c3cded49f7e",
+      "bytes": 644,
+      "rows": 30
+    },
+    {
+      "path": "figures/panels/training_curves_5seeds_2x5.png",
+      "status": "PRESENT",
+      "sha256": "0c4a314e27ad50c7947aa75569f903f02d457ddfd8759f0053b6b7ca88bd8fb6",
+      "bytes": 442151,
+      "rows": null
+    },
+    {
+      "path": "figures/panels/validation_confusion_raw_1x5.png",
+      "status": "PRESENT",
+      "sha256": "ee36a3696e9f601dfbbb5dbe1dcd53604355b99e4ffe2450c44994c935ac7418",
+      "bytes": 130545,
+      "rows": null
+    },
+    {
+      "path": "figures/panels/validation_confusion_normalized_1x5.png",
+      "status": "PRESENT",
+      "sha256": "2ebd0a294272a59058c22eb71e0662da1b67b9edfc06e6686d84ac61777b7ce9",
+      "bytes": 131149,
+      "rows": null
+    },
+    {
+      "path": "figures/class_distribution_by_split.png",
+      "status": "PRESENT",
+      "sha256": "9a88ec0362a6c6493b3945061fb170966009e6d0b396ae4efb1eacaa3f2de598",
+      "bytes": 84264,
+      "rows": null
+    },
+    {
+      "path": "figures/real_prefix_distribution_by_split.png",
+      "status": "PRESENT",
+      "sha256": "e9ead68bb47c68f61c3f8b67c5b36c57fa3156dfd99ed9b5ce9cdb45ff028563",
+      "bytes": 70859,
+      "rows": null
+    },
+    {
+      "path": "figures/per_class_f1_heatmap_validation.png",
+      "status": "PRESENT",
+      "sha256": "8bc3c6dab2dceea735c25069e9f78ece6b1b4a5a65b8b796f858a13153f39c24",
+      "bytes": 61889,
+      "rows": null
+    },
+    {
+      "path": "figures/seed_metric_errorbars_validation.png",
+      "status": "PRESENT",
+      "sha256": "011452f3ed058627c14c7c6b5593abf65773011d8fc4b5252d96925fa06a10ca",
+      "bytes": 34723,
+      "rows": null
+    },
+    {
+      "path": "figures/validation_error_montage_seed_selected.png",
+      "status": "PRESENT",
+      "sha256": "65f19abfa8b9c9072935c33866f8f28b788fbe1e502fd954d52fc80005ca250e",
+      "bytes": 6426282,
+      "rows": null
+    },
+    {
+      "path": "aggregate/validation_results_5seeds.csv",
+      "status": "PRESENT",
+      "sha256": "03bdf97046b371b8b86d286b4af8bd773e546b3f4160ad2f72434c2d24d03466",
+      "bytes": 1991,
+      "rows": 5
+    },
+    {
+      "path": "aggregate/validation_mean_std.csv",
+      "status": "PRESENT",
+      "sha256": "663ff6c4d190f99b956260dd1c033ab78b18af55808f78b25773dfbc8b11710d",
+      "bytes": 847,
+      "rows": 11
+    },
+    {
+      "path": "aggregate/per_class_validation_by_seed.csv",
+      "status": "PRESENT",
+      "sha256": "c178829f69c9cb832c7c4bb8ab0ad04b40de50358ae862691af20fbe582a2ca6",
+      "bytes": 2182,
+      "rows": 25
+    },
+    {
+      "path": "aggregate/per_class_validation_mean_std.csv",
+      "status": "PRESENT",
+      "sha256": "efaf4153db02cacc5c13801a5fa8858dacfedffe895893ab042eaeb013444327",
+      "bytes": 738,
+      "rows": 7
+    },
+    {
+      "path": "aggregate/training_time_mean_std.csv",
+      "status": "PRESENT",
+      "sha256": "de108b25d937acc2403e0761f58381c4066bde731db437c426d871a638ea529a",
+      "bytes": 283,
+      "rows": 3
+    },
+    {
+      "path": "aggregate/real_prefix_val_by_seed.csv",
+      "status": "PRESENT",
+      "sha256": "77c27e7793327f19ed43e8ec9540cc42a6d4e85e220ddfa9a53cb47acb259485",
+      "bytes": 715,
+      "rows": 15
+    },
+    {
+      "path": "aggregate/seed_ci95_validation.csv",
+      "status": "PRESENT",
+      "sha256": "d382d0dbf2e4ffb17c3bfc0aee6521afe05ff1ed0a956c9fac906ba680c8f3d8",
+      "bytes": 961,
+      "rows": 4
+    },
+    {
+      "path": "aggregate/validation_error_summary.csv",
+      "status": "PRESENT",
+      "sha256": "fc17fc1f4e5fa0cae996304a7a02ea27dbc22c00c63ee9ef65773af766e433b3",
+      "bytes": 7565,
+      "rows": 125
+    },
+    {
+      "path": "aggregate/validation_image_bootstrap_ci.csv",
+      "status": "PRESENT",
+      "sha256": "20ae03c2f86465f46958c7322cdcf1941cb84a380cfc8e6f8e23042c862bdd86",
+      "bytes": 1645,
+      "rows": 10
+    },
+    {
+      "path": "aggregate/validation_calibration_5seeds.csv",
+      "status": "PRESENT",
+      "sha256": "4573a7f4f6298e142069e0104143de67dcb849c02effc8c243a61b30cbfc2536",
+      "bytes": 349,
+      "rows": 5
+    },
+    {
+      "path": "seed_42/validation/metrics.json",
+      "status": "PRESENT",
+      "sha256": "133a183151353d7ef6f01b4d53dbdcfcbdb9eda252c4871211fccae261024e51",
+      "bytes": 950,
+      "rows": null
+    },
+    {
+      "path": "seed_42/validation/predictions_standard.csv",
+      "status": "PRESENT",
+      "sha256": "1572eb6ca7aeb18650a8ed94c2fc32ebe695c1daccc1e3c34b98a1a70820a9b6",
+      "bytes": 614959,
+      "rows": 1452
+    },
+    {
+      "path": "seed_42/validation/classification_report.csv",
+      "status": "PRESENT",
+      "sha256": "d9f82a627ca70ebe2ad5949478ead86132fa9430a89eb23b582c0f210397b597",
+      "bytes": 640,
+      "rows": 8
+    },
+    {
+      "path": "seed_42/validation/confusion_matrix_raw.csv",
+      "status": "PRESENT",
+      "sha256": "b00b6e81df340fa6f434e8f163fbdafdb35950f32acfca79a6b5ab76f471d3a4",
+      "bytes": 174,
+      "rows": 5
+    },
+    {
+      "path": "seed_42/validation/confusion_matrix_normalized.csv",
+      "status": "PRESENT",
+      "sha256": "7d5de25b75603a92214751bf95448b160ba22c333314b82ab05af73b3d8a98fd",
+      "bytes": 456,
+      "rows": 5
+    },
+    {
+      "path": "seed_42/validation/confusion_matrix_raw.png",
+      "status": "PRESENT",
+      "sha256": "931eec96063186c96fb02bfa5523c08c185d790624cd854dbd56a1ef4b95d712",
+      "bytes": 78373,
+      "rows": null
+    },
+    {
+      "path": "seed_42/validation/confusion_matrix_normalized.png",
+      "status": "PRESENT",
+      "sha256": "5a7d3beb7429bd90cba63e9b543b387c3c5235783f083eb593bb8f815d325970",
+      "bytes": 85965,
+      "rows": null
+    },
+    {
+      "path": "seed_42/validation/error_cases.csv",
+      "status": "PRESENT",
+      "sha256": "ca04cdac97d3bdb1bb34be1d4c59818de0f39f65c77a51e926d0136332a26b90",
+      "bytes": 7872,
+      "rows": 43
+    },
+    {
+      "path": "seed_42/stage1/history.csv",
+      "status": "PRESENT",
+      "sha256": "e2df5daaa46c9c11fc6ee6a97cc6159282f2dda26cf3e92e220e946c490e1835",
+      "bytes": 1064,
+      "rows": 10
+    },
+    {
+      "path": "seed_42/stage2/history.csv",
+      "status": "PRESENT",
+      "sha256": "366ba7b18580421635fde9fcb19bf500136859109dc4a62366a4a2c4433c3666",
+      "bytes": 1585,
+      "rows": 15
+    },
+    {
+      "path": "seed_123/validation/metrics.json",
+      "status": "PRESENT",
+      "sha256": "9c38315f405c1a35dff86b78fbc04db7a0d6dd7aeddadd663cb36e4abd37cd47",
+      "bytes": 936,
+      "rows": null
+    },
+    {
+      "path": "seed_123/validation/predictions_standard.csv",
+      "status": "PRESENT",
+      "sha256": "4db42e3b3c634f38a553f97ccf0ee92f1109334075353a8528ab49f7cd6d0509",
+      "bytes": 616623,
+      "rows": 1452
+    },
+    {
+      "path": "seed_123/validation/classification_report.csv",
+      "status": "PRESENT",
+      "sha256": "f6116c53c53c22618811e5715ab7fa55fe54ae3044a5a0364b97067631510ba4",
+      "bytes": 616,
+      "rows": 8
+    },
+    {
+      "path": "seed_123/validation/confusion_matrix_raw.csv",
+      "status": "PRESENT",
+      "sha256": "bdce296e5475f8bdbce0d8cd6a4a8b9b972c3ce1faac713b35d97607ff751c89",
+      "bytes": 175,
+      "rows": 5
+    },
+    {
+      "path": "seed_123/validation/confusion_matrix_normalized.csv",
+      "status": "PRESENT",
+      "sha256": "339420aa81194f0f7f2c7ac30f42dad046d29f24ebd2758b289fe50002b8d75d",
+      "bytes": 439,
+      "rows": 5
+    },
+    {
+      "path": "seed_123/validation/confusion_matrix_raw.png",
+      "status": "PRESENT",
+      "sha256": "4c5d8fb53ae76e8ee8742ab3a92d57e567a269bbd2f71e32b19166f11c5dbc48",
+      "bytes": 80729,
+      "rows": null
+    },
+    {
+      "path": "seed_123/validation/confusion_matrix_normalized.png",
+      "status": "PRESENT",
+      "sha256": "b772d1676747dbe27640d1e10a42255bdf203c20e477ea84cdd2fe5968303a81",
+      "bytes": 87055,
+      "rows": null
+    },
+    {
+      "path": "seed_123/validation/error_cases.csv",
+      "status": "PRESENT",
+      "sha256": "75bd1903daa6e23c7a3acc3df4bbfa8b0cfc71f997b4656cc20c828c4019a45b",
+      "bytes": 8127,
+      "rows": 45
+    },
+    {
+      "path": "seed_123/stage1/history.csv",
+      "status": "PRESENT",
+      "sha256": "592925e4c1db68ee4d7bc327376de63e0f05b2769fcdd6d1739d2b94bbaa382c",
+      "bytes": 1270,
+      "rows": 12
+    },
+    {
+      "path": "seed_123/stage2/history.csv",
+      "status": "PRESENT",
+      "sha256": "d0507b32674f490767bacb4ceb15313c385b365e6b3339729bac6739ffb9d78b",
+      "bytes": 1589,
+      "rows": 15
+    },
+    {
+      "path": "seed_2026/validation/metrics.json",
+      "status": "PRESENT",
+      "sha256": "5911445e2bc68121f48989c0a8d3fffbe592e029d91b6ecf2fd6bd58ebd7d5dc",
+      "bytes": 939,
+      "rows": null
+    },
+    {
+      "path": "seed_2026/validation/predictions_standard.csv",
+      "status": "PRESENT",
+      "sha256": "eb7a8a31a8e543575080e99b8b1ea746845324fc1a75ebeecdfc0e75d6eb64a7",
+      "bytes": 618375,
+      "rows": 1452
+    },
+    {
+      "path": "seed_2026/validation/classification_report.csv",
+      "status": "PRESENT",
+      "sha256": "4efa6a869d656d2ee856b0b4c1d339fbb1bbdc26d0043638bb1191b4a6e986b8",
+      "bytes": 625,
+      "rows": 8
+    },
+    {
+      "path": "seed_2026/validation/confusion_matrix_raw.csv",
+      "status": "PRESENT",
+      "sha256": "18df150e759ae7d13629346f219957c868ad90e78ff5164c789eadb3a81864eb",
+      "bytes": 175,
+      "rows": 5
+    },
+    {
+      "path": "seed_2026/validation/confusion_matrix_normalized.csv",
+      "status": "PRESENT",
+      "sha256": "e48d2edc83eb199488c882c38c7eb061badf4bd22941bff44b4c61d119f9cd77",
+      "bytes": 422,
+      "rows": 5
+    },
+    {
+      "path": "seed_2026/validation/confusion_matrix_raw.png",
+      "status": "PRESENT",
+      "sha256": "0f601c871890fc35f762251c4bbdbb4a66e4f41e109e762e7a912d6746bcc903",
+      "bytes": 80829,
+      "rows": null
+    },
+    {
+      "path": "seed_2026/validation/confusion_matrix_normalized.png",
+      "status": "PRESENT",
+      "sha256": "85fae5587887c9f98265fc769ba54e2037c2f1d15288951d5af2b9bdb893354e",
+      "bytes": 87760,
+      "rows": null
+    },
+    {
+      "path": "seed_2026/validation/error_cases.csv",
+      "status": "PRESENT",
+      "sha256": "47e35c81a4bb4da80a1915d0c0cb1ec95da47f1fc97521be95539032b4799676",
+      "bytes": 8767,
+      "rows": 49
+    },
+    {
+      "path": "seed_2026/stage1/history.csv",
+      "status": "PRESENT",
+      "sha256": "21e8f0c65bd24dd70ad31aa56ff197b499f64cb71938195198ccc046bc840238",
+      "bytes": 1272,
+      "rows": 12
+    },
+    {
+      "path": "seed_2026/stage2/history.csv",
+      "status": "PRESENT",
+      "sha256": "27fe90dab64ff3d7e1994ed2dc15cf1fc12d8bbbc20586e64c1241218b5d8ac4",
+      "bytes": 1070,
+      "rows": 10
+    },
+    {
+      "path": "seed_3407/validation/metrics.json",
+      "status": "PRESENT",
+      "sha256": "464b42690cd633a60d1cb46dd3e3d0a38c6be86971ab7737e56157fcd15bb23f",
+      "bytes": 951,
+      "rows": null
+    },
+    {
+      "path": "seed_3407/validation/predictions_standard.csv",
+      "status": "PRESENT",
+      "sha256": "e75edfdc0b1210bc53fe1801644029efd0b834e9207734fc8b433ecd05dcb7d3",
+      "bytes": 618491,
+      "rows": 1452
+    },
+    {
+      "path": "seed_3407/validation/classification_report.csv",
+      "status": "PRESENT",
+      "sha256": "afc290a7d1f76ee68896b0f7fd957d50f94c1f1a88cfd27bbae570bab4001510",
+      "bytes": 639,
+      "rows": 8
+    },
+    {
+      "path": "seed_3407/validation/confusion_matrix_raw.csv",
+      "status": "PRESENT",
+      "sha256": "e2035046edb3361d632dda2eedd07db761cc2df9d9d7c48dba6029251f6873b5",
+      "bytes": 174,
+      "rows": 5
+    },
+    {
+      "path": "seed_3407/validation/confusion_matrix_normalized.csv",
+      "status": "PRESENT",
+      "sha256": "df0c469d60566475f65a0b904418627598d7de772dd32cc1d84d587cea2bf831",
+      "bytes": 451,
+      "rows": 5
+    },
+    {
+      "path": "seed_3407/validation/confusion_matrix_raw.png",
+      "status": "PRESENT",
+      "sha256": "811d0236c065b6d2eb163cbf940900716cc1b7c7289b2258c2254b0fcbf543cc",
+      "bytes": 81374,
+      "rows": null
+    },
+    {
+      "path": "seed_3407/validation/confusion_matrix_normalized.png",
+      "status": "PRESENT",
+      "sha256": "2fbec3d0f08722c65c923b68186ef507a5cafe073095b183a25fda0143cbd3b8",
+      "bytes": 88315,
+      "rows": null
+    },
+    {
+      "path": "seed_3407/validation/error_cases.csv",
+      "status": "PRESENT",
+      "sha256": "80355a7ad478fc68170ec3b7ff1d636d6baf947b7566c2c30bc93e30b7d446c7",
+      "bytes": 8310,
+      "rows": 46
+    },
+    {
+      "path": "seed_3407/stage1/history.csv",
+      "status": "PRESENT",
+      "sha256": "147a2e9fb3f06b23a6ca88b2ecd6af5627bf73c5bc72679968ea9931ef1b2335",
+      "bytes": 1267,
+      "rows": 12
+    },
+    {
+      "path": "seed_3407/stage2/history.csv",
+      "status": "PRESENT",
+      "sha256": "c5cb69ab36a64198daecb4213c133ca214768c28ec336c911f52d6e853301991",
+      "bytes": 1693,
+      "rows": 16
+    },
+    {
+      "path": "seed_7777/validation/metrics.json",
+      "status": "PRESENT",
+      "sha256": "ee642794a8dc01059c588792ce212f8e96d9ed363e92d61c672f771afd22710c",
+      "bytes": 949,
+      "rows": null
+    },
+    {
+      "path": "seed_7777/validation/predictions_standard.csv",
+      "status": "PRESENT",
+      "sha256": "1934361c4b2cea849770f9d246cad571163f499b945b8e16c9bc61fb35edfc68",
+      "bytes": 618007,
+      "rows": 1452
+    },
+    {
+      "path": "seed_7777/validation/classification_report.csv",
+      "status": "PRESENT",
+      "sha256": "c95056e8a5dbdaaff6ba4282a2fce66714192350177d322cf4e35d7092189597",
+      "bytes": 624,
+      "rows": 8
+    },
+    {
+      "path": "seed_7777/validation/confusion_matrix_raw.csv",
+      "status": "PRESENT",
+      "sha256": "60f05d63371c9dd1128d85470c3b7496b130ccfacb41f0bbecad85017195df88",
+      "bytes": 174,
+      "rows": 5
+    },
+    {
+      "path": "seed_7777/validation/confusion_matrix_normalized.csv",
+      "status": "PRESENT",
+      "sha256": "7c5e85ea7a46c65f22f8ccf245da76972027750555f0a9afa10ea12a6c75a68e",
+      "bytes": 436,
+      "rows": 5
+    },
+    {
+      "path": "seed_7777/validation/confusion_matrix_raw.png",
+      "status": "PRESENT",
+      "sha256": "2eb33d5c36c4959da9b4cd3db091ea13b66581a79f0e643b901ffe42bd2ab3db",
+      "bytes": 80522,
+      "rows": null
+    },
+    {
+      "path": "seed_7777/validation/confusion_matrix_normalized.png",
+      "status": "PRESENT",
+      "sha256": "d9ac5f0c7fa313d7af1d076f5570d0083cd8281a89c7d144e93f71f2e8dd6e4a",
+      "bytes": 87700,
+      "rows": null
+    },
+    {
+      "path": "seed_7777/validation/error_cases.csv",
+      "status": "PRESENT",
+      "sha256": "7b8027bf1cd7c894e033e6bb8c611238c9803bf43aada014e592e4b4cec9836d",
+      "bytes": 7606,
+      "rows": 42
+    },
+    {
+      "path": "seed_7777/stage1/history.csv",
+      "status": "PRESENT",
+      "sha256": "f37249b0cb459240176b456b0e792a6eb53906e973aa61d5be0f74c47bbb056f",
+      "bytes": 1270,
+      "rows": 12
+    },
+    {
+      "path": "seed_7777/stage2/history.csv",
+      "status": "PRESENT",
+      "sha256": "6dc0436b480a96b255ed24f6bbdf6a9b3765408979a55131ebfd2f418c0f0b31",
+      "bytes": 1689,
+      "rows": 16
+    },
+    {
+      "path": "figures/panels/test_confusion_raw_1x5.png",
+      "status": "PRESENT",
+      "sha256": "0147c1a05164d9b1c4830ae1b7f004d27809de0cf6c097ff480029ec82678e48",
+      "bytes": 127642,
+      "rows": null
+    },
+    {
+      "path": "figures/panels/test_confusion_normalized_1x5.png",
+      "status": "PRESENT",
+      "sha256": "a43d45f81d1a7e59b97aee10138e3a318e0d9fad41981af1557c66797274721b",
+      "bytes": 138547,
+      "rows": null
+    },
+    {
+      "path": "figures/per_class_f1_heatmap_test.png",
+      "status": "PRESENT",
+      "sha256": "6342f8cf4718fb01463458246b4cfd0295cef89c08393bd4c6799e2ade7c1b99",
+      "bytes": 65262,
+      "rows": null
+    },
+    {
+      "path": "figures/seed_metric_errorbars_test.png",
+      "status": "PRESENT",
+      "sha256": "618099a074d045dfe47024fee9dee95bd13c90f7c69f9315a34275fb3b1e66fb",
+      "bytes": 33292,
+      "rows": null
+    },
+    {
+      "path": "figures/test_error_montage_seed_selected.png",
+      "status": "PRESENT",
+      "sha256": "49a6cae687755a5c26109efee079d4e56d7be9121cb626a452d9433c6a82b9ce",
+      "bytes": 6168356,
+      "rows": null
+    },
+    {
+      "path": "aggregate/test_results_5seeds.csv",
+      "status": "PRESENT",
+      "sha256": "356f3aea461a75ff4d26d37d378b4cc83771739517489f0939a08a5310aa8dfe",
+      "bytes": 1347,
+      "rows": 5
+    },
+    {
+      "path": "aggregate/test_mean_std.csv",
+      "status": "PRESENT",
+      "sha256": "16fc207121c148707094bbbc2afc595fd8eed67ab43d5f3e06e2eca24554c141",
+      "bytes": 350,
+      "rows": 6
+    },
+    {
+      "path": "aggregate/per_class_test_by_seed.csv",
+      "status": "PRESENT",
+      "sha256": "76097a706a8b0b6f68f0121870fe9b46ec83c1b8396b637f2c0267112f99fd80",
+      "bytes": 1768,
+      "rows": 25
+    },
+    {
+      "path": "aggregate/seed_ci95_test.csv",
+      "status": "PRESENT",
+      "sha256": "31ade0084b1b7a55daedc8cb4fbfaf1eab214537f1bb74c266ec473792e703ee",
+      "bytes": 964,
+      "rows": 4
+    },
+    {
+      "path": "aggregate/test_error_summary.csv",
+      "status": "PRESENT",
+      "sha256": "29c2e44c490f7a102d9c7d8608411cfedcdcb63ca2c9cd88eba6714f02ba5afa",
+      "bytes": 6329,
+      "rows": 125
+    },
+    {
+      "path": "seed_42/test/metrics.json",
+      "status": "PRESENT",
+      "sha256": "4893db360e517291af902b0e5edcbe0ddebf3fa080406a5e200d4a7118d1464c",
+      "bytes": 597,
+      "rows": null
+    },
+    {
+      "path": "seed_42/test/predictions_standard.csv",
+      "status": "PRESENT",
+      "sha256": "5f97009a89bf0db46cd8e57287a0b0e69ef840e2ce18733093d0d52a31a55b06",
+      "bytes": 286783,
+      "rows": 685
+    },
+    {
+      "path": "seed_42/test/classification_report.csv",
+      "status": "PRESENT",
+      "sha256": "43d2b794204c86c4365f8979db998d61e01c0575d6c0e95e5b32807983a3b113",
+      "bytes": 580,
+      "rows": 8
+    },
+    {
+      "path": "seed_42/test/confusion_matrix_raw.csv",
+      "status": "PRESENT",
+      "sha256": "81738340cf11fd00ca8b79880689df072538efc48a67ac18a4c7c09f55e9eff7",
+      "bytes": 173,
+      "rows": 5
+    },
+    {
+      "path": "seed_42/test/confusion_matrix_normalized.csv",
+      "status": "PRESENT",
+      "sha256": "5792c325106ed951b8c1aea3f42feae2e001574ee4354419cab74a5f40bd59dd",
+      "bytes": 374,
+      "rows": 5
+    },
+    {
+      "path": "seed_42/test/confusion_matrix_raw.png",
+      "status": "PRESENT",
+      "sha256": "218ae54a9a34d437bac3f87187e083b7458643987f2059911e221490ec6d046f",
+      "bytes": 75253,
+      "rows": null
+    },
+    {
+      "path": "seed_42/test/confusion_matrix_normalized.png",
+      "status": "PRESENT",
+      "sha256": "9b41a421a6f4f509bb8ba4805ba21fca95b46c5106698667167cf22710c54218",
+      "bytes": 85210,
+      "rows": null
+    },
+    {
+      "path": "seed_123/test/metrics.json",
+      "status": "PRESENT",
+      "sha256": "d61116a9dbdbb489546a2e36bd4f770625456809c3c53d31a7f05643381dd168",
+      "bytes": 596,
+      "rows": null
+    },
+    {
+      "path": "seed_123/test/predictions_standard.csv",
+      "status": "PRESENT",
+      "sha256": "7062ea9c7a952674b18d9d68350f4e67febe829581b7851047a12eb1ffdeedbd",
+      "bytes": 287576,
+      "rows": 685
+    },
+    {
+      "path": "seed_123/test/classification_report.csv",
+      "status": "PRESENT",
+      "sha256": "208e1a48b99f385e2d80d6ebc343b86e27efc27cd2cd6d4c3f0eb7e9c957f13e",
+      "bytes": 561,
+      "rows": 8
+    },
+    {
+      "path": "seed_123/test/confusion_matrix_raw.csv",
+      "status": "PRESENT",
+      "sha256": "616cb6c22e0daa52c82c8cd0d2df71c966a127c9f07a50939687078427906037",
+      "bytes": 174,
+      "rows": 5
+    },
+    {
+      "path": "seed_123/test/confusion_matrix_normalized.csv",
+      "status": "PRESENT",
+      "sha256": "3b94293b1113325e4118f9d351175b7b35eec8762e227fa3313e5648c373eb05",
+      "bytes": 345,
+      "rows": 5
+    },
+    {
+      "path": "seed_123/test/confusion_matrix_raw.png",
+      "status": "PRESENT",
+      "sha256": "3a1adf165f661e34911017166303976edfc054f423de0ea91fd38f82696bfbac",
+      "bytes": 75625,
+      "rows": null
+    },
+    {
+      "path": "seed_123/test/confusion_matrix_normalized.png",
+      "status": "PRESENT",
+      "sha256": "2e430d73fe3a66f2d74d130091725919544974ae8687b32691aff03b488f96e5",
+      "bytes": 84255,
+      "rows": null
+    },
+    {
+      "path": "seed_2026/test/metrics.json",
+      "status": "PRESENT",
+      "sha256": "5013b20574fb062dd0828e5069dbca28a8b548cc15bd00ee77d83f2e7d7b2a09",
+      "bytes": 599,
+      "rows": null
+    },
+    {
+      "path": "seed_2026/test/predictions_standard.csv",
+      "status": "PRESENT",
+      "sha256": "280ab4d343f71f8807e7d3219b78dbc23a29dd54932800ce1bcdcc294cd9cb26",
+      "bytes": 288455,
+      "rows": 685
+    },
+    {
+      "path": "seed_2026/test/classification_report.csv",
+      "status": "PRESENT",
+      "sha256": "7b50d6c0b13a78893a33075b926222f34a1808cc97e60dfd971f283a73e5d41b",
+      "bytes": 593,
+      "rows": 8
+    },
+    {
+      "path": "seed_2026/test/confusion_matrix_raw.csv",
+      "status": "PRESENT",
+      "sha256": "5a417cd1c9e5d24d1c2e08139f9b9cb8888899edace3ef146ba1f17e0093654d",
+      "bytes": 174,
+      "rows": 5
+    },
+    {
+      "path": "seed_2026/test/confusion_matrix_normalized.csv",
+      "status": "PRESENT",
+      "sha256": "8ef3f0c1f46c38c8780e4464b466f1e571a4bfeabf88c42407129aa15b0d9e23",
+      "bytes": 369,
+      "rows": 5
+    },
+    {
+      "path": "seed_2026/test/confusion_matrix_raw.png",
+      "status": "PRESENT",
+      "sha256": "c03eb17d6c347da09113fe28cdcb03c972e5462d1275899731682414028ee808",
+      "bytes": 75841,
+      "rows": null
+    },
+    {
+      "path": "seed_2026/test/confusion_matrix_normalized.png",
+      "status": "PRESENT",
+      "sha256": "92993a7c56d7539a43e04668260b4862fcdb79f9b0adb98cb393ad6684a44314",
+      "bytes": 86065,
+      "rows": null
+    },
+    {
+      "path": "seed_3407/test/metrics.json",
+      "status": "PRESENT",
+      "sha256": "cc1a2daabb4144a9d9f3aac08ebc7c4caf3b2406fc4d756b51c2c137988c518f",
+      "bytes": 597,
+      "rows": null
+    },
+    {
+      "path": "seed_3407/test/predictions_standard.csv",
+      "status": "PRESENT",
+      "sha256": "6d952f781770844d62d95c0f5abe78d464118204b0a0a3e8d28f67cb9f6ecccc",
+      "bytes": 288623,
+      "rows": 685
+    },
+    {
+      "path": "seed_3407/test/classification_report.csv",
+      "status": "PRESENT",
+      "sha256": "16c870633f4ad7fd224f1a122a2d25e5100088572579543808d76ce7e817020c",
+      "bytes": 566,
+      "rows": 8
+    },
+    {
+      "path": "seed_3407/test/confusion_matrix_raw.csv",
+      "status": "PRESENT",
+      "sha256": "da83371a22b42317ed5b4634e5e5239439e6817a00aaf4b0ea4c7ec48faf535a",
+      "bytes": 175,
+      "rows": 5
+    },
+    {
+      "path": "seed_3407/test/confusion_matrix_normalized.csv",
+      "status": "PRESENT",
+      "sha256": "dc89a6ff04a131826faedcbcc5e114083c445e6ad2ace199b7287beb0787fca3",
+      "bytes": 341,
+      "rows": 5
+    },
+    {
+      "path": "seed_3407/test/confusion_matrix_raw.png",
+      "status": "PRESENT",
+      "sha256": "34b9868d43da7eb1f2187f5c0fa8e4a4769d033e49919d0e53826b93efc4a809",
+      "bytes": 76323,
+      "rows": null
+    },
+    {
+      "path": "seed_3407/test/confusion_matrix_normalized.png",
+      "status": "PRESENT",
+      "sha256": "01043d7a2c3b0a7a0d1a6a03a47f614bf6657f78822e990f50209dcbcf5f6803",
+      "bytes": 85912,
+      "rows": null
+    },
+    {
+      "path": "seed_7777/test/metrics.json",
+      "status": "PRESENT",
+      "sha256": "9b16d08210082cb6a37ce1fa2809030e84baa24122936343a7ae4f0ccb57263a",
+      "bytes": 596,
+      "rows": null
+    },
+    {
+      "path": "seed_7777/test/predictions_standard.csv",
+      "status": "PRESENT",
+      "sha256": "d2a04c4964b1dade4854eaf279d048065e8e31c3dc9702f458a8668df5871080",
+      "bytes": 288257,
+      "rows": 685
+    },
+    {
+      "path": "seed_7777/test/classification_report.csv",
+      "status": "PRESENT",
+      "sha256": "746db64caf38c0e44a2e4e9506bf62d1190586a17ff876b11407e7a0faa26f36",
+      "bytes": 574,
+      "rows": 8
+    },
+    {
+      "path": "seed_7777/test/confusion_matrix_raw.csv",
+      "status": "PRESENT",
+      "sha256": "168f3083823926ef564ebe57ff1d856407f3d228b0c0c2efe253c9178360d035",
+      "bytes": 175,
+      "rows": 5
+    },
+    {
+      "path": "seed_7777/test/confusion_matrix_normalized.csv",
+      "status": "PRESENT",
+      "sha256": "ae066852bea8338bae3ab093f1ecb1e5fcc8383206308c747a7426c8e51c26f6",
+      "bytes": 372,
+      "rows": 5
+    },
+    {
+      "path": "seed_7777/test/confusion_matrix_raw.png",
+      "status": "PRESENT",
+      "sha256": "b935e67f8a1181b5479aa9d55fb651917cf558c11ac1d6afbf016a1c3224fcd9",
+      "bytes": 75267,
+      "rows": null
+    },
+    {
+      "path": "seed_7777/test/confusion_matrix_normalized.png",
+      "status": "PRESENT",
+      "sha256": "cb09c189f47f026f65f7d5831f4df5310bc73a2d09c0ba9e70e070c71e22bb2c",
+      "bytes": 85696,
+      "rows": null
+    },
+    {
+      "path": "figures/panels/holdout_confusion_raw_1x5.png",
+      "status": "PRESENT",
+      "sha256": "fa8bd49d8d727d9c060414afbef817d976628f8f7b8a80e99dff1a2434ca3b6f",
+      "bytes": 150592,
+      "rows": null
+    },
+    {
+      "path": "figures/panels/holdout_confusion_normalized_1x5.png",
+      "status": "PRESENT",
+      "sha256": "04f573934b50726879b590950d394de210279c29b4ea3d62524245b2aeb89565",
+      "bytes": 175004,
+      "rows": null
+    },
+    {
+      "path": "figures/per_class_f1_heatmap_real_holdout.png",
+      "status": "PRESENT",
+      "sha256": "8b0cae15b51bd772dbb85a671249604a3062f33f00763f7b9f5509a0e09963fc",
+      "bytes": 76754,
+      "rows": null
+    },
+    {
+      "path": "aggregate/holdout_results_5seeds.csv",
+      "status": "PRESENT",
+      "sha256": "f5f3ecdeaca452327169b998de78975a75ca88cd9120896fb2c1ab1b8984a697",
+      "bytes": 1061,
+      "rows": 5
+    },
+    {
+      "path": "aggregate/seed_ci95_real_holdout.csv",
+      "status": "PRESENT",
+      "sha256": "288d41ee2fbfb1fc80c7124db1218fd8d3f36065180b0d579ecfb673a9655d42",
+      "bytes": 732,
+      "rows": 3
+    },
+    {
+      "path": "aggregate/real_holdout_error_summary.csv",
+      "status": "PRESENT",
+      "sha256": "a5b419f391079762d54fedd7895450a878e342a08a6f94d473ccb84eef1366b4",
+      "bytes": 7303,
+      "rows": 125
+    },
+    {
+      "path": "real_holdout/evaluation_lock.json",
+      "status": "PRESENT",
+      "sha256": "a4ec8253ca04f4564aed973a99221f943a3accd6d4cafcad635429f7f31cdf4c",
+      "bytes": 1232,
+      "rows": null
+    },
+    {
+      "path": "real_holdout/dataset_audit.json",
+      "status": "PRESENT",
+      "sha256": "8c7ef5d4d243c25ef3ccd9285cdaaf20c1752c64c2d6a558d8d525c8ce0477f6",
+      "bytes": 1074,
+      "rows": null
+    },
+    {
+      "path": "real_holdout/seed_42/predictions_standard.csv",
+      "status": "PRESENT",
+      "sha256": "094f2dc170307cfe64b5aab49766858363a1fc18662b141d767a042e37b013bc",
+      "bytes": 62409,
+      "rows": 126
+    },
+    {
+      "path": "real_holdout/seed_42/classification_report.csv",
+      "status": "PRESENT",
+      "sha256": "c569c6627f4e3f4621f7b330517091682c93d53c6ceea50dc141fa76ab48d59f",
+      "bytes": 677,
+      "rows": 7
+    },
+    {
+      "path": "real_holdout/seed_42/confusion_matrix_raw.csv",
+      "status": "PRESENT",
+      "sha256": "fbb43320c13324f2ab4afb57347096d5654bee3dcc4e9590c4b74286a3f36093",
+      "bytes": 168,
+      "rows": 5
+    },
+    {
+      "path": "real_holdout/seed_42/confusion_matrix_normalized.csv",
+      "status": "PRESENT",
+      "sha256": "7e3369bb562d9c9779ff73ae31f3a2d35f5aed26af73a2a40c56483b7c1a0c87",
+      "bytes": 359,
+      "rows": 5
+    },
+    {
+      "path": "real_holdout/seed_42/confusion_matrix_raw.png",
+      "status": "PRESENT",
+      "sha256": "c8b21cb1fab92329fe2df9d1e329288dd21b827cac9ed4f8c446a0bdedb37680",
+      "bytes": 83490,
+      "rows": null
+    },
+    {
+      "path": "real_holdout/seed_42/confusion_matrix_normalized.png",
+      "status": "PRESENT",
+      "sha256": "5abe5f6ffa99678b66279c764097bca72f73123e491fb916db0729ab1726dda6",
+      "bytes": 93848,
+      "rows": null
+    },
+    {
+      "path": "real_holdout/seed_123/predictions_standard.csv",
+      "status": "PRESENT",
+      "sha256": "c0b521b7ef5cb781213b146a4b7af51b3a10e7dfa8f26650ddfadc2da1847e13",
+      "bytes": 62375,
+      "rows": 126
+    },
+    {
+      "path": "real_holdout/seed_123/classification_report.csv",
+      "status": "PRESENT",
+      "sha256": "5e8ec574ae2003bd5d24fee67466d982793cbe5a0fb231d7b9af293df3d70877",
+      "bytes": 689,
+      "rows": 7
+    },
+    {
+      "path": "real_holdout/seed_123/confusion_matrix_raw.csv",
+      "status": "PRESENT",
+      "sha256": "be0acc6d224dcfff0103e59fa253e405839f2506a99e6c4d3030d9e017690165",
+      "bytes": 167,
+      "rows": 5
+    },
+    {
+      "path": "real_holdout/seed_123/confusion_matrix_normalized.csv",
+      "status": "PRESENT",
+      "sha256": "ca4b826198fb5be4efb19bb1afb303fe29c926c4a5ae5bfb7c08f1853b8e588c",
+      "bytes": 356,
+      "rows": 5
+    },
+    {
+      "path": "real_holdout/seed_123/confusion_matrix_raw.png",
+      "status": "PRESENT",
+      "sha256": "759f5ec5ede8688405d98b2774eddb37b74086bb75ba6e105dc4c6ef2e7cc595",
+      "bytes": 84584,
+      "rows": null
+    },
+    {
+      "path": "real_holdout/seed_123/confusion_matrix_normalized.png",
+      "status": "PRESENT",
+      "sha256": "1dad5da32a72c5462be549cfe68cb3d19f70dd8bff36190179fd6991f2978118",
+      "bytes": 95589,
+      "rows": null
+    },
+    {
+      "path": "real_holdout/seed_2026/predictions_standard.csv",
+      "status": "PRESENT",
+      "sha256": "e5b9518ec04f7364d690e265914cdecd2c7ae5d8a43a3777f2233f6f465cdf91",
+      "bytes": 62257,
+      "rows": 126
+    },
+    {
+      "path": "real_holdout/seed_2026/classification_report.csv",
+      "status": "PRESENT",
+      "sha256": "07eb8a4f9305df22df00813af5a3eb5e492d346e5ad27ca8f339507a6b553dc6",
+      "bytes": 663,
+      "rows": 7
+    },
+    {
+      "path": "real_holdout/seed_2026/confusion_matrix_raw.csv",
+      "status": "PRESENT",
+      "sha256": "1f694c2309ac7e420996419e22e44adbfad2a69476a8cc03fae5d9f13586ef5d",
+      "bytes": 168,
+      "rows": 5
+    },
+    {
+      "path": "real_holdout/seed_2026/confusion_matrix_normalized.csv",
+      "status": "PRESENT",
+      "sha256": "02b493128820760c3e7fb271aed5f5e7338763d4ac2b920d44e007845fdbf273",
+      "bytes": 325,
+      "rows": 5
+    },
+    {
+      "path": "real_holdout/seed_2026/confusion_matrix_raw.png",
+      "status": "PRESENT",
+      "sha256": "f05bdc9fd4fa32e50a66ea538a8e6c906ed1cf929da40febc9e4e525c031be7b",
+      "bytes": 84760,
+      "rows": null
+    },
+    {
+      "path": "real_holdout/seed_2026/confusion_matrix_normalized.png",
+      "status": "PRESENT",
+      "sha256": "e99896915451cee47b326717af6a6a5fbcc24cebbad70236cabb3ffb582c46eb",
+      "bytes": 95448,
+      "rows": null
+    },
+    {
+      "path": "real_holdout/seed_3407/predictions_standard.csv",
+      "status": "PRESENT",
+      "sha256": "eb3e0a2889b66686be5a0a54fd5f92b9e2d71646cb0baa35e6e3225d1002e06d",
+      "bytes": 62473,
+      "rows": 126
+    },
+    {
+      "path": "real_holdout/seed_3407/classification_report.csv",
+      "status": "PRESENT",
+      "sha256": "22d716865a840b4b972783500be2585b71c5b2a493bfe80ea8c98bde821e9160",
+      "bytes": 690,
+      "rows": 7
+    },
+    {
+      "path": "real_holdout/seed_3407/confusion_matrix_raw.csv",
+      "status": "PRESENT",
+      "sha256": "a020c5d1df7cf3f3ef4d212c3608444f04d9653c80402a9afface79eec6b92b8",
+      "bytes": 168,
+      "rows": 5
+    },
+    {
+      "path": "real_holdout/seed_3407/confusion_matrix_normalized.csv",
+      "status": "PRESENT",
+      "sha256": "a7d11faad81ff8e080215175dca0521ce7fb39a24a5236b2c093e5c4e74a09db",
+      "bytes": 339,
+      "rows": 5
+    },
+    {
+      "path": "real_holdout/seed_3407/confusion_matrix_raw.png",
+      "status": "PRESENT",
+      "sha256": "1faacd66a92890c96530f05c337e7e07e06a2c89c1c86804982a13262e0b0c56",
+      "bytes": 84409,
+      "rows": null
+    },
+    {
+      "path": "real_holdout/seed_3407/confusion_matrix_normalized.png",
+      "status": "PRESENT",
+      "sha256": "c4836966bd653f5d849255ff5408e8d5d873a2d192a497da37996b95680b7c5e",
+      "bytes": 94573,
+      "rows": null
+    },
+    {
+      "path": "real_holdout/seed_7777/predictions_standard.csv",
+      "status": "PRESENT",
+      "sha256": "f45c017fb0cd7b3b63b6c2a813fea6485186b68ff287e9425814840da61979aa",
+      "bytes": 62811,
+      "rows": 126
+    },
+    {
+      "path": "real_holdout/seed_7777/classification_report.csv",
+      "status": "PRESENT",
+      "sha256": "902611cfc18df59a2abf0d8c2bdb877842dacdf4c89a00862bf63317f0f40e87",
+      "bytes": 677,
+      "rows": 7
+    },
+    {
+      "path": "real_holdout/seed_7777/confusion_matrix_raw.csv",
+      "status": "PRESENT",
+      "sha256": "cb340f48209afd72aba0615d1c896607a9dc5d234b57cf8c3f8723432ec4273e",
+      "bytes": 168,
+      "rows": 5
+    },
+    {
+      "path": "real_holdout/seed_7777/confusion_matrix_normalized.csv",
+      "status": "PRESENT",
+      "sha256": "bda2744421b19889e06af31ca18e37d5226b1144959e5b932faff7e593b9d69d",
+      "bytes": 339,
+      "rows": 5
+    },
+    {
+      "path": "real_holdout/seed_7777/confusion_matrix_raw.png",
+      "status": "PRESENT",
+      "sha256": "6793565e9c4bd2b987f5800c6b14bf0a0fdd5ee972cb04fbeac7a4d00e5642ec",
+      "bytes": 83947,
+      "rows": null
+    },
+    {
+      "path": "real_holdout/seed_7777/confusion_matrix_normalized.png",
+      "status": "PRESENT",
+      "sha256": "3fa1cbece15ca32aa81ac1ae3a3bdb08f0439abd9ea1789bfe07a73ae9f8bce3",
+      "bytes": 94683,
+      "rows": null
+    }
+  ]
+}

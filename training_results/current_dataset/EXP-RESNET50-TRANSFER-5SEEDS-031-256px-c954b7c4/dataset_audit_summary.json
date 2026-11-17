@@ -1,0 +1,19 @@
+{
+  "dataset_zip_sha256": "e1647b72e10af04275dc760545f4ef17c9f44343ae119495b89ba1e3cd954e04",
+  "total_images": 7109,
+  "split_counts": {
+    "train": 4972,
+    "val": 1452,
+    "test": 685,
+    "total": 7109
+  },
+  "real_filename_counts": {
+    "train": 294,
+    "val": 59,
+    "test": 28
+  },
+  "exact_cross_split_or_label_pairs": 0,
+  "phash_cross_split_or_label_candidates": 51,
+  "thumbnail_match_candidates": 0,
+  "note": "pHash/thumbnail pairs require manual review; real_ is a filename proxy, not verified capture source."
+}

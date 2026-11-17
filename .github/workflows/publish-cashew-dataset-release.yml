@@ -1,0 +1,27 @@
+name: Publish cashew dataset release
+
+on:
+  push:
+    paths:
+      - ".github/workflows/publish-cashew-dataset-release.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish link-only dataset release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create dataset-v1.0 \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --title "Dataset v1.0 - Cashew Leaf Disease" \
+            --notes "Dataset trên Google Drive: https://drive.google.com/drive/folders/1BIiAnkZ4n72isYfbsE4XGi9sA-SgUUE4?usp=drive_link
+
+          5 lớp: Anthracnose, Leaf Miner, Red Rust, Healthy, Not Cashew Leaf.
+
+          Đây là Release tham chiếu đường dẫn Google Drive, không chứa ảnh trong GitHub. Xem DATASET_CHANGELOG.md để biết thay đổi dữ liệu."

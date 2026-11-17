@@ -1,0 +1,27 @@
+{
+  "inputs": {
+    "DenseNet121": {
+      "experiment": "EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04",
+      "archive": "EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04_ANALYSIS.zip",
+      "path": "D:\\Study\\Training result dowload\\deep model\\EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04_ANALYSIS.zip",
+      "sha256": "27b5ea684d99dc8b160e7eac0694ba1a7e647789f158807f576e14a1fe208aca"
+    },
+    "ResNet50": {
+      "experiment": "EXP-RESNET50-TRANSFER-5SEEDS-031-256px-c954b7c4",
+      "archive": "EXP-RESNET50-TRANSFER-5SEEDS-031-256px-c954b7c4_ANALYSIS.zip",
+      "path": "D:\\Study\\Training result dowload\\deep model\\EXP-RESNET50-TRANSFER-5SEEDS-031-256px-c954b7c4_ANALYSIS.zip",
+      "sha256": "85151ff0dbb9aedce08ca8d1b13c136c23ceb6e23a8af81d1d50064e24f35167"
+    },
+    "ViT (DeiT-S)": {
+      "experiment": "EXP-VIT-DEITSMALL-TRANSFER-LLRD-5SEEDS-016-256px-1192fd08",
+      "archive": "EXP-VIT-DEITSMALL-TRANSFER-LLRD-5SEEDS-016-256px-1192fd08_FULL.zip",
+      "path": "D:\\Study\\Training result dowload\\deep model\\EXP-VIT-DEITSMALL-TRANSFER-LLRD-5SEEDS-016-256px-1192fd08_FULL.zip",
+      "sha256": "e28040960babaaeab18c8cc892bb80c094fcc42a50c8c136590aefade6b5578f"
+    }
+  },
+  "detector": {
+    "name": "EXP-Y26S-NEG-V04-001",
+    "best_pt_sha256": "f9dc3fba1347b3213819f61abddb36b07e455112d4e6e8d57eeeeca8ab1b7f4a",
+    "evidence": "detector_evidence_{validation,test,holdout}.csv của EXP-035 (conf >= 0.05, NMS IoU 0.7, imgsz 640, rect=False, từng ảnh)"
+  }
+}

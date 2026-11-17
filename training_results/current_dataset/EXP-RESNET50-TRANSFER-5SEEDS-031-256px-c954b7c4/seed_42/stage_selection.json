@@ -1,0 +1,52 @@
+{
+  "seed": 42,
+  "selected_stage": "stage2",
+  "selected_epoch": 7,
+  "selection_metric": "val_loss",
+  "val_loss": 0.10322295129299164,
+  "val_macro_f1": 0.9695281037706012,
+  "real_subgroup_accuracy": 0.8135593220338984,
+  "stage_by_val_loss_rule": "stage2",
+  "stage_rules_agree": true,
+  "tie_break": "lower val_loss, higher val_macro_f1, then Stage 1",
+  "checkpoint_sha256": "35329317065f76c09d6e9c469c5c8b57668ee2497742fd1d423bf309df9fa06b",
+  "model_params": 23597957,
+  "stage_candidates": {
+    "stage1": {
+      "stage": "stage1",
+      "best_epoch": 6,
+      "real_subgroup_accuracy": 0.7288135593220338,
+      "real_subgroup_correct": 43,
+      "real_subgroup_total": 59,
+      "actual_epochs": 10,
+      "fit_seconds": 40.709197588999814,
+      "val_loss": 0.140778049826622,
+      "val_accuracy": 0.955234169960022,
+      "val_macro_f1": 0.9540786399637907,
+      "checkpoint_path": "/content/training_results/current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-031-256px-c954b7c4/seed_42/stage1/best.weights.h5",
+      "checkpoint_sha256": "46a680cad7313ffcfdc361ba9e94eb12e6bccac7ecc8fa2673a261db8bf94ff8",
+      "checkpoint_size_mb": 90.5794677734375,
+      "backbone_trainable_params": 0,
+      "learning_rate_first": 0.0003000000142492354,
+      "learning_rate_last": 0.0001500000071246177
+    },
+    "stage2": {
+      "stage": "stage2",
+      "best_epoch": 7,
+      "real_subgroup_accuracy": 0.8135593220338984,
+      "real_subgroup_correct": 48,
+      "real_subgroup_total": 59,
+      "actual_epochs": 15,
+      "fit_seconds": 76.60220872300124,
+      "val_loss": 0.10322295129299164,
+      "val_accuracy": 0.9703856706619263,
+      "val_macro_f1": 0.9695281037706012,
+      "checkpoint_path": "/content/training_results/current_dataset/EXP-RESNET50-TRANSFER-5SEEDS-031-256px-c954b7c4/seed_42/stage2/best.weights.h5",
+      "checkpoint_sha256": "35329317065f76c09d6e9c469c5c8b57668ee2497742fd1d423bf309df9fa06b",
+      "checkpoint_size_mb": 204.6790771484375,
+      "backbone_trainable_params": 14953472,
+      "learning_rate_first": 9.999999747378752e-06,
+      "learning_rate_last": 4.999999873689376e-06
+    }
+  }
+}

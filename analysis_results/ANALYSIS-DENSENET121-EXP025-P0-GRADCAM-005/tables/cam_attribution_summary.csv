@@ -1,1 +1,0 @@
-﻿split,relative_path,image_sha256,seed,true_label,predicted_label,confidence,wrong_n_seeds,predicted_healthy_n_seeds,model_sha256,source_archive_sha256,cam_target,cam_layer_or_source,cam_filename,cam_status,leaf_roi_available,saliency_on_leaf_ratio,visual_pattern,reviewer_comment,interpretation_confidence

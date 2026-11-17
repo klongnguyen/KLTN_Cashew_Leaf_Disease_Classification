@@ -1,0 +1,932 @@
+[
+  {
+    "experiment": "EXP-COMBINED-3CLASSIFIERS-YOLO26S-V04-037",
+    "mode": "per_seed",
+    "classifier": "DenseNet121",
+    "classifier_experiment": "EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04",
+    "seed": 42,
+    "detector": "EXP-Y26S-NEG-V04-001",
+    "C": {
+      "F3": 3,
+      "F3a": 10,
+      "F3b": 10
+    },
+    "temperature": {
+      "F3": 0.9781597431169422,
+      "F3a": 1.0090404955381693,
+      "F3b": 1.0215440729669978
+    },
+    "abstain_thresholds": {
+      "F3": 0.4759265341385669,
+      "F3a": 0.7464056763758339,
+      "F3b": 0.7146955336944574
+    },
+    "feature_columns": {
+      "F3": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf",
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ],
+      "F3a": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf"
+      ],
+      "F3b": [
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ]
+    },
+    "clean_validation_images": 1361,
+    "selection_split": "clean Validation (GroupKFold theo nhóm pHash, OOF)",
+    "test_or_holdout_used_for_selection": false
+  },
+  {
+    "experiment": "EXP-COMBINED-3CLASSIFIERS-YOLO26S-V04-037",
+    "mode": "per_seed",
+    "classifier": "DenseNet121",
+    "classifier_experiment": "EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04",
+    "seed": 123,
+    "detector": "EXP-Y26S-NEG-V04-001",
+    "C": {
+      "F3": 3,
+      "F3a": 10,
+      "F3b": 10
+    },
+    "temperature": {
+      "F3": 0.9822040726652407,
+      "F3a": 1.0101878617332898,
+      "F3b": 1.0215440729669978
+    },
+    "abstain_thresholds": {
+      "F3": 0.5036564837924413,
+      "F3a": 0.767595239010035,
+      "F3b": 0.7146955336944574
+    },
+    "feature_columns": {
+      "F3": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf",
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ],
+      "F3a": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf"
+      ],
+      "F3b": [
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ]
+    },
+    "clean_validation_images": 1361,
+    "selection_split": "clean Validation (GroupKFold theo nhóm pHash, OOF)",
+    "test_or_holdout_used_for_selection": false
+  },
+  {
+    "experiment": "EXP-COMBINED-3CLASSIFIERS-YOLO26S-V04-037",
+    "mode": "per_seed",
+    "classifier": "DenseNet121",
+    "classifier_experiment": "EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04",
+    "seed": 2026,
+    "detector": "EXP-Y26S-NEG-V04-001",
+    "C": {
+      "F3": 3,
+      "F3a": 10,
+      "F3b": 10
+    },
+    "temperature": {
+      "F3": 0.9848013618661418,
+      "F3a": 1.0032098154123101,
+      "F3b": 1.0215440729669978
+    },
+    "abstain_thresholds": {
+      "F3": 0.43760451246260834,
+      "F3a": 0.7424848353000094,
+      "F3b": 0.7146955336944574
+    },
+    "feature_columns": {
+      "F3": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf",
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ],
+      "F3a": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf"
+      ],
+      "F3b": [
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ]
+    },
+    "clean_validation_images": 1361,
+    "selection_split": "clean Validation (GroupKFold theo nhóm pHash, OOF)",
+    "test_or_holdout_used_for_selection": false
+  },
+  {
+    "experiment": "EXP-COMBINED-3CLASSIFIERS-YOLO26S-V04-037",
+    "mode": "per_seed",
+    "classifier": "DenseNet121",
+    "classifier_experiment": "EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04",
+    "seed": 3407,
+    "detector": "EXP-Y26S-NEG-V04-001",
+    "C": {
+      "F3": 3,
+      "F3a": 10,
+      "F3b": 10
+    },
+    "temperature": {
+      "F3": 0.9830641607718658,
+      "F3a": 1.0097797702905882,
+      "F3b": 1.0215440729669978
+    },
+    "abstain_thresholds": {
+      "F3": 0.47945446714317974,
+      "F3a": 0.567005448950318,
+      "F3b": 0.7146955336944574
+    },
+    "feature_columns": {
+      "F3": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf",
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ],
+      "F3a": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf"
+      ],
+      "F3b": [
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ]
+    },
+    "clean_validation_images": 1361,
+    "selection_split": "clean Validation (GroupKFold theo nhóm pHash, OOF)",
+    "test_or_holdout_used_for_selection": false
+  },
+  {
+    "experiment": "EXP-COMBINED-3CLASSIFIERS-YOLO26S-V04-037",
+    "mode": "per_seed",
+    "classifier": "DenseNet121",
+    "classifier_experiment": "EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04",
+    "seed": 7777,
+    "detector": "EXP-Y26S-NEG-V04-001",
+    "C": {
+      "F3": 3,
+      "F3a": 10,
+      "F3b": 10
+    },
+    "temperature": {
+      "F3": 0.9822153571137208,
+      "F3a": 1.0130987808597978,
+      "F3b": 1.0215440729669978
+    },
+    "abstain_thresholds": {
+      "F3": 0.5341467349848259,
+      "F3a": 0.7597711133994193,
+      "F3b": 0.7146955336944574
+    },
+    "feature_columns": {
+      "F3": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf",
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ],
+      "F3a": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf"
+      ],
+      "F3b": [
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ]
+    },
+    "clean_validation_images": 1361,
+    "selection_split": "clean Validation (GroupKFold theo nhóm pHash, OOF)",
+    "test_or_holdout_used_for_selection": false
+  },
+  {
+    "experiment": "EXP-COMBINED-3CLASSIFIERS-YOLO26S-V04-037",
+    "mode": "per_seed",
+    "classifier": "ResNet50",
+    "classifier_experiment": "EXP-RESNET50-TRANSFER-5SEEDS-031-256px-c954b7c4",
+    "seed": 42,
+    "detector": "EXP-Y26S-NEG-V04-001",
+    "C": {
+      "F3": 10,
+      "F3a": 3,
+      "F3b": 10
+    },
+    "temperature": {
+      "F3": 1.0170429697601204,
+      "F3a": 0.9871598004468963,
+      "F3b": 1.0215440729669978
+    },
+    "abstain_thresholds": {
+      "F3": 0.4397866148687525,
+      "F3a": 0.886447827054752,
+      "F3b": 0.7146955336944574
+    },
+    "feature_columns": {
+      "F3": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf",
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ],
+      "F3a": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf"
+      ],
+      "F3b": [
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ]
+    },
+    "clean_validation_images": 1361,
+    "selection_split": "clean Validation (GroupKFold theo nhóm pHash, OOF)",
+    "test_or_holdout_used_for_selection": false
+  },
+  {
+    "experiment": "EXP-COMBINED-3CLASSIFIERS-YOLO26S-V04-037",
+    "mode": "per_seed",
+    "classifier": "ResNet50",
+    "classifier_experiment": "EXP-RESNET50-TRANSFER-5SEEDS-031-256px-c954b7c4",
+    "seed": 123,
+    "detector": "EXP-Y26S-NEG-V04-001",
+    "C": {
+      "F3": 10,
+      "F3a": 10,
+      "F3b": 10
+    },
+    "temperature": {
+      "F3": 1.0155019887017185,
+      "F3a": 1.0084549328504144,
+      "F3b": 1.0215440729669978
+    },
+    "abstain_thresholds": {
+      "F3": 0.5266270425377436,
+      "F3a": 0.922372823673086,
+      "F3b": 0.7146955336944574
+    },
+    "feature_columns": {
+      "F3": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf",
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ],
+      "F3a": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf"
+      ],
+      "F3b": [
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ]
+    },
+    "clean_validation_images": 1361,
+    "selection_split": "clean Validation (GroupKFold theo nhóm pHash, OOF)",
+    "test_or_holdout_used_for_selection": false
+  },
+  {
+    "experiment": "EXP-COMBINED-3CLASSIFIERS-YOLO26S-V04-037",
+    "mode": "per_seed",
+    "classifier": "ResNet50",
+    "classifier_experiment": "EXP-RESNET50-TRANSFER-5SEEDS-031-256px-c954b7c4",
+    "seed": 2026,
+    "detector": "EXP-Y26S-NEG-V04-001",
+    "C": {
+      "F3": 3,
+      "F3a": 3,
+      "F3b": 10
+    },
+    "temperature": {
+      "F3": 0.9864530407208694,
+      "F3a": 0.9942240483364013,
+      "F3b": 1.0215440729669978
+    },
+    "abstain_thresholds": {
+      "F3": 0.5014554861320242,
+      "F3a": 0.8405910074920789,
+      "F3b": 0.7146955336944574
+    },
+    "feature_columns": {
+      "F3": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf",
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ],
+      "F3a": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf"
+      ],
+      "F3b": [
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ]
+    },
+    "clean_validation_images": 1361,
+    "selection_split": "clean Validation (GroupKFold theo nhóm pHash, OOF)",
+    "test_or_holdout_used_for_selection": false
+  },
+  {
+    "experiment": "EXP-COMBINED-3CLASSIFIERS-YOLO26S-V04-037",
+    "mode": "per_seed",
+    "classifier": "ResNet50",
+    "classifier_experiment": "EXP-RESNET50-TRANSFER-5SEEDS-031-256px-c954b7c4",
+    "seed": 3407,
+    "detector": "EXP-Y26S-NEG-V04-001",
+    "C": {
+      "F3": 3,
+      "F3a": 1,
+      "F3b": 10
+    },
+    "temperature": {
+      "F3": 0.9820906360430645,
+      "F3a": 0.9638433758629489,
+      "F3b": 1.0215440729669978
+    },
+    "abstain_thresholds": {
+      "F3": 0.504347959011034,
+      "F3a": 0.8250575788386946,
+      "F3b": 0.7146955336944574
+    },
+    "feature_columns": {
+      "F3": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf",
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ],
+      "F3a": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf"
+      ],
+      "F3b": [
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ]
+    },
+    "clean_validation_images": 1361,
+    "selection_split": "clean Validation (GroupKFold theo nhóm pHash, OOF)",
+    "test_or_holdout_used_for_selection": false
+  },
+  {
+    "experiment": "EXP-COMBINED-3CLASSIFIERS-YOLO26S-V04-037",
+    "mode": "per_seed",
+    "classifier": "ResNet50",
+    "classifier_experiment": "EXP-RESNET50-TRANSFER-5SEEDS-031-256px-c954b7c4",
+    "seed": 7777,
+    "detector": "EXP-Y26S-NEG-V04-001",
+    "C": {
+      "F3": 10,
+      "F3a": 1,
+      "F3b": 10
+    },
+    "temperature": {
+      "F3": 1.0212466365292812,
+      "F3a": 0.9658389960422464,
+      "F3b": 1.0215440729669978
+    },
+    "abstain_thresholds": {
+      "F3": 0.42555354682001817,
+      "F3a": 0.8855841161770313,
+      "F3b": 0.7146955336944574
+    },
+    "feature_columns": {
+      "F3": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf",
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ],
+      "F3a": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf"
+      ],
+      "F3b": [
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ]
+    },
+    "clean_validation_images": 1361,
+    "selection_split": "clean Validation (GroupKFold theo nhóm pHash, OOF)",
+    "test_or_holdout_used_for_selection": false
+  },
+  {
+    "experiment": "EXP-COMBINED-3CLASSIFIERS-YOLO26S-V04-037",
+    "mode": "per_seed",
+    "classifier": "ViT (DeiT-S)",
+    "classifier_experiment": "EXP-VIT-DEITSMALL-TRANSFER-LLRD-5SEEDS-016-256px-1192fd08",
+    "seed": 42,
+    "detector": "EXP-Y26S-NEG-V04-001",
+    "C": {
+      "F3": 1,
+      "F3a": 1,
+      "F3b": 10
+    },
+    "temperature": {
+      "F3": 0.938748823137117,
+      "F3a": 0.9392753424583209,
+      "F3b": 1.0215440729669978
+    },
+    "abstain_thresholds": {
+      "F3": 0.44863456052995804,
+      "F3a": 0.39541127183899283,
+      "F3b": 0.7146955336944574
+    },
+    "feature_columns": {
+      "F3": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf",
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ],
+      "F3a": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf"
+      ],
+      "F3b": [
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ]
+    },
+    "clean_validation_images": 1361,
+    "selection_split": "clean Validation (GroupKFold theo nhóm pHash, OOF)",
+    "test_or_holdout_used_for_selection": false
+  },
+  {
+    "experiment": "EXP-COMBINED-3CLASSIFIERS-YOLO26S-V04-037",
+    "mode": "per_seed",
+    "classifier": "ViT (DeiT-S)",
+    "classifier_experiment": "EXP-VIT-DEITSMALL-TRANSFER-LLRD-5SEEDS-016-256px-1192fd08",
+    "seed": 123,
+    "detector": "EXP-Y26S-NEG-V04-001",
+    "C": {
+      "F3": 3,
+      "F3a": 10,
+      "F3b": 10
+    },
+    "temperature": {
+      "F3": 0.9744905409175657,
+      "F3a": 1.000757760004139,
+      "F3b": 1.0215440729669978
+    },
+    "abstain_thresholds": {
+      "F3": 0.455127670796803,
+      "F3a": 0.49438034116785173,
+      "F3b": 0.7146955336944574
+    },
+    "feature_columns": {
+      "F3": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf",
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ],
+      "F3a": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf"
+      ],
+      "F3b": [
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ]
+    },
+    "clean_validation_images": 1361,
+    "selection_split": "clean Validation (GroupKFold theo nhóm pHash, OOF)",
+    "test_or_holdout_used_for_selection": false
+  },
+  {
+    "experiment": "EXP-COMBINED-3CLASSIFIERS-YOLO26S-V04-037",
+    "mode": "per_seed",
+    "classifier": "ViT (DeiT-S)",
+    "classifier_experiment": "EXP-VIT-DEITSMALL-TRANSFER-LLRD-5SEEDS-016-256px-1192fd08",
+    "seed": 2026,
+    "detector": "EXP-Y26S-NEG-V04-001",
+    "C": {
+      "F3": 10,
+      "F3a": 10,
+      "F3b": 10
+    },
+    "temperature": {
+      "F3": 1.0221698323823718,
+      "F3a": 0.9905012162007165,
+      "F3b": 1.0215440729669978
+    },
+    "abstain_thresholds": {
+      "F3": 0.39426979121858297,
+      "F3a": 0.6744007872365793,
+      "F3b": 0.7146955336944574
+    },
+    "feature_columns": {
+      "F3": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf",
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ],
+      "F3a": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf"
+      ],
+      "F3b": [
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ]
+    },
+    "clean_validation_images": 1361,
+    "selection_split": "clean Validation (GroupKFold theo nhóm pHash, OOF)",
+    "test_or_holdout_used_for_selection": false
+  },
+  {
+    "experiment": "EXP-COMBINED-3CLASSIFIERS-YOLO26S-V04-037",
+    "mode": "per_seed",
+    "classifier": "ViT (DeiT-S)",
+    "classifier_experiment": "EXP-VIT-DEITSMALL-TRANSFER-LLRD-5SEEDS-016-256px-1192fd08",
+    "seed": 3407,
+    "detector": "EXP-Y26S-NEG-V04-001",
+    "C": {
+      "F3": 1,
+      "F3a": 1,
+      "F3b": 10
+    },
+    "temperature": {
+      "F3": 0.9814457844573738,
+      "F3a": 0.9616594315201926,
+      "F3b": 1.0215440729669978
+    },
+    "abstain_thresholds": {
+      "F3": 0.5744020622396346,
+      "F3a": 0.5494392739173606,
+      "F3b": 0.7146955336944574
+    },
+    "feature_columns": {
+      "F3": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf",
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ],
+      "F3a": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf"
+      ],
+      "F3b": [
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ]
+    },
+    "clean_validation_images": 1361,
+    "selection_split": "clean Validation (GroupKFold theo nhóm pHash, OOF)",
+    "test_or_holdout_used_for_selection": false
+  },
+  {
+    "experiment": "EXP-COMBINED-3CLASSIFIERS-YOLO26S-V04-037",
+    "mode": "per_seed",
+    "classifier": "ViT (DeiT-S)",
+    "classifier_experiment": "EXP-VIT-DEITSMALL-TRANSFER-LLRD-5SEEDS-016-256px-1192fd08",
+    "seed": 7777,
+    "detector": "EXP-Y26S-NEG-V04-001",
+    "C": {
+      "F3": 3,
+      "F3a": 10,
+      "F3b": 10
+    },
+    "temperature": {
+      "F3": 0.9956054882389362,
+      "F3a": 1.0078581722904218,
+      "F3b": 1.0215440729669978
+    },
+    "abstain_thresholds": {
+      "F3": 0.35277490168267284,
+      "F3a": 0.390373342941446,
+      "F3b": 0.7146955336944574
+    },
+    "feature_columns": {
+      "F3": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf",
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ],
+      "F3a": [
+        "prob_anthracnose",
+        "prob_healthy",
+        "prob_leaf_miner",
+        "prob_red_rust",
+        "prob_not_cashew_leaf"
+      ],
+      "F3b": [
+        "max_conf_anthracnose",
+        "max_conf_leaf_miner",
+        "max_conf_red_rust",
+        "n_boxes_anthracnose",
+        "n_boxes_leaf_miner",
+        "n_boxes_red_rust",
+        "area_frac_anthracnose",
+        "area_frac_leaf_miner",
+        "area_frac_red_rust"
+      ]
+    },
+    "clean_validation_images": 1361,
+    "selection_split": "clean Validation (GroupKFold theo nhóm pHash, OOF)",
+    "test_or_holdout_used_for_selection": false
+  }
+]

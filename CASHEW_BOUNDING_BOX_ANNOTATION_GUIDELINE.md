@@ -278,4 +278,4 @@ Bổ sung từ kết quả Failure Analysis Take 05/06:
 
 Xem bằng chứng thực nghiệm tại:
 
-[`failure/YOLO26/README.md`](./failure/YOLO26/README.md)
+`failure/YOLO26/README.md`

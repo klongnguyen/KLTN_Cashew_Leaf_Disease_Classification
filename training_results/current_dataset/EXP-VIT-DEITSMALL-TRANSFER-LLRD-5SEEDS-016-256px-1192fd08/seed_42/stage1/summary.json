@@ -1,0 +1,18 @@
+{
+  "stage": "stage1",
+  "best_epoch": 11,
+  "real_subgroup_accuracy": 0.8135593220338984,
+  "real_subgroup_correct": 48,
+  "real_subgroup_total": 59,
+  "actual_epochs": 12,
+  "fit_seconds": 70.05702129099882,
+  "val_loss": 0.19809068739414215,
+  "val_accuracy": 0.9387052059173584,
+  "val_macro_f1": 0.9372740258258931,
+  "checkpoint_path": "/content/training_results/current_dataset/EXP-VIT-DEITSMALL-TRANSFER-LLRD-5SEEDS-016-256px-1192fd08/seed_42/stage1/best.weights.h5",
+  "checkpoint_sha256": "1dc51fa2935d203e52ee97297f865aac28246f5793e75993f3059676ae9d0805",
+  "checkpoint_size_mb": 83.28962707519531,
+  "backbone_trainable_params": 0,
+  "learning_rate_first": 0.0003000000142492354,
+  "learning_rate_last": 0.0003000000142492354
+}

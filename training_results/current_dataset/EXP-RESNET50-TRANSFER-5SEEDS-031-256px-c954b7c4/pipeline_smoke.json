@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "preprocess_max_abs_error": 0.0,
+  "stage1_backbone_trainable_params": 0,
+  "stage2_backbone_trainable_params": 14953472,
+  "stage2_trainable_share_of_backbone": 0.6339517796384829,
+  "densenet121_reference_stage2_params": 2129920,
+  "stage2_unfrozen_blocks": [
+    "conv5_block1",
+    "conv5_block2",
+    "conv5_block3"
+  ],
+  "backbone_batchnorm_layers": 53,
+  "weights_and_model_reload": "PASS",
+  "imagenet_initialization": "PASS",
+  "inference_augmentation_identity": "PASS",
+  "train_augmentation_stochastic": "PASS",
+  "photometric_coverage_gate": {
+    "baseline_mean_saturation_0_255": 86.94856262207031,
+    "augmented_ratio_min_excluding_grayscale": 0.6319657564163208,
+    "augmented_ratio_max_excluding_grayscale": 1.396044135093689,
+    "grayscale_draw_fraction": 0.075,
+    "audit_saturation_ratio": 0.8529176658673062,
+    "audit_source": "EXP-025 P0 Healthy error audit: wrong S 106.7 vs correct S 125.1",
+    "per_image_draws": 120,
+    "status": "PASS"
+  },
+  "real_oversample_factor": 1,
+  "train_rows_after_oversample": 4972
+}

@@ -1,0 +1,2 @@
+# The deployed bundle is verified byte-by-byte (SHA-256) at startup: never convert line endings.
+EXP-DENSENET121-YOLO-COMBINED-TRAINING-035-NEGV04/pipeline_bundle/* -text

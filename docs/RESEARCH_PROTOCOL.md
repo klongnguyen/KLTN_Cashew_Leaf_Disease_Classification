@@ -31,4 +31,4 @@ Classification: Accuracy, Macro Precision/Recall/F1, Balanced Accuracy, per-clas
 6. Kết quả, nhận xét khoa học và failure modes (đặc biệt Anthracnose/Healthy).
 7. Artifact thực sự có trong Git vs chỉ tồn tại ở ZIP/Drive.
 
-[Dataset changelog](../DATASET_CHANGELOG.md) · [Experiment progress](../training_results/current_dataset/EXPERIMENT_PROGRESS_2026_10.md)
+[Dataset changelog](../DATASET_CHANGELOG.md) · Experiment progress

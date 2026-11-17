@@ -1,0 +1,91 @@
+{
+  "pass": true,
+  "sklearn": "1.9.1",
+  "fold_algorithm": "stable_group_kfold (GroupKFold shuffle=False, sắp xếp ổn định)",
+  "checks": [
+    {
+      "level": "1 đầu vào (bắt buộc)",
+      "check": "F0 correct test",
+      "this_notebook": 659.0,
+      "exp035": 659.0,
+      "match": true
+    },
+    {
+      "level": "1 đầu vào (bắt buộc)",
+      "check": "F0 correct holdout",
+      "this_notebook": 105.0,
+      "exp035": 105.0,
+      "match": true
+    },
+    {
+      "level": "2 Accuracy F3 (dung sai)",
+      "check": "F3 correct test",
+      "this_notebook": 665.0,
+      "exp035": 665.0,
+      "match": true
+    },
+    {
+      "level": "2 Accuracy F3 (dung sai)",
+      "check": "F3 correct holdout",
+      "this_notebook": 119.0,
+      "exp035": 119.0,
+      "match": true
+    },
+    {
+      "level": "2 Accuracy F3 (dung sai)",
+      "check": "F3 correct holdout_n124",
+      "this_notebook": 117.0,
+      "exp035": 117.0,
+      "match": true
+    },
+    {
+      "level": "3 chỉ báo cáo",
+      "check": "C",
+      "this_notebook": 3.0,
+      "exp035": 1.0,
+      "match": false
+    },
+    {
+      "level": "3 chỉ báo cáo",
+      "check": "temperature",
+      "this_notebook": 0.984,
+      "exp035": 0.9317,
+      "match": false
+    },
+    {
+      "level": "3 chỉ báo cáo",
+      "check": "abstain_threshold",
+      "this_notebook": 0.4451,
+      "exp035": 0.4262,
+      "match": false
+    },
+    {
+      "level": "3 chỉ báo cáo",
+      "check": "F3 correct validation_clean (OOF)",
+      "this_notebook": 1341.0,
+      "exp035": 1343.0,
+      "match": false
+    },
+    {
+      "level": "3 chỉ báo cáo",
+      "check": "nhãn F3 trùng EXP-035 (validation_clean)",
+      "this_notebook": 1359.0,
+      "exp035": 1361.0,
+      "match": false
+    },
+    {
+      "level": "3 chỉ báo cáo",
+      "check": "nhãn F3 trùng EXP-035 (test)",
+      "this_notebook": 682.0,
+      "exp035": 685.0,
+      "match": false
+    },
+    {
+      "level": "3 chỉ báo cáo",
+      "check": "nhãn F3 trùng EXP-035 (holdout)",
+      "this_notebook": 126.0,
+      "exp035": 126.0,
+      "match": true
+    }
+  ]
+}

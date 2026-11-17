@@ -1,0 +1,9 @@
+{
+  "accuracy": 0.7380952380952381,
+  "macro_precision_present_classes": 0.8524305555555556,
+  "macro_recall_present_classes": 0.6922482837528604,
+  "macro_f1_present_classes": 0.7250605326876514,
+  "balanced_accuracy_present_classes": 0.6922482837528604,
+  "images": 126,
+  "macro_class_count": 4
+}

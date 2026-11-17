@@ -2,7 +2,7 @@
 
 > **Áp dụng:** `STATISTICAL_ANALYSIS.ipynb`, dùng kết quả chuẩn V2 từ CNN, ResNet50, DenseNet121, ViT/DeiT.  
 > **Ngày chốt:** 29/10/2026.  
-> **Tài liệu ghép cặp:** [`STANDARD_TRAINING_NOTEBOOK_FORMAT.md`](STANDARD_TRAINING_NOTEBOOK_FORMAT.md).  
+> **Tài liệu ghép cặp:** `STANDARD_TRAINING_NOTEBOOK_FORMAT.md`.  
 > **Căn cứ dự án:** `docs/research_notes/AUDIT_NOTEBOOK_OUTPUTS_STATISTICAL_PLAN.md` (27/10/2026), `docs/RESEARCH_PROTOCOL.md`.
 
 ## 1. Mục đích và nguyên tắc

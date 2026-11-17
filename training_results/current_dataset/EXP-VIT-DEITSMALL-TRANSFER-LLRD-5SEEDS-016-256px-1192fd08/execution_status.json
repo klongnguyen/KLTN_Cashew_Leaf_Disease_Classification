@@ -1,0 +1,11 @@
+{
+  "experiment_id": "EXP-VIT-DEITSMALL-TRANSFER-LLRD-5SEEDS-016-256px-1192fd08",
+  "training": "COMPLETE",
+  "validation": "COMPLETE",
+  "test": "FINAL_TEST_EVALUATED",
+  "real_holdout": "REAL_HOLDOUT_EVALUATED",
+  "dataset_zip_sha256": "e1647b72e10af04275dc760545f4ef17c9f44343ae119495b89ba1e3cd954e04",
+  "dataset_manifest_sha256": "2cee0fb4818f93fba1dda43ab2e83615d33c5f7f3e4e15dc7c647436ff54b607",
+  "deployment_seed": 7777,
+  "selection_lock_sha256": "e00ed31392ef111a56c36e40959117af4fa57c98085c0b1c4d770763094268b5"
+}

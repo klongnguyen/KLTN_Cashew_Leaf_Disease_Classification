@@ -1,0 +1,61 @@
+{
+  "experiment_id": "EXP-VIT-DEITSMALL-TRANSFER-LLRD-5SEEDS-016-256px-1192fd08",
+  "config_sha256": "e1c7f5a14f9c37085a7085d6d69c0161faa550e34fdad4a46816f92a2e64fbee",
+  "dataset_sha256": "e1647b72e10af04275dc760545f4ef17c9f44343ae119495b89ba1e3cd954e04",
+  "dataset_manifest_sha256": "2cee0fb4818f93fba1dda43ab2e83615d33c5f7f3e4e15dc7c647436ff54b607",
+  "class_names": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "red_rust",
+    "not_cashew_leaf"
+  ],
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "dataset_version": "Cashew_dataV13",
+  "selection_split": "validation",
+  "primary_metric": "val_loss",
+  "tiebreaker": "val_macro_f1 (higher), then stage 1",
+  "selected_seed": 7777,
+  "selected_thresholds": null,
+  "class_to_idx": {
+    "anthracnose": 0,
+    "healthy": 1,
+    "leaf_miner": 2,
+    "red_rust": 3,
+    "not_cashew_leaf": 4
+  },
+  "protocol_version": "STANDARD_TRAINING_NOTEBOOK_FORMAT_V2",
+  "selection_rule": "lowest Validation loss, higher Validation macro-F1, Stage 1 on tie",
+  "deployment_rule": "lowest Validation loss, higher macro-F1, lower seed on tie",
+  "selection_primary_metric": "val_loss",
+  "deployment_seed": 7777,
+  "deployment_seed_under_val_loss_rule": 7777,
+  "selection_comparison_sha256": "d779cebebeac0f3f7c9c671c07c96fdb678ea7cb36da28e4a4c5e4b408d24a3c",
+  "validation_sha256": "a0eade728be9910018f0e4c8b75113e32e5bf012da3fa46fd7217b2547f1a0d0",
+  "stage2_config": {
+    "id": "n08_lr5e-05",
+    "unfreeze_last_blocks": 8,
+    "base_lr": 5e-05,
+    "decay": 0.75,
+    "trainable_params": 14196480,
+    "rule_text": "last 8 of 12 encoder blocks + final LayerNorm (embeddings and earlier blocks frozen); LR = 5e-05 x 0.75 ** (11 - block index)"
+  },
+  "stage2_config_source": "screening lock /content/training_results/current_dataset/EXP-VIT-DEITSMALL-TRANSFER-LLRD-SCREEN-016-256px-1192fd08/screening_selection_lock.json",
+  "screening_experiment": "EXP-VIT-DEITSMALL-TRANSFER-LLRD-SCREEN-016-256px-1192fd08",
+  "baseline_experiment": "EXP-VIT-DEITSMALL-TRANSFER-5SEEDS-015-256px-d4379a48",
+  "selected_checkpoint_sha256": {
+    "42": "0f4eb89d6511a2e1c3040b3bdfdcebc44a3fc29117a8864d0198b9e081db7f26",
+    "123": "add9acf82d1a325b67be5ca0b9891f3d0d669c26035b0561dd8afaefbb0e441a",
+    "2026": "be97ac2ce4cd0b96eca329b25a7be2f79bfce0f9ed864cee16e0fe68c9ea123f",
+    "3407": "ff227d52f94c48a393648e8b2252dbb9b4cc9616a1c14a5e29f4a96f2291f815",
+    "7777": "8afd9daa957dd842990a2dc3cae7bbe33c77cb77bfd34ead2113092f61200672"
+  },
+  "locked_at": "2026-11-04T13:43:06.280548+00:00",
+  "locked_at_utc": "2026-11-04T13:43:06.280694Z"
+}

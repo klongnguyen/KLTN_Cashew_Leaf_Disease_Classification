@@ -1,0 +1,50 @@
+{
+  "experiment_id": "EXP-RESNET50-TRANSFER-5SEEDS-031-256px-c954b7c4",
+  "config_sha256": "f646e77de706b7812fce0d1c6d5786724737bbafc17089a541fe3491f6abca41",
+  "dataset_sha256": "e1647b72e10af04275dc760545f4ef17c9f44343ae119495b89ba1e3cd954e04",
+  "dataset_manifest_sha256": "2cee0fb4818f93fba1dda43ab2e83615d33c5f7f3e4e15dc7c647436ff54b607",
+  "class_names": [
+    "anthracnose",
+    "healthy",
+    "leaf_miner",
+    "red_rust",
+    "not_cashew_leaf"
+  ],
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "dataset_version": "Cashew_dataV13",
+  "selection_split": "validation",
+  "primary_metric": "val_loss",
+  "tiebreaker": "val_macro_f1 (higher), then stage 1",
+  "selected_seed": 123,
+  "selected_thresholds": null,
+  "class_to_idx": {
+    "anthracnose": 0,
+    "healthy": 1,
+    "leaf_miner": 2,
+    "red_rust": 3,
+    "not_cashew_leaf": 4
+  },
+  "protocol_version": "STANDARD_TRAINING_NOTEBOOK_FORMAT_V2",
+  "selection_rule": "lowest Validation loss, higher Validation macro-F1, Stage 1 on tie",
+  "deployment_rule": "lowest Validation loss, higher macro-F1, lower seed on tie",
+  "selection_primary_metric": "val_loss",
+  "deployment_seed": 123,
+  "deployment_seed_under_val_loss_rule": 123,
+  "selection_comparison_sha256": "9251b681890118df886befcb99c5389405106069653995a65178d2397875f3ce",
+  "validation_sha256": "03bdf97046b371b8b86d286b4af8bd773e546b3f4160ad2f72434c2d24d03466",
+  "selected_checkpoint_sha256": {
+    "42": "35329317065f76c09d6e9c469c5c8b57668ee2497742fd1d423bf309df9fa06b",
+    "123": "ee30ec21c26b682b84139e58e83f95fe6a9adb205bb85900ec9164d95f91ecdf",
+    "2026": "86cb6c08c10fece05b3a262438c394eb626f405c42a6b2ae9057da73a2b6f0a7",
+    "3407": "090c84a9c6d703dea22f7083a9600aded64f749cb202fb6c632effb82079532e",
+    "7777": "b6e795d4d28a6e0041683d39565eae76ee309a03ef3017fd8dcfae5c7ccdff91"
+  },
+  "locked_at": "2026-11-03T17:17:27.491688+00:00",
+  "locked_at_utc": "2026-11-03T17:17:27.491826Z"
+}

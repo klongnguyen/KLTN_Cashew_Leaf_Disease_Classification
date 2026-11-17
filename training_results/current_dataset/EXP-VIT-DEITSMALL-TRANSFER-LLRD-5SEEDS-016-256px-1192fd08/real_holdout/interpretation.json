@@ -1,0 +1,7 @@
+{
+  "status": "EVALUATED_SEPARATELY",
+  "evaluated_images": 126,
+  "excluded_exact_test_duplicate": 0,
+  "use": "external descriptive evaluation on present classes; no Test/holdout tuning",
+  "selection_source": "Validation only"
+}

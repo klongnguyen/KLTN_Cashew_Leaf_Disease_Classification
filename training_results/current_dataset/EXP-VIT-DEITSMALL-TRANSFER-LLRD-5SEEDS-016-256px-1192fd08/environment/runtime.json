@@ -1,0 +1,21 @@
+{
+  "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+  "tensorflow": "2.21.0",
+  "keras": "3.15.1",
+  "keras_hub": "0.32.0",
+  "pretrained_handle_used": "deit_small_distilled_patch16_224_imagenet",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "gpu": [
+    "PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')"
+  ],
+  "cuda_build": "12.5.1",
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "code_revision_sha256": "1192fd08d756789044cd23e9fa6e419a7eecf064b4165836f0d87d3d03db6bb4",
+  "code_revision_method": "SHA256 of all code cells with the revision constant and embedded source blob blanked"
+}

@@ -1,0 +1,8 @@
+{
+  "experiment_id": "EXP-RESNET50-TRANSFER-5SEEDS-031-256px-c954b7c4",
+  "required": 165,
+  "present": 165,
+  "missing": [],
+  "verdict": "COMPLETE",
+  "layout_note": "Per-seed checkpoints are stored as seed_*/best.weights.h5 plus stage1/stage2 folders; Validation outputs are in seed_*/validation, Test in seed_*/test, Holdout in real_holdout/seed_*."
+}

@@ -1,0 +1,18 @@
+{
+  "experiment_id": "EXP-RESNET50-TRANSFER-5SEEDS-031-256px-c954b7c4",
+  "deployment_seed": 123,
+  "batch_size": 1,
+  "warmup_runs": 5,
+  "measured_runs": 30,
+  "measurement": "wall-clock EXIF decode + RGB conversion + bilinear resize + Keras predict + argmax",
+  "device": [
+    "/physical_device:GPU:0"
+  ],
+  "mean_ms": 53.05832360051378,
+  "median_ms": 52.70637949797674,
+  "p95_ms": 55.19813100072496,
+  "sample_sd_ms": 1.300822208167028,
+  "parameters": 23597957,
+  "deployment_model_bytes": 95066357,
+  "note": "One Validation image repeated; platform-specific timing, not a cross-device benchmark."
+}

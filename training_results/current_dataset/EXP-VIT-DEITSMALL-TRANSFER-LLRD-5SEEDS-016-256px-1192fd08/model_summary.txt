@@ -1,0 +1,48 @@
+Model: "DeiTSmall_Transfer_seed_7777"
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)        ┃ Output Shape      ┃    Param # ┃ Connected to      ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━┩
+│ raw_rgb             │ (None, 256, 256,  │          0 │ -                 │
+│ (InputLayer)        │ 3)                │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ train_only_augment… │ (None, 256, 256,  │          0 │ raw_rgb[0][0]     │
+│ (Sequential)        │ 3)                │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ deit_imagenet_prep… │ (None, 256, 256,  │          0 │ train_only_augme… │
+│ (DeiTImageNetPrepr… │ 3)                │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ deit_small_backbone │ (None, 258, 384)  │ 21,689,472 │ deit_imagenet_pr… │
+│ (DeiTBackbone)      │                   │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ class_token_output  │ (None, 384)       │          0 │ deit_small_backb… │
+│ (TokenSlice)        │                   │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ distillation_token… │ (None, 384)       │          0 │ deit_small_backb… │
+│ (TokenSlice)        │                   │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ class_head_dropout  │ (None, 384)       │          0 │ class_token_outp… │
+│ (Dropout)           │                   │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ distillation_head_… │ (None, 384)       │          0 │ distillation_tok… │
+│ (Dropout)           │                   │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ class_head (Dense)  │ (None, 5)         │      1,925 │ class_head_dropo… │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ distillation_head   │ (None, 5)         │      1,925 │ distillation_hea… │
+│ (Dense)             │                   │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ averaged_logits     │ (None, 5)         │          0 │ class_head[0][0], │
+│ (Average)           │                   │            │ distillation_hea… │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ disease_output      │ (None, 5)         │          0 │ averaged_logits[… │
+│ (Activation)        │                   │            │                   │
+└─────────────────────┴───────────────────┴────────────┴───────────────────┘
+ Total params: 21,693,322 (82.75 MB)
+ Trainable params: 14,200,330 (54.17 MB)
+ Non-trainable params: 7,492,992 (28.58 MB)
+
+
+Backbone: DeiT-Small (distilled) (imagenet), stage 2 rule: last 8 of 12 encoder blocks + final LayerNorm (embeddings and earlier blocks frozen); LR = 5e-05 x 0.75 ** (11 - block index)
+Expected stage 2 trainable backbone parameters: 14,196,480
+Stage 2 learning rates (EXP-016): lr(encoder block i) = base_lr * 0.75 ** (11 - i) for the unfrozen blocks; final LayerNorm and both heads use base_lr; embeddings frozen; weight decay applies the unscaled base_lr (about 5e-9 relative shrink per step)
+Stage 2 config: n08_lr5e-05

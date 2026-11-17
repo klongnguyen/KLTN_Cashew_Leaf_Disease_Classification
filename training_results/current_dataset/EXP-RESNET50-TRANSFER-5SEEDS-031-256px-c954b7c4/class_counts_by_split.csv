@@ -1,0 +1,6 @@
+class,train,val,test,total
+anthracnose,991,309,120,1420
+healthy,872,227,118,1217
+leaf_miner,875,267,130,1272
+red_rust,1131,335,161,1627
+not_cashew_leaf,1103,314,156,1573

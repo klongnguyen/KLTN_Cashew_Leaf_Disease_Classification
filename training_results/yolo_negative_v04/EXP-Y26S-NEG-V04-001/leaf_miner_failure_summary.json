@@ -1,0 +1,8 @@
+{
+  "leaf_miner_tp": 461,
+  "leaf_miner_fp": 506,
+  "leaf_miner_fn": 107,
+  "shifted_boxes_candidate": 117,
+  "low_confidence_tp": 49,
+  "multi_disease_gt": 503
+}

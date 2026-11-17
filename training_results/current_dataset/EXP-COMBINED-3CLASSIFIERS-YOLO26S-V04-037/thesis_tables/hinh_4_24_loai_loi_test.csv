@@ -1,0 +1,13 @@
+model,rule,missed_disease,wrong_disease_type,false_alarm,healthy_vs_not_cashew
+DenseNet121,F0,2,20,4,0
+DenseNet121,F3a,2,19,6,0
+DenseNet121,F3b,3,11,26,104
+DenseNet121,F3,0,15,5,0
+ResNet50,F0,4,24,1,0
+ResNet50,F3a,3,25,1,0
+ResNet50,F3b,3,11,26,104
+ResNet50,F3,0,12,2,0
+ViT (DeiT-S),F0,1,16,0,0
+ViT (DeiT-S),F3a,1,14,0,0
+ViT (DeiT-S),F3b,3,11,26,104
+ViT (DeiT-S),F3,1,13,1,0

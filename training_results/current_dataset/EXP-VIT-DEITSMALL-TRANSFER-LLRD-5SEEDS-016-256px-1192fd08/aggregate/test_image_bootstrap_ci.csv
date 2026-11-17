@@ -1,0 +1,11 @@
+split,seed,n,metric,estimate,ci95_low,ci95_high,n_boot,resampling
+test,42,685,accuracy,0.9766423357664233,0.964963503649635,0.9868613138686131,2000,"images within one seed, percentile interval, fixed split"
+test,42,685,macro_f1_present_classes,0.9746594717654112,0.9618615416931134,0.98587704330038,2000,"images within one seed, percentile interval, fixed split"
+test,123,685,accuracy,0.9693430656934306,0.9562043795620438,0.981021897810219,2000,"images within one seed, percentile interval, fixed split"
+test,123,685,macro_f1_present_classes,0.9666032337016865,0.9526755565374531,0.9788534003102167,2000,"images within one seed, percentile interval, fixed split"
+test,2026,685,accuracy,0.962043795620438,0.9474452554744526,0.9751824817518249,2000,"images within one seed, percentile interval, fixed split"
+test,2026,685,macro_f1_present_classes,0.9594939643020988,0.9437822312540989,0.9734903619158687,2000,"images within one seed, percentile interval, fixed split"
+test,3407,685,accuracy,0.9751824817518249,0.9635036496350365,0.9868613138686131,2000,"images within one seed, percentile interval, fixed split"
+test,3407,685,macro_f1_present_classes,0.9727638606051066,0.9593599771333196,0.9848266261968577,2000,"images within one seed, percentile interval, fixed split"
+test,7777,685,accuracy,0.9737226277372263,0.9605839416058394,0.9854014598540146,2000,"images within one seed, percentile interval, fixed split"
+test,7777,685,macro_f1_present_classes,0.9714469724264434,0.957333994599394,0.9833570797978014,2000,"images within one seed, percentile interval, fixed split"

@@ -1,0 +1,6 @@
+class,precision,recall,f1-score,support,evaluated
+anthracnose,0.5972222222222222,0.9347826086956522,0.7288135593220338,46.0,True
+healthy,0.8125,0.6842105263157895,0.7428571428571429,19.0,True
+leaf_miner,1.0,0.75,0.8571428571428571,36.0,True
+red_rust,1.0,0.4,0.5714285714285714,25.0,True
+not_cashew_leaf,,,,0.0,False

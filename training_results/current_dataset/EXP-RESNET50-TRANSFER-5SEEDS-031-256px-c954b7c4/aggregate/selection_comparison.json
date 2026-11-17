@@ -1,0 +1,69 @@
+{
+  "experiment_id": "EXP-RESNET50-TRANSFER-5SEEDS-031-256px-c954b7c4",
+  "primary_metric": "val_loss",
+  "deployment_seed": 123,
+  "deployment_seed_under_val_loss_rule": 123,
+  "rules_agree": true,
+  "ranking_by_real_subgroup": [
+    3407,
+    123,
+    7777,
+    42,
+    2026
+  ],
+  "ranking_by_val_loss": [
+    123,
+    3407,
+    2026,
+    7777,
+    42
+  ],
+  "per_seed": [
+    {
+      "seed": 42,
+      "val_loss": 0.10322295129299164,
+      "val_accuracy": 0.9703856749311295,
+      "val_macro_f1": 0.9695281037706012,
+      "real_subgroup_accuracy": 0.8135593220338984,
+      "real_subgroup_correct": 48,
+      "real_subgroup_total": 59
+    },
+    {
+      "seed": 123,
+      "val_loss": 0.09427483379840851,
+      "val_accuracy": 0.96900826446281,
+      "val_macro_f1": 0.9681624203253522,
+      "real_subgroup_accuracy": 0.847457627118644,
+      "real_subgroup_correct": 50,
+      "real_subgroup_total": 59
+    },
+    {
+      "seed": 2026,
+      "val_loss": 0.09566616266965866,
+      "val_accuracy": 0.9662534435261708,
+      "val_macro_f1": 0.9653962918448323,
+      "real_subgroup_accuracy": 0.7796610169491526,
+      "real_subgroup_correct": 46,
+      "real_subgroup_total": 59
+    },
+    {
+      "seed": 3407,
+      "val_loss": 0.09472748637199402,
+      "val_accuracy": 0.9683195592286501,
+      "val_macro_f1": 0.9671540015506703,
+      "real_subgroup_accuracy": 0.864406779661017,
+      "real_subgroup_correct": 51,
+      "real_subgroup_total": 59
+    },
+    {
+      "seed": 7777,
+      "val_loss": 0.09993930906057358,
+      "val_accuracy": 0.9710743801652892,
+      "val_macro_f1": 0.970107228980815,
+      "real_subgroup_accuracy": 0.847457627118644,
+      "real_subgroup_correct": 50,
+      "real_subgroup_total": 59
+    }
+  ],
+  "note": "Selection used Validation only; Test and Holdout never select."
+}
